@@ -1,0 +1,13 @@
+﻿:root{font:400 16px/1.8em -apple-system,’Lucida Grande’,‘Helvetica Neue’,’Hiragino Kaku Gothic ProN’,‘游ゴシック’,’メイリオ’,meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+main{background-color:#fff;}
+.card{display:block;height:28.125vmin;width:50vmin;margin:.9375vmin 10vmin;border-radius:5px;box-shadow:0 0 15px rgba(0,0,0,.3);}
+
+
+/*tablet-size*/
+@media screen and(max-width:64em){
+	.card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;}
+}
+/*phone-size*/
+@media screen and(max-width:40em){
+	.card{height:90vmin;width:50.625vmin;margin:2.1875vmin 5vmin;}
+}
