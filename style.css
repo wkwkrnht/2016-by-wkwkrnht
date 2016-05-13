@@ -2,7 +2,7 @@
 main{background-color:#fff;}
 .site-main{padding;-bottom:15vh;}
 /*menu-buttons*/
-.toggle-zone{height:15vh;width:100vw;display:fixed;box-shadow:0 0 -10px rgba(0,0,0,.5);}
+.toggle-zone{height:15vh;width:100vw;display:fixed;bottom:0;left:0;box-shadow:0 0 -10px rgba(0,0,0,.5);}
 .toggle-zones button{height:100%;width:calc(100% / 3);display:inline-block;}
 .share-toggle::before{font-family:"FontAwesome";content:"/f1e0";color:#fff;}
 .share-toggle{background-color:#00a5de;}
@@ -10,6 +10,10 @@ main{background-color:#fff;}
 .menu-toggle{background-color:#ffcc00;}
 /*top-card*/
 .card{display:block;height:28.125vmin;width:50vmin;margin:.9375vmin 10vmin;border-radius:5px;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.card img{display:inline-block;max-height:100%;}
+.card span{display:inline-block;}
+.card p{display:inline-block;}
+.site-info{text-align:center;}
 /*tablet-size*/
 @media screen and(max-width:64em){
 	.card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;}
