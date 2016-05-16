@@ -1,23 +1,25 @@
-﻿:root{font:400 16px/1.8em -apple-system,’Lucida Grande’,‘Helvetica Neue’,’Hiragino Kaku Gothic ProN’,‘游ゴシック’,’メイリオ’,meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-main{background-color:#fff;}
-.site-main{padding;-bottom:15vh;}
+﻿:root{font:400 16px/1.6em -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+body{background-color:#f1f1f1;}
+#site-main{padding-bottom:15vh;}
 /*menu-buttons*/
-.toggle-zone{height:15vh;width:100vw;position:fixed;bottom:0;left:0;box-shadow:0 0 -10px rgba(0,0,0,.5);}
-.toggle-zones span{height:100%;width:calc(100% / 3);display:inline-block;}
-#share-toggle::before{font-family:"FontAwesome";content:"/f1e0";color:#fff;}
-#share-toggle{background-color:#00a5de;}
-#menu-toggle::before{font-family:"FontAwesome";content:"/f0c9";color:#fff;}
-#menu-toggle{background-color:#ffcc00;}
+.toggle-zone{height:15vh;width:100vw;position:fixed;bottom:0;left:0;z-index:100;background-color:#ffcc00;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.toggle-zone span{display:inline-block;height:inherit;width:33%;text-align:center;}
+#share-toggle::before{content:"/f1e0";font-family:"FontAwesome";color:#00a5de;opacity:.85;}
+#menu-toggle::before{content:"/f0c9";font-family:"FontAwesome";color:#fff;opacity:.85;}
 /*top-card*/
-.card{display:block;height:28.125vmin;width:50vmin;margin:.9375vmin 10vmin;border-radius:5px;box-shadow:0 0 15px rgba(0,0,0,.3);}
-.card img{display:inline-block;max-height:100%;}
+.card{display:block;height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.info-card{height:35vmin;width:150vmin;margin:2.5vmin auto;}
+.article-img{display:block;float:left;max-height:100%;}
+.article-info{float:right;}
 .card span{display:inline-block;}
 .card p{display:inline-block;}
 .site-info{text-align:center;}
-/*tablet-size*/
-@media screen and(max-width:64em){
-	.card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;}
-}
+/*article-style*/
+
+/*tablet-size
+@media screen and(min-width:64em){
+	
+}*/
 /*phone-size*/
 @media screen and(max-width:40em){
 	.card{height:90vmin;width:50.625vmin;margin:2.1875vmin 5vmin;}
