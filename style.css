@@ -13,7 +13,7 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 #site-main{padding-bottom:15vh;}
 /*menu-buttons*/
 .toggle-zone{height:15vh;width:100vw;position:fixed;bottom:0;left:0;z-index:100;background-color:#ffcc00;line-height:15vh;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
-.toggle-zone span{display:inline-block;height:inherit;width:33%;}
+.toggle-zone a{display:inline-block;height:inherit;width:33%;}
 #share-toggle::before,#menu-toggle::before{font-family:"FontAwesome";text-align:center;vertical-align:baseline;position:relative;left:8em;}
 #share-toggle::before{content:"/f1e0";color:#00a5de;}
 #menu-toggle::before{content:"/f0c9";color:#fff;}
