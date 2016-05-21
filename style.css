@@ -18,7 +18,7 @@ Tags:        orange, white, bule, light, one-column, two-columns, flexible-width
 #share-toggle::before{content:"/f1e0";color:#00a5de;}
 #menu-toggle::before{content:"/f0c9";color:#fff;}
 /*menu*/
-#share-menu{opacity:0;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:0;left:0;}
+#share-menu{opacity:0;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:0;left:0;outline:rgba(0,0,0,.3);box-shadow:0 0 15px rgba(0,0,0,.3);}
 /*#share-menu.open{visibility:visible;opacity:1;}*/
 #share-menu li{display:inline-block;width:50%;height:30%;}
 /*top-card*/
@@ -33,7 +33,9 @@ Tags:        orange, white, bule, light, one-column, two-columns, flexible-width
 /*article-style*/
 .article-header{text-align:center;}
 .article-main{padding:5vmin 8vmin 0;}
-
+.article-main a{border-bottom:0;color:#0000ff;}
+.article-main a:hover{border:1px solid #0000ff;}
+.article-main:visited{color:#934C7B;}
 .article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-height:80%;margin:10px auto;line-height:45px;text-align:center;}
 .article-main h2{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-main h3{padding:.5em .75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
