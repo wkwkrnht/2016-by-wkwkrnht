@@ -18,8 +18,8 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 #share-toggle::before{content:"/f1e0";color:#00a5de;}
 #menu-toggle::before{content:"/f0c9";color:#fff;}
 /*menu*/
-.shard-menu{display:hidden;height:80vh;width:86vw;margin:2.5vh 2vw;overflow-x:scroll;}
-.share-menu .open{display:block;position:fixed;top:0;left:0;z-index:100;}
+#shard-menu{display:hidden;height:80vh;width:86vw;margin:2.5vh 2vw;overflow-x:scroll;}
+#share-menu .open{display:block;position:fixed;top:0;left:0;z-index:100;}
 /*top-card*/
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
