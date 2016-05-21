@@ -50,6 +50,9 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 @media screen and (orientation:landscape) and (min-width:1920px){
 	.info-card,.card{height:36vmin;width:64vmin;}
 }
+@media screen and (orientation:landscape) and (min-width:721px){
+	.info-card,.card{height:36vmin;width:64vmin;}
+}
 /*tablet-style*/
 @media screen and (orientation:landscape) and (max-width:720px){
 	.info-card{height:45vmin;width:80vmin;}
