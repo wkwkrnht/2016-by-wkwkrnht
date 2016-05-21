@@ -50,7 +50,7 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 	.info-card,.card{height:36vmin;width:64vmin;}
 }
 @media screen and (orientation:landscape) and (min-width:721px){
-	.article-list{display:-ms-flex;display:-webkit-flex;display:flex;-webkit-flex-direction:row;flex-direction:row;align-content:space-between;justify-content:space-around;align-items:baseline;flex-wrap:wrap;}
+	.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
 	.info-card{height:35vmin;width:150vmin;margin:2.5vmin auto;}
 }
 /*tablet-style*/
