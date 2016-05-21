@@ -26,7 +26,6 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 .card p{display:inline-block;height:20%;margin:0;}
 .article-img{display:block;float:left;max-height:100%;}
 .article-info{float:right;}
-.info-card{height:35vmin;width:150vmin;margin:2.5vmin auto;}
 .site-info{text-align:center;}
 /*article-style*/
 .article-header{text-align:center;}
@@ -51,7 +50,7 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 	.info-card,.card{height:36vmin;width:64vmin;}
 }
 @media screen and (orientation:landscape) and (min-width:721px){
-	.info-card,.card{height:36vmin;width:64vmin;}
+	.info-card{height:35vmin;width:150vmin;margin:2.5vmin auto;}
 }
 /*tablet-style*/
 @media screen and (orientation:landscape) and (max-width:720px){
