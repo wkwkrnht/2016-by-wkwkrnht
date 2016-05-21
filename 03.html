@@ -40,6 +40,11 @@
 			<ul class="article-tag"><li><a href="#">a</a></li></ul>
 		</article>
 	</main>
+	<div class="toggle-zone">
+		<span id="share-toggle"></span>
+		<span id="menu-toggle"></span>
+		<span id="share-toggle"></span>
+	</div>
 	<ui id="share-menu">
 		<li>Tw</li>
 		<li>FB</li>
@@ -54,11 +59,6 @@
 	</ul>
 	<!--<ul id="main-menu">
 	</ul>-->
-	<div class="toggle-zone">
-		<span id="share-toggle"></span>
-		<span id="menu-toggle"></span>
-		<span id="share-toggle"></span>
-	</div>
 	<script>
 		(function(){document.getElmentsByID('#share-toggle').addEventListener('click',function(){document.getElmentsByID('share-menu').classList.toggle('open');});});
 	</script>
