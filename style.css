@@ -7,7 +7,7 @@ Description: The 2013 theme for WordPress takes us back to the blog, featuring a
 Version:     0.1
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags:        orange, white, buie, light, one-column, two-columns, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post
+Tags:        orange, white, bule, light, one-column, two-columns, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post
 */
 :root{font:400 16px/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 #site-main{padding-bottom:15vh;}
@@ -18,8 +18,9 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 #share-toggle::before{content:"/f1e0";color:#00a5de;}
 #menu-toggle::before{content:"/f0c9";color:#fff;}
 /*menu*/
-#share-menu{visibility:hidden;opacity:0;height:80vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;position:fixed;top:0;left:0;}
-#share-menu.open{visibility:visible;opacity:1;}
+#share-menu{opacity:0;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:0;left:0;}
+/*#share-menu.open{visibility:visible;opacity:1;}*/
+#share-menu li{display:inline-block;width:50%;height:30%;}
 /*top-card*/
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
