@@ -59,5 +59,8 @@
 		<span id="menu-toggle"></span>
 		<span id="share-toggle"></span>
 	</div>
+	<script>
+		(function(){document.getElmentsByID('#share-toggle').on('click',function(){document.getElmentsByID('share-menu').classList.toggle('open');});});
+	</script>
 </body>
 </html>
