@@ -45,8 +45,23 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 .article-tag li{display:inline-block;margin:0 .3em .3em 0;padding:0;}
 .article-tag li a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
 .article-tag li a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
+/*media queri*/
+/*pc-style*/
+@media screen and (orientation:landscape) and (min-width:1920px){
+	.info-card,.card{height:36vmin;width:64vmin;}
+}
+/*tablet-style*/
+@media screen and (orientation:landscape) and (max-width:720px){
+	.info-card{height:45vmin;width:80vmin;}
+	.card{margin:2.5vmin auto;}
+	/*article-table*/
+	.article-main table,.article-main table caption.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th,.article-main table tr td{display:block;}
+	.article-main table tr th,.article-main table tr td{margin:-1px;}
+	.article-main table thead{display:none;}
+	.article-main table tbody tr td[data-th]::before{content:attr(data-th) " : ";font-weight:bold;display:inline-block;margin-right:0.25em;}
+}
 /*phone-size*/
-@media screen and (max-width:720px){
+@media screen and (orientation:portrait) and (max-width:1270px){
 	.info-card{height:45vmin;width:80vmin;}
 	.card{margin:2.5vmin auto;}
 	/*article-table*/
