@@ -18,8 +18,8 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 #share-toggle::before{content:"/f1e0";color:#00a5de;}
 #menu-toggle::before{content:"/f0c9";color:#fff;}
 /*menu*/
-#share-menu{visibility:hidden;opacity:0;height:80vh;width:86vw;margin:2.5vh 2vw;z-index:100;}
-#share-menu.open{visibility:visible;opacity:1;overflow-x:scroll;position:fixed;top:0;left:0;}
+#share-menu{visibility:hidden;opacity:0;height:80vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;position:fixed;top:0;left:0;}
+#share-menu.open{visibility:visible;opacity:1;}
 /*top-card*/
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
@@ -32,6 +32,7 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 /*article-style*/
 .article-header{text-align:center;}
 .article-main{padding:5vmin 8vmin 0;}
+
 .article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-height:80%;margin:10px auto;line-height:45px;text-align:center;}
 .article-main h2{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-main h3{padding:.5em .75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
@@ -54,8 +55,7 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 @media screen and (orientation:landscape) and (min-width:721px){
 	.card{margin:2.5vmin 0;}
 	.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
-	.info-card,.article-infoicle-list:last-child{margin:2.5vmin auto;}
-	.info-card{height:35vmin;width:150vmin;}
+	.info-card{height:35vmin;width:150vmin;margin:2.5vmin auto;}
 }
 /*tablet-style*/
 @media screen and (orientation:landscape) and (max-width:720px){
