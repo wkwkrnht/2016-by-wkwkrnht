@@ -20,7 +20,7 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 /*menu*/
 /*top-card*/
 .card-list{background-color:#f1f1f1;}
-.card{display:block;height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .card h2{display:inline-block;height:50%;margin:0;}
 .card span{display:inline-block;height:30%;margin:0;}
 .card p{display:inline-block;height:20%;margin:0;}
@@ -50,6 +50,7 @@ Tags:        orange, white, buie, light, one-column, two-columns, flexible-width
 	.info-card,.card{height:36vmin;width:64vmin;}
 }
 @media screen and (orientation:landscape) and (min-width:721px){
+	.article-list{display:-ms-flex;display:-webkit-flex;display:flex;-webkit-flex-direction:row;flex-direction:row;align-content:space-between;justify-content:space-around;align-items:baseline;flex-wrap:wrap;}
 	.info-card{height:35vmin;width:150vmin;margin:2.5vmin auto;}
 }
 /*tablet-style*/
