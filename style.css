@@ -21,6 +21,52 @@ Tags:        orange, white, bule, light, one-column, two-columns, flexible-width
 #share-menu{opacity:0;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:0;left:0;outline:rgba(0,0,0,.3);box-shadow:0 0 15px rgba(0,0,0,.3);}
 /*#share-menu.open{visibility:visible;opacity:1;}*/
 #share-menu li{display:inline-block;width:50%;height:30%;}
+/*original-widget*/
+/*popuiar*/
+.latest_wrap a {
+	float: left;
+	padding: 10px 0 0 0;
+	min-height: 75px;
+	width: 100%;
+	border-bottom: 1px solid #f0efef;
+	text-decoration: none;
+	position: relative;
+}
+
+.latest_wrap img {
+	float: left;
+	margin: 0 20px 10px 10px;
+	padding: 0;
+	width: 60px;
+	height: 60px;
+	border: 0;
+	border-radius: 0;
+	transition: 0.5s;
+}
+
+.latest_wrap .title {
+	margin: 5px 0 0 0;
+	color: #000;
+	font-weight: 400;
+	font-size: 13px;
+}
+
+.latest_wrap .view_count {
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	font-family: impact;
+	color: #666;
+	font-size: 14px;
+	background: rgba(0,0,0,0.1);
+	padding: 0 0 0 5px;
+}
+
+.latest_wrap .view_count:after {
+	content: "view";
+	color: #000;
+	margin: 0 0 0 5px;
+}
 /*top-card*/
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}

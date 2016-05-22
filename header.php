@@ -3,7 +3,7 @@
 <head>
 	<link rel="amphtml" href="https://hogehoge.ne.co.jp/index.htmlamp=1">
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="HandheldFriendly" content="true">
 	<meta name="viewport" content="width=device-width">
 	<meta name="referrer" content="default">
@@ -19,31 +19,8 @@
 	<link rel="fluid-icon" href="./img/icon.ico" title="next_theme_by_wkwkrnht">
 	<link rel="image_src" href="./img/icon.ico">
 	<link rel="publisher" href="http://plus.google.com/hogehoge">
-	<link rel="alternate" type="application/json+oembed" href="https://hogehoge.ne.co.jp//wp-json/oembed/1.0/embed?url=https://hogehoge.ne.co.jp/">
-	<link rel="alternate" type="text/xml+oembed" href="https://hogehoge.ne.co.jp//wp-json/oembed/1.0/embed?url=https://hogehoge.ne.co.jp/format=xml">
 	<link rel="prerender" href="https://hogehoge.ne.co.jp/">
 	<link rel="stylesheet" href="./css/normalize.min.css">
 	<link rel="stylesheet" href="./css/font-awesome.min.css">
 	<link rel="stylesheet" href="./style.css">
 </head>
-<body>
-	<main id="site-main">
-		<article class="article">
-			<header class="article-header">
-				<img src="./img/03.png" alt="eyecatch" class="article-img">
-				<h2 class="article-name">03</h2>
-				<span class="article-meta"><time>00:00.00</time><span class="articlle-autor"></span><span class="articlle-cat"></span></span>
-			</header>
-			<div class="article-main">
-				<p>hogehoge</p>
-			</div>
-			<ul class="article-tag"><li><a href="#">a</a></li></ul>
-		</article>
-	</main>
-	<div class="toggle-zone">
-		<a href="#" id="share-toggle"></a>
-		<a href="#" id="menu-toggle"></a>
-		<a href="#" id="share-toggle"></a>
-	</div>
-</body>
-</html>
