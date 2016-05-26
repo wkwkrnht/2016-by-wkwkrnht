@@ -112,22 +112,3 @@ register_deactivation_hook(__FILE__, 'my_deactivation');
 function my_deactivation() {
     wp_clear_scheduled_hook('my_hourly_event');
 }
-/*
-    <?php // POPULAR POST
-				$popularpost = new WP_Query( array( 'posts_per_page' => 10, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
-
-				while ( $popularpost->have_posts() ) : $popularpost->the_post();?>
-					<div class="latest_wrap">
-						<a href="<?php the_permalink(); ?>">
-						<?php if ( has_post_thumbnail() ) { ?>
-		                    <?php the_post_thumbnail('thumbnail', array('class' => 'thumbnail')); ?>
-		                <?php } else { ?>
-		                	<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/no_image3.gif" />
-		                <?php } ?>
-
-		                <h2 class="title"><?php the_title(); ?></h2>
-		                <span class="view_count"><?php echo post_custom('wpb_post_views_count'); ?></span>
-			    		</a>
-			    	</div>
-				<?php endwhile; ?>
-*/
