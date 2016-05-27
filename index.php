@@ -1,11 +1,7 @@
 <?php get_header();?>
 <body class="card-list">
 	<main id="site-main">
-		<div class="card info-card">
-			<h1 class="site-title">NEW THEME!</h1>
-			<p class="site-description">hogehogeehugahugaaaaaaa</p><br>
-			<span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span>
-		</div>
+		<?php wkwkrnht_special_card();?>
 		<div class="article-list">
 			<article class="card article-card">
 				<img src="./img/01.png" alt="eyecatch" class="article-img">

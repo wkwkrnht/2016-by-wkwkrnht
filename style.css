@@ -9,8 +9,10 @@ License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:        orange, white, bule, light, one-column, two-columns, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post
 */
-:root{font:400 16px/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+:root{font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 #site-main{padding-bottom:15vh;}
+.sizuku{animation:sizuku 1s linear 0s;background-color:#6eb2e0;border:4px solid #6eb2e0;border-radius:50%;position:absolute;z-index:1000;}
+@keyframes sizuku{0%{height:0;width:0;opacity:1;transform:translate(0,0);}100%{height:500px;width:500px;opacity:0;transform:translate(-250px,-250px);}}
 /*menu-buttons*/
 .toggle-zone{height:15vh;width:100vw;position:fixed;bottom:0;left:0;z-index:100;background-color:#ffcc00;line-height:15vh;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .toggle-zone a{display:inline-block;height:inherit;width:33%;border-bottom:0;text-decoration:none;}
@@ -23,7 +25,7 @@ Tags:        orange, white, bule, light, one-column, two-columns, flexible-width
 #share-menu li{display:inline-block;width:50%;height:30%;}
 /*original-widget*/
 /*popuiar*/
-.latest_wrap a {
+.popuiar_post a{
 	float: left;
 	padding: 10px 0 0 0;
 	min-height: 75px;
@@ -33,7 +35,7 @@ Tags:        orange, white, bule, light, one-column, two-columns, flexible-width
 	position: relative;
 }
 
-.latest_wrap img {
+.popuiar_post img{
 	float: left;
 	margin: 0 20px 10px 10px;
 	padding: 0;
@@ -44,29 +46,8 @@ Tags:        orange, white, bule, light, one-column, two-columns, flexible-width
 	transition: 0.5s;
 }
 
-.latest_wrap .title {
-	margin: 5px 0 0 0;
-	color: #000;
-	font-weight: 400;
-	font-size: 13px;
-}
-
-.latest_wrap .view_count {
-	position: absolute;
-	bottom: 0px;
-	right: 0;
-	font-family: impact;
-	color: #666;
-	font-size: 14px;
-	background: rgba(0,0,0,0.1);
-	padding: 0 0 0 5px;
-}
-
-.latest_wrap .view_count:after {
-	content: "view";
-	color: #000;
-	margin: 0 0 0 5px;
-}
+.popuiar_post h2{margin:5px 0 0 0;font-size:13px;}
+.popuiar_post::after{content:attr(data-view);padding:0 0 0 5px;margin:0 0 0 5px;position:absolute;bottom:0;right:0;font-family:impact;font-size:14px;color:#333;background-color:rgba(0,0,0,0.1);}
 /*top-card*/
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
