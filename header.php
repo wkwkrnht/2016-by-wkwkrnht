@@ -14,10 +14,10 @@
 	<meta http-equiv="cleartype" content="on">
 	<meta name="renderer" content="webkit">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="https://hogehoge.ne.co.jp/">
+	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="publisher" href="http://plus.google.com/hogehoge">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo home_url();endif;?>">
-	<link rel="fluid-icon" href="./img/icon.ico" title="next_theme_by_wkwkrnht">
+	<link rel="fluid-icon" href="./img/icon.ico" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="./img/icon.ico">
 	<link rel="stylesheet" href="./css/normalize.min.css">
 	<link rel="stylesheet" href="./css/font-awesome.min.css">
