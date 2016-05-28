@@ -6,7 +6,7 @@
 			<span class="article-meta"><?php the_author();the_time();the_category(', ');?></span>
 		</header>
 		<div class="article-main">
-			aaaa
+			<?php the_content();?>
 		</div>
 		<ul class="article-tag"><li><a href="#">a</a></li></ul>
 		<?php comments_template();?>
