@@ -9,9 +9,9 @@
 #share-toggle::before{content:"/f1e0";color:#00a5de;}
 #menu-toggle::before{content:"/f0c9";color:#fff;}
 /*menu*/
-#share-menu,#main-menu{display:block;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:-90vh;left:0;box-shadow:0 0 15px rgba(0,0,0,.3);transition:top 0.3s ease-in 0s;}
+#share-menu,#main-menu{display:block;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:-100vh;left:0;box-shadow:0 0 15px rgba(0,0,0,.3);transition:top 0.3s ease-in 0s;}
 #share-menu a{display:inline-block;width:50%;height:30%;color:#fff;background-color:#ffcc00;}
-#share-toggle:checked ~ #share-menu,#main-toggle:checked ~ #main-menu{transform:translateY(-90vh);}
+#share-check:checked ~ #share-menu,#main-check:checked ~ #main-menu{transform:translateY(-100vh);}
 /*original-widget*/
 
 /*card-list*/
@@ -32,7 +32,7 @@
 .alignright{text-align:right;}
 .article-main a{border-bottom:0;color:#0000ff;}
 .article-main a:hover{border:1px solid #0000ff;}
-.article-main:visited{color:#934C7B;}
+.article-main:visited{color:#934c7b;}
 .article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-height:80%;margin:10px auto;line-height:45px;text-align:center;}
 .article-main h2{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-main h3{padding:.5em .75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
@@ -57,7 +57,7 @@
 @media screen and (orientation:landscape) and (min-width:721px){
 	.card{margin:2.5vmin 0;}
 	.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
-	.info-card{height:30vmin;width:150vmin;margin:2vmin auto;}
+	.info-card{height:30vmin;width:160vmin;margin:2vmin auto;}
 }
 /*tablet-style*/
 @media screen and (orientation:landscape) and (max-width:720px){

@@ -37,7 +37,7 @@ function get_meta_keyword_from_category(){return single_cat_title('',false) . ',
 function meta_description(){
     if(is_home()):
         bloginfo('description');
-    elseif(is_singular()):
+    elseif(is_singular()&&has_excerpt()):
         the_execrpt();
     elseif(is_category()):
         echo get_meta_description_from_category();
