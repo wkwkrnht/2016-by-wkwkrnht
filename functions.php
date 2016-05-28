@@ -59,10 +59,10 @@ function meta_keyword(){
 //1st-card
 function wkwkrnht_special_card(){
     if(is_home()):
-        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . the_execrpt() . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
+        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;' . bloginfo('name') . '</span></div>';
     elseif(is_category()):
         echo'<div class="card info-card"><h1 class="site-title">' . single_cat_title('',false) . '｜' . bloginfo('name') . '</h1><br><p class="site-description">' . category_description() . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
     else:
-        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . the_execrpt() . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
+        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
     endif;
 }
