@@ -24,5 +24,5 @@
 	<link rel="stylesheet" href="./style.css">
 	<?php wp_head();?>
 </head>
-<body class="card-list">
+<body <?php body_class();?>>
 	<main id="site-main">

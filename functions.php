@@ -1,5 +1,5 @@
 <?php
-//theme-setup(nav&wiwidgeterea&editor-style)
+//theme-setup(nav&wiwidgeterea&editor-style&add'card-list'cass)
 function wkwkrnht_setup(){
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
     add_theme_support('post-thumbnails');
@@ -23,6 +23,8 @@ function theme_slug_widgets_init(){
 add_action('widgets_init','wkwkrnht_sidebar_widgets_init');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
+add_filter('body_class','my_class_names');
+function my_class_names($classes){if(!is_singular()):$classes[] = 'card-list';return $classes;endif;}
 //1st-card
 function wkwkrnht_special_card(){
     if(is_home()):
