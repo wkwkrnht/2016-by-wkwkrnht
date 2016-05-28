@@ -11,7 +11,7 @@
 /*menu*/
 #share-menu,#main-menu{display:block;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:-90vh;left:0;box-shadow:0 0 15px rgba(0,0,0,.3);transition:top 0.3s ease-in 0s;}
 #share-menu a{display:inline-block;width:50%;height:30%;color:#fff;background-color:#ffcc00;}
-#share-toggle:checked ~ #share-menu,#main-toggle:checked ~ #main-menu{top:0;}
+#share-toggle:checked ~ #share-menu,#main-toggle:checked ~ #main-menu{transform:translateY(-90vh);}
 /*original-widget*/
 
 /*card-list*/
