@@ -18,10 +18,10 @@
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .card img{display:block;float:left;max-height:39vmin;max-width:30%;}
-.card h1,.card h2{display:inline-block;height:50%;margin:0;}
-.card span{display:inline-block;height:30%;margin:0;}
-.card p{display:inline-block;height:20%;margin:0;}
-.article-eye,.article-info{max-width:calc(80vmin / 5 * 3);}
+.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2rem;}
+.card span{display:inline-block;height:30%;margin:0 1em;}
+.card p{display:inline-block;height:20%;margin:0 1em;}
+.article-eye,.article-info{max-width:calc(80vmin / 2);}
 .article-info{float:right;}
 .site-info{text-align:center;}
 /*article-style*/
@@ -51,7 +51,8 @@
 /*pc-style*/
 @media screen and (orientation:landscape) and (min-width:1920px){
 	.info-card,.card{height:36vmin;width:64vmin;}
-	.article-eye,.article-info{max-width:calc(64vmin / 5 * 3);}
+	.card img{max-height:30vmin;}
+	.article-eye,.article-info{max-width:calc(64vmin / 2);}
 }
 @media screen and (orientation:landscape) and (min-width:721px){
 	.card{margin:2.5vmin 0;}
