@@ -16,7 +16,7 @@
             <li class="pinterest"></li>
             <li class="tumblr"></li>
             <li class="embedly"></li>
-        </ul>
+        </ui>
     </nav>
     <div id="main-menu">
         <?php if(is_adminnav_dsp()):?>
