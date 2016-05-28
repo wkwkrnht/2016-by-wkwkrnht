@@ -16,11 +16,11 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="publisher" href="http://plus.google.com/hogehoge">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo home_url();endif;?>">
-	<link rel="fluid-icon" href="./img/icon.ico" title="<?php bloginfo('name');?>">
-	<link rel="image_src" href="./img/icon.ico">
-	<link rel="stylesheet" href="./css/normalize.min.css">
-	<link rel="stylesheet" href="./css/font-awesome.min.css">
-	<link rel="stylesheet" href="./style.css">
+	<link rel="fluid-icon" href="<?php echo get_stylesheet_directory_uri();?>/img/icon.ico" title="<?php bloginfo('name');?>">
+	<link rel="image_src" href="<?php echo get_stylesheet_directory_uri();?>/img/icon.ico">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/normalize.min.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/main.css">
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>
