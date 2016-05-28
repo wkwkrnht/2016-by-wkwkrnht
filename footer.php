@@ -19,13 +19,11 @@
         </ui>
     </nav>
     <div id="main-menu">
-        <!--<?php if(is_adminnav_dsp()):?>
-            <nav class="admin-navigation" role="navigation">
-                <?php if(is_user_logged_in()):?>
-                    <a href="<?php echo esc_url(home_url());?>/wp-login.php?loggedout=true" target="_blank" class="logout"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a><?php edit_post_link();?><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenu"></a>
-                <?php endif;?>
-            </nav>
-        <?php endif;?>-->
+        <nav class="admin-navigation" role="navigation">
+            <?php if(is_user_logged_in()):?>
+                <a href="<?php echo esc_url(home_url());?>/wp-login.php?loggedout=true" target="_blank" class="logout"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a><?php edit_post_link();?><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenu"></a>
+            <?php endif;?>
+        </nav>
 	    <?php if(has_nav_menu('social')):?>
             <nav class="social-navigation" role="navigation">
                 <a href="<?php echo esc_url(home_url());?>/wp-login.php" target="_blank" class="login"></a><?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
