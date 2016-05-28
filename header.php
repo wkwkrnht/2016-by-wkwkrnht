@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html <?php language_attributes();?>>
 <head>
-	<link rel="amphtml" href="<?php echo get_permalink() . '?amp=1';?>">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="HandheldFriendly" content="true">
 	<meta name="viewport" content="width=device-width">
 	<meta name="referrer" content="default">
-	<meta name="google-site-verification" content="">
-	<meta name="msvalidate.01" content="">
+	<!--<meta name="google-site-verification" content="">
+	<meta name="msvalidate.01" content="">-->
 	<meta name="theme-color" content="#ffcc00">
 	<meta name="msapplication-TileColor" content="#ffcc00">
 	<meta http-equiv="cleartype" content="on">
