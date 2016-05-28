@@ -13,10 +13,10 @@ function wkwkrnht_setup(){
     register_nav_menu('social','social-menu');
 }
 add_action('after_setup_theme','wkwkrnht_setup');
-function wpdocs_theme_add_editor_styles(){
+function orign_editor_styles(){
     add_editor_style('css/custom-editor-style.css');
 }
-add_action('admin_init','wpdocs_theme_add_editor_styles');
+add_action('admin_init','origin_editor_styles');
 function theme_slug_widgets_init(){
     register_sidebar(array('name'=>__('Main Sidebar','theme-slug'),'description'=>__('Widgets in this area will be shown on float menu.','theme-slug'),'id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
 }
@@ -41,7 +41,6 @@ function my_hourly_action(){
     $the_query=new WP_Query(array('posts_per_page'=>-1,'post_type'=>array('post')));$count_key='wpb_post_views_count';delete_post_meta_by_key('wpb_post_views_count');
     if($the_query->have_posts()):while($the_query->have_posts()):$the_query->the_post();$post_id=$the_query->post->ID;$count=get_post_meta($post_id,$count_key,true);if(empty($count)){$count=0;delete_post_meta($post_id,$count_key);add_post_meta($post_id,$count_key,'0');}else{$count++;update_post_meta($post_id,$count_key,0);}endwhile;endif;
 }
-
 // イベントの時間追加
 add_filter('cron_schedules', 'my_interval' );
 function my_interval($schedules) {

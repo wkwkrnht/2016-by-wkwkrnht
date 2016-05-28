@@ -1,6 +1,5 @@
-<?php
-$myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false){$myAmp=true;};
-if($myAmp):
+<?php $amp=false;$string=$post->post_content;if(strpos($_SERVER["REQUEST_URI"],'amp')!==false&&strpos($string,'<script>')===false):$amp=true;endif;
+if($amp):
 	include(get_template_directory() . '/amp.php');
 else:
     get_header();
