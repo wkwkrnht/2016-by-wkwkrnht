@@ -1,10 +1,9 @@
-<?php $amp=false;$string=$post->post_content;if(strpos($_SERVER["REQUEST_URI"],'amp')!==false&&strpos($string,'<script>')===false):$amp=true;endif;
-if($amp):
-	include(get_template_directory() . '/amp.php');
-else:
-    get_header();
-		wkwkrnht_special_card();
-        if(have_posts()):while(have_posts()):the_post();get_template_part('card-list',get_post_format())endwhile;endif;
-    get_footer();
-endif;
-?>
+<?php $amp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false){$amp=true;}?>
+<?php if($amp):?>
+	<?php include(get_template_directory() . '/amp.php');?>
+<?php else:?>
+    <?php get_header();?>
+		<?php wkwkrnht_special_card();?>
+        <?php if(have_posts()):while(have_posts()):the_post();get_template_part('card-list',get_post_format())endwhile;endif;?>
+    <?php get_footer();?>
+<?php endif;?>
