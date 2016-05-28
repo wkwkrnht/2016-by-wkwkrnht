@@ -1,8 +1,8 @@
     </main>
     <div class="toggle-zone">
-        <label class="share-toggle fa fa-share-alt" for="share-check"><input id="share-check" type="checkbox" value="off"></label>
-        <label class="menu-toggle fa fa-bars" for="menu-check"><input id="menu-check" type="checkbox" value="off"></label>
-        <label class="share-toggle fa fa-share-alt" for="share-check"><input id="share-check" type="checkbox" value="off"></label>
+        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"></label>
+        <input id="menu-check" type="checkbox" value="off"><label id="menu-toggle" for="menu-check"></label>
+        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"></label>
     </div>
     <nav id="share-menu">
         <ui>
