@@ -22,5 +22,7 @@
 	<link rel="stylesheet" href="./css/normalize.min.css">
 	<link rel="stylesheet" href="./css/font-awesome.min.css">
 	<link rel="stylesheet" href="./style.css">
-	<?php wp_header();?>
+	<?php wp_head();?>
 </head>
+<body class="card-list">
+	<main id="site-main">

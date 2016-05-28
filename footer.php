@@ -1,7 +1,8 @@
+    </main>
     <div class="toggle-zone">
-        <a href="#" id="share-toggle"></a>
+        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"></label>
         <a href="#" id="menu-toggle"></a>
-        <a href="#" id="share-toggle"></a>
+        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"></label>
     </div>
     <nav id="share-menu">
         <ui>
@@ -18,13 +19,8 @@
         </ul>
     </nav>
     <script>
-		$(function(){function tableData(){var index ='';var headTxt ='';$('.article-main table').each(function(){$(this).find('thead tr th').each(function(){index = $(this).index()-1;headTxt = $(this).text();$(this).parents('table').find('tbody tr').each(function(){$(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
-        document.body.addEventListener("click"s drop,false);function drop(e){
-            var x = e.pageX;var y = e.pageY;//座標の取得
-            var sizuku = document.createElement("div");sizuku.style.top = y + "px";sizuku.style.left = x + "px";document.body.appendChild(sizuku);//しずくになるdivの生成、座標の設定
-            sizuku.className = "sizuku";//アニメーションをする className を付ける
-            sizuku.addEventListener("animationend",function(){this.parentNode.removeChild(this);},false);//アニメーションが終わった事を感知してしずくを remove する
-        }
+        jquery(function(){function tableData(){var index ='';var headTxt ='';$('.article-main table').each(function(){$(this).find('thead tr th').each(function(){index = $(this).index()-1;headTxt = $(this).text();$(this).parents('table').find('tbody tr').each(function(){$(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
+        document.body.addEventListener("click"s drop,false);function drop(e){var x = e.pageX;var y = e.pageY;var sizuku = document.createElement("div");sizuku.style.top = y + "px";sizuku.style.left = x + "px";document.body.appendChild(sizuku);sizuku.className = "sizuku";sizuku.addEventListener("animationend",function(){this.parentNode.removeChild(this);},false);}
 	</script>
     <?php wp_footer();?>
 </body>
