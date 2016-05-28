@@ -24,13 +24,45 @@ function theme_slug_widgets_init(){
 add_action('widgets_init','wkwkrnht_sidebar_widgets_init');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-add_filter('body_class','my_class_names');
-function my_class_names($classes){if(!is_singular()):$classes[] = 'card-list';return $classes;endif;}
+add_filter('body_class','add_body_class');
+function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';return $classes;endif;}
+//metainfo
+function get_meta_description_from_category(){
+    $cate_desc = trim(strip_tags(category_description()));
+    if($cate_desc){return $cate_desc;}
+    $cate_desc = '「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
+    return $cate_desc;
+}
+function get_meta_keyword_from_category(){return single_cat_title('',false) . ',カテゴリー,ブログ,記事一覧';}
+function meta_description(){
+    if(is_home()):
+        bloginfo('description');
+    elseif(is_singular()):
+        the_execrpt();
+    elseif(is_category()):
+        echo get_meta_description_from_category();
+    else:
+        bloginfo('description');
+    endif;
+}
+function meta_keyword(){
+    if(is_home()):
+        bloginfo('description');
+    elseif(is_singular()):
+        the_execrpt();
+    elseif(is_category()):
+        echo get_meta_keyword_from_category();
+    else:
+        bloginfo('description');
+    endif;
+}
 //1st-card
 function wkwkrnht_special_card(){
     if(is_home()):
-        echo'<div class="card info-card"><h1 class="site-title">NEW THEME!</h1><p class="site-description">hogehogeehugahugaaaaaaa</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
+        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . the_execrpt() . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
+    elseif(is_category()):
+        echo'<div class="card info-card"><h1 class="site-title">' . single_cat_title('',false) . '｜' . bloginfo('name') . '</h1><br><p class="site-description">' . category_description() . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
     else:
-        echo'<div class="card info-card"><h1 class="site-title">NEW THEME!</h1><p class="site-description">hogehogeehugahugaaaaaaa</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
+        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . the_execrpt() . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
     endif;
 }

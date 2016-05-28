@@ -12,6 +12,8 @@
 	<meta name="msapplication-TileColor" content="#ffcc00">
 	<meta http-equiv="cleartype" content="on">
 	<meta name="renderer" content="webkit">
+	<meta name="description" content="<?php meta_description();?>">
+	<meta name="description" content="<?php meta_keyword();?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="publisher" href="http://plus.google.com/hogehoge">
