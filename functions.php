@@ -14,10 +14,10 @@ function wkwkrnht_setup(){
     register_nav_menu('social','social-menu');
 }
 add_action('after_setup_theme','wkwkrnht_setup');
+add_action('admin_init','origin_editor_styles');
 function orign_editor_styles(){
     add_editor_style('css/custom-editor-style.css');
 }
-add_action('admin_init','origin_editor_styles');
 function theme_slug_widgets_init(){
     register_sidebar(array('name'=>'Main Sidebar','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
 }
@@ -58,11 +58,14 @@ function meta_keyword(){
 }
 //1st-card
 function wkwkrnht_special_card(){
-    if(is_home()):
-        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;' . bloginfo('name') . '</span></div>';
-    elseif(is_category()):
-        echo'<div class="card info-card"><h1 class="site-title">' . single_cat_title('',false) . '｜' . bloginfo('name') . '</h1><br><p class="site-description">' . category_description() . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
-    else:
-        echo'<div class="card info-card"><h1 class="site-title">' . bloginfo('name') . '</h1><p class="site-description">' . bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;RT狂の思考ログ</span></div>';
-    endif;
+    $blogname=get_bloginfo('name');
+    echo'<div class="card info-card"><h1 class="site-title">';
+        if(is_home()):
+            echo $blogname . '</h1><p class="site-description">' . get_bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+        elseif(is_category()):
+            echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+        else:
+            echo bloginfo('name') . '</h1><p class="site-description">' . get_bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+        endif;
+    echo'</span></div>';
 }
