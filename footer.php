@@ -6,16 +6,16 @@
     </div>
     <nav id="share-menu">
         <ui>
-		    <li class="twitter"></li>
-            <li class="fb-like"></li>
-            <li class="line"></li>
-            <li class="g-plus"></li>
-            <li class="linkedin"></li>
-            <li class="hatebu"></li>
-            <li class="pocket"></li>
-            <li class="pinterest"></li>
-            <li class="tumblr"></li>
-            <li class="embedly"></li>
+		    <li><a class="twitter"></a></li>
+            <li><a class="fb-like"></a></li>
+            <li><a class="line"></a></li>
+            <li><a class="g-plus"></a></li>
+            <li><a class="linkedin"></a></li>
+            <li><a class="hatebu"></a></li>
+            <li><a class="pocket"></a></li>
+            <li><a class="pinterest"></a></li>
+            <li><a class="tumblr"></a></li>
+            <li><a class="embedly"></a></li>
         </ui>
     </nav>
     <div id="main-menu">
