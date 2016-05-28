@@ -1,8 +1,8 @@
     </main>
     <div class="toggle-zone">
-        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"></label>
-        <input id="menu-check" type="checkbox" value="off"><label id="menu-toggle" for="menu-check"></label>
-        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"></label>
+        <label id="share-toggle" for="share-check"><input id="share-check" type="checkbox" value="off"></label>
+        <label id="menu-toggle" for="main-check"><input id="main-check" type="checkbox" value="off"></label>
+        <label id="share-toggle" for="share-check"><input id="share-check" type="checkbox" value="off"></label>
     </div>
     <nav id="share-menu">
         <ui>

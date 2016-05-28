@@ -59,7 +59,7 @@ function meta_keyword(){
 //1st-card
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');
-    echo'<div class="card info-card"><h1 class="site-title">';
+    echo'<div class="card info-card">' . the_custom_logo() . '<h1 class="site-title">';
         if(is_home()):
             echo $blogname . '</h1><p class="site-description">' . get_bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
         elseif(is_category()):
