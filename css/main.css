@@ -4,13 +4,13 @@
 @keyframes sizuku{0%{height:0;width:0;opacity:1;transform:translate(0,0);}100%{height:500px;width:500px;opacity:0;transform:translate(-250px,-250px);}}
 /*menu-buttons#share-check,#main-check{display:none;}*/
 .toggle-zone{height:15vh;width:100vw;position:fixed;bottom:0;left:0;z-index:100;background-color:#ffcc00;line-height:15vh;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
-#share-toggle,#menu-toggle{display:inline-block;height:inherit;width:calc(100vw / 3);font-family:"FontAwesome";text-align:center;vertical-align:baseline;position:relative;}
+#share-toggle,#menu-toggle{display:inline-block;height:inherit;width:calc(100vw / 3);font-family:"FontAwesome";font-size:2rem;text-align:center;vertical-align:baseline;position:relative;cursor:pointer;}
 #share-toggle{color:#00a5de;}
 #menu-toggle{color:#fff;}
 /*menu*/
-#share-menu,#main-menu{display:block;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:0;right:-86vw;box-shadow:0 0 15px rgba(0,0,0,.3);transition:top 0.3s ease-in 0s;}
+#share-menu,#main-menu{display:block;height:80vh;padding-bottom:15vh;width:86vw;margin:2.5vh 2vw;z-index:100;overflow-x:scroll;overflow-y:hidden;position:fixed;top:0;left:0;box-shadow:0 0 15px rgba(0,0,0,.3);visibility:hidden;opacity:0;}
 #share-menu a{display:inline-block;width:50%;height:30%;color:#fff;background-color:#ffcc00;}
-#share-check:checked ~ #share-menu,#main-check:checked ~ #main-menu{transform:translate(86vw);}
+.open #share-menu{visibility:visible;opacity:1;}
 /*original-widget*/
 
 /*card-list*/
