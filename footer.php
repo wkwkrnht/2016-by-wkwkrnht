@@ -40,7 +40,6 @@
             </ul>
         <?php endif;?>
     </div>
-    <script type='text/javascript' src='http:\/\/ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
     <script>
         window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         jQuery(function(){var body = jQuery('body');jQuery('#share-toggle').on('click',function(){body.toggleClass('open');});});

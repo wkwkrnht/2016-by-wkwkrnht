@@ -27,10 +27,10 @@ remove_action('wp_print_styles','print_emoji_styles');
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';return $classes;endif;}
 add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
-function theme_enqueue_scripts_styles()
+function theme_enqueue_scripts_styles(){
     wp_deregister_script('jquery');
-    wp_register_script('jquery','');
-    wp_enqueue_script('jquery',false,array(),null,true);
+    wp_register_script('jquery','http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+    wp_enqueue_script('jquery','http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',array(),null,false);
 }
 //metainfo
 function get_meta_description_from_category(){
