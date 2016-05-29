@@ -49,7 +49,7 @@ function meta_keyword(){
     if(is_home()):
         bloginfo('description');
     elseif(is_singular()&&has_excerpt()):
-        the_execrpt();
+        the_tags();
     elseif(is_category()):
         echo get_meta_keyword_from_category();
     else:

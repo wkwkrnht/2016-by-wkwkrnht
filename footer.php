@@ -1,9 +1,4 @@
     </main>
-    <div class="toggle-zone">
-        <label id="share-toggle" for="share-check"><input id="share-check" type="checkbox" value="off"><i class="fa fa-share-alt" aria-hidden="true"></i></label>
-        <label id="menu-toggle" for="main-check"><input id="main-check" type="checkbox" value="off"><i class="fa fa-bars" aria-hidden="true"></i></label>
-        <label id="share-toggle" for="share-check"><input id="share-check" type="checkbox" value="off"><i class="fa fa-share-alt" aria-hidden="true"></i></label>
-    </div>
     <nav id="share-menu">
         <ui>
 		    <li><a class="twitter"></a></li>
@@ -39,6 +34,11 @@
 		        <?php dynamic_sidebar('floatmenu');?>
             </ul>
         <?php endif;?>
+    </div>
+    <div class="toggle-zone">
+        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"><i class="fa fa-share-alt" aria-hidden="true"></i></label>
+        <input id="main-check" type="checkbox" value="off"><label id="menu-toggle" for="main-check"><i class="fa fa-bars" aria-hidden="true"></i></label>
+        <input id="share-check" type="checkbox" value="off"><label id="share-toggle" for="share-check"><i class="fa fa-share-alt" aria-hidden="true"></i></label>
     </div>
     <script>
         jquery(function(){function tableData(){var index ='';var headTxt ='';$('.article-main table').each(function(){$(this).find('thead tr th').each(function(){index = $(this).index()-1;headTxt = $(this).text();$(this).parents('table').find('tbody tr').each(function(){$(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
