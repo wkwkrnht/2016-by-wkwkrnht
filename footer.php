@@ -41,7 +41,7 @@
         <?php endif;?>
     </div>
     <script>
-        jQuery(function(){var $body = jQuery('body');$('#share-toggle').on('click',function(){$body.toggleClass('open');});});
+        jQuery(function(){var $body = jQuery('body');jQuery('#share-toggle').on('click',function(){$body.toggleClass('open');});});
         jQuery(function(){function tableData(){var index ='';var headTxt ='';$('.article-main table').each(function(){$(this).find('thead tr th').each(function(){index = $(this).index()-1;headTxt = $(this).text();$(this).parents('table').find('tbody tr').each(function(){$(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
         document.body.addEventListener("click",drop,false);function drop(e){var x = e.pageX;var y = e.pageY;var sizuku = document.createElement("div");sizuku.style.top = y + "px";sizuku.style.left = x + "px";document.body.appendChild(sizuku);sizuku.className = "sizuku";sizuku.addEventListener("animationend",function(){this.parentNode.removeChild(this);},false);}
 	</script>
