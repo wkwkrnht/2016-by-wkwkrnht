@@ -32,7 +32,14 @@ function theme_enqueue_scripts_styles(){
     wp_register_script('jquery','');
     wp_enqueue_script('jquery',false,array(),null,true);
 }
-//metainfo
+/*
+    metainfo
+1.更新日と公開日の比較
+2.カテゴリーのキーワード化
+3.メタ ディスプリクション
+4.メタ キーワード
+*/
+function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
 function get_meta_description_from_category(){
     $cate_desc = trim(strip_tags(category_description()));
     if($cate_desc){return $cate_desc;}
