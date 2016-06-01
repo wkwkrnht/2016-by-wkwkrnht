@@ -29,7 +29,6 @@ function theme_slug_widgets_init(){
 }
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-add_action('wp_head',function(){if(is_admin()):echo'<style>#main-menu,#share-menu{padding-top:32px;}</style>';endif;});
 add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
 function theme_enqueue_scripts_styles(){
     wp_deregister_script('jquery');
