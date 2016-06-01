@@ -8,10 +8,10 @@
 #share-toggle{color:#00a5de;}
 #menu-toggle{color:#fff;}
 /*menu*/
-#share-menu,#main-menu{display:block;height:80vh;width:86vw;margin:32px 7vw 0;position:fixed;top:0;left:0;z-index:100;overflow-x:hidden;overflow-y:scroll;visibility:hidden;opacity:0;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu,#main-menu{display:block;height:80vh;width:86vw;margin:33px 7vw 0;position:fixed;top:0;left:0;z-index:111;overflow-x:hidden;overflow-y:scroll;visibility:hidden;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-menu{color:#fff;background-color:#ffcc00;}
 #share-menu a{display:inline-block;width:50%;height:30%;}
-.open #main-menu,#share-menu{visibility:visible;opacity:1;}
+.open #main-menu,#share-menu{visibility:visible;}
 /*original-widget*/
 
 /*card-list*/
