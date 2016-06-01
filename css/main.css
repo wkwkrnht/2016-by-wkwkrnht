@@ -8,7 +8,7 @@
 #share-toggle{color:#00a5de;}
 #menu-toggle{color:#fff;}
 /*menu*/
-#share-menu,#main-menu{display:block;height:80vh;width:86vw;position:fixed;top:0;left:0;z-index:100;overflow-y:scroll;overflow-x:hidden;/*visibility:hidden;opacity:0;*/box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu,#main-menu{display:block;height:80vh;width:86vw;margin:0 2vw;position:fixed;top:0;left:0;z-index:100;overflow-x:hidden;overflow-y:scroll;/*visibility:hidden;opacity:0;*/box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-menu{color:#fff;background-color:#ffcc00;}
 #share-menu a{display:inline-block;width:50%;height:30%;}
 .open #main-menu,.open #share-menu{visibility:visible;opacity:1;}
@@ -46,30 +46,14 @@
 .article-tag li a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
 /*codex*/
 .alignnone {margin: 5px 20px 20px 0;}
-
-.aligncenter,div.aligncenter{display:block;margin:5px auto;}
-
 .alignright{float:right;margin:5px 0 20px 20px;}
-
+.aligncenter,div.aligncenter{display:block;margin:5px auto;}
 .alignleft{float:left;margin:5px 20px 20px 0;}
 
-a img.alignright {
-    float: right;
-    margin: 5px 0 20px 20px;
-}
-
 a img.alignnone {margin: 5px 20px 20px 0;}
-
-a img.alignleft {
-    float:left;
-    margin:5px 20px 20px 0;
-}
-
-a img.aligncenter {
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-}
+a img.alignleft{float:left;margin:5px 20px 20px 0;}
+a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
+a img.alignright{float:right;margin:5px 0 20px 20px;}
 
 .wp-caption {
     background: #fff;
@@ -79,11 +63,9 @@ a img.aligncenter {
     text-align: center;
 }
 
-.wp-caption.alignnone {margin: 5px 20px 20px 0;}
-
-.wp-caption.alignleft {margin: 5px 20px 20px 0;}
-
-.wp-caption.alignright {margin: 5px 0 20px 20px;}
+.wp-caption.alignnone {margin:5px 20px 20px 0;}
+.wp-caption.alignleft {margin:5px 20px 20px 0;}
+.wp-caption.alignright {margin:5px 0 20px 20px;}
 
 .wp-caption img {
     border: 0 none;
