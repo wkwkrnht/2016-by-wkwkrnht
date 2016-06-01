@@ -1,11 +1,12 @@
 <?php
 /*
     theme-setup
-0.theme support
+0.SET theme support
 1.SET nav area
 2.SET wiwidget area
 3.ADD editor-style
-4.addclass in body
+4.ADD class in body
+5.jQuery load from Google
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)){$content_width=3840;}
@@ -21,24 +22,22 @@ function wkwkrnht_setup(){
     register_nav_menu('social','social-menu');
 }
 add_action('after_setup_theme','wkwkrnht_setup');
-add_action('admin_init','origin_editor_styles');
-function orign_editor_styles(){
-    add_editor_style('css/custom-editor-style.css');
-}
+add_action('admin_init',function(){add_editor_style('css/custom-editor-style.css');});
+add_action('widgets_init','wkwkrnht_sidebar_widgets_init');
 function theme_slug_widgets_init(){
     register_sidebar(array('name'=>'Main Sidebar','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
 }
-add_action('widgets_init','wkwkrnht_sidebar_widgets_init');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-add_filter('body_class','add_body_class');
-function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';return $classes;endif;}
+add_action('wp_head',function(){if(is_admin()):echo'<style>#main-menu,#share-menu{padding-top:32px;}</style>';endif;});
 add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
 function theme_enqueue_scripts_styles(){
     wp_deregister_script('jquery');
     wp_register_script('jquery','');
     wp_enqueue_script('jquery',false,array(),null,true);
 }
+add_filter('body_class','add_body_class');
+function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';endif;return $classes;}
 /*
     metainfo
 1.更新日と公開日の比較
