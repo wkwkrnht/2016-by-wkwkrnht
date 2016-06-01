@@ -4,7 +4,7 @@
         <div id="menu-toggle"><i class="fa fa-bars"></i></div>
         <div id="share-toggle"><i class="fa fa-share-alt"></i></div>
     </div>
-    <nav id="share-menu">
+    <nav id="share-menu" class="close">
         <ui>
 		    <li><a class="twitter"></a></li>
             <li><a class="fb-like"></a></li>
@@ -18,7 +18,7 @@
             <li><a class="embedly"></a></li>
         </ui>
     </nav>
-    <div id="main-menu">
+    <div id="main-menu" class="close">
         <nav class="admin-navigation" role="navigation">
             <?php if(is_user_logged_in()):?>
                 <a href="<?php echo esc_url(home_url());?>/wp-login.php?loggedout=true" target="_blank" class="logout"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a><?php edit_post_link();?><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenu"></a>
@@ -44,7 +44,7 @@
     <script>
         window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         document.body.addEventListener("click",drop,false);function drop(e){var x = e.pageX;var y = e.pageY;var sizuku = document.createElement("div");sizuku.style.top = y + "px";sizuku.style.left = x + "px";document.body.appendChild(sizuku);sizuku.className = "sizuku";sizuku.addEventListener("animationend",function(){this.parentNode.removeChild(this);},false);}
-        jQuery(function(){jQuery('#share-toggle').click(function(){jQuery('#share-menu').toggleClass('open');});});
+        jQuery(function(){jQuery('#share-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
         jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
 	</script>
     <?php wp_footer();?>
