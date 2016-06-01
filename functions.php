@@ -52,6 +52,7 @@ function get_meta_description_from_category(){
     return $cate_desc;
 }
 function get_meta_keyword_from_category(){return single_cat_title('',false) . ',カテゴリー,ブログ,記事一覧';}
+//function article_meta_keyword(){if(===null):elseif(===null):endif;}
 function meta_description(){
     if(is_home()):
         bloginfo('description');
@@ -66,8 +67,8 @@ function meta_description(){
 function meta_keyword(){
     if(is_home()):
         bloginfo('description');
-    elseif(is_singular()&&has_tag()):
-        the_tags();
+    //elseif(is_singular()):
+        //article_meta_keyword();
     elseif(is_category()):
         echo get_meta_keyword_from_category();
     else:

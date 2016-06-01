@@ -8,7 +8,8 @@
 #share-toggle{color:#00a5de;}
 #menu-toggle{color:#fff;}
 /*menu*/
-#share-menu,#main-menu{display:block;height:80vh;width:86vw;margin:35px 7vw 0;position:fixed;top:0;left:0;z-index:111;overflow-x:hidden;overflow-y:scroll;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu,#main-menu{display:block;height:80vh;width:86vw;margin:35px 7vw 0;position:fixed;top:0;left:0;z-index:111;overflow-x:hidden;overflow-y:scroll;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu{color:#333;background-color:#fff;}
 #share-menu{color:#fff;background-color:#ffcc00;}
 #share-menu a{display:inline-block;width:50%;height:30%;}
 .open{visibility:visible;}
