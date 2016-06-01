@@ -1,5 +1,12 @@
 <?php
-//theme-setup(nav&wiwidgeterea&editor-style&addclassinbody)
+/*
+    theme-setup
+0.theme support
+1.SET nav area
+2.SET wiwidget area
+3.ADD editor-style
+4.addclass in body
+*/
 function wkwkrnht_setup(){
     if(!isset($content_width)){$content_width=3840;}
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
@@ -61,7 +68,7 @@ function meta_description(){
 function meta_keyword(){
     if(is_home()):
         bloginfo('description');
-    elseif(is_singular()&&has_excerpt()):
+    elseif(is_singular()&&has_tag()):
         the_tags();
     elseif(is_category()):
         echo get_meta_keyword_from_category();
@@ -69,16 +76,21 @@ function meta_keyword(){
         bloginfo('description');
     endif;
 }
-//1st-card
+/*
+    1st card
+1.site name&site description
+2.cat name&cat description
+3.serach keyword&result
+*/
 function wkwkrnht_special_card(){
-    $blogname=get_bloginfo('name');
+    $blogname=get_bloginfo('name');$sitedescription=get_bloginfo('description');
     echo'<div class="card info-card">' . the_custom_logo() . '<h1 class="site-title">';
         if(is_home()):
-            echo $blogname . '</h1><p class="site-description">' . get_bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
         elseif(is_category()):
             echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
         else:
-            echo bloginfo('name') . '</h1><p class="site-description">' . get_bloginfo('description') . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
         endif;
     echo'</span></div>';
 }
