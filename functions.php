@@ -10,14 +10,13 @@
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
+    add_theme_support('title-tag');
+    add_theme_support('automatic-feed-links');
+    add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
     add_theme_support('post-thumbnails');
     add_theme_support('custom-background');
     add_theme_support('custom-logo',array('height'=>248,'width'=>248,'flex-height'=>true,));
-    add_theme_support('custom-header');
-    add_theme_support('title-tag');
-    add_theme_support('automatic-feed-links');
-    add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
     register_nav_menu('main','main');
     register_nav_menu('social','social');
 }
@@ -50,7 +49,7 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
     ●キーワード
 
 */
-/*function wkwkrnht_get_custom_logo($blog_id=0){$html='';
+function wkwkrnht_get_custom_logo($blog_id=0){$html='';
     if(is_multisite()&&(int)$blog_id!==get_current_blog_id()):switch_to_blog($blog_id);endif;
     $custom_logo_id=get_theme_mod('custom_logo');
     if($custom_logo_id):
@@ -60,7 +59,7 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
     endif;
     if(is_multisite()&&ms_is_switched()):restore_current_blog();endif;
     return apply_filters('wkwkrnht_get_custom_logo',$html);
-}*/
+}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
 //function get_meta_keyword_from_singular(){if(===null):elseif(===null):endif;}
 function get_meta_description_from_category(){
@@ -73,8 +72,8 @@ function get_meta_keyword_from_category(){return single_cat_title('',false) . ',
 function meta_description(){
     if(is_home()):
         bloginfo('description');
-    /*elseif(is_singular()&&has_excerpt()):
-        the_excerpt();*/
+    elseif(is_singular()&&has_excerpt()):
+        the_excerpt();
     elseif(is_category()):
         echo get_meta_description_from_category();
     else:
@@ -92,7 +91,7 @@ function meta_keyword(){
         bloginfo('description');
     endif;
 }
-/*function meta_image(){
+function meta_image(){
     if(is_home()):
         echo get_custom_logo();
     elseif(is_singular()):
@@ -100,7 +99,7 @@ function meta_keyword(){
     else:
         echo get_custom_logo();
     endif;
-}*/
+}
 /*
     1st card
 1.site name&site description
