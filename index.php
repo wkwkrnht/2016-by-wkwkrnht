@@ -10,8 +10,8 @@
 		        </div>
 		    </section>
 		<?php endwhile;endif;?>
-	</div>
-	<div class="page-links">
-		<?php wp_link_pages(array('link_before'=>'<span>','link_after' =>'</span>',));?>
+		<div class="page-links card">
+			<?php posts_nav_link('','&laquo;','&raquo;');?>
+		</div>
 	</div>
 <?php get_footer();?>

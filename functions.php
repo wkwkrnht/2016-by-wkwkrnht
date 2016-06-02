@@ -50,17 +50,17 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
     ●キーワード
 
 */
-function wkwkrnht_get_custom_logo($blog_id=0){
+/*function wkwkrnht_get_custom_logo($blog_id=0){$html='';
     if(is_multisite()&&(int)$blog_id!==get_current_blog_id()):switch_to_blog($blog_id);endif;
-    $html='';$custom_logo_id=get_theme_mod('custom_logo');
+    $custom_logo_id=get_theme_mod('custom_logo');
     if($custom_logo_id):
-        $html = sprintf('<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',esc_url(home_url('/')),wp_get_attachment_image($custom_logo_id,'full',false,array('class'=>'custom-logo','itemprop'=>'logo',)))}
+        $html = sprintf('<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',esc_url(home_url('/')),wp_get_attachment_image($custom_logo_id,'full',false,array('class'=>'custom-logo','itemprop'=>'logo',)));
     elseif(is_customize_preview()):
         $html = sprintf('<a href="%1$s" class="custom-logo-link" style="display:none;"><img class="custom-logo"/></a>',esc_url(home_url('/')));
     endif;
     if(is_multisite()&&ms_is_switched()):restore_current_blog();endif;
     return apply_filters('wkwkrnht_get_custom_logo',$html);
-}
+}*/
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
 //function get_meta_keyword_from_singular(){if(===null):elseif(===null):endif;}
 function get_meta_description_from_category(){
@@ -92,7 +92,7 @@ function meta_keyword(){
         bloginfo('description');
     endif;
 }
-function meta_image(){
+/*function meta_image(){
     if(is_home()):
         echo get_custom_logo();
     elseif(is_singular()):
@@ -100,7 +100,7 @@ function meta_image(){
     else:
         echo get_custom_logo();
     endif;
-}
+}*/
 /*
     1st card
 1.site name&site description
