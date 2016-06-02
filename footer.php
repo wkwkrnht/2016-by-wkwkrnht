@@ -25,13 +25,13 @@
             <?php endif;?>
         </nav>
 	    <?php if(has_nav_menu('social')):?>
-            <nav class="social-navigation" role="navigation">
+            <nav class="social-nav" role="navigation">
                 <a href="<?php echo esc_url(home_url());?>/wp-login.php" target="_blank" class="login"></a><?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
             </nav>
         <?php endif;?>
         <?php if(has_nav_menu('primary')):?>
-            <nav class="main-navigation" role="navigation">
-                <?php wp_nav_menu(array('menu_class'=>'nav-menu','theme_location'=>'primary',));?>
+            <nav class="main-nav" role="navigation">
+                <?php wp_nav_menu(array('theme_location'=>'main',));?>
             </nav>
         <?php endif;?>
         <?php if(is_active_sidebar('floatmenu')):?>

@@ -9,7 +9,7 @@
 5.jQuery load from Google
 */
 function wkwkrnht_setup(){
-    if(!isset($content_width)){$content_width=3840;}
+    if(!isset($content_width)):$content_width=1920;endif;
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
     add_theme_support('post-thumbnails');
     add_theme_support('custom-background');
@@ -24,8 +24,8 @@ function wkwkrnht_setup(){
 add_action('after_setup_theme','wkwkrnht_setup');
 add_action('admin_init',function(){add_editor_style('css/custom-editor-style.css');});
 add_action('widgets_init','wkwkrnht_sidebar_widgets_init');
-function theme_slug_widgets_init(){
-    register_sidebar(array('name'=>'Main Sidebar','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+function wkwkrnht_sidebar_widgets_init(){
+    register_sidebar(array('name'=>'Main Area','description'=>'float-menu`s','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
 }
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
@@ -39,20 +39,37 @@ add_filter('body_class','add_body_class');
 function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';endif;return $classes;}
 /*
     metainfo
-1.更新日と公開日の比較
-2.カテゴリーのキーワード化
-3.メタ ディスプリクション
-4.メタ キーワード
+1.カスタムロゴ取得
+2.記事ページのメタ設定
+    ●キーワード
+    ●アイキャッチ
+3.更新日と公開日の比較
+4.カテゴリーのキーワード化
+5.カテゴリーページのメタ設定
+    ●ディスプリクション
+    ●キーワード
+
 */
+function wkwkrnht_get_custom_logo($blog_id=0){
+    if(is_multisite()&&(int)$blog_id!==get_current_blog_id()):switch_to_blog($blog_id);endif;
+    $html='';$custom_logo_id=get_theme_mod('custom_logo');
+    if($custom_logo_id):
+        $html = sprintf('<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',esc_url(home_url('/')),wp_get_attachment_image($custom_logo_id,'full',false,array('class'=>'custom-logo','itemprop'=>'logo',)))}
+    elseif(is_customize_preview()):
+        $html = sprintf('<a href="%1$s" class="custom-logo-link" style="display:none;"><img class="custom-logo"/></a>',esc_url(home_url('/')));
+    endif;
+    if(is_multisite()&&ms_is_switched()):restore_current_blog();endif;
+    return apply_filters('wkwkrnht_get_custom_logo',$html);
+}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
+//function get_meta_keyword_from_singular(){if(===null):elseif(===null):endif;}
 function get_meta_description_from_category(){
-    $cate_desc = trim(strip_tags(category_description()));
+    $cate_desc=trim(strip_tags(category_description()));
     if($cate_desc){return $cate_desc;}
-    $cate_desc = '「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
+    $cate_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
     return $cate_desc;
 }
 function get_meta_keyword_from_category(){return single_cat_title('',false) . ',カテゴリー,ブログ,記事一覧';}
-//function article_meta_keyword(){if(===null):elseif(===null):endif;}
 function meta_description(){
     if(is_home()):
         bloginfo('description');
@@ -68,11 +85,20 @@ function meta_keyword(){
     if(is_home()):
         bloginfo('description');
     /*elseif(is_singular()):
-        article_meta_keyword();*/
+        echo get_meta_keyword_from_singular();*/
     elseif(is_category()):
         echo get_meta_keyword_from_category();
     else:
         bloginfo('description');
+    endif;
+}
+function meta_image(){
+    if(is_home()):
+        echo get_custom_logo();
+    elseif(is_singular()):
+        article_meta_keyword();
+    else:
+        echo get_custom_logo();
     endif;
 }
 /*
@@ -83,13 +109,13 @@ function meta_keyword(){
 */
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');$sitedescription=get_bloginfo('description');
-    echo'<div class="card info-card">' . the_custom_logo() . '<h1 class="site-title">';
+    echo'<div class="card info-card"><h1 class="site-title">';
         if(is_home()):
-            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         elseif(is_category()):
-            echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+            echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
         else:
-            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p><br><span class="copyright">&copy;2015&nbsp;' . $blogname;
+            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         endif;
-    echo'</span></div>';
+    echo'<br><span class="copyright">&copy;2015&nbsp;' . $blogname . '</span></div>';
 }
