@@ -9,7 +9,7 @@
 5.jQuery load from Google
 */
 function wkwkrnht_setup(){
-    if(!isset($content_width)):$content_width=1920;endif;
+    if(!isset($content_width)):$content_width=1080;endif;
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
     add_theme_support('post-thumbnails');
     add_theme_support('custom-background');
@@ -18,14 +18,14 @@ function wkwkrnht_setup(){
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
-    register_nav_menu('main','main-menu');
-    register_nav_menu('social','social-menu');
+    register_nav_menu('main','main');
+    register_nav_menu('social','social');
 }
 add_action('after_setup_theme','wkwkrnht_setup');
 add_action('admin_init',function(){add_editor_style('css/custom-editor-style.css');});
 add_action('widgets_init','wkwkrnht_sidebar_widgets_init');
 function wkwkrnht_sidebar_widgets_init(){
-    register_sidebar(array('name'=>'Main Area','description'=>'float-menu`s','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'Main Area','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
 }
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
@@ -73,8 +73,8 @@ function get_meta_keyword_from_category(){return single_cat_title('',false) . ',
 function meta_description(){
     if(is_home()):
         bloginfo('description');
-    elseif(is_singular()&&has_excerpt()):
-        the_excerpt();
+    /*elseif(is_singular()&&has_excerpt()):
+        the_excerpt();*/
     elseif(is_category()):
         echo get_meta_description_from_category();
     else:

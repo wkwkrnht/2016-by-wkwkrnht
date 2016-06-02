@@ -10,8 +10,8 @@
 		        </div>
 		    </section>
 		<?php endwhile;endif;?>
-		<div class="page-links card">
-			<?php posts_nav_link('','&laquo;','&raquo;');?>
-		</div>
+	</div>
+	<div class="page-links info-card card">
+		<?php posts_nav_link('','&laquo;','&raquo;');?>
 	</div>
 <?php get_footer();?>
