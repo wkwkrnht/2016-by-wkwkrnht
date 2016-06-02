@@ -57,7 +57,7 @@ function meta_description(){
     if(is_home()):
         bloginfo('description');
     elseif(is_singular()&&has_excerpt()):
-        the_execrpt();
+        the_excerpt();
     elseif(is_category()):
         echo get_meta_description_from_category();
     else:
@@ -67,8 +67,8 @@ function meta_description(){
 function meta_keyword(){
     if(is_home()):
         bloginfo('description');
-    //elseif(is_singular()):
-        //article_meta_keyword();
+    /*elseif(is_singular()):
+        article_meta_keyword();*/
     elseif(is_category()):
         echo get_meta_keyword_from_category();
     else:
