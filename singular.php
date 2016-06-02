@@ -6,7 +6,7 @@
 		<span class="article-meta"><?php the_author();?>公開日：<time class="entry-date" datetime="<?php the_time('c');?>"><?php the_time('Y/n/j G:i.s');?></time><?php if($mtime = get_mtime('Y/n/j G:i.s')):echo'最終更新日：' . $mtime;endif;the_category(', ');?></span>
 	</header>
 	<div class="article-main">
-		<?php the_content();?>
+		<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
 	</div>
 	<?php the_tags('<ul class="article-tag"><li>','</li><li>','</li></ul>');?>
 </article>
