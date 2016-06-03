@@ -61,7 +61,7 @@ function wkwkrnht_get_custom_logo($blog_id=0){$html='';
     return apply_filters('wkwkrnht_get_custom_logo',$html);
 }
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
-//function get_meta_keyword_from_singular(){if(===null):elseif(===null):endif;}
+//function get_meta_keyword_from_singular(){$ID=;if(!==null){return $ID;}}
 function get_meta_description_from_category(){
     $cate_desc=trim(strip_tags(category_description()));
     if($cate_desc){return $cate_desc;}
@@ -92,10 +92,8 @@ function meta_keyword(){
     endif;
 }
 function meta_image(){
-    if(is_home()):
-        echo get_custom_logo();
-    elseif(is_singular()):
-        article_meta_keyword();
+    if(is_singular()):
+        echo get_the_post_thumbnail();
     else:
         echo get_custom_logo();
     endif;
@@ -113,6 +111,8 @@ function wkwkrnht_special_card(){
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         elseif(is_category()):
             echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
+        elseif(is_serach()):
+            echo'「' . get_search_query(); . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . if ($wp_query->found_posts>0){echo'('.$wp_query->found_posts.' 件 / '.$wp_query->max_num_pages.' ページ)';} . '</p>';
         else:
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         endif;

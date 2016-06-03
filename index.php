@@ -11,7 +11,7 @@
 		    </section>
 		<?php endwhile;endif;?>
 	</div>
-	<div class="page-links info-card card">
-		<?php posts_nav_link('','&laquo;','&raquo;');?>
+	<div class="card info-card">
+		<div class="page-links"><?php posts_nav_link('','&laquo;','&raquo;');?></div>
 	</div>
 <?php get_footer();?>
