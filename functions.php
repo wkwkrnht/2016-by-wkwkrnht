@@ -106,13 +106,14 @@ function meta_image(){
 */
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');$sitedescription=get_bloginfo('description');
+    $serachresult='';if($wp_query->found_posts>0){$serachresult='(' . $wp_query->found_posts . ' 件 / ' . $wp_query->max_num_pages . ' ページ)';}
     echo'<div class="card info-card"><h1 class="site-title">';
         if(is_home()):
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         elseif(is_category()):
             echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
         elseif(is_serach()):
-            echo'「' . get_search_query(); . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . if ($wp_query->found_posts>0){echo'('.$wp_query->found_posts.' 件 / '.$wp_query->max_num_pages.' ページ)';} . '</p>';
+            echo'「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . '</p>';
         else:
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         endif;

@@ -22,10 +22,10 @@
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
 	<meta name="twitter:site" content="@">
-	<?php if(is_singular()):echo ?>
-		<meta name="twitter:creator" content="@<?php the_author_meta('twitter');?>">
-		<link rel="publisher" href="http://plus.google.com/<?php the_author_meta('GoogleID');?>">
-	<?php ;endif;?>
+	<?php if(is_singular()):
+		echo'<meta name="twitter:creator" content="@' . the_author_meta('twitter') . '">
+		<link rel="publisher" href="http://plus.google.com/' . the_author_meta('GoogleID') . '">';
+	endif;?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
