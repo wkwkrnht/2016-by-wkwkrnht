@@ -112,7 +112,7 @@ function wkwkrnht_special_card(){
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         elseif(is_category()):
             echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
-        elseif(is_serach()):
+        elseif(is_search()):
             echo'「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . '</p>';
         else:
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
