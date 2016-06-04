@@ -50,7 +50,7 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
 
 */
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
-//function get_meta_keyword_from_singular(){$ID=;if(!==null){return $ID;}}
+function get_meta_keyword_from_singular(){$tag=get_the_tags();if($tag!==null){return $tag;}}
 function get_meta_description_from_category(){
     $cate_desc=trim(strip_tags(category_description()));
     if($cate_desc){return $cate_desc;}
@@ -72,8 +72,8 @@ function meta_description(){
 function meta_keyword(){
     if(is_home()):
         bloginfo('description');
-    /*elseif(is_singular()):
-        echo get_meta_keyword_from_singular();*/
+    elseif(is_singular()):
+        echo get_meta_keyword_from_singular();
     elseif(is_category()):
         echo get_meta_keyword_from_category();
     else:
@@ -85,10 +85,10 @@ function meta_image(){
     if(is_singular()&&has_post_thumbnail()):
         $pattern=get_the_post_thumbnail();
     else:
-        $pattern=htmlspecialchars(get_custom_logo(),ENT_HTML5);
+        $pattern=get_custom_logo();
     endif;
-    preg_match ($pattern, '{src=(.*)}');
-    echo $1;
+    preg_match ($pattern, '{src=(.*)}', $m);
+    echo $m;
 }
 /*
     1st card
