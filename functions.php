@@ -87,7 +87,7 @@ function meta_image(){
     else:
         $pattern=get_custom_logo();
     endif;
-    preg_match ($pattern, '{src=(.*)}', $m);
+    preg_match ($pattern, '/src=(.*)/', $m);
     echo $m;
 }
 /*
