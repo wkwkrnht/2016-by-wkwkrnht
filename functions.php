@@ -87,9 +87,8 @@ function meta_image(){
     else:
         $pattern=htmlspecialchars(get_custom_logo(),ENT_HTML5);
     endif;
-    preg_match ($pattern, '{src=(.*)}', $m);
-    str_replace ('{\"}', '', $m);
-    echo $m;
+    preg_match ($pattern, '{src=(.*)}');
+    echo $1;
 }
 /*
     1st card
