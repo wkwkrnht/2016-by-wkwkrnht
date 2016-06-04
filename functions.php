@@ -88,7 +88,7 @@ function meta_image(){
         $pattern=htmlspecialchars(get_custom_logo(),ENT_HTML5);
     endif;
     preg_match ($pattern, '{src=(.*)}', $m);
-    str_replace ($m, '{\"}', '');
+    str_replace ('{\"}', '', $m);
     echo $m;
 }
 /*
