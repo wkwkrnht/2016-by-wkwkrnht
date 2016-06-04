@@ -96,8 +96,8 @@ function meta_image(){
         echo get_the_post_thumbnail();
     else:
         $pattern=get_custom_logo();
-        preg_match($pattern,'/src="(.*?)"/',$matches,);
-        echo $matches[1]
+        preg_match($pattern,'/src="(.*?)"/',$matches);
+        echo $matches[1];
     endif;
 }
 /*
@@ -111,7 +111,7 @@ function wkwkrnht_special_card(){
     $serachresult=$wp_query->found_posts;
     echo'<div class="card info-card"><h1 class="site-title">';
         if(is_home()):
-            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
+            echo the_custom_logo() . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
         elseif(is_category()):
             echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
         elseif(is_search()):
