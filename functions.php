@@ -94,9 +94,9 @@ function meta_keyword(){
 function meta_image(){
     $m='';$pattern='';
     if(is_singular()&&has_post_thumbnail()):
-        $pattern=get_the_post_thumbnail();
+        $pattern=htmlspecialchars(get_the_post_thumbnail());
     else:
-        $pattern=get_custom_logo();
+        $pattern=htmlspecialchars(get_custom_logo());
     endif;
     preg_match($pattern,'/src="(.*?)"/',$m);
     echo $m[1];
