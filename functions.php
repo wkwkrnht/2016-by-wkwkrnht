@@ -73,7 +73,8 @@ function meta_keyword(){
     if(is_home()):
         bloginfo('description');
     elseif(is_singular()):
-        echo get_meta_keyword_from_singular();
+        $t=get_meta_keyword_from_singular();$c=count($t);
+        for($i=0;$i<$c;$i++){echo $t[$i];}
     elseif(is_category()):
         echo get_meta_keyword_from_category();
     else:
