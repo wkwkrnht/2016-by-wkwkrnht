@@ -85,9 +85,9 @@ function meta_image(){
     if(is_singular()&&has_post_thumbnail()):
         $pattern=get_the_post_thumbnail();
     else:
-        $pattern=get_custom_logo();
+        $pattern=htmlspecialchars(get_custom_logo(),ENT_HTML5);
     endif;
-    preg_match ($pattern,'{src="\(.*?\)"}',$m);
+    preg_match ($pattern, '{src="(.*?)"}', $m);
     echo $m;
 }
 /*
