@@ -37,7 +37,7 @@
 .article-main h4{border-left:10px solid #ffcc00;border-bottom:1px solid #ffcc00;}
 .article-main h5{border-left:10px solid #ffcc00;}
 .article-main h6{border-bottom:.75vmin dashed #ffcc00;}
-.article-main pre,.article-main address{padding:5% 0 5% 10%;background-color:#f1f1f1;border:1px solid #333;border-radius:5px;}
+.article-main pre,.article-main address{padding:3% 0 3% 8%;background-color:#f1f1f1;border:1px solid #333;border-radius:5px;}
 .article-main table{width:100%;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border:1px solid #cfcfcf;}
 .article-main table caption{padding:1em;line-height:1.5;text-align:center;background-color:#ffc045;}
 .article-main table tr th{background-color:#f1f1f1;}
