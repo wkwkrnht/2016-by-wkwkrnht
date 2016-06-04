@@ -49,17 +49,6 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
     ●キーワード
 
 */
-function wkwkrnht_get_custom_logo($blog_id=0){$html='';
-    if(is_multisite()&&(int)$blog_id!==get_current_blog_id()):switch_to_blog($blog_id);endif;
-    $custom_logo_id=get_theme_mod('custom_logo');
-    if($custom_logo_id):
-        $html = sprintf('<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',esc_url(home_url('/')),wp_get_attachment_image($custom_logo_id,'full',false,array('class'=>'custom-logo','itemprop'=>'logo',)));
-    elseif(is_customize_preview()):
-        $html = sprintf('<a href="%1$s" class="custom-logo-link" style="display:none;"><img class="custom-logo"/></a>',esc_url(home_url('/')));
-    endif;
-    if(is_multisite()&&ms_is_switched()):restore_current_blog();endif;
-    return apply_filters('wkwkrnht_get_custom_logo',$html);
-}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
 //function get_meta_keyword_from_singular(){$ID=;if(!==null){return $ID;}}
 function get_meta_description_from_category(){
@@ -94,11 +83,11 @@ function meta_keyword(){
 function meta_image(){
     $m='';$pattern='';
     if(is_singular()&&has_post_thumbnail()):
-        $pattern=htmlspecialchars(get_the_post_thumbnail());
+        $pattern=get_the_post_thumbnail();
     else:
-        $pattern=htmlspecialchars(get_custom_logo());
+        $pattern=get_custom_logo();
     endif;
-    preg_match($pattern,'/src="(.*?)"/',$m);
+    preg_match($pattern,'{src="(.*?)"}',$m);
     echo $m[1];
 }
 /*
@@ -109,7 +98,7 @@ function meta_image(){
 */
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');$sitedescription=get_bloginfo('description');
-    $serachresult=$wp_query->found_posts;
+    global $wp_query;$serachresult=$wp_query->found_posts;wp_reset_query();
     echo'<div class="card info-card"><h1 class="site-title">';
         if(is_home()):
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
