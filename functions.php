@@ -96,7 +96,7 @@ function meta_image(){
     if(is_singular()&&has_post_thumbnail()):
         $pattern=get_the_post_thumbnail();
     else:
-        $pattern=the_custom_logo();
+        $pattern=get_custom_logo();
     endif;
     preg_match($pattern,'/src="(.*?)"/',$m);
     echo $m[1];
