@@ -123,7 +123,7 @@ function wkwkrnht_special_card(){
     ●1つ進む
     ●最後尾へ
 */
-function responsive_pagenation($pages='',$range=3){
+function responsive_pagenation($pages='',$range=4){
     $showitems=($range * 2)+1;
     global $paged;
     if(empty($paged)){$paged = 1;}
