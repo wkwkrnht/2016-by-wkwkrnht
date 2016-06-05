@@ -31,15 +31,22 @@
 .pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;border:none;}
 /*
     article-style
-1.header&man&link
-2.h1&h2&h3&h4&h5&h6
-3.pre&address&code
-4.table
+1.header&man
+2.link
+3.h1&h2&h3&h4&h5&h6
+4.pre&address&code
+5.table
 */
 .article-header{text-align:center;}
 .article-main{padding:5vmin 8vmin 0;}
 .article-main a{border-bottom:0;color:#0000ff;}
 .article-main a:hover{border:1px solid #0000ff;}
+
+.article-main a::before,.article-main a::after{content:'';border-bottom:solid 1px #0000ff;position: absolute;bottom:0;width:0;}
+.article-main a:before{left:0;}
+.article-main a:after{right:0;}
+.article-main a:hover::before,.article-main a:hover::after{width:50%;}
+.article-main a::before,.article-main a::after{-webkit-transition:all 0.2s ease;transition:all 0.2s ease;}
 .article-main:visited{color:#934c7b;}
 
 .article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-height:80%;margin:10px auto;line-height:45px;text-align:center;}
