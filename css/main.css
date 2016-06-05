@@ -197,10 +197,6 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .article-main table thead{display:none;}
         .article-main table tbody tr td[data-th]::before{content:attr(data-th) " : ";font-weight:bold;display:inline-block;margin-right:0.25em;}
     }
-    @media screen and(max-width:680px){
-      .pagination li.first,.pagination li.last{position:absolute;top:-9999px;left:-9999px;}
-      .pagination li.previous a{border-left-width:1px;}
-    }
     @media screen and (max-width:500px){
         .pagination li{position:absolute;top:-9999px;left:-9999px;}
         .pagination li.current,.pagination li.first,.pagination li.last,.pagination li.previous,.pagination li.next{position:initial;top:initial;left:initial;}
