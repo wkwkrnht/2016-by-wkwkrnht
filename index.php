@@ -11,5 +11,5 @@
 		    </section>
 		<?php endwhile;endif;?>
 	</div>
-	<?php if(function_exists('responsive_pagenation')){responsive_pagination($additional_loop->max_num_pages);}?>
+	<?php if(function_exists('responsive_pagenation')){responsive_pagenation($additional_loop->max_num_pages);}?>
 <?php get_footer();?>
