@@ -123,12 +123,12 @@ function wkwkrnht_special_card(){
     ●1つ進む
     ●最後尾へ
 */
-function responsive_pagenation($pages='',$range=4){
+function responsive_pagenation($pages='',$range=3){
     $showitems=($range * 2)+1;
     global $paged;
     if(empty($paged)){$paged = 1;}
-    if($pages===''){global $wp_query;$pages = $wp_query->max_num_pages;if(!$pages){$pages = 1;}}
-    if(1!==$pages){
+    if($pages==''){global $wp_query;$pages = $wp_query->max_num_pages;if(!$pages){$pages = 1;}}
+    if(1!=$pages){
         echo'<ul class="pagination" role="menubar" aria-label="Pagination">';
         echo'<li class="first"><a href="'.get_pagenum_link(1).'"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>';
         echo'<li class="previous"><a href="'.get_pagenum_link($paged - 1).'"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>';
