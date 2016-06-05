@@ -27,10 +27,12 @@
 .site-info{text-align:center;}
 /*レスポンシブページネーション*/
 .pagenation{max-width:80vw;position:relative;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
-.pagenation ul{list-style:none;margin:0 auto;}
-.pagenation li{display:inline-block;padding:2vmin;text-decoration:none;border:solid .5vmin #00a5de;font-weight:bold;color:#00a5de;background-color:#fff;}
-.pagenation li:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
+.pagenation ul{list-style:none;margin:1vmin auto;}
+.pagination,.pagination li a{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
+.pagenation li{padding:2vmin;border:solid .5vmin #00a5de;background-color:#fff;}
+.pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
 .pagenation li:hover{border:none;}
+.pagenation a{text-decoration:none;font-weight:bold;color:#00a5de;}
 /*
     article-style
 1.header&man&link
