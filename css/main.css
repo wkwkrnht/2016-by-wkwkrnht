@@ -26,13 +26,11 @@
 .article-info{float:right;}
 .site-info{text-align:center;}
 /*レスポンシブページネーション*/
-.pagenation{list-style:none;max-width:80vw;position:relative;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
-.pagination,.pagination li a{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
-.pagenation li{padding:2vmin;border:solid .5vmin #00a5de;background-color:#fff;}
+.pagenation{list-style:none;max-width:80vw;position:relative;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
+.pagenation li{padding:2vmin;border:solid .5vmin #00a5de;background-color:#fff;color:#00a5de;}
 .pagenation li:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
 .pagenation li:hover{border:none;}
-.pagenation a{text-decoration:none;font-weight:bold;color:#00a5de;}
-.pagenation a:hover{color:#fff;}
+.pagenation a{text-decoration:none;font-weight:bold;}
 /*
     article-style
 1.header&man&link
