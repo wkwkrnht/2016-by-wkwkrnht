@@ -50,7 +50,6 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
 
 */
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
-function get_meta_keyword_from_singular(){$tag=get_the_tags();if($tag!==null){return $tag;}}
 function get_meta_description_from_category(){
     $cate_desc=trim(strip_tags(category_description()));
     if($cate_desc){return $cate_desc;}
@@ -65,17 +64,6 @@ function meta_description(){
         the_excerpt();
     elseif(is_category()):
         echo get_meta_description_from_category();
-    else:
-        bloginfo('description');
-    endif;
-}
-function meta_keyword(){
-    if(is_home()):
-        bloginfo('description');
-    elseif(is_singular()):
-        echo get_meta_keyword_from_singular();
-    elseif(is_category()):
-        echo get_meta_keyword_from_category();
     else:
         bloginfo('description');
     endif;

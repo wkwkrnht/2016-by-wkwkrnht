@@ -2,6 +2,7 @@
 <html <?php language_attributes();?>>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="HandheldFriendly" content="true">
 	<meta name="referrer" content="default">
@@ -12,7 +13,7 @@
 	<meta http-equiv="cleartype" content="on">
 	<meta name="renderer" content="webkit">
 	<meta name="description" content="<?php meta_description();?>">
-	<meta name="keyword" content="<?php meta_keyword();?>">
+	<meta property="fb:app_id" content="123456789">
 	<meta property='og:type' content='article'>
 	<?php if(!is_home()):?><meta property='og:title' content='<?php wp_title('｜',true,'right');?>'><?php endif;?>
 	<meta property='og:url' content="<?php print((empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);?>">
@@ -21,9 +22,13 @@
 	<meta property='og:image' content='<?php //meta_image();?>'>
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
+	<meta name="twitter:title" content="Content Title">
+	<meta name="twitter:description" content="Content description less than 200 characters">
+	<meta name="twitter:image" content="<?php //meta_image();?>">
 	<meta name="twitter:site" content="@">
 	<?php if(is_singular()):
-		echo'<meta name="twitter:creator" content="@' . the_author_meta('twitter') . '">
+		echo'<meta property="article:author" content="' . the_author_meta() . '">
+		<meta name="twitter:creator" content="@' . the_author_meta('twitter') . '">
 		<link rel="publisher" href="http://plus.google.com/' . the_author_meta('GoogleID') . '">';
 	endif;?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
