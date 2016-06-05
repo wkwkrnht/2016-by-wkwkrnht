@@ -11,7 +11,5 @@
 		    </section>
 		<?php endwhile;endif;?>
 	</div>
-	<div class="card info-card">
-		<div class="page-links"><?php posts_nav_link('','&laquo;','&raquo;');?></div>
-	</div>
+	<?php if(function_exists('responsive_pagenation')){responsive_pagination($additional_loop->max_num_pages);}?>
 <?php get_footer();?>
