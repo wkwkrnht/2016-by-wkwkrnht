@@ -2,19 +2,19 @@
     <div class="toggle-zone">
         <div id="share-toggle"><i class="fa fa-share-alt"></i></div>
         <div id="menu-toggle"><i class="fa fa-bars"></i></div>
-        <div id="share-toggle"><i class="fa fa-share-alt"></i></div>
+        <div id="share-menu-toggle"><i class="fa fa-share-alt"></i></div>
     </div>
     <nav id="share-menu" class="close">
         <ui>
-		    <li><a class="twitter"></a></li>
-            <li><a class="fb-like"></a></li>
-            <li><a class="line"></a></li>
-            <li><a class="g-plus"></a></li>
-            <li><a class="linkedin"></a></li>
-            <li><a class="hatebu"></a></li>
-            <li><a class="pocket"></a></li>
-            <li><a class="pinterest"></a></li>
-            <li><a class="tumblr"></a></li>
+		    <li><a class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a class="fb-like"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+            <li><a class="line"><i class="fa fa-comments" aria-hidden="true"></i></a></li>
+            <li><a class="g-plus"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
+            <li><a class="linkedin"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+            <li><a class="hatebu">B!</a></li>
+            <li><a class="pocket"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+            <li><a class="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+            <li><a class="tumblr"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
             <li><a class="embedly"></a></li>
         </ui>
     </nav>
@@ -46,6 +46,7 @@
         document.body.addEventListener("click",drop,false);function drop(e){var x = e.pageX;var y = e.pageY;var sizuku = document.createElement("div");sizuku.style.top = y + "px";sizuku.style.left = x + "px";document.body.appendChild(sizuku);sizuku.className = "sizuku";sizuku.addEventListener("animationend",function(){this.parentNode.removeChild(this);},false);};
         jQuery(function(){jQuery('#menu-toggle').click(function(){jQuery('#main-menu').toggleClass('close');jQuery('#main-menu').toggleClass('open');});});
         jQuery(function(){jQuery('#share-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
+        jQuery(function(){jQuery('#share-menu-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
         jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
 	</script>
     <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri();?>/js/microlight.js'></script>
