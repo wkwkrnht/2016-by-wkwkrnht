@@ -11,7 +11,7 @@
 .open{visibility:visible;}
 .close{visibility:hidden;}
 #share-menu{color:#fff;background-color:#ffcc00;}
-#share-menu ul{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
+#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
 #share-menu ul li{width:50%;height:30%;}
 .tweet{background-color:#55acee;}
 .fb-ilke{background-color:#3b5998;}
