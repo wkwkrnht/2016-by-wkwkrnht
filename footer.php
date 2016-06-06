@@ -5,7 +5,7 @@
         <div id="share-menu-toggle"><i class="fa fa-share-alt"></i></div>
     </div>
     <nav id="share-menu" class="close">
-        <ui>
+        <ul>
 		    <li><a class="tweet"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
             <li><a class="fb-like"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
             <li><a class="line"><i class="fa fa-comments" aria-hidden="true"></i></a></li>
@@ -16,7 +16,7 @@
             <li><a class="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
             <li><a class="tumblr"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
             <li><a class="embedly"></a></li>
-        </ui>
+        </ul>
     </nav>
     <div id="main-menu" class="close">
         <nav class="admin-navigation" role="navigation">
@@ -26,7 +26,7 @@
         </nav>
 	    <?php if(has_nav_menu('social')):?>
             <nav class="social-nav" role="navigation">
-                <a href="<?php echo esc_url(home_url());?>/wp-login.php" target="_blank" class="login"></a><?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
+                <li><a href="<?php echo esc_url(home_url());?>/wp-login.php" target="_blank" class="login"></a></li><?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
             </nav>
         <?php endif;?>
         <?php if(has_nav_menu('main')):?>
