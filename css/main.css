@@ -7,11 +7,11 @@
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;cursor:pointer;}
 #share-toggle,#share-menu-toggle{color:#00a5de;}
 /*menu*/
-#share-menu,#main-menu{height:80vh;width:86vw;margin:35px 7vw 0;position:fixed;top:0;left:0;z-index:111;overflow-x:hidden;overflow-y:scroll;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu,#main-menu{height:80vh;width:86vw;margin:35px 7vw 0;position:fixed;top:0;left:0;z-index:111;overflow-x:hidden;overflow-y:auto;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .open{visibility:visible;}
 .close{visibility:hidden;}
 #share-menu{color:#fff;background-color:#ffcc00;}
-#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
+#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;height:100%;width:100%;}
 #share-menu ul li{width:50%;height:30%;}
 .tweet{background-color:#55acee;}
 .fb-ilke{background-color:#3b5998;}

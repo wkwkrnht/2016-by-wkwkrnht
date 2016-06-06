@@ -11,7 +11,7 @@
             <li class="line"><a><i class="fa fa-comments" aria-hidden="true"></i></a></li>
             <li class="g-plus"><a><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
             <li class="linkedin"><a><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-            <li><a class="hatebu">B!</a></li>
+            <li class="hatebu"><a>B!</a></li>
             <li class="pocket"><a><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
             <li class="pinterest"><a><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
             <li class="tumblr"><a><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
