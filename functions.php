@@ -126,3 +126,31 @@ function pagenation($pages='',$range=3){
         echo'</ul>';
     }
 }
+/* ウィジェットで表示されるアーカイブを短く表示させます */
+function my_archives_link($link_html){
+    // 現在の年月
+    $currentMonth = date('n');
+    $currentYear = date('Y');
+    // アーカイブの年月HTMLを編集
+    $ym = explode('年', $link_html);
+    $monthArray = explode('月', $ym[1]);
+    $month = $monthArray[0];
+    $year = intval(strip_tags($ym[0]));
+    $linkMonth = substr('0'.$month, -2);
+
+    $url = site_url('/').$year.'/'.$linkMonth.'/';
+    $linkString = '%s<a href="'.$url.'" style="white-space: nowrap;">%s</a>'.
+
+    $linkYear = '';
+    $yearHtml = '<span style="font-weight:bold;">%s</span><br />';
+    if (($currentMonth == $month) AND ($currentYear == $year)){
+        $linkYear = sprintf($yearHtml, $year);
+    } else {
+        if ((intval($month) == 12) AND ($currentYear != $year)){
+            $linkYear = '<br />'.sprintf($yearHtml, $year);
+        }
+    }
+
+    return sprintf($linkString, $linkYear, $ym[1]);
+}
+add_filter('get_archives_link', 'my_archives_link');

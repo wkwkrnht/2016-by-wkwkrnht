@@ -6,7 +6,7 @@
     </div>
     <nav id="share-menu" class="close">
         <ui>
-		    <li><a class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+		    <li><a class="tweet"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
             <li><a class="fb-like"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
             <li><a class="line"><i class="fa fa-comments" aria-hidden="true"></i></a></li>
             <li><a class="g-plus"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
