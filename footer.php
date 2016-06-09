@@ -1,8 +1,8 @@
     </main>
     <div class="toggle-zone">
-        <div id="share-toggle"><i class="fa fa-share-alt fa-5x"></i></div>
-        <div id="menu-toggle"><i class="fa fa-bars fa-5x"></i></div>
-        <div id="share-menu-toggle"><i class="fa fa-share-alt fa-5x"></i></div>
+        <div id="share-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
+        <div id="menu-toggle"><i class="fa fa-bars fa-3x"></i></div>
+        <div id="share-menu-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
     </div>
     <nav id="share-menu" class="close">
         <ul>
