@@ -1,21 +1,21 @@
     </main>
     <div class="toggle-zone">
-        <div id="share-toggle"><i class="fa fa-share-alt"></i></div>
-        <div id="menu-toggle"><i class="fa fa-bars"></i></div>
-        <div id="share-menu-toggle"><i class="fa fa-share-alt"></i></div>
+        <div id="share-toggle"><i class="fa fa-share-alt fa-5x"></i></div>
+        <div id="menu-toggle"><i class="fa fa-bars fa-5x"></i></div>
+        <div id="share-menu-toggle"><i class="fa fa-share-alt fa-5x"></i></div>
     </div>
     <nav id="share-menu" class="close">
         <ul>
-		    <li class="tweet"><a><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
-            <li class="fb-like"><a><i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i></a></li>
-            <li class="line"><a><i class="fa fa-comments fa-5x" aria-hidden="true"></i></a></li>
-            <li class="g-plus"><a><i class="fa fa-google-plus-official fa-5x" aria-hidden="true"></i></a></li>
-            <li class="linkedin"><a><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a></li>
-            <li class="hatebu"><a>B!</a></li>
-            <li class="pocket"><a><i class="fa fa-get-pocket fa-5x" aria-hidden="true"></i></a></li>
-            <li class="pinterest"><a><i class="fa fa-pinterest fa-5x" aria-hidden="true"></i></a></li>
-            <li class="tumblr"><a><i class="fa fa-tumblr fa-5x" aria-hidden="true"></i></a></li>
-            <li class="embedly"><a></a></li>
+		    <li class="tweet sharewindow"><a href="https://twitter.com/share?url=<?php echo get_permalink();?>&amp;text=<?php echo trim(wp_title('',false));?>&amp;via=<?php the_author_meta('twitter');?>" target="_blank"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
+            <li class="fb-like sharewindow"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_permalink());?>" target="_blank"><i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i></a></li>
+            <li class="line sharewindow"><a href="http://line.me/R/msg/text/?<?php the_title();?>%0D%0A<?php the_permalink();?>" target="_blank"><i class="fa fa-comments fa-5x" aria-hidden="true"></i></a></li>
+            <li class="g-plus sharewindow"><a href="https://plus.google.com/share?url=<?php echo get_permalink();?>" target="_blank"><i class="fa fa-google-plus-official fa-5x" aria-hidden="true"></i></a></li>
+            <li class="linkedin sharewindow"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink();?>&amp;title=<?php echo trim(wp_title('',false));?>" target="_blank"><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a></li>
+            <li class="hatebu"><a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_permalink();?>&amp;title=<?php echo trim(wp_title('',false));?>" target="_blank">B!</a></li>
+            <li class="pocket sharewindow"><a href="http://getpocket.com/edit?url=<?php the_permalink();?>&amp;title=<?php echo trim(wp_title('',false));?>" target="_blank"><i class="fa fa-get-pocket fa-5x" aria-hidden="true"></i></a></li>
+            <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=<?php the_permalink();?>&amp;media=<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));?>"><i class="fa fa-pinterest fa-5x" aria-hidden="true"></i></a></li>
+            <li class="tumblr sharewindow"><a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo get_permalink();?>" target="_blank"><i class="fa fa-tumblr fa-5x" aria-hidden="true"></i></a></li>
+            <li class="embedly sharewindow"><a href="http://cdn.embedly.com/widgets/embed?url=<?php the_permalink();?>" target="_blank"></a></li>
         </ul>
     </nav>
     <div id="main-menu" class="close">
@@ -47,6 +47,7 @@
         jQuery(function(){jQuery('#menu-toggle').click(function(){jQuery('#main-menu').toggleClass('close');jQuery('#main-menu').toggleClass('open');});});
         jQuery(function(){jQuery('#share-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
         jQuery(function(){jQuery('#share-menu-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
+        (function(){var shareButton=document.getElementsByClassName("sharewindow");for(var i=0;i<shareButton.length;i++){shareButton[i].addEventListener("click",function(e){e.preventDefault();window.open(this.href,"SNS_window","width=600,height=500,menubar=no,toolbar=no,scrollbars=yes");},false);}})()
         jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
 	</script>
     <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri();?>/js/microlight.js'></script>

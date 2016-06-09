@@ -126,7 +126,10 @@ function pagenation($pages='',$range=3){
         echo'</ul>';
     }
 }
-/* ウィジェットで表示されるアーカイブを短く表示させます */
+/*
+    ウィジェットで表示されるアーカイブを短く表示させます
+
+*/
 function my_archives_link($link_html){
     // 現在の年月
     $currentMonth = date('n');
@@ -146,9 +149,7 @@ function my_archives_link($link_html){
     if (($currentMonth == $month) AND ($currentYear == $year)){
         $linkYear = sprintf($yearHtml, $year);
     } else {
-        if ((intval($month) == 12) AND ($currentYear != $year)){
-            $linkYear = '<br />'.sprintf($yearHtml, $year);
-        }
+        if ((intval($month) == 12) AND ($currentYear != $year)){$linkYear = '<br />'.sprintf($yearHtml, $year);}
     }
 
     return sprintf($linkString, $linkYear, $ym[1]);

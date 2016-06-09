@@ -14,7 +14,7 @@
 #share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
 #share-menu ul li{width:50%;height:25vh;text-align:center;}
 .tweet{background-color:#55acee;}
-.fb-ilke{background-color:#3b5998;}
+.fb-like{background-color:#3b5998;}
 .line{background-color:#6cc655;}
 .g-plus{background-color:#dc4e41;}
 .linkedin{background-color:#36465d;}
@@ -78,6 +78,60 @@
 .article-tag li{display:inline-block;margin:0 .3em .3em 0;padding:0;}
 .article-tag li a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
 .article-tag li a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
+/*
+.article-tag li a {
+	position: relative;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 1em;
+	background-color: #3498db;
+	border-radius: 0 3px 3px 0;
+	color: #fff;
+	font-size: 13px;
+	text-decoration: none;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+.article-tag li a::before {
+	position: absolute;
+	top: 0;
+	left: -15px;
+	content: '';
+	width: 0;
+	height: 0;
+	border-color: transparent #3498db transparent transparent;
+	border-style: solid;
+	border-width: 15px 15px 15px 0;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+.article-tag li a::after {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 6px;
+	height: 6px;
+	margin-top: -3px;
+	background-color: #fff;
+	border-radius: 100%;
+}
+.article-tag li span {
+	display: block;
+	max-width: 100px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.article-tag li a:hover {
+	background-color: #555;
+	color: #fff;
+}
+.article-tag li a:hover::before{border-right-color: #555;}
+*/
 /*codex*/
 .alignnone {margin: 5px 20px 20px 0;}
 .alignright{float:right;margin:5px 0 20px 20px;}
