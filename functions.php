@@ -75,7 +75,7 @@ function meta_image(){
         echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));
     else:
         $pattern=get_custom_logo();
-        preg_match ($pattern, '{src=(.*)}', $m);
+        preg_match ($pattern, '/src=(.*)/', $m);
         echo $m;
     endif;
 
