@@ -89,12 +89,13 @@ function meta_description(){
 function meta_image(){
     $m='';$pattern='';
     if(is_singular()&&has_post_thumbnail()):
-        $pattern=get_the_post_thumbnail();
+        echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));
     else:
         $pattern=get_custom_logo();
+        preg_match ($pattern, '{src=(.*)}', $m);
+        echo $m;
     endif;
-    preg_match ($pattern, '{src=(.*)}', $m);
-    echo $m;
+
 }
 /*
     1st card

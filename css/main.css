@@ -26,10 +26,10 @@
 #main-menu{color:#333;background-color:#fff;}
 .widget-area{list-style:none;}
 .widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-.widget_search{height:8vh;width:50%;margin:5vh 25%;}
-.search-form{height:inherit;padding:0;margin:0;}
-.search-form label{height:inherit;width:70%;padding:0;margin:0;}
-.search-submit{height:80%;width:20%;padding:0;margin:10% 0 10% 8%;}
+.widget_search{height:10vh;width:50%;margin:5vh 25%;}
+.widget_search .search-form{height:inherit;padding:0;margin:0;}
+.widget_search .search-form label{height:inherit;width:70%;padding:0;margin:0;}
+.widget_search .search-submit{height:80%;width:20%;padding:0;margin:10% 0 10% 8%;}
 /*original-widget*/
 
 /*card-list*/
