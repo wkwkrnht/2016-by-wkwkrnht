@@ -50,7 +50,8 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
 
 */
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
-function file_get_contents_curl($url){
+function file_get_contents_by_curl(){
+    $url=$_REQUEST['url'];
     $ch=curl_init();
     curl_setopt($ch,CURLOPT_HEADER,0);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
@@ -61,8 +62,7 @@ function file_get_contents_curl($url){
     return $data;
 }
 function get_Page_Title(){
-    $url=$_REQUEST['url'];
-    $html=file_get_contents_curl($url);
+    $html=file_get_contents_by_curl();
     preg_match('/<title>(.+)<\/title>/',$html,$matches);
     $title=$matches[1];
     return json_encode(array('url'=>$url,'title'=>$title));
