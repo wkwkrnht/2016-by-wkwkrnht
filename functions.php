@@ -49,6 +49,9 @@ function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';en
     ●キーワード
 
 */
+function get_meta_url(){
+    return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
 function get_meta_description_from_category(){
     $cate_desc=trim(strip_tags(category_description()));
