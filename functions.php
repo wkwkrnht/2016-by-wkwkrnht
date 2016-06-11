@@ -62,6 +62,7 @@ function file_get_contents_by_curl(){
     return $data;
 }
 function get_Page_Title(){
+    $url=$_REQUEST['url'];
     $html=file_get_contents_by_curl();
     preg_match('/<title>(.+)<\/title>/',$html,$matches);
     $title=$matches[1];
