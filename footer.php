@@ -6,13 +6,13 @@
     </div>
     <nav id="share-menu" class="close">
         <ul>
-		    <li class="tweet sharewindow"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php echo get_Page_Title();?>&amp;via=<?php the_author_meta('twitter');?>" target="_blank"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
+		    <li class="tweet sharewindow"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php echo'txt';?>&amp;via=<?php the_author_meta('twitter');?>" target="_blank"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
             <li class="fb-like sharewindow"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank"><i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i></a></li>
-            <li class="line sharewindow"><a href="http://line.me/R/msg/text/?<?php echo get_Page_Title();?>%0D%0A<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-comments fa-5x" aria-hidden="true"></i></a></li>
+            <li class="line sharewindow"><a href="http://line.me/R/msg/text/?<?php echo'txt';?>%0D%0A<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-comments fa-5x" aria-hidden="true"></i></a></li>
             <li class="g-plus sharewindow"><a href="https://plus.google.com/share?url=<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-google-plus-official fa-5x" aria-hidden="true"></i></a></li>
-            <li class="linkedin sharewindow"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_meta_url();?>&amp;title=<?php echo get_Page_Title();?>" target="_blank"><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a></li>
-            <li class="hatebu"><a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_meta_url();?>&amp;title=<?php echo get_Page_Title();?>" target="_blank">B!</a></li>
-            <li class="pocket sharewindow"><a href="http://getpocket.com/edit?url=<?php echo get_meta_url();?>&amp;title=<?php echo get_Page_Title();?>" target="_blank"><i class="fa fa-get-pocket fa-5x" aria-hidden="true"></i></a></li>
+            <li class="linkedin sharewindow"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank"><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a></li>
+            <li class="hatebu"><a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank">B!</a></li>
+            <li class="pocket sharewindow"><a href="http://getpocket.com/edit?url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank"><i class="fa fa-get-pocket fa-5x" aria-hidden="true"></i></a></li>
             <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=<?php echo get_meta_url();?>&amp;media=<?php meta_image();?>"><i class="fa fa-pinterest fa-5x" aria-hidden="true"></i></a></li>
             <li class="tumblr sharewindow"><a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-tumblr fa-5x" aria-hidden="true"></i></a></li>
             <li class="embedly sharewindow"><a href="http://cdn.embedly.com/widgets/embed?url=<?php echo get_meta_url();?>" target="_blank"></a></li>

@@ -16,15 +16,15 @@
 	<meta property="fb:app_id" content="123456789">
 	<meta property='og:type' content='article'>
 	<?php if(!is_home()):?><meta property='og:title' content='<?php wp_title('｜',true,'right');?>'><?php endif;?>
-	<meta property='og:url' content="<?php print((empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);?>">
+	<meta property='og:url' content="<?php echo get_meta_url();?>">
 	<meta property='og:description' content='<?php meta_description();?>'>
 	<meta property='og:site_name' content='<?php bloginfo('name');?>'>
-	<meta property='og:image' content='<?php //meta_image();?>'>
+	<meta property='og:image' content='<?php meta_image();?>'>
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
 	<meta name="twitter:title" content="Content Title">
 	<meta name="twitter:description" content="Content description less than 200 characters">
-	<meta name="twitter:image" content="<?php //meta_image();?>">
+	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@">
 	<?php if(is_singular()):
 		echo'<meta property="article:author" content="' . the_author_meta() . '">
@@ -34,8 +34,8 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
-	<link rel="fluid-icon" href="<?php //meta_image();?>" title="<?php bloginfo('name');?>">
-	<link rel="image_src" href="<?php //meta_image();?>">
+	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
+	<link rel="image_src" href="<?php meta_image();?>">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/normalize.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/main.css">
