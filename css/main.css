@@ -57,14 +57,14 @@
 4.pre&address&code
 5.table
 */
-.article-header{text-align:center;}
-.article-main{padding:5vmin 8vmin 0;font-size:2rem;}
+.article-header{font-size:1.5rem;text-align:center;}
+.article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
 .article-main a{border-bottom:0;}
 .article-main a::before{content:'';border-bottom:solid 1px #0000ff;position: absolute;left:0;bottom:0;width:100%;opacity:0;-webkit-transition:all 0.2s ease;transition:all 0.2s ease;}
 .article-main a:hover::before{opacity:1.0;}
 .article-main:visited{color:#934c7b;}
 
-.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:10px auto;font-size:2.5rem;line-height:45px;text-align:center;}
+.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:10px auto;font-size:2rem;line-height:45px;text-align:center;}
 .article-main h2{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-main h3{padding:.5em .75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
 .article-main h4{border-left:10px solid #ffcc00;border-bottom:1px solid #ffcc00;}
