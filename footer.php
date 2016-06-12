@@ -7,7 +7,7 @@
     <nav id="share-menu" class="close">
         <ul>
 		    <li class="tweet sharewindow"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php echo'txt';?>&amp;via=<?php the_author_meta('twitter');?>" target="_blank"><i class="fa fa-twitter fa-5x fa-middle" aria-hidden="true"></i></a></li>
-            <li class="fb-like sharewindow"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank"><i class="fa fa-thumbs-up fa-5 fa-middlex" aria-hidden="true"></i></a></li>
+            <li class="fb-like sharewindow"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank"><i class="fa fa-thumbs-up fa-5x fa-middle" aria-hidden="true"></i></a></li>
             <li class="line sharewindow"><a href="http://line.me/R/msg/text/?<?php echo'txt';?>%0D%0A<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-comments fa-5x fa-middle" aria-hidden="true"></i></a></li>
             <li class="g-plus sharewindow"><a href="https://plus.google.com/share?url=<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-google-plus-official fa-5x fa-middle" aria-hidden="true"></i></a></li>
             <li class="linkedin sharewindow"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank"><i class="fa fa-linkedin-square fa-5x fa-middle" aria-hidden="true"></i></a></li>

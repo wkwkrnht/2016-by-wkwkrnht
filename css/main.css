@@ -1,6 +1,6 @@
 :root{font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 #site-main{padding-bottom:18vh;}
-.fa-middle{position:relative;top:50%;left:50%;}
+.fa-middle{position:relative;top:50%;}
 .sizuku{animation:sizuku 1s linear 0s;background-color:#6eb2e0;border:4px solid #6eb2e0;border-radius:50%;position:absolute;z-index:1000;}
 @keyframes sizuku{0%{height:0;width:0;opacity:1;transform:translate(0,0);}100%{height:500px;width:500px;opacity:0;transform:translate(-250px,-250px);}}
 /*menu-buttons#share-check,#main-check{display:none;}*/
