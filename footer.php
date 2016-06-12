@@ -51,7 +51,7 @@
         /*
             折り畳み式アーカイブウィジェット
         */
-        (function($) {
+        /*(function($) {
             $(function() {
                 var wgts = $(".widget_archive");//アーカイブウィジェット全てを取得
                 //アーカイブウィジェットを1つずつ処理する
@@ -95,7 +95,7 @@
                         //作ったブロック内のulに内容を整形して移動
                         //オリジナルのクローンは順番に削除
                         var j = 0;
-                        acvLi.each(function(i, el) {
+                        acvLi.each(function(i,el){
                             var reg = /(\d+)年(\d+)月/;
                             //日付表示＋投稿数か
                             if ( has_date_count ) {reg = /(\d+)年(\d+)月\s\((\d+)\)/;}
@@ -125,7 +125,7 @@
                     }//if has_date_count || has_date_only
                 });//wgts.each
             });
-        })(jQuery);
+        })(jQuery);*/
     </script>
     <script>
         jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
