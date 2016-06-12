@@ -1,9 +1,9 @@
 :root{font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
-#site-main{padding-bottom:15vh;}
+#site-main{padding-bottom:18vh;}
 .sizuku{animation:sizuku 1s linear 0s;background-color:#6eb2e0;border:4px solid #6eb2e0;border-radius:50%;position:absolute;z-index:1000;}
 @keyframes sizuku{0%{height:0;width:0;opacity:1;transform:translate(0,0);}100%{height:500px;width:500px;opacity:0;transform:translate(-250px,-250px);}}
 /*menu-buttons#share-check,#main-check{display:none;}*/
-.toggle-zone{height:15vh;width:100vw;position:fixed;bottom:0;left:0;z-index:100;background-color:#ffcc00;color:#fff;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.toggle-zone{height:15vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#ffcc00;color:#fff;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;cursor:pointer;}
 #share-toggle,#share-menu-toggle{color:#00a5de;}
 /*menu*/
