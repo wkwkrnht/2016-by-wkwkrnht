@@ -128,7 +128,7 @@
         })(jQuery);*/
     </script>
     <script>
-        var h = document.getElementsByClassName('article-img').offsetHeight;document.write('<style>.singular{padding-top:' + h + 'px;}</style>');
+        var e = document.getElementsByClassName('article-img');var h =e.offsetHeight;document.write('<style>.singular{padding-top:' + h + 'px;}</style>');
         jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
 	</script>
     <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri();?>/js/microlight.js'></script>
