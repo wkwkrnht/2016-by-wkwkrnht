@@ -27,7 +27,29 @@
 .widget-area{list-style:none;}
 .widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 /*original-widget*/
+/*
+    折り畳みアーカイブウィジェット
+*/
+.widget_archive a.year{
+  cursor: pointer;
+  text-decoration: underline;
+}
 
+.widget_archive .years ul {
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+#sidebar .widget_archive ul.years li{margin-bottom: 0;}
+
+.widget_archive ul.years .hide {
+  margin: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
 /*card-list*/
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}

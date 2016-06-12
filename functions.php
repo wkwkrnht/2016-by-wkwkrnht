@@ -38,16 +38,17 @@ add_filter('body_class','add_body_class');
 function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';endif;return $classes;}
 /*
     metainfo
-1.カスタムロゴ取得
-2.記事ページのメタ設定
+1.アクセス中のURL取得
+2.カスタムロゴ取得
+3.記事ページのメタ設定
     ●キーワード
     ●アイキャッチ
-3.更新日と公開日の比較
-4.カテゴリーのキーワード化
-5.カテゴリーページのメタ設定
+4.更新日と公開日の比較
+5.カテゴリーのキーワード化
+6.カテゴリーページのメタ設定
     ●ディスプリクション
     ●キーワード
-
+7.Alt属性がないIMGタグにalt=""を追加する
 */
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
@@ -79,6 +80,67 @@ function meta_image(){
         echo $m;
     endif;
 
+}
+add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i', '<img alt=""${1}>', $content);});
+///////////////////////////////////////
+// Wordpressデフォルトのnext/prev出力動作を停止
+///////////////////////////////////////
+remove_action('wp_head','adjacent_posts_rel_link_wp_head');
+
+///////////////////////////////////////
+//ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
+///////////////////////////////////////
+function rel_next_prev_link_tags() {
+    if(is_single() || is_page()) {
+        //1ページを複数に分けた分割ページ（マルチページ）でのタグ出力
+        global $wp_query;
+        $multipage = check_multi_page();
+        if($multipage[0] > 1) {
+            $prev = generate_multipage_url('prev');
+            $next = generate_multipage_url('next');
+            if($prev) {echo '<link rel="prev" href="'.$prev.'" />'.PHP_EOL;}
+            if($next) {echo '<link rel="next" href="'.$next.'" />'.PHP_EOL;}
+        }
+    }else{
+        //トップページやカテゴリページなどのページネーションでのタグ出力
+        global $paged;
+        if ( get_previous_posts_link() ){echo '<link rel="prev" href="'.get_pagenum_link( $paged - 1 ).'" />'.PHP_EOL;}
+        if ( get_next_posts_link() ){echo '<link rel="next" href="'.get_pagenum_link( $paged + 1 ).'" />'.PHP_EOL;}
+    }
+}
+//適切なページのヘッダーにnext/prevを表示
+add_action( 'wp_head','rel_next_prev_link_tags');
+
+//分割ページ（マルチページ）URLの取得
+//参考ページ：http://seophp.net/wordpress-fix-rel-prev-and-rel-next-without-plugin/
+function generate_multipage_url($rel='prev') {
+    global $post;
+    $url = '';
+    $multipage = check_multi_page();
+    if($multipage[0] > 1) {
+        $numpages = $multipage[0];
+        $page = $multipage[1] == 0 ? 1 : $multipage[1];
+        $i = 'prev' == $rel? $page - 1: $page + 1;
+        if($i && $i > 0 && $i <= $numpages) {
+            if(1 == $i) {
+                $url = get_permalink();
+            } else {
+                if ('' == get_option('permalink_structure') || in_array($post->post_status, array('draft', 'pending'))) {
+                    $url = add_query_arg('page', $i, get_permalink());
+                } else {
+                    $url = trailingslashit(get_permalink()).user_trailingslashit($i, 'single_paged');
+                }
+            }
+        }
+    }
+    return $url;
+}
+
+//分割ページ（マルチページ）かチェックする
+function check_multi_page() {
+  $num_pages    = substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;
+  $current_page = get_query_var( 'page' );
+  return array ( $num_pages, $current_page );
 }
 /*
     1st card
@@ -128,32 +190,3 @@ function pagenation($pages='',$range=3){
         echo'</ul>';
     }
 }
-/*
-    ウィジェットで表示されるアーカイブを短く表示させます
-
-*/
-function my_archives_link($link_html){
-    // 現在の年月
-    $currentMonth = date('n');
-    $currentYear = date('Y');
-    // アーカイブの年月HTMLを編集
-    $ym = explode('年', $link_html);
-    $monthArray = explode('月', $ym[1]);
-    $month = $monthArray[0];
-    $year = intval(strip_tags($ym[0]));
-    $linkMonth = substr('0'.$month, -2);
-
-    $url = site_url('/').$year.'/'.$linkMonth.'/';
-    $linkString = '%s<a href="'.$url.'" style="white-space: nowrap;">%s</a>'.
-
-    $linkYear = '';
-    $yearHtml = '<span style="font-weight:bold;">%s</span><br />';
-    if (($currentMonth == $month) AND ($currentYear == $year)){
-        $linkYear = sprintf($yearHtml, $year);
-    } else {
-        if ((intval($month) == 12) AND ($currentYear != $year)){$linkYear = '<br />'.sprintf($yearHtml, $year);}
-    }
-
-    return sprintf($linkString, $linkYear, $ym[1]);
-}
-add_filter('get_archives_link', 'my_archives_link');
