@@ -7,6 +7,7 @@
 	</header>
 	<div class="article-main">
 		<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
+		<?php wp_link_pages(); ?>
 	</div>
 	<?php the_tags('<ul class="article-tag"><li>','</li><li>','</li></ul>');?>
 </article>
