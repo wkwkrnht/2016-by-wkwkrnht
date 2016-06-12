@@ -35,7 +35,7 @@ function theme_enqueue_scripts_styles(){
     wp_enqueue_script('jquery',false,array(),null,true);
 }
 add_filter('body_class','add_body_class');
-function add_body_class($classes){if(!is_singular()):$classes[] = 'card-list';endif;return $classes;}
+function add_body_class($classes){if(is_singular()):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
 /*
     metainfo
 1.アクセス中のURL取得
