@@ -7,6 +7,8 @@
 3.ADD editor-style
 4.ADD class in body
 5.jQuery load from Google
+6.ブログカードにアナリティクス仕込み
+7.js&CSSファイルから?ver=hogehogeを削除
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -36,6 +38,17 @@ function theme_enqueue_scripts_styles(){
 }
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
+function wkwkrnht_embed_analytics(){ ?>
+<script type="text/javascript">
+	function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
+</script>
+<?php }
+add_action('embed_head','wkwkrnht_embed_analytics')
+add_filter('style_loader_src','remove_ver_script',9999);
+add_filter('script_loader_src','remove_ver_script',9999);
+function remove_ver_script($src){if(strpos($src,'ver=')):$src=remove_query_arg('ver',$src);return $src;endif;}
 /*
     metainfo
 1.アクセス中のURL取得
@@ -73,39 +86,39 @@ function meta_description(){
 function meta_image(){
     $m='';$pattern='';
     if(is_singular()&&has_post_thumbnail()):
-        echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+        $pattern=get_post_thumbnail_id($post->ID);
+        echo wp_get_attachment_url($pattern);
     else:
         $pattern=get_custom_logo();
         preg_match ($pattern, '/src=(.*)/', $m);
         echo $m;
     endif;
-
 }
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i', '<img alt=""${1}>', $content);});
-///////////////////////////////////////
-// Wordpressデフォルトのnext/prev出力動作を停止
-///////////////////////////////////////
+/*
+    Wordpressデフォルトのnext/prev出力動作を停止
+*/
 remove_action('wp_head','adjacent_posts_rel_link_wp_head');
 
-///////////////////////////////////////
-//ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
-///////////////////////////////////////
-function rel_next_prev_link_tags() {
-    if(is_single() || is_page()) {
+/*
+    ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
+*/
+function rel_next_prev_link_tags(){
+    if(is_single() || is_page()){
         //1ページを複数に分けた分割ページ（マルチページ）でのタグ出力
         global $wp_query;
         $multipage = check_multi_page();
-        if($multipage[0] > 1) {
+        if($multipage[0] > 1){
             $prev = generate_multipage_url('prev');
             $next = generate_multipage_url('next');
-            if($prev) {echo '<link rel="prev" href="'.$prev.'" />'.PHP_EOL;}
-            if($next) {echo '<link rel="next" href="'.$next.'" />'.PHP_EOL;}
+            if($prev){echo '<link rel="prev" href="'.$prev.'" />'.PHP_EOL;}
+            if($next){echo '<link rel="next" href="'.$next.'" />'.PHP_EOL;}
         }
     }else{
         //トップページやカテゴリページなどのページネーションでのタグ出力
         global $paged;
-        if ( get_previous_posts_link() ){echo '<link rel="prev" href="'.get_pagenum_link( $paged - 1 ).'" />'.PHP_EOL;}
-        if ( get_next_posts_link() ){echo '<link rel="next" href="'.get_pagenum_link( $paged + 1 ).'" />'.PHP_EOL;}
+        if(get_previous_posts_link()){echo '<link rel="prev" href="'.get_pagenum_link( $paged - 1 ).'" />'.PHP_EOL;}
+        if(get_next_posts_link()){echo '<link rel="next" href="'.get_pagenum_link( $paged + 1 ).'" />'.PHP_EOL;}
     }
 }
 //適切なページのヘッダーにnext/prevを表示
@@ -117,19 +130,17 @@ function generate_multipage_url($rel='prev') {
     global $post;
     $url = '';
     $multipage = check_multi_page();
-    if($multipage[0] > 1) {
+    if($multipage[0] > 1){
         $numpages = $multipage[0];
         $page = $multipage[1] == 0 ? 1 : $multipage[1];
         $i = 'prev' == $rel? $page - 1: $page + 1;
-        if($i && $i > 0 && $i <= $numpages) {
-            if(1 == $i) {
+        if($i && $i > 0 && $i <= $numpages){
+            if(1 == $i){
                 $url = get_permalink();
-            } else {
-                if ('' == get_option('permalink_structure') || in_array($post->post_status, array('draft', 'pending'))) {
-                    $url = add_query_arg('page', $i, get_permalink());
-                } else {
-                    $url = trailingslashit(get_permalink()).user_trailingslashit($i, 'single_paged');
-                }
+            }elseif('' == get_option('permalink_structure') || in_array($post->post_status,array('draft','pending'))){
+                $url = add_query_arg('page',$i,get_permalink());
+            }else{
+                $url = trailingslashit(get_permalink()).user_trailingslashit($i,'single_paged');
             }
         }
     }
@@ -137,10 +148,10 @@ function generate_multipage_url($rel='prev') {
 }
 
 //分割ページ（マルチページ）かチェックする
-function check_multi_page() {
+function check_multi_page(){
   $num_pages    = substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;
-  $current_page = get_query_var( 'page' );
-  return array ( $num_pages, $current_page );
+  $current_page = get_query_var('page');
+  return array($num_pages,$current_page);
 }
 /*
     1st card
@@ -190,3 +201,130 @@ function pagenation($pages='',$range=3){
         echo'</ul>';
     }
 }
+/*
+    コンテンツ中装飾
+1.マーカー風にハイライト
+2.@hogehogeをツイッターにリンク
+*/
+function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
+function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
+add_filter('the_title','wps_highlight_results');
+add_filter('the_content','wps_highlight_results');
+add_filter('the_content','twtreplace');
+add_filter('comment_text','twtreplace');
+/*
+    ショートコード
+1.カスタムCSS
+2.HTMLエンコード
+3.embed.ly版ブログカード
+4.はてな版ブログカードS
+*/
+function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
+function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
+function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
+function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
+add_shortcode('customcss','style_into_article');
+add_shortcode('html_encode','html_encode');
+add_shortcode('embedly','url_to_embedly');
+add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
+/*
+    投稿画面カスタマイズ
+1.カテゴリーフィルター
+2.抜粋制限
+3.クイックタグ追加
+*/
+function post_filter_categories(){ ?>
+<script type="text/javascript">
+	jQuery(function($){function catFilter(header,list){var form =$('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'38px'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'42px'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
+</script>
+<?php }
+function appthemes_add_quicktags(){
+    if(wp_script_is('quicktags')){ ?>
+    <script type="text/javascript">
+		QTags.addButton('qt-p','p','<p>','</p>');
+		QTags.addButton('qt-h2','h2','<h2>','</h2>');
+		QTags.addButton('qt-h3','h3','<h3>','</h3>');
+		QTags.addButton('qt-h4','h4','<h4>','</h4>');
+		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
+		QTags.addButton('qt-information','情報','<div class="information">','</div>');
+		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
+		QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
+		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','{/html_encode]');
+		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
+		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
+    </script>
+<?php }}
+add_action('admin_head-post-new.php','post_filter_categories');
+add_action('admin_head-post.php','post_filter_categories');
+add_action('admin_print_footer_scripts','appthemes_add_quicktags');
+//プロフィール欄追加(the_author_meta('hogehoe')で表示)
+function my_new_contactmethods($contactmethods){
+  $contactmethods['TEL']='TEL';
+  $contactmethods['FAX']='FAX';
+  $contactmethods['Addres']='住所';
+  $contactmethods['Graveter']='Graveter';
+  $contactmethods['LINE']='LINE';
+  $contactmethods['YO']='YO!';
+  $contactmethods['twitter']='Twitter';
+  $contactmethods['facebook']='Facebook';
+  $contactmethods['Linkedin']='Linkedin';
+  $contactmethods['Googleplus']='Google+';
+  $contactmethods['Github']='Github';
+  $contactmethods['Bitbucket']='Bitbucket';
+  $contactmethods['Codepen']='Codepen';
+  $contactmethods['JSbuddle']='JSbuddle';
+  $contactmethods['Quita']='Quita';
+  $contactmethods['xda']='xda';
+  $contactmethods['hatenablog']='はてなブログ';
+  $contactmethods['hatenadiary']='はてなダイアリー';
+  $contactmethods['hatebu']='はてなブックマーク';
+  $contactmethods['Pocket']='Pocket';
+  $contactmethods['ameba']='アメーバ';
+  $contactmethods['fc2']='fc2';
+  $contactmethods['mixi']='mixi';
+  $contactmethods['Instagram']='Instagram';
+  $contactmethods['Pinterest']='Pinterest';
+  $contactmethods['Flickr']='Flickr';
+  $contactmethods['FourSquare']='FourSquare';
+  $contactmethods['Swarm']='Swarm';
+  $contactmethods['Steam']='Steam';
+  $contactmethods['XboxLive']='XboxLive';
+  $contactmethods['PSN']='PSN';
+  $contactmethods['NINTENDOaccount']='ニンテンドーアカウント';
+  $contactmethods['NINTENDONetworkID']='ニンテンドーネットワークID';
+  $contactmethods['friendcode']='フレンドコード';
+  $contactmethods['UPlay']='UPlay';
+  $contactmethods['EAOrigin']='EAOrigin';
+  $contactmethods['SQUAREENIXMembers']='SQUAREENIXMembers';
+  $contactmethods['BANDAINAMCOID']='BANDAINAMCOID';
+  $contactmethods['SEGAID']='SEGAID';
+  $contactmethods['vine']='vine';
+  $contactmethods['vimeo']='vimeo';
+  $contactmethods['YouTube']='YouTube';
+  $contactmethods['USTREAM']='USTREAM';
+  $contactmethods['Twitch']='Twitch';
+  $contactmethods['niconico']='niconico';
+  $contactmethods['Skype']='Skype';
+  $contactmethods['twitcasting']='ツイキャス';
+  $contactmethods['MixCannel']='MixChannel';
+  $contactmethods['Slideshare']='Slideshare';
+  $contactmethods['Medium']='Medium';
+  $contactmethods['note']='note';
+  $contactmethods['Pxiv']='Pxiv';
+  $contactmethods['Tumblr']='Tumblr';
+  $contactmethods['Blogger']='Blogger';
+  $contactmethods['livedoor']='livedoor';
+  $contactmethods['wordpress.com']='wordpress.com';
+  $contactmethods['wordpress.org']='wordpress.org';
+  $contactmethods['Adsense']='アドセンス';
+  $contactmethods['A8.net']='A8.net';
+  $contactmethods['GoogleAdsense']='GoogleAdsense';
+  $contactmethods['AmazonAdsense']='Amazonアフィリエイト';
+  $contactmethods['Amazonlist']='Amazonの欲しいものリスト';
+  $contactmethods['Yahooaction']='Yahoo!オークション';
+  $contactmethods['Rakutenaction']='楽天オークション';
+  $contactmethods['Rakuma']='ラクマ';
+  $contactmethods['Merukari']='メルカリ';
+  $contactmethods['Bitcoin']='Bitcoin';
+  return $contactmethods;}
+add_filter('user_contactmethods','my_new_contactmethods',10,1);
