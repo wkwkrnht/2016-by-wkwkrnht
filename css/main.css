@@ -58,7 +58,8 @@
 4.pre&address&code
 5.table
 */
-.article-img{height:20vh;position:fixed;top:0;z-index:-1;margin:0 auto;}
+.article-img{height:20vh;position:fixed;top:0;z-index:-1;}
+.article-img img{margin:0 auto;}
 .singular{padding-top:20vh;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-meta{font-size:1.5rem;text-align:center;}
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
