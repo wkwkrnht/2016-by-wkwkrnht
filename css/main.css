@@ -35,6 +35,13 @@
 .widget_archive .years ul{-webkit-transition:.3s ease;transition:.3s ease;margin:0;margin-bottom:1em;}
 #sidebar .widget_archive ul.years li{margin-bottom:0;}
 .widget_archive ul.years .hide{margin:0;height:0;opacity:0;visibility:hidden;}
+/*
+    tag-list
+*/
+.widget_tag_cloud{margin:3vmin;padding:0;list-style:none;}
+.widget_tag_cloud li{display:inline-block;margin:0 .3em .3em 0;padding:0;}
+.widget_tag_cloud li a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
+.widget_tag_cloud li a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
 /*card-list*/
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
@@ -59,8 +66,8 @@
 5.table
 6.独自要素
 */
-.article-img{height:20vh;position:fixed;top:0;z-index:-1;}
-.article-img img{height:20vh;width:100%;margin:0 auto;}
+.article-img{height:22vh;position:fixed;top:0;z-index:-1;}
+.article-img img{display:block;height:20vh;width:100%;margin:1vh auto;}
 .singular{padding-top:20vh;z-index:2;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-meta{font-size:1.5rem;text-align:center;}
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
@@ -86,12 +93,7 @@
 .article-main table tr th,.article-main table tr td{padding:1em;line-height:1.5;text-align:center;border:1px solid #cfcfcf;}
 
 .article-main .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
-.hatenablogcard{max-width:80%;margin:5%;}
-/*tag-list*/
-.widget_tag_cloud{margin:3vmin;padding:0;list-style:none;}
-.widget_tag_cloud li{display:inline-block;margin:0 .3em .3em 0;padding:0;}
-.widget_tag_cloud li a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
-.widget_tag_cloud li a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
+
 /*codex*/
 .alignnone {margin: 5px 20px 20px 0;}
 .alignright{float:right;margin:5px 0 20px 20px;}
@@ -163,11 +165,13 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
     	.card{margin:2.5vmin 0;}
     	.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
     	.info-card{height:30vmin;width:160vmin;margin:2vmin auto;}
+        .hatenablogcard{max-width:60vw;margin:5vh 10vw;}
     }
     /*tablet-style*/
     @media screen and (max-width:720px){
     	.info-card{height:45vmin;width:80vmin;}
     	.card{margin:2.5vmin auto;}
+        .hatenablogcard{max-width:70vw;margin:5vh 5vw;}
     	/*article-table*/
     	.article-main table,.article-main table caption.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th,.article-main table tr td{display:block;}
     	.article-main table tr th,.article-main table tr td{margin:-1px;}
@@ -180,6 +184,7 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
     @media screen and (max-width:1270px){
         .info-card{height:45vmin;width:80vmin;}
         .card{margin:2.5vmin auto;}
+        .hatenablogcard{max-width:80vw;margin:5vh 0;}
         /*article-table*/
         .article-main table,.article-main table caption.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th,.article-main table tr td{display:block;}
         .article-main table tr th,.article-main table tr td{margin:-1px;}
