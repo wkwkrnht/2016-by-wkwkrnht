@@ -7,8 +7,6 @@
 3.ADD editor-style
 4.ADD class in body
 5.jQuery load from Google
-6.ブログカードにアナリティクス仕込み
-7.js&CSSファイルから?ver=hogehogeを削除
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -38,17 +36,6 @@ function theme_enqueue_scripts_styles(){
 }
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
-function wkwkrnht_embed_analytics(){ ?>
-<script type="text/javascript">
-	function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
-</script>
-<?php }
-add_action('embed_head','wkwkrnht_embed_analytics')
-add_filter('style_loader_src','remove_ver_script',9999);
-add_filter('script_loader_src','remove_ver_script',9999);
-function remove_ver_script($src){if(strpos($src,'ver=')):$src=remove_query_arg('ver',$src);return $src;endif;}
 /*
     metainfo
 1.アクセス中のURL取得

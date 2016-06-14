@@ -52,21 +52,23 @@
 .pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
 /*
     article-style
-1.header&man
+1.header&main
 2.link
-3.h1&h2&h3&h4&h5&h6
+3.見出し
 4.pre&address&code
 5.table
+6.独自要素
 */
 .article-img{height:20vh;position:fixed;top:0;z-index:-1;}
-.article-img img{margin:0 auto;}
-.singular{padding-top:20vh;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.article-img img{height:20vh;width:100%;margin:0 auto;}
+.singular{padding-top:20vh;z-index:2;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-meta{font-size:1.5rem;text-align:center;}
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
+
 .article-main a{border-bottom:0;}
 .article-main a::before{content:'';border-bottom:solid 1px #0000ff;position: absolute;left:0;bottom:0;width:100%;opacity:0;-webkit-transition:all 0.2s ease;transition:all 0.2s ease;}
 .article-main a:hover::before{opacity:1.0;}
-.article-main:visited{color:#934c7b;}
+.article-main a:visited{color:#934c7b;}
 
 .article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:10px auto;font-size:2rem;line-height:45px;text-align:center;}
 .article-main h2{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
@@ -75,13 +77,16 @@
 .article-main h5{border-left:10px solid #ffcc00;}
 .article-main h6{border-bottom:.75vmin dashed #ffcc00;}
 
-.article-main pre,.article-main address{padding:3% 0 3% 8%;background-color:#f1f1f1;border:1px solid #333;border-radius:5px;}
+.article-main pre,.article-main code,.article-main address{padding:3% 0 3% 8%;background-color:#f1f1f1;border:1px solid #333;border-radius:5px;}
 .microlight{font-family:monospace;white-space:pre;background-color:#C4E4E8;color:#052C36;}
 
 .article-main table{width:100%;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border:1px solid #cfcfcf;}
 .article-main table caption{padding:1em;line-height:1.5;text-align:center;background-color:#ffc045;}
 .article-main table tr th{background-color:#f1f1f1;}
 .article-main table tr th,.article-main table tr td{padding:1em;line-height:1.5;text-align:center;border:1px solid #cfcfcf;}
+
+.article-main .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
+.hatenablogcard{max-width:80%;margin:5%;}
 /*tag-list*/
 .widget_tag_cloud{margin:3vmin;padding:0;list-style:none;}
 .widget_tag_cloud li{display:inline-block;margin:0 .3em .3em 0;padding:0;}
