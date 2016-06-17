@@ -166,12 +166,12 @@ function get_ogp_info($url){
 
 function make_ogp_blog_card($url){
     $data = get_ogp_info($url);
-    $description = echo($data["description"]);
-    $description = mb_substr($description,0,30);
-    $html  = '<div class="main"><img src="' . echo($data["img"]) . '" alt="' . echo($data["title"]) . '`s img" class="img">';
-    $html .= '<div class="txt"><h2 class="title">' . echo($data["title"]) . '</h2>';
+    $description = print_r($data["description"]);
+    //$description = mb_substr($description,0,30);
+    $html  = '<div class="main"><img src="' . print_r($data["img"]) . '" alt="' . print_r($data["title"]) . '`s img" class="img">';
+    $html .= '<div class="txt"><h2 class="title">' . print_r($data["title"]) . '</h2>';
     $html .= '<p class="description">' . $description . '</p></div></div>';
-    $html .= '<div class="sub"><span class="site-name">' . echo($data["site_name"]) . '</span><span><i class="fa fa-share-alt"></i></span></div>';
+    $html .= '<div class="sub"><span class="site-name">' . print_r($data["site_name"]) . '</span><span><i class="fa fa-share-alt"></i></span></div>';
     return '<div class="ogp-blogcard">' . $html . '</div>';
 }
 /*
