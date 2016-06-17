@@ -141,6 +141,40 @@ function check_multi_page(){
   return array($num_pages,$current_page);
 }
 /*
+    oEmbed
+1.API対応追加
+2.OGP版
+    ●情報取得
+    ●カード作成
+*/
+wp_oembed_add_provider('http://*.hatenablog.com/*', 'http://hatenablog.com/oembed');
+wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
+
+
+function get_ogp_info($url){
+    require_once('parts/OpenGraph.php');
+	$graph = OpenGraph::fetch($url);
+    $ogpdata = [
+        "site_name" => $graph->site_name,
+        "url" => $graph->url,
+        "title" => $graph->title,
+        "description" => $graph->description,
+        "img" => $graph->image
+        ];
+    return $ogpdata;
+}
+
+function make_ogp_blog_card($url){
+    $data = get_ogp_info($url);
+    $description = var_dump($data["description"]);
+    $description = mb_substr($description,0,30);
+    $html  = '<div class="main"><img src="' . var_dump($data["img"]) . '" alt="' . var_dump($data["title"]) . '`s img" class="img">';
+    $html .= '<div class="txt"><h2 class="title">' . var_dump($data["title"]) . '</h2>';
+    $html .= '<p class="description">' . $description . '</p></div></div>';
+    $html .= '<div class="sub"><span class="site-name">' . var_dump($data["site_name"]) . '</span><span><i class="fa fa-share-alt"></i></span></div>';
+    return '<div class="ogp-blogcard">' . $html . '</div>';
+}
+/*
     1st card
 1.site name&site description
 2.cat name&cat description
@@ -210,10 +244,12 @@ function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$a
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
+function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
+add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 /*
     投稿画面カスタマイズ
 1.カテゴリーフィルター
@@ -239,6 +275,7 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','{/html_encode]');
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
+        QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
     </script>
 <?php }}
 add_action('admin_head-post-new.php','post_filter_categories');
