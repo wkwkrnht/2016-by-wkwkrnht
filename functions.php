@@ -144,27 +144,20 @@ function check_multi_page(){
     oEmbed
 1.API対応追加
 2.OGP版
-    ●情報取得
-    ●カード作成
 */
 wp_oembed_add_provider('http://*.hatenablog.com/*', 'http://hatenablog.com/oembed');
 wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
 
-
-function get_ogp_info($url){
+function make_ogp_blog_card($url){
     require_once('parts/OpenGraph.php');
 	$graph = OpenGraph::fetch($url);
-    $ogpdata = [
+    $ogpdata = array(
         "site_name" => $graph->site_name,
         "url" => $graph->url,
         "title" => $graph->title,
         "description" => $graph->description,
-        "img" => $graph->image
-        ];
-}
-
-function make_ogp_blog_card($url){
-    get_ogp_info($url);
+        "img" => $graph->image,
+    );
     $description = print_r($ogpdata["description"]);
     $description = mb_substr($description,0,30);
     //$description = 'description';
