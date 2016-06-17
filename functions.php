@@ -161,18 +161,17 @@ function get_ogp_info($url){
         "description" => $graph->description,
         "img" => $graph->image
         ];
-    return $ogpdata;
 }
 
 function make_ogp_blog_card($url){
-    $data = get_ogp_info($url);
-    /*$description = print_r($data["description"]);
-    $description = mb_substr($description,0,30);*/
-    $description = 'description';
-    $html  = '<div class="main"><img src="' . print_r($data["img"]) . '" alt="' . print_r($data["title"]) . '`s img" class="img">';
-    $html .= '<div class="txt"><h2 class="title">' . print_r($data["title"]) . '</h2>';
+    get_ogp_info($url);
+    $description = print_r($ogpdata["description"]);
+    $description = mb_substr($description,0,30);
+    //$description = 'description';
+    $html  = '<div class="main"><img src="' . print_r($ogpdata["img"]) . '" alt="' . print_r($ogpdata["title"]) . '`s img" class="img">';
+    $html .= '<div class="txt"><h2 class="title">' . print_r($ogpdata["title"]) . '</h2>';
     $html .= '<p class="description">' . $description . '</p></div></div>';
-    $html .= '<div class="sub"><span class="site-name">' . print_r($data["site_name"]) . '</span><span><i class="fa fa-share-alt"></i></span></div>';
+    $html .= '<div class="sub"><span class="site-name">' . print_r($ogpdata["site_name"]) . '</span><span><i class="fa fa-share-alt"></i></span></div>';
     return '<div class="ogp-blogcard">' . $html . '</div>';
 }
 /*
