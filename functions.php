@@ -174,7 +174,9 @@ function make_ogp_blog_card($url){
             </div>
         </div>
         <div class="ogp-blogcard-footer">
-            <span class="site-name">' . $site_name . '</span>
+            <a href="' . $url . '" target="_blank">
+                <span class="site-name">' . $site_name . '</span>
+            </a>
         </div>
     </div>';
 }
