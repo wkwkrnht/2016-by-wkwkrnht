@@ -153,7 +153,7 @@ function make_ogp_blog_card($url){
     require_once('parts/OpenGraph.php');
 	$ogp = OpenGraph::fetch($url);
     $url = $ogp->url;
-    $url = mb_convert_encoding($url,"UTF-8");
+    //$url = mb_convert_encoding($url,"UTF-8");
     $img = $ogp->image;
     $title = $ogp->title;
     $title = mb_convert_encoding($title,"UTF-8");
@@ -164,16 +164,18 @@ function make_ogp_blog_card($url){
     $html  = '';
     return
     '<div class="ogp-blogcard">
-        <a href="' . $url . '" target="_blank">
-            <div class="ogp-blogcard-main">
-                <img src="' . $img . '" alt="' . $title . '`s img" class="ogp-blogcard-img">
-                <div class="ogp-blogcard-info">
+        <div class="ogp-blogcard-main">
+            <img src="' . $img . '" alt="' . $title . '`s img" class="ogp-blogcard-img">
+            <div class="ogp-blogcard-info">
+                <a href="' . $url . '" target="_blank">
                     <h2 class="title">' . $title . '</h2>
                     <p class="description">' . $description . '</p>
-                </div>
+                </a>
             </div>
-            <div class="ogp-blogcard-footer"><span class="site-name">' . $site_name . '</span></div>
-        </a>
+        </div>
+        <div class="ogp-blogcard-footer">
+            <span class="site-name">' . $site_name . '</span>
+        </div>
     </div>';
 }
 /*

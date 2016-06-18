@@ -117,9 +117,6 @@
 5.table
 6.独自要素
 */
-.article-img{height:22vh;position:fixed;top:0;z-index:-1;}
-.article-img img{display:block;height:20vh;width:100%;margin:1vh auto;}
-.singular{padding-top:20vh;z-index:2;background-color:#fff;box-shadow:0 -3px 6px rgba(0,0,0,.1);}
 .article-meta{font-size:1.5rem;text-align:center;}
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
 
