@@ -144,36 +144,21 @@ function check_multi_page(){
     oEmbed
 1.API対応追加
 2.OGP版
-    ●情報取得
-    ●カード作成
 */
 wp_oembed_add_provider('http://*.hatenablog.com/*', 'http://hatenablog.com/oembed');
 wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
 
 
-function get_ogp_info($url){
+function make_ogp_blog_card($url){
     require_once('parts/OpenGraph.php');
 	$graph = OpenGraph::fetch($url);
-    $ogpdata = [
-        "site_name" => $graph->site_name,
-        "url" => $graph->url,
-        "title" => $graph->title,
-        "description" => $graph->description,
-        "img" => $graph->image
-        ];
-    return $ogpdata;
-}
-
-function make_ogp_blog_card($url){
-    $data = get_ogp_info($url);
-    /*$description = print_r($data["description"]);
-    $description = mb_substr($description,0,30);*/
-    $description = 'description';
-    $html  = '<div class="main"><img src="' . print_r($data["img"]) . '" alt="' . print_r($data["title"]) . '`s img" class="img">';
-    $html .= '<div class="txt"><h2 class="title">' . print_r($data["title"]) . '</h2>';
+    $description = echo($graph->description);
+    $description = mb_substr($description,0,30);
+    $html  = '<div class="main"><img src="' . echo($graph->image) . '" alt="' . echo($graph->title) . '`s img" class="img">';
+    $html .= '<div class="txt"><h2 class="title">' . echo($graph->title) . '</h2>';
     $html .= '<p class="description">' . $description . '</p></div></div>';
-    $html .= '<div class="sub"><span class="site-name">' . print_r($data["site_name"]) . '</span><span><i class="fa fa-share-alt"></i></span></div>';
-    return '<div class="ogp-blogcard">' . $html . '</div>';
+    $html .= '<div class="sub"><span class="site-name">' . echo($graph->site_name) . '</span></div>';
+    return '<a href="' . echo($graph->url) . '" target="_blank" class="ogp-blogcard">' . $html . '</a>';
 }
 /*
     1st card
