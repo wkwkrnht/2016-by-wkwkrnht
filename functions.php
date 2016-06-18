@@ -161,11 +161,20 @@ function make_ogp_blog_card($url){
     $site_name = mb_convert_encoding($site_name,"UTF-8");
     $description = $ogp->description;
     $description = mb_substr($description,0,30,'UTF-8');
-    $html  = '<div class="ogp-blogcard-main"><img src="' . $img . '" alt="' . $title . '`s img" class="ogp-blogcard-img">';
-    $html .= '<div class="ogp-blogcard-info"><h2 class="title">' . $title . '</h2>';
-    $html .= '<p class="description">' . $description . '</p></div></div>';
-    $html .= '<div class="ogp-blogcard-footer"><span class="site-name">' . $site_name . '</span></div>';
-    return '<a href="' . $url . '" target="_blank" class="ogp-blogcard">' . $html . '</a>';
+    $html  = '';
+    return
+    '<div class="ogp-blogcard">
+        <a href="' . $url . '" target="_blank">
+            <div class="ogp-blogcard-main">
+                <img src="' . $img . '" alt="' . $title . '`s img" class="ogp-blogcard-img">
+                <div class="ogp-blogcard-info">
+                    <h2 class="title">' . $title . '</h2>
+                    <p class="description">' . $description . '</p>
+                </div>
+            </div>
+            <div class="ogp-blogcard-footer"><span class="site-name">' . $site_name . '</span></div>
+        </a>
+    </div>';
 }
 /*
     1st card
