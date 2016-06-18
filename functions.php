@@ -152,12 +152,15 @@ wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed
 function make_ogp_blog_card($url){
     require_once('parts/OpenGraph.php');
 	$ogp = OpenGraph::fetch($url);
-    $url = $graph->url;
+    $url = $ogp->url;
+    $url = mb_convert_encoding($url,"UTF-8");
     $img = $ogp->image;
     $title = $ogp->title;
-    $site_name = $graph->site_name;
+    $title = mb_convert_encoding($title,"UTF-8");
+    $site_name = $ogp->site_name;
+    $site_name = mb_convert_encoding($site_name,"UTF-8");
     $description = $ogp->description;
-    $description = mb_substr($description,0,30);
+    $description = mb_substr($description,0,30,UTF-8);
     $html  = '<div class="main"><img src="' . $img . '" alt="' . $title . '`s img" class="img">';
     $html .= '<div class="txt"><h2 class="title">' . $title . '</h2>';
     $html .= '<p class="description">' . $description . '</p></div></div>';
