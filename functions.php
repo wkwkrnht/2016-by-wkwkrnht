@@ -154,12 +154,8 @@ function make_ogp_blog_card($url){
     $url = $ogp->url;
     $img = $ogp->image;
     $title = $ogp->title;
-    //$title = mb_convert_encoding($title,"UTF-8");
     $site_name = $ogp->site_name;
-    //$site_name = mb_convert_encoding($site_name,"UTF-8");
     $description = $ogp->description;
-    //$description = mb_substr($description,0,30,'UTF-8');
-    $html  = '';
     return
     '<div class="ogp-blogcard">
         <div class="ogp-blogcard-main">
