@@ -114,7 +114,7 @@
 2.link
 3.見出し
 4.pre&address&code
-5.table
+5.テーブル
 6.独自要素
 */
 .article-meta{font-size:1.5rem;text-align:center;}
@@ -141,10 +141,9 @@
 .article-main table tr th,.article-main table tr td{padding:1em;line-height:1.5;text-align:center;border:1px solid #cfcfcf;}
 
 .article-main .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
-.article-main .ogp-blogcard{display:block;max-width:96%;margin:3vmin auto;padding:1vmin 2vmin;border:1px solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);text-decoration:none;}
-.article-main .ogp-blogcard-main:hover{border-bottom:0;}
+.article-main .ogp-blogcard{display:block;min-height:15vh;max-width:96%;margin:3vmin auto;padding:1vmin 2vmin;border:1px solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);text-decoration:none;}
 .article-main .ogp-blogcard-main{height:80%;position:relative;top:0;text-align:center;}
-.article-main .ogp-blogcard-img{float:left;height:40%;width:45%;}
+.article-main .ogp-blogcard-img{float:left;height:30%;width:45%;}
 .article-main .ogp-blogcard-info{float:right;width:55%;}
 .article-main .ogp-blogcard-info .title{width:60%;font-size:1.8rem;color:#333;background-color:transparent;box-shadow:none;}
 .article-main .ogp-blogcard-footer{height:20%;position:relative;bottom:0;border-top:1px solid #333;}
@@ -167,9 +166,9 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
     text-align: center;
 }
 
-.wp-caption.alignnone {margin:5px 20px 20px 0;}
-.wp-caption.alignleft {margin:5px 20px 20px 0;}
-.wp-caption.alignright {margin:5px 0 20px 20px;}
+.wp-caption.alignnone{margin:5px 20px 20px 0;}
+.wp-caption.alignleft{margin:5px 20px 20px 0;}
+.wp-caption.alignright{margin:5px 0 20px 20px;}
 .wp-caption img{height:auto;width:auto;max-width:98.5%;border:0 none;margin:0;padding:0;}
 
 .wp-caption p.wp-caption-text {
@@ -192,7 +191,7 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
 	background-color: #f1f1f1;
 	border-radius: 3px;
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto !important;
+	clip: auto;
 	color: #21759b;
 	display: block;
 	font-size: 14px;
