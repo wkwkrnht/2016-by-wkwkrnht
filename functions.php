@@ -73,8 +73,7 @@ function meta_description(){
 function meta_image(){
     $m='';$pattern='';
     if(is_singular()&&has_post_thumbnail()):
-        $pattern=get_post_thumbnail_id($post->ID);
-        echo wp_get_attachment_url($pattern);
+        echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));
     else:
         $pattern=get_custom_logo();
         preg_match ($pattern, '/src=(.*)/', $m);
@@ -143,7 +142,7 @@ function check_multi_page(){
 /*
     oEmbed
 1.API対応追加
-2.OGP版
+2.OGP版ブログカード
 */
 wp_oembed_add_provider('http://*.hatenablog.com/*', 'http://hatenablog.com/oembed');
 wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
@@ -152,6 +151,7 @@ wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed
 function make_ogp_blog_card($url){
     require_once('parts/OpenGraph.php');
 	$ogp = OpenGraph::fetch($url);
+    var_dump($ogp);
     $url = $ogp->url;
     //$url = mb_convert_encoding($url,"UTF-8");
     $img = $ogp->image;
