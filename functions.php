@@ -151,14 +151,18 @@ wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed
 
 function make_ogp_blog_card($url){
     require_once('parts/OpenGraph.php');
-	$graph = OpenGraph::fetch($url);
-    $description = echo($graph->description);
+	$ogp = OpenGraph::fetch($url);
+    $url = $graph->url;
+    $img = $ogp->image;
+    $title = $ogp->title;
+    $site_name = $graph->site_name;
+    $description = $ogp->description;
     $description = mb_substr($description,0,30);
-    $html  = '<div class="main"><img src="' . echo($graph->image) . '" alt="' . echo($graph->title) . '`s img" class="img">';
-    $html .= '<div class="txt"><h2 class="title">' . echo($graph->title) . '</h2>';
+    $html  = '<div class="main"><img src="' . $img . '" alt="' . $title . '`s img" class="img">';
+    $html .= '<div class="txt"><h2 class="title">' . $title . '</h2>';
     $html .= '<p class="description">' . $description . '</p></div></div>';
-    $html .= '<div class="sub"><span class="site-name">' . echo($graph->site_name) . '</span></div>';
-    return '<a href="' . echo($graph->url) . '" target="_blank" class="ogp-blogcard">' . $html . '</a>';
+    $html .= '<div class="sub"><span class="site-name">' . $site_name . '</span></div>';
+    return '<a href="' . $url . '" target="_blank" class="ogp-blogcard">' . $html . '</a>';
 }
 /*
     1st card
