@@ -167,7 +167,7 @@ function make_ogp_blog_card($url){
     return
     '<div class="ogp-blogcard">
         <div class="ogp-blogcard-main">
-            <div class="ogp-blogcard-img" style="background:url(' . $img . ');"></div>
+            <img class="ogp-blogcard-img" src="' . $img . '" ait="' . $title . '"></div>
             <div class="ogp-blogcard-info">
                 <a href="' . $url . '" target="_blank">
                     <h2 class="ogp-blogcard-title">' . $title . '</h2>
