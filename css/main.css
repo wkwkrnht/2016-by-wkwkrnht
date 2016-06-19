@@ -105,6 +105,19 @@
 .pagenation a{background-color:#fff;color:#00a5de;text-decoration:none;}
 .pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
 /*
+    独自要素
+1.マーカー
+2,OGP版ブログカード
+*/
+.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
+
+.ogp-blogcard{display:block;min-height:15vh;max-width:96%;margin:3vmin auto;padding:1vmin 2vmin;border:1.5vmin solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.ogp-blogcard-main{height:80%;position:relative;top:0;text-align:center;}
+.ogp-blogcard-img{height:0;width:45%;padding-top:calc(45% / 16 * 9);}
+.ogp-blogcard-info{display:inline-block;width:55%;}
+.ogp-blogcard-title{width:60%;font-size:1.8rem;color:#333;background-color:transparent;}
+.ogp-blogcard-footer{height:20%;position:relative;bottom:0;border-top:.5vmin solid #333;}
+/*
     article-style
 1.header&main
 2.link
@@ -136,14 +149,7 @@
 .article-main table tr th{background-color:#f1f1f1;}
 .article-main table tr th,.article-main table tr td{padding:1em;line-height:1.5;text-align:center;border:1px solid #cfcfcf;}
 
-.article-main .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
-.article-main .ogp-blogcard{display:block;min-height:15vh;max-width:96%;margin:3vmin auto;padding:1vmin 2vmin;border:2vmin solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-main .ogp-blogcard a:hover::before{opacity:0;}
-.article-main .ogp-blogcard-main{height:80%;position:relative;top:0;text-align:center;}
-.article-main .ogp-blogcard-img{display:inline-block;height:0;width:45%;padding-top:calc(45% / 16 * 9);}
-.article-main .ogp-blogcard-info{display:inline-block;width:55%;}
-.article-main .ogp-blogcard-info .title{width:60%;font-size:1.8rem;color:#333;background-color:transparent;box-shadow:none;}
-.article-main .ogp-blogcard-footer{height:20%;position:relative;bottom:0;border-top:1vmin solid #333;}
 /*codex*/
 .alignnone {margin: 5px 20px 20px 0;}
 .alignright{float:right;margin:5px 0 20px 20px;}
