@@ -134,7 +134,7 @@
 .article-main h5{border-left:10px solid #ffcc00;}
 .article-main h6{border-bottom:.75vmin dashed #ffcc00;}
 
-.article-main pre,.article-main code,.article-main address{padding:3% 0 3% 8%;background-color:#f1f1f1;border:1px solid #333;border-radius:5px;}
+.article-main pre,.article-main address{background-color:#f1f1f1;}
 .microlight{font-family:monospace;white-space:pre;background-color:#C4E4E8;color:#052C36;}
 
 .article-main table{width:100%;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border:1px solid #cfcfcf;}

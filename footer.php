@@ -40,7 +40,7 @@
             </ul>
         <?php endif;?>
     </div>
-    <script type='text/javascript' src='./js/script.php'></script>
+    <?php require(get_template_directory() . '/js/script.php');?>
     <?php wp_footer();?>
 </body>
 </html>
