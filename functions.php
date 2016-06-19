@@ -2,11 +2,11 @@
 /*
     theme-setup
 0.SET theme support
-1.SET nav area
-2.SET wiwidget area
-3.ADD editor-style
-4.ADD class in body
-5.jQuery load from Google
+1.ナビゲーションエリア追加
+2.ウィジェットエリア追加
+3.エディタースタイル追加
+4.body_classにクラス追加
+5.jQueryのロードをGoogleから行うように
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -39,40 +39,61 @@ function add_body_class($classes){if(is_singular()):$classes[] = 'singular';else
 /*
     metainfo
 1.アクセス中のURL取得
-2.カスタムロゴ取得
-3.記事ページのメタ設定
-    ●キーワード
-    ●アイキャッチ
-4.更新日と公開日の比較
-5.カテゴリーのキーワード化
-6.カテゴリーページのメタ設定
+2.更新時間と投稿時間の比較
+3.カテゴリーページのメタ設定
     ●ディスプリクション
     ●キーワード
+4.タグページのメタ設定
+    ●キーワード
+    ●ディスプリクション
+5.メタディスクリプション
+6.メタイメージ
 7.Alt属性がないIMGタグにalt=""を追加する
+8.続き物ページのメタ表示最適化
+    ●Wordpressデフォルトのnext/prev出力動作を停止
+    ●ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
+        ●1ページを複数に分けた分割ページ（マルチページ）でのタグ出力
+        ●トップページやカテゴリページなどのページネーションでのタグ出力
+    ●分割ページ（マルチページ）URLの取得
+    ●分割ページ（マルチページ）かチェックする
 */
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
+
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
+
 function get_meta_description_from_category(){
-    $cate_desc=trim(strip_tags(category_description()));
-    if($cate_desc){return $cate_desc;}
-    $cate_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
-    return $cate_desc;
+    $cat_desc=trim(strip_tags(category_description()));
+    if($cat_desc){return $cat_desc;}
+    $cat_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
+    return $cat_desc;
 }
 function get_meta_keyword_from_category(){return single_cat_title('',false) . ',カテゴリー,ブログ,記事一覧';}
+
+function get_meta_keyword_from_tag(){return single_tag_title('',false) . ',タグ,ブログ,記事一覧';}
+function get_meta_description_from_tag(){
+    $tag_desc=trim(strip_tags(tag_description()));
+    if($tag_desc){return $tag_desc;}
+    $tag_desc='「' . single_tag_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
+    return $tag_desc;
+}
+
 function meta_description(){
-    if(is_home()):
+    if(is_home()===true):
         bloginfo('description');
-    elseif(is_singular()&&has_excerpt()):
+    elseif(is_singular()===true&&has_excerpt()===true):
         the_excerpt();
-    elseif(is_category()):
+    elseif(is_category()===true):
         echo get_meta_description_from_category();
+    elseif(is_tag()===true):
+        echo get_meta_description_from_tag();
     else:
         bloginfo('description');
     endif;
 }
+
 function meta_image(){
     $m='';$pattern='';
-    if(is_singular()&&has_post_thumbnail()):
+    if(is_singular()===true&&has_post_thumbnail()===true):
         echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));
     else:
         $pattern=get_custom_logo();
@@ -80,39 +101,28 @@ function meta_image(){
         echo $m;
     endif;
 }
-add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i', '<img alt=""${1}>', $content);});
-/*
-    Wordpressデフォルトのnext/prev出力動作を停止
-*/
-remove_action('wp_head','adjacent_posts_rel_link_wp_head');
 
-/*
-    ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
-*/
+add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
+
+remove_action('wp_head','adjacent_posts_rel_link_wp_head');
 function rel_next_prev_link_tags(){
-    if(is_single() || is_page()){
-        //1ページを複数に分けた分割ページ（マルチページ）でのタグ出力
+    if(is_single()||is_page()){
         global $wp_query;
         $multipage = check_multi_page();
         if($multipage[0] > 1){
             $prev = generate_multipage_url('prev');
             $next = generate_multipage_url('next');
-            if($prev){echo '<link rel="prev" href="'.$prev.'" />'.PHP_EOL;}
-            if($next){echo '<link rel="next" href="'.$next.'" />'.PHP_EOL;}
+            if($prev){echo'<link rel="prev" href="'.$prev.'">'.PHP_EOL;}
+            if($next){echo'<link rel="next" href="'.$next.'">'.PHP_EOL;}
         }
     }else{
-        //トップページやカテゴリページなどのページネーションでのタグ出力
         global $paged;
-        if(get_previous_posts_link()){echo '<link rel="prev" href="'.get_pagenum_link( $paged - 1 ).'" />'.PHP_EOL;}
-        if(get_next_posts_link()){echo '<link rel="next" href="'.get_pagenum_link( $paged + 1 ).'" />'.PHP_EOL;}
+        if(get_previous_posts_link()){echo'<link rel="prev" href="'.get_pagenum_link( $paged - 1 ).'">'.PHP_EOL;}
+        if(get_next_posts_link()){echo'<link rel="next" href="'.get_pagenum_link( $paged + 1 ).'">'.PHP_EOL;}
     }
 }
-//適切なページのヘッダーにnext/prevを表示
-add_action( 'wp_head','rel_next_prev_link_tags');
-
-//分割ページ（マルチページ）URLの取得
-//参考ページ：http://seophp.net/wordpress-fix-rel-prev-and-rel-next-without-plugin/
-function generate_multipage_url($rel='prev') {
+add_action('wp_head','rel_next_prev_link_tags');
+function generate_multipage_url($rel='prev'){
     global $post;
     $url = '';
     $multipage = check_multi_page();
@@ -132,8 +142,6 @@ function generate_multipage_url($rel='prev') {
     }
     return $url;
 }
-
-//分割ページ（マルチページ）かチェックする
 function check_multi_page(){
   $num_pages    = substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;
   $current_page = get_query_var('page');
@@ -144,9 +152,9 @@ function check_multi_page(){
 1.API対応追加
 2.OGP版ブログカード
 */
-wp_oembed_add_provider('http://*.hatenablog.com/*', 'http://hatenablog.com/oembed');
+wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed.{format}',true);
+wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog.com/oembed');
 wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
-
 
 function make_ogp_blog_card($url){
     require_once('parts/OpenGraph.php');
@@ -184,11 +192,13 @@ function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');$sitedescription=get_bloginfo('description');
     global $wp_query;$serachresult=$wp_query->found_posts;wp_reset_query();
     echo'<div class="card info-card"><h1 class="site-title">';
-        if(is_home()):
+        if(is_home()===true):
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
-        elseif(is_category()):
+        elseif(is_category()===true):
             echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
-        elseif(is_search()):
+        elseif(is_tag()===true):
+            echo'「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
+        elseif(is_search()===true):
             echo'「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
         else:
             echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
@@ -224,7 +234,7 @@ function pagenation($pages='',$range=3){
 }
 /*
     コンテンツ中装飾
-1.マーカー風にハイライト
+1.検索結果をマーカー風にハイライト
 2.@hogehogeをツイッターにリンク
 */
 function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
