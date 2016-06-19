@@ -40,6 +40,7 @@
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/normalize.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/main.css">
+	<link rel="stylesheet" href="/css/default.css">
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>
