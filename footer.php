@@ -52,7 +52,6 @@
     <script src="/js/highlight.pack.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
-        jQuery(function(){jQuery('code').each(function(i,block){hljs.highlightBlock(block);});});
         jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
     </script>
     <?php wp_footer();?>
