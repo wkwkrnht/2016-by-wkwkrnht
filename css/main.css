@@ -140,7 +140,7 @@
 .article-main .ogp-blogcard{display:block;min-height:15vh;max-width:96%;margin:3vmin auto;padding:1vmin 2vmin;border:1px solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);text-decoration:none;}
 .article-main .ogp-blogcard-main{height:80%;position:relative;top:0;text-align:center;}
 .article-main .ogp-blogcard-img{height:0;width:45%;padding-top:calc(45% / 16 * 9);position:relative;top:0;left:0;}
-.article-main .ogp-blogcard-info{width:55%;position:relative;top:0;right:0;
+.article-main .ogp-blogcard-info{width:55%;position:relative;top:0;right:0;}
 .article-main .ogp-blogcard-info .title{width:60%;font-size:1.8rem;color:#333;background-color:transparent;box-shadow:none;}
 .article-main .ogp-blogcard-footer{height:20%;position:relative;bottom:0;border-top:1px solid #333;}
 /*codex*/
