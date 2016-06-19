@@ -79,14 +79,8 @@
 .widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 /*
 	ウィジェットカスタマイズ
-1.折り畳みアーカイブウィジェット
-2.タグリスト
+1.タグリスト
 */
-.widget_archive a.year{cursor:pointer;text-decoration:underline;}
-.widget_archive .years ul{-webkit-transition:.3s ease;transition:.3s ease;margin:0;margin-bottom:1em;}
-#sidebar .widget_archive ul.years li{margin-bottom:0;}
-.widget_archive ul.years .hide{margin:0;height:0;opacity:0;visibility:hidden;}
-
 .widget_tag_cloud{margin:3vmin;padding:0;list-style:none;}
 .widget_tag_cloud li{display:inline-block;margin:0 .3em .3em 0;padding:0;}
 .widget_tag_cloud li a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
@@ -145,8 +139,8 @@
 .article-main .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 .article-main .ogp-blogcard{display:block;min-height:15vh;max-width:96%;margin:3vmin auto;padding:1vmin 2vmin;border:1px solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);text-decoration:none;}
 .article-main .ogp-blogcard-main{height:80%;position:relative;top:0;text-align:center;}
-.article-main .ogp-blogcard-img{height:0;width:45%;padding-top:calc(45% / 16 * 9);}
-.article-main .ogp-blogcard-info{width:55%;float:right;}
+.article-main .ogp-blogcard-img{height:0;width:45%;padding-top:calc(45% / 16 * 9);position:relative;top:0;left:0;}
+.article-main .ogp-blogcard-info{width:55%;position:relative;top:0;right:0;
 .article-main .ogp-blogcard-info .title{width:60%;font-size:1.8rem;color:#333;background-color:transparent;box-shadow:none;}
 .article-main .ogp-blogcard-footer{height:20%;position:relative;bottom:0;border-top:1px solid #333;}
 /*codex*/
