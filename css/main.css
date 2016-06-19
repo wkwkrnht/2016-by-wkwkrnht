@@ -115,8 +115,7 @@
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;text-align:center;}
 .ogp-blogcard-img{height:0;width:40%;padding-top:calc(40% / 16 * 9);}
 .ogp-blogcard-info{display:inline-block;width:55%;}
-.ogp-blogcard-title{width:90%;font-size:2rem;}
-.ogp-blogcard-description{width:84%;}
+.ogp-blogcard-title{font-size:2rem;}
 .ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.5vmin solid #333;}
 /*
     article-style
