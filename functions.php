@@ -94,7 +94,7 @@ function meta_description(){
 function meta_image(){
     $m='';$pattern='';
     if(is_singular()===true&&has_post_thumbnail()===true):
-        echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+        echo wp_get_attachment_url(get_post_thumbnail_id());
     else:
         $pattern=get_custom_logo();
         preg_match ($pattern, '/src=(.*)/', $m);
@@ -142,11 +142,7 @@ function generate_multipage_url($rel='prev'){
     }
     return $url;
 }
-function check_multi_page(){
-  $num_pages    = substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;
-  $current_page = get_query_var('page');
-  return array($num_pages,$current_page);
-}
+function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
 /*
     oEmbed
 1.API対応追加
