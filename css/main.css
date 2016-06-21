@@ -113,8 +113,8 @@
 
 .ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
-.ogp-blogcard-img{display:inline-block;width:40%;}
-.ogp-blogcard-info{display:inline-block;width:60%;text-align:center;}
+.ogp-blogcard-img{display:inline-block;height:0;width:40%;padding-top:calc(40% / 16 * 9);}
+.ogp-blogcard-info{display:inline-block;width:55%;text-align:center;}
 .ogp-blogcard-title{font-size:2rem;}
 .ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.5vmin solid #333;}
 /*
