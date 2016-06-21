@@ -96,7 +96,7 @@ function meta_image(){
     if(is_singular()===true&&has_post_thumbnail()===true):
         echo wp_get_attachment_url(get_post_thumbnail_id());
     else:
-        $pattern=htmlspecialchars(get_custom_logo());
+        $pattern=get_custom_logo();
         preg_match($pattern,'/<img.*src\s*=\s*[\"|\'](.*?)[\"|\'].*>/i',$m);
         echo $m[1];
     endif;
