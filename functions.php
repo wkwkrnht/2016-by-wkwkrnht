@@ -93,17 +93,16 @@ function meta_description(){
 }
 
 function meta_image(){
-    $m='';$pattern='';
     if(is_singular()===true&&has_post_thumbnail()===true):
         echo wp_get_attachment_url(get_post_thumbnail_id());
     else:
         $pattern=get_custom_logo();
-        preg_match ($pattern, '/src=(.*?)/', $m);
+        preg_match($pattern,'/src=(.*?)/',$m);
         echo $m;
     endif;
 }
 
-function get_twitter_acount(){if(get_author_meta('twitter')!==''):return '@' . get_author_meta('twitter');elseif(get_option('twitter_site_acount')!==''):return '@' . get_option('twitter_site_acount');else:return;endif;}
+function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return '@' . get_the_author_meta('twitter');elseif(get_option('twitter_site_acount')!==''):return '@' . get_option('twitter_site_acount');else:return;endif;}
 
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 
