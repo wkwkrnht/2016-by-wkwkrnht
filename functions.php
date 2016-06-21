@@ -48,8 +48,9 @@ function add_body_class($classes){if(is_singular()===true):$classes[] = 'singula
     ●ディスプリクション
 5.メタディスクリプション
 6.メタイメージ
-7.Alt属性がないIMGタグにalt=""を追加する
-8.続き物ページのメタ表示最適化
+7.Twitterアカウント判別
+8.Alt属性がないIMGタグにalt=""を追加する
+9.続き物ページのメタ表示最適化
     ●Wordpressデフォルトのnext/prev出力動作を停止
     ●ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
         ●1ページを複数に分けた分割ページ（マルチページ）でのタグ出力
@@ -97,10 +98,12 @@ function meta_image(){
         echo wp_get_attachment_url(get_post_thumbnail_id());
     else:
         $pattern=get_custom_logo();
-        preg_match ($pattern, '/src=(.*)/', $m);
+        preg_match ($pattern, '/src=(.*?)/', $m);
         echo $m;
     endif;
 }
+
+function get_twitter_acount(){if(get_author_meta('twitter')!==''):return '@' . get_author_meta('twitter');elseif(get_option('twitter_site_acount')!==''):return '@' . get_option('twitter_site_acount');else:return;endif;}
 
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 
@@ -289,7 +292,7 @@ function appthemes_add_quicktags(){
 add_action('admin_head-post-new.php','post_filter_categories');
 add_action('admin_head-post.php','post_filter_categories');
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
-//プロフィール欄追加(the_author_meta('hogehoe')で表示)
+//プロフィール欄追加(the_author_meta('hogehoge')で表示)
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';
   $contactmethods['FAX']='FAX';
@@ -360,3 +363,17 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Bitcoin']='Bitcoin';
   return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
+
+//twitterオプション追加
+function add_my_option_field(){
+    add_settings_field('twitter_site_acount','テスト','display_my_option','general');
+    register_setting('general','twitter_site_acount');
+}
+add_filter('admin_init','add_my_option_field');
+
+function display_my_option(){
+  $test_option = get_option('twitter_site_acount');
+  ?>
+  <input name="twitter_site_acount" id="twitter_site_acount" type="text" value="<?php echo esc_html($test_option);?>" class="regular-text">
+  <?php
+}
