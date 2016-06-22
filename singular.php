@@ -1,5 +1,5 @@
 <?php get_header();?>
-<div class="article-img"><?php if(has_post_thumbnail()):the_post_thumbnail();else:echo'<img src="' . get_stylesheet_directory_uri() . '/img/no-img.png" alt="eyecatch">';endif;?></div>
+<div class="article-img" style="background:url(<?php if(has_post_thumbnail()):meta_image();else:echo get_stylesheet_directory_uri() . '/img/no-img.png';endif;?>);"></div>
 <article id="post-<?php the_ID();?>" <?php post_class();?>>
 	<header class="article-meta">
 		<h2 class="article-name"><?php the_title();?></h2>
