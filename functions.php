@@ -102,7 +102,7 @@ function meta_image(){
     endif;
 }
 
-function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return '@' . get_the_author_meta('twitter');elseif(get_option('twitter_site_acount')!==''):return '@' . get_option('twitter_site_acount');else:return;endif;}
+function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return get_the_author_meta('twitter');elseif(get_option('twitter_site_acount')!==''):return get_option('twitter_site_acount');else:return null;endif;}
 
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 
@@ -189,17 +189,15 @@ function make_ogp_blog_card($url){
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');$sitedescription=get_bloginfo('description');
     global $wp_query;$serachresult=$wp_query->found_posts;wp_reset_query();
-    echo'<div class="card info-card"><h1 class="site-title">';
-        if(is_home()===true):
-            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
-        elseif(is_category()===true):
-            echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
+    echo'<div class="card info-card">';
+        if(is_category()===true):
+            echo'<a><h1 class="site-title">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p></a>';
         elseif(is_tag()===true):
-            echo'「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
+            echo'<a><h1 class="site-title">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p></a>';
         elseif(is_search()===true):
-            echo'「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
+            echo'<a><h1 class="site-title">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p></a>';
         else:
-            echo $blogname . '</h1><p class="site-description">' . $sitedescription . '</p>';
+            echo'<a><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
         endif;
     echo'<br><span class="copyright">&copy;2015&nbsp;' . $blogname . '</span></div>';
 }
