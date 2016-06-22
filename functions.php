@@ -21,21 +21,39 @@ function wkwkrnht_setup(){
     register_nav_menu('social','social');
 }
 add_action('after_setup_theme','wkwkrnht_setup');
+
 add_action('admin_init',function(){add_editor_style('css/custom-editor-style.css');});
+
 add_action('widgets_init','wkwkrnht_sidebar_widgets_init');
 function wkwkrnht_sidebar_widgets_init(){
     register_sidebar(array('name'=>'Main Area','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
 }
+
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
+
 add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
 function theme_enqueue_scripts_styles(){
     wp_deregister_script('jquery');
     wp_register_script('jquery','');
     wp_enqueue_script('jquery',false,array(),null,true);
 }
+
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
+
+if(is_singular()===true):
+function singular_js_function(){
+echo <<< EOM
+<script src="/js/highlight.pack.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+    jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
+</script>
+EOM;
+}
+add_action('wp_footer','singular_js_function');
+endif;
 /*
     metainfo
 1.アクセス中のURL取得
