@@ -9,6 +9,6 @@
 		<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
 		<?php wp_link_pages(); ?>
 	</div>
-	<?php the_tags('<ul class="widget_tag_cloud"><li>','</li><li>','</li></ul>');?>
+	<?php the_tags('<div class="widget_tag_cloud">','','</div>');?>
 </article>
 <?php get_footer();?>

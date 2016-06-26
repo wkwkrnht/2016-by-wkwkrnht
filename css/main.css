@@ -81,10 +81,9 @@
 	ウィジェットカスタマイズ
 1.タグリスト
 */
-.widget_tag_cloud{margin:3vmin;padding:0;list-style:none;}
-.widget_tag_cloud li{display:inline-block;margin:0 .3em .3em 0;padding:0;}
-.widget_tag_cloud li a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
-.widget_tag_cloud li a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
+.widget_tag_cloud{margin:3vmin;padding:0;}
+.widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
+.widget_tag_cloud a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
 /*
 	リストページ
 1.card-list
@@ -92,12 +91,11 @@
 */
 .card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
-.card img{display:block;float:left;max-height:39vmin;}
+.card img{display:block;float:left;max-height:39vmin;max-width:calc(80vmin / 2);vertical-align:middle;}
 .card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2rem;}
 .card span{display:inline-block;height:30%;margin:0 1em;}
 .card p{display:inline-block;height:20%;margin:0 1em;}
-.card img,.article-info{max-width:calc(80vmin / 2);}
-.article-info{float:right;}
+.article-info{max-width:calc(80vmin / 2);float:right;}
 .site-info{text-align:center;}
 
 .pagenation{list-style:none;min-height:10vw;max-width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
@@ -111,7 +109,7 @@
 */
 .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 
-.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
 .ogp-blogcard-img{display:inline-block;height:40%;width:40%;}
 .ogp-blogcard-info{display:inline-block;width:55%;text-align:center;}
@@ -127,7 +125,7 @@
 6.独自要素
 7.codex
 */
-.article-img{height:0;width:100%;padding-top:calc(100% / 21 * 9);}
+.article-img{height:0;width:100%;padding-top:calc(100% / 21 * 9);background-repeat:no-repeat;}
 .article-meta{font-size:1.5rem;text-align:center;}
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
 
