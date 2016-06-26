@@ -13,11 +13,11 @@
             <li class="g-plus sharewindow"><a href="https://plus.google.com/share?url=<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-google-plus-official fa-5x" aria-hidden="true"></i></a></li>
             <li class="linkedin sharewindow"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank"><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a></li>
             <li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url=<?php echo get_meta_url();?>&amp;media=<?php meta_image();?>"><i class="fa fa-pinterest fa-5x" aria-hidden="true"></i></a></li>
-            <li class="hatebu"><a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank">B!</a></li>
             <li class="pocket sharewindow"><a href="http://getpocket.com/edit?url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank"><i class="fa fa-get-pocket fa-5x" aria-hidden="true"></i></a></li>
+            <li class="hatebu"><a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_meta_url();?>&amp;title=<?php echo'txt';?>" target="_blank">B!</a></li>
+            <li class="ameba"><a href="http://blog.ameba.jp/ucs/entry/srventryinsertinput.do?entry_text=%3cp%3e%3ca%20href%3d%22<?php echo get_meta_url();?> %22%20target%3d%22_blank%22%3e<?php echo urlencode(get_the_title());?>%3c%2fa%3e%3cbr%20%2f%3e<?php echo urlencode(mb_substr(meta_description(),0,90));?>%e2%80%a6%3c%2fp%3e%3cdiv%20align%3d%22right%22%3e%3ca%20target%3d%22_blank%22%20href%3d%22<?php bloginfo('url');?>%22%3e%5b<?php echo urlencode(get_bloginfo());?>%5d%3c%2fa%3e%3c%2fdiv%3e" target="_blank">Ameba</a></li>
             <li class="tumblr sharewindow"><a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo get_meta_url();?>" target="_blank"><i class="fa fa-tumblr fa-5x" aria-hidden="true"></i></a></li>
             <li class="embedly sharewindow"><a href="http://cdn.embedly.com/widgets/embed?url=<?php echo get_meta_url();?>" target="_blank"></a></li>
-            <li class="wp-embed-button"><i class="fa fa-wordpress fa-5x wp-embed-share-dialog-open" aria-hidden="true"></i></li>
         </ul>
     </nav>
     <div id="main-menu" class="close">
