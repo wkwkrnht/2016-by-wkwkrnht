@@ -134,8 +134,7 @@
 6.独自要素
 7.codex
 */
-.article-img{height:0;width:100%;padding-top:calc(100% / 21 * 9);background-repeat:no-repeat;}
-.article-meta{font-size:1.5rem;text-align:center;}
+.article-img{height:0;width:100%;padding-top:calc(100% / 21 * 9);}
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
 
 
