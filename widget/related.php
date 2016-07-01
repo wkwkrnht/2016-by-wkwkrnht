@@ -1,9 +1,9 @@
 <style>
 	#flex{height:calc(20vw + 15vmin);width:100vw;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 	#flex > * {-webkit-transform:translateZ(0px);}
-	.related-wrapper{display:block;height:calc(20vw + 10vmin);width:30vw;border-radius:2vmin;margin:2.5vmin 3vmin;float:left;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
-	.related-thumb{background-color:#ffcc00;}
-	.related-title{height:10vmin;width:30vw;font-size:1.8rem;text-align:center;}
+	.related-wrapper{display:block;height:calc(20vw + 10vmin);width:30vw;border-radius:2vmin;margin:2.5vmin 3vmin;float:left;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
+	.related-thumb{height:20vw;width:100%;background-color:#ffcc00;}
+	.related-title{height:10vmin;width:100%;font-size:1.8rem;}
 </style>
 <div id="flex">
 	<?php $categories=get_the_category();$category_ID=array();
@@ -13,7 +13,7 @@
 	if($query->have_posts()):?>
 		<?php while($query->have_posts()):$query->the_post();?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="thumbnail" width="30vw" height="20vw" class="related-thumb">
+				<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endwhile;?>
@@ -23,7 +23,7 @@
 		$rand_posts=get_posts($args);
 		foreach($rand_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related">
-				<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="thumbnail" width="30vw" height="20vw" class="thumb">
+				<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="title">','</div>');?>
 			</a>
 		<?php endforeach;?>
