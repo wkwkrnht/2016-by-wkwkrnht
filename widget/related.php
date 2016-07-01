@@ -1,18 +1,19 @@
 <style>
-	#flex{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
-	.related{display:block;width:35vw;border-radius:8px;margin:20px 8px 20px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
-	.related .thumb{background-color:#ffcc00;width:150px;height:150px;}
-	.related .title{color:#333;font-size:1.8rem;max-height:150px;text-align:center;}
+	#flex{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
+	#flex > * {-webkit-transform:translateZ(0px);}
+	.related{display:block;height:calc(20vw + 10vmin);width:30vw;border-radius:2vmin;margin:20px 8px 20px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
+	.related .thumb{background-color:#ffcc00;}
+	.related .title{height:10vmin;width:30vw;font-size:1.8rem;text-align:center;}
 </style>
 <div id="flex">
-	<?php $categories=get_the_category($post->ID);$category_ID=array();
+	<?php $categories=get_the_category();$category_ID=array();
 	foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
-	$args=array('posts_per_page'=>6,'post__not_in'=>array($post->ID),'category__in'=>$category_ID,'orderby'=>'rand',);
+	$args=array('posts_per_page'=>6,'post__not_in'=>array($post->ID),'category__in'=>$category_ID,'orderby'=>'rand');
 	$query=new WP_Query($args);
 	if($query->have_posts()):?>
 		<?php while($query->have_posts()):$query->the_post();?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related">
-				<img src="<?php if(has_post_thumbnail()):echo meta_image();else:no_image();endif;?>" alt="no_thumbnail" width="35vw" height="150px" class="thumb">
+				<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="thumbnail" width="30vw" height="20vw" class="thumb">
 				<?php the_title('<div class="title">','</div>');?>
 			</a>
 		<?php endwhile;?>
@@ -22,7 +23,7 @@
 		$rand_posts=get_posts($args);
 		foreach($rand_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related">
-				<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="no_thumbnail" width="35vw" height="150px" class="thumb">
+				<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="thumbnail" width="30vw" height="20vw" class="thumb">
 				<?php the_title('<div class="title">','</div>');?>
 			</a>
 		<?php endforeach;?>
