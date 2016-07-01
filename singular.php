@@ -13,7 +13,6 @@
 		<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
 		<?php wp_link_pages();?>
 	</div>
-	<?php the_tags('<div class="widget_tag_cloud">','','</div>');?>
 	<ul class="widget-area">
 		<?php dynamic_sidebar('singularfooter');?>
 	</ul>

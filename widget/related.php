@@ -1,7 +1,7 @@
 <style>
-	#flex{height:calc(20vw + 15vmin);width:100vw;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
+	#flex{height:calc(20vw + 15vmin);width:100vw;overflow-x:scroll;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 	#flex > * {-webkit-transform:translateZ(0px);}
-	.related-wrapper{display:block;height:calc(20vw + 10vmin);width:30vw;border-radius:2vmin;margin:2.5vmin 3vmin;float:left;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
+	.related-wrapper{display:block;height:calc(20vw + 10vmin);width:30vw;border-radius:2vmin;margin:2vmin 3vmin;float:left;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
 	.related-thumb{height:20vw;width:100%;background-color:#ffcc00;}
 	.related-title{height:10vmin;width:100%;font-size:1.8rem;}
 </style>
