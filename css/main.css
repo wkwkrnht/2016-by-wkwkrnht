@@ -134,15 +134,14 @@
 6.独自要素
 7.codex
 */
-
+.article-img{height:20vh;width:100vw;}
 .article-date{display:block;float:left;width:30%;background-color:#ffcc00;color:#fff;text-align:center;}
 .article-meta{border-bottom:solid .1rem #333;text-align:center;}
 .article-title{font-size:2rem;}
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
 
 
-.bread{color:#ddd;}
-.bread .sp{color:#333;margin:0 .5em;}
+.bread .sp{margin:0 .5em;}
 
 
 .article-main a{text-decoration:none;border-bottom:0;}
