@@ -1,8 +1,8 @@
 <?php get_header();?>
 <article id="post-<?php the_ID();?>" <?php post_class();?>>
 	<header class="article-header">
-		<div class="article-img">
-			<img src="<?php if(has_post_thumbnail()):meta_image();else:no_image();endif;?>" alt="eyecatch">
+		<a href="<?php home_url();?>" class="article-img" style="display:block;background:url(<?php wkwkrnht_eyecatch();?>) rgba(0,0,0,.6);">
+			<?php bloginfo('name');?>
 		</div>
 		<div class="article-meta">
 			<h2 class="article-name"><?php the_title();?></h2>
