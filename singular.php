@@ -1,7 +1,7 @@
 <?php get_header();?>
 <article id="post-<?php the_ID();?>" <?php post_class();?>>
 	<header class="article-header">
-		<a href="<?php home_url();?>" class="article-img" style="display:block;background:rgba(0,0,0,.4) url(<?php wkwkrnht_eyecatch();?>) no-repeat center/100%;">
+		<a href="<?php home_url();?>" class="article-img" style="display:block;background:rgba(0,0,0,.4) url(<?php wkwkrnht_eyecatch();?>) no-repeat center/contain;">
 			<?php bloginfo('name');?>
 		</div>
 		<div class="article-meta">
