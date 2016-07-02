@@ -8,7 +8,7 @@
 <div id="flex">
 	<?php $categories=get_the_category();$category_ID=array();
 	foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
-	$cat_posts=get_posts(array('numberposts'=>6,,'category'=>$category_ID,'orderby'=>'rand'));
+	$cat_posts=get_posts(array('numberposts'=>6,'category'=>$category_ID,'orderby'=>'rand'));
 	if($cat_posts!==array()):
 		foreach($cat_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
