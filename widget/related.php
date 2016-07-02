@@ -11,17 +11,17 @@
 	$cat_posts=get_posts(array('posts_per_page'=>6,'post__not_in'=>array($post->ID),'category__in'=>$category_ID,'orderby'=>'rand'));
 	if($cat_posts!==array()):
 		foreach($cat_posts as $post):?>
-			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related">
+			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
 				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
-				<?php the_title('<div class="title">','</div>');?>
+				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>
 	<?php else:
 		$rand_posts=get_posts(array('numberposts'=>6,'orderby'=>'rand','post_status'=>'publish'));
 		foreach($rand_posts as $post):?>
-			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related">
+			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
 				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
-				<?php the_title('<div class="title">','</div>');?>
+				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>
 	<?php endif;?>
