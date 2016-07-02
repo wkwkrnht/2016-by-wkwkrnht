@@ -136,6 +136,7 @@
 */
 /*.article-img{height:0;width:100%;padding-top:calc(100% / 21 * 9);}*/
 .article-main{padding:5vmin 8vmin 0;font-size:1.5rem;}
+.article-date{display:block;float:left;height:0;width:30%;padding-top:30%;background-color:#ffcc00;color:#fff;}
 
 
 .article-main a{text-decoration:none;border-bottom:0;}

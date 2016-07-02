@@ -6,8 +6,7 @@
 		</div>
 		<div class="article-meta">
 			<time class="article-date" datetime="<?php the_time('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
-			<h2 class="article-name"><?php the_title();?></h2>
-			<span class="article-info"><?php the_author();?><?php if($mtime===get_mtime('Y/n/j G:i.s')):echo'最終更新日：' . $mtime;endif;the_category(', ');?></span>
+			<span class="article-info"><h2 class="article-name"><?php the_title();?></h2><br><?php the_author();?><?php if($mtime===get_mtime('Y/n/j G:i.s')):echo'最終更新日：' . $mtime;endif;the_category(', ');?></span>
 		</div>
 	</header>
 	<div class="article-main">
