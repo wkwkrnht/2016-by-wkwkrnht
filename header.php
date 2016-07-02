@@ -26,10 +26,10 @@
 	<meta name="twitter:title" content="Content Title">
 	<meta name="twitter:description" content="Content description less than 200 characters">
 	<meta name="twitter:image" content="<?php meta_image();?>">
-	<meta name="twitter:site" content="@">
+	<meta name="twitter:site" content="<?php get_twitter_acount();?>">
 	<?php if(is_singular()):
-		echo'<meta property="article:author" content="' . the_author_meta() . '">
-		<meta name="twitter:creator" content="@' . the_author_meta('twitter') . '">
+		echo'<meta property="article:author" content="' . the_author_meta('facebook') . '">
+		<meta name="twitter:creator" content="' . the_author_meta('twitter') . '">
 		<link rel="publisher" href="http://plus.google.com/' . the_author_meta('GoogleID') . '">';
 	endif;?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
