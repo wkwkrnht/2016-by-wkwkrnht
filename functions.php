@@ -140,7 +140,7 @@ function meta_image(){
         echo $m[1];
     endif;
 }
-function wkwkrbht_eyecatch(){if(has_post_thumbnail()===true):yes_image();else:no_image();endif;}
+function wkwkrnht_eyecatch(){if(has_post_thumbnail()===true):yes_image();else:no_image();endif;}
 
 function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return get_the_author_meta('twitter');elseif(get_option('twitter_site_acount')!==''):return get_option('twitter_site_acount');else:return null;endif;}
 
