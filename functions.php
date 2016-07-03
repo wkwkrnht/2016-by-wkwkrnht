@@ -303,7 +303,6 @@ add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 1.カテゴリーフィルター&抜粋制限
 2.クイックタグ追加
 3.投稿一覧に項目追加
-4.投稿一覧の背景色変更
 */
 function add_post_edit_featuer(){ ?>
 <script>
@@ -354,19 +353,6 @@ function add_posts_columns_row($column_name,$post_id){
 }
 add_filter('manage_posts_columns','add_posts_columns');
 add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
-
-function change_post_status_background_color() {
-?>
-<style>
-    .status-publish{background-color:#3498db;}
-    .status-draft{background-color:#1abc9c;}
-    .status-private{background-color:#9b59b6;}
-    .status-pending{background-color:#f1c40f;}
-    .post-password-required{background-color:#f39c12;}
-    .status-future{background-color:#e74c3c;}
-</style>
-<?php }
-add_action('admin_head','change_post_status_background_color');
 
 /*
 プロフィール欄追加(the_author_meta('hogehoge')で表示)
