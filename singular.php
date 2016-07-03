@@ -5,11 +5,11 @@
 			<span><?php bloginfo('name');?></span>
 		</a>
 		<div class="article-meta">
-			<time class="article-date" datetime="<?php the_time('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
-			<span class="article-info"><h2 class="article-name"><?php the_title();?></h2><br><?php if($mtime===get_mtime('Y/n/j G:i.s')){echo'最終更新日：' . $mtime;}the_author();the_category(', ');?></span>
+			<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
+			<span class="article-info"><h2 class="article-name"><?php the_title();?></h2><br><?php the_author();the_category(', ');?></span>
 		</div>
 		<?php
-		$cat = is_single() ? get_the_category() : array(get_category($cat));
+		$cat=get_the_category();
 		if($cat && !is_wp_error($cat)){
 			$par=get_category($cat[0]->parent);$echo='';
 			echo'<div class="bread" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="' . get_bloginfo('url') . '" itemprop="url"><span itemprop="title">ホーム</span></a><span class="sp">/</span></div>';
