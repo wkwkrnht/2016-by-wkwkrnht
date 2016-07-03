@@ -247,9 +247,7 @@ function wkwkrnht_special_card(){
 }
 /*
     page-nation
-1.
-2.
-3.表示部分
+1.表示部分
     ●外側
     ●先頭へ
     ●1つ戻る
@@ -264,9 +262,9 @@ function pagenation($pages='',$range=3){
     if($pages==''){global $wp_query;$pages=$wp_query->max_num_pages;if(!$pages){$pages=1;}}
     if(1!=$pages){
         echo'<ul class="pagenation">';
-        if($paged > 2 && $paged > $range + 1 && $showitems < $pages){echo'<li><a href="'.get_pagenum_link(1).'"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a</li>>';}
-        if($paged > 1 && $showitems < $pages){echo'<li><a href="'.get_pagenum_link($paged - 1).'"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>';}
-        for($i=1;$i<=$pages;$i++){if(1!=$pages&&(!($i>=$paged+$range+1||$i<=$paged-$range-1)||$pages<=$showitems)){echo ($paged==$i)? '<li class="current">'.$i.'</li>' : '<li><a href="'.get_pagenum_link($i).'" class="inactive">'.$i.'</a></li>';}}
+        if($paged > 2 && $paged > $range + 1 && $showitems < $pages){echo'<li><a href="' . get_pagenum_link(1) . '"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a</li>>';}
+        if($paged > 1 && $showitems < $pages){echo'<li><a href="' . get_pagenum_link($paged - 1) . '"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>';}
+        for($i=1;$i<=$pages;$i++){if(1!=$pages&&(!($i>=$paged+$range+1||$i<=$paged-$range-1)||$pages<=$showitems)){echo ($paged==$i)? '<li class="current">' . $i . '</li>' : '<li><a href="' . get_pagenum_link($i) . '" class="current">' . $i . '</a></li>';}}
         if($paged < $pages && $showitems < $pages){echo'<li><a href="'.get_pagenum_link($paged + 1).'"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>';}
         if($paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages){echo'<li><a href="'.get_pagenum_link($pages).'"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>';}
         echo'</ul>';
@@ -302,15 +300,20 @@ add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 /*
     投稿画面カスタマイズ
-1.カテゴリーフィルター
-2.抜粋制限
-3.クイックタグ追加
+1.カテゴリーフィルター&抜粋制限
+2.クイックタグ追加
+3.投稿一覧に項目追加
+4.投稿一覧の背景色変更
 */
-function post_filter_categories(){ ?>
-<script type="text/javascript">
-	jQuery(function($){function catFilter(header,list){var form =$('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'38px'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'42px'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
+function add_post_edit_featuer(){ ?>
+<script>
+	jQuery(function($){function catFilter(header,list){var form =$('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
+    jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em; color:#888; font-size:12px;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
 </script>
 <?php }
+add_action('admin_head-post-new.php','add_post_edit_featuer');
+add_action('admin_head-post.php','add_post_edit_featuer');
+
 function appthemes_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
     <script type="text/javascript">
@@ -324,16 +327,61 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
 		QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
-		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','{/html_encode]');
+		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
     </script>
 <?php }}
-add_action('admin_head-post-new.php','post_filter_categories');
-add_action('admin_head-post.php','post_filter_categories');
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
-//プロフィール欄追加(the_author_meta('hogehoge')で表示)
+
+function add_posts_columns($columns) {
+    $columns['thumbnail']='サムネイル';
+    $columns['postid']='ID';
+    $columns['slug']='スラッグ';
+    $columns['count']='文字数';
+    echo'
+    <style">
+        .fixed .column-thumbnail{width:120px;}
+        .fixed .column-postid{width:2%;}
+        .fixed .column-slug,.fixed .column-count{width:5%;}
+    </style>
+    ';
+    return $columns;
+}
+function add_posts_columns_row($column_name,$post_id){
+    if('thumbnail'===$column_name):
+        $thumb = get_the_post_thumbnail($post_id,array(100,100),'thumbnail');
+        echo ($thumb) ? $thumb : '－';
+    elseif('postid'===$column_name):
+        echo $post_id;
+    elseif('slug'===$column_name):
+        $slug = get_post($post_id) -> post_name;
+        echo $slug;
+    elseif('count'===$column_name):
+        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)));
+        echo $count;
+    endif;
+}
+add_filter('manage_posts_columns','add_posts_columns');
+add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
+
+function change_post_status_background_color() {
+?>
+<style>
+    .status-publish{background-color:#3498db;}
+    .status-draft{background-color:#1abc9c;}
+    .status-private{background-color:#9b59b6;}
+    .status-pending{background-color:#f1c40f;}
+    .post-password-required{background-color:#f39c12;}
+    .status-future{background-color:#e74c3c;}
+</style>
+<?php }
+add_action('admin_head','change_post_status_background_color');
+
+/*
+プロフィール欄追加(the_author_meta('hogehoge')で表示)
+*/
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';
   $contactmethods['FAX']='FAX';
@@ -405,16 +453,18 @@ function my_new_contactmethods($contactmethods){
   return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 
-//twitterオプション追加
-function add_my_option_field(){
-    add_settings_field('twitter_site_acount','テスト','display_my_option','general');
-    register_setting('general','twitter_site_acount');
-}
-add_filter('admin_init','add_my_option_field');
-
-function display_my_option(){
+/*
+    設定画面項目追加
+1.twitterアカウント(サイト用)
+*/
+function display_twitter_site_acount_option(){
   $test_option = get_option('twitter_site_acount');
   ?>
   <input name="twitter_site_acount" id="twitter_site_acount" type="text" value="<?php echo esc_html($test_option);?>" class="regular-text">
   <?php
 }
+function add_twitter_site_acount_option_field(){
+    add_settings_field('twitter_site_acount','テスト','display_twitter_site_acount_option','general');
+    register_setting('general','twitter_site_acount');
+}
+add_filter('admin_init','add_twitter_site_acount_option_field');
