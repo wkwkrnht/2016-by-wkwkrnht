@@ -115,7 +115,7 @@
     独自要素
 1.マーカー
 2,OGP版ブログカード
-3.
+3.補足情報
 */
 .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 
@@ -216,6 +216,7 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
     	.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
     	.info-card{height:30vmin;width:160vmin;margin:2vmin auto;}
         .hatenablogcard{max-width:60vw;margin:5vh 10vw;}
+        .information,.question{width:80%;}
     }
     /*tablet-style*/
     @media screen and (max-height:720px){
@@ -225,6 +226,7 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .ogp-blogcard{border-width:2vmin;max-width:94%;}
         .ogp-blogcard-title{font-size:1.6rem;}
         .ogp-blogcard-description{display:none;}
+        .information,.question{width:96%;}
     	/*article-table*/
     	.article-main table,.article-main table caption.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th,.article-main table tr td{display:block;}
     	.article-main table tr th,.article-main table tr td{margin:-1px;}
@@ -241,6 +243,7 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .ogp-blogcard{border-width:2vmin;max-width:94%;}
         .ogp-blogcard-title{font-size:1.3rem;}
         .ogp-blogcard-description{display:none;}
+        .information,.question{width:96%;}
         /*article-table*/
         .article-main table,.article-main table caption.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th,.article-main table tr td{display:block;}
         .article-main table tr th,.article-main table tr td{margin:-1px;}
