@@ -135,7 +135,7 @@
 7.codex
 */
 .article-img{height:20vh;width:100vw;}
-.article-img::after{display:block;content:"";height:100%;width:100%;position:absolute;top:0;left:0;background-color:rgba(0,0,0,.4);box-shadow:inset 0 0 50px rgba(0,0,0,.6),inset 0 0 100px rgba(0,0,0,.2);}
+.article-img::before{display:block;content:"";height:20vh;width:100vw;position:absolute;top:0;left:0;background-color:rgba(0,0,0,.3);box-shadow:inset 0 0 50px rgba(0,0,0,.4),inset 0 0 100px rgba(0,0,0,.2);}
 .article-date{display:block;float:left;width:30%;background-color:#ffcc00;color:#fff;text-align:center;}
 .article-meta{border-bottom:solid .1rem #333;text-align:center;}
 .article-title{font-size:2rem;}
