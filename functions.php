@@ -335,24 +335,24 @@ function appthemes_add_quicktags(){
 <?php }}
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
 
-function add_posts_columns($columns) {
+function add_posts_columns($columns){
     $columns['thumbnail']='サムネイル';
     $columns['postid']='ID';
     $columns['slug']='スラッグ';
     $columns['count']='文字数';
-    echo'
+    /*echo'
     <style">
         .fixed .column-thumbnail{width:120px;}
         .fixed .column-postid{width:2%;}
         .fixed .column-slug,.fixed .column-count{width:5%;}
     </style>
-    ';
+    ';*/
     return $columns;
 }
 function add_posts_columns_row($column_name,$post_id){
     if('thumbnail'===$column_name):
-        $thumb = get_the_post_thumbnail($post_id,array(100,100),'thumbnail');
-        echo ($thumb) ? $thumb : '－';
+        $thumb = get_the_post_thumbnail($post_id);
+        echo ($thumb) ? '○' : '×';
     elseif('postid'===$column_name):
         echo $post_id;
     elseif('slug'===$column_name):
