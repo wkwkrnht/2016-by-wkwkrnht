@@ -338,15 +338,7 @@ add_action('admin_print_footer_scripts','appthemes_add_quicktags');
 function add_posts_columns($columns){
     $columns['thumbnail']='サムネイル';
     $columns['postid']='ID';
-    $columns['slug']='スラッグ';
     $columns['count']='文字数';
-    /*echo'
-    <style">
-        .fixed .column-thumbnail{width:120px;}
-        .fixed .column-postid{width:2%;}
-        .fixed .column-slug,.fixed .column-count{width:5%;}
-    </style>
-    ';*/
     return $columns;
 }
 function add_posts_columns_row($column_name,$post_id){
@@ -355,9 +347,6 @@ function add_posts_columns_row($column_name,$post_id){
         echo ($thumb) ? '○' : '×';
     elseif('postid'===$column_name):
         echo $post_id;
-    elseif('slug'===$column_name):
-        $slug = get_post($post_id) -> post_name;
-        echo $slug;
     elseif('count'===$column_name):
         $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)));
         echo $count;
