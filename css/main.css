@@ -104,7 +104,7 @@
 .card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2rem;}
 .card span{display:inline-block;height:30%;margin:0 1em;}
 .card p{display:inline-block;height:20%;margin:0 1em;}
-.article-info{max-width:calc(80vmin / 2);float:right;}
+.card-info{max-width:calc(80vmin / 2);float:right;}
 .site-info{text-align:center;}
 
 .pagenation{list-style:none;min-height:10vw;max-width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
