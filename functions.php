@@ -443,3 +443,27 @@ function add_twitter_site_acount_option_field(){
     register_setting('general','twitter_site_acount');
 }
 add_filter('admin_init','add_twitter_site_acount_option_field');
+/**
+ * Add featured image as background image to post navigation elements.
+ *
+ * @since Twenty Fifteen 1.0
+ *
+ * @see wp_add_inline_style()
+ */
+function twentyfifteen_post_nav_background(){
+        if(is_singular()===false){return;}
+        $previous=(is_attachment()) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+        $next    =get_adjacent_post( false, '', false );
+        $css     ='';
+        if(is_attachment()===true&&'attachment'===$previous->post_type){return;}
+        if($previous&&has_post_thumbnail($previous->ID)){
+                $prevthumb=wp_get_attachment_image_src(get_post_thumbnail_id($previous->ID),'post-thumbnail');
+                $css='.post-nav .prev{background:url(' . esc_url($prevthumb[0]) . ') rgba(0,0,0,.4) center cover;}';
+        }
+        if($next&&has_post_thumbnail($next->ID)){
+                $nextthumb=wp_get_attachment_image_src(get_post_thumbnail_id($next->ID),'post-thumbnail');
+                $css='.post-nav .next{background:url(' . esc_url($nextthumb[0]) . ') rgba(0,0,0,.4) center cover;}';
+        }
+        wp_add_inline_style('twentyfifteen-style',$css);
+}
+add_action('wp_enqueue_scripts','twentyfifteen_post_nav_background');

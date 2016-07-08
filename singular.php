@@ -23,7 +23,7 @@
 	</header>
 	<div class="article-main">
 		<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
-		<?php wp_link_pages();?>
+		<?php wp_link_pages(array('before'=>'<div class="pagenation">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
 	</div>
 	<ul class="widget-area">
 		<?php dynamic_sidebar('singularfooter');?>
