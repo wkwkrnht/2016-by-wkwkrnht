@@ -30,11 +30,25 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Main Area','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Singular Footer','id'=>'singularfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('related_posts');
+    register_widget('post_nav');
 }
 
 class related_posts extends WP_Widget{
-    function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事',));}
+    function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事'));}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related.php');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__('','text_domain');?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+
+class post_nav extends WP_Widget{
+    function __construct(){parent::__construct('post_nav','前後への記事のナビゲーション',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label>
@@ -60,6 +74,29 @@ add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
 
 if(is_singular()===true):
+
+/*
+1.Add featured image as background image to post navigation elements.
+2.Add singular_js
+*/
+function twentyfifteen_post_nav_background(){
+        if(is_singular()===false){return;}
+        $previous=(is_attachment()) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+        $next    =get_adjacent_post( false, '', false );
+        $css     ='';
+        if(is_attachment()===true&&'attachment'===$previous->post_type){return;}
+        if($previous&&has_post_thumbnail($previous->ID)){
+            $prevthumb=wp_get_attachment_image_src(get_post_thumbnail_id($previous->ID),'post-thumbnail');
+            $css='.post-nav .prev{background:url(' . esc_url($prevthumb[0]) . ') rgba(0,0,0,.4) center cover;}';
+        }
+        if($next&&has_post_thumbnail($next->ID)){
+            $nextthumb=wp_get_attachment_image_src(get_post_thumbnail_id($next->ID),'post-thumbnail');
+            $css='.post-nav .next{background:url(' . esc_url($nextthumb[0]) . ') rgba(0,0,0,.4) center cover;}';
+        }
+        wp_add_inline_style('twentyfifteen-style',$css);
+}
+add_action('wp_enqueue_scripts','twentyfifteen_post_nav_background');
+
 function singular_js_function(){
 echo <<< EOM
 <script src="/js/highlight.pack.js"></script>
@@ -443,27 +480,3 @@ function add_twitter_site_acount_option_field(){
     register_setting('general','twitter_site_acount');
 }
 add_filter('admin_init','add_twitter_site_acount_option_field');
-/**
- * Add featured image as background image to post navigation elements.
- *
- * @since Twenty Fifteen 1.0
- *
- * @see wp_add_inline_style()
- */
-function twentyfifteen_post_nav_background(){
-        if(is_singular()===false){return;}
-        $previous=(is_attachment()) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-        $next    =get_adjacent_post( false, '', false );
-        $css     ='';
-        if(is_attachment()===true&&'attachment'===$previous->post_type){return;}
-        if($previous&&has_post_thumbnail($previous->ID)){
-                $prevthumb=wp_get_attachment_image_src(get_post_thumbnail_id($previous->ID),'post-thumbnail');
-                $css='.post-nav .prev{background:url(' . esc_url($prevthumb[0]) . ') rgba(0,0,0,.4) center cover;}';
-        }
-        if($next&&has_post_thumbnail($next->ID)){
-                $nextthumb=wp_get_attachment_image_src(get_post_thumbnail_id($next->ID),'post-thumbnail');
-                $css='.post-nav .next{background:url(' . esc_url($nextthumb[0]) . ') rgba(0,0,0,.4) center cover;}';
-        }
-        wp_add_inline_style('twentyfifteen-style',$css);
-}
-add_action('wp_enqueue_scripts','twentyfifteen_post_nav_background');
