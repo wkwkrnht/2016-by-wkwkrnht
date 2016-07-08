@@ -85,6 +85,8 @@ function wkwkrnht_post_nav_background(){
         $next=get_adjacent_post(false,'',false);
         $css ='';
         $url ='';
+        $prevurl ='';
+        $nexturl ='';
         if(is_attachment()===true&&'attachment'===$prev->post_type){return;}
         if($prev&&has_post_thumbnail($prev->ID)){
             $prevthumb=wp_get_attachment_image_src(get_post_thumbnail_id($prev->ID),'post-thumbnail');
