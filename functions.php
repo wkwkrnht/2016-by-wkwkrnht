@@ -79,7 +79,7 @@ if(is_singular()===true):
 1.Add featured image as background image to post navigation elements.
 2.Add singular_js
 */
-function twentyfifteen_post_nav_background(){
+function wkwkrnht_post_nav_background(){
         if(is_singular()===false){return;}
         $prev=(is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true);
         $next=get_adjacent_post(false,'',false);
@@ -88,16 +88,17 @@ function twentyfifteen_post_nav_background(){
         if(is_attachment()===true&&'attachment'===$prev->post_type){return;}
         if($prev&&has_post_thumbnail($prev->ID)){
             $prevthumb=wp_get_attachment_image_src(get_post_thumbnail_id($prev->ID),'post-thumbnail');
-            $url=esc_url($prevthumb[0]);
+            $prevurl=esc_url($prevthumb[0]);
         }
         if($next&&has_post_thumbnail($next->ID)){
             $nextthumb=wp_get_attachment_image_src(get_post_thumbnail_id($next->ID),'post-thumbnail');
-            $url=esc_url($nextthumb[0]);
+            $nexturl=esc_url($nextthumb[0]);
         }
-        $css='.post-nav .next{background:url(' . $url . ') rgba(0,0,0,.4) center cover;}';
-        wp_add_inline_style('twentyfifteen-style',$css);
+        echo'
+        .post-nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.4) center cover;}
+        .post-nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.4) center cover;}
+        ';
 }
-add_action('wp_enqueue_scripts','twentyfifteen_post_nav_background');
 
 function singular_js_function(){
 echo <<< EOM
