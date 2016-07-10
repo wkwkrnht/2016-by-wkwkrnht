@@ -115,7 +115,8 @@
     独自要素
 1.マーカー
 2,OGP版ブログカード
-3.補足情報
+3.はてな版ブログカード
+4.補足情報
 */
 .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 
@@ -125,6 +126,8 @@
 .ogp-blogcard-info{display:inline-block;width:55%;text-align:center;}
 .ogp-blogcard-title{font-size:2rem;}
 .ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.5vmin solid #333;vertical-align:middle;}
+
+.hatenablogcarad{max-width:80%;}
 
 .information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:4px;position:relative;margin:1em auto;}
 .information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
