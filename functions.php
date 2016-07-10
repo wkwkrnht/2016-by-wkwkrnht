@@ -97,8 +97,8 @@ function wkwkrnht_post_nav_background(){
             $nexturl=esc_url($nextthumb[0]);
         }
         echo'
-        .post-nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.4) center cover;}
-        .post-nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.4) center cover;}
+        .post-nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.4) center;}
+        .post-nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.4) center;}
         ';
 }
 
