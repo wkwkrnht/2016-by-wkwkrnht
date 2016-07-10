@@ -5,7 +5,7 @@
 			<span><?php bloginfo('name');?></span>
 		</a>
 		<div class="article-meta">
-			<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><span><?php the_time('Y/n/j');?></span></time>
+			<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 			<span class="article-info">
 				<h2 class="article-name"><?php the_title();?></h2>
 				<?php the_author();the_category(', ');?>
