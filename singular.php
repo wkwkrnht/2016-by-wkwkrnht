@@ -1,9 +1,7 @@
 <?php get_header();?>
 <article id="post-<?php the_ID();?>" <?php post_class();?>>
 	<header class="article-header">
-		<a href="<?php home_url();?>" class="article-img" style="display:block;background:url(<?php wkwkrnht_eyecatch();?>) no-repeat center/cover;">
-			<span><?php bloginfo('name');?></span>
-		</a>
+		<a href="<?php home_url();?>" class="article-img" style="display:block;background:url(<?php wkwkrnht_eyecatch();?>) no-repeat center/cover;"></a>
 		<div class="article-meta">
 			<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 			<span class="article-info">
