@@ -94,6 +94,28 @@
 .widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
 .widget_tag_cloud a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
 /*
+    独自要素
+1.マーカー
+2,OGP版ブログカード
+3.はてな版ブログカード
+4.補足情報
+*/
+.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
+
+.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
+.ogp-blogcard-img{display:inline-block;height:40%;width:40%;}
+.ogp-blogcard-info{display:inline-block;width:55%;text-align:center;}
+.ogp-blogcard-title{font-size:2rem;}
+.ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
+
+.hatenablogcarad{max-width:1600px;}
+
+.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
+.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
+.information::before{content:'\f05a';}
+.question::before{content:'\f059';}
+/*
 	リストページ
 1.card-list
 2.ページネーション
@@ -112,29 +134,7 @@
 .pagenation a{background-color:#fff;color:#00a5de;text-decoration:none;}
 .pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
 /*
-    独自要素
-1.マーカー
-2,OGP版ブログカード
-3.はてな版ブログカード
-4.補足情報
-*/
-.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
-
-.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-.ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
-.ogp-blogcard-img{display:inline-block;height:40%;width:40%;}
-.ogp-blogcard-info{display:inline-block;width:55%;text-align:center;}
-.ogp-blogcard-title{font-size:2rem;}
-.ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.5vmin solid #333;vertical-align:middle;}
-
-.hatenablogcarad{max-width:1600px;}
-
-.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:4px;position:relative;margin:1em auto;}
-.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
-.information::before{content:'\f05a';}
-.question::before{content:'\f059';}
-/*
-    article-style
+    記事ページ
 1.header&main
 2.link
 3.見出し

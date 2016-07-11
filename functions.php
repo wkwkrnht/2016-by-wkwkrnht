@@ -234,7 +234,7 @@ function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_conte
 1.API対応追加
 2.OGP版ブログカード
 */
-wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed.{format}',true);
+wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed',true);
 wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog.com/oembed');
 wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
 
