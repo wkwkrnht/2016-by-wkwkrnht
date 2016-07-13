@@ -1,6 +1,6 @@
 <?php $myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()){$myAmp=true;};
 if($myAmp===true):?>
-	<?php require_once('/amp.php');?>
+	<?php require_once('amp.php');?>
 <?php else:?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
