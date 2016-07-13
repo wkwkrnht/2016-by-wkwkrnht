@@ -315,41 +315,6 @@ function pagenation($pages='',$range=3){
     }
 }
 /*
-*/
-function get_amp_content(){
-    $content = get_the_content();
-
-    $pattern = array(
-        '/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
-        '/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
-        '/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
-        '/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
-        '/https:\/\/youtu.be\/(.*)/i',
-        '/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-        '/<iframe .*src="(.*?)".*>/i',
-        '/<img .*src="(.*?)".*>/i',
-        '/\[OGPBlogcard url=(.*?)\]/',
-        '/\[hatenaBlogcard url=(.*?)\]/',
-        '/\[embedly url=(.*?)\]/'
-    );
-
-    $append = array(
-        '<amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter>',
-        '<amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter>',
-        '<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
-        '<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
-        '<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-        '<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-        '<amp-iframe layout="responsive" src="$1"><amp-iframe>',
-        '<amp-img layout="responsive" src="$1"></amp-img>',
-        '<a href="$1">$1</a>',
-        '<a href="$1">$1</a>',
-        '<a href="$1">$1</a>'
-    );
-
-    echo preg_replace($pattern,$append,$content);
-}
-/*
     コンテンツ中装飾
 1.検索結果をマーカー風にハイライト
 2.@hogehogeをツイッターにリンク
