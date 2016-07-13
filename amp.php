@@ -110,18 +110,7 @@
 			</div>
 		</header>
 		<section class="article-main">
-			<?php $pattern=array('/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
-				'/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
-				'/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
-				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
-				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i','/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i','/<img/i','/\/>/','/\[scshot url=(.*?)\]/','/\[myqrcode url=(.*?) size=(.*?)\]/','/\[embedly url=(.*?)\]/','/\[hatenaBlogcard url=(.*?)\]/');
-				$append=array('<amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter>','<amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter>',
-				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
-				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
-				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>','<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-				'<amp-iframe layout="responsive"','<amp-img layout="responsive"','></amp-img>','<a href="$1">$1</a>','<a href="$1">$1</a>','<a href="$1">$1</a>','<a href="$1">$1</a>');
-				echo preg_replace($pattern,$append,get_the_content());?>
+			<?php echo get_amp_content();?>
 		</section>
 		<footer>
 			<?php require_once('widget/related.php');?>
