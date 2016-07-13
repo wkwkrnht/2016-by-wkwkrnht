@@ -110,7 +110,7 @@
 			</div>
 		</header>
 		<section class="article-main">
-			<?php echo get_amp_content();?>
+			<?php get_amp_content();?>
 		</section>
 		<footer>
 			<?php require_once('widget/related.php');?>

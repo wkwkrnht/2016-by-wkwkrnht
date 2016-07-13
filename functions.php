@@ -324,8 +324,8 @@ function get_amp_content(){
         '/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
         '/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
         '/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
-        '/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
-        '/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
+        '/https:\/\/youtu.be\/(.*)/i',
+        '/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
         '/<iframe .*src="(.*?)".*>/i',
         '/<img .*src="(.*?)".*>/i',
         '/\[OGPBlogcard url=(.*?)\]/',
@@ -346,7 +346,8 @@ function get_amp_content(){
         '<a href="$1">$1</a>',
         '<a href="$1">$1</a>'
     );
-    return preg_replace($pattern,$append,$content);
+
+    echo preg_replace($pattern,$append,$content);
 }
 /*
     コンテンツ中装飾
