@@ -59,6 +59,7 @@
 	<style amp-custom>
 		:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 		amp-iframe,h1,h2,h3,h4,h5,h6{text-align:center;}
+		article{padding-top:18vh;}
 		.siteinfo{width:100vw;height:18vh;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;z-index:10;position:fixed;top:0;left:0;margin-top:0;}
 		.site-title{font-size:26px;color:white;text-decoration:none;}
 		.article-img{display:block;height:20vh;width:100vw;}
@@ -129,14 +130,14 @@
 		    );
 
 		    $append = array(
-		        '<amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter>',
-		        '<amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter>',
+		        '<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
+		        '<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
 		        '<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 		        '<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
-		        '<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-		        '<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-		        '<amp-iframe layout="responsive" src="$1"><amp-iframe>',
-		        '<amp-img layout="responsive" src="$1"></amp-img>',
+		        '<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
+		        '<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
+		        '<div><amp-iframe layout="responsive" src="$1"></amp-iframe></div>',
+		        '<div><amp-img layout="responsive" src="$1"></amp-img></div>',
 		        '<a href="$1">$1</a>',
 		        '<a href="$1">$1</a>',
 		        '<a href="$1">$1</a>'
