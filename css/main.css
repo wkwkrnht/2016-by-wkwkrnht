@@ -211,7 +211,8 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .info-card,.card{height:36vmin;width:64vmin;}
         .card img{max-height:30vmin;}
         .card img,.article-info{max-width:calc(64vmin / 2);}
-        article{max-width:1600px;margin:0 auto;}
+        article{max-width:1600px;}
+        .article-main{margin:0 auto;}
     }
     @media screen and (min-height:721px){
     	.card{margin:2.5vmin 0;}
