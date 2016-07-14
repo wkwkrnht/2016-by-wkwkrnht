@@ -5,7 +5,7 @@ if($myAmp===true):?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
 		<header class="article-header">
-			<a href="<?php home_url();?>" class="article-img" style="display:block;background-img:url(<?php wkwkrnht_eyecatch();?>);"></a>
+			<a href="<?php home_url();?>" class="article-img" style="display:block;background-image:url(<?php wkwkrnht_eyecatch();?>);"></a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
