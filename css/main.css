@@ -1,4 +1,4 @@
-:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
+:root{width:100vw;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 #site-main{padding-bottom:18vh;z-index:0;-webkit-perspective:300px;-moz-perspective:300px;-ms-perspective:300px;-o-perspective:300px;perspective:300px;-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);-o-transform:translateZ(0);transform:translateZ(0);}
 .sizuku{animation:sizuku 1s linear 0s;background-color:#6eb2e0;border:4px solid #6eb2e0;border-radius:50%;position:absolute;z-index:1000;}
 @keyframes sizuku{0%{height:0;width:0;opacity:1;transform:translate(0,0);}100%{height:500px;width:500px;opacity:0;transform:translate(-250px,-250px);}}
@@ -143,8 +143,8 @@
 6.独自要素
 7.codex
 */
-.article-img{height:20vh;width:100%;z-index:-1;-webkit-transform:translateZ(-300px);-moz-transform:translateZ(-300px);-ms-transform:translateZ(-300px);-o-transform:translateZ(-300px);transform:translateZ(-300px);}
-.article-img::before{display:block;content:'';height:20vh;width:100%;position:relative;top:0;left:0;background-color:rgba(0,0,0,.3);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
+.article-img{height:20vh;width:100vw;z-index:-1;-webkit-transform:translateZ(-300px);-moz-transform:translateZ(-300px);-ms-transform:translateZ(-300px);-o-transform:translateZ(-300px);transform:translateZ(-300px);}
+.article-img::before{display:block;content:'';height:20vh;width:100vw;position:relative;top:0;left:0;background-color:rgba(0,0,0,.3);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
 .article-img span{position:relative;top:0;left:0;}
 .article-meta{height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 .article-date{display:block;float:left;height:inherit;width:30%;background-color:#ffcc00;color:#fff;font-size:2rem;line-height:20vh;}
@@ -211,7 +211,7 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .info-card,.card{height:36vmin;width:64vmin;}
         .card img{max-height:30vmin;}
         .card img,.article-info{max-width:calc(64vmin / 2);}
-        article{max-width:1600px;}
+        article{max-width:1600px;margin:0 auto;}
     }
     @media screen and (min-height:721px){
     	.card{margin:2.5vmin 0;}
