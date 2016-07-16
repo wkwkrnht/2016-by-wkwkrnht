@@ -143,9 +143,9 @@
 6.独自要素
 7.codex
 */
-.article-header{height:60vh;width:90vw;margin:5vmin auto 0;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
-.article-eyecatch{height:40vh;width:90vw;}
-.article-meta{height:20vh;}
+.article-header{height:55vh;width:90vw;margin:5vmin auto 0;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
+.article-eyecatch{height:30vh;width:90vw;}
+.article-meta{height:25vh;}
 .article-date{display:block;float:left;height:inherit;width:30%;background-color:#ffcc00;color:#fff;font-size:2rem;line-height:20vh;}
 .article-title{font-size:2rem;}
 .bread{height:50%;}
