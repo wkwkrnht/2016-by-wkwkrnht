@@ -8,7 +8,7 @@ if($myAmp===true):?>
 			<img src="<?php wkwkrnht_eyecatch();?>" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
-				<div><span class="article-info">
+				<span class="article-info">
 					<h2 class="article-name"><?php the_title();?></h2>
 					<?php the_author();the_category(', ');?>
 					<?php
@@ -23,7 +23,7 @@ if($myAmp===true):?>
 						echo $echo . '<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">' . $cat[0]->name . '</span></a></div>';
 					}
 					?>
-				</span></div>
+				</span>
 			</div>
 		</header>
 		<div class="article-main">
