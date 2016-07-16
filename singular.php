@@ -7,7 +7,7 @@ if($myAmp===true):?>
 		<header class="article-header">
 			<img src="<?php wkwkrnht_eyecatch();?>" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
-				<div><time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></div>
+				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<div><span class="article-info">
 					<h2 class="article-name"><?php the_title();?></h2>
 					<?php the_author();the_category(', ');?>
