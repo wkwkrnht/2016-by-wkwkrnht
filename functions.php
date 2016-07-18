@@ -241,7 +241,7 @@ wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog.com/oembed
 wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
 
 function make_ogp_blog_card($url){
-    $ifvar = get_transient($url);
+    $ifvar = get_site_transient($url);
     if($ifvar):
         $content = $ifvar;
     else:
@@ -269,7 +269,8 @@ function make_ogp_blog_card($url){
                 </a>
             </div>
         </div>';
-        set_transient($url,$content,12 * WEEK_IN_SECONDS);
+        if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
+        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
     endif;
     return $content;
 }
