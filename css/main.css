@@ -99,6 +99,7 @@
 2,OGP版ブログカード
 3.はてな版ブログカード
 4.補足情報
+5.検索風表示
 */
 .marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 
@@ -115,6 +116,12 @@
 .information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
 .information::before{content:'\f05a';}
 .question::before{content:'\f059';}
+
+.search-form{margin:3em 0;line-height:170%;}
+.search-form div{display:inline-block;padding:5px;margin-left:1rem;border:1px solid #555;border-radius:2px;}
+.search-form .sform{min-width:280px;background-color:#fff;}
+.search-form .sbtn{position:absolute;padding-left:2rem;padding-right:3rem;color:#fff;background-color:#1155ee;}
+.search-form div.sbtn:after{content:'\f25a';font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
 /*
 	リストページ
 1.card-list
@@ -258,5 +265,11 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .article-main table tr th,.article-main table tr td{margin:-1px;}
         .article-main table thead{display:none;}
         .article-main table tbody tr td[data-th]::before{content:attr(data-th) " : ";font-weight:bold;display:inline-block;margin-right:0.25em;}
+    }
+    @media screen and (max-width:450px){
+        .search-form div{padding:3px 5px;font-size:75%;}
+        .search-form .sform{min-width: 180px;}
+        .search-form .sbtn{padding-left:5px;padding-right:10px;}
+        .search-form .sbtn::after{font-size:20px;margin-left:-10px;}
     }
 }

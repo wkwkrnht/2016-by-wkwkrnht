@@ -241,30 +241,37 @@ wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog.com/oembed
 wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
 
 function make_ogp_blog_card($url){
-    require_once('parts/OpenGraph.php');
-	$ogp = OpenGraph::fetch($url);
-    $url = $ogp->url;
-    $img = $ogp->image;
-    $title = $ogp->title;
-    $site_name = $ogp->site_name;
-    $description = $ogp->description;
-    return
-    '<div class="ogp-blogcard">
-        <div class="ogp-blogcard-main">
-            <div class="ogp-blogcard-img" style="background:#ffcc00 url(' . $img . ') ;"></div>
-            <div class="ogp-blogcard-info">
+    $ifvar = get_transient($url);
+    if($ifvar):
+        $content = $ifvar;
+    else:
+        require_once('parts/OpenGraph.php');
+    	$ogp = OpenGraph::fetch($url);
+        $url = $ogp->url;
+        $img = $ogp->image;
+        $title = $ogp->title;
+        $site_name = $ogp->site_name;
+        $description = $ogp->description;
+        $content =
+        '<div class="ogp-blogcard">
+            <div class="ogp-blogcard-main">
+                <div class="ogp-blogcard-img" style="background:#ffcc00 url(' . $img . ') ;"></div>
+                <div class="ogp-blogcard-info">
+                    <a href="' . $url . '" target="_blank">
+                        <h2 class="ogp-blogcard-title">' . $title . '</h2>
+                        <p class="ogp-blogcard-description">' . $description . '</p>
+                    </a>
+                </div>
+            </div>
+            <div class="ogp-blogcard-footer">
                 <a href="' . $url . '" target="_blank">
-                    <h2 class="ogp-blogcard-title">' . $title . '</h2>
-                    <p class="ogp-blogcard-description">' . $description . '</p>
+                    <span class="ogp-blogcard-site-name">' . $site_name . '</span>
                 </a>
             </div>
-        </div>
-        <div class="ogp-blogcard-footer">
-            <a href="' . $url . '" target="_blank">
-                <span class="ogp-blogcard-site-name">' . $site_name . '</span>
-            </a>
-        </div>
-    </div>';
+        </div>';
+        set_transient($url,$content,12 * WEEK_IN_SECONDS);
+    endif;
+    return $content;
 }
 /*
     1st card
@@ -335,18 +342,21 @@ add_filter('comment_text','twtreplace');
 1.カスタムCSS
 2.HTMLエンコード
 3.embed.ly版ブログカード
-4.はてな版ブログカードS
+4.はてな版ブログカード
+5.検索風表示
 */
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
+function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));$content='<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';return $content;}
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
+add_shortcode('SearchBox','txt_to_SearchBox');
 /*
     投稿画面カスタマイズ
 1.カテゴリーフィルター&抜粋制限
@@ -379,6 +389,7 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
+        QTags.addButton('qt-searchbox','検索風表示','[SearchBox txt=',']');
     </script>
 <?php }}
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
