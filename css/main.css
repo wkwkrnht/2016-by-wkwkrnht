@@ -153,8 +153,8 @@
 .article-header{height:55vh;width:92vw;margin:5vmin auto 0;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 .article-eyecatch{height:32vh;width:92vw;}
 .article-meta{height:23vh;width:92vw;position:absolute;}
-.article-date{display:block;height:inherit;width:30%;float:left;background-color:#ffcc00;color:#fff;font-size:2.3rem;line-height:23vh;}
-.article-info{height:inherit;width:70%;float:right;}
+.article-date{display:block;height:inherit;width:30%;position:relative;left:0;bottom:0;background-color:#ffcc00;color:#fff;font-size:2.3rem;line-height:23vh;}
+.article-info{position:relative;right:0;bottom:0;}
 .article-title{font-size:2rem;}
 .bread{height:50%;}
 .bread .sp{margin:0 .5em;}
