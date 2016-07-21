@@ -177,13 +177,14 @@
 .article-main h6{border-bottom:.75vmin dashed #ffcc00;}
 
 
-.article-main blockquote{padding:2em;border:1px solid #bbb;border-radius:5px;background:#ddd;quotes:none;}
+.article-main blockquote{quotes:none;}
+.article-main blockquote,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#f1f1f1;}
 
 
 .article-main ul{margin:2em auto;}
-.article-main li{list-style:none;}
-.article-main li::before{content:'';display:block;height:0;width:90%;position:absolute;top:1em;left:0;border-bottom:1px dashed #aaa;}
-.article-main li::after{content:'';display:block;width:.5em;height:.5em;border-radius:50%;position:absolute;top:7px;left:5px;background:#aaa;}
+.article-main li{list-style:none;position:absolute;}
+.article-main li::before{content:'';display:block;height:0;width:90%;position:relative;top:1em;left:0;border-bottom:1px dashed #aaa;}
+.article-main li::after{content:'';display:block;width:.8em;height:.8em;border-radius:50%;position:relative;top:50%;left:50%;background:#aaa;}
 
 
 .article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
