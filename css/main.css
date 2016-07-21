@@ -145,10 +145,11 @@
 1.header&main
 2.link
 3.見出し
-4.pre&address
-5.テーブル
-6.独自要素
-7.codex
+4.pre&address&blockquote
+5.リスト
+6.テーブル
+7.独自要素
+8.codex
 */
 .article-header{height:55vh;width:92vw;margin:5vmin auto 0;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 .article-eyecatch{height:32vh;width:92vw;}
@@ -176,7 +177,13 @@
 .article-main h6{border-bottom:.75vmin dashed #ffcc00;}
 
 
-.article-main pre,.article-main address{background-color:#f1f1f1;}
+.article-main blockquote{padding:2em;border:1px solid #bbb;border-radius:5px;background:#ddd;quotes:none;}
+
+
+.article-main ul{margin:2em auto;}
+.article-main li{list-style:none;}
+.article-main li::before{content:'';display:block;height:0;width:90%;position:absolute;top:1em;left:0;border-bottom:1px dashed #aaa;}
+.article-main li::after{content:'';display:block;width:.5em;height:.5em;border-radius:50%;position:absolute;top:7px;left:5px;background:#aaa;}
 
 
 .article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
