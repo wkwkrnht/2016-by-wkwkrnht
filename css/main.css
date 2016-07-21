@@ -179,6 +179,7 @@
 
 .article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#ddd;}
 .article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
+.article-main pre{font-family:monospace;font-weight:bold;}
 .article-main blockquote,.article-main q{quotes:none;}
 .article-main blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:5px;border-top:1px solid #fff;color:#fff;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
 
