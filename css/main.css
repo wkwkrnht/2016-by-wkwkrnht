@@ -184,7 +184,7 @@
 
 
 .article-main ul{margin:2em auto;list-style:none;}
-.article-main ul::before{content:'●';display:inline;color:#aaa;font-size:.8em;padding-right:1em;}
+.article-main ul::before{content:'●';display:inline;position:relative;top:0;left:0;color:#aaa;font-size:.8em;padding-right:1em;}
 .article-main ul li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px dashed #aaa;}
 .article-main ol li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px solid #aaa;}
 
