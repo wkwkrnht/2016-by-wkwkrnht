@@ -178,6 +178,20 @@
 
 
 .article-main blockquote{quotes:none;}
+.article-main blockquote::after{
+    content: attr(title) "\a" attr(cite); /* title + 改行 + cite */
+    display: block; /* border用 */
+    padding-top: 5px;
+    border-top: 1px solid #fff;
+    color: #555;
+    font-size: 12px;
+    text-align: right;
+    text-shadow: 1px 1px 0 #eee;
+    line-height: 1.6;
+    white-space: pre-wrap; /* 以下長いURL対策 */
+    white-space: -moz-pre-wrap;
+    word-wrap: break-word;
+}
 .article-main blockquote,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#f1f1f1;}
 
 
