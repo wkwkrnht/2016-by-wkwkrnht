@@ -159,7 +159,7 @@
 .article-title{font-size:2rem;}
 .bread{height:50%;}
 .bread .sp{margin:0 .5em;}
-.article-main{font-size:1.5rem;}
+.article-main{font-size:1.6rem;}
 .article-main p{padding:5vmin 8vmin 0;}
 
 
@@ -177,28 +177,15 @@
 .article-main h6{border-bottom:.75vmin dashed #ffcc00;}
 
 
+.article-main blockquote,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#ddd;}
+.article-main address{max-width:94vw;margin:1em auto;}
 .article-main blockquote{quotes:none;}
-.article-main blockquote::after{
-    content: attr(title) "\a" attr(cite); /* title + 改行 + cite */
-    display: block; /* border用 */
-    padding-top: 5px;
-    border-top: 1px solid #fff;
-    color: #555;
-    font-size: 12px;
-    text-align: right;
-    text-shadow: 1px 1px 0 #eee;
-    line-height: 1.6;
-    white-space: pre-wrap; /* 以下長いURL対策 */
-    white-space: -moz-pre-wrap;
-    word-wrap: break-word;
-}
-.article-main blockquote,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#f1f1f1;}
+.article-main blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:5px;border-top:1px solid #fff;color:#fff;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
 
 
 .article-main ul{margin:2em auto;}
-.article-main li{list-style:none;border-bottom:1px dashed #aaa;}
-.article-main li::before{content:'●';display:inline;color:#aaa;font-size:.8em;padding-right:1em;}
-/*.article-main li::after{content:'';display:block;height:0;width:90%;position:relative;top:0;left:0;}*/
+.article-main li{}
+.article-main li::after{content:'';display:block;height:0;width:90%;position:relative;top:0;left:0;border-bottom:1px dashed #aaa;}
 
 
 .article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
