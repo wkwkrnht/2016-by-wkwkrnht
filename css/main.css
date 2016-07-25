@@ -37,7 +37,8 @@
 
 #main-menu{color:#333;background-color:#fff;}
 
-.admin-navigation ul{list-style-type:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
+.admin-navigation{width:100%;}
+.admin-navigation ul{width:100%;list-style-type:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
 .admin-navigation ul li a{text-decoration:none;}
 .addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
 .addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
