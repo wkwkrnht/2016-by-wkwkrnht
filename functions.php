@@ -5,8 +5,9 @@
 1.ナビゲーションエリア追加
 2.ウィジェットエリア追加
 3.エディタースタイル追加
-4.body_classにクラス追加
-5.jQueryのロードをGoogleから行うように
+4.ウィジェット追加
+5.不要なjs削除
+6.body_classにクラス追加
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -62,13 +63,6 @@ class post_nav extends WP_Widget{
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-
-add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
-function theme_enqueue_scripts_styles(){
-    wp_deregister_script('jquery');
-    wp_register_script('jquery','');
-    wp_enqueue_script('jquery',false,array(),null,true);
-}
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}

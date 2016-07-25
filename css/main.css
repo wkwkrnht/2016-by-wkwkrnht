@@ -37,12 +37,9 @@
 
 #main-menu{color:#333;background-color:#fff;}
 
-.login::before,.logout::before,.adminmenu::before,.addpost::before,.wlwedit::before,.post-edit-link::before{font-family:"FontAwesome";font-size:24px;}
-.login::before{content:"\f090";}
-.logout::before{content:"\f08b";}
-.adminmenu::before{content:"\f013";}
-.addpost::before,.wlwedit::before,.post-edit-link::before{content:"\f040";color:green;}
-.addpost::after{content:"\f067";font-family:"FontAwesome";font-size:16px;position:relative;right:.5em;bottom:0;}
+.admin-navigation ul{list-style-type:none;}
+.addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
+.addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 
 .social-navigation ul{list-style:none;margin:0 0 -1.6em 0;}
 .social-navigation li{float:left;}
@@ -83,6 +80,8 @@
 .social-navigation a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:'\f19a';color:#0033ff;}
 .social-navigation a[href*="push.dog"]::before,.social-navigation a[href*="onesignal.com"]::before{content:'\f0f3';}
 .social-navigation a[href*="push7.jp"]::before{content:'\f0e7';}
+
+.main-nav{list-style-type:none;}
 
 .widget-area{list-style:none;}
 .widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}

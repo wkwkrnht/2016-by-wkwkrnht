@@ -21,14 +21,20 @@
         </ul>
     </nav>
     <div id="main-menu" class="close">
-        <nav class="admin-navigation" role="navigation">
-            <?php if(is_user_logged_in()):?>
-                <a href="<?php echo esc_url(home_url());?>/wp-login.php?loggedout=true" target="_blank" class="logout"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a><?php edit_post_link();?><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a><a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenu"></a>
-            <?php endif;?>
-        </nav>
+        <?php if(is_user_logged_in()):?>
+            <nav class="admin-navigation" role="navigation">
+                <ul>
+                    <li><a href="<?php echo esc_url(home_url());?>/wp-login.php?loggedout=true" target="_blank" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
+                    <li><?php edit_post_link();?></li>
+                    <li><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a></li>
+                    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenu"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
+        <?php endif;?>
 	    <?php if(has_nav_menu('social')):?>
             <nav class="social-nav" role="navigation">
-                <li><a href="<?php echo esc_url(home_url());?>/wp-login.php" target="_blank" class="login"></a></li><?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
+                <?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
             </nav>
         <?php endif;?>
         <?php if(has_nav_menu('main')):?>
@@ -43,9 +49,7 @@
         <?php endif;?>
     </div>
     <?php //require(get_template_directory() . '/js/script.php');?>
-    <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
     <script>
-        window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         document.body.addEventListener("click",drop,false);function drop(e){var x = e.pageX;var y = e.pageY;var sizuku = document.createElement("div");sizuku.style.top = y + "px";sizuku.style.left = x + "px";document.body.appendChild(sizuku);sizuku.className = "sizuku";sizuku.addEventListener("animationend",function(){this.parentNode.removeChild(this);},false);};
         jQuery(function(){jQuery('#menu-toggle').click(function(){jQuery('#main-menu').toggleClass('close');jQuery('#main-menu').toggleClass('open');});});
         jQuery(function(){jQuery('#share-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
