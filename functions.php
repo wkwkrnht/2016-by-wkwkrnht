@@ -8,6 +8,7 @@
 4.ウィジェット追加
 5.不要なjs削除
 6.body_classにクラス追加
+7.Add singular_js
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -66,34 +67,14 @@ remove_action('wp_print_styles','print_emoji_styles');
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
 
-
-
-/*
-1.Add featured image as background image to post navigation elements.
-2.Add singular_js
-*/
-function wkwkrnht_post_nav_background(){
-        if(is_singular()===false){return;}
-        $prev=(is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true);
-        $next=get_adjacent_post(false,'',false);
-        $css ='';
-        $url ='';
-        $prevurl ='';
-        $nexturl ='';
-        if(is_attachment()===true&&'attachment'===$prev->post_type){return;}
-        if($prev&&has_post_thumbnail($prev->ID)){
-            $prevthumb=wp_get_attachment_image_src(get_post_thumbnail_id($prev->ID),'post-thumbnail');
-            $prevurl=esc_url($prevthumb[0]);
-        }
-        if($next&&has_post_thumbnail($next->ID)){
-            $nextthumb=wp_get_attachment_image_src(get_post_thumbnail_id($next->ID),'post-thumbnail');
-            $nexturl=esc_url($nextthumb[0]);
-        }
-        echo'
-        .post-nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.4) center;}
-        .post-nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.4) center;}
-        ';
+add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
+function theme_enqueue_scripts_styles(){
+    wp_deregister_script('jquery');
+    wp_register_script('jquery','');
+    wp_enqueue_script('jquery',false,array(),null,true);
 }
+
+
 
 function singular_js_function(){
 if(is_singular()===true):
@@ -294,6 +275,32 @@ function wkwkrnht_special_card(){
             endif;
         echo'<br><span class="copyright">&copy;2015&nbsp;' . $blogname . '</span></div>';
     endif;
+}
+/*
+1.Add featured image as background image to post navigation elements.
+
+*/
+function wkwkrnht_post_nav_background(){
+        if(is_singular()===false){return;}
+        $prev=(is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true);
+        $next=get_adjacent_post(false,'',false);
+        $css ='';
+        $url ='';
+        $prevurl ='';
+        $nexturl ='';
+        if(is_attachment()===true&&'attachment'===$prev->post_type){return;}
+        if($prev&&has_post_thumbnail($prev->ID)){
+            $prevthumb=wp_get_attachment_image_src(get_post_thumbnail_id($prev->ID),'post-thumbnail');
+            $prevurl=esc_url($prevthumb[0]);
+        }
+        if($next&&has_post_thumbnail($next->ID)){
+            $nextthumb=wp_get_attachment_image_src(get_post_thumbnail_id($next->ID),'post-thumbnail');
+            $nexturl=esc_url($nextthumb[0]);
+        }
+        echo'
+        .post-nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.4) center;}
+        .post-nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.4) center;}
+        ';
 }
 /*
     page-nation
