@@ -24,11 +24,11 @@
         <?php if(is_user_logged_in()):?>
             <nav class="admin-navigation" role="navigation">
                 <ul>
-                    <li><a href="<?php echo esc_url(home_url());?>/wp-login.php?loggedout=true" target="_blank" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                    <li><a href="<?php echo esc_url(home_url());?>/wp-login.php?loggedout=true" target="_blank" class="logout"><i class="fa fa-3x fa-sign-out" aria-hidden="true"></i></a></li>
                     <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
                     <li><?php edit_post_link();?></li>
                     <li><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a></li>
-                    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenu"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+                    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenu"><i class="fa fa-3x fa-cog" aria-hidden="true"></i></a></li>
                 </ul>
             </nav>
         <?php endif;?>
