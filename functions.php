@@ -1,14 +1,17 @@
 <?php
 /*
-    theme-setup
-0.SET theme support
-1.ナビゲーションエリア追加
-2.ウィジェットエリア追加
-3.エディタースタイル追加
-4.ウィジェット追加
-5.不要なjs削除
-6.body_classにクラス追加
-7.Add singular_js
+    基本情報読み込み
+1.セットアップ
+    ●コンテント幅指定
+    ●機能サポート宣言
+    ●メニューエリア追加
+2.エディタースタイル追加
+3.ウィジェット周り
+    ●ウィジェットエリア追加
+    ●ウィジェット追加
+4.不要なjs削除&jQueryのCDN化
+5.body_classにクラス追加
+6.Add singular_js
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -25,7 +28,6 @@ function wkwkrnht_setup(){
 add_action('after_setup_theme','wkwkrnht_setup');
 
 add_action('admin_init',function(){add_editor_style('css/custom-editor-style.css');});
-
 
 add_action('widgets_init','wkwkrnht_widgets_init');
 function wkwkrnht_widgets_init(){
@@ -63,10 +65,6 @@ class post_nav extends WP_Widget{
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-
-add_filter('body_class','add_body_class');
-function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
-
 add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
 function theme_enqueue_scripts_styles(){
     wp_deregister_script('jquery');
@@ -74,7 +72,8 @@ function theme_enqueue_scripts_styles(){
     wp_enqueue_script('jquery',false,array(),null,true);
 }
 
-
+add_filter('body_class','add_body_class');
+function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
 
 function singular_js_function(){
 if(is_singular()===true):
@@ -210,9 +209,21 @@ function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_conte
 1.API対応追加
 2.OGP版ブログカード
 */
-wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed',true);
-wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog.com/oembed');
-wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
+add_action('init','wkwkrnht_oembed_api');
+function wkwkrnht_oembed_api(){
+    wp_oembed_add_provider('#https?://(www.)?youtube.com/watch.*#i','http://www.youtube.com/oembed/',true);
+	wp_oembed_add_provider('#https?://(www.)?youtube.com/playlist.*#i','http://www.youtube.com/oembed/',true);
+	wp_oembed_add_provider('#https?://(www.)?youtu.be/.*#i','http://www.youtube.com/oembed/',true);
+    wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed',true);
+    wp_oembed_add_provider('#https?://(www.)?instagram.com/p/.*#i','http://api.instagram.com/oembed',true);
+    wp_oembed_add_provider('#https?://(www.)?instagr.am/p/.*#i','http://api.instagram.com/oembed',true);
+    wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog.com/oembed');
+    wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
+    wp_oembed_add_provider('#https?://(www.)?ifttt.com/recipes/.*#i','http://www.ifttt.com/oembed/',true);
+    wp_oembed_add_provider('http://www.kickstarter.com/projects/*','http://www.kickstarter.com/services/oembed',false);
+    wp_oembed_add_provider('#https?://(www.)?cloudup.com/.*#i','https://cloudup.com/oembed/',true);
+    wp_oembed_add_provider('#https?://(www.)?playbuzz.com/.*#i','https://www.playbuzz.com/api/oembed/',true);
+}
 
 function make_ogp_blog_card($url){
     $ifvar = get_site_transient($url);
@@ -249,10 +260,19 @@ function make_ogp_blog_card($url){
     return $content;
 }
 /*
-    1st card
-1.site name&site description
-2.cat name&cat description
-3.serach keyword&result
+    独自要素&独自装飾
+1.情報カード
+    ●site name&site description
+    ●cat name&cat description
+    ●serach keyword&result
+2.前後の記事へのナビの背景をアイキャッチに
+3.ページネーション
+    ●外側
+    ●先頭へ
+    ●1つ戻る
+    ●番号つきページ送りボタン
+    ●1つ進む
+    ●最後尾へ
 */
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');
@@ -276,10 +296,7 @@ function wkwkrnht_special_card(){
         echo'<br><span class="copyright">&copy;2015&nbsp;' . $blogname . '</span></div>';
     endif;
 }
-/*
-1.Add featured image as background image to post navigation elements.
 
-*/
 function wkwkrnht_post_nav_background(){
         if(is_singular()===false){return;}
         $prev=(is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true);
@@ -302,16 +319,7 @@ function wkwkrnht_post_nav_background(){
         .post-nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.4) center;}
         ';
 }
-/*
-    page-nation
-1.表示部分
-    ●外側
-    ●先頭へ
-    ●1つ戻る
-    ●番号つきページ送りボタン
-    ●1つ進む
-    ●最後尾へ
-*/
+
 function pagenation($pages='',$range=3){
     $showitems=($range * 2)+1;
     global $paged;
@@ -368,6 +376,7 @@ function add_post_edit_featuer(){ ?>
 <script>
 	jQuery(function($){function catFilter(header,list){var form =$('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
     jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em; color:#888; font-size:12px;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
+    jQuery(document).ready(function($){if('post' == $('#post_type').val() || 'page' == $('#post_type').val()){$("#post").submit(function(e){if('' == $('#title').val()){alert('タイトルを入力してください！');$('.spinner').hide();$('#publish').removeClass('button-primary-disabled');$('#title').focus();return false;}});}});
 </script>
 <?php }
 add_action('admin_head-post-new.php','add_post_edit_featuer');
@@ -414,7 +423,6 @@ function add_posts_columns_row($column_name,$post_id){
 }
 add_filter('manage_posts_columns','add_posts_columns');
 add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
-
 /*
 プロフィール欄追加(the_author_meta('hogehoge')で表示)
 */
