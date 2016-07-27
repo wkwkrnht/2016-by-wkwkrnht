@@ -113,37 +113,39 @@
 		<section class="article-main">
 			<?php
 			$content = '';
-			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
+			if(have_posts()):while(have_posts()):the_post();
+				$content = get_the_content();
 
-		    $pattern = array(
-		        '/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
-		        '/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
-		        '/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
-		        '/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
-		        '/https:\/\/youtu.be\/(.*)/i',
-		        '/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-		        '/<iframe .*src="(.*?)".*>/i',
-		        '/<img .*src="(.*?)".*>/i',
-		        '/\[OGPBlogcard url=(.*?)\]/',
-		        '/\[hatenaBlogcard url=(.*?)\]/',
-		        '/\[embedly url=(.*?)\]/'
-		    );
+				$pattern = array(
+					'/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
+					'/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
+					'/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
+					'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
+					'/https:\/\/youtu.be\/(.*)/i',
+					'/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
+					'/<iframe .*src="(.*?)".*>/i',
+					'/<img .*src="(.*?)".*>/i',
+					'/\[OGPBlogcard url=(.*?)\]/',
+					'/\[hatenaBlogcard url=(.*?)\]/',
+					'/\[embedly url=(.*?)\]/'
+				);
 
-		    $append = array(
-		        '<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
-		        '<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
-		        '<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
-		        '<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
-		        '<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-		        '<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-		        '<div><amp-iframe layout="responsive" src="$1"></amp-iframe></div>',
-		        '<div><amp-img layout="responsive" src="$1"></amp-img></div>',
-		        '<a href="$1">$1</a>',
-		        '<a href="$1">$1</a>',
-		        '<a href="$1">$1</a>'
-		    );
+				$append = array(
+					'<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
+					'<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
+					'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
+					'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
+					'<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
+					'<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
+					'<div><amp-iframe layout="responsive" src="$1"></amp-iframe></div>',
+					'<div><amp-img layout="responsive" src="$1"></amp-img></div>',
+					'<a href="$1">$1</a>',
+					'<a href="$1">$1</a>',
+					'<a href="$1">$1</a>'
+				);
 
-		    echo preg_replace($pattern,$append,$content);
+				echo preg_replace($pattern,$append,$content);
+			endwhile;endif;
 			?>
 		</section>
 		<footer>
