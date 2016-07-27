@@ -113,7 +113,7 @@
 		<section class="article-main">
 			<?php
 			$content = '';
-			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
+			if(have_posts()):while(have_posts()):the_post();$content = the_content();endwhile;endif;
 
 				$pattern = array(
 					'/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
@@ -124,9 +124,8 @@
 					'/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
 					'/<iframe .*src="(.*?)".*>/i',
 					'/<img .*src="(.*?)".*>/i',
-					'/\[OGPBlogcard url=(.*?)\]/',
-					'/\[hatenaBlogcard url=(.*?)\]/',
-					'/\[embedly url=(.*?)\]/'
+					'/<iframe class="hatenablogcard" src="http:\/\/hatenablog.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i',
+					'/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>]/'
 				);
 
 				$append = array(
@@ -138,7 +137,6 @@
 					'<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 					'<div><amp-iframe layout="responsive" src="$1"></amp-iframe></div>',
 					'<div><amp-img layout="responsive" src="$1"></amp-img></div>',
-					'<a href="$1">$1</a>',
 					'<a href="$1">$1</a>',
 					'<a href="$1">$1</a>'
 				);
