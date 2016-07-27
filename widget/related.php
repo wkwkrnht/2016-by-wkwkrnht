@@ -1,6 +1,6 @@
 <?php $myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()){$myAmp=true;};
 if($myAmp===true):
-	echo <<< STYLE
+	echo <<< STY
 	<style amp-custom>
 		#flex{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:2vmin 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 		#flex > * {-webkit-transform:translateZ(0px);}
@@ -8,9 +8,9 @@ if($myAmp===true):
 		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}
 		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
 	</style>
-	STYLE;
+	STY;
 else:
-	echo <<< STYLE
+	echo <<< STY
 	<style>
 		#flex{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:2vmin 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 		#flex > * {-webkit-transform:translateZ(0px);}
@@ -18,7 +18,7 @@ else:
 		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}
 		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
 	</style>
-	STYLE;
+	STY;
 endif;?>
 <div id="flex">
 	<?php $categories=get_the_category();$category_ID=array();
