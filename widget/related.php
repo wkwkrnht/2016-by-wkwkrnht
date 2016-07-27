@@ -7,7 +7,7 @@ if($myAmp===true):
 		.related-wrapper{display:block;height:calc(20vw + 10vmin);width:35vw;border-radius:2vmin;margin:1vmin 3vmin;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
 		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}
 		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
-	</style>'
+	</style>';
 else:
 	echo'
 	<style>
@@ -16,7 +16,7 @@ else:
 		.related-wrapper{display:block;height:calc(20vw + 10vmin);width:35vw;border-radius:2vmin;margin:1vmin 3vmin;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
 		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}
 		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
-	</style>'
+	</style>';
 endif;?>
 <div id="flex">
 	<?php $categories=get_the_category();$category_ID=array();
