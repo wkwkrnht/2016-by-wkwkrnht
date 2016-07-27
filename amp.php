@@ -113,8 +113,7 @@
 		<section class="article-main">
 			<?php
 			$content = '';
-			if(have_posts()):while(have_posts()):the_post();
-				$content = get_the_content();
+			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
 
 				$pattern = array(
 					'/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
@@ -145,7 +144,6 @@
 				);
 
 				echo preg_replace($pattern,$append,$content);
-			endwhile;endif;
 			?>
 		</section>
 		<footer>

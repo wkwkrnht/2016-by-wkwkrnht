@@ -98,12 +98,14 @@
 .widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
 .widget_tag_cloud a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
 
-.widget_recent_posts ul{list-style-type:none;}
-.widget_recent_posts ul li{border-right:solid 1px #999;border-bottom:solid 1px #999;}
-.widget_recent_posts ul li a{text-decoration:none;color:#333;font-size:1.6rem;}
-.widget_recent_posts ul li span{font-size:calc(1.6rem * 0.8);}
+.widget_recent_entries ul{list-style-type:none;}
+.widget_recent_entries ul li{border-right:solid 1px #999;border-bottom:solid 1px #999;}
+.widget_recent_entries ul li a{text-decoration:none;color:#333;font-size:1.6rem;}
+.widget_recent_entries ul li span{font-size:calc(1.6rem * 0.8);}
 
 .widget_archive ul{list-style-type:none;}
+.widget_recent_entries ul li a{font-size:1.6rem;}
+.widget_recent_entries ul li span{font-size:calc(1.6rem * 0.8);}
 /*
     独自要素
 1.マーカー
