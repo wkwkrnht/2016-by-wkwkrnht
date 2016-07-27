@@ -154,9 +154,8 @@ function meta_image(){
     if(is_singular()===true&&has_post_thumbnail()===true):
         yes_image();
     else:
-        $pattern=get_custom_logo();
-        preg_match($pattern,'/<img.*src\s*=\s*[\"|\'](.*?)[\"|\'].*>/i',$m);
-        echo $m[1];
+        $logo=get_theme_mod('custom_logo');
+        echo wp_get_attachment_url($logo);
     endif;
 }
 function wkwkrnht_eyecatch(){if(has_post_thumbnail()===true):yes_image();else:no_image();endif;}
