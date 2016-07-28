@@ -129,7 +129,7 @@
 				'/<iframe .*src="(.*?)".*>/i',
 				'/<img .*src="(.*?)".*>/i',
 				'/<iframe class="hatenablogcard" src="http:\/\/hatenablog.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i',
-				'/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>]/'
+				'/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i'
 			);
 
 			$append = array(
