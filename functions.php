@@ -173,7 +173,7 @@ function meta_image(){
 }
 function wkwkrnht_eyecatch(){if(has_post_thumbnail()===true):yes_image();else:no_image();endif;}
 
-function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return get_the_author_meta('twitter');elseif(get_option('twitter_site_acount')!==''):return get_option('twitter_site_acount');else:return null;endif;}
+function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return get_the_author_meta('twitter');elseif(get_option('Twitter_URL')!==''):return get_option('Twitter_URL');else:return null;endif;}
 
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 

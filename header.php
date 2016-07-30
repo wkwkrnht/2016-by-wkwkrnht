@@ -6,7 +6,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="HandheldFriendly" content="true">
-	<meta name="referrer" content="<?php echo get_option('referrer_setting');?>">
+	<meta name="referrer" content="<?php echo how_referrer_setting();?>">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
 	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
 	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
@@ -24,7 +24,7 @@
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
 	<meta name="twitter:title" content="Content Title">
-	<meta name="twitter:description" content="Content description less than 200 characters">
+	<meta name="twitter:description" content="<?php meta_description();?>">
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="<?php get_twitter_acount();?>">
 	<?php if(is_singular()):
@@ -40,7 +40,7 @@
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/normalize.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/main.css">
-	<link rel="stylesheet" href="/css/default.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/default.css">
 	<script src="http://static.evernote.com/noteit.js"></script>
 	<?php wp_head();?>
 </head>
