@@ -148,9 +148,10 @@
 .site-info{text-align:center;}
 
 .pagenation{list-style:none;min-height:10vw;max-width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
-.pagenation a,.pagenation .current{padding:2vmin;border:solid .5vmin #00a5de;font-weight:bold;}
-.pagenation a{background-color:#fff;color:#00a5de;font-size:1.3rem;text-decoration:none;}
-.pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
+.pagenation a,.pagenation .current,.pagenation .dot{padding:2vmin;border:solid .5vmin #00a5de;font-weight:bold;}
+.pagenation a,.pagenation .dot{background-color:#fff;color:#00a5de;font-size:1.3rem;text-decoration:none;}
+.pagenation .dot{color:#333;}
+.pagenation a:hover,.pagenation .current,.pagenation .dot{color:#fff;background-color:#00a5de;}
 /*
     記事ページ
 1.header&main

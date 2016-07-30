@@ -328,7 +328,6 @@ function wkwkrnht_page_navi(){
     ));
     if(is_array($page_format)){
 		$paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
-		echo'<li><span>'. $paged . ' of ' . $wp_query->max_num_pages .'</span></li>';
 		foreach($page_format as $page){if($page===$paged){echo "<li class='current'>$page</li>";}else{echo "<li>$page</li>";}}
 	}
 	wp_reset_query();
