@@ -23,7 +23,7 @@
 	<meta property='og:image' content='<?php meta_image();?>'>
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
-	<meta name="twitter:title" content="<?php get_meta_title();?>">
+	<meta name="twitter:title" content="<?php wp_title('');?>">
 	<meta name="twitter:description" content="<?php meta_description();?>">
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">

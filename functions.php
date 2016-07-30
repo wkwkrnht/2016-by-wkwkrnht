@@ -149,20 +149,6 @@ function get_meta_description_from_tag(){
     return $tag_desc;
 }
 
-function get_meta_title(){
-    $url = get_meta_url();
-    static $regex = '@<title>([^<]++)</title>@i';
-    static $order = 'UTF-8';
-    static $ch;
-    if(!$ch){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    }
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $html = mb_convert_encoding(curl_exec($ch), 'UTF-8', $order);
-    return preg_match($regex, $html, $m) ? $m[1] : '';
-}
-
 function meta_description(){
     if(is_singular()===true&&has_excerpt()===true):
         the_excerpt();
