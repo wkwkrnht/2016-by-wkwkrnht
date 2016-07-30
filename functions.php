@@ -271,7 +271,7 @@ function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');
     $sitedescription=get_bloginfo('description');
     if(is_author()===true):
-        $url = get_template_directory_uri();
+        $url = get_template_directory();
         include $url . '/widget/autor-bio.php';
     else:
         echo'<div class="card info-card">';
