@@ -11,7 +11,7 @@
 		    </section>
 		<?php endwhile;endif;?>
 	</div>
-	<div class="pagination">
+	<div class="pagenation">
 		<?php wkwkrnht_page_navi();?>
 	</div>
 <?php get_footer();?>
