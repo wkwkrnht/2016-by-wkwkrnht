@@ -120,13 +120,13 @@
 			$content = str_replace(']]>', ']]&gt;',$content);
 
 			$pattern = array(
-				'/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
+				'/https:\/\/twitter.com\/.*\/status\/(.*)/i',
 				'/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
 				'/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/https:\/\/youtu.be\/(.*)/i',
 				'/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe .*src="(.*?)".*>/i',
+				'/<iframe .*src="(.*?)".*><\/iframe>/i',
 				'/<img .*src="(.*?)".*>/i',
 				'/<iframe class="hatenablogcard" src="http:\/\/hatenablog.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i',
 				'/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i'
