@@ -272,7 +272,7 @@ function wkwkrnht_special_card(){
     $sitedescription=get_bloginfo('description');
     if(is_author()===true):
         $url = get_template_directory_uri();
-        include($url . '/widget/autor-bio.php');
+        include $url . '/widget/autor-bio.php';
     else:
         echo'<div class="card info-card">';
             if(is_category()===true):
