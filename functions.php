@@ -266,12 +266,6 @@ function make_ogp_blog_card($url){
     ●serach keyword&result
 2.前後の記事へのナビの背景をアイキャッチに
 3.ページネーション
-    ●外側
-    ●先頭へ
-    ●1つ戻る
-    ●番号つきページ送りボタン
-    ●1つ進む
-    ●最後尾へ
 */
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');
@@ -319,20 +313,27 @@ function wkwkrnht_post_nav_background(){
         ';
 }
 
-function pagenation($pages='',$range=3){
-    $showitems=($range * 2)+1;
-    global $paged;
-    if(empty($paged)){$paged=1;}
-    if($pages==''){global $wp_query;$pages=$wp_query->max_num_pages;if(!$pages){$pages=1;}}
-    if(1!=$pages){
-        echo'<ul class="pagenation">';
-        if($paged > 2 && $paged > $range + 1 && $showitems < $pages){echo'<li><a href="' . get_pagenum_link(1) . '"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a</li>>';}
-        if($paged > 1 && $showitems < $pages){echo'<li><a href="' . get_pagenum_link($paged - 1) . '"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>';}
-        for($i=1;$i<=$pages;$i++){if(1!=$pages&&(!($i>=$paged+$range+1||$i<=$paged-$range-1)||$pages<=$showitems)){echo ($paged==$i)? '<li class="current">' . $i . '</li>' : '<li><a href="' . get_pagenum_link($i) . '">' . $i . '</a></li>';}}
-        if($paged < $pages && $showitems < $pages){echo'<li><a href="'.get_pagenum_link($paged + 1).'"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>';}
-        if($paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages){echo'<li><a href="'.get_pagenum_link($pages).'"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>';}
-        echo'</ul>';
-    }
+function wkwkrnht_page_navi(){
+    global $wp_query;
+    $big = 999999999;
+    $page_format = paginate_links(array(
+        'base'=>str_replace($big,'%#%',esc_url(get_pagenum_link($big))),
+        'format'=>'/page/%#%',
+        'current'=>max(1,get_query_var('paged')),
+        'total'=>$wp_query->max_num_pages,
+        'prev_next'=>True,
+		'prev_text'=>__('<'),
+		'next_text'=>__('>'),
+		'type'=>'array'
+    ));
+    if(is_array($page_format)){
+		$paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
+		echo'<ul>';
+		echo'<li><span>'. $paged . ' of ' . $wp_query->max_num_pages .'</span></li>';
+		foreach($page_format as $page){if($page===$paged){echo "<li class='current'>$page</li>";}else{echo "<li>$page</li>";}}
+		echo'</ul>';
+	}
+	wp_reset_query();
 }
 /*
     コンテンツ中装飾

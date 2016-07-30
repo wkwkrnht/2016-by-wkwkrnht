@@ -11,5 +11,7 @@
 		    </section>
 		<?php endwhile;endif;?>
 	</div>
-	<?php if(function_exists('pagenation')){pagenation($additional_loop->max_num_pages);}?>
+	<div class="pagination">
+		<?php wkwkrnht_page_navi();?>
+	</div>
 <?php get_footer();?>
