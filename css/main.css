@@ -151,7 +151,7 @@
 .pagenation a,.pagenation .current,.pagenation li .dot{padding:2vmin;margin:0 .5vmin;border:solid .5vmin #00a5de;font-weight:bold;}
 .pagenation a,.pagenation li .dots{background-color:#fff;color:#00a5de;font-size:1.3rem;text-decoration:none;}
 .pagenation li .dots{color:#333;}
-.pagenation a:hover,.pagenation li .dots:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
+.pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
 /*
     記事ページ
 1.header&main
