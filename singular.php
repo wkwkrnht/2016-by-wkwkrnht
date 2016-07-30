@@ -15,7 +15,7 @@ if($myAmp===true):?>
 					$cat=get_the_category();
 					if($cat && !is_wp_error($cat)){
 						$par=get_category($cat[0]->parent);$echo='';
-						echo'<div class="bread" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="' . get_bloginfo('url') . '" itemprop="url"><span itemprop="title">ホーム</span></a><span class="sp">/</span>';
+						echo'<div class="bread" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="' . home_url() . '" itemprop="url"><span itemprop="title">ホーム</span></a><span class="sp">/</span>';
 						while($par && !is_wp_error($par) && $par->term_id!==0){
 							$echo='<a href="' . get_category_link($par->term_id) . '" itemprop="url"><span itemprop="title">' . $par->name . '</span></a><span class="sp">/</span></div>' . $echo;
 							$par=get_category($par->parent);
