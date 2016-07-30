@@ -148,7 +148,7 @@
 .site-info{text-align:center;}
 
 .pagenation{list-style:none;min-height:10vw;max-width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
-.pagenation a,.pagenation .current,.pagenation li .dot{padding:2vmin;border:solid .5vmin #00a5de;font-weight:bold;}
+.pagenation a,.pagenation .current,.pagenation li .dot{padding:2vmin;margin:0 .5vmin;border:solid .5vmin #00a5de;font-weight:bold;}
 .pagenation a,.pagenation li .dot{background-color:#fff;color:#00a5de;font-size:1.3rem;text-decoration:none;}
 .pagenation li .dot{color:#333;}
 .pagenation a:hover,.pagenation li .dot:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
