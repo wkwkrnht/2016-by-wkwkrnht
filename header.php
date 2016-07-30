@@ -23,10 +23,10 @@
 	<meta property='og:image' content='<?php meta_image();?>'>
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
-	<meta name="twitter:title" content="Content Title">
+	<meta name="twitter:title" content="<?php get_meta_title();?>">
 	<meta name="twitter:description" content="<?php meta_description();?>">
 	<meta name="twitter:image" content="<?php meta_image();?>">
-	<meta name="twitter:site" content="<?php get_twitter_acount();?>">
+	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 	<?php if(is_singular()):
 		echo'<meta property="article:author" content="' . the_author_meta('facebook') . '">
 		<meta name="twitter:creator" content="' . the_author_meta('twitter') . '">
