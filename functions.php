@@ -45,7 +45,7 @@ class related_posts extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__('','text_domain');?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -58,7 +58,7 @@ class post_nav extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -67,10 +67,20 @@ class post_nav extends WP_Widget{
 }
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array('description'=>'Disqus',));}
-    public function widget($args,$instance){echo $args['before_widget'];?><div id="disqus_thread"></div><script>(function(){var d=document,s=d.createElement('script');s.src='//<?php echo get_option('Disqus_ID');?>.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">Please enable JavaScript to view the comments powered by Disqus.</a></noscript><?php echo $args['after_widget'];}
+    public function widget($args,$instance){
+        echo
+            $args['before_widget'];?>
+            <div id="disqus_thread">
+            </div>
+            <script>(function(){
+                var d=document,s=d.createElement('script');s.src='//<?php echo get_option('Disqus_ID');?>.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);
+            })();</script>
+            <noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
+            <?php echo $args['after_widget'];
+    }
     public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -151,17 +161,7 @@ function get_meta_description_from_tag(){
     return $tag_desc;
 }
 
-add_filter('wp_title','wpdocs_hack_wp_title_for_home');
-/**
- * Customize the title for the home page, if one is not set.
- *
- * @param string $title The original title.
- * @return string The title to use.
- */
-function wpdocs_hack_wp_title_for_home($title){
-    if(empty($title)&&(is_home()||is_front_page())){$title = __( 'Home','textdomain');}
-    return $title;
-}
+add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_page())){$title='Home';}return $title;});
 
 function meta_description(){
     if(is_singular()===true&&has_excerpt()===true):
