@@ -18,13 +18,7 @@ else:
 		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
 	</style>';
 endif;
-function related_eyecatch(){
-	if(has_post_thumbnail()===true):
-		yes_image();
-	else:
-		echo dirname(__FILE__) . '/../img/no-img.png';
-	endif;
-}?>
+?>
 <div id="flex">
 	<?php $categories=get_the_category();$category_ID=array();
 	foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
@@ -32,7 +26,7 @@ function related_eyecatch(){
 	if($cat_posts!==array()):
 		foreach($cat_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php related_eyecatch();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>
@@ -40,7 +34,7 @@ function related_eyecatch(){
 		$rand_posts=get_posts(array('numberposts'=>6,'orderby'=>'rand'));
 		foreach($rand_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php related_eyecatch();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>
