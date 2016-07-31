@@ -22,7 +22,7 @@ function wkwkrnht_eyecatch(){
 	if(has_post_thumbnail()===true):
 		yes_image();
 	else:
-		echo dirname(__FILE__) . '/../img/no-img.png'
+		echo dirname(__FILE__) . '/../img/no-img.png';
 	endif;
 }?>
 <div id="flex">
