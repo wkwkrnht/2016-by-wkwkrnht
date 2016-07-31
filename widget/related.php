@@ -22,19 +22,19 @@ endif;
 <div id="flex">
 	<?php $categories=get_the_category();$category_ID=array();
 	foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
-	$cat_posts=get_posts(array('numberposts'=>6,'category'=>$category_ID,'orderby'=>'rand'));
+	$cat_posts=get_posts(array('numberposts'=>6,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($post -> ID)));
 	if($cat_posts!==array()):
 		foreach($cat_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php meta_image();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>
 	<?php else:
-		$rand_posts=get_posts(array('numberposts'=>6,'orderby'=>'rand'));
+		$rand_posts=get_posts(array('numberposts'=>6,'orderby'=>'rand','post__not_in'=>array($post -> ID)));
 		foreach($rand_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php meta_image();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>
