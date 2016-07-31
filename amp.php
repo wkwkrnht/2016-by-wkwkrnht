@@ -82,7 +82,6 @@
 		.article-main h4{border-left:1rem solid #ffcc00;border-bottom:1px solid #ffcc00;}
 		.article-main h5{border-left:1rem solid #ffcc00;}
 		.article-main h6{border-bottom:.75vmin dashed #ffcc00;}
-		h4{border-bottom:8px solid #ffcc00;}
 	</style>
 </head>
 <body>
@@ -152,6 +151,5 @@
 			<?php require_once('widget/related.php');?>
 		</footer>
 	</article>
-	<amp-pixel src="//ssl.google-analytics.com/collect?v=1&amp;tid=<?php //echo get_option('Google_Analytics');?>&amp;t=pageview&amp;cid=$RANDOM&amp;dt=$TITLE&amp;dl=$CANONICAL_URL&amp;z=$RANDOM"></amp-pixel>
 </body>
 </html>
