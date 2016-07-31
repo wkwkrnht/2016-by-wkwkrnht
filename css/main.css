@@ -164,8 +164,8 @@
 7.独自要素
 8.codex
 */
-.article-header{margin:5vmin auto;font-size:1.6rem;text-align:center;vertical-align:middle;}
-.article-meta{height:23vh;width:92vw;position:absolute;background-color:#f1f1f1;}
+.article-eyecatch{text-align:center;vertical-align:middle;}
+.article-meta{height:23vh;width:92vw;margin:5vmin auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 .article-date{display:block;height:inherit;width:30%;float:left;background-color:#ffcc00;color:#fff;font-size:2.3rem;line-height:23vh;}
 
 .article-title{font-size:2rem;}
