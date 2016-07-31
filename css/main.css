@@ -147,11 +147,12 @@
 .card-info{max-width:calc(80vmin / 2);float:right;}
 .site-info{text-align:center;}
 
-.pagenation{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
-.pagenation a,.pagenation .current,.pagenation li .dot{padding:2vmin;margin:0 .5vmin;border:solid .5vmin #00a5de;font-weight:bold;}
-.pagenation a,.pagenation li .dots{background-color:#fff;color:#00a5de;font-size:1.3rem;text-decoration:none;}
-.pagenation li .dots{color:#333;}
-.pagenation a:hover,.pagenation .current{color:#fff;background-color:#00a5de;}
+.page-nation{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
+.page-nation a,.page-nation .current,.page-nation li .dots{padding:2vmin;margin:0 .5vmin;border:solid .5vmin #00a5de;font-weight:bold;}
+.page-nation a,.page-nation li .dots{background-color:#fff;font-size:1.3rem;text-decoration:none;}
+.page-nation a{color:#00a5de;}
+.page-nation li .dots{color:#333;}
+.page-nation a:hover,.page-nation .current{color:#fff;background-color:#00a5de;}
 /*
     記事ページ
 1.header&main

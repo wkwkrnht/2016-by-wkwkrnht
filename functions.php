@@ -33,6 +33,8 @@ add_action('widgets_init','wkwkrnht_widgets_init');
 function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Main Area','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Singular Footer','id'=>'singularfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'Left Bar','id'=>'leftbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'Right Bar','id'=>'rightbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('related_posts');
     register_widget('post_nav');
     register_widget('disqus_widget');
@@ -174,7 +176,7 @@ function meta_description(){
 }
 
 function yes_image(){echo wp_get_attachment_url(get_post_thumbnail_id());}
-function no_image(){echo home_url() . '/wp-content/themes/2016-by-wkwkrnht/img/no-img.png';}
+function no_image(){echo dirname(__FILE__) . '/./img/no-img.png';}
 function meta_image(){
     if(is_singular()===true&&has_post_thumbnail()===true):
         yes_image();
