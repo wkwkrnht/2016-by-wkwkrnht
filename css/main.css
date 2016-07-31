@@ -139,15 +139,15 @@
 2.ページネーション
 */
 .card-list{background-color:#f1f1f1;}
-.card{height:45vmin;width:80vmin;margin:2.5vmin 10vmin;padding:3vmin;border-radius:5px;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.card{height:45vmin;width:80vmin;margin:3vmin 10vmin;padding:4vmin 3vmin;border-radius:5px;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .card img{display:block;float:left;max-height:39vmin;max-width:calc(80vmin / 2);vertical-align:middle;}
-.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:3rem;}
+.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.6rem;}
 .card span{display:inline-block;height:30%;margin:0 1em;}
 .card p{display:inline-block;height:20%;margin:0 1em;}
 .card-info{max-width:calc(80vmin / 2);float:right;}
 .site-info{text-align:center;}
 
-.pagenation{list-style:none;min-height:10vw;max-width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
+.pagenation{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
 .pagenation a,.pagenation .current,.pagenation li .dot{padding:2vmin;margin:0 .5vmin;border:solid .5vmin #00a5de;font-weight:bold;}
 .pagenation a,.pagenation li .dots{background-color:#fff;color:#00a5de;font-size:1.3rem;text-decoration:none;}
 .pagenation li .dots{color:#333;}
