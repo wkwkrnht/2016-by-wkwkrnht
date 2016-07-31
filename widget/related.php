@@ -17,7 +17,14 @@ else:
 		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}
 		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
 	</style>';
-endif;?>
+endif;
+function wkwkrnht_eyecatch(){
+	if(has_post_thumbnail()===true):
+		yes_image();
+	else:
+		echo dirname(__FILE__) . '/../img/no-img.png'
+	endif;
+}?>
 <div id="flex">
 	<?php $categories=get_the_category();$category_ID=array();
 	foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
