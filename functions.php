@@ -176,7 +176,7 @@ function meta_description(){
 }
 
 function yes_image(){echo wp_get_attachment_url(get_post_thumbnail_id());}
-function no_image(){echo get_template_directory() . '/img/no-img.png';}
+function no_image(){echo get_template_directory_url() . '/img/no-img.png';}
 function meta_image(){
     if(is_singular()===true&&has_post_thumbnail()===true):
         yes_image();
