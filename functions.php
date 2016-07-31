@@ -161,7 +161,7 @@ function get_meta_description_from_tag(){
     return $tag_desc;
 }
 
-add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_page())){$title='Home';}return $title;});
+add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_page())){$title = bloginfo('name');}return $title;});
 
 function meta_description(){
     if(is_singular()===true&&has_excerpt()===true):

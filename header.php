@@ -36,7 +36,7 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
-	<link rel="image_src" href="<?php meta_image();?>">
+	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image()?>" height="256" width="256">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/normalize.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/main.css">
