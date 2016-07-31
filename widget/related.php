@@ -26,7 +26,7 @@ endif;
 	if($cat_posts!==array()):
 		foreach($cat_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php meta_image();?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>
@@ -34,7 +34,7 @@ endif;
 		$rand_posts=get_posts(array('numberposts'=>6,'orderby'=>'rand'));
 		foreach($rand_posts as $post):?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php meta_image();?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endforeach;?>

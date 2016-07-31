@@ -89,7 +89,7 @@
 	<h1 class="siteinfo"><a href="<?php echo esc_url(home_url());?>" class="site-title"><?php bloginfo('name');?></a></h1>
 	<article>
 		<header class="article-header">
-			<a href="<?php home_url();?>" class="article-img" style="background:url(<?php wkwkrnht_eyecatch();?>) no-repeat center/cover;"></a>
+			<a href="<?php home_url();?>" class="article-img" style="background:url(<?php meta_image();?>) no-repeat center/cover;"></a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
