@@ -4,14 +4,13 @@ if($myAmp===true):?>
 <?php else:?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
-		<header style="max-width:92vw;margin:5vmin auto;" itemscope itemtype="schema.org/BlogPosting" itemprop="articleBody">
-			<img src="<?php wkwkrnht_eyecatch();?>" alt="eyecatch" class="article-eyecatch" itemprop="image">
+		<header class="article-header">
+			<img src="<?php wkwkrnht_eyecatch();?>" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
-				<span itemprop="datePublished"><time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span>
+				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
-					<span style="display:none;" itemprop="publisher"><?php the_custom_logo();bloginfo('name');?></span>
-					<h2 class="article-name" itemprop="headline" itemprop="name"><?php the_title();?></h2>
-					<a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" itemprop="author"><?php the_author_meta('display_name');?></a><?php the_category(', ');?>
+					<h2 class="article-name"><?php the_title();?></h2>
+					<a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" class="author"><?php the_author_meta('display_name');?></a><?php the_category(', ');?>
 					<?php
 					$cat=get_the_category();
 					if($cat && !is_wp_error($cat)){
