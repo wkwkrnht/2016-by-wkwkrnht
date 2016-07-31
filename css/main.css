@@ -176,8 +176,6 @@
 
 
 .article-main a{text-decoration:none;border-bottom:0;}
-.article-main a::before{content:'';width:100%;border-bottom:solid 1px #0000ff;position:absolute;left:0;bottom:0;-webkit-transition:all .4s ease;transition:all .4s ease;visibility:hidden;opacity:0;}
-.article-main a:hover::before{visibility:visible;opacity:1.0;}
 .article-main a:visited{color:#934c7b;}
 
 
