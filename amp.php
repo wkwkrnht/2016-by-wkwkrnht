@@ -15,7 +15,7 @@
 	<meta property="fb:app_id" content="123456789">
 	<meta property='og:type' content='article'>
 	<meta property='og:title' content='<?php wp_title('｜',true,'right');?>'>
-	<meta property='og:url' content="<?php echo get_meta_url();?>">
+	<meta property='og:url' content="<?php echo get_permalink();?>">
 	<meta property='og:description' content='<?php meta_description();?>'>
 	<meta property='og:site_name' content='<?php bloginfo('name');?>'>
 	<meta property='og:image' content='<?php meta_image();?>'>
