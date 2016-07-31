@@ -4,12 +4,12 @@ if($myAmp===true):?>
 <?php else:?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
-		<header style="max-width:92vw;margin:5vmin auto;">
-			<img src="<?php wkwkrnht_eyecatch();?>" alt="eyecatch" class="article-eyecatch">
+		<header style="max-width:92vw;margin:5vmin auto;" itemscope itemtype="schema.org/BlogPosting" itemprop="articleBody">
+			<img src="<?php wkwkrnht_eyecatch();?>" alt="eyecatch" class="article-eyecatch" itemprop="image">
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
-					<h2 class="article-name"><?php the_title();?></h2>
+					<h2 class="article-name" itemprop="headline"><?php the_title();?></h2>
 					<?php the_author();the_category(', ');?>
 					<?php
 					$cat=get_the_category();
