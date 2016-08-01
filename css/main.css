@@ -10,7 +10,7 @@
 6.ソーシャルナビゲーション
 7.ウィジェットエリア
 */
-.toggle-zone{height:15vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#03a9f4;color:#fff;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.toggle-zone{height:15vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#03a9f4;color:#fff;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;cursor:pointer;}
 
 #share-menu,#main-menu{height:80vh;width:86vw;margin:35px 7vw 0;position:fixed;top:0;left:0;z-index:111;overflow-x:hidden;overflow-y:auto;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
@@ -183,12 +183,12 @@
 
 .article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:10px auto;line-height:45px;text-align:center;}
 .article-main h3,.article-main h4,.article-main h5,.article-main h6{font-size:2rem;}
-.article-main h1{border:1vmin solid #ffcc00;color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.article-main h1{border:1vmin solid #03a9f4;color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-main h2{padding:.5em .75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
-.article-main h3{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-.article-main h4{border-left:10px solid #ffcc00;border-bottom:1px solid #ffcc00;}
-.article-main h5{border-left:10px solid #ffcc00;}
-.article-main h6{border-bottom:.75vmin dashed #ffcc00;}
+.article-main h3{color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.article-main h4{border-left:10px solid #03a9f4;border-bottom:1px solid #03a9f4;}
+.article-main h5{border-left:10px solid #03a9f4;}
+.article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
 
 .article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#ddd;}
