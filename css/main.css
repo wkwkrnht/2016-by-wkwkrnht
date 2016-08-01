@@ -23,7 +23,7 @@
 #share-menu ul li a{position:relative;top:35%;color:#fff;}
 .tweet{background-color:#55acee;}
 .fb-like{background-color:#3b5998;}
-.line,.evernote{background-color:#6cc655;}
+.line{background-color:#6cc655;}
 .reddit{background-color:#ffcc00;}
 .g-plus{background-color:#dc4e41;}
 .linkedin{background-color:#36465d;}
@@ -31,7 +31,6 @@
 .hatebu{background-color:#00a5de;font-size:3rem;font-weight:900;}
 .pocket{background-color:#ef3f56;}
 .tumblr{background-color:#36465d;}
-.embedly{background-color:#55acee;}
 
 #main-menu{color:#333;background-color:#fff;}
 

@@ -44,7 +44,7 @@ function wkwkrnht_widgets_init(){
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related.php');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__('','text_domain');?>
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -57,7 +57,7 @@ class related_posts extends WP_Widget{
 class post_nav extends WP_Widget{
     function __construct(){parent::__construct('post_nav','前後への記事のナビゲーション',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -69,8 +69,8 @@ class post_nav extends WP_Widget{
 
 class post_comment extends WP_Widget{
     function __construct(){parent::__construct('post_comment','コメント',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/comment.php');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
+    public function widget($args,$instance){echo $args['before_widget'];comments_template('/widget/comment.php');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -81,7 +81,7 @@ class post_comment extends WP_Widget{
 }
 
 class disqus_widget extends WP_Widget{
-    function __construct(){parent::__construct('disqus_widget','Disqus',array('description'=>'Disqus',));}
+    function __construct(){parent::__construct('disqus_widget','Disqus',array());}
     public function widget($args,$instance){
         echo
             $args['before_widget'];?>
@@ -93,14 +93,6 @@ class disqus_widget extends WP_Widget{
             <noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
             <?php echo $args['after_widget'];
     }
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
-		<p>
-		<label for="<?php echo $this->get_field_id('title');?>">title</label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
-		</p>
-		<?php
-	}
-	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
 remove_action('wp_head','print_emoji_detection_script',7);
