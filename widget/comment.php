@@ -6,6 +6,8 @@
     .comment-list{list-style-type:none;}
     .comment-list li{box-shadow:0 0 0 rgba(0,0,0,0);}
     .comment-respond{width:80%;margin:0 auto;}
+    .comment-form-comment label{display:none;}
+    .comment-form-comment textarea{max-width:inherit;}
 </style>
 <div class="comment">
 <?php if(have_comments()):?>
