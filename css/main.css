@@ -42,31 +42,32 @@
 .addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
 .addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 
-.social-nav{display:block;width:100%;}
+.social-nav{display:block;min-height:4em;width:100%;margin:2vmin auto;}
 .social-nav ul{list-style:none;margin:0 0 -1.6em 0;}
 .social-nav li{float:left;}
-.social-nav a{display:block;position:relative;height:3.5em;width:3.5em;}
-.social-nav a::before{content:"\f07b";display:inline-block;font:400 24px/1.8 "FontAwesome";font-style:normal;font-variant:normal;speak:none;text-align:center;text-decoration:none;text-transform:none;position:absolute;top:0;left:0;}
-.social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:"\f09e";color:#2aff00;}
-.social-nav a[href*="feedly.com"]::before{content:"\f143";color:#2aff00;transform: rotate(-15deg);}
+.social-nav a{display:block;position:relative;height:4em;width:4em;}
+.social-nav a::before{content:'\f07b';display:inline-block;font:400 28px/1.8 "FontAwesome";font-style:normal;font-variant:normal;speak:none;text-align:center;text-decoration:none;text-transform:none;position:absolute;top:0;left:0;}
+.social-nav a[href*="amazon.co.jp"]::before{content:'\f270';}
 .social-nav a[href*="codepen.io"]::before{content:"\f1cb";color:#ffc700;}
-.social-nav a[href*="digg.com"]::before{content:"\f1a6";}
-.social-nav a[href*="dribbble.com"]::before{content:"\f17d";}
+.social-nav a[href*="digg.com"]::before{content:'\f1a6';}
+.social-nav a[href*="dribbble.com"]::before{content:'\f17d';}
 .social-nav a[href*="dropbox.com"]::before{content:"\f16b";color:#00b8ff;}
 .social-nav a[href*="facebook.com"]::before{content:"\f230";color:#0033ff;}
-.social-nav a[href*="flickr.com"]::before{content:"\f16e";}
-.social-nav a[href*="foursquare.com"]::before{content:"\f180";}
+.social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:'\f09e';color:#2aff00;}
+.social-nav a[href*="feedly.com"]::before{content:'\f143';color:#2aff00;transform: rotate(-15deg);}
+.social-nav a[href*="flickr.com"]::before{content:'\f16e';}
+.social-nav a[href*="foursquare.com"]::before{content:'\f180';}
 .social-nav a[href*="plus.google.com"]::before{content:"\f0d5";color:#ff0033;}
-.social-nav a[href*="github.com"]::before{content:"\f09b";}
-.social-nav a[href*="instagram.com"]::before{content:"\f09b";}
+.social-nav a[href*="github.com"]::before{content:'\f09b';}
+.social-nav a[href*="instagram.com"]::before{content:'\f16d';}
 .social-nav a[href*="linkedin.com"]::before{content:"\f0e1";color:#0077b5;}
-.social-nav a[href*="mailto:"]::before{content:"\f0e0";}
-.social-nav a[href*="nicovideo.jp"]::before{content:"\f26c";}
+.social-nav a[href*="mailto:"]::before{content:'\f0e0';}
+.social-nav a[href*="nicovideo.jp"]::before{content:'\f26c';}
 .social-nav a[href*="pinterest.com"]::before{content:"\f231";color:#ff0033;}
 .social-nav a[href*="getpocket.com"]::before{content:"\f265";color:#ee4056;}
-.social-nav a[href*="polldaddy.com"]:before{content:"\f200";}
-.social-nav a[href*="reddit.com"]::before{content:"\f1a1";}
-.social-nav a[href*="stumbleupon.com"]::before{content:"\f1a4";}
+.social-nav a[href*="polldaddy.com"]:before{content:'\f200';}
+.social-nav a[href*="reddit.com"]::before{content:'\f1a1';}
+.social-nav a[href*="stumbleupon.com"]::before{content:'\f1a4';}
 .social-nav a[href*="tumblr.com"]::before{content:"\f173";color:#2c4762;}
 .social-nav a[href*="twitter.com"]::before{content:"\f099";color:#00b8ff;}
 .social-nav a[href*="twilog.org"]::before{content:"\f099";color:#00b8ff;}
