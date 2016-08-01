@@ -85,7 +85,7 @@
 .social-nav a[href*="push.dog"]::before,.social-nav a[href*="bpush.net"]::before,.social-nav a[href*="pushnate.com"]::before,.social-nav a[href*="pushsan.com"]::before,.social-nav a[href*="onesignal.com"]::before{content:'\f0f3';}
 .social-nav a[href*="push7.jp"]::before{content:'\f0e7';}
 
-.main-nav{list-style-type:none;}
+.main-nav ul{list-style-type:none;}
 
 .widget-area{list-style:none;}
 .widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
@@ -104,9 +104,9 @@
 .widget_recent_entries ul li a{text-decoration:none;color:#333;font-size:1.6rem;}
 .widget_recent_entries ul li span{font-size:calc(1.6rem * 0.8);}
 
-.widget_archive ul{list-style-type:none;}
-.widget_recent_entries ul li a{font-size:1.6rem;}
-.widget_recent_entries ul li span{font-size:calc(1.6rem * 0.8);}
+.widget_archive ul{list-style-type:none;text-align:center;}
+.widget_recent_entries ul li{font-size:calc(1.8rem * 0.8);}
+.widget_recent_entries ul li a{font-size:1.8rem;}
 /*
     独自要素
 1.マーカー
