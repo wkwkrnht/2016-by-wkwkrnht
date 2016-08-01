@@ -1,0 +1,19 @@
+<?php if(post_password_required()){return;}?>
+<style>
+    .comment-title::after{content:"<?php echo get_comments_number();?>";}
+</style>
+<div class="comment">
+<?php if(have_comments()):?>
+    <h3 class="comment-title">コメント</h3>
+	<ul class="comment-list">
+	    <?php wp_list_comments(array('avatar_size'=>96,'style'=>'ul','type'=>'comment',));?>
+	</ul>
+    <?php if(get_comment_pages_count() > 1):?>
+        <ul class="comment-nav">
+		    <li class="prev"><?php previous_comments_link('&lt; 前のコメント');?></li>
+		    <li class="next"><?php next_comments_link('次のコメント &gt;');?></li>
+	    </ul>
+    <?php endif;
+endif;?>
+<?php comment_form();?>
+</div>

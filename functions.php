@@ -37,11 +37,12 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Right Bar','id'=>'rightbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('related_posts');
     register_widget('post_nav');
+    register_widget('post_comment');
     register_widget('disqus_widget');
 }
 
 class related_posts extends WP_Widget{
-    function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事'));}
+    function __construct(){parent::__construct('related_posts','関連記事',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__('','text_domain');?>
 		<p>
@@ -65,6 +66,20 @@ class post_nav extends WP_Widget{
 	}
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
+
+class post_comment extends WP_Widget{
+    function __construct(){parent::__construct('post_comment','コメント',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/comment.php');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array('description'=>'Disqus',));}
     public function widget($args,$instance){
@@ -350,8 +365,8 @@ function wkwkrnht_page_navi(){
         'current'=>max(1,get_query_var('paged')),
         'total'=>$wp_query->max_num_pages,
         'prev_next'=>True,
-		'prev_text'=>__('<'),
-		'next_text'=>__('>'),
+		'prev_text'=>'<',
+		'next_text'=>'>',
 		'type'=>'array'
     ));
     if(is_array($page_format)){
@@ -535,19 +550,19 @@ function theme_customize($wp_customize){
     $wp_customize->add_section('sns_section',array('title'=>'独自設定','description'=>'このテーマの独自設定','priority'=>1,));
 	$wp_customize->add_setting('referrer_setting',array('default'=>'value1','type'=>'theme_mod',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('value1'=>'default','value2'=>'unsafe-url','value3'=>'origin-when-crossorigin','value4'=>'none-when-downgrade','value5'=>'none',),));
-    $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option',));
+    $wp_customize->add_setting('GoogleChrome_URLbar',array('default'=>'#ffcc00','type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
-    $wp_customize->add_setting('Google_Webmaster',array('type'=>'option',));
+    $wp_customize->add_setting('Google_Webmaster',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('Google_Webmaster',array('section'=>'sns_section','settings'=>'Google_Webmaster','label'=>'サイトのGoogleSerchconsole向けコードを指定する','type'=>'text'));
-    $wp_customize->add_setting('Bing_Webmaster',array('type'=>'option',));
+    $wp_customize->add_setting('Bing_Webmaster',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('Bing_Webmaster',array('section'=>'sns_section','settings'=>'Bing_Webmaster','label'=>'サイトのBingWebmaster向けコードを指定する','type'=>'text'));
-    $wp_customize->add_setting('Analytics',array('type'=>'option',));
-    $wp_customize->add_control('Analytics',array('section'=>'sns_section','settings'=>'Analytics','label'=>'サイトのアナリティクスコードを指定する','type'=>'text'));
-    $wp_customize->add_setting('Twitter_URL',array('type'=>'option',));
+    $wp_customize->add_setting('Analytics',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('Analytics',array('section'=>'sns_section','settings'=>'Analytics','label'=>'サイトのアナリティクスコードを指定する','type'=>'textarea'));
+    $wp_customize->add_setting('Twitter_URL',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントへを指定する','type'=>'text'));
-    $wp_customize->add_setting('facebook_appid',array('type'=>'option',));
+    $wp_customize->add_setting('facebook_appid',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('facebook_appid',array('section'=>'sns_section','settings'=>'facebook_appid','label'=>'facebookのappidを表示する','type'=>'text'));
-	$wp_customize->add_setting('Disqus_ID',array('type'=>'option',));
+	$wp_customize->add_setting('Disqus_ID',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
 }
 function how_referrer_setting(){
