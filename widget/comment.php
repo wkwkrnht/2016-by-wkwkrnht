@@ -2,7 +2,8 @@
 <style>
     .comment{min-height:10vmin;width:90%;margin:5vmin auto;padding:4vmin 3vmin;border-radius:5px;font-size:1.8rem;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
     .comment-title{min-height:2.2rem;width:80%;font-size:2rem;line-height:2rem;color:#fff;background-color:#03a9f4;box-shadow:0 0 15px rgba(0,0,0,.3);}
-    .comment-title::after{content:'<?php echo get_comments_number();?>';display:block;height:2em;width:2em;border-radius:50%;font-size:2rem;line-height:2rem;color:#fff;background-color:#00bcd4;box-shadow:3px 0 5px rgba(0,0,0,.3);}
+    .comment-title::after{content:'<?php echo get_comments_number();?>';display:inline-block;height:2em;width:2em;border-radius:50%;margin:-50% -50% 0 0;font-size:2rem;line-height:2rem;color:#fff;background-color:#00bcd4;box-shadow:3px 0 5px rgba(0,0,0,.3);}
+    .comment-list{list-style-type:none;}
 </style>
 <div class="comment">
 <?php if(have_comments()):?>
