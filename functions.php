@@ -550,4 +550,13 @@ function theme_customize($wp_customize){
 	$wp_customize->add_setting('Disqus_ID',array('type'=>'option',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
 }
-function how_referrer_setting(){return get_theme_mod('referrer_setting','value1');}
+function how_referrer_setting(){
+    $array = array('default'=>'value1','unsafe-url'=>'value2','origin-when-crossorigin'=>'value3','none-when-downgrade'=>'value4','none'=>'value5',);
+    $value = get_theme_mod('referrer_setting','value1');
+    $result = array_search($value,$array);
+    if($result===null){
+        return'default';
+    }else{
+        return $result;
+    }
+}
