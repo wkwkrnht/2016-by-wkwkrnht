@@ -105,8 +105,8 @@
 .widget_recent_entries ul li span{font-size:calc(1.6rem * 0.8);}
 
 .widget_archive ul{list-style-type:none;text-align:center;}
-.widget_recent_entries ul li{font-size:calc(1.8rem * 0.8);}
-.widget_recent_entries ul li a{font-size:1.8rem;}
+.widget_archive ul li{font-size:calc(1.8rem * 0.8);}
+.widget_archive ul li a{font-size:1.8rem;}
 /*
     独自要素
 1.マーカー
