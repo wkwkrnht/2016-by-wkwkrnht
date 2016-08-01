@@ -2,7 +2,7 @@
 <style>
     .comment{min-height:10vmin;width:90%;margin:5vmin auto;padding:4vmin 3vmin;border-radius:5px;font-size:1.8rem;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
     .comment-title{min-height:2.2rem;width:80%;font-size:2rem;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 15px rgba(0,0,0,.3);}
-    .comment-title::after{content:'<?php echo get_comments_number();?>';display:inline-block;height:2em;width:2em;border-radius:50%;position:relative;right:-10%;top:-10%;text-align:center;font-size:2rem;line-height:2em;color:#fff;background-color:#00bcd4;box-shadow:3px 0 5px rgba(0,0,0,.3);}
+    .comment-title::after{content:'<?php echo get_comments_number();?>';display:inline-block;height:2em;width:2em;border-radius:50%;position:relative;right:-40%;top:-20%;text-align:center;font-size:2rem;line-height:2em;color:#fff;background-color:#00bcd4;box-shadow:3px 0 5px rgba(0,0,0,.3);}
     .comment-list{list-style-type:none;}
     .comment-list li{box-shadow:0 0 0 rgba(0,0,0,0);}
     .comment-respond{width:80%;margin:0 auto;}
