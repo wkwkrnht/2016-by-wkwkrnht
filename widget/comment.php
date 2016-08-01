@@ -1,6 +1,8 @@
 <?php if(post_password_required()){return;}?>
 <style>
-    .comment-title::after{content:"<?php echo get_comments_number();?>";}
+    .comment{min-height:10vmin;width:90%;margin:5vmin auto;padding:4vmin 3vmin;border-radius:5px;font-size:1.8rem;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
+    .comment h3{min-height:2.2rem;width:80%;position:absolute;font-size:2rem;line-height:2rem;color:#fff;background-color:#03a9f4;box-shadow:0 0 15px rgba(0,0,0,.3);}
+    .comment h3::after{content:'<?php echo get_comments_number();?>';display:block;height:2em;width:2em;border-radius:50%;position:relative;right:0;top:0;font-size:2rem;line-height:2rem;color:#fff;background-color:#00bcd4;box-shadow:3px 0 5px rgba(0,0,0,.3);}
 </style>
 <div class="comment">
 <?php if(have_comments()):?>
@@ -10,8 +12,8 @@
 	</ul>
     <?php if(get_comment_pages_count() > 1):?>
         <ul class="comment-nav">
-		    <li class="prev"><?php previous_comments_link('&lt; 前のコメント');?></li>
-		    <li class="next"><?php next_comments_link('次のコメント &gt;');?></li>
+		    <li class="prev"><?php previous_comments_link('&lt;');?></li>
+		    <li class="next"><?php next_comments_link('&gt;');?></li>
 	    </ul>
     <?php endif;
 endif;?>
