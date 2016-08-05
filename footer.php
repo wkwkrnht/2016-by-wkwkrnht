@@ -1,9 +1,9 @@
     </main>
-    <div class="toggle-zone">
+    <footer class="toggle-zone">
         <div id="share-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
         <div id="menu-toggle"><i class="fa fa-bars fa-3x"></i></div>
         <div id="share-menu-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
-    </div>
+    </footer>
     <nav id="share-menu" class="close">
         <ul>
 		    <li class="tweet sharewindow"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');?><?php if(get_twitter_acount()!==null):echo '&amp;via=' . get_twitter_acount();endif;?>" target="_blank"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
