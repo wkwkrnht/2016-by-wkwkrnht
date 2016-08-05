@@ -10,8 +10,8 @@ Text Domain: 2016-by-wkwkrnht
 Tags:        one-column, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post
 Description: The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small.
 */
-:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
-#site-main{padding-bottom:18vh;}
+:root{font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
+#site-main{width:100%;padding-bottom:18vh;}
 /*
 	メニュー
 1.フッターのメニュー展開用ボタン
