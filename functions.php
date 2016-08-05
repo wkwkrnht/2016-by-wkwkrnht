@@ -107,7 +107,7 @@ function theme_enqueue_scripts_styles(){
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
 
-function singular_js_function(){
+/*function singular_js_function(){
 if(is_singular()===true):
 echo <<< EOM
 <script src="/js/highlight.pack.js"></script>
@@ -120,7 +120,7 @@ else:
     return null;
 endif;
 }
-add_action('wp_footer','singular_js_function');
+add_action('wp_footer','singular_js_function');*/
 
 /*
     metainfo
@@ -250,7 +250,7 @@ function wkwkrnht_oembed_api(){
     wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed',true);
     wp_oembed_add_provider('#https?://(www.)?instagram.com/p/.*#i','http://api.instagram.com/oembed',true);
     wp_oembed_add_provider('#https?://(www.)?instagr.am/p/.*#i','http://api.instagram.com/oembed',true);
-    wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog.com/oembed');
+    wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog-parts.com/embed?url=');
     wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
     wp_oembed_add_provider('#https?://(www.)?ifttt.com/recipes/.*#i','http://www.ifttt.com/oembed/',true);
     wp_oembed_add_provider('http://www.kickstarter.com/projects/*','http://www.kickstarter.com/services/oembed',false);
@@ -389,7 +389,7 @@ add_filter('comment_text','twtreplace');
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
-function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
+function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
 function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));$content='<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';return $content;}
 add_shortcode('customcss','style_into_article');

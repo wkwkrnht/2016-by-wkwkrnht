@@ -127,7 +127,7 @@
 				'/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
 				'/<iframe .*src="(.*?)".*><\/iframe>/i',
 				'/<img .*src="(.*?)".*>/i',
-				'/<iframe class="hatenablogcard" src="http:\/\/hatenablog.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i',
+				'/<iframe class="hatenablogcard" src="http:\/\/hatenablog-parts.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i',
 				'/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i'
 			);
 
