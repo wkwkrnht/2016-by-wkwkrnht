@@ -38,9 +38,8 @@
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image()?>" height="256" width="256">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/normalize.min.css">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/parts/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/style.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/parts/font-awesome.min.css">
 	<?php $code = '';$code = get_option('Analytics');if($code!==''){echo $code;}?>
 	<?php wp_head();?>
 </head>
