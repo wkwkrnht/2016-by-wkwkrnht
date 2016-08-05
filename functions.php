@@ -107,10 +107,12 @@ function theme_enqueue_scripts_styles(){
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
 
-/*function singular_js_function(){
+/*
+<script src="/js/highlight.pack.js"></script>
+*/
+function singular_js_function(){
 if(is_singular()===true):
 echo <<< EOM
-<script src="/js/highlight.pack.js"></script>
 <script>
     hljs.initHighlightingOnLoad();
     jQuery(function(){function tableData(){var index='';var headTxt='';jQuery('.article-main table').each(function(){jQuery(this).find('thead tr th').each(function(){index = jQuery(this).index()-1;headTxt = jQuery(this).text();jQuery(this).parents('table').find('tbody tr').each(function(){jQuery(this).find('td').eq(index).attr('data-th',headTxt);});});});}tableData();});
@@ -120,7 +122,7 @@ else:
     return null;
 endif;
 }
-add_action('wp_footer','singular_js_function');*/
+add_action('wp_footer','singular_js_function');
 
 /*
     metainfo
