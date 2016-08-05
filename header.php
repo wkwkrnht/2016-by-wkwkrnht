@@ -40,7 +40,6 @@
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image()?>" height="256" width="256">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/normalize.min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/main.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/css/default.css">
 	<?php $code = '';$code = get_option('Analytics');if($code!==''){echo $code;}?>
 	<?php wp_head();?>

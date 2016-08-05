@@ -1,0 +1,26 @@
+    ファイルツリー
+・css
+    ┗main.css(このテーマにおけるメインカスケードシート)
+・fonts
+    ┗fontawesome-webfont.eot
+    ┗fontawesome-webfont.svg
+    ┗fontawesome-webfont.ttf
+    ┗fontawesome-webfont.woff
+    ┗fontawesome-webfont.woff2
+    ┗fontawesome.otf
+・img
+    ┗no-img.png
+・js
+    ┗script.php
+・parts
+    ┗OpenGraph.php
+・widget
+    ┗author-bio.php
+    ┗post-nav.php
+    ┗related.php
+・footer.php
+・functions.php
+・header.php
+・index.php
+・singular.php
+・style.css(このファイル)

@@ -569,16 +569,17 @@ function how_referrer_setting(){
 }
 
 /*
+コメントウィジェット
 */
-function autoblank($text) {
-	$return = str_replace('<a', '<a target="_blank"', $text);
+function autoblank($text){
+	$return = str_replace('<a','<a target="_blank"',$text);
 	return $return;
 }
-add_filter('comment_text', 'autoblank');
+add_filter('comment_text','autoblank');
 
-add_filter('comments_open', 'custom_comment_tags');
-add_filter('pre_comment_approved', 'custom_comment_tags');
-function custom_comment_tags($data) {
+add_filter('comments_open','custom_comment_tags');
+add_filter('pre_comment_approved','custom_comment_tags');
+function custom_comment_tags($data){
 	global $allowedtags;
 	$allowedtags['pre'] = array('class'=>array());
 	return $data;
