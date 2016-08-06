@@ -285,10 +285,10 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .information,.question{width:96%;}
         .article-date{font-size:2rem;}
     	/*article-table*/
-    	.article-main table,.article-main table caption.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th,.article-main table tr td{display:block;}
-    	.article-main table tr th,.article-main table tr td{margin:-1px;}
-    	.article-main table thead{display:none;}
-    	.article-main table tbody tr td[data-th]::before{content:attr(data-th) " : ";font-weight:bold;display:inline-block;margin-right:0.25em;}
+        .article-main table,.article-main table caption,.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th{display:block;}
+        .article-main table tr th{margin:-1px;}
+        .article-main table tr td{display:list-item;list-style:disc inside;border:none;}
+        .article-main table tr td + td {padding-top:0;}
     }
 }
 /*phone-size*/
@@ -306,10 +306,10 @@ a img.alignright{float:right;margin:5px 0 20px 20px;}
         .information,.question{width:96%;}
         .article-date{font-size:2rem;}
         /*article-table*/
-        .article-main table,.article-main table caption.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th,.article-main table tr td{display:block;}
-        .article-main table tr th,.article-main table tr td{margin:-1px;}
-        .article-main table thead{display:none;}
-        .article-main table tbody tr td[data-th]::before{content:attr(data-th) " : ";font-weight:bold;display:inline-block;margin-right:0.25em;}
+        .article-main table,.article-main table caption,.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th{display:block;}
+        .article-main table tr th{margin:-1px;}
+        .article-main table tr td{display:list-item;list-style:disc inside;border:none;}
+        .article-main table tr td + td {padding-top:0;}
     }
     @media screen and (max-width:450px){
         .search-form div{padding:3px 5px;font-size:75%;}
