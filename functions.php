@@ -402,11 +402,17 @@ function appthemes_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
     <script type="text/javascript">
 		QTags.addButton('qt-p','p','<p>','</p>');
-		QTags.addButton('qt-h2','h2','<h2>','</h2>');
+        QTags.addButton('qt-h1','h1','<h1>','</h1>');
+        QTags.addButton('qt-h2','h2','<h2>','</h2>');
 		QTags.addButton('qt-h3','h3','<h3>','</h3>');
 		QTags.addButton('qt-h4','h4','<h4>','</h4>');
         QTags.addButton('qt-h5','h5','<h5>','</h5>');
         QTags.addButton('qt-h6','h6','<h6>','</h6>');
+        QTags.addButton('qt-table','テーブル','<table>','</table>');
+        QTags.addButton('qt-tbody','テーブル(ボディ)','    <tbody>','</tbody>');
+        QTags.addButton('qt-tr','テーブル(ライン)','   <tr>','</tr>');
+        QTags.addButton('qt-th','テーブル(ヘッド)','   <th>','</th>');
+        QTags.addButton('qt-td','テーブル(項目)','    <td>','</td>');
 		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
