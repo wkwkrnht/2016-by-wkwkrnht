@@ -70,7 +70,7 @@
             echo'
             <script>
             var target = document.querySelectorAll(".format-link .article-main a");
-            for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}
+            for(var i = 0; i < target.length; i++){var href = target.classList.add("embedly-card");}
             </script>
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
         endif;
