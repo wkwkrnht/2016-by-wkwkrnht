@@ -212,9 +212,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
 
-.format-chat .article-main p{display:inline-block;height:3em;width:60%;padding:1em;border-radius:5px;margin-left:3vmin;font-size:1.8rem;}
-.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;background-color:rgba(139,195,74,.6);}
-.format-chat .article-main p:nth-of-type(even){float:right;clear:both;background-color:rgba(200,200,200,.6);}
+.format-chat .article-main p{display:inline-block;height:3em;width:60%;padding:1em;border-radius:5px;font-size:1.8rem;}
+.format-chat .article-main p:nth-of-type(odd){position:absolute;left:0;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
+.format-chat .article-main p:nth-of-type(even){position:absolute;right:0;margin-right:3vmin;background-color:rgba(200,200,200,.6);}
 
 
 .format-aside .article-main p,.article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#ddd;}
