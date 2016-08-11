@@ -54,16 +54,26 @@
         jQuery(function(){jQuery('#share-menu-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
     </script>
     <?php
-    if(is_singular()===true && get_post_format()==='gallery'):
-        echo'
-        <link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.css">
-        <script src="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.js"></script>
-        <script>baguetteBox.run(".gallery-icon",{
-            captions:     function(element){return element.getElementsByTagName("img")[0].alt;},
-            animation:    "fadeIn",
-            noScrollbars: true
-        });</script>
-        ';
+    if(is_singular()===true):
+        $format = get_post_format();
+        if($format==='gallery')
+            echo'
+            <link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.css">
+            <script src="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.js"></script>
+            <script>baguetteBox.run(".gallery-icon",{
+                captions:     function(element){return element.getElementsByTagName("img")[0].alt;},
+                animation:    "fadeIn",
+                noScrollbars: true
+            });</script>
+            ';
+        elseif($format==='link'):
+            echo'
+            <script>
+            var target = document.querySelectorAll(".format-link .article-main a");
+            for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}
+            </script>
+            <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
+        endif;
     endif;?>
     <?php wp_footer();?>
 </body>

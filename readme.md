@@ -1,11 +1,7 @@
 2016-by-wkwkrnht
 ====
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wkwkrnht/2016-by-wkwkrnht/master/LICENSE)[![GitHub stars](https://img.shields.io/github/stars/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/stargazers)[![GitHub forks](https://img.shields.io/github/forks/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/network)[![GitHub issues](https://img.shields.io/github/issues/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/issues)[![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork&maxAge=2592000)]()[![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch&maxAge=2592000)]()[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star&maxAge=2592000)]()[![GitHub followers](https://img.shields.io/github/followers/espadrine.svg?style=social&label=Follow&maxAge=2592000)]()[![Twitter](https://img.shields.io/twitter/url/http/github.com/wkwkrnht/2016-by-wkwkrnht.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
-
-##ライセンス
-
-[MIT](https://github.com/wkwkrnht/2016-by-wkwkrnht/blob/master/LICENSE/)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wkwkrnht/2016-by-wkwkrnht/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/stargazers) [![GitHub forks](https://img.shields.io/github/forks/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/network) [![GitHub issues](https://img.shields.io/github/issues/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/issues) [![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork&maxAge=2592000)]() [![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch&maxAge=2592000)]() [![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star&maxAge=2592000)]() [![GitHub followers](https://img.shields.io/github/followers/espadrine.svg?style=social&label=Follow&maxAge=2592000)]() [![Twitter](https://img.shields.io/twitter/url/http/github.com/wkwkrnht/2016-by-wkwkrnht.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 ##作成者
 
@@ -37,7 +33,7 @@
 * OGP & Twitterカード対応
 * Chrome独自のアドレスバー装飾対応
 
-##File Tree
+##ファイルツリー
 
 * parts (素材置場)
 
