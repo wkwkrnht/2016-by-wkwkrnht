@@ -211,7 +211,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
 
-.article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#ddd;}
+.format-aside .article-main p,.article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#ddd;}
 .article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
 .article-main pre{font-family:monospace;font-weight:bold;}
 .article-main blockquote,.article-main q{quotes:none;}

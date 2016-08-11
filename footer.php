@@ -53,6 +53,18 @@
         jQuery(function(){jQuery('#share-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
         jQuery(function(){jQuery('#share-menu-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
     </script>
+    <?php
+    if(is_singular()===true && get_post_format()===gallery):
+        echo'
+        <link rel="stylesheet" href="./parts/baguetteBox/baguetteBox.min.css">
+        <script src="./parts/baguetteBox/baguetteBox.min.js"></script>
+        <script>baguetteBox.run(".gallery-icon",{
+            captions:     function(element){return element.getElementsByTagName("img")[0].alt;},
+            animation:    "fadeIn",
+            noScrollbars: true
+        });</script>
+        ';
+    endif;?>
     <?php wp_footer();?>
 </body>
 </html>
