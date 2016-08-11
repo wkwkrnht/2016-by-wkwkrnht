@@ -56,7 +56,7 @@
     <?php
     if(is_singular()===true):
         $format = get_post_format();
-        if($format==='gallery')
+        if($format==='gallery'):
             echo'
             <link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.css">
             <script src="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.js"></script>
