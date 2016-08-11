@@ -1,4 +1,4 @@
-<style <?php $myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()){$myAmp=true;};if($myAmp===true):echo'amp-custom';endif;?>>
+<style amp-custom>
 	#flex{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:2vmin 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 	#flex > * {-webkit-transform:translateZ(0px);}
 	.related-wrapper{display:block;height:calc(20vw + 10vmin);width:35vw;border-radius:2vmin;margin:1vmin 3vmin;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}

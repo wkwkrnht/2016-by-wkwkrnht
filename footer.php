@@ -54,7 +54,7 @@
         jQuery(function(){jQuery('#share-menu-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
     </script>
     <?php
-    if(is_singular()===true && get_post_format()===gallery):
+    if(is_singular()===true && get_post_format()==='gallery'):
         echo'
         <link rel="stylesheet" href="./parts/baguetteBox/baguetteBox.min.css">
         <script src="./parts/baguetteBox/baguetteBox.min.js"></script>
