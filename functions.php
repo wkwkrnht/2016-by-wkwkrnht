@@ -26,7 +26,7 @@ function wkwkrnht_setup(){
 }
 add_action('after_setup_theme','wkwkrnht_setup');
 
-add_action('admin_init',function(){add_editor_style('css/custom-editor-style.css');});
+add_action('admin_init',function(){add_editor_style('inc/custom-editor-style.css');});
 
 add_action('widgets_init','wkwkrnht_widgets_init');
 function wkwkrnht_widgets_init(){
@@ -167,7 +167,7 @@ function meta_description(){
 }
 
 function yes_image(){echo wp_get_attachment_url(get_post_thumbnail_id());}
-function no_image(){echo get_template_directory_uri() . '/parts/no-img.png';}
+function no_image(){echo get_template_directory_uri() . '/inc/no-img.png';}
 function meta_image(){
     if(is_singular()===true&&has_post_thumbnail()===true):
         yes_image();
@@ -247,7 +247,7 @@ function make_ogp_blog_card($url){
     if($ifvar):
         $content = $ifvar;
     else:
-        require_once('parts/OpenGraph.php');
+        require_once('inc/OpenGraph.php');
     	$ogp = OpenGraph::fetch($url);
         $url = $ogp->url;
         $img = $ogp->image;

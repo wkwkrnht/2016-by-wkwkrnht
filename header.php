@@ -39,7 +39,7 @@
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image()?>" height="256" width="256">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/style.css">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/parts/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/inc/font-awesome/font-awesome.min.css">
 	<?php $code = '';$code = get_option('Analytics');if($code!==''){echo $code;}?>
 	<?php wp_head();?>
 </head>

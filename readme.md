@@ -13,7 +13,7 @@
 
 ###For Visitor
 
-* バニラな子テーマあり[参照](https://github.com/wkwkrnht/2016-by-wkwkrnht-child/)
+* バニラな子テーマあり[(参照)](https://github.com/wkwkrnht/2016-by-wkwkrnht-child/)
 * すっきりとしたカードデザイン
 * いつでもどこでも2クリック(タップ)でメニューアクセス or SNS共有
 * メニュー内と記事下にウィジェットスペース確保
@@ -36,21 +36,31 @@
 ##File Tree
 
 * fonts (フォント)
-    ┗fontawesome-webfont.eot
-    ┗fontawesome-webfont.svg
-    ┗fontawesome-webfont.ttf
-    ┗fontawesome-webfont.woff
-    ┗fontawesome-webfont.woff2
-    ┗fontawesome.otf
-* parts (適当なの)
-    ┗fontawesome.min.css (アイコンフォント用スタイルシート)
-    ┗OpenGraph.php (OGP解読スクリプト)
-    ┗no-img.png (画像が404)
-* widget (ウィジェット) 
-    ┗author-bio.php (投稿者プロフィール)
-    ┗comment.php (コメント)
-    ┗post-nav.php (前後記事ナビ)
-    ┗related.php (関連記事)
+
+    * fontawesome-webfont.svg
+    * fontawesome-webfont.ttf
+    * fontawesome-webfont.woff
+    * fontawesome-webfont.woff2
+    * fontawesome.otf
+
+* parts (素材置場)
+
+    * baguetteBox(lightbox風スクリプト)
+
+        * baguetteBox.min.js
+        * baguetteBox.min.css
+
+    * fontawesome.min.css (アイコンフォント用スタイルシート)
+    * OpenGraph.php (OGP解読スクリプト)
+    * no-img.png (画像が404)
+
+* widget (ウィジェット)
+
+    * author-bio.php (投稿者プロフィール)
+    * comment.php (コメント)
+    * post-nav.php (前後記事ナビ)
+    * related.php (関連記事)
+
 * footer.php (フッターテンプレート)
 * functions.php (関数ずらずら)
 * header.php (ヘッダーテンプレート)
