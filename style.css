@@ -212,7 +212,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
 
-.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border-radius:5px;position:absolute;font-size:1.8rem;}
+.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border-radius:5px;position:absolute;margin-bottom:2em;font-size:1.8rem;}
 .format-chat .article-main p:nth-of-type(odd){left:0;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
 .format-chat .article-main p:nth-of-type(even){right:0;margin-right:3vmin;background-color:rgba(200,200,200,.6);}
 
