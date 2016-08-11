@@ -3,7 +3,7 @@
 
 ## Licence
 
-[MIT](https://github.com/wkwkrnht/2016-by-wkwkrnht/license.txt)
+[MIT](https://github.com/wkwkrnht/2016-by-wkwkrnht/blob/master/LICENSE/)
 
 ## Author
 
@@ -46,7 +46,7 @@
     ┗fontawesome.min.css (アイコンフォント用スタイルシート)
     ┗OpenGraph.php (OGP解読スクリプト)
     ┗no-img.png (画像が404)
-* widget (ウィジェット)
+* widget (ウィジェット) 
     ┗author-bio.php (投稿者プロフィール)
     ┗comment.php (コメント)
     ┗post-nav.php (前後記事ナビ)
