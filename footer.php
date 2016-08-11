@@ -56,8 +56,8 @@
     <?php
     if(is_singular()===true && get_post_format()==='gallery'):
         echo'
-        <link rel="stylesheet" href="./parts/baguetteBox/baguetteBox.min.css">
-        <script src="./parts/baguetteBox/baguetteBox.min.js"></script>
+        <link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/parts/baguetteBox/baguetteBox.min.css">
+        <script src="' . get_stylesheet_directory_uri() . '/parts/baguetteBox/baguetteBox.min.js"></script>
         <script>baguetteBox.run(".gallery-icon",{
             captions:     function(element){return element.getElementsByTagName("img")[0].alt;},
             animation:    "fadeIn",
