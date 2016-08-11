@@ -35,22 +35,25 @@
 
 ##File Tree
 
-* fonts (フォント)
-
-    * fontawesome-webfont.svg
-    * fontawesome-webfont.ttf
-    * fontawesome-webfont.woff
-    * fontawesome-webfont.woff2
-    * fontawesome.otf
-
 * parts (素材置場)
 
-    * baguetteBox(lightbox風スクリプト)
+    * baguetteBox
 
         * baguetteBox.min.js
         * baguetteBox.min.css
 
-    * fontawesome.min.css (アイコンフォント用スタイルシート)
+    * fontawesome
+
+        * fontawesome.min.css (アイコンフォント用スタイルシート)
+        * fonts (フォント)
+
+            * fontawesome-webfont.svg
+            * fontawesome-webfont.ttf
+            * fontawesome-webfont.woff
+            * fontawesome-webfont.woff2
+            * fontawesome.otf
+
+
     * OpenGraph.php (OGP解読スクリプト)
     * no-img.png (画像が404)
 
