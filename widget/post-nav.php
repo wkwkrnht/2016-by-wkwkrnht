@@ -1,5 +1,5 @@
 <style>
-    .post-nav{display:block;height:20vh;width:80vw;margin:5vh 10vw;}
+    .post-nav{height:20vh;width:80vw;margin:5vh 10vw;}
     .post-nav a{display:inline-block;height:10vh;width:80vw;font-size:2.5rem;line-height:10vh;text-align:center;color:#fff;box-shadow:inset 0 0 50px rgba(0,0,0,.3);}
     <?php
         if(is_singular()===false){return;}
@@ -24,6 +24,7 @@
         ';
     ?>
 </style>
+<div></div>
  <nav class="post-nav">
     <a href="<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>" class="prev">←  <?php the_title_attribute(array('post'=>get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true))));?></a>
     <a href="<?php echo get_permalink(get_adjacent_post(false,'',false));?>" class="next"><?php the_title_attribute(array('post'=>get_permalink(get_adjacent_post(false,'',false))));?>  →</a>
