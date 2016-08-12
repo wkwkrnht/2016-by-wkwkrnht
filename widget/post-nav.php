@@ -24,8 +24,8 @@
         ';
     ?>
 </style>
-<div></div>
  <nav class="post-nav">
     <a href="<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>" class="prev">←  <?php the_title_attribute(array('post'=>get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true))));?></a>
     <a href="<?php echo get_permalink(get_adjacent_post(false,'',false));?>" class="next"><?php the_title_attribute(array('post'=>get_permalink(get_adjacent_post(false,'',false))));?>  →</a>
  </nav>
+<div></div>
