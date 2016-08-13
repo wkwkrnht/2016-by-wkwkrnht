@@ -59,11 +59,8 @@
 	<style amp-custom>
 		:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 		amp-iframe,h1,h2,h3,h4,h5,h6{text-align:center;}
-		article{padding-top:18vh;}
-		.siteinfo{height:18vh;width:100vw;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;z-index:10;position:fixed;top:0;left:0;margin-top:0;}
-		.site-title{font-size:26px;color:white;text-decoration:none;}
 		.article-img{display:block;height:20vh;width:100vw;}
-		.article-img::before{display:block;content:'';height:20vh;width:100vw;position:relative;top:0;left:0;background-color:rgba(0,0,0,.3);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
+		.article-img::before{display:block;content:'';height:20vh;width:100vw;position:relative;top:0;left:0;background-color:rgba(0,0,0,.1);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
 		.article-img span{position:relative;top:0;left:0;}
 		.article-meta{min-height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 		.article-date{display:block;float:left;height:inherit;width:30%;background-color:#ffcc00;color:#fff;font-size:2rem;line-height:20vh;}
@@ -96,14 +93,13 @@
 	</style>
 </head>
 <body>
-	<h1 class="siteinfo"><a href="<?php echo esc_url(home_url());?>" class="site-title"><?php bloginfo('name');?></a></h1>
 	<article>
 		<header class="article-header">
-			<a href="<?php home_url();?>" class="article-img" style="background:url(<?php meta_image();?>) no-repeat center/cover;"></a>
+			<a href="<?php echo esc_url(home_url());?>" class="article-img" style="background:url(<?php meta_image();?>) no-repeat center/cover;"></a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
-					<h2 class="article-name"><?php the_title();?></h2>
+					<h1 class="article-name"><?php the_title();?></h1>
 					<?php the_author();the_category(', ');?>
 					<?php
 					$cat=get_the_category();
