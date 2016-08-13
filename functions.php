@@ -45,7 +45,7 @@ function wkwkrnht_widgets_init(){
 }
 
 class popular_posts extends WP_Widget{
-    function __construct(){parent::__construct('popular_posts','関連記事',array());}
+    function __construct(){parent::__construct('popular_posts','人気記事',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/popular-post.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
