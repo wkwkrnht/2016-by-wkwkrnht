@@ -9,6 +9,9 @@
 3.ウィジェット周り
     ●ウィジェットエリア追加
     ●ウィジェット追加
+    ●メタウィジェットカスタマイズ
+        ●WordPressへのリンクを削除
+        ●リンク項目の追加
 4.不要なjs削除&jQueryのCDN化
 5.body_classにクラス追加
 */
@@ -93,6 +96,17 @@ class disqus_widget extends WP_Widget{
             <?php echo $args['after_widget'];
     }
 }
+
+add_filter('widget_meta_poweredby','__return_empty_string');
+add_action('wp_meta','my_custom_meta_widget_menu');
+function my_custom_meta_widget_menu(){
+?>
+<li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
+<li><?php edit_post_link();?></li>
+<li><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a></li>
+<?php
+}
+
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');

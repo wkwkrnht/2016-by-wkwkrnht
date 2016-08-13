@@ -9,7 +9,7 @@ if($myAmp===true):?>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
-					<h2 class="article-name entry-title"><?php the_title();?></h2>
+					<h1 class="article-name entry-title"><?php the_title();?></h1>
 					<a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" class="author"><?php the_author_meta('display_name');?></a><?php the_category(', ');?>
 					<?php
 					$cat=get_the_category();

@@ -26,9 +26,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 2.メニューの共通スタイル
 3.シェアメニュー
 4.メインメニュー
-5.管理者メニュー
-6.ソーシャルナビゲーション
-7.ウィジェットエリア
+5.ソーシャルナビゲーション
+6.ウィジェットエリア
 */
 .toggle-zone{height:15vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#03a9f4;color:#fff;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;cursor:pointer;}
@@ -52,13 +51,6 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .tumblr{background-color:#36465d;}
 
 #main-menu{color:#333;background-color:#fff;}
-
-.admin-navigation{margin:2vmin auto;}
-.admin-navigation ul{list-style-type:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
-.admin-navigation ul li{width:5%;}
-.admin-navigation ul li a{text-decoration:none;}
-.addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
-.addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 
 .social-nav{display:block;min-height:4em;width:100%;margin:2vmin auto;}
 .social-nav ul{list-style:none;margin:0 0 -1.6em 0;}
@@ -112,6 +104,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 1.タグクラウド
 2.最近の投稿
 3.月別アーカイブ
+4.メタ情報
 */
 .widget_tag_cloud{margin:3vmin;padding:0;}
 .widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
@@ -125,6 +118,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .widget_archive ul{list-style-type:none;text-align:center;}
 .widget_archive ul li{font-size:calc(1.8rem * 0.8);}
 .widget_archive ul li a{font-size:1.8rem;}
+
+.addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
+.addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 /*
     独自要素
 1.マーカー
@@ -156,7 +152,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .search-form div.sbtn:after{content:'\f25a';font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
 /*
 	リストページ
-1.card-list
+1.カードデザイン
 2.ページネーション
 */
 .card-list{background-color:#f1f1f1;}
