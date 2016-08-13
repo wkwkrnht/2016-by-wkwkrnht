@@ -76,8 +76,6 @@
 		.article-main table caption{padding:1.2em;text-align:center;background-color:#ffc045;}
 		.article-main table tr th{background-color:#f1f1f1;}
 		.article-main table tr th,.article-main table tr td{padding:1.2em;text-align:center;border:1px solid #cfcfcf;}
-		.article-main table tr:last-child{border-left:none;}
-		.article-main table:last-child{border-bottom:none;}
 		.article-main p{padding:5vmin 8vmin 0;}
 		.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:4.5rem;max-width:90%;margin:1rem auto;font-size:2rem;line-height:4.5rem;}
 		.article-main h2{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
@@ -134,8 +132,8 @@
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/https:\/\/youtu.be\/(.*)/i',
 				'/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe .*src="(.*?)".*><\/iframe>/i',
-				'/<img .*src="(.*?)".*>/i',
+				'/<iframe(.*?)><\/iframe>/i',
+				'/<img(.*?)>/i',
 				'/<iframe class="hatenablogcard" src="http:\/\/hatenablog-parts.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i',
 				'/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i'
 			);
@@ -147,8 +145,8 @@
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
 				'<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-				'<div><amp-iframe layout="responsive" src="$1"></amp-iframe></div>',
-				'<div><amp-img layout="responsive" src="$1"></amp-img></div>',
+				'<div><amp-iframe layout="responsive" $1></amp-iframe></div>',
+				'<div><amp-img layout="responsive" $1></amp-img></div>',
 				'<a href="$1">$1</a>',
 				'<a href="$1">$1</a>'
 			);
