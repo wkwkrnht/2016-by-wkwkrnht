@@ -60,12 +60,12 @@
 		:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 		amp-iframe,h1,h2,h3,h4,h5,h6{text-align:center;}
 		article{padding-top:18vh;}
-		.siteinfo{width:100vw;height:18vh;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;z-index:10;position:fixed;top:0;left:0;margin-top:0;}
+		.siteinfo{height:18vh;width:100vw;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;z-index:10;position:fixed;top:0;left:0;margin-top:0;}
 		.site-title{font-size:26px;color:white;text-decoration:none;}
 		.article-img{display:block;height:20vh;width:100vw;}
 		.article-img::before{display:block;content:'';height:20vh;width:100vw;position:relative;top:0;left:0;background-color:rgba(0,0,0,.3);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
 		.article-img span{position:relative;top:0;left:0;}
-		.article-meta{height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
+		.article-meta{min-height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 		.article-date{display:block;float:left;height:inherit;width:30%;background-color:#ffcc00;color:#fff;font-size:2rem;line-height:20vh;}
 		.article-title{font-size:2rem;}
 		.bread{height:50%;}
@@ -83,6 +83,10 @@
 		.article-main h4{border-left:1rem solid #ffcc00;border-bottom:1px solid #ffcc00;}
 		.article-main h5{border-left:1rem solid #ffcc00;}
 		.article-main h6{border-bottom:.75vmin dashed #ffcc00;}
+		footer{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
+		.related-wrapper{display:block;height:calc(20vw + 10vmin);width:35vw;border-radius:2vmin;margin:1vmin 3vmin;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
+		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}
+		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
 		@media screen and (max-width:768px){
 			.article-main table,.article-main table caption,.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th{display:block;}
 			.article-main table tr th{margin:-1px;}
@@ -155,7 +159,30 @@
 			?>
 		</section>
 		<footer>
-			<?php require_once('widget/related.php');?>
+			<?php $categories=get_the_category();$category_ID=array();
+			foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
+			$args=array('numberposts'=>6,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($post -> ID));
+			$query = new WP_Query($args);
+			if($query -> have_posts()):
+				while($query -> have_posts()):$query -> the_post();?>
+					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
+						<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
+						<?php the_title('<div class="related-title">','</div>');?>
+					</a>
+				<?php endwhile;?>
+				<?php wp_reset_postdata();?>
+			<?php else:
+				wp_reset_postdata();
+				$args=array('numberposts'=>6,'orderby'=>'rand','post__not_in'=>array($post -> ID));
+				$query = new WP_Query($args);
+				while($query -> have_posts()):$query -> the_post();?>
+					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
+						<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
+						<?php the_title('<div class="related-title">','</div>');?>
+					</a>
+				<?php endwhile;?>
+				<?php wp_reset_postdata();?>
+			<?php endif;?>
 		</footer>
 	</article>
 </body>
