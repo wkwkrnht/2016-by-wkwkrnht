@@ -1,6 +1,6 @@
 <style>
     .bio-wrapper{display:block;}
-    .bio-wrapper img{float:right;}
+    .bio-wrapper img{float:laft;}
     .bio-main{float:right;max-width:calc(80vmin / 2 - 1vmin);}
     .bio-name{font-size:2rem;text-align:center;vertical-align:middle;}
     .follow-button{list-style-type:none;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;}
