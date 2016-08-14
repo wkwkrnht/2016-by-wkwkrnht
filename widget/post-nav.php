@@ -1,5 +1,5 @@
 <style>
-    .widget_post_nav{height:20vh;width:80vw;margin:5vh 10vw;}
+    .widget_post_nav{display:block;height:20vh;width:80vw;margin:5vh 10vw;}
     .widget_post_nav a{display:inline-block;height:10vh;width:80vw;font-size:2.5rem;line-height:10vh;text-align:center;color:#fff;box-shadow:inset 0 0 50px rgba(0,0,0,.3);}
     <?php
         if(is_singular()===false){return;}
@@ -19,8 +19,8 @@
             $nexturl   = esc_url($nextthumb);
         }
         echo'
-        widget_post_nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.1) center;}
-        widget_post_nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.1) center;}
+        .widget_post_nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.1) center;}
+        .widget_post_nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.1) center;}
         ';
     ?>
 </style>
