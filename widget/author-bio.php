@@ -15,7 +15,7 @@
             <li><?php $ld = '';$ld = get_the_author_meta('Linkedin');if($ld!==''){echo'<a href="https://jp.linkedin.com/in/' . $ld . '"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>';}?></li>
             <li><?php $line = '';$line = get_the_author_meta('LINE');if($line!==''){echo $line;}?></li>
             <li><?php $Quita = '';$Quita = get_the_author_meta('Quita');if($Quita!==''){echo $Quita;}?></li>
-            <li><a href="https://github.com/<?php $Github = '';$Github = get_the_author_meta('Github');if($Github!==''){echo $Github;}?>"></a></li>
+            <li><?php $Github = '';$Github = get_the_author_meta('Github');if($Github!==''){echo'<a href="https://github.com/' . $Github . '"></a>';}?></li>
         </ul>
     </div>
 </a>
