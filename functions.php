@@ -37,24 +37,10 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Singular Footer','id'=>'singularfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Left Bar','id'=>'leftbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Right Bar','id'=>'rightbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
-    register_widget('popular_posts');
     register_widget('related_posts');
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
-}
-
-class popular_posts extends WP_Widget{
-    function __construct(){parent::__construct('popular_posts','人気記事',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/popular-post.php');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
-		<p>
-		<label for="<?php echo $this->get_field_id('title');?>">title</label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
-		</p>
-		<?php
-	}
-	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
 class related_posts extends WP_Widget{
@@ -534,6 +520,8 @@ add_filter('user_contactmethods','my_new_contactmethods',10,1);
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){
     $wp_customize->add_section('sns_section',array('title'=>'独自設定','description'=>'このテーマの独自設定','priority'=>1,));
+    $wp_customize->add_setting('jetpack_css_load',array('type'=>'option',));
+    $wp_customize->add_control('jetpack_css_load',array('section'=>'sns_section', 'settings'=>'jetpack_css_load','label'=>'jetpack.cssを読み込まない','type'=>'checkbox'));
 	$wp_customize->add_setting('referrer_setting',array('default'=>'value1','type'=>'theme_mod',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('value1'=>'default','value2'=>'unsafe-url','value3'=>'origin-when-crossorigin','value4'=>'none-when-downgrade','value5'=>'none',),));
     $wp_customize->add_setting('GoogleChrome_URLbar',array('default'=>'#ffcc00','type'=>'option','sanitize_callback' => 'sanitize_text_field',));
@@ -561,6 +549,7 @@ function how_referrer_setting(){
         return $result;
     }
 }
+if(get_option('jetpack_css_load')){add_filter('jetpack_implode_frontend_css','__return_false');}
 
 /*
 コメントウィジェット
