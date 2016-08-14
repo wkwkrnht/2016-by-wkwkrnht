@@ -5,7 +5,7 @@ if($myAmp===true):?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
 		<header class="article-header">
-			<img src="<?php $size=array(1280,720);wkwkrnht_eyecatch($size);?>" alt="eyecatch" class="article-eyecatch">
+			<img src="<?php $size=array(1344,576);wkwkrnht_eyecatch($size);?>" height="576" width="10344" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
