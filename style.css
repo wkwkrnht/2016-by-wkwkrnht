@@ -185,7 +185,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-header{width:92vw;margin:5vmin auto;}
 .article-eyecatch{width:92vw;text-align:center;vertical-align:middle;}
 .article-meta{height:23vh;width:92vw;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
-.article-date{display:block;height:inherit;width:30%;float:left;background-color:#ffcc00;color:#fff;font-size:2.3rem;line-height:23vh;}
+.article-date{display:block;height:inherit;width:30%;float:left;background-color:#03a9f4;color:#fff;font-size:2.3rem;line-height:23vh;}
 
 .article-title{font-size:2rem;}
 .bread{height:50%;}
@@ -213,22 +213,22 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(139,195,74,.6);}
 
 
-.format-aside .article-main p,.article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;background:#ddd;}
+.article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;}
 .article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
 .article-main pre{font-family:monospace;font-weight:bold;}
 .article-main blockquote,.article-main q{quotes:none;}
-.article-main blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:5px;border-top:1px solid #fff;color:#fff;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
+.article-main blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:1em;border-top:1px solid #fff;color:#fff;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
 
 
 .article-main ul{margin:2em auto;list-style:none;}
-.article-main ul li::before{content:'●';display:inline;color:#aaa;font-size:.8em;padding-right:1em;}
+.article-main ul li::before{content:'●';display:inline;color:#03a9f4;font-size:.8em;padding-right:1em;}
 .article-main ul li::after,.article-main ol li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px dashed #aaa;}
 .article-main ol li{padding-top:.1em;}
 
 
 .article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
 .article-main table caption{padding:1.2em;text-align:center;background-color:#ffc045;}
-.article-main table tr th{background-color:#f1f1f1;}
+.article-main table tr th{color:#fff;background-color:#03a9f4;}
 .article-main table tr th,.article-main table tr td{padding:1.2em;text-align:center;border:1px solid #cfcfcf;}
 .article-main table tr:last-child{border-left:none;}
 .article-main table:last-child{border-bottom:none;}

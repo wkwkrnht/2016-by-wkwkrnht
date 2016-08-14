@@ -31,7 +31,7 @@
             <li><?php $gp = '';$gp = get_the_author_meta('Googleplus');if($gp!==''){echo'<a href="https://plus.google.com/u/0/' . $gp . '"><i class="fa fa-google-plus-official fa-3x" aria-hidden="true"></i></a>';}?></li>
             <li><?php $ld = '';$ld = get_the_author_meta('Linkedin');if($ld!==''){echo'<a href="https://jp.linkedin.com/in/' . $ld . '"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>';}?></li>
             <li><?php $line = '';$line = get_the_author_meta('LINE');if($line!==''){echo $line;}?></li>
-            <li><?php $Quita = '';$Quita = get_the_author_meta('Quita');if($Quita!==''){echo $Quita;}?></li>
+            <li><?php $Quita = '';$Quita = get_the_author_meta('Quita');if($Quita!==''){echo'<a href="http://qiita.com/' . $Quita . '">' . $Quita . '</a>';}?></li>
             <li><?php $Github = '';$Github = get_the_author_meta('Github');if($Github!==''){echo'<a href="https://github.com/' . $Github . '"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>';}?></li>
         </ul>
     </div>
