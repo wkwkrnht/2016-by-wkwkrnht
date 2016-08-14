@@ -7,8 +7,8 @@
         $next    = get_adjacent_post(false,'',false);
         $css     = '';
         $url     = '';
-        $prevurl = no_image();
-        $nexturl = no_image();
+        $prevurl = get_template_directory_uri() . '/inc/no-img.png';
+        $nexturl = get_template_directory_uri() . '/inc/no-img.png';
         if(is_attachment()===true&&'attachment'===$prev->post_type){return;}
         if($prev&&has_post_thumbnail($prev->ID)){
             $prevthumb = wp_get_attachment_url(get_post_thumbnail_id($prev->ID));
