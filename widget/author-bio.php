@@ -1,11 +1,11 @@
 <style>
     .bio-wrapper{display:block;}
-    .bio-main{max-width:calc(80vmin / 2 - 1vmin);}
+    .bio-main{float:right;max-width:calc(80vmin / 2 - 1vmin);}
     .bio-name{font-size:2rem;text-align:center;vertical-align:middle;}
     .follow-button{list-style-type:none;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;}
     @media screen and (orientation:landscape){
         @media screen and (min-width:1920px){
-            \.bio-main{max-width:calc(64vmin / 2);}
+            .bio-main{max-width:calc(64vmin / 2);}
         }
         @media screen and (max-height:720px){
             .bio-main{max-width:calc(80vmin * 3 / 5);}
