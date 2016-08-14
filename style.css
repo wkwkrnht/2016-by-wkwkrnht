@@ -210,8 +210,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 
 .format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5px;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
-.format-chat .article-main p:nth-of-type(odd){float:right;clear:both;margin-right:3vmin;background-color:rgba(139,195,74,.6);}
-.format-chat .article-main p:nth-of-type(even){margin-left:3vmin;background-color:rgba(230,230,230,.6);}
+.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
+.format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
 
 
 .article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;}
