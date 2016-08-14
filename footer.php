@@ -35,7 +35,7 @@
             </ul>
         <?php endif;?>
     </div>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.4/jquery.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
     <script>
         window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         jQuery(function(){jQuery('#menu-toggle').click(function(){jQuery('#main-menu').toggleClass('close');jQuery('#main-menu').toggleClass('open');});});
