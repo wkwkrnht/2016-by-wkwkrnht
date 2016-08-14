@@ -1,7 +1,5 @@
 <style>
     .bio-wrapper{display:block;}
-    .bio-wrapper img{float:left;}
-    .bio-main{float:right;}
     .bio-name{font-size:2rem;text-align:center;vertical-align:middle;}
     .follow-button{list-style:none;}
 </style>
