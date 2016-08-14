@@ -184,7 +184,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 9.codex
 */
 .article-header{width:92vw;margin:5vmin auto;}
-.article-eyecatch{width:92vw;text-align:center;vertical-align:middle;}
+.article-eyecatch{max-width:92vw;text-align:center;vertical-align:middle;}
 .article-meta{height:23vh;width:92vw;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 .article-date{display:block;height:inherit;width:30%;float:left;background-color:#03a9f4;color:#fff;font-size:2.3rem;line-height:23vh;}
 
