@@ -11,12 +11,12 @@
         $nexturl = no_image();
         if(is_attachment()===true&&'attachment'===$prev->post_type){return;}
         if($prev&&has_post_thumbnail($prev->ID)){
-            $prevthumb = wp_get_attachment_image_src(get_post_thumbnail_id($prev->ID),'post-thumbnail');
-            $prevurl   = esc_url($prevthumb[0]);
+            $prevthumb = wp_get_attachment_url(get_post_thumbnail_id($prev->ID));
+            $prevurl   = esc_url($prevthumb);
         }
         if($next&&has_post_thumbnail($next->ID)){
-            $nextthumb = wp_get_attachment_image_src(get_post_thumbnail_id($next->ID),'post-thumbnail');
-            $nexturl   = esc_url($nextthumb[0]);
+            $nextthumb = wp_get_attachment_url(get_post_thumbnail_id($next->ID));
+            $nexturl   = esc_url($nextthumb);
         }
         echo'
         .post-nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.1) center;}

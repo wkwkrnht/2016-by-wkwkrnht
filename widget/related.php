@@ -12,7 +12,7 @@
 	if($query -> have_posts()):
 		while($query -> have_posts()):$query -> the_post();?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endwhile;?>
@@ -23,7 +23,7 @@
 		$query = new WP_Query($array);
 		while($query -> have_posts()):$query -> the_post();?>
 			<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-				<img src="<?php wkwkrnht_eyecatch();?>" alt="thumbnail" class="related-thumb">
+				<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
 				<?php the_title('<div class="related-title">','</div>');?>
 			</a>
 		<?php endwhile;?>
