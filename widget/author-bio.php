@@ -1,22 +1,8 @@
 <style>
     .bio-wrapper{display:block;}
-    .bio-main{max-width:calc(80vmin / 2 - 1vmin);}
     .bio-name{font-size:2rem;text-align:center;vertical-align:middle;}
     .follow-button{list-style:none;overflow-x:auto;overflow-y:hidden;}
     .follow-button li{display:inline-block;height:80%;width:20%;text-align:center;vertical-align:middle;}
-    @media screen and (orientation:landscape){
-        @media screen and (min-width:1920px){
-            .bio-main{max-width:calc(64vmin / 2);}
-        }
-        @media screen and (max-height:720px){
-            .bio-main{max-width:calc(80vmin * 3 / 5);}
-        }
-    }
-    @media screen and (orientation:portrait){
-        @media screen and (max-width:1270px){
-            .bio-main{max-width:calc(80vmin * 3 / 5);}
-        }
-    }
 </style>
 <section class="bio-wrapper card info-card">
     <?php echo get_avatar(get_the_author_meta('ID'),256);?>
