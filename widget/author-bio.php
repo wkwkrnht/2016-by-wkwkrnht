@@ -1,7 +1,7 @@
 <style>
     .bio-wrapper{display:block;}
-    .bio-wrapper img{float:left;}
-    .bio-main{float:right;max-width:calc(80vmin / 2 - 1vmin);}
+    .bio-wrapper img{float:left;clear:both;}
+    .bio-main{float:right;clear:both;max-width:calc(80vmin / 2 - 1vmin);}
     .bio-name{font-size:2rem;text-align:center;vertical-align:middle;}
     .follow-button{list-style-type:none;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;}
     @media screen and (orientation:landscape){
