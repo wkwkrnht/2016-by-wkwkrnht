@@ -21,7 +21,7 @@
 <a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" class="bio-wrapper card info-card">
     <?php echo get_avatar(get_the_author_meta('ID'),256);?>
     <div class="bio-main">
-        <h1 class="bio-name"><?php the_author_meta('display_name');?></h1><br>
+        <span class="bio-name"><?php the_author_meta('display_name');?></span><br>
         <p class="bio-description"><?php the_author_meta('user_description');?></p>
         <ul class="follow-button">
             <li><?php $tw = '';$tw = get_the_author_meta('twitter');if($tw!==''){echo'<a href="https://twitter.com/' . $tw . '"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>';}?></li>
