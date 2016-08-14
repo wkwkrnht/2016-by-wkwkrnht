@@ -35,7 +35,7 @@
             </ul>
         <?php endif;?>
     </div>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.4/jquery.min.js'></script>
     <script>
         window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         jQuery(function(){jQuery('#menu-toggle').click(function(){jQuery('#main-menu').toggleClass('close');jQuery('#main-menu').toggleClass('open');});});
@@ -49,18 +49,11 @@
             echo'
             <link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.css">
             <script src="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.js"></script>
-            <script>baguetteBox.run(".gallery-icon",{
-                captions:     function(element){return element.getElementsByTagName("img")[0].alt;},
-                animation:    "fadeIn",
-                noScrollbars: true
-            });</script>
+            <script>baguetteBox.run(".gallery-icon",{captions:function(element){return element.getElementsByTagName("img")[0].alt;},animation:"fadeIn",noScrollbars:true});</script>
             ';
         elseif($format==='link'):
             echo'
-            <script>
-            var target = document.querySelectorAll(".format-link .article-main a");
-            for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}
-            </script>
+            <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
         endif;
     endif;?>
