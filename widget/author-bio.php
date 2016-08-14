@@ -3,7 +3,7 @@
     .bio-wrapper img{float:left;}
     .bio-main{max-width:60%;float:right;}
     .bio-name{font-size:2rem;text-align:center;vertical-align:middle;}
-    .follow-button{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;}
+    .follow-button{list-style-type:none;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;}
 </style>
 <a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" class="bio-wrapper card info-card">
     <?php echo get_avatar(get_the_author_meta('ID'),256);?>
