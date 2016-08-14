@@ -24,24 +24,17 @@
 	margin: 5px 0 0 0;
 	color: #000;
 	font-weight: 400;
-	font-size: 13px;
 }
 
 .latest_wrap .view_count {
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 	right: 0;
 	font-family: impact;
 	color: #666;
 	font-size: 14px;
 	background: rgba(0,0,0,0.1);
 	padding: 0 0 0 5px;
-}
-
-.latest_wrap .view_count:after {
-	content: "view";
-	color: #000;
-	margin: 0 0 0 5px;
 }
 </style>
 <?php
@@ -72,25 +65,22 @@
     add_action( 'wp_head', 'wpb_track_post_views');
     add_action('my_hourly_event', 'my_hourly_action');
 
-    function my_hourly_action() {
-        // 投稿記事全取得
-        $args = array('posts_per_page' => -1,'post_type' => array('post'));
-        // 変数に格納
-        $the_query = new WP_Query($args);
+    function my_hourly_action(){
+        $the_query = new WP_Query(array('posts_per_page' => -1,'post_type' => array('post')));
         $count_key = 'wpb_post_views_count';
-        delete_post_meta_by_key('wpb_post_views_count');
+        delete_post_meta_by_key($count_key);
         if ($the_query->have_posts()) :
             while ($the_query->have_posts()) : $the_query->the_post();
-            $post_id   = $the_query->post->ID;
-            $count = get_post_meta($post_id, $count_key, true);
-            if(empty($count)){
-                $count = 0;
-                delete_post_meta($post_id, $count_key);
-                add_post_meta($post_id, $count_key, '0');
-            }else{
-                $count++;
-                update_post_meta($post_id, $count_key, 0);
-            }
+            	$post_id   = $the_query->post->ID;
+            	$count = get_post_meta($post_id, $count_key, true);
+            	if(empty($count)){
+                	$count = 0;
+                	delete_post_meta($post_id, $count_key);
+                	add_post_meta($post_id, $count_key, '0');
+            	}else{
+                	$count++;
+                	update_post_meta($post_id, $count_key, 0);
+            	}
             endwhile;
         endif;
     }
@@ -107,30 +97,24 @@
         $minutes = $dt_array["i"] * 60;
         $second = $dt_array["s"];
         $difftime = $day + $hour + $minutes + $second + 60;
-        $schedules['Nextmonth'] = array(
-            'interval' => $difftime,
-            'display' => 'Nextmonth'
-        );
+        $schedules['Nextmonth'] = array('interval' => $difftime,'display' => 'Nextmonth');
         return $schedules;
     }
 
-    add_action('wp',function(){if(!wp_next_scheduled('my_hourly_event')){wp_schedule_event(time(), 'Nextmonth', 'my_hourly_event');}});
-    // イベント排除
-    register_deactivation_hook(__FILE__, 'my_deactivation');
-    function my_deactivation() {
-        wp_clear_scheduled_hook('my_hourly_event');
-    }
-	$popularpost = new WP_Query( array( 'posts_per_page' => 10, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
-	while ( $popularpost->have_posts() ) : $popularpost->the_post();?>
+    add_action('wp',function(){if(!wp_next_scheduled('my_hourly_event')){wp_schedule_event(time(),'Nextmonth','my_hourly_event');}});
+    register_deactivation_hook(__FILE__,function(){wp_clear_scheduled_hook('my_hourly_event');});
+
+	$popularpost = new WP_Query(array('posts_per_page' => 10,'meta_key' => 'wpb_post_views_count','orderby' => 'meta_value_num','order' => 'DESC' ));
+	while($popularpost->have_posts()):$popularpost->the_post();?>
 		<div class="latest_wrap">
-			<a href="<?php the_permalink(); ?>">
-				<?php if ( has_post_thumbnail() ) { ?>
-		            <?php the_post_thumbnail('thumbnail', array('class' => 'thumbnail')); ?>
-		        <?php } else { ?>
-		            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/no_image3.gif" />
-		        <?php } ?>
-		        <h2 class="title"><?php the_title();?></h2>
-		        <span class="view_count"><?php echo post_custom('wpb_post_views_count'); ?></span>
+			<a href="<?php the_permalink();?>">
+				<?php if(has_post_thumbnail()):?>
+		            <?php the_post_thumbnail('thumbnail',array('class' =>'thumbnail'));?>
+		        <?php else:?>
+		            <img src="<?php echo get_stylesheet_directory_uri();?>/inc/no-img.png">
+		        <?php endif;?>
+		        <h3 class="title"><?php the_title();?></h3>
+		        <span class="view_count"><?php echo post_custom('wpb_post_views_count');?> view</span>
 		    </a>
     	</div>
-    <?php endwhile; ?>
+    <?php endwhile;?>
