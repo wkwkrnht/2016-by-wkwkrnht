@@ -2,7 +2,7 @@
     .bio-wrapper{display:block;}
     .bio-name{font-size:2rem;text-align:center;vertical-align:middle;}
     .follow-button{list-style:none;overflow-x:auto;overflow-y:hidden;}
-    .follow-button li{display:inline-block;text-align:center;vertical-align:middle;}
+    .follow-button li{display:inline-block;padding:0 .5em;text-align:center;vertical-align:middle;}
 </style>
 <section class="bio-wrapper card info-card">
     <?php echo get_avatar(get_the_author_meta('ID'),256);?>

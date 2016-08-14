@@ -217,7 +217,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
 .article-main pre{font-family:monospace;font-weight:bold;}
 .article-main blockquote,.article-main q{quotes:none;}
-.article-main blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:1em;border-top:1px solid #fff;color:#fff;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
+.article-main blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:1em;border-top:1px solid #bbb;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
 
 
 .article-main ul{margin:2em auto;list-style:none;}
