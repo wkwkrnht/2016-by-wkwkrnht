@@ -1,7 +1,6 @@
 <style>
-    .widget_post_nav{height:20vh;width:80vw;padding-bottom:20vh;margin:5vh 10vw;}
-    .post-nav{height:20vh;width:80vw;}
-    .post-nav a{display:inline-block;height:10vh;width:80vw;font-size:2.5rem;line-height:10vh;text-align:center;color:#fff;box-shadow:inset 0 0 50px rgba(0,0,0,.3);}
+    .widget_post_nav{height:20vh;width:80vw;margin:5vh 10vw;}
+    .widget_post_nav a{display:inline-block;height:10vh;width:80vw;font-size:2.5rem;line-height:10vh;text-align:center;color:#fff;box-shadow:inset 0 0 50px rgba(0,0,0,.3);}
     <?php
         if(is_singular()===false){return;}
         $prev    = (is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true);
@@ -20,12 +19,10 @@
             $nexturl   = esc_url($nextthumb);
         }
         echo'
-        .post-nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.1) center;}
-        .post-nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.1) center;}
+        widget_post_nav .prev{background:url(' . $prevurl . ') rgba(0,0,0,.1) center;}
+        widget_post_nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.1) center;}
         ';
     ?>
 </style>
-<nav class="post-nav">
-    <a href="<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>" class="prev">←  <?php the_title_attribute(array('post'=>$prev->ID));?></a>
-    <a href="<?php echo get_permalink(get_adjacent_post(false,'',false));?>" class="next"><?php the_title_attribute(array('post'=>$next->ID));?>  →</a>
-</nav>
+<a href="<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>" class="prev">←  <?php the_title_attribute(array('post'=>$prev->ID));?></a>
+<a href="<?php echo get_permalink(get_adjacent_post(false,'',false));?>" class="next"><?php the_title_attribute(array('post'=>$next->ID));?>  →</a>
