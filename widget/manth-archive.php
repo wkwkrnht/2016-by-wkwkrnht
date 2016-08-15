@@ -1,9 +1,12 @@
 <style>
     .widget_wkwkrnht_manth_archive{}
     .widget_wkwkrnht_manth_archive ul{list-style:none;}
-    .widget_wkwkrnht_manth_archive .list-year{border-bottom:.5em dashed #03a9f4;}
+    .widget_wkwkrnht_manth_archive .list-year{border:1px solid #03a9f4;}
+    .widget_wkwkrnht_manth_archive .list-year h3{text-align:center;border-bottom:1px dashed #03a9f4;}
     .widget_wkwkrnht_manth_archive .list-year h3 a{font-size:1.8rem;text-decoration:none;}
-    .widget_wkwkrnht_manth_archive .article-list{list-style:none;font-size:1.6rem;}
+    .widget_wkwkrnht_manth_archive .article-list{list-style:none;}
+    .widget_wkwkrnht_manth_archive .article-list li{display:inline;font-size:1.6rem;}
+    .widget_wkwkrnht_manth_archive .article-list li a{text-decoration:none;}
 </style>
 <?php
 /*
