@@ -37,10 +37,24 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Singular Footer','id'=>'singularfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Left Bar','id'=>'leftbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Right Bar','id'=>'rightbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_widget('wkwkrnht_manth_archive');
     register_widget('related_posts');
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
+}
+
+class wkwkrnht_manth_archive extends WP_Widget{
+    function __construct(){parent::__construct('wkwkrnht_manth_archive','月別アーカイブ(短縮版)',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/manth-arcive.php');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
 class related_posts extends WP_Widget{
@@ -127,6 +141,7 @@ function add_body_class($classes){if(is_singular()===true):$classes[] = 'singula
 1.アクセス中のURL取得
 2.更新時間と投稿時間の比較
 3.カテゴリーページのメタ設定
+    ●画像
     ●ディスプリクション
     ●キーワード
 4.タグページのメタ設定
@@ -152,6 +167,7 @@ function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://
 
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
 
+//予定地
 function get_meta_description_from_category(){
     $cat_desc=trim(strip_tags(category_description()));
     if($cat_desc){return $cat_desc;}
@@ -365,12 +381,14 @@ add_filter('comment_text','twtreplace');
 */
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
-function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
-function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
+function wps_trend($atts){extract(shortcode_atts(array('width'=>'640','height'=>'480','geo'=>'JP','keyword'=>'','date'=>''),$atts));$height=(int)$height;$width=(int)$width;$keyword=esc_attr($keyword);$geo=esc_attr($geo);$date=esc_attr($date);return'<script src="//www.google.com/trends/embed.js?hl=ja&amp;q=' . $keyword . '&amp;geo=' . $geo . '&amp;date=' . $date . '&amp;cmpt=q&amp;content=1&amp;cid=TIMESERIES_GRAPH_0&amp;export=5&amp;w=' . $width . '&amp;h=' . $height . '"></script>';}
+function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
+function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
-function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));$content='<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';return $content;}
+function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));return'<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';}
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
+add_shortcode('google_keyword','wps_trend');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
@@ -411,6 +429,7 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
 		QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
 		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
+        QTags.addButton('qt-googlekeyword','Googleキーワード','[google_keyword keyword= date= geo= height= width=',']');
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
