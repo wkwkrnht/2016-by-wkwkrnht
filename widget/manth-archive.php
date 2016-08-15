@@ -20,17 +20,17 @@
         2の月別アーカイブの各行のhtmlからYYYY年部分を除去して表示。
 */
 $archives_year       = strip_tags(wp_get_archives('type=yearly&show_count=0&format=custom&echo=0'));
-//$archives_year_array = split('\n',$archives_year);
-array_pop($archives_year_array);
+//$archives_year = split('\n',$archives_year);
+array_pop($archives_year);
 
 $archives       = wp_get_archives('type=monthly&show_post_count=1&use_desc_for_title=0&echo=0');
-//$archives_array = split('\n',$archives);
+//$archives = split('\n',$archives);
 
 echo'<ul>';
-foreach ($archives_year_array as $year_value){
+foreach ($archives_year as $year_value){
     echo'<li class="list-year"><h3><a href="' . get_bloginfo('url') . '/' . ltrim($year_value) . '">' . ltrim($year_value) . '年</a></h3>';
     echo'<ul class="article-list">';
-    foreach($archives_array as $archives_value){
+    foreach($archives as $archives_value){
         if(intval(strip_tags($archives_value)) == intval($year_value)){
             echo  str_replace(intval($year_value).'年','',ltrim($archives_value));
         }
