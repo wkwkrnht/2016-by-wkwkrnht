@@ -1,11 +1,11 @@
 <style>
-    .widget_wkwkrnht_manth_archive{max-width:80%;}
+    .widget_wkwkrnht_manth_archive{max-width:80%;margin:5vh auto;}
     .widget_wkwkrnht_manth_archive ul{list-style:none;}
     .widget_wkwkrnht_manth_archive .list-year{margin:1em auto;border:1px solid #03a9f4;}
     .widget_wkwkrnht_manth_archive .list-year h3{border-bottom:1px dashed #03a9f4;text-align:center;}
     .widget_wkwkrnht_manth_archive .list-year h3 a{font-size:1.8rem;text-decoration:none;}
     .widget_wkwkrnht_manth_archive .article-list{list-style:none;}
-    .widget_wkwkrnht_manth_archive .article-list li{display:block-inline;width:6rem;font-size:1.6rem;text-align:center;}
+    .widget_wkwkrnht_manth_archive .article-list li{display:inline-block;width:6em;font-size:1.6rem;text-align:center;}
     .widget_wkwkrnht_manth_archive .article-list li a{text-decoration:none;}
 </style>
 <?php
