@@ -1,11 +1,11 @@
 <style>
-    .widget_wkwkrnht_manth_archive{}
+    .widget_wkwkrnht_manth_archive{max-width:80%;}
     .widget_wkwkrnht_manth_archive ul{list-style:none;}
-    .widget_wkwkrnht_manth_archive .list-year{border:1px solid #03a9f4;}
-    .widget_wkwkrnht_manth_archive .list-year h3{text-align:center;border-bottom:1px dashed #03a9f4;}
+    .widget_wkwkrnht_manth_archive .list-year{margin:1em auto;border:1px solid #03a9f4;}
+    .widget_wkwkrnht_manth_archive .list-year h3{border-bottom:1px dashed #03a9f4;text-align:center;}
     .widget_wkwkrnht_manth_archive .list-year h3 a{font-size:1.8rem;text-decoration:none;}
     .widget_wkwkrnht_manth_archive .article-list{list-style:none;}
-    .widget_wkwkrnht_manth_archive .article-list li{display:inline;font-size:1.6rem;}
+    .widget_wkwkrnht_manth_archive .article-list li{display:block-inline;width:6rem;font-size:1.6rem;text-align:center;}
     .widget_wkwkrnht_manth_archive .article-list li a{text-decoration:none;}
 </style>
 <?php
@@ -23,11 +23,11 @@
         2の月別アーカイブの各行のhtmlからYYYY年部分を除去して表示。
 */
 $archives_year = strip_tags(wp_get_archives('type=yearly&show_count=0&format=custom&echo=0'));
-$archives_year = split("\n",$archives_year);
+$archives_year = preg_split("\n",$archives_year);
 array_pop($archives_year);
 
 $archives = wp_get_archives('type=monthly&show_post_count=1&use_desc_for_title=0&echo=0');
-$archives = split("\n",$archives);
+$archives = preg_split("\n",$archives);
 
 echo'<ul>';
 foreach ($archives_year as $year_value){
