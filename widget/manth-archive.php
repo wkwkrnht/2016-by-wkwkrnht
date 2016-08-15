@@ -23,11 +23,11 @@
         2の月別アーカイブの各行のhtmlからYYYY年部分を除去して表示。
 */
 $archives_year = strip_tags(wp_get_archives('type=yearly&show_count=0&format=custom&echo=0'));
-$archives_year = preg_split("\n",$archives_year);
+$archives_year = explode("\n",$archives_year);
 array_pop($archives_year);
 
 $archives = wp_get_archives('type=monthly&show_post_count=1&use_desc_for_title=0&echo=0');
-$archives = preg_split("\n",$archives);
+$archives = explode("\n",$archives);
 
 echo'<ul>';
 foreach ($archives_year as $year_value){
