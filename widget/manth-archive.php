@@ -1,5 +1,9 @@
 <style>
-
+    .widget_wkwkrnht_manth_archive{}
+    .widget_wkwkrnht_manth_archive ul{list-style:none;}
+    .widget_wkwkrnht_manth_archive .list-year{border-bottom:.5em dashed #03a9f4;}
+    .widget_wkwkrnht_manth_archive .list-year h3 a{font-size:1.8rem;text-decoration:none;}
+    .widget_wkwkrnht_manth_archive .article-list{list-style:none;font-size:1.6rem;}
 </style>
 <?php
 /*
@@ -24,8 +28,8 @@ $archives_array = split('\n',$archives);
 
 echo'<ul>\n';
 foreach ($archives_year_array as $year_value){
-    echo'<li><a href="' . get_bloginfo('url') . '/' . ltrim($year_value) . '">' . ltrim($year_value) . '年</a>\n';
-    echo'<ul class="cl">' . '\n';
+    echo'<li class="list-year"><h3><a href="' . get_bloginfo('url') . '/' . ltrim($year_value) . '">' . ltrim($year_value) . '年</a></h3>\n';
+    echo'<ul class="article-list">' . '\n';
     foreach($archives_array as $archives_value){
         if(intval(strip_tags($archives_value)) == intval($year_value)){
             echo  str_replace(intval($year_value).'年','',ltrim($archives_value)) . '\n';

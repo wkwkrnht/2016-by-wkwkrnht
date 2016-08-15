@@ -46,7 +46,7 @@ function wkwkrnht_widgets_init(){
 
 class wkwkrnht_manth_archive extends WP_Widget{
     function __construct(){parent::__construct('wkwkrnht_manth_archive','月別アーカイブ(短縮版)',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/manth-arcive.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/manth-archive.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>

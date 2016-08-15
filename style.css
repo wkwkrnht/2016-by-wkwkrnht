@@ -204,8 +204,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main h1{border:1vmin solid #03a9f4;color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .article-main h2{padding:.75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
 .article-main h3{color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-.article-main h4{border-left:10px solid #03a9f4;border-bottom:1px solid #03a9f4;}
-.article-main h5{border-left:10px solid #03a9f4;}
+.article-main h4{border-left:.5em solid #03a9f4;border-bottom:1px solid #03a9f4;}
+.article-main h5{border-left:.5em solid #03a9f4;}
 .article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
 
