@@ -5,7 +5,7 @@
     .widget_wkwkrnht_manth_archive .list-year h3{text-align:center;}
     .widget_wkwkrnht_manth_archive .list-year h3 a{font-size:1.8rem;color:#fff;text-decoration:none;}
     .widget_wkwkrnht_manth_archive .article-list{list-style:none;margin-top:1em;background-color:#fff;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
-    .widget_wkwkrnht_manth_archive .article-list li{display:inline-block;font-size:1.6rem;width:4.5em;text-align:center;}
+    .widget_wkwkrnht_manth_archive .article-list li{display:inline-block;height:50%;font-size:1.6rem;width:4.5em;text-align:center;}
     .widget_wkwkrnht_manth_archive .article-list li a{text-decoration:none;}
 </style>
 <?php
