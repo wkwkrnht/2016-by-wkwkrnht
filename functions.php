@@ -98,17 +98,7 @@ class post_comment extends WP_Widget{
 
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array());}
-    public function widget($args,$instance){
-        echo
-            $args['before_widget'];?>
-            <div id="disqus_thread">
-            </div>
-            <script>(function(){
-                var d=document,s=d.createElement('script');s.src='//<?php echo get_option('Disqus_ID');?>.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);
-            })();</script>
-            <noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>
-            <?php echo $args['after_widget'];
-    }
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');$args['after_widget'];}
 }
 
 add_filter('widget_meta_poweredby','__return_empty_string');
