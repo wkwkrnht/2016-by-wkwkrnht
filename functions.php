@@ -110,7 +110,7 @@ class move_top extends WP_Widget{
 
 class toc extends WP_Widget{
     function __construct(){parent::__construct('toc','目次',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/toc.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];if(is_singular()===true){include(get_template_directory() . '/widget/toc.php');}echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
