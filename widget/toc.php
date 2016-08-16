@@ -1,7 +1,8 @@
 <?php if(is_singular()===true):?>
     <style></style>
+    <div id="toc"></div>
     <script>
-        $(function() {
+        (function(){
             var element = document.getElementByClass('article-main');
             var idcount = 1;
             var toc = '';
@@ -39,6 +40,6 @@
                 $("html, body").animate({scrollTop:position}, speed, "swing");
                 return false;
             });*/
-        });
+        })();
     </script>
 <?php endif;?>
