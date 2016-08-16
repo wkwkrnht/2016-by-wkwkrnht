@@ -17,6 +17,7 @@
 ・AMP対応
 ・OGP & TwitterCard対応
 ・Chrome独自のアドレスバー装飾対応
+・独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
 
     ファイルツリー
 ・parts (適当なの)
@@ -29,6 +30,8 @@
             ┗fontawesome-webfont.woff
             ┗fontawesome-webfont.woff2
             ┗fontawesome.otf
+    ┗mobile.css (モバイル機器向けスタイルシート)
+    ┗pc.css (PC向けスタイルシート)
     ┗OpenGraph.php (OGP解読スクリプト)
     ┗no-img.png (画像が404)
 ・widget (ウィジェット)

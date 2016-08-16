@@ -55,6 +55,8 @@
             * fontawesome.otf
 
 
+    * mobile.css (モバイル機器向けスタイルシート)
+    * pc.css (PC向けスタイルシート)
     * OpenGraph.php (OGP解読スクリプト)
     * no-img.png (画像が404)
 
