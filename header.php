@@ -39,9 +39,24 @@
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image()?>" height="256" width="256">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/style.css">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/inc/<?php if(is_mobile()===true){echo'mobile'}else{echo'pc';}?>.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/inc/font-awesome/font-awesome.min.css">
 	<?php $code = '';$code = get_option('Analytics');if($code!==''){echo $code;}?>
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>
+	<div class="side-bar left-bar">
+		<?php if(is_active_sidebar('leftbar')):?>
+	        <ul class="widget-area">
+		        <?php dynamic_sidebar('leftbar');?>
+            </ul>
+        <?php endif;?>
+	</div>
+	<div class="side-bar right-bar">
+		<?php if(is_active_sidebar('rightbar')):?>
+	        <ul class="widget-area">
+		        <?php dynamic_sidebar('rightbar');?>
+            </ul>
+        <?php endif;?>
+	</div>
 	<main id="site-main">

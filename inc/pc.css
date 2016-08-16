@@ -1,0 +1,42 @@
+/*
+
+1.独自スタイル
+2.メディアクエリ
+*/
+.side-bar{height:80vh;width:calc((100% - 1600px) / 2);position:fixed;top:0;margin:5vh 0;z-index:100;overflow-x:hidden;overflow-y:auto;visibility:hidden;}
+.left-bar{left:0;}
+.right-bar{right:0;}
+
+@media screen and (orientation:landscape){
+    @media screen and (min-width:1920px){
+        .sidebar{visibility:visible;}
+        .info-card,.card{height:36vmin;width:64vmin;}
+        .card img{max-height:30vmin;}
+        .card img,.article-info{max-width:calc(64vmin / 2);}
+    }
+    @media screen and (min-height:721px){
+    	.card{margin:2.5vmin 0;}
+    	.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
+    	.info-card{height:30vmin;width:160vmin;margin:2vmin auto;}
+        .hatenablogcard{max-width:60vw;margin:5vh 10vw;}
+        .information,.question{width:80%;}
+    }
+    @media screen and (max-height:720px){
+    	.info-card{height:45vmin;width:80vmin;}
+    	.card{font-size:1.2rem;margin:2.5vmin auto;box-shadow:0 0 15px rgba(0,0,0,0);}
+        .card img{max-width:calc(80vmin * 2 / 5);}
+        .card-info{max-width:calc(80vmin * 3 / 5);}
+        .card h1,.card h2{font-size:2rem;}
+        .hatenablogcard{max-width:70vw;margin:5vh 5vw;}
+        .ogp-blogcard{border-width:2vmin;max-width:94%;}
+        .ogp-blogcard-title{font-size:1.6rem;}
+        .ogp-blogcard-description{display:none;}
+        .information,.question{width:96%;}
+        .article-date{font-size:2rem;}
+    	/*article-table*/
+        .article-main table,.article-main table caption,.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th{display:block;}
+        .article-main table tr th{margin:-1px;}
+        .article-main table tr td{display:list-item;list-style:disc inside;border:none;}
+        .article-main table tr td + td {padding-top:0;}
+    }
+}
