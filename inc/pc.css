@@ -9,7 +9,7 @@
 
 @media screen and (min-width:1920px){
     #site-main{max-width:1600px;margin:0 auto;}
-    .sidebar{visibility:visible;}
+    .side-bar{visibility:visible;}
     .info-card,.card{height:36vmin;width:64vmin;}
     .card img{max-height:30vmin;}
     .card img,.article-info{max-width:calc(64vmin / 2);}
