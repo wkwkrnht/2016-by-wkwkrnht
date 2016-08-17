@@ -35,15 +35,11 @@ add_action('widgets_init','wkwkrnht_widgets_init');
 function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Main Area','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Singular Footer','id'=>'singularfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
-    register_sidebar(array('name'=>'Left Bar','id'=>'leftbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
-    register_sidebar(array('name'=>'Right Bar','id'=>'rightbar','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('wkwkrnht_manth_archive');
     register_widget('related_posts');
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
-    register_widget('move_top');
-    register_widget('toc');
 }
 
 class wkwkrnht_manth_archive extends WP_Widget{
@@ -101,24 +97,6 @@ class post_comment extends WP_Widget{
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');$args['after_widget'];}
-}
-
-class move_top extends WP_Widget{
-    function __construct(){parent::__construct('move_top','冒頭へのナビゲーション',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/move-top.php');echo $args['after_widget'];}
-}
-
-class toc extends WP_Widget{
-    function __construct(){parent::__construct('toc','目次',array());}
-    public function widget($args,$instance){echo $args['before_widget'];if(is_singular()===true){include(get_template_directory() . '/widget/toc.php');}echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
-		<p>
-		<label for="<?php echo $this->get_field_id('title');?>">title</label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
-		</p>
-		<?php
-	}
-	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
 
@@ -351,6 +329,9 @@ function make_ogp_blog_card($url){
     ●cat name&cat description
     ●serach keyword&result
 2.ページネーション
+3.目次
+    ●目次に関する情報を取得
+    ●目次を作成
 */
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');
@@ -395,6 +376,71 @@ function wkwkrnht_page_navi(){
 	}
 	wp_reset_query();
 }
+
+function get_outline_info($content){
+    $outline = '';
+    // 記事内のh1〜h6タグを検索します。
+    if(preg_match_all('/<h([1-6])>(.*?)<\/h\1>/',$content,$matches,PREG_SET_ORDER)){
+        // 記事内で使われているh1〜h6タグの中の、1〜6の中の一番小さな数字を取得します
+        // ※以降ソースの中にある、levelという単語は1〜6のことを表します
+        $min_level = min(array_map(function($m){return $m[1];},$matches));
+        // スタート時のlevelを決定します
+        // ※このレベルが上がる毎に、<ul></li>タグが追加されていきます
+        $current_level = $min_level - 1;
+        // 各レベルの出現数を格納する配列を定義します。
+        $sub_levels = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0, '6' => 0);
+        // 記事内で見つかった、hタグの数だけループします。
+        foreach($matches as $m){
+            $level = $m[1];  // 見つかったhタグのlevelを取得します
+            $text = $m[2];  // 見つかったhタグの、タグの中身を取得します
+            // li, ulタグを閉じる処理です。2ループ目以降に中に入る可能性があります
+            // 例えば、前回処理したのがh3タグで、今回出現したのがh2タグの場合、h3タグ用のulを閉じて、h2タグに備えます
+            while($current_level > $level){
+                $current_level--;
+                $outline .= '</li></ul>';
+            }
+            // 同じlevelの場合、liタグを閉じ、新しく開きます
+            if($current_level == $level){
+                $outline .= '</li><li>';
+            }else{
+                /*
+                同じlevelでない場合は、ul, liタグを追加していきます。
+                例えば、前回処理したのがh2タグで、今回出現したのがh3タグの場合、
+                h3タグのためにulを追加します
+                */。
+                while ($current_level < $level){
+                    $current_level++;
+                    $outline .= sprintf('<ul class="indent_%s"><li>', $current_level);
+                }
+                // 見出しのレベルが変わった場合は、現在のレベル以下の出現回数をリセットします。
+                for($idx = $current_level + 0; $idx < count($sub_levels); $idx++){$sub_levels[$idx] = 0;}
+            }
+            // 各レベルの出現数を格納する配列を更新します。
+            $sub_levels[$current_level]++;
+            /*
+            現在処理中のhタグの、パスを入れる配列を定義します。
+            例えば、h2 -> h3 -> h3タグと進んでいる場合は、
+            level_fullpathはarray(1, 2)のようになります。
+            ※level_fullpath[0]の1は、1番目のh2タグの直下に入っていることを表します。
+            ※level_fullpath[1]の2は、2番目のh3を表します
+            */
+            $level_fullpath = array();
+            for($idx = $min_level; $idx <= $level; $idx++){$level_fullpath[] = $sub_levels[$idx];}
+            $target_anchor = '#outline_' . implode('_', $level_fullpath);
+            // 目次に、<a href="#outline_1_2">1.2 見出し</a>のような形式で見出しを追加します。
+            $outline .= sprintf('<a href="%s">%s. %s</a>', $target_anchor, implode('.', $level_fullpath), $text);
+            // 本文中の見出し本体を、<h3>見出し</h3>を<h3 data-outline="#outline_1_2">見出し</h3>
+            // のような形式で置き換えます。
+            $content = preg_replace('/<h([1-6])>/', '<h\1 data-outline="' . $target_anchor . '">', $content, 1);
+        }
+        // hタグのループが終了後、閉じられていないulタグを閉じていきます。
+        while($current_level >= $min_level){
+            $outline .= '</li></ul>';
+            $current_level--;
+        }
+    }
+    return array('content' => $content, 'outline' => $outline);
+}
 /*
     コンテンツ中装飾
 1.検索結果をマーカー風にハイライト
@@ -414,6 +460,18 @@ add_filter('comment_text','twtreplace');
 4.はてな版ブログカード
 5.検索風表示
 */
+function add_outline(){
+    $content = apply_filters('the_content',get_the_content($more_link_text,$stripteaser,$more_file ));
+    // 目次関連の情報を取得します。
+    $outline_info = get_outline_info($content);
+    $content = $outline_info['content'];
+    $outline = $outline_info['outline'];
+    if($outline !== ''){
+        // 目次を装飾します。
+        $decorated_outline = sprintf('<section id="outline"><h2 class="outline_header">目次</h2>%s</section>',$outline);
+    }
+    return $content;
+}
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function wps_trend($atts){extract(shortcode_atts(array('width'=>'640','height'=>'480','geo'=>'JP','keyword'=>'','date'=>''),$atts));$height=(int)$height;$width=(int)$width;$keyword=esc_attr($keyword);$geo=esc_attr($geo);$date=esc_attr($date);return'<script src="//www.google.com/trends/embed.js?hl=ja&amp;q=' . $keyword . '&amp;geo=' . $geo . '&amp;date=' . $date . '&amp;cmpt=q&amp;content=1&amp;cid=TIMESERIES_GRAPH_0&amp;export=5&amp;w=' . $width . '&amp;h=' . $height . '"></script>';}
@@ -421,6 +479,7 @@ function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
 function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));return'<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';}
+add_shortcode('toc','add_outline');
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('google_keyword','wps_trend');
@@ -462,7 +521,8 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
-		QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
+		QTags.addButton('qt-toc','目次','[toc]','');
+        QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
 		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-googlekeyword','Googleキーワード','[google_keyword keyword= date= geo= height= width=',']');
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
@@ -577,7 +637,7 @@ add_filter('user_contactmethods','my_new_contactmethods',10,1);
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){
     $wp_customize->add_section('sns_section',array('title'=>'独自設定','description'=>'このテーマの独自設定','priority'=>1,));
-    $wp_customize->add_setting('jetpack_css_load',array('type'=>'option',));
+    $wp_customize->add_setting('jetpack_css_load',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack_css_load',array('section'=>'sns_section', 'settings'=>'jetpack_css_load','label'=>'jetpack.cssを読み込まない','type'=>'checkbox'));
 	$wp_customize->add_setting('referrer_setting',array('default'=>'value1','type'=>'theme_mod',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('value1'=>'default','value2'=>'unsafe-url','value3'=>'origin-when-crossorigin','value4'=>'none-when-downgrade','value5'=>'none',),));
@@ -596,6 +656,7 @@ function theme_customize($wp_customize){
 	$wp_customize->add_setting('Disqus_ID',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
 }
+function sanitize_checkbox($input){if($input===true){return true;}else{return false;}}
 function how_referrer_setting(){
     $array = array('default'=>'value1','unsafe-url'=>'value2','origin-when-crossorigin'=>'value3','none-when-downgrade'=>'value4','none'=>'value5',);
     $value = get_theme_mod('referrer_setting','value1');

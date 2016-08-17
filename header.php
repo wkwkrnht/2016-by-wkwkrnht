@@ -45,18 +45,4 @@
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>
-	<div class="side-bar left-bar">
-		<?php if(is_active_sidebar('leftbar')):?>
-	        <ul class="widget-area">
-		        <?php dynamic_sidebar('leftbar');?>
-            </ul>
-        <?php endif;?>
-	</div>
-	<div class="side-bar right-bar">
-		<?php if(is_active_sidebar('rightbar')):?>
-	        <ul class="widget-area">
-		        <?php dynamic_sidebar('rightbar');?>
-            </ul>
-        <?php endif;?>
-	</div>
 	<main id="site-main">

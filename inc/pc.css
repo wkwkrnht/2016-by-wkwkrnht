@@ -1,15 +1,4 @@
-/*
-
-1.独自スタイル
-2.メディアクエリ
-*/
-.side-bar{height:80vh;width:calc((100% - 1600px) / 2);position:fixed;top:0;margin:5vh 0;z-index:100;overflow-x:hidden;overflow-y:auto;visibility:hidden;}
-.left-bar{left:0;}
-.right-bar{right:0;}
-
 @media screen and (min-width:1920px){
-    #site-main{max-width:1600px;margin:0 auto;}
-    .side-bar{visibility:visible;}
     .info-card,.card{height:36vmin;width:64vmin;}
     .card img{max-height:30vmin;}
     .card img,.article-info{max-width:calc(64vmin / 2);}
