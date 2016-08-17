@@ -387,9 +387,7 @@ function enque_toc_script(){
         (function($){
             $('#toc').toc({
                 'selectors': '.article-main h1','.article-main h2,.article-main h3','.article-main h4','.article-main h5','.article-main h6',
-                'anchorName': function(i, heading, prefix){
-                    return prefix+i;
-                },
+                'anchorName': function(i, heading, prefix){return prefix+i;},
             });
         })(jQuery);
         </script>
