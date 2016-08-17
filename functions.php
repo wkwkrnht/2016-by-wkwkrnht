@@ -442,12 +442,7 @@ function add_outline($content){
     if($outline !== ''){$decorated_outline = '<section id="outline"><h2>目次</h2>' . $outline . '</section>';}
     if(strpos($content,$shortcode_toc) !== false){$content = str_replace($shortcode_toc,$decorated_outline,$content);}
 }
-function add_toc(){
-    $post = array_flip(get_post(ARRAY_A));
-    $content = array_search('post_content',$post);
-    add_outline($content);
-}
-add_filter('wp_footer','add_toc');
+add_filter('wp_footer','add_outline');
 /*
     コンテンツ中装飾
 1.検索結果をマーカー風にハイライト
