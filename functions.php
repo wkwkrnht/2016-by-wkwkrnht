@@ -434,6 +434,15 @@ function get_outline_info($content){
     }
     return array('content' => $content, 'outline' => $outline);
 }
+function add_outline(){
+    $shortcode_toc = '[toc]';
+    $content       = get_the_content();
+    $outline_info  = get_outline_info($content);
+    $content       = $outline_info['content'];
+    $outline       = $outline_info['outline'];
+    if($outline !== ''){$decorated_outline = sprintf('<section id="outline"><h2>目次</h2>%s</section>',$outline);}
+    if(strpos($content,$shortcode_outline) !== false){$content = str_replace($shortcode_outline,$decorated_outline,$content);}
+}
 /*
     コンテンツ中装飾
 1.検索結果をマーカー風にハイライト
@@ -453,18 +462,6 @@ add_filter('comment_text','twtreplace');
 4.はてな版ブログカード
 5.検索風表示
 */
-function add_outline(){
-    $content = apply_filters('the_content',get_the_content($more_link_text,$stripteaser,$more_file ));
-    // 目次関連の情報を取得します。
-    $outline_info = get_outline_info($content);
-    $content = $outline_info['content'];
-    $outline = $outline_info['outline'];
-    if($outline !== ''){
-        // 目次を装飾します。
-        $decorated_outline = sprintf('<section id="outline"><h2 class="outline_header">目次</h2>%s</section>',$outline);
-    }
-    return $decorated_outline;
-}
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function wps_trend($atts){extract(shortcode_atts(array('width'=>'640','height'=>'480','geo'=>'JP','keyword'=>'','date'=>''),$atts));$height=(int)$height;$width=(int)$width;$keyword=esc_attr($keyword);$geo=esc_attr($geo);$date=esc_attr($date);return'<script src="//www.google.com/trends/embed.js?hl=ja&amp;q=' . $keyword . '&amp;geo=' . $geo . '&amp;date=' . $date . '&amp;cmpt=q&amp;content=1&amp;cid=TIMESERIES_GRAPH_0&amp;export=5&amp;w=' . $width . '&amp;h=' . $height . '"></script>';}
@@ -472,7 +469,6 @@ function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
 function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));return'<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';}
-add_shortcode('toc','add_outline');
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('google_keyword','wps_trend');
@@ -480,6 +476,7 @@ add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('SearchBox','txt_to_SearchBox');
+add_shortcode('toc','add_outline');
 /*
     投稿画面カスタマイズ
 1.カテゴリーフィルター&抜粋制限
