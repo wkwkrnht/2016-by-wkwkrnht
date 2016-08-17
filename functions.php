@@ -380,7 +380,7 @@ function enque_toc_script(){
     $script = "
 
     ";
-    add_filter(
+    add_action(
     'wp_footer',
     function(){
         $url = echo get_stylesheet_directory_uri();
@@ -427,6 +427,7 @@ function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
 function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));return'<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';}
+add_shortcode('toc','add_toc');
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('google_keyword','wps_trend');
