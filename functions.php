@@ -419,7 +419,7 @@ function get_outline_info($content){
             for($idx = $min_level; $idx <= $level; $idx++){$level_fullpath[] = $sub_levels[$idx];}
             $target_anchor = '#outline_' . implode('_',$level_fullpath);
             // 目次に、<a href="#outline_1_2">1.2 見出し</a>のような形式で見出しを追加します。
-            $outline .= sprintf('<a href="%s">%s. %s</a>',$target_anchor,implode('.',$level_fullpath),$text);
+            $outline .= sprintf('<a href="%s" class="link">%s. %s</a>',$target_anchor,implode('.',$level_fullpath),$text);
             // 本文中の見出し本体を、<h3>見出し</h3>を<h3 data-outline="#outline_1_2">見出し</h3>
             // のような形式で置き換えます。
             $content = preg_replace('/<h([1-6])>/','<h\1 data-outline="' . $target_anchor . '">',$content,1);
@@ -439,7 +439,7 @@ function add_outline($content){
     $outline_info      = get_outline_info($content);
     $content           = $outline_info['content'];
     $outline           = $outline_info['outline'];
-    if($outline !== ''){$decorated_outline = '<section id="outline"><h2>目次</h2>' . $outline . '</section>';wp_enqueue_script('toc',get_stylesheet_directory_uri() . '/inc/toc.js',array(),false,true);}
+    if($outline !== ''){$decorated_outline = '<section id="toc"><h2>目次</h2>' . $outline . '</section>';wp_enqueue_script('toc',get_stylesheet_directory_uri() . '/inc/toc.js',array(),false,true);}
     if(strpos($content,$shortcode_toc) !== false){$content = str_replace($shortcode_toc,$decorated_outline,$content);}
     return $content;
 }
