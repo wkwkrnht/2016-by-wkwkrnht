@@ -434,10 +434,9 @@ function get_outline_info($content){
     }
     return array('content' => $content, 'outline' => $outline);
 }
-function add_outline(){
+function add_outline($content){
     $decorated_outline = '';
     $shortcode_toc     = '[toc]';
-    $content           = get_the_content();
     $outline_info      = get_outline_info($content);
     $content           = $outline_info['content'];
     $outline           = $outline_info['outline'];
