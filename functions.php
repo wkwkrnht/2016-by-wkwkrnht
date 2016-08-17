@@ -377,13 +377,10 @@ function wkwkrnht_page_navi(){
 	wp_reset_query();
 }
 function enque_toc_script(){
-    $script = "
-
-    ";
     add_action(
     'wp_footer',
     function(){
-        $url = echo get_stylesheet_directory_uri();
+        $url = get_stylesheet_directory_uri();
         echo <<< EOM
         <script src="{$url}/inc/toc.min.js"></script>
         <script>
