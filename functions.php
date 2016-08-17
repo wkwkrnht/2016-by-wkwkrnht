@@ -379,7 +379,6 @@ function wkwkrnht_page_navi(){
 
 function get_outline_info($content){
     $outline = '';
-    // 記事内のh1〜h6タグを検索します。
     if(preg_match_all('/<h([1-6])>(.*?)<\/h\1>/',$content,$matches,PREG_SET_ORDER)){
         // 記事内で使われているh1〜h6タグの中の、1〜6の中の一番小さな数字を取得します
         // ※以降ソースの中にある、levelという単語は1〜6のことを表します
@@ -387,9 +386,9 @@ function get_outline_info($content){
         // スタート時のlevelを決定します
         // ※このレベルが上がる毎に、<ul></li>タグが追加されていきます
         $current_level = $min_level - 1;
-        // 各レベルの出現数を格納する配列を定義します。
+        // 各レベルの出現数を格納する配列を定義します
         $sub_levels = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0, '6' => 0);
-        // 記事内で見つかった、hタグの数だけループします。
+        // 記事内で見つかった、hタグの数だけループします
         foreach($matches as $m){
             $level = $m[1];  // 見つかったhタグのlevelを取得します
             $text = $m[2];  // 見つかったhタグの、タグの中身を取得します
@@ -399,21 +398,15 @@ function get_outline_info($content){
                 $current_level--;
                 $outline .= '</li></ul>';
             }
-            // 同じlevelの場合、liタグを閉じ、新しく開きます
-            if($current_level == $level){
+            //同じlevelならliタグを閉じ、新しく開きます。そうでない場合は、ul, liタグを追加していきます。(例えば、前回処理したのがh2タグで、今回出現したのがh3タグの場合、h3タグのためにulを追加します)
+            if($current_level===$level){
                 $outline .= '</li><li>';
             }else{
-                /*
-                同じlevelでない場合は、ul, liタグを追加していきます。
-                例えば、前回処理したのがh2タグで、今回出現したのがh3タグの場合、
-                h3タグのためにulを追加します
-                */。
-                while ($current_level < $level){
+                while($current_level < $level){
                     $current_level++;
-                    $outline .= sprintf('<ul class="indent_%s"><li>', $current_level);
+                    $outline .= sprintf('<ul class="indent_%s"><li>',$current_level);
                 }
-                // 見出しのレベルが変わった場合は、現在のレベル以下の出現回数をリセットします。
-                for($idx = $current_level + 0; $idx < count($sub_levels); $idx++){$sub_levels[$idx] = 0;}
+                for($idx = $current_level + 0; $idx < count($sub_levels); $idx++){$sub_levels[$idx] = 0;}// 見出しのレベルが変わった場合は、現在のレベル以下の出現回数をリセットします
             }
             // 各レベルの出現数を格納する配列を更新します。
             $sub_levels[$current_level]++;
@@ -426,12 +419,12 @@ function get_outline_info($content){
             */
             $level_fullpath = array();
             for($idx = $min_level; $idx <= $level; $idx++){$level_fullpath[] = $sub_levels[$idx];}
-            $target_anchor = '#outline_' . implode('_', $level_fullpath);
+            $target_anchor = '#outline_' . implode('_',$level_fullpath);
             // 目次に、<a href="#outline_1_2">1.2 見出し</a>のような形式で見出しを追加します。
-            $outline .= sprintf('<a href="%s">%s. %s</a>', $target_anchor, implode('.', $level_fullpath), $text);
+            $outline .= sprintf('<a href="%s">%s. %s</a>', $target_anchor,implode('.',$level_fullpath),$text);
             // 本文中の見出し本体を、<h3>見出し</h3>を<h3 data-outline="#outline_1_2">見出し</h3>
             // のような形式で置き換えます。
-            $content = preg_replace('/<h([1-6])>/', '<h\1 data-outline="' . $target_anchor . '">', $content, 1);
+            $content = preg_replace('/<h([1-6])>/','<h\1 data-outline="' . $target_anchor . '">',$content,1);
         }
         // hタグのループが終了後、閉じられていないulタグを閉じていきます。
         while($current_level >= $min_level){
@@ -470,7 +463,7 @@ function add_outline(){
         // 目次を装飾します。
         $decorated_outline = sprintf('<section id="outline"><h2 class="outline_header">目次</h2>%s</section>',$outline);
     }
-    return $content;
+    return $decorated_outline;
 }
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
