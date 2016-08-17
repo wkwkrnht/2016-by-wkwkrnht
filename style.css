@@ -154,6 +154,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 #toc{width:80%;padding:1em;margin:5vmin auto;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #toc li::after{display:none;}
+#toc .toc-active{border:1px solid #03a9f4;}
 
 /*
 	リストページ
