@@ -398,8 +398,18 @@ function enque_toc_script(){
 1.検索結果をマーカー風にハイライト
 2.@hogehogeをツイッターにリンク
 */
-function wps_highlight_results($text){if(is_search()===true){$sr=get_query_var('s');$keys=explode(" ",$sr);$text = preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
-function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
+function wps_highlight_results($text){
+    if(is_search()===true){
+        $sr   = get_query_var('s');
+        $keys = explode(" ",$sr);
+        $text = preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);
+    }
+    return $text;
+}
+function twtreplace($content){
+    $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);
+    return $twtreplace;
+}
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_filter('the_content','twtreplace');
