@@ -386,8 +386,7 @@ function get_outline_info($content){
         // スタート時のlevelを決定します
         // ※このレベルが上がる毎に、<ul></li>タグが追加されていきます
         $current_level = $min_level - 1;
-        // 各レベルの出現数を格納する配列を定義します
-        $sub_levels = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0, '6' => 0);
+        $sub_levels = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0, '6' => 0);// 各レベルの出現数を格納する配列を定義します
         // 記事内で見つかった、hタグの数だけループします
         foreach($matches as $m){
             $level = $m[1];  // 見つかったhタグのlevelを取得します
@@ -408,10 +407,9 @@ function get_outline_info($content){
                 }
                 for($idx = $current_level + 0; $idx < count($sub_levels); $idx++){$sub_levels[$idx] = 0;}// 見出しのレベルが変わった場合は、現在のレベル以下の出現回数をリセットします
             }
-            // 各レベルの出現数を格納する配列を更新します。
-            $sub_levels[$current_level]++;
+            $sub_levels[$current_level]++;// 各レベルの出現数を格納する配列を更新します
             /*
-            現在処理中のhタグの、パスを入れる配列を定義します。
+            現在処理中のhタグの、パスを入れる配列を定義します
             例えば、h2 -> h3 -> h3タグと進んでいる場合は、
             level_fullpathはarray(1, 2)のようになります。
             ※level_fullpath[0]の1は、1番目のh2タグの直下に入っていることを表します。
@@ -435,6 +433,7 @@ function get_outline_info($content){
     return array('content' => $content, 'outline' => $outline);
 }
 function add_outline($content){
+    if(!is_singular()){return $content;}
     $decorated_outline = '';
     $shortcode_toc     = '[toc]';
     $outline_info      = get_outline_info($content);
@@ -443,7 +442,7 @@ function add_outline($content){
     if($outline !== ''){$decorated_outline = '<section id="outline"><h2>目次</h2>' . $outline . '</section>';}
     if(strpos($content,$shortcode_toc) !== false){$content = str_replace($shortcode_toc,$decorated_outline,$content);}
 }
-add_filter('the_content', 'add_outline');
+add_filter('the_content','add_outline');
 /*
     コンテンツ中装飾
 1.検索結果をマーカー風にハイライト
