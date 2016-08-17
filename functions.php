@@ -390,7 +390,7 @@ function enque_toc_script(){
     })(jQuery);
     </script>
     ";
-    add_filter('wp_footer',function($script){echo $script;})
+    add_filter('wp_footer',function($script){echo $script;});
 }
 /*
     コンテンツ中装飾
