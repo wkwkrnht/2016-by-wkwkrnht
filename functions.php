@@ -419,7 +419,7 @@ function get_outline_info($content){
             for($idx = $min_level; $idx <= $level; $idx++){$level_fullpath[] = $sub_levels[$idx];}
             $target_anchor = '#outline_' . implode('_',$level_fullpath);
             // 目次に、<a href="#outline_1_2">1.2 見出し</a>のような形式で見出しを追加します。
-            $outline .= sprintf('<a href="%s">%s. %s</a>', $target_anchor,implode('.',$level_fullpath),$text);
+            $outline .= sprintf('<a href="%s">%s. %s</a>',$target_anchor,implode('.',$level_fullpath),$text);
             // 本文中の見出し本体を、<h3>見出し</h3>を<h3 data-outline="#outline_1_2">見出し</h3>
             // のような形式で置き換えます。
             $content = preg_replace('/<h([1-6])>/','<h\1 data-outline="' . $target_anchor . '">',$content,1);
