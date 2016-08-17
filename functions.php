@@ -435,14 +435,16 @@ function get_outline_info($content){
     return array('content' => $content, 'outline' => $outline);
 }
 function add_outline(){
-    $shortcode_toc = '[toc]';
-    $content       = get_the_content();
-    $outline_info  = get_outline_info($content);
-    $content       = $outline_info['content'];
-    $outline       = $outline_info['outline'];
-    if($outline !== ''){$decorated_outline = sprintf('<section id="outline"><h2>目次</h2>%s</section>',$outline);}
+    $decorated_outline = '';
+    $shortcode_toc     = '[toc]';
+    $content           = get_the_content();
+    $outline_info      = get_outline_info($content);
+    $content           = $outline_info['content'];
+    $outline           = $outline_info['outline'];
+    if($outline !== ''){$decorated_outline = '<section id="outline"><h2>目次</h2>' . $outline . '</section>';}
     if(strpos($content,$shortcode_toc) !== false){$content = str_replace($shortcode_toc,$decorated_outline,$content);}
 }
+add_filter('the_content', 'add_outline');
 /*
     コンテンツ中装飾
 1.検索結果をマーカー風にハイライト
@@ -476,7 +478,6 @@ add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('SearchBox','txt_to_SearchBox');
-add_shortcode('toc','add_outline');
 /*
     投稿画面カスタマイズ
 1.カテゴリーフィルター&抜粋制限
