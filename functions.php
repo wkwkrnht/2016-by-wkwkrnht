@@ -380,7 +380,7 @@ function wkwkrnht_page_navi(){
 function enque_toc_script(){
     function echo_toc_script(){
         echo'<script src="' . get_stylesheet_directory_uri() . '/inc/toc.min.js"></script>';
-        echo <<< EOM
+        echo"
         <script>
             (function($){
                 $('#toc').toc({
@@ -389,7 +389,7 @@ function enque_toc_script(){
                 });
             })(jQuery);
         </script>
-        EOM;
+        ";
     }
     add_action('wp_footer','echo_toc_script');
 }
@@ -422,7 +422,7 @@ add_filter('comment_text','twtreplace');
 4.はてな版ブログカード
 5.検索風表示
 */
-function add_toc(){enque_toc_script();return '<div id="toc"></div>';}
+function add_toc(){enque_toc_script();return'<div id="toc"></div>';}
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function wps_trend($atts){extract(shortcode_atts(array('width'=>'640','height'=>'480','geo'=>'JP','keyword'=>'','date'=>''),$atts));$height=(int)$height;$width=(int)$width;$keyword=esc_attr($keyword);$geo=esc_attr($geo);$date=esc_attr($date);return'<script src="//www.google.com/trends/embed.js?hl=ja&amp;q=' . $keyword . '&amp;geo=' . $geo . '&amp;date=' . $date . '&amp;cmpt=q&amp;content=1&amp;cid=TIMESERIES_GRAPH_0&amp;export=5&amp;w=' . $width . '&amp;h=' . $height . '"></script>';}
