@@ -377,23 +377,21 @@ function wkwkrnht_page_navi(){
 	wp_reset_query();
 }
 function enque_toc_script(){
-    add_action(
-    'wp_footer',
-    function(){
+    function echo_toc_script(){
         $url = get_stylesheet_directory_uri();
         echo <<< EOM
         <script src="{$url}/inc/toc.min.js"></script>
         <script>
-        (function($){
-            $('#toc').toc({
-                'selectors': '.article-main h1','.article-main h2,.article-main h3','.article-main h4','.article-main h5','.article-main h6',
-                'anchorName': function(i, heading, prefix){return prefix+i;},
-            });
-        })(jQuery);
+            (function($){
+                $('#toc').toc({
+                    'selectors': '.article-main h1','.article-main h2,.article-main h3','.article-main h4','.article-main h5','.article-main h6',
+                    'anchorName': function(i, heading, prefix){return prefix+i;},
+                });
+            })(jQuery);
         </script>
         EOM;
     }
-    );
+    add_action('wp_footer','echo_toc_script');
 }
 /*
     コンテンツ中装飾
