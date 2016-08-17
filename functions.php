@@ -441,7 +441,7 @@ function add_outline(){
     $content       = $outline_info['content'];
     $outline       = $outline_info['outline'];
     if($outline !== ''){$decorated_outline = sprintf('<section id="outline"><h2>目次</h2>%s</section>',$outline);}
-    if(strpos($content,$shortcode_outline) !== false){$content = str_replace($shortcode_outline,$decorated_outline,$content);}
+    if(strpos($content,$shortcode_toc) !== false){$content = str_replace($shortcode_toc,$decorated_outline,$content);}
 }
 /*
     コンテンツ中装飾
