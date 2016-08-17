@@ -442,7 +442,7 @@ function add_outline($content){
     if($outline !== ''){$decorated_outline = '<section id="outline"><h2>目次</h2>' . $outline . '</section>';}
     if(strpos($content,$shortcode_toc) !== false){$content = str_replace($shortcode_toc,$decorated_outline,$content);}
 }
-add_filter('the_content',function(){$content = $post->post_content;add_outline($content);});
+add_filter('the_content',function(){$content = get_the_content();add_outline($content);});
 /*
     コンテンツ中装飾
 1.検索結果をマーカー風にハイライト
