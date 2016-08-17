@@ -439,7 +439,7 @@ function add_outline($content){
     $outline_info      = get_outline_info($content);
     $content           = $outline_info['content'];
     $outline           = $outline_info['outline'];
-    if($outline !== ''){$decorated_outline = '<section id="outline"><h2>目次</h2>' . $outline . '</section>';wp_enqueue_script('toc',echo get_stylesheet_directory_uri() . '\/inc\/toc.js',array(),'false',true);}
+    if($outline !== ''){$decorated_outline = '<section id="outline"><h2>目次</h2>' . $outline . '</section>';$src = echo get_stylesheet_directory_uri() . '\/inc\/toc.js';wp_enqueue_script('toc',$src,array(),'false',true);}
     if(strpos($content,$shortcode_toc) !== false){$content = str_replace($shortcode_toc,$decorated_outline,$content);}
     return $content;
 }
