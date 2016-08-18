@@ -110,31 +110,6 @@ function my_custom_meta_widget(){
 <?php
 }
 
-
-function is_mobile(){
-    $is_mobile = false;
-    $useeragents = array(
-        'iPhone',
-        'iPod',
-        'Android.*Mobile',
-        'Windows.*Phone',
-        'dream',
-        'CUPCAKE',
-        'blackberry9500',
-        'blackberry9530',
-        'blackberry9520',
-        'blackberry9550',
-        'blackberry9800',
-        'WebOS',
-        'incognito',
-        'webmate'
-    );
-    $pattern = '/' . implode('|',$useeragents) . '/i';
-    $results = preg_match($pattern,$_SERVER['HTTP_USER_AGENT']);
-    if($results===1){$is_mobile = true;}
-    return $is_mobile;
-}
-
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
@@ -148,7 +123,6 @@ function theme_enqueue_scripts_styles(){
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
-
 /*
     metainfo
 1.アクセス中のURL取得
