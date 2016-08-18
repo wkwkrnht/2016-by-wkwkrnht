@@ -63,22 +63,28 @@
 		.article-img::before{display:block;content:'';height:20vh;width:100vw;position:relative;top:0;left:0;background-color:rgba(0,0,0,.1);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
 		.article-img span{position:relative;top:0;left:0;}
 		.article-meta{min-height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
-		.article-date{display:block;float:left;height:inherit;width:30%;background-color:#ffcc00;color:#fff;font-size:2rem;line-height:20vh;}
+		.article-date{display:block;float:left;height:inherit;width:30%;background-color:#03a9f4;color:#fff;font-size:2rem;line-height:20vh;}
 		.article-title{font-size:2rem;}
 		.bread .sp{margin:0 .5em;}
 		.article-main{font-size:1.5rem;}
+		.article-main p{padding:5vmin 8vmin 0;}
 		.article-main amp-img{max-width:50%;max-height:50%;text-align:center;}
 		.article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
 		.article-main table caption{padding:1.2em;text-align:center;background-color:#ffc045;}
 		.article-main table tr th{background-color:#f1f1f1;}
 		.article-main table tr th,.article-main table tr td{padding:1.2em;text-align:center;border:1px solid #cfcfcf;}
-		.article-main p{padding:5vmin 8vmin 0;}
-		.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:4.5rem;max-width:90%;margin:1rem auto;font-size:2rem;line-height:4.5rem;}
-		.article-main h2{color:#fff;background-color:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-		.article-main h3{padding:.5em .75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
-		.article-main h4{border-left:1rem solid #ffcc00;border-bottom:1px solid #ffcc00;}
-		.article-main h5{border-left:1rem solid #ffcc00;}
-		.article-main h6{border-bottom:.75vmin dashed #ffcc00;}
+		.article-main ul{margin:2em auto;list-style:none;}
+		.article-main ul li::before{content:'●';display:inline;color:#03a9f4;font-size:.8em;padding-right:1em;}
+		.article-main ul li::after,.article-main ol li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px dashed #aaa;}
+		.article-main ol li{padding-top:.1em;}
+		.article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:2vmin auto;line-height:45px;text-align:center;}
+		.article-main h3,.article-main h4,.article-main h5,.article-main h6{font-size:2rem;}
+		.article-main h1{border:1vmin solid #03a9f4;color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+		.article-main h2{padding:.75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
+		.article-main h3{color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+		.article-main h4{border-left:.5em solid #03a9f4;border-bottom:1px solid #03a9f4;}
+		.article-main h5{border-left:.5em solid #03a9f4;}
+		.article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 		.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 		.information,.question{background-color:#f4f3eb;padding:2rem;padding:1em 3em;border-radius:8px;position:relative;margin:1em auto;}
 		.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:1.5em;left:1em;}
@@ -91,13 +97,33 @@
 		.search-form div.sbtn:after{content:'\f25a';font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
 		.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 		.ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
-		.ogp-blogcard-img{display:inline-block;height:40%;width:40%;background-color:#ffcc00;}
+		.ogp-blogcard-img{display:inline-block;height:40%;width:40%;background-color:#03a9f4;}
 		.ogp-blogcard-info{display:inline-block;width:55%;text-align:center;}
 		.ogp-blogcard-title{font-size:2rem;}
 		.ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
+		.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5px;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
+		.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
+		.format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
+		.sticky{}
+		.gallery-caption{}
+		.bypostauthor{}
+		.alignnone{margin:5px 20px 20px 0;}
+		.alignright{float:right;margin:5px 0 20px 20px;}
+		.aligncenter,div.aligncenter{display:block;margin:1vh auto;}
+		.alignleft{float:left;margin:5px 20px 20px 0;}
+		a img.alignnone{margin: 5px 20px 20px 0;}
+		a img.alignleft{float:left;margin:5px 20px 20px 0;}
+		a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
+		a img.alignright{float:right;margin:5px 0 20px 20px;}
+		.wp-caption{background:#fff;border:1px solid #f0f0f0;max-width:96%;padding:5px 3px 10px;text-align:center;}
+		.wp-caption.alignnone{margin:5px 20px 20px 0;}
+		.wp-caption.alignleft{margin:5px 20px 20px 0;}
+		.wp-caption.alignright{margin:5px 0 20px 20px;}
+		.wp-caption img{height:auto;width:auto;max-width:98.5%;border:0 none;margin:0;padding:0;}
+		.wp-caption p.wp-caption-text{font-size:11px;margin:0;padding:0 4px 5px;}
 		footer{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 		.related-wrapper{display:block;height:calc(20vw + 10vmin);width:35vw;border-radius:2vmin;margin:1vmin 3vmin;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
-		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}
+		.related-thumb{height:20vw;width:35vw;background-color:#03a9f4;}
 		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
 		@media screen and (max-width:768px){
 			.article-main table,.article-main table caption,.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th{display:block;}
