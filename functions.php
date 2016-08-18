@@ -211,11 +211,11 @@ function meta_description(){
     endif;
 }
 
-function yes_image($size){$img=wp_get_attachment_image_src(get_post_thumbnail_id(),$size);echo $img[0];}
+function yes_image($size){$img = wp_get_attachment_image_src(get_post_thumbnail_id(),$size);echo $img[0];}
 function no_image(){echo get_template_directory_uri() . '/inc/no-img.png';}
 function meta_image(){
     if(is_singular()===true&&has_post_thumbnail()===true):
-        $size=array(256,256);
+        $size = array(256,256);
         yes_image($size);
     else:
         $logo=get_theme_mod('custom_logo');

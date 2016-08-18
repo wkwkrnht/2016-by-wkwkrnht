@@ -7,10 +7,10 @@ if($myAmp===true):?>
 		<header class="article-header">
 			<img src="<?php $size=array(1344,576);wkwkrnht_eyecatch($size);?>" height="576" width="10344" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
-				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
+				<time class="article-date updated" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
 					<h1 class="article-name entry-title"><?php the_title();?></h1>
-					<a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" class="author"><?php the_author_meta('display_name');?></a><?php the_category(', ');?>
+					<a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" class="author"><span class="vcard author"><span class="fn"><?php the_author_meta('display_name');?></span></span></a><?php the_category(', ');?>
 					<?php
 					$cat=get_the_category();
 					if($cat && !is_wp_error($cat)){

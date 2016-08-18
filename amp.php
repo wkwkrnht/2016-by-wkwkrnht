@@ -12,7 +12,7 @@
 	<meta http-equiv="cleartype" content="on">
 	<meta name="renderer" content="webkit">
 	<meta name="description" content="<?php meta_description();?>">
-	<meta property="fb:app_id" content="123456789">
+	<meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
 	<meta property='og:type' content='article'>
 	<meta property='og:title' content='<?php wp_title('｜',true,'right');?>'>
 	<meta property='og:url' content="<?php echo get_permalink();?>">
@@ -22,7 +22,7 @@
 	<meta property="article:author" content="<?php the_author_meta('facebook');?>">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
-	<meta name="twitter:title" content="Content Title">
+	<meta name="twitter:title" content="<?php wp_title('');?>">
 	<meta name="twitter:description" content="Content description less than 200 characters">
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="<?php get_twitter_acount();?>">
@@ -59,13 +59,12 @@
 	<style amp-custom>
 		:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 		amp-iframe,h1,h2,h3,h4,h5,h6{text-align:center;}
-		.article-img{display:block;height:20vh;width:100vw;}
+		.article-img{display:block;height:20vh;width:100vw;background:<?php $size=array(1344,576);echo'url(';wkwkrnht_eyecatch($size);echo')';?> no-repeat center/cover;}
 		.article-img::before{display:block;content:'';height:20vh;width:100vw;position:relative;top:0;left:0;background-color:rgba(0,0,0,.1);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
 		.article-img span{position:relative;top:0;left:0;}
 		.article-meta{min-height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 		.article-date{display:block;float:left;height:inherit;width:30%;background-color:#ffcc00;color:#fff;font-size:2rem;line-height:20vh;}
 		.article-title{font-size:2rem;}
-		.bread{height:50%;}
 		.bread .sp{margin:0 .5em;}
 		.article-main{font-size:1.5rem;}
 		.article-main amp-img{max-width:50%;max-height:50%;text-align:center;}
@@ -95,7 +94,7 @@
 <body>
 	<article>
 		<header class="article-header">
-			<a href="<?php echo esc_url(home_url());?>" class="article-img" style="background:url(<?php $size=array(1344,576);wkwkrnht_eyecatch($size);?>) no-repeat center/cover;"></a>
+			<a href="<?php echo esc_url(home_url());?>" class="article-img"></a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
@@ -126,7 +125,6 @@
 			$content = str_replace(']]>', ']]&gt;',$content);
 
 			$pattern = array(
-				'/https:\/\/twitter.com\/.*\/status\/(.*)/i',
 				'/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
 				'/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
@@ -139,7 +137,6 @@
 			);
 
 			$append = array(
-				'<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
 				'<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
