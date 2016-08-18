@@ -79,6 +79,22 @@
 		.article-main h4{border-left:1rem solid #ffcc00;border-bottom:1px solid #ffcc00;}
 		.article-main h5{border-left:1rem solid #ffcc00;}
 		.article-main h6{border-bottom:.75vmin dashed #ffcc00;}
+		.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
+		.information,.question{background-color:#f4f3eb;padding:2rem;padding:1em 3em;border-radius:8px;position:relative;margin:1em auto;}
+		.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:1.5em;left:1em;}
+		.information::before{content:'\f05a';}
+		.question::before{content:'\f059';}
+		.search-form{margin:3em 0;line-height:170%;}
+		.search-form div{display:inline-block;padding:5px;margin-left:1rem;border:1px solid #555;border-radius:2px;}
+		.search-form .sform{min-width:280px;background-color:#fff;}
+		.search-form .sbtn{position:absolute;padding-left:2rem;padding-right:3rem;color:#fff;background-color:#1155ee;}
+		.search-form div.sbtn:after{content:'\f25a';font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
+		.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+		.ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
+		.ogp-blogcard-img{display:inline-block;height:40%;width:40%;background-color:#ffcc00;}
+		.ogp-blogcard-info{display:inline-block;width:55%;text-align:center;}
+		.ogp-blogcard-title{font-size:2rem;}
+		.ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
 		footer{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 		.related-wrapper{display:block;height:calc(20vw + 10vmin);width:35vw;border-radius:2vmin;margin:1vmin 3vmin;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
 		.related-thumb{height:20vw;width:35vw;background-color:#ffcc00;}

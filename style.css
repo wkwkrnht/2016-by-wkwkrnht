@@ -143,8 +143,6 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 .ogp-blogcard-title{font-size:2rem;}
 .ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
 
-.hatenablogcarad{max-width:1600px;}
-
 .information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
 .information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
 .information::before{content:'\f05a';}
@@ -155,7 +153,6 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 .search-form .sform{min-width:280px;background-color:#fff;}
 .search-form .sbtn{position:absolute;padding-left:2rem;padding-right:3rem;color:#fff;background-color:#1155ee;}
 .search-form div.sbtn:after{content:'\f25a';font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
-
 /*
 	リストページ
 1.カードデザイン

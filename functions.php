@@ -303,7 +303,7 @@ function make_ogp_blog_card($url){
         $content =
         '<div class="ogp-blogcard">
             <div class="ogp-blogcard-main">
-                <img class="ogp-blogcard-img" src="' . $img . '"></div>
+                <img class="ogp-blogcard-img" src="' . $img . '">
                 <div class="ogp-blogcard-info">
                     <a href="' . $url . '" target="_blank">
                         <h2 class="ogp-blogcard-title">' . $title . '</h2>
