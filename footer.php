@@ -37,7 +37,7 @@
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-        function(){window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');}
+        window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         jQuery(function($){
             var menu  = jQuery('#main-menu');
             var share = jQuery('#share-menu');
