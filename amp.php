@@ -30,7 +30,6 @@
 	<link rel="publisher" href="http://plus.google.com/'<?php the_author_meta('GoogleID');?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
-	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
