@@ -15,12 +15,12 @@
 	<meta name="renderer" content="webkit">
 	<meta name="description" content="<?php meta_description();?>">
 	<meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
-	<meta property='og:type' content='article'>
-	<?php if(!is_home()):?><meta property='og:title' content='<?php wp_title('｜',true,'right');?>'><?php endif;?>
-	<meta property='og:url' content="<?php echo get_meta_url();?>">
-	<meta property='og:description' content='<?php meta_description();?>'>
-	<meta property='og:site_name' content='<?php bloginfo('name');?>'>
-	<meta property='og:image' content='<?php meta_image();?>'>
+	<meta property="og:type" content="article">
+	<?php if(is_home()===false):?><meta property="og:title" content="<?php wp_title('｜',true,'right');?>"><?php endif;?>
+	<meta property="og:url" content="<?php echo get_meta_url();?>">
+	<meta property="og:description" content="<?php meta_description();?>">
+	<meta property="og:site_name" content="<?php bloginfo('name');?>">
+	<meta property="og:image" content="<?php meta_image();?>">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
 	<meta name="twitter:title" content="<?php wp_title('');?>">
@@ -28,9 +28,15 @@
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 	<?php if(is_singular()===true):
-		echo'<meta property="article:author" content="' . the_author_meta('facebook') . '">
-		<meta name="twitter:creator" content="' . the_author_meta('twitter') . '">
-		<link rel="publisher" href="http://plus.google.com/' . the_author_meta('GoogleID') . '">';
+		$fb = '';
+		$tw = '';
+		$gp = '';
+		$fb = get_the_author_meta('facebook');
+		$tw = get_the_author_meta('twitter');
+		$gp = get_the_author_meta('Googleplus');
+		if($fb!==''){echo'<meta property="article:author" content="' . $fb . '">';}
+		if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
+		if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
 	endif;?>
 	<link rel="amphtml" href="<?php echo get_permalink() . '?amp=1'; ?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11">

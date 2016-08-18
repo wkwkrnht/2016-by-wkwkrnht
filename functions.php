@@ -23,7 +23,7 @@ function wkwkrnht_setup(){
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
     add_theme_support('post-thumbnails');
     add_theme_support('custom-background');
-    add_theme_support('custom-logo',array('height'=>248,'width'=>248,'flex-height'=>true,));
+    add_theme_support('custom-logo',array('height'=>256,'width'=>256,'flex-height'=>true,));
     register_nav_menu('main','main');
     register_nav_menu('social','social');
 }
@@ -215,7 +215,7 @@ function yes_image($size){$img=wp_get_attachment_image_src(get_post_thumbnail_id
 function no_image(){echo get_template_directory_uri() . '/inc/no-img.png';}
 function meta_image(){
     if(is_singular()===true&&has_post_thumbnail()===true):
-        $size=array(248,248);
+        $size=array(256,256);
         yes_image($size);
     else:
         $logo=get_theme_mod('custom_logo');
@@ -303,7 +303,7 @@ function make_ogp_blog_card($url){
         $content =
         '<div class="ogp-blogcard">
             <div class="ogp-blogcard-main">
-                <div class="ogp-blogcard-img" style="background:#ffcc00 url(' . $img . ') ;"></div>
+                <div class="ogp-blogcard-img" style="background:url(' . $img . ') #ffcc00;"></div>
                 <div class="ogp-blogcard-info">
                     <a href="' . $url . '" target="_blank">
                         <h2 class="ogp-blogcard-title">' . $title . '</h2>

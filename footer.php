@@ -35,12 +35,25 @@
             </ul>
         <?php endif;?>
     </div>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-        window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
-        jQuery(function(){jQuery('#menu-toggle').click(function(){jQuery('#main-menu').toggleClass('close');jQuery('#main-menu').toggleClass('open');});});
-        jQuery(function(){jQuery('#share-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
-        jQuery(function(){jQuery('#share-menu-toggle').click(function(){jQuery('#share-menu').toggleClass('close');jQuery('#share-menu').toggleClass('open');});});
+        function(){window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');}
+        jQuery(function(){
+            var menu  = jQuery('#main-menu');
+            var share = jQuery('#share-menu');
+            jQuery('#menu-toggle').click(function(){
+                menu.toggleClass('close');
+                menu.toggleClass('open');
+            });
+            jQuery('#share-toggle').click(function(){
+                share.toggleClass('close');
+                share.toggleClass('open');
+            });
+            jQuery('#share-menu-toggle').click(function(){
+                share.toggleClass('close');
+                share.toggleClass('open');
+            });
+        });
     </script>
     <?php
     if(is_singular()===true):
