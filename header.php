@@ -46,7 +46,6 @@
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image()?>" height="256" width="256">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/style.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/inc/<?php if(is_mobile()===true){echo'mobile';}else{echo'pc';}?>.css">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/inc/font-awesome/font-awesome.min.css">
 	<?php $code = '';$code = get_option('Analytics');if($code!==''){echo $code;}?>
 	<?php wp_head();?>
 </head>

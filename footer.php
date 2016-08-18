@@ -38,18 +38,18 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         function(){window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');}
-        jQuery(function(){
+        jQuery(function($){
             var menu  = jQuery('#main-menu');
             var share = jQuery('#share-menu');
-            jQuery('#menu-toggle').click(function(){
+            jQuery('#menu-toggle').click(function($){
                 menu.toggleClass('close');
                 menu.toggleClass('open');
             });
-            jQuery('#share-toggle').click(function(){
+            jQuery('#share-toggle').click(function($){
                 share.toggleClass('close');
                 share.toggleClass('open');
             });
-            jQuery('#share-menu-toggle').click(function(){
+            jQuery('#share-menu-toggle').click(function($){
                 share.toggleClass('close');
                 share.toggleClass('open');
             });
