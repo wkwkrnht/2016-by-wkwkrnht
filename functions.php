@@ -1,19 +1,22 @@
 <?php
 /*
-    基本情報読み込み
-1.セットアップ
+    セットアップ
+1.各種宣言
     ●コンテント幅指定
     ●機能サポート宣言
     ●メニューエリア追加
 2.エディタースタイル追加
-3.ウィジェット周り
+3.API対応追加
+4.ウィジェット周り
     ●ウィジェットエリア追加
     ●ウィジェット追加
-    ●メタウィジェットカスタマイズ
-        ●WordPressへのリンクを削除
-        ●リンク項目の追加
-4.不要なjs削除&jQueryのCDN化
-5.body_classにクラス追加
+    ●カスタマイズ
+        ●メタウィジェット
+            ●WordPressへのリンクを削除
+            ●リンク項目の追加
+        ●コメントウィジェット
+5.不要なjs削除&jQueryのCDN化
+6.body_classにクラス追加
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -29,7 +32,26 @@ function wkwkrnht_setup(){
 }
 add_action('after_setup_theme','wkwkrnht_setup');
 
+
 add_action('admin_init',function(){add_editor_style('inc/custom-editor-style.css');});
+
+
+add_action('init','wkwkrnht_oembed_api');
+function wkwkrnht_oembed_api(){
+    wp_oembed_add_provider('#https?://(www.)?youtube.com/watch.*#i','http://www.youtube.com/oembed/',true);
+	wp_oembed_add_provider('#https?://(www.)?youtube.com/playlist.*#i','http://www.youtube.com/oembed/',true);
+	wp_oembed_add_provider('#https?://(www.)?youtu.be/.*#i','http://www.youtube.com/oembed/',true);
+    wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed',true);
+    wp_oembed_add_provider('#https?://(www.)?instagram.com/p/.*#i','http://api.instagram.com/oembed',true);
+    wp_oembed_add_provider('#https?://(www.)?instagr.am/p/.*#i','http://api.instagram.com/oembed',true);
+    wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog-parts.com/embed?url=');
+    wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
+    wp_oembed_add_provider('#https?://(www.)?ifttt.com/recipes/.*#i','http://www.ifttt.com/oembed/',true);
+    wp_oembed_add_provider('http://www.kickstarter.com/projects/*','http://www.kickstarter.com/services/oembed',false);
+    wp_oembed_add_provider('#https?://(www.)?cloudup.com/.*#i','https://cloudup.com/oembed/',true);
+    wp_oembed_add_provider('#https?://(www.)?playbuzz.com/.*#i','https://www.playbuzz.com/api/oembed/',true);
+}
+
 
 add_action('widgets_init','wkwkrnht_widgets_init');
 function wkwkrnht_widgets_init(){
@@ -102,11 +124,10 @@ class disqus_widget extends WP_Widget{
 
 add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','my_custom_meta_widget');
-function my_custom_meta_widget(){
-?>
-<li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
-<li><?php edit_post_link();?></li>
-<li><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a></li>
+function my_custom_meta_widget(){ ?>
+    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
+    <li><?php edit_post_link();?></li>
+    <li><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a></li>
 <?php
 }
 
@@ -120,6 +141,23 @@ function theme_enqueue_scripts_styles(){
     wp_dequeue_script('devicepx');
     wp_enqueue_script('devicepx',false,array(),null,true);
 }
+
+function autoblank($text){
+	$return = str_replace('<a','<a target="_blank"',$text);
+	return $return;
+}
+add_filter('comment_text','autoblank');
+
+add_filter('comments_open','custom_comment_tags');
+add_filter('pre_comment_approved','custom_comment_tags');
+function custom_comment_tags($data){
+	global $allowedtags;
+    $allowedtags['style'] = array('class'=>array());
+	$allowedtags['pre'] = array('class'=>array());
+    $allowedtags['code'] = array('class'=>array());
+	return $data;
+}
+
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
@@ -154,7 +192,6 @@ function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://
 
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
 
-//予定地
 function get_meta_description_from_category(){
     $cat_desc=trim(strip_tags(category_description()));
     if($cat_desc){return $cat_desc;}
@@ -242,67 +279,15 @@ function generate_multipage_url($rel='prev'){
 }
 function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
 /*
-    oEmbed
-1.API対応追加
-2.OGP版ブログカード
-*/
-add_action('init','wkwkrnht_oembed_api');
-function wkwkrnht_oembed_api(){
-    wp_oembed_add_provider('#https?://(www.)?youtube.com/watch.*#i','http://www.youtube.com/oembed/',true);
-	wp_oembed_add_provider('#https?://(www.)?youtube.com/playlist.*#i','http://www.youtube.com/oembed/',true);
-	wp_oembed_add_provider('#https?://(www.)?youtu.be/.*#i','http://www.youtube.com/oembed/',true);
-    wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed',true);
-    wp_oembed_add_provider('#https?://(www.)?instagram.com/p/.*#i','http://api.instagram.com/oembed',true);
-    wp_oembed_add_provider('#https?://(www.)?instagr.am/p/.*#i','http://api.instagram.com/oembed',true);
-    wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog-parts.com/embed?url=');
-    wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
-    wp_oembed_add_provider('#https?://(www.)?ifttt.com/recipes/.*#i','http://www.ifttt.com/oembed/',true);
-    wp_oembed_add_provider('http://www.kickstarter.com/projects/*','http://www.kickstarter.com/services/oembed',false);
-    wp_oembed_add_provider('#https?://(www.)?cloudup.com/.*#i','https://cloudup.com/oembed/',true);
-    wp_oembed_add_provider('#https?://(www.)?playbuzz.com/.*#i','https://www.playbuzz.com/api/oembed/',true);
-}
-
-function make_ogp_blog_card($url){
-    $ifvar = get_site_transient($url);
-    if($ifvar):
-        $content = $ifvar;
-    else:
-        require_once('inc/OpenGraph.php');
-    	$ogp = OpenGraph::fetch($url);
-        $url = $ogp->url;
-        $img = $ogp->image;
-        $title = $ogp->title;
-        $site_name = $ogp->site_name;
-        $description = $ogp->description;
-        $content =
-        '<div class="ogp-blogcard">
-            <div class="ogp-blogcard-main">
-                <img class="ogp-blogcard-img" src="' . $img . '">
-                <div class="ogp-blogcard-info">
-                    <a href="' . $url . '" target="_blank">
-                        <h2 class="ogp-blogcard-title">' . $title . '</h2>
-                        <p class="ogp-blogcard-description">' . $description . '</p>
-                    </a>
-                </div>
-            </div>
-            <div class="ogp-blogcard-footer">
-                <a href="' . $url . '" target="_blank">
-                    <span class="ogp-blogcard-site-name">' . $site_name . '</span>
-                </a>
-            </div>
-        </div>';
-        if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
-        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
-    endif;
-    return $content;
-}
-/*
     独自要素&独自装飾
 1.情報カード
     ●site name&site description
     ●cat name&cat description
     ●serach keyword&result
 2.ページネーション
+3.OGP版ブログカード
+4.検索結果をマーカー風にハイライト
+5.@hogehogeをツイッターにリンク
 */
 function wkwkrnht_special_card(){
     $blogname=get_bloginfo('name');
@@ -347,11 +332,42 @@ function wkwkrnht_page_navi(){
 	}
 	wp_reset_query();
 }
-/*
-    コンテンツ中装飾
-1.検索結果をマーカー風にハイライト
-2.@hogehogeをツイッターにリンク
-*/
+
+function make_ogp_blog_card($url){
+    $ifvar = get_site_transient($url);
+    if($ifvar):
+        $content = $ifvar;
+    else:
+        require_once('inc/OpenGraph.php');
+    	$ogp = OpenGraph::fetch($url);
+        $url = $ogp->url;
+        $img = $ogp->image;
+        $title = $ogp->title;
+        $site_name = $ogp->site_name;
+        $description = $ogp->description;
+        $content =
+        '<div class="ogp-blogcard">
+            <div class="ogp-blogcard-main">
+                <img class="ogp-blogcard-img" src="' . $img . '">
+                <div class="ogp-blogcard-info">
+                    <a href="' . $url . '" target="_blank">
+                        <h2 class="ogp-blogcard-title">' . $title . '</h2>
+                        <p class="ogp-blogcard-description">' . $description . '</p>
+                    </a>
+                </div>
+            </div>
+            <div class="ogp-blogcard-footer">
+                <a href="' . $url . '" target="_blank">
+                    <span class="ogp-blogcard-site-name">' . $site_name . '</span>
+                </a>
+            </div>
+        </div>';
+        if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
+        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
+    endif;
+    return $content;
+}
+
 function wps_highlight_results($text){
     if(is_search()===true){
         $sr   = get_query_var('s');
@@ -391,6 +407,33 @@ add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('SearchBox','txt_to_SearchBox');
+/*
+    表示高速化
+1.lazyload
+*/
+add_filter('the_content','wkwkrnht_lazyload')
+function wkwkrnht_lazyload($content){
+    require_once('inc/phpQuery-onefile.php');
+    $phpQuery = phpQuery::newDocument($content);
+    $is_gbot  = strpos($_SERVER["HTTP_USER_AGENT"],'Googlebot');
+    if($is_gbot===false){
+        foreach($phpQuery->find('img') as $img){
+            $src = $img->getAttribute('src');
+            pq($img)->addClass('lazy');
+            $img->setAttribute('data-original',$src);
+            $img->setAttribute('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAAXNSR0IArs4c6QAAAANQTFRFAAAAp3o92gAAAAF0Uk5TAEDm2GYAAAABYktHRACIBR1IAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==');
+        }
+        $script = <<< EOF
+            <script>
+                /*! Lazy Load 1.9.7 - MIT license - Copyright 2010-2015 Mika Tuupola */
+                !function(a,b,c,d){var e=a(b);a.fn.lazyload=function(f){function g(){var b=0;i.each(function(){var c=a(this);if(!j.skip_invisible||c.is(":visible"))if(a.abovethetop(this,j)||a.leftofbegin(this,j));else if(a.belowthefold(this,j)||a.rightoffold(this,j)){if(++b>j.failure_limit)return!1}else c.trigger("appear"),b=0})}var h,i=this,j={threshold:0,failure_limit:0,event:"scroll",effect:"show",container:b,data_attribute:"original",skip_invisible:!1,appear:null,load:null,placeholder:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"};return f&&(d!==f.failurelimit&&(f.failure_limit=f.failurelimit,delete f.failurelimit),d!==f.effectspeed&&(f.effect_speed=f.effectspeed,delete f.effectspeed),a.extend(j,f)),h=j.container===d||j.container===b?e:a(j.container),0===j.event.indexOf("scroll")&&h.bind(j.event,function(){return g()}),this.each(function(){var b=this,c=a(b);b.loaded=!1,(c.attr("src")===d||c.attr("src")===!1)&&c.is("img")&&c.attr("src",j.placeholder),c.one("appear",function(){if(!this.loaded){if(j.appear){var d=i.length;j.appear.call(b,d,j)}a("<img />").bind("load",function(){var d=c.attr("data-"+j.data_attribute);c.hide(),c.is("img")?c.attr("src",d):c.css("background-image","url('"+d+"')"),c[j.effect](j.effect_speed),b.loaded=!0;var e=a.grep(i,function(a){return!a.loaded});if(i=a(e),j.load){var f=i.length;j.load.call(b,f,j)}}).attr("src",c.attr("data-"+j.data_attribute))}}),0!==j.event.indexOf("scroll")&&c.bind(j.event,function(){b.loaded||c.trigger("appear")})}),e.bind("resize",function(){g()}),/(?:iphone|ipod|ipad).*os 5/gi.test(navigator.appVersion)&&e.bind("pageshow",function(b){b.originalEvent&&b.originalEvent.persisted&&i.each(function(){a(this).trigger("appear")})}),a(c).ready(function(){g()}),this},a.belowthefold=function(c,f){var g;return g=f.container===d||f.container===b?(b.innerHeight?b.innerHeight:e.height())+e.scrollTop():a(f.container).offset().top+a(f.container).height(),g<=a(c).offset().top-f.threshold},a.rightoffold=function(c,f){var g;return g=f.container===d||f.container===b?e.width()+e.scrollLeft():a(f.container).offset().left+a(f.container).width(),g<=a(c).offset().left-f.threshold},a.abovethetop=function(c,f){var g;return g=f.container===d||f.container===b?e.scrollTop():a(f.container).offset().top,g>=a(c).offset().top+f.threshold+a(c).height()},a.leftofbegin=function(c,f){var g;return g=f.container===d||f.container===b?e.scrollLeft():a(f.container).offset().left,g>=a(c).offset().left+f.threshold+a(c).width()},a.inviewport=function(b,c){return!(a.rightoffold(b,c)||a.leftofbegin(b,c)||a.belowthefold(b,c)||a.abovethetop(b,c))},a.extend(a.expr[":"],{"below-the-fold":function(b){return a.belowthefold(b,{threshold:0})},"above-the-top":function(b){return!a.belowthefold(b,{threshold:0})},"right-of-screen":function(b){return a.rightoffold(b,{threshold:0})},"left-of-screen":function(b){return!a.rightoffold(b,{threshold:0})},"in-viewport":function(b){return a.inviewport(b,{threshold:0})},"above-the-fold":function(b){return!a.belowthefold(b,{threshold:0})},"right-of-fold":function(b){return a.rightoffold(b,{threshold:0})},"left-of-fold":function(b){return!a.rightoffold(b,{threshold:0})}})}(jQuery,window,document);
+                jQuery(function($){$("img.lazy").lazyload();});
+            </script>
+        EOF;
+        $phpQuery->find('body')->append(pq($script));
+    }
+    print phpQuery::getDocument();
+}
 /*
     投稿画面カスタマイズ
 1.カテゴリーフィルター&抜粋制限
@@ -456,8 +499,50 @@ function add_posts_columns_row($column_name,$post_id){
 add_filter('manage_posts_columns','add_posts_columns');
 add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
 /*
-プロフィール欄追加(the_author_meta('hogehoge')で表示)
+    設定項目追加
+1.カスタマイザー
+    ●twitterアカウント(サイト用)
+    ●disqus
+    ●Googleウェブマスターツール
+    ●Bingウェブマスターツール
+    ●アナリティクス
+2.プロフィール欄
 */
+add_action('customize_register','theme_customize');
+function theme_customize($wp_customize){
+    $wp_customize->add_section('sns_section',array('title'=>'独自設定','description'=>'このテーマの独自設定','priority'=>1,));
+    $wp_customize->add_setting('jetpack_css_load',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('jetpack_css_load',array('section'=>'sns_section', 'settings'=>'jetpack_css_load','label'=>'jetpack.cssを読み込まない','type'=>'checkbox'));
+	$wp_customize->add_setting('referrer_setting',array('default'=>'value1','type'=>'theme_mod',));
+	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('value1'=>'default','value2'=>'unsafe-url','value3'=>'origin-when-crossorigin','value4'=>'none-when-downgrade','value5'=>'none',),));
+    $wp_customize->add_setting('GoogleChrome_URLbar',array('default'=>'#ffcc00','type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Google_Webmaster',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('Google_Webmaster',array('section'=>'sns_section','settings'=>'Google_Webmaster','label'=>'サイトのGoogleSerchconsole向けコードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Bing_Webmaster',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('Bing_Webmaster',array('section'=>'sns_section','settings'=>'Bing_Webmaster','label'=>'サイトのBingWebmaster向けコードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Analytics',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('Analytics',array('section'=>'sns_section','settings'=>'Analytics','label'=>'サイトのアナリティクスコードを指定する','type'=>'textarea'));
+    $wp_customize->add_setting('Twitter_URL',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントへを指定する','type'=>'text'));
+    $wp_customize->add_setting('facebook_appid',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('facebook_appid',array('section'=>'sns_section','settings'=>'facebook_appid','label'=>'facebookのappidを表示する','type'=>'text'));
+	$wp_customize->add_setting('Disqus_ID',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
+    $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
+}
+function sanitize_checkbox($input){if($input===true){return true;}else{return false;}}
+function how_referrer_setting(){
+    $array = array('default'=>'value1','unsafe-url'=>'value2','origin-when-crossorigin'=>'value3','none-when-downgrade'=>'value4','none'=>'value5',);
+    $value = get_theme_mod('referrer_setting','value1');
+    $result = array_search($value,$array);
+    if($result===null){
+        return'default';
+    }else{
+        return $result;
+    }
+}
+if(get_option('jetpack_css_load')){add_filter('jetpack_implode_frontend_css','__return_false');}
+
 function my_new_contactmethods($contactmethods){
     $contactmethods['TEL']='TEL';
     $contactmethods['FAX']='FAX';
@@ -528,65 +613,3 @@ function my_new_contactmethods($contactmethods){
     return $contactmethods;
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
-
-/*
-    カスタマイザー項目追加
-1.twitterアカウント(サイト用)
-2.disqus
-3.Googleウェブマスターツール
-4.Bingウェブマスターツール
-5.アナリティクス
-*/
-add_action('customize_register','theme_customize');
-function theme_customize($wp_customize){
-    $wp_customize->add_section('sns_section',array('title'=>'独自設定','description'=>'このテーマの独自設定','priority'=>1,));
-    $wp_customize->add_setting('jetpack_css_load',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
-    $wp_customize->add_control('jetpack_css_load',array('section'=>'sns_section', 'settings'=>'jetpack_css_load','label'=>'jetpack.cssを読み込まない','type'=>'checkbox'));
-	$wp_customize->add_setting('referrer_setting',array('default'=>'value1','type'=>'theme_mod',));
-	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('value1'=>'default','value2'=>'unsafe-url','value3'=>'origin-when-crossorigin','value4'=>'none-when-downgrade','value5'=>'none',),));
-    $wp_customize->add_setting('GoogleChrome_URLbar',array('default'=>'#ffcc00','type'=>'option','sanitize_callback' => 'sanitize_text_field',));
-    $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
-    $wp_customize->add_setting('Google_Webmaster',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
-    $wp_customize->add_control('Google_Webmaster',array('section'=>'sns_section','settings'=>'Google_Webmaster','label'=>'サイトのGoogleSerchconsole向けコードを指定する','type'=>'text'));
-    $wp_customize->add_setting('Bing_Webmaster',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
-    $wp_customize->add_control('Bing_Webmaster',array('section'=>'sns_section','settings'=>'Bing_Webmaster','label'=>'サイトのBingWebmaster向けコードを指定する','type'=>'text'));
-    $wp_customize->add_setting('Analytics',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
-    $wp_customize->add_control('Analytics',array('section'=>'sns_section','settings'=>'Analytics','label'=>'サイトのアナリティクスコードを指定する','type'=>'textarea'));
-    $wp_customize->add_setting('Twitter_URL',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
-    $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントへを指定する','type'=>'text'));
-    $wp_customize->add_setting('facebook_appid',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
-    $wp_customize->add_control('facebook_appid',array('section'=>'sns_section','settings'=>'facebook_appid','label'=>'facebookのappidを表示する','type'=>'text'));
-	$wp_customize->add_setting('Disqus_ID',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
-    $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
-}
-function sanitize_checkbox($input){if($input===true){return true;}else{return false;}}
-function how_referrer_setting(){
-    $array = array('default'=>'value1','unsafe-url'=>'value2','origin-when-crossorigin'=>'value3','none-when-downgrade'=>'value4','none'=>'value5',);
-    $value = get_theme_mod('referrer_setting','value1');
-    $result = array_search($value,$array);
-    if($result===null){
-        return'default';
-    }else{
-        return $result;
-    }
-}
-if(get_option('jetpack_css_load')){add_filter('jetpack_implode_frontend_css','__return_false');}
-
-/*
-コメントウィジェット
-*/
-function autoblank($text){
-	$return = str_replace('<a','<a target="_blank"',$text);
-	return $return;
-}
-add_filter('comment_text','autoblank');
-
-add_filter('comments_open','custom_comment_tags');
-add_filter('pre_comment_approved','custom_comment_tags');
-function custom_comment_tags($data){
-	global $allowedtags;
-    $allowedtags['style'] = array('class'=>array());
-	$allowedtags['pre'] = array('class'=>array());
-    $allowedtags['code'] = array('class'=>array());
-	return $data;
-}
