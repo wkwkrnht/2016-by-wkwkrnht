@@ -421,7 +421,7 @@ function wkwkrnht_lazyload($content){
             $src = $img->getAttribute('src');
             pq($img)->addClass('lazyload');
             $img->setAttribute('data-src',$src);
-            $img->setAttribute('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAAXNSR0IArs4c6QAAAANQTFRFAAAAp3o92gAAAAF0Uk5TAEDm2GYAAAABYktHRACIBR1IAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==');
+            $img->setAttribute('src',"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==");
         }
         $script = '
             <script>
