@@ -38,7 +38,8 @@
 		$tw        = get_the_author_meta('twitter');
 		$gp        = get_the_author_meta('Googleplus');
 		$logo      = get_theme_mod('custom_logo');
-		$author_id = $post->post_author;
+		$author_id = get_userdata($post->post_author);
+		$author_id = $author->display_name;
 		if($fb!==''){echo'<meta property="article:author" content="' . $fb . '">';}
 		if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
 		if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
@@ -61,7 +62,7 @@
   				"dateModified": "2015-02-05T09:20:00+08:00",
   				"author": {
     				"@type": "Person",
-    				"name": "' . get_the_author_meta($author_id,'display_name') . '"
+    				"name": "' . $author_id . '"
   				},
    				"publisher": {
     				"@type": "Organization",
