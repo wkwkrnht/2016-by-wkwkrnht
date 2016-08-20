@@ -86,14 +86,10 @@
 		.article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 		.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 		.information,.question{background-color:#f4f3eb;padding:2rem;padding:1em 3em;border-radius:8px;position:relative;margin:1em auto;}
-		.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:1.5em;left:1em;}
-		.information::before{content:'\f05a';}
-		.question::before{content:'\f059';}
 		.search-form{margin:3em 0;line-height:170%;}
 		.search-form div{display:inline-block;padding:5px;margin-left:1rem;border:1px solid #555;border-radius:2px;}
 		.search-form .sform{min-width:280px;background-color:#fff;}
 		.search-form .sbtn{position:absolute;padding-left:2rem;padding-right:3rem;color:#fff;background-color:#1155ee;}
-		.search-form div.sbtn:after{content:'\f25a';font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
 		.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 		.ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
 		.ogp-blogcard-img{display:inline-block;height:40%;width:40%;background-color:#03a9f4;}
@@ -199,7 +195,7 @@
 			if($query -> have_posts()):
 				while($query -> have_posts()):$query -> the_post();?>
 					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-						<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
+						<div><amp-img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" height="512" width="512" layout="responsive" class="related-thumb"></amp-img></div>
 						<?php the_title('<div class="related-title">','</div>');?>
 					</a>
 				<?php endwhile;?>
@@ -210,7 +206,7 @@
 				$query = new WP_Query($array);
 				while($query -> have_posts()):$query -> the_post();?>
 					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-						<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
+						<div><amp-img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" height="512" width="512" layout="responsive" class="related-thumb"></amp-img><div>
 						<?php the_title('<div class="related-title">','</div>');?>
 					</a>
 				<?php endwhile;?>

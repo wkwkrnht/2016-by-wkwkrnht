@@ -54,7 +54,7 @@
     				"@type": "ImageObject",
     				"url": "' . get_meta_image() . '",
     				"height": 256,
-    				"width": 455
+    				"width": 696
   				},
   				"datePublished": "' . get_the_time('Y/n/j G:i.s') . '",
   				"dateModified": "' . get_mtime('Y/n/j G:i.s') . '",
@@ -68,8 +68,8 @@
     				"logo": {
       					"@type": "ImageObject",
       					"url": "' . wp_get_attachment_url($logo) . '",
-      					"width": 256,
-      					"height": 455
+      					"width": 600,
+      					"height": 60
     				}
   				},
   				"description": "' . get_meta_description() . '"
