@@ -211,7 +211,7 @@ function get_meta_description_from_tag(){
 add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_page())){$title = bloginfo('name');}return $title;});
 
 function get_meta_description(){
-    if(is_singular()===true&&has_excerpt()===true):
+    if(is_singular()===true && has_excerpt()===true):
         get_the_excerpt();
     elseif(is_category()===true):
         get_meta_description_from_category();
@@ -228,16 +228,16 @@ function yes_image($size){echo get_yes_image($size);}
 function get_no_image(){return get_template_directory_uri() . '/inc/no-img.png';}
 function no_image(){echo get_no_image();}
 function get_meta_image(){
-    if(is_singular()===true&&has_post_thumbnail()===true):
+    if(is_singular()===true && has_post_thumbnail()===true):
         $size = array(256,256);
-        get_yes_image($size);
+        return get_yes_image($size);
     else:
         $logo = get_theme_mod('custom_logo');
-        wp_get_attachment_url($logo);
+        return wp_get_attachment_url($logo);
     endif;
 }
 function meta_image(){echo get_meta_image();}
-function get_wkwkrnht_eyecatch($size){if(has_post_thumbnail()===true):get_yes_image($size);else:get_no_image();endif;}
+function get_wkwkrnht_eyecatch($size){if(has_post_thumbnail()===true):return get_yes_image($size);else:return get_no_image();endif;}
 function wkwkrnht_eyecatch($size){echo get_wkwkrnht_eyecatch($size);}
 
 function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return get_the_author_meta('twitter');elseif(get_option('Twitter_URL')!==''):return get_option('Twitter_URL');else:return null;endif;}

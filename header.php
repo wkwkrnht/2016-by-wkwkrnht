@@ -28,14 +28,16 @@
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 	<?php if(is_singular()===true):
-		$fb   = '';
-		$tw   = '';
-		$gp   = '';
-		$logo = '';
-		$fb   = get_the_author_meta('facebook');
-		$tw   = get_the_author_meta('twitter');
-		$gp   = get_the_author_meta('Googleplus');
-		$logo = get_theme_mod('custom_logo');
+		$fb        = '';
+		$tw        = '';
+		$gp        = '';
+		$logo      = '';
+		$author_id = '';
+		$fb        = get_the_author_meta('facebook');
+		$tw        = get_the_author_meta('twitter');
+		$gp        = get_the_author_meta('Googleplus');
+		$logo      = get_theme_mod('custom_logo');
+		$author_id = $post->post_author;
 		if($fb!==''){echo'<meta property="article:author" content="' . $fb . '">';}
 		if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
 		if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
@@ -58,7 +60,7 @@
   				"dateModified": "2015-02-05T09:20:00+08:00",
   				"author": {
     				"@type": "Person",
-    				"name": "' . get_the_author_meta('display_name') . '"
+    				"name": "' . get_the_author_meta($author_id,'display_name') . '"
   				},
    				"publisher": {
     				"@type": "Organization",
