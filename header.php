@@ -16,7 +16,7 @@
 	<meta name="description" content="<?php meta_description();?>">
 	<meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
 	<meta property="og:type" content="article">
-	<?php if(is_home()===false):?><meta property="og:title" content="<?php wp_title('｜',true,'right');?>"><?php endif;?>
+	<?php if(is_home()===false):?><meta property="og:title" content="<?php wp_title('｜',true,'right');bloginfo('name');?>"><?php endif;?>
 	<meta property="og:url" content="<?php echo get_meta_url();?>">
 	<meta property="og:description" content="<?php meta_description();?>">
 	<meta property="og:site_name" content="<?php bloginfo('name');?>">

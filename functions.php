@@ -212,13 +212,13 @@ add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_pa
 
 function get_meta_description(){
     if(is_singular()===true && has_excerpt()===true):
-        get_the_excerpt();
+        return get_the_excerpt();
     elseif(is_category()===true):
-        get_meta_description_from_category();
+        return get_meta_description_from_category();
     elseif(is_tag()===true):
-        get_meta_description_from_tag();
+        return get_meta_description_from_tag();
     else:
-        get_bloginfo('description');
+        return get_bloginfo('description');
     endif;
 }
 function meta_description(){echo get_meta_description();}
