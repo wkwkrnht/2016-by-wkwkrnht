@@ -28,6 +28,7 @@
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 	<?php if(is_singular()===true):
+		global $post;
 		$fb        = '';
 		$tw        = '';
 		$gp        = '';
