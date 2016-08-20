@@ -56,8 +56,8 @@
     				"height": 256,
     				"width": 256
   				},
-  				"datePublished": "2015-02-05T08:00:00+08:00",
-  				"dateModified": "2015-02-05T09:20:00+08:00",
+  				"datePublished": "' . get_the_time('Y/n/j G:i.s') . '",
+  				"dateModified": "' . get_mtime('Y/n/j G:i.s') . '",
   				"author": {
     				"@type": "Person",
     				"name": "' . get_the_author_meta('display_name',$author_id) . '"
