@@ -28,8 +28,8 @@
             <?php $livedoor = '';$livedoor = get_the_author_meta('livedoor');if($livedoor!==''){echo'<li>' . $livedoor . '</li>';}?>
             <?php $ameba = '';$ameba = get_the_author_meta('ameba');if($ameba!==''){echo'<li>' . $ameba . '</li>';}?>
             <?php $mixi = '';$mixi = get_the_author_meta('mixi');if($mixi!==''){echo'<li>' . $mixi . '</li>';}?>
-            <?php $hatenablog = '';$hatenablog = get_the_author_meta('hatenablog');if($hatenablog!==''){echo'<li>' . $hatenablog . '</li>';}?>
-            <?php $hatenadiary = '';$hatenadiary = get_the_author_meta('hatenadiary');if($hatenadiary!==''){echo'<li>' . $hatenadiary . '</li>';}?>
+            <?php $hatenablog = '';$hatenablog = get_the_author_meta('hatenablog');if($hatenablog!==''){echo'<li><a>' . $hatenablog . '</a></li>';}?>
+            <?php $hatenadiary = '';$hatenadiary = get_the_author_meta('hatenadiary');if($hatenadiary!==''){echo'<li><a>' . $hatenadiary . '</a></li>';}?>
             <?php $hatebu = '';$hatebu = get_the_author_meta('hatebu');if($hatebu!==''){echo'<li>' . $hatebu . '</li>';}?>
             <?php $xda = '';$xda = get_the_author_meta('xda');if($xda!==''){echo'<li>' . $xda . '</li>';}?>
             <?php $Quita = '';$Quita = get_the_author_meta('Quita');if($Quita!==''){echo'<li><a href="http://qiita.com/' . $Quita . '">' . $Quita . '</a>';}?></li>

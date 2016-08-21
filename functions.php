@@ -191,6 +191,7 @@ function add_body_class($classes){if(is_singular()===true):$classes[] = 'singula
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
 
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime):return get_the_time($format);elseif($ptime===$mtime):return null;else:return get_the_modified_time($format);endif;}
+function get_first_post_year(){$year = null;query_posts('posts_per_page=1&order=ASC');if(have_posts()):while(have_posts()):the_post();$year = intval(get_the_time('Y'));endwhile;endif;wp_reset_query();return $year;}
 
 function get_meta_description_from_category(){
     $cat_desc=trim(strip_tags(category_description()));
@@ -295,6 +296,7 @@ function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_conte
 5.@hogehogeをツイッターにリンク
 */
 function wkwkrnht_special_card(){
+    $year            = get_first_post_year();
     $blogname        = get_bloginfo('name');
     $sitedescription = get_bloginfo('description');
     if(is_author()===true):
@@ -312,11 +314,11 @@ function wkwkrnht_special_card(){
                 wp_reset_query();
                 echo'<h1 class="site-title">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
             elseif(is_404()===true):
-                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><h2>404 Not Found</h2><p class="site-description">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
+                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
             else:
                 echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
             endif;
-        echo'<br><span class="copyright">&copy;2015&nbsp;' . $blogname . '</span></div>';
+        echo'<br><span class="copyright">&copy;' . $year . '&nbsp;' . $blogname . '</span></div>';
     endif;
 }
 
