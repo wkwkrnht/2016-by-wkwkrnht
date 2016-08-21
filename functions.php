@@ -295,8 +295,8 @@ function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_conte
 5.@hogehogeをツイッターにリンク
 */
 function wkwkrnht_special_card(){
-    $blogname=get_bloginfo('name');
-    $sitedescription=get_bloginfo('description');
+    $blogname        = get_bloginfo('name');
+    $sitedescription = get_bloginfo('description');
     if(is_author()===true):
         $url = dirname(__FILE__) . '/./widget/author-bio.php';
         include_once $url;
@@ -308,9 +308,11 @@ function wkwkrnht_special_card(){
                 echo'<h1 class="site-title">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
             elseif(is_search()===true):
                 global $wp_query;
-                $serachresult=$wp_query->found_posts;
+                $serachresult = $wp_query->found_posts;
                 wp_reset_query();
                 echo'<h1 class="site-title">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
+            elseif(is_404()===true):
+                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><h2>404 Not Found</h2><p class="site-description">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
             else:
                 echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
             endif;
