@@ -447,7 +447,11 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
         QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
-		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
+        QTags.addButton('qt-iphone','iPhoneフレーム','<div class="cd-iphone-6 cd-gold"><div class="cd-body"><div class="cd-sound"></div><div class="cd-sleep"></div><div class="cd-camera"></div><div class="cd-ear"></div><div class="cd-home"></div><div class="cd-screen"><img src="http://attimo-ltd.com/wp-content/uploads/2014/05/iPad-screenshot.jpg" alt="iPhone-スクリーン">','</div></div></div>');
+		QTags.addButton('qt-ipad','iPadフレーム','<div class="cd-ipad"><div class="cd-body"><div class="cd-camera"></div><div class="cd-home"></div><div class="cd-screen cd-smart-loader"><img src="http://attimo-ltd.com/wp-content/uploads/2014/05/iPad-screenshot.jpg" alt="iPad-スクリーン">','</div></div></div>');
+        QTags.addButton('qt-applewatch','Applewatchフレーム','<div class="cd-watch"><div class="cd-bracket"></div><div class="cd-top-band"></div><div class="cd-bottom-band"></div><div class="cd-body"></div><div class="cd-crown"></div><div class="cd-button"></div><div class="cd-screen cd-smart-loader cd-screen-scrolling"><img src="','" alt="Applewatch-スクリーン"></div></div>');
+        QTags.addButton('qt-mac','macフレーム','<div class="cd-mac"><div class="cd-top"></div><div class="cd-bottom"></div><div class="cd-camera"></div><div class="cd-notch"></div><div class="cd-screen cd-smart-loader" data-load-in-speed="1000"><img src="http://i.imgur.com/lgCj5En.jpg"><img src="http://haverzine.com/wp-content/uploads/2014/06/launchpad.png"><img src="https://d13yacurqjgara.cloudfront.net/users/31692/screenshots/1548482/attachments/236312/Fullscreen.png">','</div></div>');
+        QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');

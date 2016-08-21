@@ -14,7 +14,4 @@
         <?php wp_tag_cloud(array('taxonomy'=>'post_tag',));?>
     </section>
 </div>
-<ul class="widget-area">
-    <?php dynamic_sidebar('singularfooter');?>
-</ul>
 <?php get_footer();?>
