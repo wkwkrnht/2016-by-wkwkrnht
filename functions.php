@@ -584,7 +584,7 @@ function wkwkrnht_customize_css(){ ?>
 <?php
 }
 add_action('wp_head','wkwkrnht_customize_css');
-add_action('customize_preview_init',function(){wp_enqueue_script( 'wkwkrnht-themecustomizer',get_template_directory_uri().'/inc/theme-customizer.js',array('jquery','customize-preview'),,true);});
+add_action('customize_preview_init',function(){wp_enqueue_script( 'wkwkrnht-themecustomizer',get_template_directory_uri().'/inc/theme-customizer.js',array('jquery','customize-preview'),false,true);});
 
 
 
