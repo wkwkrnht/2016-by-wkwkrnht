@@ -400,18 +400,14 @@ add_filter('comment_text','twtreplace');
 */
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
-function wps_trend($atts){extract(shortcode_atts(array('width'=>'640','height'=>'480','geo'=>'JP','keyword'=>'','date'=>''),$atts));$height=(int)$height;$width=(int)$width;$keyword=esc_attr($keyword);$geo=esc_attr($geo);$date=esc_attr($date);return'<script src="//www.google.com/trends/embed.js?hl=ja&amp;q=' . $keyword . '&amp;geo=' . $geo . '&amp;date=' . $date . '&amp;cmpt=q&amp;content=1&amp;cid=TIMESERIES_GRAPH_0&amp;export=5&amp;w=' . $width . '&amp;h=' . $height . '"></script>';}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
-function txt_to_SearchBox($atts){extract(shortcode_atts(array('txt'=>'',),$atts));return'<div class="search-form"><div class="sform">' . $txt . '</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>';}
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
-add_shortcode('google_keyword','wps_trend');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
-add_shortcode('SearchBox','txt_to_SearchBox');
 /*
     投稿画面カスタマイズ
 1.カテゴリーフィルター&抜粋制限
@@ -446,13 +442,12 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
-        QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
-		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
-        QTags.addButton('qt-googlekeyword','Googleキーワード','[google_keyword keyword= date= geo= height= width=',']');
+        QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
-        QTags.addButton('qt-searchbox','検索風表示','[SearchBox txt=',']');
+        QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
+		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
     </script>
 <?php }}
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
