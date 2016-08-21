@@ -5,7 +5,7 @@ Author:      wkwkrnht
 Author URI:  http://wkwkrnht.gegahost.net/
 License:     MIT License
 License URI: https://github.com/wkwkrnht/2016-by-wkwkrnht/blob/master/LICENSE/
-Version:     0.2.6
+Version:     0.3.0
 Text Domain: 2016-by-wkwkrnht
 Tags:        one-column, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post
 Description: 1 column and footer-menu are had on this theme.This is faster than any theme.Please, try this.(This is made for blogs.)
@@ -115,7 +115,6 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 */
 .widget_tag_cloud{margin:3vmin;padding:0;}
 .widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;line-height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid #aaa;border-radius:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:13px;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
-.widget_tag_cloud a:hover{background-color:#00a5de;border:1px solid #00a5de;color:#fff;}
 
 .widget_recent_entries ul{list-style-type:none;}
 .widget_recent_entries ul li{border-right:solid 1px #999;border-bottom:solid 1px #999;}
@@ -160,7 +159,6 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 1.カードデザイン
 2.ページネーション
 */
-.card-list{background-color:#f1f1f1;}
 .card{height:45vmin;width:80vmin;margin:3vmin 10vmin;padding:4vmin 3vmin;border-radius:5px;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .card img{display:block;float:left;max-height:39vmin;max-width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 .card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
@@ -172,16 +170,13 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 .page-nation{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
 .page-nation a,.page-nation .current,.page-nation li .dots{padding:2vmin;margin:0 .5vmin;border:solid .5vmin #00a5de;font-weight:bold;}
 .page-nation a,.page-nation li .dots{background-color:#fff;font-size:1.3rem;text-decoration:none;}
-.page-nation a{color:#00a5de;}
-.page-nation li .dots{color:#333;}
-.page-nation a:hover,.page-nation .current{color:#fff;background-color:#00a5de;}
 /*
     記事ページ
-1.header&main
-2.link
+1.ヘッダー
+2.メイン
 3.見出し
 4.チャットフォーマット
-5.pre&address&blockquote
+5.引用系
 6.リスト
 7.テーブル
 8.独自要素
@@ -191,15 +186,13 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 .article-eyecatch{max-width:92vw;text-align:center;vertical-align:middle;}
 .article-meta{height:23vh;width:92vw;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 .article-date{display:block;height:inherit;width:30%;float:left;background-color:#03a9f4;color:#fff;font-size:2.3rem;line-height:23vh;}
-
 .article-title{font-size:2rem;}
 .bread .sp{margin:0 .5em;}
+
+
 .article-main{font-size:1.6rem;}
 .article-main p{padding:5vmin 8vmin 0;}
-
-
 .article-main a{text-decoration:none;border-bottom:0;}
-.article-main a:visited{color:#934c7b;}
 
 
 .article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:2vmin auto;line-height:45px;text-align:center;}
