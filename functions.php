@@ -478,45 +478,45 @@ add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
 */
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){
-    $wp_customize->add_setting('footer_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('footer_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'footer_background',array('label'=>'footer_background','settings'=>'footer_background','section'=>'colors',)));
-    $wp_customize->add_setting('footer_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('footer_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'footer_color',array('label'=>'footer_color','settings'=>'footer_color','section'=>'colors',)));
-    $wp_customize->add_setting('menu_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('menu_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'menu_background',array('label'=>'menu_background','settings'=>'menu_background','section'=>'colors',)));
-    $wp_customize->add_setting('tag_cloud_border',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('tag_cloud_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_border',array('label'=>'tag_cloud_border','settings'=>'tag_cloud_border','section'=>'colors',)));
-    $wp_customize->add_setting('tag_cloud_border_hover',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('tag_cloud_border_hover',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_border_hover',array('label'=>'tag_cloud_border_hover','settings'=>'tag_cloud_border_hover','section'=>'colors',)));
-    $wp_customize->add_setting('tag_cloud_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('tag_cloud_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_color',array('label'=>'tag_cloud_color','settings'=>'tag_cloud_color','section'=>'colors',)));
-    $wp_customize->add_setting('card_list_background',array('default'=>'#f1f1f1','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('card_list_background',array('type'=>'option','default'=>'#f1f1f1','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'card_list_background',array('label'=>'card_list_background','settings'=>'card_list_background','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('page_nation_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_background',array('label'=>'page_nation_background','settings'=>'page_nation_background','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_border',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('page_nation_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_border',array('label'=>'page_nation_border','settings'=>'page_nation_border','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_a_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('page_nation_a_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_a_background',array('label'=>'page_nation_a_background','settings'=>'page_nation_a_background','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_a_color',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('page_nation_a_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_a_color',array('label'=>'page_nation_a_color','settings'=>'page_nation_a_color','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_dots_color',array('default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('page_nation_dots_color',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_dots_color',array('label'=>'page_nation_dots_color','settings'=>'page_nation_dots_color','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_hover_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('page_nation_hover_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_hover_color',array('label'=>'page_nation_hover_color','settings'=>'page_nation_hover_color','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_hover_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('page_nation_hover_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_hover_background',array('label'=>'page_nation_hover_background','settings'=>'page_nation_hover_background','section'=>'colors',)));
-    $wp_customize->add_setting('article_meta_background',array('default'=>'#f1f1f1','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_meta_background',array('type'=>'option','default'=>'#f1f1f1','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_meta_background',array('label'=>'article_meta_background','settings'=>'article_meta_background','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_a_color',array('default'=>'#934c7b','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_a_color',array('type'=>'option','default'=>'#934c7b','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_a_color',array('label'=>'article_main_a_color','settings'=>'article_main_a_color','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h_border',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_h_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h_border',array('label'=>'article_main_h_border','settings'=>'article_main_h_border','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_h_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h_color',array('label'=>'article_main_h_color','settings'=>'article_main_h_color','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_h_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h_background',array('label'=>'article_main_h_background','settings'=>'article_main_h_background','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_bq_border',array('default'=>'#bbb','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_bq_border',array('type'=>'option','default'=>'#bbb','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_bq_border',array('label'=>'article_main_bq_border','settings'=>'article_main_bq_border','section'=>'colors',)));
     $wp_customize->add_setting('article_main_li_color',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_li_color',array('label'=>'article_main_li_color','settings'=>'article_main_li_color','section'=>'colors',)));
@@ -524,7 +524,7 @@ function theme_customize($wp_customize){
     $wp_customize->add_setting('jetpack_css_load',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack_css_load',array('section'=>'sns_section', 'settings'=>'jetpack_css_load','label'=>'jetpack.cssを読み込まない','type'=>'checkbox'));
 	$wp_customize->add_setting('referrer_setting',array('default'=>'value1','type'=>'theme_mod','sanitize_callback'=>'sanitize_radio',));
-	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('value1'=>'default','value2'=>'unsafe-url','value3'=>'origin-when-crossorigin','value4'=>'none-when-downgrade','value5'=>'none',),));
+	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('default'=>'default','unsafe-url'=>'unsafe-url','origin-when-crossorigin'=>'origin-when-crossorigin','none-when-downgrade'=>'none-when-downgrade','none'=>'none',),));
     $wp_customize->add_setting('GoogleChrome_URLbar',array('default'=>'#ffcc00','type'=>'option','sanitize_callback' => 'sanitize_text_field',));
     $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
     $wp_customize->add_setting('Google_Webmaster',array('type'=>'option','sanitize_callback' => 'sanitize_text_field',));
@@ -549,16 +549,6 @@ function sanitize_radio($input,$setting){
         return $input;
     }else{
         return $setting->default;
-    }
-}
-function how_referrer_setting(){
-    $array = array('default'=>'value1','unsafe-url'=>'value2','origin-when-crossorigin'=>'value3','none-when-downgrade'=>'value4','none'=>'value5',);
-    $value = get_theme_mod('referrer_setting','value1');
-    $result = array_search($value,$array);
-    if($result===null){
-        return'default';
-    }else{
-        return $result;
     }
 }
 if(get_option('jetpack_css_load')){add_filter('jetpack_implode_frontend_css','__return_false');}

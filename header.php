@@ -6,7 +6,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="HandheldFriendly" content="true">
-	<meta name="referrer" content="<?php echo how_referrer_setting();?>">
+	<meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
 	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
 	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
