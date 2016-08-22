@@ -6,7 +6,7 @@
     ●機能サポート宣言
     ●メニューエリア追加
 2.エディタースタイル追加
-3.API対応追加
+3.oEmbed-API対応追加
 4.ウィジェット周り
     ●ウィジェットエリア追加
     ●ウィジェット追加
@@ -15,7 +15,7 @@
             ●WordPressへのリンクを削除
             ●リンク項目の追加
         ●コメントウィジェット
-5.不要なjs削除&jQueryのCDN化
+5.絵文字削除
 6.body_classにクラス追加
 */
 function wkwkrnht_setup(){
@@ -133,14 +133,6 @@ function my_custom_meta_widget(){ ?>
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-add_action('wp_enqueue_scripts','theme_enqueue_scripts_styles');
-function theme_enqueue_scripts_styles(){
-    wp_deregister_script('jquery');
-    wp_register_script('jquery','');
-    wp_enqueue_script('jquery',false,array(),null,true);
-    wp_dequeue_script('devicepx');
-    wp_enqueue_script('devicepx',false,array(),null,true);
-}
 
 function autoblank($text){
 	$return = str_replace('<a','<a target="_blank"',$text);
