@@ -36,8 +36,9 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 5.ソーシャルナビゲーション
 6.ウィジェットエリア
 */
-.toggle-zone{height:15vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#03a9f4;color:#fff;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
-#share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;cursor:pointer;}
+.toggle-zone{height:15vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#03a9f4;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;color:#fff;}
+#share-toggle:visited,#share-menu-toggle:visited,#menu-toggle:visited{color:#fff;}
 
 #share-menu,#main-menu{height:80vh;width:86vw;margin:35px 7vw 0;position:fixed;top:0;left:0;z-index:111;overflow-x:hidden;overflow-y:auto;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .open{visibility:visible;}
