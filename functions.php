@@ -26,7 +26,7 @@ function wkwkrnht_setup(){
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
     add_theme_support('post-thumbnails');
     add_theme_support('custom-background');
-    add_theme_support('custom-logo',array('height'=>256,'width'=>256,'flex-height'=>true,));
+    add_theme_support('custom-logo',array('height'=>512,'width'=>512,'flex-height'=>true,));
     register_nav_menu('main','main');
     register_nav_menu('social','social');
 }
@@ -230,7 +230,7 @@ function get_no_image(){return get_template_directory_uri() . '/inc/no-img.png';
 function no_image(){echo get_no_image();}
 function get_meta_image(){
     if(is_singular()===true && has_post_thumbnail()===true):
-        $size = array(256,256);
+        $size = 'thumbnail';
         return get_yes_image($size);
     else:
         $logo = get_theme_mod('custom_logo');
