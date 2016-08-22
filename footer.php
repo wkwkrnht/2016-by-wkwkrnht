@@ -1,6 +1,6 @@
     </main>
     <footer class="toggle-zone">
-        <div id="share-toggle" onclick="sharemenu()"><i class="fa fa-share-alt fa-3x"></i></div>
+        <div id="share-toggle" onclick="share-menu();"><i class="fa fa-share-alt fa-3x"></i></div>
         <div id="menu-toggle"><i class="fa fa-bars fa-3x"></i></div>
         <div id="share-menu-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
     </footer>
@@ -39,16 +39,16 @@
     <script>
         window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         jQuery(function($){
-            var menu  = jQuery('#main-menu');
-            var share = jQuery('#share-menu');
+            var menu  = document.getElementById('main-menu');
+            var share = document.getElementById('share-menu');
             jQuery('#menu-toggle').click(function($){
                 menu.toggleClass('close');
                 menu.toggleClass('open');
             });
-            function sharemenu($){
+            jQuery('#share-toggle').click(function($){
                 share.toggleClass('close');
                 share.toggleClass('open');
-            }
+            });
             jQuery('#share-menu-toggle').click(function($){
                 share.toggleClass('close');
                 share.toggleClass('open');
