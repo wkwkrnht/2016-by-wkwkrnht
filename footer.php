@@ -39,8 +39,8 @@
     <script>
         window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
         jQuery(function($){
-            var menu  = document.getElementById('main-menu');
-            var share = document.getElementById('share-menu');
+            var menu  = document.getElementById("main-menu");
+            var share = document.getElementById("share-menu");
             jQuery('#menu-toggle').click(function($){
                 menu.toggleClass('close');
                 menu.toggleClass('open');
