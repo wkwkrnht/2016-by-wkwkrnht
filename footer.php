@@ -1,6 +1,6 @@
     </main>
     <footer class="toggle-zone">
-        <div id="share-toggle" onclick="share-menu();"><i class="fa fa-share-alt fa-3x"></i></div>
+        <div id="share-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
         <div id="menu-toggle"><i class="fa fa-bars fa-3x"></i></div>
         <div id="share-menu-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
     </footer>
