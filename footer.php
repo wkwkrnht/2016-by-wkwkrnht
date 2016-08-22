@@ -1,8 +1,8 @@
     </main>
     <footer class="toggle-zone">
-        <div id="share-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
-        <div id="menu-toggle"><i class="fa fa-bars fa-3x"></i></div>
-        <div id="share-menu-toggle"><i class="fa fa-share-alt fa-3x"></i></div>
+        <a href="#" id="share-toggle" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
+        <a href="#" id="menu-toggle" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-3x"></i></a>
+        <a href="#" id="share-menu-toggle" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
     </footer>
     <nav id="share-menu" class="close">
         <ul>
@@ -38,22 +38,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         window.jQuery || document.write('<script src="<?php echo includes_url();?>js/jquery/jquery.js"><\/script>');
-        jQuery(function($){
-            var menu  = document.getElementById("main-menu");
-            var share = document.getElementById("share-menu");
-            jQuery('#menu-toggle').click(function($){
-                menu.toggleClass('close');
-                menu.toggleClass('open');
-            });
-            jQuery('#share-toggle').click(function($){
-                share.toggleClass('close');
-                share.toggleClass('open');
-            });
-            jQuery('#share-menu-toggle').click(function($){
-                share.toggleClass('close');
-                share.toggleClass('open');
-            });
-        });
     </script>
     <?php
     if(is_singular()===true):
