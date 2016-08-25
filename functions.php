@@ -557,8 +557,8 @@ function wkwkrnht_customize_css(){ ?>
     <style>
         .toggle-zone{background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;}
         #main-menu{background-color:<?php echo get_option('menu_background','#fff');?>;}
-        .widget_tag_cloud a,.article-tag li{border-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;}
-        .widget_tag_cloud a:hover,.article-tag li:hover{background-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;border:1px solid <?php echo get_option('tag_cloud_border_hover','#fff');?>;color:<?php echo get_theme_mod('tag_cloud_color','#fff');?>;}
+        .widget_tag_cloud a,.article-tag a{border-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;}
+        .widget_tag_cloud a:hover,.article-tag a:hover{background-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;border:1px solid <?php echo get_option('tag_cloud_border_hover','#fff');?>;color:<?php echo get_theme_mod('tag_cloud_color','#fff');?>;}
         .card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
         .page-nation{background-color:<?php echo get_option('page_nation_background','#fff');?>;}
         .page-nation a,.page-nation .current,.page-nation li .dots{border-color:<?php echo get_option('page_nation_border','#03a9f4');?>;}

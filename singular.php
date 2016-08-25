@@ -23,7 +23,7 @@ if($myAmp===true):?>
 						echo $echo . '<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">' . $cat[0]->name . '</span></a></div>';
 					}
 					?>
-					<span class="article-tag"><?php the_tags('<ul><li>','</li><li>','</li></ul>');?></span>
+					<span class="article-tag"><?php the_tags('','','');?></span>
 				</span>
 			</div>
 		</header>
