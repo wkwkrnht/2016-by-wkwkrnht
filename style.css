@@ -189,7 +189,7 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 .article-date{display:block;height:inherit;width:30%;float:left;background-color:#03a9f4;color:#fff;font-size:2.3rem;line-height:23vh;}
 .article-title{font-size:2rem;}
 .bread .sp{margin:0 .5em;}
-.article-tag{margin:3vmin;padding:0;}
+.article-tag{width:calc((92vw - 3vmin * 2) * .7);overflow-x:auto;overflow-y:hidden;margin:3vmin;padding:0;}
 .article-tag ul{list-style-type:none;}
 .article-tag ul li{display:inline-block;max-width:10rem;height:2.5em;padding:0 1em;margin:0 .3em .3em 0;border-radius:5px;background-color:#fff;border:1px solid #aaa;-webkit-transition:.2s;transition:.2s;}
 .article-tag a{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:1.6rem;text-decoration:none;}
