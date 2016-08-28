@@ -122,13 +122,12 @@ class disqus_widget extends WP_Widget{
 }
 
 function wkwkrnht_search_form($form){
-    $tags = get_tags();
     $form = '
     <div id="search">
         <form method="get" action="' . get_bloginfo("url") . '">
             <input name="s" id="s" type="text">'
-            . wp_dropdown_categories('depth=0&orderby=name&hide_empty=1&show_option_all=カテゴリー選択')
-            . wkwkrnht_search_tag($tags)
+            . wkwkrnht_search_categories()
+            . wkwkrnht_search_tag()
             . '<input id="submit" type="submit" value="検索">
         </form>
     </div>
@@ -137,15 +136,27 @@ function wkwkrnht_search_form($form){
 }
 add_filter('get_search_form','wkwkrnht_search_form');
 
-function wkwkrnht_search_tag($tags){
-    if($tags):?>
-        <select name="tag" id="tag">
-            <option value="" selected="selected">タグ選択</option>
-            <?php foreach($tags as $tag):?>
-                <option value="<?php echo esc_html($tag->slug);?>"><?php echo esc_html($tag->name);?></option>
-            <?php endforeach;?>
-        </select>
-    <?php endif;
+function wkwkrnht_search_category(){
+    $categorys = get_the_ctegory();?>
+    <select name="tag" id="tag">
+        <option value="" selected="selected">カテゴリー選択</option>
+        <?php foreach($categorys as $category):?>
+            <option value="<?php echo esc_html($category->slug);?>"><?php echo esc_html($category->name);?></option>
+        <?php endforeach;?>
+    </select>
+<?php
+}
+
+function wkwkrnht_search_tag(){
+    $tags = get_tags();?>
+    <select name="tag" id="tag">
+        <option value="" selected="selected">タグ選択</option>
+        <?php foreach($tags as $tag):?>
+            <option value="<?php echo esc_html($tag->slug);?>"><?php echo esc_html($tag->name);?></option>
+        <?php endforeach;?>
+    </select>
+<?php
+}
 
 add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','my_custom_meta_widget');
