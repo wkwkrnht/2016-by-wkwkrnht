@@ -122,7 +122,6 @@ class disqus_widget extends WP_Widget{
 }
 
 function wkwkrnht_search_form($form){
-    $tags = get_tags();
     $form = '
     <div id="search">
         <form method="get" action="' . get_bloginfo("url") . '">
@@ -138,14 +137,15 @@ function wkwkrnht_search_form($form){
 add_filter('get_search_form','wkwkrnht_search_form');
 
 function wkwkrnht_search_tag($tags){
-    if($tags):?>
-        <select name="tag" id="tag">
-            <option value="" selected="selected">タグ選択</option>
-            <?php foreach($tags as $tag):?>
-                <option value="<?php echo esc_html($tag->slug);?>"><?php echo esc_html($tag->name);?></option>
-            <?php endforeach;?>
-        </select>
-    <?php endif;
+    $tags = get_tags();?>
+    <select name="tag" id="tag">
+        <option value="" selected="selected">タグ選択</option>
+        <?php foreach($tags as $tag):?>
+            <option value="<?php echo esc_html($tag->slug);?>"><?php echo esc_html($tag->name);?></option>
+        <?php endforeach;?>
+    </select>
+    <?php
+}
 
 add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','my_custom_meta_widget');
