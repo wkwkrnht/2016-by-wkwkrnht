@@ -20,5 +20,5 @@
         "installer-paths": {
             "your/custom/path/{$name}/": ["type:wordpress-theme"]
         }
-    },
+    }
 }
