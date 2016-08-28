@@ -127,8 +127,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 
 #search{width:100%;margin:2vh auto;}
-#search select{width:inherit;margin:1vh auto;}
-#search input[type*='submit']{width:inherit;color:#fff;background-color:#03a9f4;}
+#search select{margin:1vh auto;}
+#search input[type*='submit']{color:#03a9f4;background-color:#fff;border-color:#03a9f4;}
+#search input[type*='submit']:hover{color:#fff;background-color:#03a9f4;}
 /*
     独自要素
 1.マーカー
