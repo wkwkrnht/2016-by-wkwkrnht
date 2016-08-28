@@ -127,7 +127,7 @@ function wkwkrnht_search_form($form){
         <form method="get" action="' . get_bloginfo("url") . '">
             <input name="s" id="s" type="text">'
             . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー選択')
-            . wkwkrnht_search_tag($tags)
+            . wkwkrnht_search_tag()
             . '<input id="submit" type="submit" value="検索">
         </form>
     </div>
@@ -136,7 +136,7 @@ function wkwkrnht_search_form($form){
 }
 add_filter('get_search_form','wkwkrnht_search_form');
 
-function wkwkrnht_search_tag($tags){
+function wkwkrnht_search_tag(){
     $tags = get_tags();?>
     <select name="tag" id="tag">
         <option value="" selected="selected">タグ選択</option>
