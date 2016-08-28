@@ -123,23 +123,22 @@ class disqus_widget extends WP_Widget{
 
 function wpdocs_my_search_form($form){
     /*$tags = get_tags();
-    $echo_tag_form = '
-    <select name="tag" id="tag">
-    <option value="" selected="selected">タグ選択</option>'
+    $echo_tag_form =
     foreach($tags as $tag):?>
         <option value="<?php echo esc_html($tag->slug);?>"><?php echo esc_html($tag->name);?></option>
     <?php endforeach;
-    '</select>
-    ';*/
+    */
     $form = '
     <div id="search">
     <form method="get" action="' . get_bloginfo("url") . '">
-        <p>検索</p>
         <input name="s" id="s" type="text">'
          . wp_dropdown_categories('depth=0&orderby=name&hide_empty=1&show_option_all=カテゴリー選択')
-        //if($tags):
-        //    echo  . $echo_tag_form;
-        //endif;
+        /*if($tags):echo'
+            <select name="tag" id="tag">
+                <option value="" selected="selected">タグ選択</option>'
+                . $echo_tag_form .
+            '</select>';
+        endif;*/
          . '<input id="submit" type="submit" value="検索">
     </form>
     </div>
