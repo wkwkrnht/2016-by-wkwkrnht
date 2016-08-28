@@ -127,7 +127,7 @@ function wkwkrnht_search_form($form){
     <div id="search">
         <form method="get" action="' . get_bloginfo("url") . '">
             <input name="s" id="s" type="text">'
-            . wp_dropdown_categories('depth=0&orderby=name&hide_empty=1&show_option_all=カテゴリー選択')
+            . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー選択')
             . wkwkrnht_search_tag($tags)
             . '<input id="submit" type="submit" value="検索">
         </form>
