@@ -138,7 +138,7 @@ function wpdocs_my_search_form($form){
         <input name="s" id="s" type="text">'
          . wp_dropdown_categories('depth=0&orderby=name&hide_empty=1&show_option_all=カテゴリー選択')
         if($tags):
-             . $echo_tag_form
+            echo  . $echo_tag_form;
         endif;
          . '<input id="submit" type="submit" value="検索">
     </form>
