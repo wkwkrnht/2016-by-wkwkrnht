@@ -116,6 +116,11 @@ class post_comment extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
+class wkwkrnht_search_widget extends WP_Widget{
+    function __construct(){parent::__construct('wkwkrnht_search_widget','wkwkrnht検索',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/wkwkrnht-search-widget.php');$args['after_widget'];}
+}
+
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');$args['after_widget'];}

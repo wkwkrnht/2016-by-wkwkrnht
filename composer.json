@@ -1,0 +1,24 @@
+{
+    "name": "wkwkrnht/2016-by-wkwkrnht",
+    "description": "Wordpress' theme having 1-colum and share button anywhere.",
+    "type": "wordpress-theme",
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "1.0.*",
+        "johnpbloch/wordpress": "*",
+        "aws/aws-sdk-php":"*",
+        "wpackagist-plugin/akismet":"dev-trunk",
+        "wpackagist-plugin/captcha":">=3.9",
+        "wpackagist-theme/hueman":"*"
+    },
+    "extra": {
+        "installer-paths": {
+            "your/custom/path/{$name}/": ["type:wordpress-theme"]
+        }
+    },
+}

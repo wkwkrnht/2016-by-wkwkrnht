@@ -58,7 +58,7 @@ License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
 .pocket{background-color:#ef3f56;}
 .tumblr{background-color:#36465d;}
 
-#main-menu{color:#333;background-color:#fff;}
+#main-menu{padding-top:2vh;background-color:#fff;}
 
 .social-nav{display:block;min-height:4em;width:100%;margin:2vmin auto;}
 .social-nav ul{list-style:none;margin:0 0 -1.6em 0;}
