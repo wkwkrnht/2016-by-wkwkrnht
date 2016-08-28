@@ -130,12 +130,12 @@ function wkwkrnht_search_form($form){
     $form = '
     <div id="search">
         <form method="get" action="' . get_bloginfo("url") . '">
-            <input name="s" id="s" type="text">'
+            <input name="s" id="s" type="text"><br>'
             . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー選択')
             . '<select name="tag" id="tag">
                 <option value="" selected="selected">タグ選択</option>'
                  . $tag_echo
-            . '</select>
+            . '</select><br>
             <input id="submit" type="submit" value="検索">
         </form>
     </div>
