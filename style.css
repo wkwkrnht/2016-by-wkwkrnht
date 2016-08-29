@@ -32,7 +32,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 5.ソーシャルナビゲーション
 6.ウィジェットエリア
 */
-.toggle-zone{height:15vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#03a9f4;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
+.toggle-zone{height:20vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;background-color:#03a9f4;font-family:"FontAwesome";font-size:200%;line-height:15vh;text-align:center;vertical-align:baseline;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;color:#fff;}
 #share-toggle:visited,#share-menu-toggle:visited,#menu-toggle:visited{color:#fff;}
 
