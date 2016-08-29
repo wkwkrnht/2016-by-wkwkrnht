@@ -457,7 +457,7 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-tbody','テーブル(ボディ)','    <tbody>','</tbody>');
         QTags.addButton('qt-tr','テーブル(ライン)','      <tr>','</tr>');
         QTags.addButton('qt-th','テーブル(ヘッド)','           <th>','</th>');
-        QTags.addButton('qt-td','テーブル(項目)','            <td>','</td>');
+        QTags.addButton('qt-td','テーブル(項目)','           <td>','</td>');
 		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
