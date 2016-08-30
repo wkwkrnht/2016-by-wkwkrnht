@@ -39,11 +39,8 @@
     if(is_singular()===true):
         $format = get_post_format();
         if($format==='gallery'):
-            echo'
-            <link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.css">
-            <script src="' . get_stylesheet_directory_uri() . '/inc/baguetteBox/baguetteBox.min.js"></script>
-            <script>baguetteBox.run(".gallery-icon",{captions:function(element){return element.getElementsByTagName("img")[0].alt;},animation:"fadeIn",noScrollbars:true});</script>
-            ';
+            $url = dirname(__FILE__) . '/./inc/baguetteBox.php';
+            include_once $url;
         elseif($format==='link'):
             echo'
             <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>

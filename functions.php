@@ -79,7 +79,7 @@ class wkwkrnht_manth_archive extends WP_Widget{
 
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post-img.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
@@ -164,8 +164,8 @@ add_filter('pre_comment_approved','custom_comment_tags');
 function custom_comment_tags($data){
 	global $allowedtags;
     $allowedtags['style'] = array('class'=>array());
-	$allowedtags['pre'] = array('class'=>array());
-    $allowedtags['code'] = array('class'=>array());
+    $allowedtags['code']  = array('class'=>array());
+    $allowedtags['pre']   = array('class'=>array());
 	return $data;
 }
 
@@ -175,7 +175,7 @@ remove_action('wp_print_styles','print_emoji_styles');
 
 
 add_filter('body_class','add_body_class');
-function add_body_class($classes){if(is_singular()===true):$classes[] = 'singular';else:$classes[] = 'card-list';endif;return $classes;}
+function add_body_class($classes){if(is_singular()===false):$classes[] = 'card-list';endif;return $classes;}
 /*
     メタ情報
 1.アクセス中のURL取得
