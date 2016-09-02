@@ -410,7 +410,7 @@ function custom_oembed_element($code){
 add_filter('embed_handler_html','custom_oembed_element');
 add_filter('embed_oembed_html','custom_oembed_element');
 
-function wkwkrnt_highlight_results($text){
+function wkwkrnht_search_results_highlight($text){
     if(is_search()===true){
         $sr   = get_query_var('s');
         $keys = explode(" ",$sr);
@@ -418,8 +418,8 @@ function wkwkrnt_highlight_results($text){
     }
     return $text;
 }
-add_filter('the_title','wkwkrnht_highlight_results');
-add_filter('the_content','wkwkrnht_highlight_results');
+add_filter('the_title','wkwkrnht_search_results_highlight');
+add_filter('the_content','wkwkrnht_search_results_highlight');
 
 function twtreplace($content){
     $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);
@@ -677,10 +677,6 @@ function my_new_contactmethods($contactmethods){
     $contactmethods['livedoor']='livedoor';
     $contactmethods['wordpress.com']='wordpress.com';
     $contactmethods['wordpress.org']='wordpress.org';
-    $contactmethods['Adsense']='アドセンス';
-    $contactmethods['A8.net']='A8.net';
-    $contactmethods['GoogleAdsense']='GoogleAdsense';
-    $contactmethods['AmazonAdsense']='Amazonアフィリエイト';
     $contactmethods['Amazonlist']='Amazonの欲しいものリスト';
     $contactmethods['Yahooaction']='Yahoo!オークション';
     $contactmethods['Rakuma']='ラクマ';
