@@ -201,6 +201,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main pre{font-family:monospace;font-weight:bold;}
 .article-main blockquote,.article-main q{quotes:none;}
 .article-main blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:1em;border-top:1px solid #bbb;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
+.youtube .article-main{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;}
+iframe .youtube .article-main{position:absolute;top:0;left:0;width:100%;height:100%;}
 
 
 .article-main ul{margin:2em auto;list-style:none;}

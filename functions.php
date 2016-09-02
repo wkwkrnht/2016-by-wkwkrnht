@@ -307,8 +307,9 @@ function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_conte
     ●serach keyword&result
 2.ページネーション
 3.OGP版ブログカード
-4.検索結果をマーカー風にハイライト
-5.@hogehogeをツイッターにリンク
+4.
+5.検索結果をマーカー風にハイライト
+6.@hogehogeをツイッターにリンク
 */
 function wkwkrnht_special_card(){
     $year            = get_first_post_year();
@@ -358,9 +359,9 @@ function wkwkrnht_page_navi(){
 }
 
 function make_ogp_blog_card($url){
-    $ifvar = get_site_transient($url);
-    if($ifvar):
-        $content = $ifvar;
+    $cache = get_site_transient($url);
+    if($cache):
+        $content = $cache;
     else:
         require_once('inc/OpenGraph.php');
     	$ogp = OpenGraph::fetch($url);
@@ -392,7 +393,24 @@ function make_ogp_blog_card($url){
     return $content;
 }
 
-function wps_highlight_results($text){
+function custom_oembed_element($code){
+    if(strpos($code,'twitter.com')!==false){
+        $html = preg_replace('/ class="(.*?)\d+"/','class="$1 tw-align-center"',$html);
+        return $html;
+    }
+    if(strpos($code,'youtu.be')!==false || strpos($code,'youtube.com')!==false){
+        $html = preg_replace("@src=(['\"])?([^'\">\s]*)@","src=$1$2&rel=0",$code);
+        $html = preg_replace('/ width="\d+"/','',$html);
+        $html = preg_replace('/ height="\d+"/','',$html);
+        $html = '<div class="youtube">' . $html . '</div>';
+        return $html;
+    }
+    return $code;
+}
+add_filter('embed_handler_html','custom_oembed_element');
+add_filter('embed_oembed_html','custom_oembed_element');
+
+function wkwkrnt_highlight_results($text){
     if(is_search()===true){
         $sr   = get_query_var('s');
         $keys = explode(" ",$sr);
@@ -400,8 +418,8 @@ function wps_highlight_results($text){
     }
     return $text;
 }
-add_filter('the_title','wps_highlight_results');
-add_filter('the_content','wps_highlight_results');
+add_filter('the_title','wkwkrnht_highlight_results');
+add_filter('the_content','wkwkrnht_highlight_results');
 
 function twtreplace($content){
     $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);
