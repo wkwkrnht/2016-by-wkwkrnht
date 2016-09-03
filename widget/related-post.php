@@ -13,7 +13,7 @@ if($query -> have_posts()):
 	while($query -> have_posts()):$query -> the_post();
 		$cat = get_the_category();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-			<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
+			<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,10,'…');?></h3><br>
 			<span class="related-date">投稿日時:<time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span><br>
 			<span class="related-category">カテゴリー:<?php echo $cat[0]->name;?></span>
 		</a>
@@ -25,7 +25,7 @@ if($query -> have_posts()):
 	$query = new WP_Query($array);
 	while($query -> have_posts()):$query -> the_post();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-			<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
+			<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,10,'…');?></h3><br>
 			<span class="related-date"><i class="fa fa-clock-o" aria-hidden="true"></i> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span><br>
 			<span class="related-category">カテゴリー:<?php echo $cat[0]->name;?></span>
 		</a>
