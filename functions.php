@@ -135,7 +135,7 @@ function wkwkrnht_search_form($form){
             . '<select name="tag" id="tag">
                 <option value="" selected="selected">タグ選択</option>'
                  . $tag_echo
-            . '</select><br>
+            . '</select>
             <input id="submit" type="submit" value="検索">
         </form>
     </div>
