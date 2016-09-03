@@ -15,7 +15,7 @@ if($query -> have_posts()):
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
 			<?php the_title('<h3 class="related-title">','</h3>');?><br>
 			<span class="related-date"><i class="fa fa-clock-o" aria-hidden="true"></i> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span><br>
-			<span class="related-category">カテゴリー:<?php echo'<a href="' . get_category_link($cat[0]->term_id) . '">' . $cat[0]->name . '</a>';?></span>
+			<span class="related-category">カテゴリー:<?php echo $cat[0]->name;?></span>
 		</a>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>
@@ -26,7 +26,8 @@ if($query -> have_posts()):
 	while($query -> have_posts()):$query -> the_post();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
 			<?php the_title('<h3 class="related-title">','</h3>');?><br>
-			<span class="related-date"><i class="fa fa-clock-o" aria-hidden="true"></i> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span>
+			<span class="related-date"><i class="fa fa-clock-o" aria-hidden="true"></i> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span><br>
+			<span class="related-category">カテゴリー:<?php echo $cat[0]->name;?></span>
 		</a>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>
