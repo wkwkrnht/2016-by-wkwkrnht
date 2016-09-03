@@ -1,7 +1,7 @@
 <style>
 	.widget_related_posts{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:20vw;width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 	.widget_related_posts > *{-webkit-transform:translateZ(0px);}
-	.widget_related_posts .related-wrapper{display:block;height:15vw;width:20vw;border-radius:3vmin;margin:3vw 3vmin;box-shadow:0 0 2vmin rgba(0,0,0,.3);background-color:#fff;color:#333;text-decoration:none;}
+	.widget_related_posts .related-wrapper{display:block;height:15vw;width:20vw;border-radius:3vmin;padding:1em;margin:2vw 3vw;box-shadow:0 0 2vmin rgba(0,0,0,.3);background-color:#fff;color:#333;text-decoration:none;}
 	.widget_related_posts .related-wrapper:visited{color:#333;}
 	.widget_related_posts .related-title{box-shadow:0 3px 6px rgba(0,0,0,.1);background-color:#03a9f4;font-size:2rem;color:#fff;text-align:center;vertical-align:middle;}
 	.widget_related_posts .related-time,.widget_related_posts .related-category{font-size:1.6rem;text-align:left;}
@@ -14,7 +14,7 @@ if($query -> have_posts()):
 		$cat = get_the_category();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
 			<?php the_title('<h3 class="related-title">','</h3>');?><br>
-			<span class="related-date"><i class="fa fa-clock-o" aria-hidden="true"></i> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span><br>
+			<span class="related-date">投稿日時:<time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time></span><br>
 			<span class="related-category">カテゴリー:<?php echo $cat[0]->name;?></span>
 		</a>
 	<?php endwhile;?>
