@@ -81,10 +81,11 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .social-nav a[href*="push7.jp"]::before{content:'\f0e7';}
 
 .main-nav ul{list-style-type:none;}
-.main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #ddd;}
+.main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;}
 
 .widget-area{list-style:none;}
 .widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.widget-area .widget{max-width:90%;margin:2vh auto;}
 /*
 	ウィジェットカスタマイズ
 1.タグクラウド
@@ -97,7 +98,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid #aaa;border-radius:5px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:1.6rem;text-decoration:none;-webkit-transition:.2s;transition:.2s;}
 
 .widget_recent_entries ul{list-style-type:none;}
-.widget_recent_entries ul li{border-right:solid 1px #999;border-bottom:solid 1px #999;}
+.widget_recent_entries ul li{border-bottom:1px dashed #aaa;}
 .widget_recent_entries ul li a{text-decoration:none;color:#333;font-size:1.6rem;}
 .widget_recent_entries ul li span{font-size:calc(1.6rem * 0.8);}
 
@@ -108,10 +109,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
 .addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 
-.widget_search{width:80%;margin:2vh auto;}
-#search{width:100%;}
 #search select{margin:1vh auto;}
-#search input[type*='submit']{color:#03a9f4;background-color:#fff;border-color:#03a9f4;}
+#search input[type*='submit']{border-radius:5px;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
 #search input[type*='submit']:hover{color:#fff;background-color:#03a9f4;}
 /*
     独自要素
