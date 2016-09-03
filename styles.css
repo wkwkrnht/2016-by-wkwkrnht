@@ -84,8 +84,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;}
 
 .widget-area{list-style:none;}
-.widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-.widget-area .widget{max-width:90%;margin:2vh auto;}
+.widget-area h2{min-height:45px;max-width:96%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.widget-area .widget{max-width:94%;margin:2vh auto;}
 /*
 	ウィジェットカスタマイズ
 1.タグクラウド
