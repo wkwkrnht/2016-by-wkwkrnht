@@ -1,7 +1,7 @@
 <style>
 	.widget_related_posts{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
 	.widget_related_posts > *{-webkit-transform:translateZ(0px);}
-	.related-wrapper{display:block;height:20vw;width:35vw;border-radius:2vmin;position:relative;margin:1vmin 3vmin;box-shadow:0 0 1vmin rgba(0,0,0,.3);background-color:#fff;color:#fff;text-decoration:none;text-align:center;}
+	.related-wrapper{display:block;height:20vw;width:35vw;border-radius:2vmin;position:relative;margin:1vmin 3vmin;box-shadow:0 0 2vmin rgba(0,0,0,.3);background-color:#fff;color:#fff;text-decoration:none;text-align:center;}
 	.related-wrapper:visited{color:#fff;}
 	.related-thumb{height:20vw;width:35vw;color:#333;}
 	.related-title{height:10vmin;width:35vw;position:absolute;bottom:0;font-size:1.8rem;vertical-align:middle;background-color:rgba(0,0,0,.4);}
