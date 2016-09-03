@@ -1,10 +1,11 @@
-<?php if(post_password_required()){return;}if(is_singular()){wp_enqueue_script('comment-reply');}?>
+<?php if(post_password_required()){return;}elseif(is_singular()){wp_enqueue_script('comment-reply');}?>
 <style>
     .comment{min-height:10vmin;width:90%;margin:5vmin auto;padding:4vmin 3vmin;border-radius:5px;font-size:1.8rem;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
     .comment-title{height:10%;width:80%;margin:0 auto;font-size:2rem;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 15px rgba(0,0,0,.3);}
     .comment-list{list-style-type:none;}
     .comment-list li{box-shadow:0 0 0 rgba(0,0,0,0);}
     .comment-respond{width:80%;margin:0 auto;}
+    .comment-form{max-width:100%;}
     .comment-form-comment label{display:none;}
     .comment-form-comment textarea{max-width:inherit;}
 </style>
