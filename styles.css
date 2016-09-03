@@ -81,6 +81,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .social-nav a[href*="push7.jp"]::before{content:'\f0e7';}
 
 .main-nav ul{list-style-type:none;}
+.main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #ddd;}
 
 .widget-area{list-style:none;}
 .widget-area h2{min-height:45px;max-width:94%;margin:10px auto;line-height:45px;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
@@ -107,7 +108,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
 .addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 
-#search{width:100%;margin:2vh auto;}
+.widget_search{width:80%;margin:2vh auto;}
+#search{width:100%;}
 #search select{margin:1vh auto;}
 #search input[type*='submit']{color:#03a9f4;background-color:#fff;border-color:#03a9f4;}
 #search input[type*='submit']:hover{color:#fff;background-color:#03a9f4;}

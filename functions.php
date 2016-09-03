@@ -175,7 +175,14 @@ remove_action('wp_print_styles','print_emoji_styles');
 
 
 add_filter('body_class','add_body_class');
-function add_body_class($classes){if(is_singular()===false):$classes[] = 'card-list';endif;return $classes;}
+function add_body_class($classes){
+    if(is_singular()===true):
+        foreach((get_the_category($post->ID)) as $category){$classes[] = 'categoryid-' . $category->cat_ID;}
+    else:
+        $classes[] = 'card-list';
+    endif;
+    return $classes;
+}
 /*
     メタ情報
 1.アクセス中のURL取得
@@ -440,11 +447,13 @@ function html_encode($args=array(),$content=''){return htmlspecialchars($content
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
+function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
+add_shortcode('nav','navigation_in_article');
 /*
     投稿画面カスタマイズ
 1.カテゴリーフィルター&抜粋制限
@@ -484,6 +493,7 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-ipad','iPadフレーム','<div class="cd-ipad"><div class="cd-body"><div class="cd-camera"></div><div class="cd-home"></div><div class="cd-screen cd-smart-loader"><img src="http://attimo-ltd.com/wp-content/uploads/2014/05/iPad-screenshot.jpg" alt="iPad-スクリーン">','</div></div></div>');
         QTags.addButton('qt-applewatch','Applewatchフレーム','<div class="cd-watch"><div class="cd-bracket"></div><div class="cd-top-band"></div><div class="cd-bottom-band"></div><div class="cd-body"></div><div class="cd-crown"></div><div class="cd-button"></div><div class="cd-screen cd-smart-loader cd-screen-scrolling"><img src="','" alt="Applewatch-スクリーン"></div></div>');
         QTags.addButton('qt-mac','macフレーム','<div class="cd-mac"><div class="cd-top"></div><div class="cd-bottom"></div><div class="cd-camera"></div><div class="cd-notch"></div><div class="cd-screen cd-smart-loader" data-load-in-speed="1000"><img src="http://i.imgur.com/lgCj5En.jpg"><img src="http://haverzine.com/wp-content/uploads/2014/06/launchpad.png"><img src="https://d13yacurqjgara.cloudfront.net/users/31692/screenshots/1548482/attachments/236312/Fullscreen.png">','</div></div>');
+        QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
         QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
