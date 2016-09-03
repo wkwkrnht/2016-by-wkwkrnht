@@ -110,8 +110,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 
 #search input[type*='text']{width:98%;}
-#search select{width:40%;margin:1vh auto;}
-#search input[type*='submit']{width:13%;margin:1vh auto;border-radius:5px;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
+#search select{width:40%;margin:1vh 0;margin-right:3.5%;}
+#search input[type*='submit']{width:13%;margin:1vh 0;border-radius:5px;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
 #search input[type*='submit']:hover{color:#fff;background-color:#03a9f4;}
 /*
     独自要素
