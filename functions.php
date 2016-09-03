@@ -177,6 +177,7 @@ remove_action('wp_print_styles','print_emoji_styles');
 add_filter('body_class','add_body_class');
 function add_body_class($classes){
     if(is_singular()===true):
+        global $post;
         foreach((get_the_category($post->ID)) as $category){$classes[] = 'categoryid-' . $category->cat_ID;}
     else:
         $classes[] = 'card-list';
