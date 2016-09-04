@@ -47,7 +47,7 @@
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
         endif;
     endif;?>
-    <script>(function(){var selector = document.getElementsByClassName("newwindow");for(var i = 0; i < shareButton.length; i++){selector[i].addEventListener("click",function(e){e.preventDefault();window.open(this.href,"SNS_window","width=960,height=540,menubar=no,toolbar=no,scrollbars=yes");},false);}})()</script>
+    <script>(function(){var src = document.getElementsByClassName("newwindow");for(var i = 0; i < shareButton.length; i++){src[i].addEventListener("click",function(e){e.preventDefault();window.open(this.href,"SNS_window","width=960,height=540,menubar=no,toolbar=no,scrollbars=yes");},false);}})()</script>
     <?php wp_footer();?>
 </body>
 </html>
