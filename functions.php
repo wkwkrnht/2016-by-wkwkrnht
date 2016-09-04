@@ -342,7 +342,7 @@ function wkwkrnht_special_card(){
         $url = dirname(__FILE__) . '/./widget/author-bio.php';
         include_once $url;
     else:
-        echo'<div class="card info-card">';
+        echo'<header class="card info-card">';
             if(is_category()===true):
                 echo'<h1 class="site-title">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
             elseif(is_tag()===true):
@@ -357,7 +357,9 @@ function wkwkrnht_special_card(){
             else:
                 echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
             endif;
-        echo'<br><span class="copyright">&copy;' . $year . '&nbsp;' . $blogname . '</span></div>';
+        echo'<br>
+            <span class="copyright">&copy;' . $year . '&nbsp;' . $blogname . '</span>
+        </header>';
     endif;
 }
 
