@@ -1,5 +1,5 @@
 <style>
-    .widget_wkwkrnht_manth_archive{margin:5vh 0;}
+    .widget_wkwkrnht_manth_archive{max-width:80%;margin:5vh auto;}
     .widget_wkwkrnht_manth_archive ul{list-style:none;}
     .widget_wkwkrnht_manth_archive .list-year{margin:1em auto;background-color:#03a9f4;border:1px solid #03a9f4;}
     .widget_wkwkrnht_manth_archive .list-year h3{text-align:center;}
