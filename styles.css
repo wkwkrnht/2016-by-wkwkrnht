@@ -182,6 +182,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main{font-size:1.6rem;}
 .article-main p{padding:5vmin 8vmin 0;}
 .article-main a{text-decoration:none;border-bottom:0;}
+.article-main a[href=*.png],.article-main a[href=*.jpg],.article-main a[href=*.jpeg]{display:block;margin:2vh auto;}
 
 
 .article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:2vmin auto;line-height:45px;text-align:center;}
@@ -194,7 +195,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
 
-.article-main img{display:block;width:100%;min-height:50px;height:auto;position:relative;line-height:2;text-align:center;}
+.article-main img{display:block;width:100%;min-height:50px;height:auto;position:relative;margin:3vh auto;line-height:2;text-align:center;}
 .article-main img::before{content: "";display:block;height:calc(100% + 2em);width:100%;border-radius:3vmin;position:absolute;top:-2em;left:0;border:1vmin dashed #ddd;background-color:#f1f1f1;}
 .article-main img::after{content: "\f127" "この画像が読み込めませんでした。" attr(alt);display:block;width:100%;position:absolute;top:1em;left:0;color:rgb(100,100,100);font-size:1.8rem;font-family:"FontAwesome";font-style:normal;text-align:center;}
 
