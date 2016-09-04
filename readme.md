@@ -23,9 +23,10 @@
 * すっきりとしたカードデザイン
 * いつでもどこでも2クリック(タップ)でメニューアクセス or SNS共有
 * メニュー内と記事下にウィジェットスペース確保
-* メニュー内にメインメニューとソーシャルメニュー、管理者向けメニューの3種を用意
+* メニュー内にメインメニューとソーシャルメニューの2種を用意
 * ソーシャルメニューはリンク先に応じて、自動的にアイコンフォントで装飾。その代わりに、リンクテキストは表示されません。(約40種対応)
 * 前後記事ナビでは、アイキャッチも表示
+* 関連記事ウィジェットは画像有り●無しが選べる
 * コメント欄も選択可(WP独自 or Disqus or 無し)
 
 ###サイト管理者向け
@@ -45,35 +46,27 @@
 
 * parts (素材置場)
 
-    * baguetteBox
-
-        * baguetteBox.min.js
-        * baguetteBox.min.css
-
     * fontawesome
 
-        * fontawesome.min.css (アイコンフォント用スタイルシート)
-        * fonts (フォント)
+        * fontawesome-webfont.svg
+        * fontawesome-webfont.ttf
+        * fontawesome-webfont.woff
+        * fontawesome-webfont.woff2
+        * fontawesome.otf
 
-            * fontawesome-webfont.svg
-            * fontawesome-webfont.ttf
-            * fontawesome-webfont.woff
-            * fontawesome-webfont.woff2
-            * fontawesome.otf
-
-
-    * mobile.css (モバイル機器向けスタイルシート)
-    * pc.css (PC向けスタイルシート)
+    * baguetteBox.php(LightBox風スクリプト)
     * OpenGraph.php (OGP解読スクリプト)
-    * no-img.png (画像が404)
+    * no-img.png (404な画像)
 
 * widget (ウィジェット)
 
     * author-bio.php (投稿者プロフィール)
     * comment.php (コメント)
     * post-nav.php (前後記事ナビ)
-    * related.php (関連記事)
+    * related-posts.php (関連記事)
+    * related-posts-img.php (画像付関連記事)
 
+* 404.php (404テンプレート)
 * footer.php (フッターテンプレート)
 * functions.php (関数ずらずら)
 * header.php (ヘッダーテンプレート)
@@ -83,4 +76,5 @@
 * readme.txt (このファイルのWP向け)
 * screenshot.png (スクリーンショット)
 * singular.php (単独ページ向けテンプレート)
-* style.css (メインスタイルシート)
+* style.css (情報記述用スタイルシート)
+* styles.css (メインスタイルシート)
