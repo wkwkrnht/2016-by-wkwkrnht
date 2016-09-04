@@ -17,7 +17,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;color:#fff;}
 #share-toggle:visited,#share-menu-toggle:visited,#menu-toggle:visited{color:#fff;}
 
-#share-menu,#main-menu{height:74vh;width:86vw;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;overflow-x:hidden;overflow-y:auto;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;overflow-x:hidden;overflow-y:auto;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
 .open{visibility:visible;}
 .close{visibility:hidden;}
 
@@ -45,40 +45,40 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .social-nav a[href*="amazon.co.jp"]::before{content:'\f270';}
 .social-nav a[href*="codepen.io"]::before{content:"\f1cb";color:#ffc700;}
 .social-nav a[href*="digg.com"]::before{content:'\f1a6';}
-.social-nav a[href*="dribbble.com"]::before{content:'\f17d';}
+.social-nav a[href*="dribbble.com"]::before{content:'\f17d';color:#ea4c89;}
 .social-nav a[href*="dropbox.com"]::before{content:"\f16b";color:#00b8ff;}
 .social-nav a[href*="facebook.com"]::before{content:"\f230";color:#0033ff;}
 .social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:'\f09e';color:#2aff00;}
 .social-nav a[href*="feedly.com"]::before{content:'\f143';color:#2aff00;transform: rotate(-15deg);}
-.social-nav a[href*="flickr.com"]::before{content:'\f16e';}
-.social-nav a[href*="foursquare.com"]::before{content:'\f180';}
+.social-nav a[href*="flickr.com"]::before{content:'\f16e';color:#ff0084;}
+.social-nav a[href*="foursquare.com"]::before{content:'\f180';color:#f94877;}
 .social-nav a[href*="plus.google.com"]::before{content:"\f0d5";color:#ff0033;}
-.social-nav a[href*="github.com"]::before{content:'\f09b';}
-.social-nav a[href*="instagram.com"]::before{content:'\f16d';}
+.social-nav a[href*="goo.gl/forms/"]::before{content:'\f128';}
+.social-nav a[href*="github.com"]::before{content:'\f09b';color:#0033ff;}
+.social-nav a[href*="instagram.com"]::before{content:'\f16d';color:#3f729b;}
 .social-nav a[href*="linkedin.com"]::before{content:"\f0e1";color:#0077b5;}
 .social-nav a[href*="mailto:"]::before{content:'\f0e0';}
 .social-nav a[href*="nicovideo.jp"]::before{content:'\f26c';}
 .social-nav a[href*="pinterest.com"]::before{content:"\f231";color:#ff0033;}
 .social-nav a[href*="getpocket.com"]::before{content:"\f265";color:#ee4056;}
 .social-nav a[href*="polldaddy.com"]:before{content:'\f200';}
-.social-nav a[href*="reddit.com"]::before{content:'\f1a1';}
-.social-nav a[href*="stumbleupon.com"]::before{content:'\f1a4';}
+.social-nav a[href*="push.dog"]::before,.social-nav a[href*="bpush.net"]::before,.social-nav a[href*="pushnate.com"]::before,.social-nav a[href*="pushsan.com"]::before,.social-nav a[href*="onesignal.com"]::before{content:'\f0f3';}
+.social-nav a[href*="push7.jp"]::before{content:'\f0e7';color:#fffc00;}
+.social-nav a[href*="reddit.com"]::before{content:'\f1a1';color:#ff5700;}
+.social-nav a[href*="skype.com"]::before{content:'\f17e';color:#00AFF0;}
+.social-nav a[href*="stumbleupon.com"]::before{content:'\f1a4';color:#eb4924;}
+.social-nav a[href*="spotify.com"]::before{content:'\f1bc';}
+.social-nav a[href*="soundcloud.com"]::before{content:'\f1be';color:#ffcc00;}
 .social-nav a[href*="tumblr.com"]::before{content:"\f173";color:#2c4762;}
+.social-nav a[href*="twitch.tv"]::before{content:'\f1e8';color:#0033ff;}
 .social-nav a[href*="twitter.com"]::before{content:"\f099";color:#00b8ff;}
 .social-nav a[href*="twilog.org"]::before{content:"\f099";color:#00b8ff;}
 .social-nav a[href*="twilog.org"]::after{content:"\f022";font-family:"FontAwesome";font-size:16px;position:relative;right:1em;bottom:0;}
 .social-nav a[href*="twipf.jp"]::before{content:"\f099";color:#00b8ff;}
 .social-nav a[href*="twipf.jp"]::after{content:"\f007";font-family:"FontAwesome";font-size:16px;position:relative;right:0;bottom:0;}
-.social-nav a[href*="vimeo.com"]::before{content:'\f27d';}
+.social-nav a[href*="vimeo.com"]::before{content:'\f27d';color:#1ab7ea;}
 .social-nav a[href*="youtube.com"]::before{content:'\f167';color:#ff0033;}
-.social-nav a[href*="spotify.com"]::before{content:'\f1bc';}
-.social-nav a[href*="soundcloud.com"]::before{content:'\f1be';color:#ffcc00;}
-.social-nav a[href*="twitch.tv"]::before{content:'\f1e8';}
-.social-nav a[href*="goo.gl/forms/"]::before{content:'\f128';}
-.social-nav a[href*="skype.com"]::before{content:'\f17e';}
-.social-nav a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:'\f19a';color:#0033ff;}
-.social-nav a[href*="push.dog"]::before,.social-nav a[href*="bpush.net"]::before,.social-nav a[href*="pushnate.com"]::before,.social-nav a[href*="pushsan.com"]::before,.social-nav a[href*="onesignal.com"]::before{content:'\f0f3';}
-.social-nav a[href*="push7.jp"]::before{content:'\f0e7';}
+.social-nav a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:'\f19a';color:#21759b;}
 
 .main-nav ul{list-style-type:none;}
 .main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;}
@@ -121,7 +121,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 4.補足情報
 5.検索風表示
 */
-.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
+.marker{background-color:linear-gradient(transparent 30%,#fffc00 30%);}
 
 .ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
@@ -161,12 +161,13 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 1.ヘッダー
 2.メイン
 3.見出し
-4.チャットフォーマット
+4.画像
 5.引用系
 6.リスト
 7.テーブル
-8.独自要素
-9.codex
+8.チャットフォーマット
+9.独自要素
+10.codex
 */
 .article-header{width:92vw;margin:5vmin auto;}
 .article-eyecatch{max-width:92vw;text-align:center;vertical-align:middle;}
@@ -193,9 +194,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
 
-.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5px;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
-.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
-.format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
+.article-main img{display:block;width:100%;min-height:50px;height:auto;position:relative;line-height:2;text-align:center;}
+.article-main img::before{content: "";display:block;height:calc(100% + 2em);width:100%;border-radius:3vmin;position:absolute;top:-2em;left:0;border:1vmin dashed #ddd;background-color:#f1f1f1;}
+.article-main img::after{content: "\f127" "この画像が読み込めませんでした。" attr(alt);display:block;width:100%;position:absolute;top:1em;left:0;color:rgb(100,100,100);font-size:1.8rem;font-family:"FontAwesome";font-style:normal;text-align:center;}
 
 
 .article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;}
@@ -225,6 +226,13 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main .ogp-blogcard a:hover::before{opacity:0;}
 .article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name{color:#333;}
 .article-main .ogp-blogcard-title{background-color:transparent;box-shadow:none;}
+
+
+
+
+.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5px;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
+.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
+.format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
 
 
 .sticky,.gallery-caption,.bypostauthor{}
