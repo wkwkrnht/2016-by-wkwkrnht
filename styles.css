@@ -4,6 +4,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 :root{font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 #site-main{width:100%;padding-bottom:18vh;}
 #site-main > *{max-width:100%;}
+.close{visibility:hidden;}
+.open{visibility:visible;}
 /*
 	メニュー
 1.フッターのメニュー展開用ボタン
@@ -19,10 +21,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 #share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;overflow-x:hidden;overflow-y:auto;position:fixed;top:4vh;left:0;z-index:111;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-menu ul,#main-menu ul{width:80vw;}
-#share-menu .close-button,#main-menu .close-button{display:block;height:73vh;width:6vw;padding:0;margin:0;position:fixed;right:7vw;z-index:111;background-color:#fff;}
-#share-menu .close-button a,#main-menu .close-button a{padding:1em 0;font-size:3vw;color:red;text-decoration:none;text-align:right;}
-.open{visibility:visible;}
-.close{visibility:hidden;}
+#share-menu .close-button,#main-menu .close-button{display:block;height:73vh;width:6vw;padding:0;margin:0;position:fixed;right:7vw;z-index:111;font-size:3vw;color:red;text-decoration:none;text-align:center;}
+#share-menu .close-button{background-color:#fff;}
 
 #share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
 #share-menu ul li{width:50%;height:25vh;text-align:center;}
