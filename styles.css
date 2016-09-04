@@ -17,8 +17,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;color:#fff;}
 #share-toggle:visited,#share-menu-toggle:visited,#menu-toggle:visited{color:#fff;}
 
-#share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;overflow:hidden;position:fixed;top:4vh;left:0;z-index:111;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
-#share-menu ul,#main-menu ul{width:80vw;overflow-y:auto;position:relative;left:0;}
+#share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;overflow-x:hidden;overflow-y:auto;position:fixed;top:4vh;left:0;z-index:111;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu ul,#main-menu ul{width:80vw;position:relative;left:0;}
 #share-menu .close-button,#main-menu .close-button{display:block;height:73vh;width:6vw;position:relative;right:0;font-size:3vw;color:red;background-color:#fff;}
 .open{visibility:visible;}
 .close{visibility:hidden;}

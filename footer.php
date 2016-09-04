@@ -2,10 +2,10 @@
     <footer class="toggle-zone">
         <a href="#" id="share-toggle" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
         <a href="#" id="menu-toggle" title="メニューボタン" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-3x"></i></a>
-        <a href="#" id="share-menu-toggle" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
+        <a href="#" id="share-menu" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
     </footer>
     <nav id="share-menu" class="close">
-        <a class="close-button">×</a>
+        <a href="#" class="close-button" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');">×</a>
         <ul>
 		    <li class="tweet"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');?><?php if(get_twitter_acount()!==null):echo '&amp;via=' . get_twitter_acount();endif;?>" target="_blank"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
             <li class="fb-like"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank"><i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i></a></li>
@@ -20,7 +20,7 @@
         </ul>
     </nav>
     <div id="main-menu" class="close">
-        <a class="close-button">×</a>
+        <a href="#" class="close-button" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');">×</a>
 	    <?php if(has_nav_menu('social')):?>
             <nav class="social-nav" role="navigation">
                 <?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
