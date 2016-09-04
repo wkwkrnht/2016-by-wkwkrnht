@@ -2,7 +2,7 @@
     <footer class="toggle-zone">
         <a href="#" id="share-toggle" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
         <a href="#" id="menu-toggle" title="メニューボタン" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-3x"></i></a>
-        <a href="#" id="share-menu" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
+        <a href="#" id="share-menu-toggle" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
     </footer>
     <nav id="share-menu" class="close">
         <a href="#" class="close-button" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');">×</a>
