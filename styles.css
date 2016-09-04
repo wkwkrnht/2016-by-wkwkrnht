@@ -18,8 +18,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 #share-toggle:visited,#share-menu-toggle:visited,#menu-toggle:visited{color:#fff;}
 
 #share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;overflow-x:hidden;overflow-y:auto;position:fixed;top:4vh;left:0;z-index:111;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
-#share-menu ul,#main-menu ul{width:80vw;position:relative;left:0;}
-#share-menu .close-button,#main-menu .close-button{display:inline-block;height:73vh;width:6vw;padding:0;margin:0;position:relative;right:0;font-size:3vw;background-color:#fff;color:red;text-decoration:none;}
+#share-menu ul,#main-menu ul{width:80vw;position:absolute;top:0;left:0;}
+#share-menu .close-button,#main-menu .close-button{display:inline-block;height:73vh;width:6vw;padding:0;margin:0;position:absolute;top:0;right:0;font-size:3vw;background-color:#fff;color:red;text-decoration:none;}
 .open{visibility:visible;}
 .close{visibility:hidden;}
 
