@@ -17,7 +17,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 #share-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:inherit;width:33%;color:#fff;}
 #share-toggle:visited,#share-menu-toggle:visited,#menu-toggle:visited{color:#fff;}
 
-#share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;overflow-x:hidden;overflow-y:auto;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;overflow:hidden;position:fixed;top:4vh;left:0;z-index:111;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#share-menu ul,#main-menu ul{width:80vw;overflow-y:auto;position:relative;left:0;}
+#share-menu .close-button,#main-menu .close-button{display:block;height:73vh;width:6vw;position:relative;right:0;font-size:3vw;color:red;background-color:#fff;}
 .open{visibility:visible;}
 .close{visibility:hidden;}
 
@@ -27,7 +29,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .tweet{background-color:#55acee;}
 .fb-like{background-color:#3b5998;}
 .line{background-color:#6cc655;}
-.reddit{background-color:#ffcc00;}
+.reddit{background-color:#ff5700;}
 .g-plus{background-color:#dc4e41;}
 .linkedin{background-color:#36465d;}
 .pinterest{background-color:#bd081c;}
@@ -65,7 +67,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .social-nav a[href*="push.dog"]::before,.social-nav a[href*="bpush.net"]::before,.social-nav a[href*="pushnate.com"]::before,.social-nav a[href*="pushsan.com"]::before,.social-nav a[href*="onesignal.com"]::before{content:'\f0f3';}
 .social-nav a[href*="push7.jp"]::before{content:'\f0e7';color:#fffc00;}
 .social-nav a[href*="reddit.com"]::before{content:'\f1a1';color:#ff5700;}
-.social-nav a[href*="skype.com"]::before{content:'\f17e';color:#00AFF0;}
+.social-nav a[href*="skype.com"]::before{content:'\f17e';color:#00aff0;}
 .social-nav a[href*="stumbleupon.com"]::before{content:'\f1a4';color:#eb4924;}
 .social-nav a[href*="spotify.com"]::before{content:'\f1bc';}
 .social-nav a[href*="soundcloud.com"]::before{content:'\f1be';color:#ffcc00;}
