@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width,<?php require_once('inc/if-ua.php');$ua = new UserAgent();if($ua->ua==='android'){echo'target-densitydpi=device-dpi,';}?>initial-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="HandheldFriendly" content="true">
 	<meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
