@@ -175,7 +175,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-header{width:92vw;margin:5vh auto;}
 .article-eyecatch{max-width:92vw;text-align:center;vertical-align:middle;}
 .article-meta{min-height:23vh;width:92vw;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
-.article-date{display:block;min-height:23vh;height:inherit;width:30%;float:left;background-color:#03a9f4;color:#fff;font-size:2.3rem;line-height:23vh;}
+.article-date{display:block;max-height:100%;min-height:23vh;width:30%;float:left;background-color:#03a9f4;color:#fff;font-size:2.3rem;line-height:23vh;}
 .article-title{font-size:2rem;}
 .bread-sp{margin:0 .5em;}
 .article-tag{padding:0;margin:3vmin;}
