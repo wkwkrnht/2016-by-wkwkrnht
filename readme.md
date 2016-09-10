@@ -6,9 +6,9 @@
 ##使用ライブラリ
 1.[normalize.css](https://github.com/necolas/normalize.css) | v4.1.1 | MIT License
 2.[Font Awesome](http://fontawesome.io) | 4.6.3 | @davegandy | ([License](http://fontawesome.io/license) (Font: SIL OFL 1.1, CSS: MIT License))
-3.[CSSDevices](http://cssdevices.io) | v2.2.0 | MIT license | Maintained by Stuart Yamartino
-4.[baguetteBox.js](https://github.com/feimosi/baguetteBox.js) | 1.8.0 | MIT license | feimosi
-5.[OpenGraph.php](https://github.com/scottmac/opengraph/) | Apache License, Version 2.0 | Scott MacVicar
+3.[baguetteBox.js](https://github.com/feimosi/baguetteBox.js) | 1.8.0 | MIT license | feimosi
+4.[OpenGraph.php](https://github.com/scottmac/opengraph/) | Apache License, Version 2.0 | Scott MacVicar
+5.
 
 ##特徴
 

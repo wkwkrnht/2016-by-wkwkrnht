@@ -1,9 +1,9 @@
     使用ライブラリ
 1.normalize.css | v4.1.1 | MIT License | https://github.com/necolas/normalize.css
 2.Font Awesome  4.6.3 | @davegandy - http://fontawesome.io | License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
-3.CSSDevices | v2.2.0 | MIT license | Maintained by Stuart Yamartino | http://cssdevices.io
-4.baguetteBox.js | 1.8.0 | MIT license | feimosi | https://github.com/feimosi/baguetteBox.js
-5.OpenGraph.php | Apache License, Version 2.0 | Scott MacVicar | https://github.com/scottmac/opengraph/
+3.baguetteBox.js | 1.8.0 | MIT license | feimosi | https://github.com/feimosi/baguetteBox.js
+4.OpenGraph.php | Apache License, Version 2.0 | Scott MacVicar | https://github.com/scottmac/opengraph/
+5.
 
 
     特徴
