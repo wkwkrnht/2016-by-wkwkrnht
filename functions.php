@@ -169,7 +169,7 @@ function my_custom_meta_widget(){ ?>
 }
 
 function autoblank($text){
-	$return = str_replace('<a','<a target="_blank"',$text);
+	$return = str_replace('<a','<a target="_blank" rel="noopener"',$text);
 	return $return;
 }
 add_filter('comment_text','autoblank');
@@ -215,7 +215,7 @@ function add_body_class($classes){
     ●yes_image
     ●no_image
     ●meta_image
-    ●eyecatch
+    ●wkwkrnht_eyecatch
 7.Twitterアカウント判別
 8.Alt属性がないIMGタグにalt=""を追加する
 9.続き物ページのメタ表示最適化
@@ -330,9 +330,11 @@ function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_conte
     ●serach keyword&result
 2.ページネーション
 3.OGP版ブログカード
-4.
+4.oEmbedコンテンツの装飾
 5.検索結果をマーカー風にハイライト
-6.@hogehogeをツイッターにリンク
+6.コンテンツ本文に装飾
+    ●@hogehogeをツイッターにリンク
+    ●aタグでtarget="_blank"指定時に、rel="noopener"追加
 */
 function wkwkrnht_special_card(){
     $year            = get_first_post_year();
@@ -446,12 +448,13 @@ function wkwkrnht_search_results_highlight($text){
 add_filter('the_title','wkwkrnht_search_results_highlight');
 add_filter('the_content','wkwkrnht_search_results_highlight');
 
-function twtreplace($content){
-    $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);
+function wkwkrnht_replace($content){
+    $a_replace = preg_replace('/<a href="(.*?)" target="_blank"/',"/<a href=\"$1\" target=\"_blank\" rel=\"noopener\"/",$content);
+    $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$a_replace);
     return $twtreplace;
 }
-add_filter('the_content','twtreplace');
-add_filter('comment_text','twtreplace');
+add_filter('the_content','wkwkrnht_replace');
+add_filter('comment_text','wkwkrnht_replace');
 /*
     ショートコード
 1.カスタムCSS
