@@ -374,18 +374,20 @@ function wkwkrnht_page_navi(){
     global $wp_query;
     $big = 999999999;
     $page_format = paginate_links(array(
-        'base'=>str_replace($big,'%#%',esc_url(get_pagenum_link($big))),
-        'format'=>'/page/%#%',
-        'current'=>max(1,get_query_var('paged')),
-        'total'=>$wp_query->max_num_pages,
-        'prev_next'=>True,
-		'prev_text'=>'<',
-		'next_text'=>'>',
-		'type'=>'array'
+        'base'      => str_replace($big,'%#%',esc_url(get_pagenum_link($big))),
+        'format'    => '/page/%#%',
+        'current'   => max(1,get_query_var('paged')),
+        'total'     => $wp_query->max_num_pages,
+        'prev_next' => True,
+		'prev_text' => '<',
+		'next_text' => '>',
+		'type'      => 'array'
     ));
     if(is_array($page_format)){
+        echo'<ul class="page-nation">';
 		$paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
 		foreach($page_format as $page){if($page===$paged){echo "<li class='current'>$page</li>";}else{echo "<li>$page</li>";}}
+        echo'</ul>';
 	}
 	wp_reset_query();
 }

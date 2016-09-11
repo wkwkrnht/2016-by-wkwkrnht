@@ -12,7 +12,5 @@
 		    </section>
 		<?php endwhile;endif;?>
 	</div>
-	<ul class="page-nation">
-		<?php wkwkrnht_page_navi();?>
-	</ul>
+	<?php wkwkrnht_page_navi();?>
 <?php get_footer();?>
