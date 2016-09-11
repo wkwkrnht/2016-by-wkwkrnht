@@ -79,6 +79,11 @@ class wkwkrnht_manth_archive extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
+class post_nav extends WP_Widget{
+    function __construct(){parent::__construct('post_nav','前後への記事のナビゲーション',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/move-top.php');echo $args['after_widget'];}
+}
+
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post.php');echo $args['after_widget'];}
@@ -160,8 +165,8 @@ function wkwkrnht_search_form($form){
 add_filter('get_search_form','wkwkrnht_search_form');
 
 add_filter('widget_meta_poweredby','__return_empty_string');
-add_action('wp_meta','my_custom_meta_widget');
-function my_custom_meta_widget(){ ?>
+add_action('wp_meta','wkwkrnht_meta_widget');
+function wkwkrnht_meta_widget(){ ?>
     <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
     <li><?php edit_post_link();?></li>
     <li><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a></li>
@@ -422,7 +427,7 @@ function make_ogp_blog_card($url){
 
 function custom_oembed_element($code){
     if(strpos($code,'twitter.com')!==false){
-        $html = preg_replace('/ class="(.*?)\d+"/','class="$1 tw-align-center"',$html);
+        $html = preg_replace('/ class="(.*?)\d+"/','class="$1" align="center"',$html);
         return $html;
     }
     if(strpos($code,'youtu.be')!==false || strpos($code,'youtube.com')!==false){
@@ -449,7 +454,7 @@ add_filter('the_title','wkwkrnht_search_results_highlight');
 add_filter('the_content','wkwkrnht_search_results_highlight');
 
 function wkwkrnht_replace($content){
-    $a_replace = preg_replace('/<a href="(.*?)" target="_blank"/',"/<a href=\"$1\" target=\"_blank\" rel=\"noopener\"/",$content);
+    $a_replace = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
     $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$a_replace);
     return $twtreplace;
 }
