@@ -179,13 +179,11 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-tag{padding:0;margin:3vmin;}
 .article-tag a{display:inline-block;width:5em;height:2.5em;padding:0 1em;margin:0 .3em .3em 0;border-radius:5px;border:1px solid #aaa;background-color:#fff;color:#333;font-size:1.6rem;text-decoration:none;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;-webkit-transition:.2s;transition:.2s;}
 
-
 .article-main{font-size:1.6rem;}
 .article-main p{max-width:55em;padding:5vmin 8vmin 0;margin:2vh auto;}
 .article-main a{text-decoration:none;border-bottom:0;}
 .article-main a:hover::after{content:'URL : ' attr(href);display:block;min-height:2rem;padding:.5em 1em;border-radius:3vmin;z-index:2;position:absolute;background-color:#f1f1f1;}
 .article-main a[href=*.png],.article-main a[href=*.jpg],.article-main a[href=*.jpeg]{display:block;margin:2vh auto;}
-
 
 .article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:45px;max-width:90%;margin:2vmin auto;line-height:45px;text-align:center;}
 .article-main h3,.article-main h4,.article-main h5,.article-main h6{font-size:2rem;}
@@ -196,11 +194,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main h5{border-left:.5em solid #03a9f4;}
 .article-main h6{border-bottom:.75vmin dashed #03a9f4;}
 
-
 .article-main img{display:block;width:100%;min-height:50px;height:auto;position:relative;margin:3vh auto;line-height:2;text-align:center;}
 .article-main img::before{content: "";display:block;height:calc(100% + 2em);width:100%;border-radius:3vmin;position:absolute;top:-2em;left:0;border:1vmin dashed #ddd;background-color:#f1f1f1;}
 .article-main img::after{content: "\f127" "この画像が読み込めませんでした。" attr(alt);display:block;width:100%;position:absolute;top:1em;left:0;color:rgb(100,100,100);font-size:1.8rem;font-family:"FontAwesome";font-style:normal;text-align:center;}
-
 
 .article-main blockquote,.article-main q,.article-main pre,.article-main address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;}
 .article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
@@ -211,12 +207,10 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main .wrap > div{padding-bottom:56.25%;height:0;width:100%;position:relative;overflow:hidden;}
 .article-main .wrap > div > iframe{width:100%;height:100%;position:absolute;top:0;left:0;}
 
-
 .article-main ul{max-width:80%;margin:2em auto;list-style:none;}
 .article-main ul li::before{content:'●';display:inline;color:#03a9f4;font-size:.8em;padding-right:1em;}
 .article-main ul li::after,.article-main ol li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px dashed #aaa;}
 .article-main ol li{padding-top:.1em;}
-
 
 .article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
 .article-main table caption{padding:1.2em;text-align:center;background-color:#ffc045;}
@@ -225,18 +219,13 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main table tr:last-child{border-left:none;}
 .article-main table:last-child{border-bottom:none;}
 
-
 .article-main .ogp-blogcard img{display:inline-block;}
 .article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name{color:#333;}
 .article-main .ogp-blogcard-title{background-color:transparent;box-shadow:none;}
 
-
-
-
 .format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5px;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
 .format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
 .format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
-
 
 .sticky,.gallery-caption,.bypostauthor{}
 .alignnone,a img.alignnone{margin:2vh 3vw 5vh 0;}
