@@ -79,8 +79,8 @@ class wkwkrnht_manth_archive extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
-class post_nav extends WP_Widget{
-    function __construct(){parent::__construct('post_nav','前後への記事のナビゲーション',array());}
+class move_top extends WP_Widget{
+    function __construct(){parent::__construct('move_top','先頭へのナビゲーション',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/move-top.php');echo $args['after_widget'];}
 }
 
