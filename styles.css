@@ -305,5 +305,6 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
     }
 }
 @media print{
-    .toggle-zone{display:none;}
+    :root{font-size:10pt;}
+    .toggle-zone,#main-menu,#share-menu{display:none;}
 }
