@@ -207,11 +207,12 @@ function add_body_class($classes){
 
 add_filter('walker_nav_menu_start_el','title_in_nav_menu',10,4);
 function title_in_nav_menu($item_output,$item){
-  return preg_replace('/href="(.*?)"/','$1' . ' title="{$item->attr_title}"',$item_output);
+    $title = $item->attr_title;
+    return preg_replace('/href="(.*?)"/','href="' . '$1' . '" title="' . $title . '"',$item_output);
 }
 /*
     メタ情報
-1.アクセス中のURL取得
+1.アクセス中のURL取得'
 2.更新時間と投稿時間の比較
 3.カテゴリーページのメタ設定
     ●画像
