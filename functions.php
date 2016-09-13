@@ -208,7 +208,7 @@ function add_body_class($classes){
 add_filter('walker_nav_menu_start_el','title_in_nav_menu',10,4);
 function title_in_nav_menu($item_output,$item){
     $title = esc_attr($item->title);
-    return preg_replace('/href="(.*?)"/','href="' . '$1' . '" title="' . $title . '"',$item_output);
+    return preg_replace('/href="(.*?)"/','href="' . '$1' . '" data-title="' . $title . '"',$item_output);
 }
 /*
     メタ情報
