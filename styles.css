@@ -146,7 +146,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 2.ページネーション
 */
 .card{height:45vmin;width:80vmin;margin:3vmin 10vmin;padding:4vmin 3vmin;border-radius:5px;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);}
-.card img{display:block;float:left;max-height:39vmin;max-width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
+.card img{display:block;float:left;height:39vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 .card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
 .card span{display:inline-block;height:30%;margin:0 1em;}
 .card p{display:inline-block;height:20%;margin:0 1em;}
