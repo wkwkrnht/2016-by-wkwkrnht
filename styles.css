@@ -54,7 +54,6 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .social-nav a[href*="flickr.com"]::before{content:'\f16e';color:#ff0084;}
 .social-nav a[href*="foursquare.com"]::before{content:'\f180';color:#f94877;}
 .social-nav a[href*="plus.google.com"]::before{content:"\f0d5";color:#ff0033;}
-.social-nav a[href*="goo.gl/forms/"]::before{content:'\f128';}
 .social-nav a[href*="github.com"]::before{content:'\f09b';color:#0033ff;}
 .social-nav a[href*="instagram.com"]::before{content:'\f16d';color:#3f729b;}
 .social-nav a[href*="linkedin.com"]::before{content:"\f0e1";color:#0077b5;}
@@ -80,6 +79,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .social-nav a[href*="vimeo.com"]::before{content:'\f27d';color:#1ab7ea;}
 .social-nav a[href*="youtube.com"]::before{content:'\f167';color:#ff0033;}
 .social-nav a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:'\f19a';color:#21759b;}
+.social-nav a[title*="問い合わせ"]::before,.social-nav a[title*="質問"]::before,.social-nav a[title*="Q&A"]::before{content:'\f128';}
 
 .main-nav ul{list-style-type:none;}
 .main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;}
