@@ -7,7 +7,7 @@ if($myAmp===true):?>
 		<header class="article-header">
 			<img src="<?php wkwkrnht_eyecatch('large');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
-				<time class="article-date updated" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
+				<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
 					<h1 class="article-name entry-title"><?php the_title();?></h1>
 					<a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>" class="author"><span class="vcard author"><span class="fn"><?php the_author_meta('display_name');?></span></span></a>
