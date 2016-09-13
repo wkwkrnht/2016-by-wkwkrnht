@@ -22,12 +22,12 @@
     <div id="main-menu" class="close">
         <a class="close-button" href="#" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');">×</a>
 	    <?php if(has_nav_menu('social')):?>
-            <nav class="social-nav" role="navigation">
+            <nav class="social-nav">
                 <?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
             </nav>
         <?php endif;?>
         <?php if(has_nav_menu('main')):?>
-            <nav class="main-nav" role="navigation">
+            <nav class="main-nav">
                 <?php wp_nav_menu(array('theme_location'=>'main',));?>
             </nav>
         <?php endif;?>
