@@ -204,6 +204,11 @@ function add_body_class($classes){
     endif;
     return $classes;
 }
+
+add_filter('walker_nav_menu_start_el','title_in_nav_menu',10,4);
+function title_in_nav_menu($item_output,$item){
+  return preg_replace('/href="(.*?)"/','$1' . ' title="{$item->attr_title}"',$item_output);
+}
 /*
     メタ情報
 1.アクセス中のURL取得
