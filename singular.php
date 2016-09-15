@@ -28,13 +28,20 @@ if($myAmp===true):?>
 				</span>
 			</div>
 		</header>
+		<?php if(is_active_sidebar('singularheader')):?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar('singularheader');?>
+			</ul>
+		<?php endif;?>
 		<div class="article-main">
 			<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
 			<?php wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
 		</div>
-		<ul class="widget-area">
-			<?php dynamic_sidebar('singularfooter');?>
-		</ul>
+		<?php if(is_active_sidebar('singularfooter')):?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar('singularfooter');?>
+			</ul>
+		<?php endif;?>
 	</article>
 	<?php get_footer();?>
 <?php endif;?>

@@ -1,5 +1,10 @@
 <?php get_header();?>
 	<?php wkwkrnht_special_card();?>
+	<?php if(is_active_sidebar('listheader')):?>
+		<ul class="widget-area">
+			<?php dynamic_sidebar('listheader');?>
+		</ul>
+	<?php endif;?>
 	<div class="article-list">
     	<?php if(have_posts()):while(have_posts()):the_post();?>
             <?php $link=get_permalink();$title=the_title_attribute(array('echo'=>false));$txt=mb_strimwidth(get_the_title(),0,32,'…');?>
@@ -13,4 +18,9 @@
 		<?php endwhile;endif;?>
 	</div>
 	<?php wkwkrnht_page_navi();?>
+	<?php if(is_active_sidebar('listfooter')):?>
+		<ul class="widget-area">
+			<?php dynamic_sidebar('listfooter');?>
+		</ul>
+	<?php endif;?>
 <?php get_footer();?>

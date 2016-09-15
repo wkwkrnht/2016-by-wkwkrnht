@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
 	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
-	<meta name="theme-color" content="#ffcc00">
-	<meta name="msapplication-TileColor" content="#ffcc00">
+	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
+	<meta name="msapplication-TileColor" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta http-equiv="cleartype" content="on">
 	<meta name="renderer" content="webkit">
 	<meta name="description" content="<?php meta_description();?>">
@@ -99,9 +99,7 @@
 		.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5px;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
 		.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
 		.format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
-		.sticky{}
-		.gallery-caption{}
-		.bypostauthor{}
+		.sticky,.gallery-caption,.bypostauthor{}
 		.alignnone{margin:5px 20px 20px 0;}
 		.alignright{float:right;margin:5px 0 20px 20px;}
 		.aligncenter,div.aligncenter{display:block;margin:1vh auto;}
@@ -116,10 +114,11 @@
 		.wp-caption.alignright{margin:5px 0 20px 20px;}
 		.wp-caption img{height:auto;width:auto;max-width:98.5%;border:0 none;margin:0;padding:0;}
 		.wp-caption p.wp-caption-text{font-size:11px;margin:0;padding:0 4px 5px;}
-		footer{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:calc(20vw + 12vmin);width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
-		.related-wrapper{display:block;height:calc(20vw + 10vmin);width:35vw;border-radius:2vmin;margin:1vmin 3vmin;background-color:#fff;box-shadow:0 0 1vmin rgba(0,0,0,.3);text-align:center;}
-		.related-thumb{height:20vw;width:35vw;background-color:#03a9f4;}
-		.related-title{height:10vmin;font-size:1.8rem;color:#333;text-decoration:none;}
+		footer{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:25vw;width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
+		.related-wrapper{display:block;height:20vw;min-width:28vw;border-radius:3vmin;padding:.5em 1em;margin:2vw;box-shadow:0 0 2vmin rgba(0,0,0,.3);background-color:#fff;color:#333;text-decoration:none;}
+		.related-wrapper:visited{color:#333;}
+		.related-title{box-shadow:0 3px 6px rgba(0,0,0,.1);background-color:#03a9f4;font-size:2rem;color:#fff;text-align:center;vertical-align:middle;}
+		.related-date,.related-category{font-size:1.6rem;text-align:left;}
 		@media screen and (max-width:768px){
 			.article-main table,.article-main table caption,.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th{display:block;}
 			.article-main table tr th{margin:-1px;}
@@ -158,7 +157,6 @@
 			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
 
 			$content = apply_filters('the_content',$content);
-
 			$content = str_replace(']]>', ']]&gt;',$content);
 
 			$pattern = array(
@@ -172,7 +170,6 @@
 				'/<iframe class="hatenablogcard" src="http:\/\/hatenablog-parts.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i',
 				'/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i'
 			);
-
 			$append = array(
 				'<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1"></amp-twitter></div>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
@@ -184,30 +181,32 @@
 				'<a href="$1">$1</a>',
 				'<a href="$1">$1</a>'
 			);
-
 			echo preg_replace($pattern,$append,$content);
 			?>
 		</section>
 		<footer>
 			<?php $categories=get_the_category();$category_ID=array();foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
-			if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>6,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
+			if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 			$query = new WP_Query($array);
 			if($query -> have_posts()):
-				while($query -> have_posts()):$query -> the_post();?>
+				while($query -> have_posts()):$query -> the_post();
+					$cat = get_the_category();?>
 					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-						<div><amp-img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" height="512" width="512" layout="responsive" class="related-thumb"></amp-img></div>
-						<?php the_title('<div class="related-title">','</div>');?>
+						<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
+						<span class="related-date">投稿日時 : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
+						<span class="related-category">カテゴリー : <?php echo $cat[0]->name;?></span>
 					</a>
 				<?php endwhile;?>
 				<?php wp_reset_postdata();?>
 			<?php else:
 				wp_reset_postdata();
-				$array=array('numberposts'=>6,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
+				$array=array('numberposts'=>10,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 				$query = new WP_Query($array);
 				while($query -> have_posts()):$query -> the_post();?>
 					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
-						<div><amp-img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" height="512" width="512" layout="responsive" class="related-thumb"></amp-img><div>
-						<?php the_title('<div class="related-title">','</div>');?>
+						<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
+						<span class="related-date">投稿日時 : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
+						<span class="related-category">カテゴリー : <?php echo $cat[0]->name;?></span>
 					</a>
 				<?php endwhile;?>
 				<?php wp_reset_postdata();?>

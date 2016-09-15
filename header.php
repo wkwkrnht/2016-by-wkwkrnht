@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="HandheldFriendly" content="true">
 	<meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
-	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
-	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
+	<?php $google = '';$google = get_option('Google_Webmaster');if($google!==''){echo'<meta name="google-site-verification" content="' . $google . '">';}?>
+	<?php $bing = '';$bing = get_option('Bing_Webmaster');if($bing!==''){echo'<meta name="msvalidate.01" content="' . $bing . '">';}?>
 	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta name="msapplication-TileColor" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta http-equiv="cleartype" content="on">
