@@ -425,21 +425,23 @@ function make_ogp_blog_card($url){
         require_once('inc/OpenGraph.php');
     	$ogp         = OpenGraph::fetch($url);
         $url         = $ogp->url;
+        $share_url   = urlencode($url);
+        $id_url      = mb_strtolower(urlencode($url));
         $img         = $ogp->image;
         $title       = $ogp->title;
         $site_name   = $ogp->site_name;
         $description = $ogp->description;
         $tw_acount   = '';
         if(get_twitter_acount()!==null){$tw_acount = '&amp;via=' . get_twitter_acount();}
-        $script      = "document.getElementById('ogp-blogcard-share" . mb_strtolower(urlencode($url)) . "').classList.toggle('none');document.getElementById('ogp-blogcard-share" . mb_strtolower(urlencode($url)) . "').classList.toggle('block');";
+        $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
         $content     =
         '<div class="ogp-blogcard">
-            <div id="ogp-blogcard-share-' . mb_strtolower(urlencode($url)) . '" class="ogp-blogcard-share close">
+            <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share close">
                 <ul>
-                    <li><a href="https://twitter.com/share?url=' . urlencode($url) . '&amp;text=' . $title . $tw_acount . '" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="http://www.facebook.com/share.php?u=' . urlencode($url) . '" target="_blank"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
-                    <li><a href="http://getpocket.com/edit?url=' . urlencode($url) . '&amp;title=' . $title . '" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
-                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . urlencode($url) . '&amp;title=' . $title . '" target="_blank">B!</a></li>
+                    <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+                    <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank">B!</a></li>
                 </ul>
             </div>
             <div class="ogp-blogcard-main">
