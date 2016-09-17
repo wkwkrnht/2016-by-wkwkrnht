@@ -152,6 +152,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .card p{display:inline-block;height:20%;margin:0 1em;}
 .card-info{max-width:calc(80vmin / 2);float:right;}
 .site-info{text-align:center;}
+.404-card>div{max-height:45vmin;overflow-x:hidden;overflow-y:auto;}
 
 .page-nation{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:#fff;box-shadow:0 0 15px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
 .page-nation a,.page-nation .current,.page-nation li .dots{padding:2vmin;margin:0 .5vmin;border:solid .5vmin #00a5de;font-weight:bold;}
