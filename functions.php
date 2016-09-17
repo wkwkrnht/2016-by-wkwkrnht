@@ -431,6 +431,7 @@ function make_ogp_blog_card($url){
         $description = $ogp->description;
         $tw_acount   = '';
         if(get_twitter_acount()!==null){$tw_acount = '&amp;via=' . get_twitter_acount();}
+        $script      = "document.getElementById('ogp-blogcard-share" . mb_strtolower(urlencode($url)) . "').classList.toggle('none');document.getElementById('ogp-blogcard-share" . mb_strtolower(urlencode($url)) . "').classList.toggle('block');";
         $content     =
         '<div class="ogp-blogcard">
             <div id="ogp-blogcard-share-' . mb_strtolower(urlencode($url)) . '" class="ogp-blogcard-share close">
@@ -454,7 +455,7 @@ function make_ogp_blog_card($url){
                 <a href="' . $url . '" target="_blank">
                     <span class="ogp-blogcard-site-name">' . $site_name . '</span>
                 </a>
-                <a href="#" class="ogp-blogcard-share-toggle" onclick="document.getElementById("ogp-blogcard-share' . urlencode($url) . '").classList.toggle("none");document.getElementById("ogp-blogcard-share' . urlencode($url) . '").classList.toggle("block");"><i class="fa fa-share-alt"></i></a>
+                <a href="#" class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
