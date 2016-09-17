@@ -423,16 +423,17 @@ function make_ogp_blog_card($url){
         $content = $cache;
     else:
         require_once('inc/OpenGraph.php');
-    	$ogp         = OpenGraph::fetch($url);
-        $url         = $ogp->url;
-        $share_url   = urlencode($url);
-        $id_url      = mb_strtolower(urlencode($url));
-        $img         = $ogp->image;
-        $title       = $ogp->title;
-        $site_name   = $ogp->site_name;
-        $description = $ogp->description;
-        $tw_acount   = '';
-        if(get_twitter_acount()!==null){$tw_acount = '&amp;via=' . get_twitter_acount();}
+    	$ogp           = OpenGraph::fetch($url);
+        $url           = $ogp->url;
+        $share_url     = urlencode($url);
+        $id_url        = mb_strtolower($share_url);
+        $img           = $ogp->image;
+        $title         = $ogp->title;
+        $site_name     = $ogp->site_name;
+        $description   = $ogp->description;
+        $tw_acount     = '';
+        $get_tw_acount = get_twitter_acount();
+        if($get_tw_acount!==null){$tw_acount = '&amp;via=' . $get_tw_acount;}
         $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
         $content     =
         '<div class="ogp-blogcard">
@@ -457,7 +458,7 @@ function make_ogp_blog_card($url){
                 <a href="' . $url . '" target="_blank">
                     <span class="ogp-blogcard-site-name">' . $site_name . '</span>
                 </a>
-                <a href="#" class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
+                <a class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
