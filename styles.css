@@ -21,7 +21,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 #share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;overflow-x:hidden;overflow-y:auto;position:fixed;top:4vh;left:0;z-index:111;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #share-menu ul,#main-menu ul{width:80vw;}
-#share-menu .close-button,#main-menu .close-button{display:block;height:73vh;width:6vw;padding:0;margin:0;position:fixed;right:7vw;z-index:111;font-size:3vw;color:red;text-decoration:none;text-align:center;}
+#share-menu .close-button,#main-menu .close-button{display:block;height:73vh;width:6vw;padding:0;margin:0;position:fixed;right:7vw;z-index:111;font-size:3rem;color:red;text-decoration:none;text-align:center;}
 #share-menu .close-button{background-color:#fff;}
 
 #share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
@@ -129,7 +129,6 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .ogp-blogcard-share{height:inherit;width:inherit;position:absolute;top:0;left:0;z-index:2;color:#fff;background-color:rgba(0,0,0,.3);}
 .ogp-blogcard-share > ul{list-style:none;}
 .ogp-blogcard-share > ul > li{display:inline-block;margin:5vmin;border:.5vmin solid #fff;}
-.ogp-blogcard-share > ul > li::before,.ogp-blogcard-share > ul > li::after{display:none;}
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
 .ogp-blogcard-img{display:inline-block;max-height:40%;max-width:40%;}
 .ogp-blogcard-info{display:inline-block;max-height:40%;max-width:60%;text-align:center;}
@@ -225,6 +224,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .article-main table tr:last-child{border-left:none;}
 .article-main table:last-child{border-bottom:none;}
 
+.article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{display:none;}
 .article-main .ogp-blogcard img{display:inline-block;}
 .article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name{color:#333;}
 .article-main .ogp-blogcard-title:visited,.article-main .ogp-blogcard-description:visited,.article-main .ogp-blogcard-site-name:visited{color:#333;}
