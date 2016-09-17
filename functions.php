@@ -426,7 +426,7 @@ function make_ogp_blog_card($url){
     	$ogp           = OpenGraph::fetch($url);
         $url           = $ogp->url;
         $share_url     = urlencode($url);
-        $id_url        = mb_strtolower($share_url);
+        $id_url        = mb_strtolower(str_replace(':/.','',$url));
         $img           = $ogp->image;
         $title         = $ogp->title;
         $site_name     = $ogp->site_name;

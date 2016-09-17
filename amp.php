@@ -157,7 +157,7 @@
 			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
 
 			$content = apply_filters('the_content',$content);
-			$content = str_replace(']]>', ']]&gt;',$content);
+			$content = str_replace(']]>',']]&gt;',$content);
 
 			$pattern = array(
 				'/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
