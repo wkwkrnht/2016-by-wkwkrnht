@@ -433,12 +433,12 @@ function make_ogp_blog_card($url){
         if(get_twitter_acount()!==null){$tw_acount = '&amp;via=' . get_twitter_acount();}
         $content     =
         '<div class="ogp-blogcard">
-            <div id="ogp-blogcard-share-' . $url . '" class="ogp-blogcard-share close">
+            <div id="ogp-blogcard-share-' . urlencode($url) . '" class="ogp-blogcard-share close">
                 <ul>
-                    <li><a href="https://twitter.com/share?url=' . get_meta_url() . '&amp;text=' . wp_title("") . $tw_acount . '" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="http://www.facebook.com/share.php?u=' . rawurlencode(get_meta_url()) . '" target="_blank"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
-                    <li><a href="http://getpocket.com/edit?url=' . get_meta_url() . '&amp;title=' . wp_title("") . '" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
-                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . get_meta_url() . '&amp;title=' . wp_title("") . '" target="_blank">B!</a></li>
+                    <li><a href="https://twitter.com/share?url=' . urlencode($url) . '&amp;text=' . $title . $tw_acount . '" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="http://www.facebook.com/share.php?u=' . urlencode($url) . '" target="_blank"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+                    <li><a href="http://getpocket.com/edit?url=' . urlencode($url) . '&amp;title=' . $title . '" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . urlencode($url) . '&amp;title=' . $title . '" target="_blank">B!</a></li>
                 </ul>
                 </div>
                 <div class="ogp-blogcard-main">
@@ -454,7 +454,7 @@ function make_ogp_blog_card($url){
                 <a href="' . $url . '" target="_blank">
                     <span class="ogp-blogcard-site-name">' . $site_name . '</span>
                 </a>
-                <a href="#" class="ogp-blogcard-share-toggle" onclick="document.getElementById("ogp-blogcard-share' . $url . '").classList.toggle("none");document.getElementById("ogp-blogcard-share' . $url . '").classList.toggle("block");"><i class="fa fa-share-alt"></i></a>
+                <a href="#" class="ogp-blogcard-share-toggle" onclick="document.getElementById("ogp-blogcard-share' . urlencode($url) . '").classList.toggle("none");document.getElementById("ogp-blogcard-share' . urlencode($url) . '").classList.toggle("block");"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
