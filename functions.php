@@ -448,16 +448,14 @@ function make_ogp_blog_card($url){
             <div class="ogp-blogcard-main">
                 <img class="ogp-blogcard-img" src="' . $img . '">
                 <div class="ogp-blogcard-info">
-                    <a href="' . $url . '" target="_blank">
+                    <a href="' . $url . '" target="_blank" rel="noopener">
                         <h2 class="ogp-blogcard-title">' . $title . '</h2>
                         <p class="ogp-blogcard-description">' . $description . '</p>
                     </a>
                 </div>
             </div>
             <div class="ogp-blogcard-footer">
-                <a href="' . $url . '" target="_blank">
-                    <span class="ogp-blogcard-site-name">' . $site_name . '</span>
-                </a>
+                <a href="' . $url . '" target="_blank" rel="noopener" class="ogp-blogcard-site-name">' . $site_name . '</a>
                 <a href="#" class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
