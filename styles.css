@@ -145,7 +145,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 1.カードデザイン
 2.ページネーション
 */
-.card{height:45vmin;width:80vmin;margin:3vmin 10vmin;padding:4vmin 3vmin;border-radius:5vmin;font-size:1.8rem;text-align:center;overflow-y:scroll;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
+.card{height:45vmin;width:80vmin;margin:3vmin 10vmin;padding:4vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 .card img{display:block;float:left;height:39vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 .card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
 .card span{display:inline-block;height:30%;margin:0 1em;}
