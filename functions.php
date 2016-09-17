@@ -38,7 +38,10 @@ add_action('admin_init',function(){add_editor_style('inc/editor-style.css');});
 
 
 add_action('init','wkwkrnht_oembed_api');
-function wkwkrnht_oembed_api(){
+function wkwkrnht_init(){
+    register_taxonomy_for_object_type('category','page');
+    register_taxonomy_for_object_type('post_tag','page');
+
     wp_oembed_add_provider('#https?://(www.)?youtube.com/watch.*#i','http://www.youtube.com/oembed/',true);
 	wp_oembed_add_provider('#https?://(www.)?youtube.com/playlist.*#i','http://www.youtube.com/oembed/',true);
 	wp_oembed_add_provider('#https?://(www.)?youtu.be/.*#i','http://www.youtube.com/oembed/',true);
@@ -212,6 +215,8 @@ function custom_comment_tags($data){
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 
+add_filter('widget_text','do_shortcode');
+
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){
@@ -228,6 +233,13 @@ add_filter('walker_nav_menu_start_el','title_in_nav_menu',10,4);
 function title_in_nav_menu($item_output,$item){
     $title = esc_attr($item->title);
     return preg_replace('/href="(.*?)"/','href="' . '$1' . '" data-title="' . $title . '"',$item_output);
+}
+
+
+add_action('pre_get_posts','add_page_to_archive');
+function add_page_to_archive($obj,$query){
+    if(is_tag()===true){$obj->query_vars['post_type'] = array('post','page');}
+    elseif($query->is_category===true && $query->is_main_query()){$query->set('post_type',array('post','page'));}
 }
 /*
     メタ情報
@@ -755,3 +767,4 @@ function my_new_contactmethods($contactmethods){
     return $contactmethods;
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
+remove_filter('pre_user_description','wp_filter_kses');
