@@ -61,6 +61,7 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Singular Footer','id'=>'singularfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'List Header','id'=>'listheader','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'List Footer','id'=>'listfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'List Footer','id'=>'listfooter','before_widget'=>'<section class="card 404-card"><div id="%1$s" class="widget %2$s">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('wkwkrnht_manth_archive');
     register_widget('related_posts_img');
     register_widget('related_posts');
