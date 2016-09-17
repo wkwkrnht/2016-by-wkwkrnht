@@ -126,7 +126,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .marker{background:linear-gradient(transparent 30%,#fffc00 30%);}
 
 .ogp-blogcard{display:block;min-height:10vh;max-width:80%;padding:2vmin 3vmin;margin:3vmin auto;position:relative;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-.ogp-blogcard-share{height:inherit;width:inherit;position:absolute;top:0;left:0;color:#fff;background-color:rgba(0,0,0,.3);}
+.ogp-blogcard-share{height:inherit;width:inherit;position:absolute;top:0;left:0;z-index:2;color:#fff;background-color:rgba(0,0,0,.3);}
 .ogp-blogcard-share>ul{list-style:none;}
 .ogp-blogcard-share>ul>li{display:inline-block;}
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
