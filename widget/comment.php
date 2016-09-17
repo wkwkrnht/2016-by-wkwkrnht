@@ -7,7 +7,7 @@
     .comment-respond{width:80%;margin:0 auto;}
     .comment-form{max-width:100%;}
     .comment-form-comment label{display:none;}
-    .comment-form-comment textarea{max-width:inherit;}
+    .comment-form-comment textarea{max-width:100%;}
 </style>
 <div class="comment">
 <?php if(have_comments()):?>
