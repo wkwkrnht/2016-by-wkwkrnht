@@ -126,9 +126,11 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .marker{background:linear-gradient(transparent 30%,#fffc00 30%);}
 
 .ogp-blogcard{display:block;min-height:10vh;max-width:80%;padding:2vmin 3vmin;margin:3vmin auto;position:relative;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-.ogp-blogcard-share{height:inherit;width:inherit;position:absolute;top:0;left:0;z-index:2;color:#fff;background-color:rgba(0,0,0,.3);}
+.ogp-blogcard-share{min-height:10vh;max-width:80%;height:inherit;width:inherit;position:absolute;top:0;left:0;z-index:2;background-color:rgba(0,0,0,.3);}
+.ogp-blogcard-share-close{position:absolute;top:1em;right:2em;font-size:3rem;}
 .ogp-blogcard-share > ul{list-style:none;}
-.ogp-blogcard-share > ul > li{display:inline-block;margin:5vmin;border:.5vmin solid #fff;}
+.ogp-blogcard-share > ul > li{display:inline-block;padding:1em;margin:5vmin;border:1px solid #fff;font-size:2.2rem;}
+.ogp-blogcard-share-close,.ogp-blogcard-share-close:visited,.ogp-blogcard-share > ul > li > a,.ogp-blogcard-share > ul > li > a:visited{color:#fff;}
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
 .ogp-blogcard-img{display:inline-block;max-height:40%;max-width:40%;}
 .ogp-blogcard-info{display:inline-block;max-height:40%;max-width:60%;text-align:center;}
