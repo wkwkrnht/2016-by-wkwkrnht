@@ -433,7 +433,7 @@ function make_ogp_blog_card($url){
         if(get_twitter_acount()!==null){$tw_acount = '&amp;via=' . get_twitter_acount();}
         $content     =
         '<div class="ogp-blogcard">
-            <div id="ogp-blogcard-share" class="none">
+            <div id="ogp-blogcard-share" class="close">
                 <ul>
                     <li><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=' . wp_title("") . $tw_acount . '" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                     <li><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
@@ -454,7 +454,7 @@ function make_ogp_blog_card($url){
                 <a href="' . $url . '" target="_blank">
                     <span class="ogp-blogcard-site-name">' . $site_name . '</span>
                 </a>
-                <a href="#" class="ogp-blogcard-share-toggle" onclick="document.getElementById("ogp-blogcard-share").classList.toggle("none");document.getElementById("ogp-blogcard-share").classList.toggle("block");"><i class="fa fa-share-alt"></i></a>
+                <a href="#" class="ogp-blogcard-share-toggle" onclick="document.getElementById("ogp-blogcard-share").classList.toggle("close");document.getElementById("ogp-blogcard-share").classList.toggle("open");"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
