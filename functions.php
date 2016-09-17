@@ -456,7 +456,7 @@ function make_ogp_blog_card($url){
             </div>
             <div class="ogp-blogcard-footer">
                 <a href="' . $url . '" target="_blank" rel="noopener" class="ogp-blogcard-site-name">' . $site_name . '</a>
-                <a href="#" class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
+                <span class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></span>
             </div>
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
