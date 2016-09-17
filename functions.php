@@ -59,15 +59,30 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'Main Area','id'=>'floatmenu','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Singular Header','id'=>'singularheader','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'Singular Footer','id'=>'singularfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
-    register_sidebar(array('name'=>'List Header','id'=>'listheader','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
-    register_sidebar(array('name'=>'List Footer','id'=>'listfooter','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
-    register_sidebar(array('name'=>'404 Page','id'=>'404','before_widget'=>'<section class="card 404-card"><div id="%1$s" class="widget %2$s">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'List Above','id'=>'listabove','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'List Header','id'=>'listheader','before_widget'=>'<section class="card"><div id="%1$s" class="widget %2$s">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'List Footer','id'=>'listfooter','before_widget'=>'<section class="card"><div id="%1$s" class="widget %2$s">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'List Under','id'=>'listunder','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
+    register_sidebar(array('name'=>'404 Page','id'=>'404','before_widget'=>'<section class="card"><div id="%1$s" class="widget %2$s">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('wkwkrnht_manth_archive');
     register_widget('related_posts_img');
     register_widget('related_posts');
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
+}
+
+class wkwkrnht_category_tag extends WP_Widget{
+    function __construct(){parent::__construct('wkwkrnht_category_tag','カテゴリーとタグのみの検索',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/wkwkrnht-category-tag.php');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
 class wkwkrnht_manth_archive extends WP_Widget{
@@ -408,16 +423,26 @@ function make_ogp_blog_card($url){
         $content = $cache;
     else:
         require_once('inc/OpenGraph.php');
-    	$ogp = OpenGraph::fetch($url);
-        $url = $ogp->url;
-        $img = $ogp->image;
-        $title = $ogp->title;
-        $site_name = $ogp->site_name;
+    	$ogp         = OpenGraph::fetch($url);
+        $url         = $ogp->url;
+        $img         = $ogp->image;
+        $title       = $ogp->title;
+        $site_name   = $ogp->site_name;
         $description = $ogp->description;
-        $content =
+        $tw_acount   = '';
+        if(get_twitter_acount()!==null){$tw_acount = '&amp;via=' . get_twitter_acount();}
+        $content     =
         '<div class="ogp-blogcard">
-            <div class="ogp-blogcard-main">
-                <img class="ogp-blogcard-img" src="' . $img . '">
+            <div id="ogp-blogcard-share" class="none">
+                <ul>
+                    <li><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=' . wp_title("") . $tw_acount . '" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+                    <li><a href="http://getpocket.com/edit?url=' . get_meta_url() . '&amp;title=' . wp_title("") . '" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . get_meta_url() . '&amp;title=' . wp_title("") . '" target="_blank">B!</a></li>
+                </ul>
+                </div>
+                <div class="ogp-blogcard-main">
+                    <img class="ogp-blogcard-img" src="' . $img . '">
                 <div class="ogp-blogcard-info">
                     <a href="' . $url . '" target="_blank">
                         <h2 class="ogp-blogcard-title">' . $title . '</h2>
@@ -429,6 +454,7 @@ function make_ogp_blog_card($url){
                 <a href="' . $url . '" target="_blank">
                     <span class="ogp-blogcard-site-name">' . $site_name . '</span>
                 </a>
+                <a href="#" class="ogp-blogcard-share-toggle" onclick="document.getElementById("ogp-blogcard-share").classList.toggle("none");document.getElementById("ogp-blogcard-share").classList.toggle("display");"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}

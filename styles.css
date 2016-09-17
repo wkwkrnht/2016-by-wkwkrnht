@@ -123,12 +123,16 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 */
 .marker{background:linear-gradient(transparent 30%,#fffc00 30%);}
 
-.ogp-blogcard{display:block;min-height:10vh;max-width:80%;margin:3vmin auto;padding:2vmin 3vmin;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.ogp-blogcard{display:block;min-height:10vh;max-width:80%;padding:2vmin 3vmin;margin:3vmin auto;position:absolute;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.ogp-blogcard-share{height:inherit;width:inherit;position:absolute;top:0;left:0;color:#fff;background-color:rgba(0,0,0,.3);}
+.ogp-blogcard-share>ul{list-style:none;}
+.ogp-blogcard-share>ul>li{display:inline-block;}
 .ogp-blogcard-main{height:70%;width:100%;position:relative;top:0;}
 .ogp-blogcard-img{display:inline-block;max-height:40%;max-width:40%;}
 .ogp-blogcard-info{display:inline-block;max-height:40%;max-width:60%;text-align:center;}
 .ogp-blogcard-title{font-size:2rem;}
 .ogp-blogcard-footer{height:30%;width:100%;position:relative;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
+.ogp-blogcard-share-toggle{text-align:right;}
 
 .information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
 .information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}

@@ -4,6 +4,11 @@ if($myAmp===true):?>
 <?php else:?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
+		<?php if(is_active_sidebar('singularheader')):?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar('singularheader');?>
+			</ul>
+		<?php endif;?>
 		<header class="article-header">
 			<img src="<?php wkwkrnht_eyecatch('large');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
@@ -28,11 +33,6 @@ if($myAmp===true):?>
 				</span>
 			</div>
 		</header>
-		<?php if(is_active_sidebar('singularheader')):?>
-			<ul class="widget-area">
-				<?php dynamic_sidebar('singularheader');?>
-			</ul>
-		<?php endif;?>
 		<div class="article-main">
 			<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
 			<?php wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
