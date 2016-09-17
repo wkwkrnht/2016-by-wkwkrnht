@@ -131,8 +131,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .ogp-blogcard-share > ul{list-style:none;}
 .ogp-blogcard-share > ul > li{display:inline-block;padding:1em;margin:5vmin;border:1px solid #fff;font-size:2.2rem;}
 .ogp-blogcard-share-close,.ogp-blogcard-share-close:visited,.ogp-blogcard-share > ul > li > a,.ogp-blogcard-share > ul > li > a:visited{color:#fff;}
-.ogp-blogcard-main{height:calc(37vh * .8);width:80vw;position:absolute;top:0;margin-bottom:2vh;}
-.ogp-blogcard-img{display:inline-block;max-height:calc(37vh * .7);max-width:calc(80vw * .4);}
+.ogp-blogcard-main{height:calc(37vh * .8);width:80vw;position:absolute;top:0;margin-bottom:1vh;}
+.ogp-blogcard-img{display:inline-block;max-height:calc(37vh * .75);max-width:calc(80vw * .4);}
 .ogp-blogcard-info{display:inline-block;max-width:calc(80vw * .6);position:absolute;right:25%;text-align:center;}
 .ogp-blogcard-title{font-size:2rem;}
 .ogp-blogcard-footer{height:calc(37vh * .2);width:80vw;position:absolute;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
