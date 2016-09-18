@@ -15,8 +15,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 5.ソーシャルナビゲーション
 6.ウィジェットエリア
 */
-.toggle-zone{height:25vh;width:100%;position:fixed;bottom:0;left:0;z-index:100;}
-#button-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:18vh;width:18vh;border-radius:50%;position:relative;background-color:#fff;color:#03a9f4;font-family:"FontAwesome";text-align:center;vertical-align:middle;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
+#button-toggle,#share-menu-toggle,#menu-toggle{display:inline-block;height:18vh;width:18vh;border-radius:50%;position:fixed;z-index:100;background-color:#fff;color:#03a9f4;font-family:"FontAwesome";text-align:center;vertical-align:middle;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #button-toggle:visited,#share-menu-toggle:visited,#menu-toggle:visited{color:#03a9f4;}
 #menu-toggle{top:1vh;left:calc(25% -18vh);}
 #button-toggle{bottom:1vh;left:calc(50% -18vh);}
