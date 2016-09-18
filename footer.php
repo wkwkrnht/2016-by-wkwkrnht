@@ -1,7 +1,7 @@
     </main>
     <footer>
         <a href="javascript:void(0)" id="menu-toggle" class="close" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-5x"></i></a>
-        <?php if(is_home()===false){echo'<a href="' . esc_url(home_url()) . '" id="home-button"><i class="fa fa-home fa-5x" aria-hidden="true"></i></a>';}?>
+        <?php if(is_home()===false){echo'<a href="' . esc_url(home_url()) . '" title="ホームへのリンク" id="home-button" class="close"><i class="fa fa-home fa-5x" aria-hidden="true"></i></a>';}?>
         <a href="javascript:void(0)" id="button-toggle" title="メニューボタン" onclick="document.getElementById('menu-toggle').classList.toggle('close');document.getElementById('menu-toggle').classList.toggle('open');document.getElementById('share-menu-toggle').classList.toggle('close');document.getElementById('share-menu-toggle').classList.toggle('open');"><i class="fa fa-th-large fa-5x" aria-hidden="true"></i></a>
         <a href="javascript:void(0)" id="share-menu-toggle" class="close" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-5x"></i></a>
     </footer>
