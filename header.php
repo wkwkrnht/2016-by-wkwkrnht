@@ -27,19 +27,50 @@
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 	<?php if(is_singular()===true):
-		$fb        = '';
-		$tw        = '';
-		$gp        = '';
-		$logo      = '';
-		$author_id = '';
-		$fb        = get_the_author_meta('facebook');
-		$tw        = get_the_author_meta('twitter');
-		$gp        = get_the_author_meta('Googleplus');
-		$logo      = get_theme_mod('custom_logo');
-		$author_id = $post->post_author;
+		$fb         = '';
+		$tw         = '';
+		$gp         = '';
+		$logo       = '';
+		$author_id  = '';
+		$str        = '';
+		$cat_echo   = '';
+		$now_cat    = '';
+		$fb         = get_the_author_meta('facebook');
+		$tw         = get_the_author_meta('twitter');
+		$gp         = get_the_author_meta('Googleplus');
+		$logo       = get_theme_mod('custom_logo');
+		$author_id  = $post->post_author;
+		$i          = 1;
+		$categories = get_the_category($post->ID);
+		$cat        = $categories[0];
+		$ancestors  = array_reverse(get_ancestors( $cat -> cat_ID,'category'));
 		if($fb!==''){echo'<meta property="article:author" content="' . $fb . '">';}
 		if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
 		if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
+		if($cat -> parent != 0){
+			foreach($ancestors as $ancestor){
+				$i++;
+				$cat_echo .= '
+				{
+					"@type": "ListItem",
+					"position": ' . $i . ',
+					"item":{
+						"@id": "' . get_category_link($ancestor) . '",
+						"name": "' . get_cat_name($ancestor) . '"
+					}
+				},';
+			}
+		}
+		$i++;
+		$now_cat = '
+		{
+			"@type": "ListItem",
+			"position": ' . $i . ',
+			"item":{
+				"@id": "' . get_category_link($cat -> term_id). '",
+				"name": "' . $cat-> cat_name . '"
+			}
+		}';
 		echo'<script type="application/ld+json">
 			{
   				"@context": "http://schema.org",
@@ -72,6 +103,24 @@
     				}
   				},
   				"description": "' . get_meta_description() . '"
+			}
+		</script>
+		<script type="application/ld+json">
+			{
+				"@context":"http://schema.org",
+  				"@type": "BreadcrumbList",
+  				"itemListElement":[
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"item":{
+							"@id": "' . home_url() . '",
+							"name": "ホーム"
+						}
+					},'
+					. $cat_echo
+					. $now_cat
+				. ']
 			}
 		</script>';
 	endif;?>
