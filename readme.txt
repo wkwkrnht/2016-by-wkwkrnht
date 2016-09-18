@@ -34,8 +34,10 @@
         ┗fontawesome-webfont.woff
         ┗fontawesome-webfont.woff2
         ┗fontawesome.otf
-    ┗OpenGraph.php (OGP解読スクリプト)
+    ┗baguetteBox.php (LightBox的なライブラリ)
+    ┗editor-style.css (TinyMCE向けスタイルシート)
     ┗no-img.png (画像が404)
+    ┗OpenGraph.php (OGP解読スクリプト)
 ・widget (ウィジェット)
     ┗author-bio.php (投稿者プロフィール)
     ┗comment.php (コメント)
