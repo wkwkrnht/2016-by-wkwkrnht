@@ -6,6 +6,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .open{visibility:visible;}
 .none{display:none;}
 .block{display:block;}
+.inline{display:inline;}
 /*
 	メニュー
 1.フッターのメニュー展開用ボタン
