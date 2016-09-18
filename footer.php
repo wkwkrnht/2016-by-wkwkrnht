@@ -1,7 +1,7 @@
     </main>
     <footer class="toggle-zone">
-        <a href="javascript:void(0)" id="share-toggle" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
-        <a href="javascript:void(0)" id="menu-toggle" title="メニューボタン" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-3x"></i></a>
+        <a href="javascript:void(0)" id="button-toggle" title="メニューボタン" onclick="document.getElementById('menu-toggle').classList.toggle('close');document.getElementById('menu-toggle').classList.toggle('open');document.getElementById('share-menu-toggle').classList.toggle('close');document.getElementById('share-menu-toggle').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
+        <a href="javascript:void(0)" id="menu-toggle" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-3x"></i></a>
         <a href="javascript:void(0)" id="share-menu-toggle" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-3x"></i></a>
     </footer>
     <nav id="share-menu" class="close">
