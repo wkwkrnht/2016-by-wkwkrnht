@@ -37,6 +37,13 @@ function wkwkrnht_setup(){
 add_action('after_setup_theme','wkwkrnht_setup');
 
 
+function wkwkrnht_enqueue(){
+    wp_register_style('main-style',get_template_directory_uri() . '/styles.css',false,false,'all');
+    wp_enqueue_style('main-style');
+}
+add_action('wp_enqueue_scripts','wkwkrnht_enqueue');
+
+
 add_action('admin_init',function(){add_editor_style('inc/editor-style.css');});
 
 
