@@ -17,6 +17,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 */
 #button-toggle,#share-menu-toggle,#home-button,#menu-toggle{display:inline-block;height:15vh;width:15vh;border-radius:50%;position:fixed;z-index:100;text-align:center;color:#03a9f4;background-color:#fff;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
 #button-toggle i,#share-menu-toggle i,#home-button i,#menu-toggle i{line-height:15vh;vertical-align:middle;}
+#button-toggle i{position:relative;left:calc(50% - .5em);}
 #button-toggle:visited,#share-menu-toggle:visited,#home-button:visited,#menu-toggle:visited{color:#03a9f4;}
 #menu-toggle{bottom:8vh;left:calc(50% - 25vh);}
 #home-button{bottom:20vh;left:calc(50% - 7.5vh);}
