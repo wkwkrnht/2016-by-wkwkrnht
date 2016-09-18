@@ -94,6 +94,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .widget-area{list-style:none;}
 .widget-area .widget{max-width:94%;margin:2vh auto;}
+.widget-area .widget li{max-width:94%;}
 .widget-area h2{min-height:45px;max-width:94%;margin:2vh auto;line-height:45px;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 /*
 	ウィジェットカスタマイズ
