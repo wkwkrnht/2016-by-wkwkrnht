@@ -40,7 +40,7 @@ add_action('after_setup_theme','wkwkrnht_setup');
 add_action('admin_init',function(){add_editor_style('inc/editor-style.css');});
 
 
-add_action('init','wkwkrnht_oembed_api');
+add_action('init','wkwkrnht_init');
 function wkwkrnht_init(){
     register_taxonomy_for_object_type('category','page');
     register_taxonomy_for_object_type('post_tag','page');
