@@ -238,13 +238,6 @@ function add_body_class($classes){
     endif;
     return $classes;
 }
-
-
-add_action('pre_get_posts','add_page_to_archive');
-function add_page_to_archive($obj,$query){
-    if(is_tag()===true){$obj->query_vars['post_type'] = array('post','page');}
-    elseif($query->is_category===true && $query->is_main_query()){$query->set('post_type',array('post','page'));}
-}
 /*
     メタ情報
 1.アクセス中のURL取得'
@@ -682,7 +675,7 @@ function sanitize_radio($input,$setting){
 
 function wkwkrnht_customize_css(){ ?>
     <style>
-        .toggle-zone{background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;}
+        #button-toggle,#share-menu-toggle,#menu-toggle{background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;}
         #main-menu{background-color:<?php echo get_option('menu_background','#fff');?>;}
         .widget_tag_cloud a,.article-tag a{border-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;}
         .widget_tag_cloud a:hover,.article-tag a:hover{background-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;border:1px solid <?php echo get_option('tag_cloud_border_hover','#fff');?>;color:<?php echo get_theme_mod('tag_cloud_color','#fff');?>;}
