@@ -9,32 +9,28 @@
 3.[baguetteBox.js](https://github.com/feimosi/baguetteBox.js) | 1.8.0 | MIT license | feimosi
 4.[OpenGraph.php](https://github.com/scottmac/opengraph/) | Apache License, Version 2.0 | Scott MacVicar
 
+##作成者
+
+[wkwkrnht](https://twitter.com/wkwkrnht)
+
 ##特徴
 
 このWordpressテーマは、ブログ向けに作られています。
 
-###作成者
-
-[wkwkrnht](https://twitter.com/wkwkrnht)
-
-###閲覧者向け
-
 * すっきりとしたカードデザイン
-* いつでもどこでも2クリック(タップ)でメニューアクセス or SNS共有
+* いつでもどこでも3クリック(タップ)でメニューアクセス or SNS共有
 * メニュー内と記事下にウィジェットスペース確保
-* メニュー内にメインメニューとソーシャルメニューの2種を用意
+* メニュー欄にメインメニューとソーシャルメニューの2種を用意
 * ソーシャルメニューはリンク先に応じて、自動的にアイコンフォントで装飾。その代わりに、リンクテキストは表示されません。(約40種対応)
 * 前後記事ナビでは、アイキャッチも表示
-* 関連記事ウィジェットは画像有り●無しが選べる
+* 関連記事ウィジェットは画像有りと無しが選べる
+* 検索ウィジェットはタグとカテゴリーで絞込可能
 * コメント欄も選択可(WP独自 or Disqus or 無し)
-
-###サイト管理者向け
-
 * バニラな子テーマあり[(参照)](https://github.com/wkwkrnht/2016-by-wkwkrnht-child/)
 * 豊富なクイックタグ(h1～h6,p,テーブル,ショートコード)
 * 豊富なブログカード生成ショートコード(OGP or Embed.ly or はてな)
 * 追加クラス(マーカー or 検索風表示 or 注意表示)
-* アナリティクスはHTMLタグも含めてカスタマイザーで自由に設定可
+* カスタマイザーをいじるだけで、headタグ内にテキスト埋め込み可能
 * リファラーも設定可
 * AMP対応
 * OGP & Twitterカード対応
@@ -54,6 +50,7 @@
         * fontawesome.otf
 
     * baguetteBox.php(LightBox風スクリプト)
+    * editor-styl.css (TinyMCE向けスタイルシート)
     * OpenGraph.php (OGP解読スクリプト)
     * no-img.png (404な画像)
 
@@ -61,18 +58,20 @@
 
     * author-bio.php (投稿者プロフィール)
     * comment.php (コメント)
+    * disqus.php (Disqus)
+    * manth-archive.php (短縮版月別アーカイブ)
+    * move-top.php (そのページの最上部への移動ボタン)
     * post-nav.php (前後記事ナビ)
     * related-posts.php (関連記事)
     * related-posts-img.php (画像付関連記事)
 
-* 404.php (404テンプレート)
 * footer.php (フッターテンプレート)
 * functions.php (関数ずらずら)
 * header.php (ヘッダーテンプレート)
 * index.php (リストページ向けテンプレート)
-* license.txt (ライセンス文書)
+* LICENSE (ライセンス文書)
 * readme.md (このファイル)
-* readme.txt (このファイルのWP向け)
+* readme.txt (WP向けのreadme)
 * screenshot.png (スクリーンショット)
 * singular.php (単独ページ向けテンプレート)
 * style.css (情報記述用スタイルシート)
