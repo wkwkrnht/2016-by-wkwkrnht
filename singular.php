@@ -18,10 +18,10 @@ if($myAmp===true):?>
 				<span class="article-info">
 					<h1 class="article-name entry-title"><?php the_title();?></h1>
 					<span class="author">
-						<a href="<?php echo site_url() . '?author=' . get_the_author_meta('ID');?>">
+						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>">
 							<span class="vcard author">
 								<span class="fn">
-									著者 : <?php the_author_meta('display_name');?>
+									著者 : <?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
 								</span>
 							</span>
 						</a>
