@@ -368,7 +368,7 @@ elseif(is_attachment()===true):
             }
         </script>';
 elseif(is_home()===true):
-    $blog_name = get_bloginfo('name')
+    $blog_name = get_bloginfo('name');
     $homeurl  = esc_url(home_url());
     echo'
     <script type="application/ld+json">
