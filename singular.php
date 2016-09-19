@@ -10,7 +10,7 @@ if($myAmp===true):?>
 			</ul>
 		<?php endif;?>
 		<header class="article-header">
-			<img src="<?php wkwkrnht_eyecatch('large');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch" itemprop="image">
+			<img src="<?php wkwkrnht_eyecatch('large');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
 				<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>" itemprop="datePublished" content="<?php the_time('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
@@ -40,7 +40,11 @@ if($myAmp===true):?>
 					<span class="article-tag"><?php the_tags('','','');?></span>
 				</span>
 			</div>
+			<span style="display:none;" itemprop="mainEntityOfPage"><?php the_permalink();?></span>
 			<span style="display:none;" itemprop="description"><?php the_excerpt();?></span>
+			<div style="display:none;" itemprop="publisher" itemscope itemtype="https://schema.org/Peron">
+				<meta itemprop="name" content="<?php the_author_meta('display_name');?>">
+			</div>
 		</header>
 		<div class="article-main" itemprop="articleBody">
 			<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>

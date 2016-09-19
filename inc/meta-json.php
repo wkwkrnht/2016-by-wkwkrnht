@@ -25,11 +25,11 @@ if(is_singular()===true):
             },
             "headline": "Article headline",
                 "image": {
-                "@type": "ImageObject",
-                "url": "' . get_meta_image() . '",
-                "height": 256,
-                "width": 696
-            },
+                    "@type": "ImageObject",
+                    "url": "' . get_meta_image() . '",
+                    "height": 256,
+                    "width": 696
+                },
             "datePublished": "' . get_the_time('Y/n/j G:i.s') . '",
             "dateModified": "' . get_mtime('Y/n/j G:i.s') . '",
             "author": {
