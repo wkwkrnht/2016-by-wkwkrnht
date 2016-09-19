@@ -26,7 +26,7 @@
 ・独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
 
     ファイルツリー
-・parts (適当なの)
+・inc (素材群)
     ┗fontawesome(アイコンフォント)
         ┗fontawesome-webfont.eot
         ┗fontawesome-webfont.svg
@@ -36,13 +36,20 @@
         ┗fontawesome.otf
     ┗baguetteBox.php (LightBox的なライブラリ)
     ┗editor-style.css (TinyMCE向けスタイルシート)
+    ┗meta-json.php (ジャンル別メタ情報出力)
     ┗no-img.png (画像が404)
     ┗OpenGraph.php (OGP解読スクリプト)
+・language (国際化向けファイル群)
 ・widget (ウィジェット)
     ┗author-bio.php (投稿者プロフィール)
     ┗comment.php (コメント)
+    ┗disqus.php (Disqus)
+    ┗manth-archive.php (短縮版月別アーカイブ)
+    ┗move-top.php (そのページのトップへの移動ボタン)
     ┗post-nav.php (前後記事ナビ)
-    ┗related.php (関連記事)
+    ┗related-post-img.php (画像付関連記事)
+    ┗related-post.php (画像なし関連記事)
+    ┗wkwkrnht-categorytag.php (カテゴリーとタグのみの検索)
 ・footer.php (フッターテンプレート)
 ・functions.php (関数ずらずら)
 ・header.php (ヘッダーテンプレート)

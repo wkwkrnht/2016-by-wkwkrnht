@@ -1,6 +1,6 @@
 <?php get_header();?>
 	<?php wkwkrnht_special_card();?>
-	<?if(is_404()===true):?>
+	<?php if(is_404()===true):?>
 		<div class="article-list">
 			<?php if(is_active_sidebar('404')){dynamic_sidebar('404');}?>
 		</div>

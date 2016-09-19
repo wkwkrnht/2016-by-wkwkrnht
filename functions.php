@@ -85,9 +85,9 @@ function wkwkrnht_widgets_init(){
     register_widget('disqus_widget');
 }
 
-class wkwkrnht_category_tag extends WP_Widget{
-    function __construct(){parent::__construct('wkwkrnht_category_tag','カテゴリーとタグのみの検索',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/wkwkrnht-category-tag.php');echo $args['after_widget'];}
+class wkwkrnht_categorytag extends WP_Widget{
+    function __construct(){parent::__construct('wkwkrnht_categorytag','カテゴリーとタグのみの検索',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/wkwkrnht-categorytag.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
