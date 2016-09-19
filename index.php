@@ -20,7 +20,7 @@
 		            	<a href="<?php echo $link;?>" title="<?php echo $title;?>" class="card-eyecatch"><h2 class="article-name"><?php echo $txt;?></h2></a><br>
 		            	<span class="card-meta">
 							公開日：<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>"><?php the_time('Y/n/j');?></time><br>
-							著者：<?php echo'
+							著者 ：<?php echo'
 							<span itemscope itemtype="http://schema.org/Person">
 								<a href="' . site_url() . '?author=' . get_the_author_meta('ID') . '" itemprop="url">
 									<span class="vcard author">
