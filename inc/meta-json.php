@@ -396,7 +396,7 @@ elseif(is_home()===true):
             },
             "potentialAction": {
                 "@type": "SearchAction",
-                "target": "' . $home_url . '?s={search_term}",
+                "target": "' . $homeurl . '?s={search_term}",
                 "query-input": "required name=search_term"
             }
         }
