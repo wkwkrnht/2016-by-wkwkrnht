@@ -26,52 +26,24 @@
 	<meta name="twitter:description" content="<?php meta_description();?>">
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
-	<?php if(is_singular()===true):
+	<?php
+	if(is_singular()===true):
 		$fb         = '';
 		$tw         = '';
 		$gp         = '';
 		$logo       = '';
 		$author_id  = '';
-		$str        = '';
-		$cat_echo   = '';
-		$now_cat    = '';
 		$fb         = get_the_author_meta('facebook');
 		$tw         = get_the_author_meta('twitter');
 		$gp         = get_the_author_meta('Googleplus');
 		$logo       = get_theme_mod('custom_logo');
 		$author_id  = $post->post_author;
 		$i          = 1;
-		$categories = get_the_category($post->ID);
-		$cat        = $categories[0];
-		$ancestors  = array_reverse(get_ancestors( $cat -> cat_ID,'category'));
 		if($fb!==''){echo'<meta property="article:author" content="' . $fb . '">';}
 		if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
 		if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
-		if($cat -> parent != 0){
-			foreach($ancestors as $ancestor){
-				$i++;
-				$cat_echo .= '
-				{
-					"@type": "ListItem",
-					"position": ' . $i . ',
-					"item":{
-						"@id": "' . get_category_link($ancestor) . '",
-						"name": "' . get_cat_name($ancestor) . '"
-					}
-				},';
-			}
-		}
-		$i++;
-		$now_cat = '
-		{
-			"@type": "ListItem",
-			"position": ' . $i . ',
-			"item":{
-				"@id": "' . get_category_link($cat -> term_id). '",
-				"name": "' . $cat-> cat_name . '"
-			}
-		}';
-		echo'<script type="application/ld+json">
+		echo'
+		<script type="application/ld+json">
 			{
   				"@context": "http://schema.org",
   				"@type": "NewsArticle",
@@ -104,12 +76,155 @@
   				},
   				"description": "' . get_meta_description() . '"
 			}
-		</script>
+		</script>';
+		if(is_single() || is_page() && is_subpage()===false){
+			$categories = get_the_category($post->ID);
+			$cat        = $categories[0];
+			echo'
+			<script type="application/ld+json">
+				{
+					"@context":"http://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement":
+					[
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"item":{
+								"@id": "' . home_url() . '",
+								"name": "ホーム"
+							}
+						},';
+						if($cat -> parent != 0){
+							$ancestors = array_reverse(get_ancestors( $cat -> cat_ID, 'category' ));
+							foreach($ancestors as $ancestor){
+								$i++;
+								echo'
+								{
+									"@type": "ListItem",
+									"position": ' . $i . ',
+									"item":{
+										"@id": "' . get_category_link($ancestor) . '",
+										"name": "' . get_cat_name($ancestor) . '"
+									}
+								},';
+							}
+						}
+						$i++;
+						echo'
+						{
+							"@type": "ListItem",
+							"position": ' . $i . ',
+							"item":{
+								"@id": "' . get_category_link($cat -> term_id) . '",
+								"name": "' . $cat-> cat_name . '"
+							}
+						},';
+		}
+		if(is_page() && is_subpage()===true){
+			$obj = get_queried_object();
+			echo'
+			<script type="application/ld+json">
+				{
+					"@context":"http://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement":
+					[
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"item":{
+								"@id": "' . home_url() . '",
+								"name": "ホーム"
+							}
+						},';
+						if($obj -> post_parent != 0){
+							$pageAncestors = array_reverse($post -> ancestors);
+							foreach($pageAncestors as $pageAncestor){
+								$i++;
+								echo'
+								{
+									"@type": "ListItem",
+									"position": ' . $i . ',
+									"item":{
+										"@id": "' . esc_url(get_permalink($pageAncestor)) . '",
+										"name": "' . esc_html(get_the_title($pageAncestor)) . '"
+									}
+								},';
+							}
+						}
+		}
+					$i++;
+					echo'
+					{
+						"@type": "ListItem",
+						"position": ' . $i . ',
+						"item":{
+							"@id": "' . esc_url(get_permalink()) . '",
+							"name": "' . esc_html(get_the_title()) . '"
+						}
+					}
+				]
+			}
+			</script>';
+	elseif(is_category()):
+		$i          = 1;
+		$categories = get_the_category($post->ID);
+		$cat        = $categories[0];
+		$cattitle   = get_the_archive_title();
+		echo'
 		<script type="application/ld+json">
 			{
 				"@context":"http://schema.org",
-  				"@type": "BreadcrumbList",
-  				"itemListElement":[
+				"@type": "BreadcrumbList",
+				"itemListElement":
+				[
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"item":{"@id": "' . home_url() . '",
+						"name": "ホーム"
+					}
+				},';
+				if($cat -> parent != 0){
+					$ancestors = array_reverse(get_ancestors($cat -> cat_ID,'category'));
+					foreach($ancestors as $ancestor){
+						$i++;
+						echo'
+						{
+							"@type": "ListItem",
+							"position": ' . $i . ',
+							"item":{
+								"@id": "' . get_category_link($ancestor) .'",
+								"name": "' . get_cat_name($ancestor) . '"
+							}
+						},';
+					}
+				}
+				$i++;
+				echo'
+					{
+						"@type": "ListItem",
+						"position": ' . $i . ',
+						"item":{
+							"@id": "' . get_category_link($cat -> term_id) . '",
+							"name": "' . $cattitle . '"
+						}
+					}
+				]
+			}
+		</script>';
+	elseif(is_tag()):
+		$tagName = single_tag_title('',false);
+		$tag     = get_term_by('name',$tagName,'post_tag');
+		$link    = get_tag_link($tag->term_id);
+		echo'
+			<script type="application/ld+json">
+			{
+				"@context":"http://schema.org",
+				"@type": "BreadcrumbList",
+				"itemListElement":
+				[
 					{
 						"@type": "ListItem",
 						"position": 1,
@@ -117,14 +232,171 @@
 							"@id": "' . home_url() . '",
 							"name": "ホーム"
 						}
-					},'
-					. $cat_echo
-					. $now_cat
-				. ']
+					},
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"item":{
+							"@id": "' . esc_url($link) . '",
+							"name": "' . esc_html($tagName) . '"
+						}
+					}
+				]
+			}
+			</script>';
+	elseif(is_author()):
+			$userId     = get_query_var('author');
+			$authorName = get_the_author_meta('display_name',$userId);
+			echo'
+			<script type="application/ld+json">
+			{
+				"@context":"http://schema.org",
+				"@type": "BreadcrumbList",
+				"itemListElement":
+				[
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"item":{
+							"@id": "' . home_url() . '",
+							"name": "ホーム"
+						}
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"item":{
+							"@id": "' . esc_url(get_author_posts_url($userId)) . '",
+							"name": "' . esc_html($authorName) . '"}}
+				]
+			}
+			</script>';
+	elseif(is_date()):
+			$y     = get_query_var('year');
+			$m     = get_query_var('monthnum');
+			$d     = get_query_var('day');
+			$linkY = get_year_link($y);
+			$linkM = get_month_link($y,$m);
+			$linkD = get_month_link($y,$m,$d);
+			echo'
+				<script type="application/ld+json">
+					{
+						"@context":"http://schema.org",
+						"@type": "BreadcrumbList",
+						"itemListElement":
+						[
+							{
+								"@type": "ListItem",
+								"position": 1,
+								"item":{"@id": "' . home_url() . '",
+								"name": "ホーム"
+							}
+						},
+						{
+							"@type": "ListItem",
+							"position": 2,
+							"item":{
+								"@id": "' . esc_url($linkY) . '",
+								"name": "' . esc_html($y) . '年"
+							}
+						}';
+						if(is_month() || is_day()){
+							echo'
+							{
+								"@type": "ListItem",
+								"position": 3,
+								"item":{
+									"@id": "' . esc_url($linkM) . '",
+									"name": "' . esc_html($m) . '月"
+								}
+							}';
+							if(is_day()){
+								echo'
+								{
+									"@type": "ListItem",
+									"position": 4,
+									"item":{
+										"@id": "' . esc_url($linkD) . '",
+										"name": "' . esc_html($d) . '日"
+									}
+								}';
+							}
+						}
+						echo'
+						]
+					}
+				</script>';
+	elseif(is_search()):
+		echo'
+		<script type="application/ld+json">
+			{
+				"@context":"http://schema.org",
+				"@type": "BreadcrumbList",
+				"itemListElement":
+				[
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"item":{
+							"@id": "' . home_url() . '",
+							"name": "ホーム"
+						}
+					},
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"item":{
+							"@id": "' . esc_url(get_search_link()) . '",
+							"name": "「' . esc_html(get_search_query()) . '」で検索した結果"
+						}
+					}
+				]
 			}
 		</script>';
+	elseif(is_attachment()):
+			echo'
+			<script type="application/ld+json">
+				{
+					"@context":"http://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement":
+					[
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"item":{
+								"@id": "' . home_url() . '",
+								"name": "ホーム"
+							}
+						},';
+						$i   = 1;
+						$obj = get_queried_object();
+						if($obj -> parent != 0){
+							$i++;
+							echo'
+							{
+								"@type": "ListItem",
+								"position": ' . $i . ',
+								"item":{
+									"@id": "' . esc_url(get_permalink($pageAncestor)) . '",
+									"name": "' . esc_html(get_the_title($pageAncestor)) . '"
+								}
+							},';
+						}
+						$i++;
+						echo'
+						{
+							"@type": "ListItem",
+							"position": ' . $i . ',
+							"item":{
+								"@id": "' . esc_url(get_permalink()) . '",
+								"name": "' . esc_html(get_the_title()) . '"
+							}
+						}
+					]
+				}
+			</script>';
 	endif;?>
-	<link rel="amphtml" href="<?php echo get_permalink() . '?amp=1'; ?>">
+	<link rel="amphtml" href="<?php echo get_permalink() . '?amp=1';?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">

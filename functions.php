@@ -271,6 +271,7 @@ function add_body_class($classes){
         ●トップページやカテゴリページなどのページネーションでのタグ出力
     ●分割ページ（マルチページ）URLの取得
     ●分割ページ（マルチページ）かチェックする
+10.is_subpage()
 */
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
 
@@ -368,6 +369,16 @@ function generate_multipage_url($rel='prev'){
     return $url;
 }
 function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
+
+function is_subpage(){
+  global $post;
+  if(is_page() && $post->post_parent){
+    $parentID = $post->post_parent;
+    return $parentID;
+  }else{
+    return false;
+  };
+}
 /*
     独自要素&独自装飾
 1.情報カード
