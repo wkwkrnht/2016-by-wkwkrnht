@@ -37,13 +37,33 @@
 		{
 			"@context":"http://schema.org",
 			"@type":"NewsArticle",
-			"mainEntityOfPage":{"@type":"WebPage","@id":"<?php the_permalink();?>"},
+			"mainEntityOfPage":{
+				"@type":"WebPage",
+				"@id":"<?php the_permalink();?>"
+			},
 			"headline":"<?php the_title();?>",
-			"image":{"@type":"ImageObject","url":"<?php $image_url=wp_get_attachment_image_src(get_post_thumbnail_id(),true);echo $image_url[0];?>","height":800,"width":800},
+			"image":{
+				"@type":"ImageObject",
+				"url":"<?php echo esc_url(get_wkwkrnht_eyecatch(array(800,800)));?>",
+				"height":800,
+				"width":800
+			},
 			"datePublished":"<?php the_time('Y/m/d');?>",
 			"dateModified":"<?php the_modified_date('Y/m/d');?>",
-			"author":{"@type":"Person","name":"<?php the_author_meta('display_name');?>"},
-			"publisher":{"@type":"Organization","name":"<?php bloginfo('name');?>","logo":{"@type": "ImageObject","url": "<?php echo esc_url(get_template_directory_uri());?>/img/logo.png","width":130,"height":53}},
+			"author":{
+				"@type":"Person",
+				"name":"<?php the_author_meta('display_name');?>"
+			},
+			"publisher":{
+				"@type":"Organization",
+				"name":"<?php bloginfo('name');?>",
+				"logo":{
+					"@type": "ImageObject",
+					"url": "<?php echo esc_url(get_meta_image());?>",
+					"width":60,
+					"height":60
+				}
+			},
 			"description": "<?php echo mb_substr(strip_tags($post->post_content),0,60);?>…"
 		}
 	</script>
