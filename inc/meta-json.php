@@ -369,7 +369,7 @@ elseif(is_attachment()===true):
         </script>';
 elseif(is_home()===true):
     $blog_name = get_bloginfo('name')
-    $home_url  = esc_url(home_url());
+    $homeurl  = esc_url(home_url());
     echo'
     <script type="application/ld+json">
         {
@@ -377,7 +377,7 @@ elseif(is_home()===true):
             "@type": "WebSite",
             "name":"' . $blog_name . '",
             "description": "' . mb_substr(get_bloginfo('description'),0,60) . '…",
-            "url": "' . $home_url . '",
+            "url": "' . $homeurl . '",
             "inLanguage": "' . get_bloginfo('language') . '",
             "publisher":{
 				"@type":"Organization",
