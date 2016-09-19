@@ -301,7 +301,7 @@
 						}';
 						if(is_month() || is_day()){
 							echo'
-							{
+							,{
 								"@type": "ListItem",
 								"position": 3,
 								"item":{
@@ -311,7 +311,7 @@
 							}';
 							if(is_day()){
 								echo'
-								{
+								,{
 									"@type": "ListItem",
 									"position": 4,
 									"item":{
