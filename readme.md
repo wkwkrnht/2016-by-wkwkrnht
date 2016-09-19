@@ -39,7 +39,7 @@
 
 ##ファイルツリー
 
-* parts (素材置場)
+* inc (素材置場)
 
     * fontawesome
 
@@ -51,8 +51,13 @@
 
     * baguetteBox.php(LightBox風スクリプト)
     * editor-styl.css (TinyMCE向けスタイルシート)
+    * meta-json.php (ジャンル別メタ情報出力スクリプト)
     * OpenGraph.php (OGP解読スクリプト)
     * no-img.png (404な画像)
+
+* language (国際化向けファイル群)
+
+    * end more...
 
 * widget (ウィジェット)
 
@@ -62,8 +67,9 @@
     * manth-archive.php (短縮版月別アーカイブ)
     * move-top.php (そのページの最上部への移動ボタン)
     * post-nav.php (前後記事ナビ)
-    * related-posts.php (関連記事)
     * related-posts-img.php (画像付関連記事)
+    * related-posts.php (関連記事)
+    * wkwkrnht-categorytag.php (カテゴリーとタグのみの検索)
 
 * footer.php (フッターテンプレート)
 * functions.php (関数ずらずら)
