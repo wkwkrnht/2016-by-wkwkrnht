@@ -381,10 +381,10 @@ elseif(is_home()===true):
             "inLanguage": "' . get_bloginfo('language') . '",
             "publisher":{
 				"@type":"Organization",
-				"name":"<?php bloginfo('name');?>",
+				"name":"' . get_bloginfo('name') . '",
 				"logo":{
 					"@type": "ImageObject",
-					"url": "<?php echo esc_url(get_meta_image());?>",
+					"url": "' . esc_url(get_meta_image()) . '",
 					"width":60,
 					"height":60
 				}
