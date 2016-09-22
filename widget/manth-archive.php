@@ -17,9 +17,9 @@ $archives = explode("\n",$archives);
 
 echo'<ul>';
 foreach ($archives_year as $year_value){
-    echo'<li class="list-year"><h3><a href="' . esc_url(home_url()) . '/' . ltrim($year_value) . '">' . ltrim($year_value) . __('year','2016Bywkwkrnht') . '</a></h3>';
+    echo'<li class="list-year"><h3><a href="' . esc_url(home_url()) . '/' . ltrim($year_value) . '">' . ltrim($year_value) . __('year','2016bywkwkrnht') . '</a></h3>';
     echo'<ul class="article-list">';
-    foreach($archives as $archives_value){if(intval(strip_tags($archives_value)) == intval($year_value)){echo str_replace(intval($year_value) . __('year','2016Bywkwkrnht'),'',ltrim($archives_value));}}
+    foreach($archives as $archives_value){if(intval(strip_tags($archives_value)) == intval($year_value)){echo str_replace(intval($year_value) . __('year','2016bywkwkrnht'),'',ltrim($archives_value));}}
     echo'</ul></li>';
 }
 echo'</ul>';

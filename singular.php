@@ -21,7 +21,7 @@ if($myAmp===true):?>
 						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>">
 							<span class="vcard author">
 								<span class="fn">
-									<?php _e('author','2016Bywkwkrnht');?> : <?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
+									<?php _e('author','2016bywkwkrnht');?> : <?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
 								</span>
 							</span>
 						</a>
@@ -31,7 +31,7 @@ if($myAmp===true):?>
 					if($cat && !is_wp_error($cat)){
 						$echo = '';
 						$par  = get_category($cat[0]->parent);
-						echo'<div class="bread"><a href="' . home_url() . '">' . __('home','2016Bywkwkrnht') . '</a><span class="bread-sp">/</span>';
+						echo'<div class="bread"><a href="' . home_url() . '">' . __('home','2016bywkwkrnht') . '</a><span class="bread-sp">/</span>';
 						while($par && !is_wp_error($par) && $par->term_id!==0){
 							$echo = '<a href="' . get_category_link($par->term_id) . '">' . $par->name . '</a><span class="bread-sp">/</span>' . $echo;
 							$par  = get_category($par->parent);
