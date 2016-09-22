@@ -90,7 +90,7 @@ class wkwkrnht_categorytag extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/wkwkrnht-categorytag.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016bywkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -103,7 +103,7 @@ class wkwkrnht_manth_archive extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/manth-archive.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016bywkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -121,7 +121,7 @@ class related_posts extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016bywkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -134,7 +134,7 @@ class related_posts_img extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post-img.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016bywkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -147,7 +147,7 @@ class post_nav extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016bywkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -160,7 +160,7 @@ class post_comment extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];comments_template('/widget/comment.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016bywkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -176,8 +176,7 @@ class disqus_widget extends WP_Widget{
 add_filter('widget_text','do_shortcode');
 
 function wkwkrnht_search_form($form){
-    $var      = 'depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=' . _e('choosing category','2016bywkwkrnht');
-    $tags     = get_tags();
+    $tags = get_tags();
     $tag_echo = '';
     foreach($tags as $tag):
         $tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';
@@ -186,12 +185,12 @@ function wkwkrnht_search_form($form){
     <div id="search">
         <form method="get" action="' . esc_url(home_url()) . '">
             <input name="s" id="s" type="text"><br>'
-            . wp_dropdown_categories($var)
+            . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー選択')
             . '<select name="tag" id="tag">
-                <option value="" selected="selected">' . __('choosing tag','2016bywkwkrnht') . '</option>'
+                <option value="" selected="selected">タグ選択</option>'
                  . $tag_echo
             . '</select>
-            <input id="submit" type="submit" value="' . __('search','2016bywkwkrnht') . '">
+            <input id="submit" type="submit" value="検索">
         </form>
     </div>
     ';
@@ -282,16 +281,16 @@ function get_first_post_year(){$year = null;query_posts('posts_per_page=1&order=
 function get_meta_description_from_category(){
     $cat_desc=trim(strip_tags(category_description()));
     if($cat_desc){return $cat_desc;}
-    $cat_desc='「' . single_cat_title('',false) . '」' . __('inculudes theese posts.','2016bywkwkrnht') . get_bloginfo('description');
+    $cat_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
     return $cat_desc;
 }
-function get_meta_keyword_from_category(){return single_cat_title('',false) . ',' . __('category','2016bywkwkrnht') . ',' . __('list view','2016bywkwkrnht') . ',' . __('blog','2016bywkwkrnht');}
+function get_meta_keyword_from_category(){return single_cat_title('',false) . ',カテゴリー,ブログ,記事一覧';}
 
-function get_meta_keyword_from_tag(){return single_tag_title('',false) . ',' . __('tag','2016bywkwkrnht') . ',' . __('list view','2016bywkwkrnht') . ',' . __('blog','2016bywkwkrnht');}
+function get_meta_keyword_from_tag(){return single_tag_title('',false) . ',タグ,ブログ,記事一覧';}
 function get_meta_description_from_tag(){
     $tag_desc=trim(strip_tags(tag_description()));
     if($tag_desc){return $tag_desc;}
-    $tag_desc='「' . single_tag_title('',false) . '」' . __('inculudes theese posts.','2016bywkwkrnht') . get_bloginfo('description');
+    $tag_desc='「' . single_tag_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
     return $tag_desc;
 }
 
@@ -404,16 +403,16 @@ function wkwkrnht_special_card(){
     else:
         echo'<header class="card info-card">';
             if(is_category()===true):
-                echo'<h1 class="site-title">「' . single_cat_title('',false) . '」' . __('inculudes theese posts.','2016bywkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
+                echo'<h1 class="site-title">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
             elseif(is_tag()===true):
-                echo'<h1 class="site-title">「' . single_tag_title('',false) . '」' . __('inculudes theese posts.','2016bywkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
+                echo'<h1 class="site-title">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
             elseif(is_search()===true):
                 global $wp_query;
                 $serachresult = $wp_query->found_posts;
                 wp_reset_query();
-                echo'<h1 class="site-title">「' . get_search_query() . '」' . __('are inculuded theese posts.','2016bywkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
+                echo'<h1 class="site-title">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
             elseif(is_404()===true):
-                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><br><h2>' . __('404 Not Found','2016bywkwkrnht') . '</h2><p class="site-description">' . __('This site does not have post which you want.Please, serach again.','2016bywkwkrnht') . '</p></a>';
+                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
             else:
                 echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
             endif;
@@ -439,7 +438,7 @@ function wkwkrnht_page_navi(){
     if(is_array($page_format)){
         echo'<ul class="page-nation">';
 		$paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
-		foreach($page_format as $page){if($page===$paged){echo"<li class='current'>$page</li>";}else{echo"<li>$page</li>";}}
+		foreach($page_format as $page){if($page===$paged){echo "<li class='current'>$page</li>";}else{echo "<li>$page</li>";}}
         echo'</ul>';
 	}
 	wp_reset_query();
@@ -595,9 +594,9 @@ function appthemes_add_quicktags(){
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
 
 function add_posts_columns($columns){
-    $columns['thumbnail'] = __('thumbnail','2016bywkwkrnht');
-    $columns['postid']    = __('ID','2016bywkwkrnht');
-    $columns['count']     = __('word count','2016bywkwkrnht');
+    $columns['thumbnail']='サムネイル';
+    $columns['postid']='ID';
+    $columns['count']='文字数';
     return $columns;
 }
 function add_posts_columns_row($column_name,$post_id){
@@ -650,7 +649,7 @@ function theme_customize($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_hover_background',array('label'=>'page_nation_hover_background','settings'=>'page_nation_hover_background','section'=>'colors',)));
     $wp_customize->add_setting('article_meta_background',array('type'=>'option','default'=>'#f1f1f1','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_meta_background',array('label'=>'article_meta_background','settings'=>'article_meta_background','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_a_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_a_color',array('type'=>'option','default'=>'#934c7b','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_a_color',array('label'=>'article_main_a_color','settings'=>'article_main_a_color','section'=>'colors',)));
     $wp_customize->add_setting('article_main_h_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h_border',array('label'=>'article_main_h_border','settings'=>'article_main_h_border','section'=>'colors',)));
@@ -706,7 +705,7 @@ function wkwkrnht_customize_css(){ ?>
         .page-nation li .dots{color:<?php echo get_option('page_nation_dots_color','#333');?>;}
         .page-nation a:hover,.page-nation .current{color:<?php echo get_option('page_nation_hover_color','#fff');?>;background-color:<?php echo get_option('page_nation_hover_background','#03a9f4');?>;}
         .article-meta{background-color:<?php echo get_option('article_meta_background','#f1f1f1');?>;}
-        .article-main a,.article-main a:visited{color:<?php echo get_option('article_main_a_color','#03a9f4');?>;}
+        .article-main a:visited{color:<?php echo get_option('article_main_a_color','#934c7b');?>;}
         .article-main h1,.article-main h4,.article-main h5,.article-main h6{border-color:<?php echo get_option('article_main_h_border','#03a9f4');?>;}
         .article-main h3{color:<?php echo get_option('article_main_h_color','#fff');?>;background-color:<?php echo get_option('article_main_h_background','#03a9f4');?>;}
         .article-main blockquote,.article-main q,.article-main pre,.article-main address,.article-main blockquote::after{border-color:<?php echo get_option('article_main_bq_border','#bbb');?>;}
@@ -718,68 +717,68 @@ add_action('wp_head','wkwkrnht_customize_css');
 
 
 function my_new_contactmethods($contactmethods){
-    $contactmethods['TEL']               = __('phone number','2016bywkwkrnht');
-    $contactmethods['FAX']               = __('FAX','2016bywkwkrnht');
-    $contactmethods['Addres']            = __('address','2016bywkwkrnht');
-    $contactmethods['Graveter']          = 'Graveter';
-    $contactmethods['LINE']              = 'LINE';
-    $contactmethods['YO']                = 'YO!';
-    $contactmethods['twitter']           = 'Twitter';
-    $contactmethods['facebook']          = 'Facebook';
-    $contactmethods['Linkedin']          = 'Linkedin';
-    $contactmethods['Googleplus']        = 'Google+';
-    $contactmethods['Github']            = 'Github';
-    $contactmethods['Bitbucket']         = 'Bitbucket';
-    $contactmethods['Codepen']           = 'Codepen';
-    $contactmethods['JSbuddle']          = 'JSbuddle';
-    $contactmethods['Quita']             = 'Quita';
-    $contactmethods['xda']               = 'xda';
-    $contactmethods['hatenablog']        = 'はてなブログ';
-    $contactmethods['hatenadiary']       = 'はてなダイアリー';
-    $contactmethods['hatebu']            = 'はてなブックマーク';
-    $contactmethods['Pocket']            = 'Pocket';
-    $contactmethods['ameba']             = 'アメーバ';
-    $contactmethods['fc2']               = 'fc2';
-    $contactmethods['mixi']              = 'mixi';
-    $contactmethods['Instagram']         = 'Instagram';
-    $contactmethods['Pinterest']         = 'Pinterest';
-    $contactmethods['Flickr']            = 'Flickr';
-    $contactmethods['FourSquare']        = 'FourSquare';
-    $contactmethods['Swarm']             = 'Swarm';
-    $contactmethods['Steam']             = 'Steam';
-    $contactmethods['XboxLive']          = 'XboxLive';
-    $contactmethods['PSN']               = 'PSN';
-    $contactmethods['NINTENDOaccount']   = 'ニンテンドーアカウント';
-    $contactmethods['NINTENDONetworkID'] = 'ニンテンドーネットワークID';
-    $contactmethods['friendcode']        = 'フレンドコード';
-    $contactmethods['UPlay']             = 'UPlay';
-    $contactmethods['EAOrigin']          = 'EAOrigin';
-    $contactmethods['SQUAREENIXMembers'] = 'SQUAREENIXMembers';
-    $contactmethods['BANDAINAMCOID']     = 'BANDAINAMCOID';
-    $contactmethods['SEGAID']            = 'SEGAID';
-    $contactmethods['vine']              = 'vine';
-    $contactmethods['vimeo']             = 'vimeo';
-    $contactmethods['YouTube']           = 'YouTube';
-    $contactmethods['USTREAM']           = 'USTREAM';
-    $contactmethods['Twitch']            = 'Twitch';
-    $contactmethods['niconico']          = 'niconico';
-    $contactmethods['Skype']             = 'Skype';
-    $contactmethods['twitcasting']       = 'ツイキャス';
-    $contactmethods['MixCannel']         = 'MixChannel';
-    $contactmethods['Slideshare']        = 'Slideshare';
-    $contactmethods['Medium']            = 'Medium';
-    $contactmethods['note']              = 'note';
-    $contactmethods['Pxiv']              = 'Pxiv';
-    $contactmethods['Tumblr']            = 'Tumblr';
-    $contactmethods['Blogger']           = 'Blogger';
-    $contactmethods['livedoor']          = 'livedoor';
-    $contactmethods['wordpress.com']     = 'wordpress.com';
-    $contactmethods['wordpress.org']     = 'wordpress.org';
-    $contactmethods['Amazonlist']        = __('wishlist in Amazon','2016bywkwkrnht');
-    $contactmethods['Yahooaction']       = 'Yahoo!オークション';
-    $contactmethods['Rakuma']            = 'ラクマ';
-    $contactmethods['Merukari']          = 'メルカリ';
-    $contactmethods['Bitcoin']           = 'Bitcoin';
+    $contactmethods['TEL']='TEL';
+    $contactmethods['FAX']='FAX';
+    $contactmethods['Addres']='住所';
+    $contactmethods['Graveter']='Graveter';
+    $contactmethods['LINE']='LINE';
+    $contactmethods['YO']='YO!';
+    $contactmethods['twitter']='Twitter';
+    $contactmethods['facebook']='Facebook';
+    $contactmethods['Linkedin']='Linkedin';
+    $contactmethods['Googleplus']='Google+';
+    $contactmethods['Github']='Github';
+    $contactmethods['Bitbucket']='Bitbucket';
+    $contactmethods['Codepen']='Codepen';
+    $contactmethods['JSbuddle']='JSbuddle';
+    $contactmethods['Quita']='Quita';
+    $contactmethods['xda']='xda';
+    $contactmethods['hatenablog']='はてなブログ';
+    $contactmethods['hatenadiary']='はてなダイアリー';
+    $contactmethods['hatebu']='はてなブックマーク';
+    $contactmethods['Pocket']='Pocket';
+    $contactmethods['ameba']='アメーバ';
+    $contactmethods['fc2']='fc2';
+    $contactmethods['mixi']='mixi';
+    $contactmethods['Instagram']='Instagram';
+    $contactmethods['Pinterest']='Pinterest';
+    $contactmethods['Flickr']='Flickr';
+    $contactmethods['FourSquare']='FourSquare';
+    $contactmethods['Swarm']='Swarm';
+    $contactmethods['Steam']='Steam';
+    $contactmethods['XboxLive']='XboxLive';
+    $contactmethods['PSN']='PSN';
+    $contactmethods['NINTENDOaccount']='ニンテンドーアカウント';
+    $contactmethods['NINTENDONetworkID']='ニンテンドーネットワークID';
+    $contactmethods['friendcode']='フレンドコード';
+    $contactmethods['UPlay']='UPlay';
+    $contactmethods['EAOrigin']='EAOrigin';
+    $contactmethods['SQUAREENIXMembers']='SQUAREENIXMembers';
+    $contactmethods['BANDAINAMCOID']='BANDAINAMCOID';
+    $contactmethods['SEGAID']='SEGAID';
+    $contactmethods['vine']='vine';
+    $contactmethods['vimeo']='vimeo';
+    $contactmethods['YouTube']='YouTube';
+    $contactmethods['USTREAM']='USTREAM';
+    $contactmethods['Twitch']='Twitch';
+    $contactmethods['niconico']='niconico';
+    $contactmethods['Skype']='Skype';
+    $contactmethods['twitcasting']='ツイキャス';
+    $contactmethods['MixCannel']='MixChannel';
+    $contactmethods['Slideshare']='Slideshare';
+    $contactmethods['Medium']='Medium';
+    $contactmethods['note']='note';
+    $contactmethods['Pxiv']='Pxiv';
+    $contactmethods['Tumblr']='Tumblr';
+    $contactmethods['Blogger']='Blogger';
+    $contactmethods['livedoor']='livedoor';
+    $contactmethods['wordpress.com']='wordpress.com';
+    $contactmethods['wordpress.org']='wordpress.org';
+    $contactmethods['Amazonlist']='Amazonの欲しいものリスト';
+    $contactmethods['Yahooaction']='Yahoo!オークション';
+    $contactmethods['Rakuma']='ラクマ';
+    $contactmethods['Merukari']='メルカリ';
+    $contactmethods['Bitcoin']='Bitcoin';
     return $contactmethods;
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
