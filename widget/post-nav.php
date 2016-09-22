@@ -23,6 +23,7 @@
         .widget_post_nav .next{background:url(' . $nexturl . ') rgba(0,0,0,.1) center;}
         ';
     ?>
+    article>.widget-area .widget_post_nav{padding-top:5vh;}
 </style>
 <a href="<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>" class="prev">←  <?php the_title_attribute(array('post'=>$prev->ID));?></a>
 <a href="<?php echo get_permalink(get_adjacent_post(false,'',false));?>" class="next"><?php the_title_attribute(array('post'=>$next->ID));?>  →</a>

@@ -18,28 +18,18 @@ if($myAmp===true):?>
 				<span class="article-info">
 					<h1 class="article-name entry-title"><?php the_title();?></h1>
 					<span class="author">
+						著者 : 
 						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>">
 							<span class="vcard author">
 								<span class="fn">
-									著者 : <?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
+									<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
 								</span>
 							</span>
 						</a>
 					</span>
-					<?php
-					$cat = get_the_category();
-					if($cat && !is_wp_error($cat)){
-						$echo = '';
-						$par  = get_category($cat[0]->parent);
-						echo'<div class="bread"><a href="' . home_url() . '">ホーム</a><span class="bread-sp">/</span>';
-						while($par && !is_wp_error($par) && $par->term_id!==0){
-							$echo = '<a href="' . get_category_link($par->term_id) . '">' . $par->name . '</a><span class="bread-sp">/</span>' . $echo;
-							$par  = get_category($par->parent);
-						}
-						echo $echo . '<a href="' . get_category_link($cat[0]->term_id) . '">' . $cat[0]->name . '</a></div>';
-					}
-					?>
-					<span class="article-tag"><?php the_tags('','','');?></span>
+					<span class="article-tag">
+						<?php the_tags('','','');?>
+					</span>
 				</span>
 			</div>
 		</header>
