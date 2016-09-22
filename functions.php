@@ -174,7 +174,7 @@ class disqus_widget extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');$args['after_widget'];}
 }
 
-class disqus_widget extends WP_Widget{
+class google_widget extends WP_Widget{
     function __construct(){parent::__construct('google_widget','Google',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/google.php');$args['after_widget'];}
 }
