@@ -90,7 +90,7 @@ class wkwkrnht_categorytag extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/wkwkrnht-categorytag.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016-by-wkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016Bywkwkrnht');?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -103,7 +103,7 @@ class wkwkrnht_manth_archive extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/manth-archive.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016-by-wkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016Bywkwkrnht');?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -121,7 +121,7 @@ class related_posts extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016-by-wkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016Bywkwkrnht');?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -134,7 +134,7 @@ class related_posts_img extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post-img.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016-by-wkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016Bywkwkrnht');?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -147,7 +147,7 @@ class post_nav extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016-by-wkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016Bywkwkrnht');?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -160,7 +160,7 @@ class post_comment extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];comments_template('/widget/comment.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016-by-wkwkrnht');?></label>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('title','2016Bywkwkrnht');?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
 		</p>
 		<?php
@@ -176,7 +176,7 @@ class disqus_widget extends WP_Widget{
 add_filter('widget_text','do_shortcode');
 
 function wkwkrnht_search_form($form){
-    $var      = 'depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=' . _e('choosing category','2016-by-wkwkrnht');
+    $var      = 'depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=' . _e('choosing category','2016Bywkwkrnht');
     $tags     = get_tags();
     $tag_echo = '';
     foreach($tags as $tag):
@@ -188,10 +188,10 @@ function wkwkrnht_search_form($form){
             <input name="s" id="s" type="text"><br>'
             . wp_dropdown_categories($var)
             . '<select name="tag" id="tag">
-                <option value="" selected="selected">' . __('choosing tag','2016-by-wkwkrnht') . '</option>'
+                <option value="" selected="selected">' . __('choosing tag','2016Bywkwkrnht') . '</option>'
                  . $tag_echo
             . '</select>
-            <input id="submit" type="submit" value="' . __('search','2016-by-wkwkrnht') . '">
+            <input id="submit" type="submit" value="' . __('search','2016Bywkwkrnht') . '">
         </form>
     </div>
     ';
@@ -282,16 +282,16 @@ function get_first_post_year(){$year = null;query_posts('posts_per_page=1&order=
 function get_meta_description_from_category(){
     $cat_desc=trim(strip_tags(category_description()));
     if($cat_desc){return $cat_desc;}
-    $cat_desc='「' . single_cat_title('',false) . '」' . __('inculudes theese posts.','2016-by-wkwkrnht') . get_bloginfo('description');
+    $cat_desc='「' . single_cat_title('',false) . '」' . __('inculudes theese posts.','2016Bywkwkrnht') . get_bloginfo('description');
     return $cat_desc;
 }
-function get_meta_keyword_from_category(){return single_cat_title('',false) . ',' . __('category','2016-by-wkwkrnht') . ',' . __('list view','2016-by-wkwkrnht') . ',' . __('blog','2016-by-wkwkrnht');}
+function get_meta_keyword_from_category(){return single_cat_title('',false) . ',' . __('category','2016Bywkwkrnht') . ',' . __('list view','2016Bywkwkrnht') . ',' . __('blog','2016Bywkwkrnht');}
 
-function get_meta_keyword_from_tag(){return single_tag_title('',false) . ',' . __('tag','2016-by-wkwkrnht') . ',' . __('list view','2016-by-wkwkrnht') . ',' . __('blog','2016-by-wkwkrnht');}
+function get_meta_keyword_from_tag(){return single_tag_title('',false) . ',' . __('tag','2016Bywkwkrnht') . ',' . __('list view','2016Bywkwkrnht') . ',' . __('blog','2016Bywkwkrnht');}
 function get_meta_description_from_tag(){
     $tag_desc=trim(strip_tags(tag_description()));
     if($tag_desc){return $tag_desc;}
-    $tag_desc='「' . single_tag_title('',false) . '」' . __('inculudes theese posts.','2016-by-wkwkrnht') . get_bloginfo('description');
+    $tag_desc='「' . single_tag_title('',false) . '」' . __('inculudes theese posts.','2016Bywkwkrnht') . get_bloginfo('description');
     return $tag_desc;
 }
 
@@ -404,16 +404,16 @@ function wkwkrnht_special_card(){
     else:
         echo'<header class="card info-card">';
             if(is_category()===true):
-                echo'<h1 class="site-title">「' . single_cat_title('',false) . '」' . __('inculudes theese posts.','2016-by-wkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
+                echo'<h1 class="site-title">「' . single_cat_title('',false) . '」' . __('inculudes theese posts.','2016Bywkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
             elseif(is_tag()===true):
-                echo'<h1 class="site-title">「' . single_tag_title('',false) . '」' . __('inculudes theese posts.','2016-by-wkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
+                echo'<h1 class="site-title">「' . single_tag_title('',false) . '」' . __('inculudes theese posts.','2016Bywkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
             elseif(is_search()===true):
                 global $wp_query;
                 $serachresult = $wp_query->found_posts;
                 wp_reset_query();
-                echo'<h1 class="site-title">「' . get_search_query() . '」' . __('are inculuded theese posts.','2016-by-wkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
+                echo'<h1 class="site-title">「' . get_search_query() . '」' . __('are inculuded theese posts.','2016Bywkwkrnht') . '｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
             elseif(is_404()===true):
-                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><br><h2>' . __('404 Not Found','2016-by-wkwkrnht') . '</h2><p class="site-description">' . __('This site does not have post which you want.Please, serach again.','2016-by-wkwkrnht') . '</p></a>';
+                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><br><h2>' . __('404 Not Found','2016Bywkwkrnht') . '</h2><p class="site-description">' . __('This site does not have post which you want.Please, serach again.','2016Bywkwkrnht') . '</p></a>';
             else:
                 echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
             endif;
@@ -595,9 +595,9 @@ function appthemes_add_quicktags(){
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
 
 function add_posts_columns($columns){
-    $columns['thumbnail'] = __('thumbnail','2016-by-wkwkrnht');
-    $columns['postid']    = __('ID','2016-by-wkwkrnht');
-    $columns['count']     = __('word count','2016-by-wkwkrnht');
+    $columns['thumbnail'] = __('thumbnail','2016Bywkwkrnht');
+    $columns['postid']    = __('ID','2016Bywkwkrnht');
+    $columns['count']     = __('word count','2016Bywkwkrnht');
     return $columns;
 }
 function add_posts_columns_row($column_name,$post_id){
@@ -718,9 +718,9 @@ add_action('wp_head','wkwkrnht_customize_css');
 
 
 function my_new_contactmethods($contactmethods){
-    $contactmethods['TEL']               = __('phone number','2016-by-wkwkrnht');
-    $contactmethods['FAX']               = __('FAX','2016-by-wkwkrnht');
-    $contactmethods['Addres']            = __('address','2016-by-wkwkrnht');
+    $contactmethods['TEL']               = __('phone number','2016Bywkwkrnht');
+    $contactmethods['FAX']               = __('FAX','2016Bywkwkrnht');
+    $contactmethods['Addres']            = __('address','2016Bywkwkrnht');
     $contactmethods['Graveter']          = 'Graveter';
     $contactmethods['LINE']              = 'LINE';
     $contactmethods['YO']                = 'YO!';
@@ -775,7 +775,7 @@ function my_new_contactmethods($contactmethods){
     $contactmethods['livedoor']          = 'livedoor';
     $contactmethods['wordpress.com']     = 'wordpress.com';
     $contactmethods['wordpress.org']     = 'wordpress.org';
-    $contactmethods['Amazonlist']        = __('wishlist in Amazon','2016-by-wkwkrnht');
+    $contactmethods['Amazonlist']        = __('wishlist in Amazon','2016Bywkwkrnht');
     $contactmethods['Yahooaction']       = 'Yahoo!オークション';
     $contactmethods['Rakuma']            = 'ラクマ';
     $contactmethods['Merukari']          = 'メルカリ';
