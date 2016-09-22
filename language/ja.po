@@ -5,7 +5,7 @@ msgstr ""
 "PO-Revision-Date: 2016-09-22 20:53+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: ja_JP\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,7 +15,6 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: singular.php\n"
 
 #: amp.php:218 amp.php:230 index.php:22 widget/related-post.php:17
 #: widget/related-post.php:29
@@ -86,9 +85,7 @@ msgstr "404 Not Found"
 
 #: functions.php:416
 msgid "This site does not have post which you want.Please, serach again."
-msgstr ""
-"お探しのものは見つかりませんでした。お手数おかけしますが、再びお探しくだ"
-"さい。"
+msgstr "お探しのものは見つかりませんでした。お手数おかけしますが、再びお探しください。"
 
 #: functions.php:598
 msgid "thumbnail"
@@ -147,6 +144,4 @@ msgstr "コメント"
 
 #: widget/disqus.php:5
 msgid "Please enable JavaScript to view the comments powered by Disqus."
-msgstr ""
-"Disqus上のコメントを見るためには、JavaScriptが有効になっている必要があり"
-"ます。"
+msgstr "Disqus上のコメントを見るためには、JavaScriptが有効になっている必要があります。"
