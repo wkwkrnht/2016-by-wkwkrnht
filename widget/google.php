@@ -8,6 +8,5 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
     })();
-  //'018423656682452105259:kmcdehafygu'
 </script>
 <gcse:search></gcse:search>
