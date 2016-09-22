@@ -176,7 +176,7 @@ class disqus_widget extends WP_Widget{
 add_filter('widget_text','do_shortcode');
 
 function wkwkrnht_search_form($form){
-    $var      = 'depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=' . _e('choosing category','2016-by-wkwkrnht')
+    $var      = 'depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=' . _e('choosing category','2016-by-wkwkrnht');
     $tags     = get_tags();
     $tag_echo = '';
     foreach($tags as $tag):
