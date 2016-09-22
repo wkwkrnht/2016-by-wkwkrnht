@@ -1,6 +1,6 @@
 <script>
     (function(){
-        var cx = '<?php echo get_option('Google_search_ID');?>';
+        var cx = '<?php echo get_option('Google_Search_cx');?>';
         var gcse = document.createElement('script');
         gcse.type = 'text/javascript';
         gcse.async = true;
