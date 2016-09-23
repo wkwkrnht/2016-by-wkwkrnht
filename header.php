@@ -9,10 +9,13 @@
 	<?php
 	$bing   = '';
 	$google = '';
+	$pi     = '';
 	$bing   = get_option('Bing_Webmaster');
 	$google = get_option('Google_Webmaster');
+	$pin    = get_option('Pinterest');
 	if($bing!==''){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
-	if($google!==''){echo'<meta name="google-site-verification" content="' . $google . '">';}?>
+	if($google!==''){echo'<meta name="google-site-verification" content="' . $google . '">';}
+	if($pin!==''){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta name="msapplication-TileColor" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta http-equiv="cleartype" content="on">
