@@ -543,7 +543,7 @@ function wkwkrnht_night_mode(){
     .article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name,.article-main .ogp-blogcard-title:visited,.article-main .ogp-blogcard-description:visited,.article-main .ogp-blogcard-site-name:visited,.article-main img::after{color:#fff;}
     ';
     if($hour >= 21 || $hour <= 6){
-        echo'<style>' . $css . '</style>'
+        echo'<style>' . $css . '</style>';
     }else{
         return;
     }
