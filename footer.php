@@ -60,6 +60,7 @@
         .night-mode .page-nation,.night-mode .page-nation a,.night-mode .page-nation li .dots,.night-mode .page-nation .current{color:#fff;background-color:#333;border-color:#fff;}
         .night-mode .page-nation li .dots{color:#f1f1f1;}
         .night-mode .page-nation a:hover{color:#333;background-color:#fff;}
+        .night-mode .article-name{color:#333;}
         .night-mode .article-main .ogp-blogcard-title,.night-mode .article-main .ogp-blogcard-description,.night-mode .article-main .ogp-blogcard-site-name,.night-mode .article-main .ogp-blogcard-title:visited,.night-mode .article-main .ogp-blogcard-description:visited,.night-mode .article-main .ogp-blogcard-site-name:visited,.night-mode .article-main img::after{color:#fff;}
     </style>
 </body>
