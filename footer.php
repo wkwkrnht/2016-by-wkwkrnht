@@ -55,6 +55,7 @@
     <style>
         .night-mode,.night-mode #main-menu,.night-mode .card,.night-mode .card-list{color:#fff;background-color:#333;}
         #menu-toggle,#home-button,#button-toggle,#share-menu-toggle{color:#fff;background-color:#333;}
+        #share-menu .close-button{background-color:#333;}
         .night-mode .ogp-blogcard{background-color:#333;border-color:#f1f1f1;}
         .night-mode .page-nation,.page-nation a,.page-nation li .dots,.page-nation .current,.page-nation a:hover{color:#fff;background-color:#333;border-color:#fff;}
         .page-nation li .dots{color:#f1f1f1;}
