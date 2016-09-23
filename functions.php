@@ -537,9 +537,7 @@ add_filter('comment_text','wkwkrnht_replace');
 
 function wkwkrnht_night_mode(){
     $hour    = intval(date("G"));
-    $tf_hour = '';
-    if(21 > $hour > 5){$tf_hour = 'tfhour';}
-    if($tf_hour===''){
+    if(6 >= $hour || 21<= $hour){
         echo'
         <style>
             :root,#main-menu,.card,.card-list{color:#fff;background-color:#333;}
