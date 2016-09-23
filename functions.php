@@ -536,7 +536,7 @@ add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
 
 function wkwkrnht_night_mode(){
-    $hour = date('H');
+    $hour = date('G');
     $css  = '
     :root,#main-menu,.card-list{color:#fff;background-color:#333;}
     .ogp-blogcard{background-color:#333;bordder-color#f1f1f1:}
