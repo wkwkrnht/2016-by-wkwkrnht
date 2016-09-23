@@ -536,11 +536,13 @@ add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
 
 function wkwkrnht_night_mode(){
-    $hour = date("G");
-    if($hour >= 21 || $hour <= 5){
+    $hour    = intval(date("G"));
+    $tf_hour = '';
+    if(21 > $hour > 5){$tf_hour = 'tfhour';}
+    if($tf_hour===''){
         echo'
         <style>
-            :root,#main-menu,.card-list{color:#fff;background-color:#333;}
+            :root,#main-menu,.card,.card-list{color:#fff;background-color:#333;}
             .ogp-blogcard{background-color:#333;bordder-color#f1f1f1:}
             .article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name,.article-main .ogp-blogcard-title:visited,.article-main .ogp-blogcard-description:visited,.article-main .ogp-blogcard-site-name:visited,.article-main img::after{color:#fff;}
         </style>';
