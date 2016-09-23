@@ -51,5 +51,16 @@
         endif;
     endif;?>
     <?php wp_footer();?>
+    <script>
+        if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
+            document.createElement('style');
+            var stylesheets_number = document.styleSheets.length;
+            var stylesheet = document.styleSheets.item(stylesheets_number);
+            var rule_length = stylesheet.cssRules.length;
+            stylesheet.insertRule(":root,#main-menu,.card,.card-list{color:#fff;background-color:#333;}",rule_length);
+            stylesheet.insertRule(".ogp-blogcard{background-color:#333;bordder-color#f1f1f1:}",rule_length);
+            stylesheet.insertRule(".article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name,.article-main .ogp-blogcard-title:visited,.article-main .ogp-blogcard-description:visited,.article-main .ogp-blogcard-site-name:visited,.article-main img::after{color:#fff;}",rule_length);
+        }
+    </script>
 </body>
 </html>
