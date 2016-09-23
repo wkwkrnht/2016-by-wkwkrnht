@@ -319,7 +319,7 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
         .search-form div{padding:3px 5px;font-size:75%;}
         .search-form .sform{min-width:180px;}
         .search-form .sbtn{padding-left:5px;padding-right:10px;}
-        .search-form .sbtn::after{font-size:20px;margin-left:-10px;}
+        .search-form .sbtn::after{font-size:2rem;margin-left:-10px;}
     }
 }
 @media print{
