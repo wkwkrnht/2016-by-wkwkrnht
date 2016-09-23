@@ -537,15 +537,13 @@ add_filter('comment_text','wkwkrnht_replace');
 
 function wkwkrnht_night_mode(){
     $hour = date("G");
-    $css  = '
-    :root,#main-menu,.card-list{color:#fff;background-color:#333;}
-    .ogp-blogcard{background-color:#333;bordder-color#f1f1f1:}
-    .article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name,.article-main .ogp-blogcard-title:visited,.article-main .ogp-blogcard-description:visited,.article-main .ogp-blogcard-site-name:visited,.article-main img::after{color:#fff;}
-    ';
     if($hour >= '21' || $hour <= '5'){
-        echo'<style>' . $css . '</style>';
-    }else{
-        return;
+        echo'
+        <style>
+            :root,#main-menu,.card-list{color:#fff;background-color:#333;}
+            .ogp-blogcard{background-color:#333;bordder-color#f1f1f1:}
+            .article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name,.article-main .ogp-blogcard-title:visited,.article-main .ogp-blogcard-description:visited,.article-main .ogp-blogcard-site-name:visited,.article-main img::after{color:#fff;}
+        </style>';
     }
 }
 add_action('wp_footer','wkwkrnht_night_mode');
