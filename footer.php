@@ -40,14 +40,15 @@
     </div>
     <?php
     if(is_singular()===true):
+        if(have_posts()):while(have_posts()):the_post();$postid = get_the_ID();endwhile;endif;
         $format = get_post_format();
-        if($format==='gallery' || get_post_meta(get_the_ID(),'light',true)===1){include_once(dirname(__FILE__) . '/./inc/baguetteBox.php');}
+        if($format==='gallery' || get_post_meta($postid,'light',true)===1){include_once(dirname(__FILE__) . '/./inc/baguetteBox.php');}
         if($format==='link'){
             echo'
             <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
         }
-        if(get_post_meta(get_the_ID(),'code',true)===1){include_once(get_template_directory() . '/inc/prism.php');}
+        if(get_post_meta($postid,'code',true)===1){include_once(get_template_directory() . '/inc/prism.php');}
     endif;?>
     <?php wp_footer();?>
     <script>(function(){var doc = document;var wpCss = doc.getElementsByClassName('wpcss');var wpCssL = wpCss.length;for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);}})()if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}</script>
