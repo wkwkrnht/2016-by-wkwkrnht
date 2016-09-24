@@ -626,9 +626,8 @@ add_action('save_post','save_custom_fields');
 function add_custom_fields(){add_meta_box('my_sectionid','追加スクリプト','my_custom_fields','post');}
 function my_custom_fields(){
     global $post;
-    $postid = $post->ID
-    $light  = get_post_meta($postid,'light',true);
-    $code   = get_post_meta($postid,'code',true);
+    $light = get_post_meta($post->ID,'light',true);
+    $code  = get_post_meta($post->ID,'code',true);
     if($light==1){$light_c="checked";}else{$light_c="/";}
     if($code==1){$code_c="checked";}else{$code_c="/";}
     echo'
