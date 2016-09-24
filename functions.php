@@ -20,7 +20,6 @@
 5.絵文字削除
 6.ソーシャルメニューにdata-title追加
 7.body_classにクラス追加
-8.カテゴリーページとタグページに固定ページも表示
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
@@ -239,7 +238,7 @@ add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
 add_filter('walker_nav_menu_start_el','title_in_nav_menu',10,4);
 function title_in_nav_menu($item_output,$item){
     $title = esc_attr($item->title);
-    return preg_replace('/href="(.*?)"/','href="' . '$1' . '" data-title="' . $title . '"',$item_output);
+    return preg_replace('/href="(.*?)"/','href="$1" data-title="' . $title . '"',$item_output);
 }
 
 
@@ -564,9 +563,9 @@ add_shortcode('nav','navigation_in_article');
 */
 function add_post_edit_featuer(){ ?>
 <script>
-	jQuery(function($){function catFilter(header,list){var form =$('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
+	jQuery(function($){function catFilter(header,list){var form = $('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
     jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em;color:#888;font-size:1.2rem;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
-    jQuery(document).ready(function($){if('post' == $('#post_type').val() || 'page' == $('#post_type').val()){$("#post").submit(function(e){if('' == $('#title').val()){alert('タイトルを入力してください！');$('.spinner').hide();$('#publish').removeClass('button-primary-disabled');$('#title').focus();return false;}});}});
+    jQuery(function($){if('post' == $('#post_type').val() || 'page' == $('#post_type').val()){$("#post").submit(function(e){if('' == $('#title').val()){alert('タイトルを入力してください！');$('.spinner').hide();$('#publish').removeClass('button-primary-disabled');$('#title').focus();return false;}});}});
 </script>
 <?php }
 add_action('admin_head-post-new.php','add_post_edit_featuer');
@@ -624,6 +623,8 @@ add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
     設定項目追加
 1.カスタマイザー
 2.ユーザープロフィール欄
+    入力欄増殖
+    HTMLタグ許可
 */
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){
