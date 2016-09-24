@@ -542,7 +542,7 @@ add_filter('comment_text','wkwkrnht_replace');
 4.はてな版ブログカード
 5.検索風表示
 */
-function style_into_article($atts){extract(shortcode_atts(array('style'=>'',),$atts));return'<pre class="wpcss" style="display:none;"><code>' . $style . '</code></pre>';}
+function style_into_article($atts){extract(shortcode_atts(array('style'=>'','display'=>'',),$atts));$none='';if($display==='none'){$none=' none';}return'<pre class="wpcss' . $none . '"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
@@ -573,6 +573,12 @@ add_action('admin_head-post.php','add_post_edit_featuer');
 function appthemes_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
     <script type="text/javascript">
+        QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
+        QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
+        QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
+        QTags.addButton('qt-embedly','embedly','[embedly url=',']');
+		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
+        QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
@@ -589,12 +595,6 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
         QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
-        QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
-        QTags.addButton('qt-embedly','embedly','[embedly url=',']');
-		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
-        QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
-        QTags.addButton('qt-customcss','カスタムCSS','[customcss style=',']');
-		QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
     </script>
 <?php }}
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
@@ -697,7 +697,7 @@ function theme_customize($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'related_title_background_color',array('label'=>'related_title_background_color','settings'=>'article_main_li_color','section'=>'colors',)));
     $wp_customize->add_setting('related_title_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'related_title_color',array('label'=>'related_title_color','settings'=>'related_title_color','section'=>'colors',)));
-    $wp_customize->add_section('sns_section',array('title'=>'独自設定','description'=>'このテーマの独自設定',));
+    $wp_customize->add_section('sns_section',array('title'=>'2016-by-wkwkrnht','description'=>'このテーマの独自設定',));
     $wp_customize->add_setting('referrer_setting',array('default'=>'default','type'=>'theme_mod','sanitize_callback'=>'sanitize_radio',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'sns_section','type'=>'radio','choices'=>array('default'=>'default','unsafe-url'=>'unsafe-url','origin-when-crossorigin'=>'origin-when-crossorigin','none-when-downgrade'=>'none-when-downgrade','none'=>'none',),));
     $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
@@ -718,6 +718,11 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
     $wp_customize->add_setting('Google_Search_cx',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Google_Search_cx',array('section'=>'sns_section','settings'=>'Google_Search_cx','label'=>'Googleカスタム検索のcx部分を入力する','type'=>'text'));
+    $wp_customize->add_section('jetpack_section',array('title'=>'独自設定','description'=>'jetpack向けのこのテーマ独自設定',));
+    $wp_customize->add_setting('jetpack.css',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('jetpack.css',array('settings'=>'jetpack.css','label'=>'jetpack.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));
+    $wp_customize->add_setting('jetpack_open_graph',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('jetpack_open_graph',array('settings'=>'jetpack_open_graph','label'=>'jetpackによるOGPの出力を停止する','section'=>'jetpack_section','type'=>'checkbox',));
 }
 
 function sanitize_checkbox($input){if($input===true){return true;}else{return false;}}
@@ -733,7 +738,7 @@ function sanitize_radio($input,$setting){
 
 function wkwkrnht_customize_css(){ ?>
     <style>
-        a,a:visited{color:<?php echo get_option('a_color','#03a9f4');?>;}
+        a,a:visited{color:<?php echo get_option('a_color','#03a9f4');?>;text-decoration:none;}
         #button-toggle,#share-menu-toggle,#menu-toggle{background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;}
         #main-menu{background-color:<?php echo get_option('menu_background','#fff');?>;}
         .widget_tag_cloud a,.article-tag a{border-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;}
@@ -754,6 +759,13 @@ function wkwkrnht_customize_css(){ ?>
 <?php
 }
 add_action('wp_head','wkwkrnht_customize_css');
+
+function wkwkrnht_customize_jepack(){
+    if(get_option('jetpack.css')===true){add_filter('jetpack_implode_frontend_css','__return_false');}
+    if(get_option('jetpack_open_graph')===true){add_filter('jetpack_enable_open_graph','__return_false',99);
+}
+}
+add_action('wp_head','wkwkrnht_customize_jepack');
 
 
 function my_new_contactmethods($contactmethods){

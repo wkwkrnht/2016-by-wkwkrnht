@@ -300,10 +300,11 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto}
 @media all and (orientation: portrait){
     @media screen and (max-width:1270px){
         .info-card{height:50vmin;width:85vmin;}
-        .card{font-size:1.2rem;margin:2.5vmin auto;box-shadow:0 0 15px rgba(0,0,0,0);}
+        .card{font-size:1.2rem;margin:2.5vmin auto;}
         .card img{max-width:calc(80vmin * 2 / 5);}
         .card-info{max-width:calc(80vmin * 3 / 5);}
         .card h1,.card h2{font-size:1.8rem;}
+        .card,.page-nation{box-shadow:0 0 15px rgba(0,0,0,0);}
         .hatenablogcard{max-width:80vw;margin:5vh 0;}
         .ogp-blogcard{border-width:2vmin;max-width:94%;}
         .ogp-blogcard-title{font-size:1.3rem;}
