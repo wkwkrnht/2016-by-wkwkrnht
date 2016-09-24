@@ -52,16 +52,5 @@
     endif;?>
     <?php wp_footer();?>
     <script>(function(){var doc = document;var wpCss = doc.getElementsByClassName('wpcss');var wpCssL = wpCss.length;for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);}})()if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}</script>
-    <style>
-        .night-mode,.night-mode #main-menu,.night-mode .card,.night-mode .card-list{color:#fff;background-color:#333;}
-        .night-mode #menu-toggle,.night-mode #home-button,.night-mode #button-toggle,.night-mode #share-menu-toggle{color:#fff;background-color:#333;}
-        .night-mode #share-menu .close-button{background-color:#333;}
-        .night-mode .ogp-blogcard{background-color:#333;border-color:#f1f1f1;}
-        .night-mode .page-nation,.night-mode .page-nation a,.night-mode .page-nation li .dots,.night-mode .page-nation .current{color:#fff;background-color:#333;border-color:#fff;}
-        .night-mode .page-nation li .dots{color:#f1f1f1;}
-        .night-mode .page-nation a:hover{color:#333;background-color:#fff;}
-        .night-mode .article-meta{color:#333;}
-        .night-mode .article-main .ogp-blogcard-title,.night-mode .article-main .ogp-blogcard-description,.night-mode .article-main .ogp-blogcard-site-name,.night-mode .article-main .ogp-blogcard-title:visited,.night-mode .article-main .ogp-blogcard-description:visited,.night-mode .article-main .ogp-blogcard-site-name:visited,.night-mode .article-main img::after{color:#fff;}
-    </style>
 </body>
 </html>
