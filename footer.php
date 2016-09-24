@@ -29,7 +29,7 @@
         <?php endif;?>
         <?php if(has_nav_menu('main')):?>
             <nav class="main-nav">
-                <?php wp_nav_menu(array('theme_location'=>'main',));?>
+                <?php wp_nav_menu(array('theme_location'=>'main','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
             </nav>
         <?php endif;?>
         <?php if(is_active_sidebar('floatmenu')):?>
@@ -39,18 +39,29 @@
         <?php endif;?>
     </div>
     <?php
+    wp_footer();
     if(is_singular()===true):
         if(have_posts()):while(have_posts()):the_post();$postid = get_the_ID();endwhile;endif;
         $format = get_post_format();
-        if($format==='gallery' || get_post_meta($postid,'light',true)===1){include_once(dirname(__FILE__) . '/./inc/baguetteBox.php');}
+        if($format==='gallery' || get_post_meta($postid,'light',true)==1){include_once(get_template_directory() . '/inc/baguetteBox.php');}
         if($format==='link'){
             echo'
             <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
         }
-        if(get_post_meta($postid,'code',true)===1){include_once(get_template_directory() . '/inc/prism.php');}
+        if(get_post_meta($postid,'code',true)==1){include_once(get_template_directory() . '/inc/prism.php');}
     endif;?>
-    <?php wp_footer();?>
+    <style>
+        .night-mode,.night-mode #main-menu,.night-mode .card,.night-mode .card-list{color:#fff;background-color:#333;}
+        .night-mode #menu-toggle,.night-mode #home-button,.night-mode #button-toggle,.night-mode #share-menu-toggle{color:#fff;background-color:#333;}
+        .night-mode #share-menu .close-button{background-color:#333;}
+        .night-mode .ogp-blogcard{background-color:#333;border-color:#f1f1f1;}
+        .night-mode .page-nation,.night-mode .page-nation a,.night-mode .page-nation li .dots,.night-mode .page-nation .current{color:#fff;background-color:#333;border-color:#fff;}
+        .night-mode .page-nation li .dots{color:#f1f1f1;}
+        .night-mode .page-nation a:hover{color:#333;background-color:#fff;}
+        .night-mode .article-meta{color:#333;}
+        .night-mode .article-main .ogp-blogcard-title,.night-mode .article-main .ogp-blogcard-description,.night-mode .article-main .ogp-blogcard-site-name,.night-mode .article-main .ogp-blogcard-title:visited,.night-mode .article-main .ogp-blogcard-description:visited,.night-mode .article-main .ogp-blogcard-site-name:visited,.night-mode .article-main img::after{color:#fff;}
+    </style>
     <script>(function(){var doc = document;var wpCss = doc.getElementsByClassName('wpcss');var wpCssL = wpCss.length;for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);}})()if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}</script>
 </body>
 </html>
