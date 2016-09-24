@@ -630,7 +630,7 @@ function my_custom_fields(){
     echo'<p>チェックするとlightboxが読み込まれます。<br><input type="checkbox" name="noindex" value="1" ' . $code_c . '> baguetteBox.phpを読み込む</p>';
     echo'<p>チェックするとコードハイライターが読み込まれます。<br><input type="checkbox" name="noindex" value="1" ' . $code_c . '> prism.phpを読み込む</p>';
 }
-function add_custom_fields(){add_meta_box('my_sectionid','追加スクリプト','my_custom_fields','post');}
+function add_custom_fields(){add_meta_box('my_sectionid','カスタムフィールド','my_custom_fields','post');}
 function save_custom_fields($post_id){
     if(!empty($_POST['light'])){update_post_meta($post_id,'light',$_POST['light']);}else{delete_post_meta($post_id,'light');}
     if(!empty($_POST['code'])){update_post_meta($post_id,'code',$_POST['code']);}else{delete_post_meta($post_id,'code');}
