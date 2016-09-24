@@ -629,10 +629,9 @@ function my_custom_fields(){
     $light = get_post_meta($post->ID,'light',true);
     $code  = get_post_meta($post->ID,'code',true);
     if($light==1){$light_c="checked";}else{$light_c="/";}
-    if($code==1){$code_c="checked";}else{$code_c="/";}
-    echo'
-    <p>チェックするとlightboxが読み込まれます。<br><input type="checkbox" name="light" value="1" ' . $light_c . '> baguetteBox.phpを読み込む</p><br>
-    <p>チェックするとコードハイライターが読み込まれます。<br><input type="checkbox" name="code" value="1" ' . $code_c . '> prism.phpを読み込む</p>';
+    if($code===1){$code_c="checked";}else{$code_c="/";}
+    echo'<p>チェックするとlightboxが読み込まれます。<br><input type="checkbox" name="light" value="1" ' . $light_c . '> baguetteBox.phpを読み込む</p>';
+    echo'<p>チェックするとコードハイライターが読み込まれます。<br><input type="checkbox" name="code" value="1" ' . $code_c . '> prism.phpを読み込む</p>';
 }
 function save_custom_fields($post_id){
     if(!empty($_POST['light'])){update_post_meta($post_id,'light',$_POST['light']);}else{delete_post_meta($post_id,'light');}
