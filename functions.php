@@ -232,6 +232,12 @@ function custom_comment_tags($data){
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
+function vc_remove_wp_ver_css_js($src){
+    if(strpos($src,'ver=')){$src = remove_query_arg('ver',$src);}
+    return $src;
+}
+add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
+add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
 
 
 add_filter('walker_nav_menu_start_el','title_in_nav_menu',10,4);
@@ -718,7 +724,7 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
     $wp_customize->add_setting('Google_Search_cx',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Google_Search_cx',array('section'=>'sns_section','settings'=>'Google_Search_cx','label'=>'Googleカスタム検索のcx部分を入力する','type'=>'text'));
-    $wp_customize->add_section('jetpack_section',array('title'=>'独自設定','description'=>'jetpack向けのこのテーマ独自設定',));
+    $wp_customize->add_section('jetpack_section',array('title'=>'jetpack','description'=>'jetpack向けのこのテーマ独自設定',));
     $wp_customize->add_setting('jetpack.css',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack.css',array('settings'=>'jetpack.css','label'=>'jetpack.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));
     $wp_customize->add_setting('jetpack_open_graph',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
@@ -761,11 +767,10 @@ function wkwkrnht_customize_css(){ ?>
 add_action('wp_head','wkwkrnht_customize_css');
 
 function wkwkrnht_customize_jepack(){
-    if(get_option('jetpack.css')===true){add_filter('jetpack_implode_frontend_css','__return_false');}
-    if(get_option('jetpack_open_graph')===true){add_filter('jetpack_enable_open_graph','__return_false',99);
+    if(get_option('jetpack.css')){add_filter('jetpack_implode_frontend_css','__return_false');}
+    if(get_option('jetpack_open_graph')){add_filter('jetpack_enable_open_graph','__return_false',99);}
 }
-}
-add_action('wp_head','wkwkrnht_customize_jepack');
+add_action('init','wkwkrnht_customize_jepack');
 
 
 function my_new_contactmethods($contactmethods){
