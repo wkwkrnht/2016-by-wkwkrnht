@@ -233,7 +233,7 @@
 	.article-main ul li::before{content:'●';display:inline;color:<?php echo get_option('article_main_li_color','#03a9f4');?>;font-size:.8em;padding-right:1em;}
 	.article-main ul li::after,.article-main ol li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px dashed #aaa;}
 	.article-main ol{counter-reset:counter-name;}
-	.article-main ol li:before{counter-increment:counter-name;content:counter(counter-name) ".";display:inline-block;height:1.5em;width:1.5em;border-radius:50%;position:absolute;left:0;color:<?php echo get_option('article_main_ol_color','#fff');?>;background-color:<?php echo get_option('article_main_ol_background','#03a9f4');?>;}
+	.article-main ol li:before{counter-increment:counter-name;content:counter(counter-name);display:inline-block;height:1.5em;width:1.5em;border-radius:50%;position:absolute;left:0;background-color:<?php echo get_option('article_main_ol_background','#03a9f4');?>;color:<?php echo get_option('article_main_ol_color','#fff');?>;text-align:center;}
 	.article-main ol li{margin:0;list-style:none;position:relative;padding-top:.1em;padding-left:2em;}
 
 

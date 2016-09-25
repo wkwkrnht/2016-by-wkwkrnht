@@ -244,12 +244,12 @@ function title_in_nav_menu($item_output,$item){
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){
-    if(is_singular()===true):
+    if(is_singular()===true){
         global $post;
         foreach((get_the_category($post->ID)) as $category){$classes[] = 'categoryid-' . $category->cat_ID;}
-    else:
+    }else{
         $classes[] = 'card-list';
-    endif;
+    }
     return $classes;
 }
 /*
@@ -270,15 +270,14 @@ function add_body_class($classes){
     ●meta_image
     ●wkwkrnht_eyecatch
 7.Twitterアカウント判別
-8.Alt属性がないIMGタグにalt=""を追加する
-9.続き物ページのメタ表示最適化
+8.続き物ページのメタ表示最適化
     ●Wordpressデフォルトのnext/prev出力動作を停止
     ●ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
         ●1ページを複数に分けた分割ページ（マルチページ）でのタグ出力
         ●トップページやカテゴリページなどのページネーションでのタグ出力
     ●分割ページ（マルチページ）URLの取得
     ●分割ページ（マルチページ）かチェックする
-10.is_subpage()
+9.is_subpage()
 */
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
 
@@ -304,15 +303,15 @@ function get_meta_description_from_tag(){
 add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_page())){$title = bloginfo('name');}return $title;});
 
 function get_meta_description(){
-    if(is_singular()===true && has_excerpt()===true):
+    if(is_singular()===true && has_excerpt()===true){
         return get_the_excerpt();
-    elseif(is_category()===true):
+    }elseif(is_category()===true){
         return get_meta_description_from_category();
-    elseif(is_tag()===true):
+    }elseif(is_tag()===true){
         return get_meta_description_from_tag();
-    else:
+    }else{
         return get_bloginfo('description');
-    endif;
+    }
 }
 function meta_description(){echo get_meta_description();}
 
@@ -334,8 +333,6 @@ function get_wkwkrnht_eyecatch($size){if(has_post_thumbnail()===true):return get
 function wkwkrnht_eyecatch($size){echo get_wkwkrnht_eyecatch($size);}
 
 function get_twitter_acount(){if(get_the_author_meta('twitter')!==''):return get_the_author_meta('twitter');elseif(get_option('Twitter_URL')!==''):return get_option('Twitter_URL');else:return null;endif;}
-
-add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 
 remove_action('wp_head','adjacent_posts_rel_link_wp_head');
 function rel_next_prev_link_tags(){
@@ -377,15 +374,7 @@ function generate_multipage_url($rel='prev'){
 }
 function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
 
-function is_subpage(){
-    global $post;
-    if(is_page() && $post->post_parent){
-        $parentID = $post->post_parent;
-        return $parentID;
-    }else{
-        return false;
-    }
-}
+function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
 /*
     独自要素&独自装飾
 1.情報カード
@@ -394,9 +383,10 @@ function is_subpage(){
     ●serach keyword&result
 2.ページネーション
 3.OGP版ブログカード
-4.oEmbedコンテンツの装飾
+4.oEmbedコンテンツ
 5.検索結果をマーカー風にハイライト
-6.コンテンツ本文に装飾
+6.コンテンツ本文
+    ●Alt属性がないIMGタグにalt=""を追加する
     ●@hogehogeをツイッターにリンク
     ●aタグでtarget="_blank"指定時に、rel="noopener"追加
 */
@@ -529,12 +519,15 @@ add_filter('the_title','wkwkrnht_search_results_highlight');
 add_filter('the_content','wkwkrnht_search_results_highlight');
 
 function wkwkrnht_replace($content){
-    $a_replace = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
-    $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$a_replace);
+    $img_replace = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
+    $a_replace   = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$img_replace);
+    $twtreplace  = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$a_replace);
     return $twtreplace;
 }
 add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
+
+add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
 /*
     ショートコード
 1.カスタムCSS
