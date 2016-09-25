@@ -27,7 +27,7 @@
 	#button-toggle{bottom:1vh;left:calc(50% - 7.5vh);}
 	#share-menu-toggle{bottom:8vh;left:calc(50% + 10vh);}
 
-	#share-menu,#main-menu{height:73vh;width:86vw;margin:0 7vw;overflow-x:hidden;overflow-y:auto;position:fixed;top:4vh;left:0;z-index:111;opacity:.85;box-shadow:0 0 15px rgba(0,0,0,.3);}
+	#share-menu,#main-menu{overflow-x:hidden;overflow-y:auto;opacity:.85;height:73vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 15px rgba(0,0,0,.3);}
 	#share-menu ul,#main-menu ul{width:80vw;}
 	.close-button{display:block;height:73vh;width:6vw;padding:0;margin:0;position:fixed;right:7vw;z-index:111;font-size:3rem;color:red;text-decoration:none;text-align:center;}
 	#share-menu .close-button{background-color:#fff;}
@@ -233,7 +233,7 @@
 	.article-main ul li::before{content:'●';display:inline;color:<?php echo get_option('article_main_li_color','#03a9f4');?>;font-size:.8em;padding-right:1em;}
 	.article-main ul li::after,.article-main ol li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px dashed #aaa;}
 	.article-main ol{counter-reset:counter-name;}
-	.article-main ol li:before{counter-increment:counter-name;content:counter(counter-name);display:inline-block;height:1.5em;width:1.5em;border-radius:50%;position:absolute;left:0;background-color:<?php echo get_option('article_main_ol_background','#03a9f4');?>;color:<?php echo get_option('article_main_ol_color','#fff');?>;text-align:center;}
+	.article-main ol li:before{counter-increment:counter-name;content:counter(counter-name);display:inline-block;height:1.5em;width:1.5em;border-radius:50%;position:absolute;left:0;background-color:<?php echo get_option('article_main_ol_background','#03a9f4');?>;color:<?php echo get_option('article_main_ol_color','#fff');?>;line-height:1.5em;text-align:center;}
 	.article-main ol li{margin:0;list-style:none;position:relative;padding-top:.1em;padding-left:2em;}
 
 
