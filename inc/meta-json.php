@@ -1,5 +1,6 @@
 <?php
 if(is_singular()===true):
+    echo'<link rel="amphtml" href="' . get_permalink() . '?amp=1">';
     $fb         = '';
     $tw         = '';
     $gp         = '';

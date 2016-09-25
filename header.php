@@ -35,15 +35,15 @@
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 	<?php if(is_home()===true || is_singular()===true || is_category()===true || is_tag()===true || is_author()===true || is_date()===true || is_search()===true || is_attachment()===true){include_once(get_template_directory() . '/inc/meta-json.php');}?>
-	<link rel="amphtml" href="<?php echo get_permalink() . '?amp=1';?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
-	<?php include_once(get_template_directory() . '/styles.php');
-	$code = '';$code = get_option('Analytics');if($code!==''){echo $code;}?>
-	<?php wp_head();?>
+	<?php
+	include_once(get_template_directory() . '/styles.php');
+	$txt='';$txt=get_option('header_txt');if($txt!==''){echo $txt;}
+	wp_head();?>
 </head>
 <body <?php body_class();?>>
 	<main id="site-main">
