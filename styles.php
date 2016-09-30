@@ -154,7 +154,7 @@
 	.ogp-blogcard-info{display:inline-block;max-width:calc(80vw * .6);position:absolute;right:0;text-align:center;}
 	.ogp-blogcard-title{font-size:2rem;}
 	.ogp-blogcard-footer{height:calc(37vh * .2);width:80vw;position:absolute;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
-	.ogp-blogcard-share-toggle{position:relative;right:0;color:#03a9f4;}
+	.ogp-blogcard-share-toggle{color:#03a9f4;}
 
 	.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
 	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
