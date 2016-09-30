@@ -47,9 +47,15 @@
 </head>
 <body <?php body_class();?>>
 	<?php if(get_previous_posts_link()):?>
-		<div class="hide-nav-prev"><?php previous_posts_link('▶'); ?></div>
+		<div class="hide-nav-prev"><?php previous_posts_link('◀');?></div>
 	<?php endif;?>
 	<?php if(get_next_posts_link()):?>
-		<div class="hide-nav-next"><?php next_posts_link('◀'); ?></div>
+		<div class="hide-nav-next"><?php next_posts_link('▶');?></div>
+	<?php endif;?>
+	<?php  if(get_previous_post()):?>
+		<div class="hide-nav-prev"><?php previous_post_link('%link','◀');?></div>
+	<?php  endif;?>
+	<?php if(get_next_post()):?>
+		<div class="hide-nav-next"><?php next_post_link('%link','▶');?></div>
 	<?php endif;?>
 	<main id="site-main">
