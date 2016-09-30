@@ -23,6 +23,7 @@
 */
 function wkwkrnht_setup(){
     if(!isset($content_width)):$content_width=1080;endif;
+
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
@@ -30,6 +31,10 @@ function wkwkrnht_setup(){
     add_theme_support('post-thumbnails');
     add_theme_support('custom-background');
     add_theme_support('custom-logo',array('height'=>512,'width'=>512,'flex-height'=>true,));
+
+    add_image_size('wkwkrnht-eyecatch',1344,576);
+    add_image_size('wkwkrnht-thumb',800,800,true);
+
     register_nav_menu('main','main');
     register_nav_menu('social','social');
 }
@@ -43,6 +48,8 @@ add_action('init','wkwkrnht_init');
 function wkwkrnht_init(){
     register_taxonomy_for_object_type('category','page');
     register_taxonomy_for_object_type('post_tag','page');
+    register_taxonomy_for_object_type('category','attachment');
+    register_taxonomy_for_object_type('post_tag','attachment');
 
     if(get_option('jetpack.css')){add_filter('jetpack_implode_frontend_css','__return_false');}
     if(get_option('jetpack_open_graph')){add_filter('jetpack_enable_open_graph','__return_false',99);}
@@ -480,7 +487,7 @@ function make_ogp_blog_card($url){
                 </div>
             </div>
             <div class="ogp-blogcard-footer">
-                <a href="' . $url . '" target="_blank" rel="noopener" class="ogp-blogcard-site-name">' . $site_name . '</a>
+                <a href="' . $url . '" target="_blank" rel="noopener" class="ogp-blogcard-site-name">引用元 : ' . $site_name . '</a>
                 <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
@@ -557,7 +564,7 @@ add_shortcode('nav','navigation_in_article');
 function add_post_edit_featuer(){ ?>
 <script>
 	jQuery(function($){function catFilter(header,list){var form = $('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
-    jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em;color:#888;font-size:1.2rem;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
+    jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em;color:#888;font-size:1rem;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
     jQuery(function($){if('post' == $('#post_type').val() || 'page' == $('#post_type').val()){$("#post").submit(function(e){if('' == $('#title').val()){alert('タイトルを入力してください！');$('.spinner').hide();$('#publish').removeClass('button-primary-disabled');$('#title').focus();return false;}});}});
 </script>
 <?php }
@@ -631,6 +638,10 @@ function theme_customize($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'GoogleChrome_URLbar',array('label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','settings'=>'GoogleChrome_URLbar','section'=>'colors',)));
     $wp_customize->add_setting('a_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'a_color',array('label'=>'a_color','settings'=>'a_color','section'=>'colors',)));
+    $wp_customize->add_setting('nav_a_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'nav_a_background',array('label'=>'nav_a_background','settings'=>'nav_a_background','section'=>'colors',)));
+    $wp_customize->add_setting('nav_a_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'nav_a_color',array('label'=>'nav_a_color','settings'=>'nav_a_color','section'=>'colors',)));
     $wp_customize->add_setting('footer_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'footer_background',array('label'=>'footer_background','settings'=>'footer_background','section'=>'colors',)));
     $wp_customize->add_setting('footer_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
