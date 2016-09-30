@@ -37,11 +37,11 @@ if($myAmp===true):?>
 			<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
 			<?php wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
 		</div>
-		<?php if(is_active_sidebar('singularfooter')):?>
-			<ul class="widget-area">
-				<?php dynamic_sidebar('singularfooter');?>
-			</ul>
-		<?php endif;?>
 	</article>
+	<?php if(is_active_sidebar('singularfooter')):?>
+		<ul class="widget-area">
+			<?php dynamic_sidebar('singularfooter');?>
+		</ul>
+	<?php endif;?>
 	<?php get_footer();?>
 <?php endif;?>
