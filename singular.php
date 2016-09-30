@@ -10,7 +10,7 @@ if($myAmp===true):?>
 			</ul>
 		<?php endif;?>
 		<header class="article-header">
-			<img src="<?php wkwkrnht_eyecatch('large');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch">
+			<img src="<?php wkwkrnht_eyecatch('wkwkrnht-eyecatch');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
 				<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
 					<?php the_time('Y/n/j');?>

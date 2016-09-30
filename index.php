@@ -15,7 +15,7 @@
     		<?php if(have_posts()):while(have_posts()):the_post();?>
             	<?php $link=get_permalink();$title=the_title_attribute(array('echo'=>false));$txt=mb_strimwidth(get_the_title(),0,32,'…');?>
 				<section class="card article-card">
-		        	<a href="<?php echo $link;?>" title="<?php echo $title;?>" class="article-eye"><img src="<?php wkwkrnht_eyecatch('medium');?>" alt="eyecatch" height="800" width="800"></a>
+		        	<a href="<?php echo $link;?>" title="<?php echo $title;?>" class="article-eye"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800"></a>
 		        	<div class="card-info">
 		            	<a href="<?php echo $link;?>" title="<?php echo $title;?>" class="card-eyecatch"><h2 class="article-name"><?php echo $txt;?></h2></a><br>
 		            	<span class="card-meta">
