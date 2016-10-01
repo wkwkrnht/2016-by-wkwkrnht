@@ -154,7 +154,7 @@
 	.ogp-blogcard-info{display:inline-block;max-width:calc(80vw * .6);position:absolute;right:0;text-align:center;}
 	.ogp-blogcard-title{font-size:2rem;}
 	.ogp-blogcard-footer{height:calc(37vh * .2);width:80vw;position:absolute;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
-	.ogp-blogcard-share-toggle{color:#03a9f4;}
+	.ogp-blogcard-share-toggle{position:relative;right:0;color:#03a9f4;}
 
 	.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
 	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
@@ -217,13 +217,20 @@
 
 	.article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:5vh;max-width:90%;margin:2vmin auto;line-height:5vh;text-align:center;}
 	.article-main h3,.article-main h4,.article-main h5,.article-main h6{font-size:2rem;}
-	.article-main h1{border:1vmin solid;color:<?php echo get_option('article_main_h1_color','#03a9f4');?>;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-	.article-main h2{padding:.75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;}
-	.article-main h3{color:<?php echo get_option('article_main_h3_color','#fff');?>;background-color:<?php echo get_option('article_main_h3_background','#03a9f4');?>;box-shadow:0 3px 6px rgba(0,0,0,.1);}
-	.article-main h4{border-left:.5em solid;border-bottom:1px solid;}
-	.article-main h5{border-left:.5em solid;}
-	.article-main h6{border-bottom:.75vmin dashed;}
+	.article-main h1{border:1vmin solid;color:<?php echo get_option('article_main_h1_color','#03a9f4');?>;box-shadow:0 3px 6px rgba(0,0,0,.1);counter-increment:counter-h1;counter-reset:counter-h2;}
+	.article-main h2{padding:.75em;background-color:#f4f4f4;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;counter-increment:counter-h2;counter-reset:counter-h3;}
+	.article-main h3{color:<?php echo get_option('article_main_h3_color','#fff');?>;background-color:<?php echo get_option('article_main_h3_background','#03a9f4');?>;box-shadow:0 3px 6px rgba(0,0,0,.1);counter-increment:counter-h3;counter-reset:counter-h4;}
+	.article-main h4{border-left:.5em solid;border-bottom:1px solid;counter-increment:counter-h4;counter-reset:counter-h5;}
+	.article-main h5{border-left:.5em solid;counter-increment:counter-h5;counter-reset:counter-h6;}
+	.article-main h6{border-bottom:.75vmin dashed;counter-increment:counter-h6;}
 	.article-main h1,.article-main h4,.article-main h5,.article-main h6{border-color:<?php echo get_option('article_main_h_border','#03a9f4');?>;}
+	.article-main h1:hover::before{content:counter(counter-h1);}
+	.article-main h2:hover::before{content:counter(counter-h1)"."counter(counter-h2);}
+	.article-main h3:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3);}
+	.article-main h4:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4);}
+	.article-main h5:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4)"."counter(counter-h5);}
+	.article-main h6:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4)"."counter(counter-h5)"."counter(counter-h6);}
+	.article-main h1:hover::before,.article-main h2:hover::before,.article-main h3:hover::before,.article-main h4:hover::before,.article-main h5:hover::before,.article-main h6:hover::before{display:block;min-height:2rem;padding:.5em 1em;border-radius:3vmin;z-index:2;position:absolute;background-color:#f1f1f1;}
 
 	.article-main img{display:block;width:100%;min-height:50px;height:auto;position:relative;margin:3vh auto;line-height:2;text-align:center;}
 	.article-main img::before{content:"";display:block;height:calc(100% + 2em);width:100%;border-radius:3vmin;position:absolute;top:-2em;left:0;border:1vmin dashed #ddd;background-color:#f1f1f1;}

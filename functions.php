@@ -461,7 +461,7 @@ function make_ogp_blog_card($url){
         $img           = $ogp->image;
         $title         = $ogp->title;
         $site_name     = $ogp->site_name;
-        $description   = $ogp->description;
+        $description   = str_replace(']]<>',']]＜＞',$ogp->description);
         $tw_acount     = '';
         $get_tw_acount = get_twitter_acount();
         if($get_tw_acount!==null){$tw_acount = '&amp;via=' . $get_tw_acount;}
@@ -562,10 +562,16 @@ add_shortcode('nav','navigation_in_article');
 3.投稿一覧に項目追加
 */
 function add_post_edit_featuer(){ ?>
+<style type='text/css'>
+	#postexcerpt .inside{margin:0;padding:0;background:#fff;}
+	#postexcerpt .inside p{padding:0px 0px 5px 10px;}
+	#postexcerpt #excerpteditorcontainer{border-style:solid;padding:0;}
+</style>
 <script>
 	jQuery(function($){function catFilter(header,list){var form = $('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
     jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em;color:#888;font-size:1rem;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
     jQuery(function($){if('post' == $('#post_type').val() || 'page' == $('#post_type').val()){$("#post").submit(function(e){if('' == $('#title').val()){alert('タイトルを入力してください！');$('.spinner').hide();$('#publish').removeClass('button-primary-disabled');$('#title').focus();return false;}});}});
+    jQuery(document).ready(tinymce_excerpt);function tinymce_excerpt(){jQuery("#excerpt").addClass("mceEditor");tinyMCE.execCommand("mceAddControl",false,"excerpt");}
 </script>
 <?php }
 add_action('admin_head-post-new.php','add_post_edit_featuer');
