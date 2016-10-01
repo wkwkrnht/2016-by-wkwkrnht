@@ -548,12 +548,14 @@ function html_encode($args=array(),$content=''){return htmlspecialchars($content
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
+function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
+add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 /*
     投稿画面カスタマイズ
@@ -580,6 +582,7 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
+        QTags.addButton('qt-spotify','spotify','[spotify url=',']');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
@@ -588,8 +591,8 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-h5','h5','<h5>','</h5>');
         QTags.addButton('qt-h6','h6','<h6>','</h6>');
         QTags.addButton('qt-table','テーブル','<table>','</table>');
-        QTags.addButton('qt-tbody','テーブル(ボディ)','    <tbody>','  </tbody>');
-        QTags.addButton('qt-tr','テーブル(ライン)','       <tr>','     </tr>');
+        QTags.addButton('qt-tbody','テーブル(ボディ)','      <tbody>','  </tbody>');
+        QTags.addButton('qt-tr','テーブル(ライン)','         <tr>','     </tr>');
         QTags.addButton('qt-th','テーブル(ヘッド)','           <th>','</th>');
         QTags.addButton('qt-td','テーブル(項目)','           <td>','</td>');
 		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
