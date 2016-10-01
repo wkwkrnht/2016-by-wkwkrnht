@@ -3,22 +3,21 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="canonical" href="<?php echo get_permalink();?>">
-	<title><?php wp_title();?></title>
+	<title><?php wp_title('｜',true,'right');?></title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
 	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
 	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta name="msapplication-TileColor" content="<?php echo get_option('GoogleChrome_URLbar');?>">
-	<meta http-equiv="cleartype" content="on">
 	<meta name="renderer" content="webkit">
 	<meta name="description" content="<?php meta_description();?>">
 	<meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
 	<meta property='og:type' content='article'>
-	<meta property='og:title' content='<?php wp_title('｜',true,'right');?>'>
+	<meta property='og:title' content="<?php wp_title('｜',true,'right');?>">
 	<meta property='og:url' content="<?php echo get_permalink();?>">
-	<meta property='og:description' content='<?php meta_description();?>'>
-	<meta property='og:site_name' content='<?php bloginfo('name');?>'>
-	<meta property='og:image' content='<?php meta_image();?>'>
+	<meta property='og:description' content="<?php meta_description();?>">
+	<meta property='og:site_name' content="<?php bloginfo('name');?>">
+	<meta property='og:image' content="<?php meta_image();?>">
 	<meta property="article:author" content="<?php the_author_meta('facebook');?>">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
@@ -130,7 +129,6 @@
 		.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5px;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
 		.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
 		.format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
-		.sticky,.gallery-caption,.bypostauthor{}
 		.alignnone{margin:5px 20px 20px 0;}
 		.alignright{float:right;margin:5px 0 20px 20px;}
 		.aligncenter,div.aligncenter{display:block;margin:1vh auto;}
@@ -195,7 +193,7 @@
 			$content = preg_replace('/https:\/\/youtu.be\/(.*)/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',$content);
 			$content = preg_replace('/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',$content);
 			$content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" $1></amp-iframe></div>',$content);
-			$content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" $1></amp-img></div>',$content);
+			$content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="1134" $1></amp-img></div>',$content);
 			$content = preg_replace('/<iframe class="hatenablogcard" src="http:\/\/hatenablog-parts.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i','<a href="$1">$1</a>',$content);
 			$content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
 
