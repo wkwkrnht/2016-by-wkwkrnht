@@ -78,9 +78,9 @@
 	<style amp-custom>
 		:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 		amp-iframe,h1,h2,h3,h4,h5,h6{text-align:center;}
-		.article-img{display:block;height:20vh;width:100vw;background:<?php $size=array(1344,576);echo'url(';wkwkrnht_eyecatch($size);echo')';?> no-repeat center/cover;}
-		.article-img::before{display:block;content:'';height:20vh;width:100vw;position:relative;top:0;left:0;background-color:rgba(0,0,0,.1);box-shadow:inset 0 0 50px rgba(0,0,0,.4);}
-		.article-img span{position:relative;top:0;left:0;}
+		.article-img{display:block;height:20vh;width:96vw;position:relative;}
+		.article-eyecatch{text-align:center;vertical-align:middle;}
+		.article-img span{position:relative;bottom:0;left:0;}
 		.article-meta{min-height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 		.article-date{display:block;float:left;height:inherit;width:30%;background-color:#03a9f4;color:#fff;font-size:2rem;line-height:20vh;}
 		.article-title{font-size:2rem;}
@@ -150,7 +150,7 @@
 <body>
 	<article>
 		<header class="article-header">
-			<a href="<?php echo esc_url(home_url());?>" class="article-img"></a>
+			<a href="<?php echo esc_url(home_url());?>" class="article-img"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-eyecatch');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch"></a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
