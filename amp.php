@@ -78,7 +78,7 @@
 	<style amp-custom>
 		:root{max-width:100%;font:400 62.5%/1.8 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",meiryo,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#333;}
 		amp-iframe,h1,h2,h3,h4,h5,h6{text-align:center;}
-		.article-img{display:block;height:20vh;width:96vw;}
+		.article-img{display:block;width:96vw;}
 		.article-eyecatch{text-align:center;vertical-align:middle;}
 		.article-meta{min-height:20vh;width:80vw;margin:0 auto;background-color:#f1f1f1;font-size:1.6rem;text-align:center;vertical-align:middle;}
 		.article-date{display:block;float:left;height:inherit;width:30%;background-color:#03a9f4;color:#fff;font-size:2rem;line-height:20vh;}
@@ -149,7 +149,7 @@
 <body>
 	<article>
 		<header class="article-header">
-			<a href="<?php echo esc_url(home_url());?>" class="article-img"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-eyecatch');?>" height="576" width="1344" alt="eyecatch" class="article-eyecatch"></a>
+			<a href="<?php echo esc_url(home_url());?>" class="article-img"><amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-eyecatch');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img></a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
