@@ -37,7 +37,7 @@
 			<?php endwhile;endif;?>
 			<?php if(is_active_sidebar('listfooter')){dynamic_sidebar('listfooter');}?>
 		</div>
-		<?php wkwkrnht_page_navi();?>
+		<?php include_once(get_template_directory() . '/widget/page-nav.php');?>
 		<?php if(is_active_sidebar('listunder')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listunder');?>

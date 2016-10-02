@@ -1,28 +1,29 @@
 <?php
 /*
-    セットアップ
-1.各種宣言
-    ●コンテント幅指定
-    ●機能サポート宣言
-    ●メニューエリア追加
-2.エディタースタイル追加
-3.oEmbed-API対応追加
-4.ウィジェット周り
-    ●ウィジェットエリア追加
-    ●ウィジェット追加
-    ●ショートコード許可
-    ●カスタマイズ
-        ●検索ウィジェット
-        ●メタウィジェット
-            ●WordPressへのリンクを削除
-            ●リンク項目の追加
-        ●コメントウィジェット
-5.絵文字削除
-6.ソーシャルメニューにdata-title追加
-7.body_classにクラス追加
+    setup
+1.setup
+    ●content width
+    ●theme feature
+    ●ADD img size
+    ●ADD menu area
+2.ADD editor-style
+3.ADD oEmbed-API
+4.widget
+    ●ADD area
+    ●ADD original widget
+    ●do short code
+    ●custom
+        ●search
+        ●meta
+            ●REMOVE link for WordPress
+            ●ADD link
+        ●comment
+5.script
+6.ADD data-title to element on social-nav
+7.ADD class into body_class
 */
 function wkwkrnht_setup(){
-    if(!isset($content_width)):$content_width=1080;endif;
+    if(!isset($content_width)){$content_width=1080;}
 
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
@@ -260,30 +261,23 @@ function add_body_class($classes){
     return $classes;
 }
 /*
-    メタ情報
-1.アクセス中のURL取得'
-2.更新時間と投稿時間の比較
-3.カテゴリーページのメタ設定
-    ●画像
-    ●ディスプリクション
-    ●キーワード
-4.タグページのメタ設定
-    ●キーワード
-    ●ディスプリクション
-5.メタディスクリプション
-6.イメージ
+    SEO
+1.GET URL access now
+2.time & year
+3.for category page
+    ●description
+    ●keyword
+4.for tag page
+    ●keyword
+    ●description
+5.meta_description()
+6.image
     ●yes_image
     ●no_image
     ●meta_image
     ●wkwkrnht_eyecatch
-7.Twitterアカウント判別
-8.続き物ページのメタ表示最適化
-    ●Wordpressデフォルトのnext/prev出力動作を停止
-    ●ページネーション（一覧ページ）と分割ページ（マルチページ）タグを出力
-        ●1ページを複数に分けた分割ページ（マルチページ）でのタグ出力
-        ●トップページやカテゴリページなどのページネーションでのタグ出力
-    ●分割ページ（マルチページ）URLの取得
-    ●分割ページ（マルチページ）かチェックする
+7.check account Twitter
+8.optimized multipage for search
 9.is_subpage()
 */
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
@@ -383,19 +377,15 @@ function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_conte
 
 function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
 /*
-    独自要素&独自装飾
-1.情報カード
-    ●site name&site description
-    ●cat name&cat description
-    ●serach keyword&result
-2.ページネーション
-3.OGP版ブログカード
-4.oEmbedコンテンツ
-5.検索結果をマーカー風にハイライト
-6.コンテンツ本文
-    ●Alt属性がないIMGタグにalt=""を追加する
-    ●@hogehogeをツイッターにリンク
-    ●aタグでtarget="_blank"指定時に、rel="noopener"追加
+    original
+1.special card
+2.blogcard by OGP
+3.oEmbed content
+4.highlight as marker in resut of search
+5.content
+    ●ADD alt=""
+    ●linked @hogehoge to Twitter
+    ●ADD rel="noopener"(if it have target="_blank")
 */
 function wkwkrnht_special_card(){
     $year            = get_first_post_year();
@@ -424,28 +414,6 @@ function wkwkrnht_special_card(){
             <span class="copyright">&copy;' . $year . '&nbsp;' . $blogname . '</span>
         </header>';
     endif;
-}
-
-function wkwkrnht_page_navi(){
-    global $wp_query;
-    $big = 999999999;
-    $page_format = paginate_links(array(
-        'base'      => str_replace($big,'%#%',esc_url(get_pagenum_link($big))),
-        'format'    => '/page/%#%',
-        'current'   => max(1,get_query_var('paged')),
-        'total'     => $wp_query->max_num_pages,
-        'prev_next' => True,
-		'prev_text' => '<',
-		'next_text' => '>',
-		'type'      => 'array'
-    ));
-    if(is_array($page_format)){
-        echo'<ul class="page-nation">';
-		$paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
-		foreach($page_format as $page){if($page===$paged){echo "<li class='current'>$page</li>";}else{echo "<li>$page</li>";}}
-        echo'</ul>';
-	}
-	wp_reset_query();
 }
 
 function make_ogp_blog_card($url){
@@ -536,12 +504,14 @@ add_filter('comment_text','wkwkrnht_replace');
 
 add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
 /*
-    ショートコード
-1.カスタムCSS
-2.HTMLエンコード
-3.embed.ly版ブログカード
-4.はてな版ブログカード
-5.検索風表示
+    shortcode
+1.customCSS
+2.HTMLencode
+3.embed.ly
+4.blogcard by hatena
+5.blogcard by OGP
+6.embed spotify
+7.display navi
 */
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'','display'=>'',),$atts));$none='';if($display==='none'){$none=' none';}return'<pre class="wpcss' . $none . '"><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
@@ -558,10 +528,13 @@ add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 /*
-    投稿画面カスタマイズ
-1.カテゴリーフィルター&抜粋制限
-2.クイックタグ追加
-3.投稿一覧に項目追加
+    editor custom
+1.script
+    ●category filter
+    ●regulated excerpt
+    ●NOT to upload without title
+2.ADD quicktag
+3.ADD article drived list
 */
 function add_post_edit_featuer(){ ?>
 <script>
@@ -590,12 +563,12 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-h4','h4','<h4>','</h4>');
         QTags.addButton('qt-h5','h5','<h5>','</h5>');
         QTags.addButton('qt-h6','h6','<h6>','</h6>');
-        QTags.addButton('qt-table','テーブル','<table>','</table>');
-        QTags.addButton('qt-tbody','テーブル(ボディ)','      <tbody>','  </tbody>');
-        QTags.addButton('qt-tr','テーブル(ライン)','         <tr>','     </tr>');
-        QTags.addButton('qt-th','テーブル(ヘッド)','           <th>','</th>');
-        QTags.addButton('qt-td','テーブル(項目)','           <td>','</td>');
-		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
+        QTags.addButton('qt-table','table','<table>','</table>');
+        QTags.addButton('qt-tbody','tbody','      <tbody>','    </tbody>');
+        QTags.addButton('qt-tr','tr','         <tr>','     </tr>');
+        QTags.addButton('qt-th','th','           <th>','</th>');
+        QTags.addButton('qt-td','td','           <td>','</td>');
+		QTags.addButton('qt-marker','marker','<span class="marker">','</span>');
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
         QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
@@ -604,9 +577,9 @@ function appthemes_add_quicktags(){
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
 
 function add_posts_columns($columns){
-    $columns['thumbnail']='サムネイル';
+    $columns['thumbnail']='thumb';
     $columns['postid']='ID';
-    $columns['count']='文字数';
+    $columns['count']='word count';
     return $columns;
 }
 function add_posts_columns_row($column_name,$post_id){
@@ -623,11 +596,11 @@ function add_posts_columns_row($column_name,$post_id){
 add_filter('manage_posts_columns','add_posts_columns');
 add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
 /*
-    設定項目追加
-1.カスタマイザー
-2.ユーザープロフィール欄
-    入力欄増殖
-    HTMLタグ許可
+    ADD item to customize
+1.customizer
+2.user profile
+    ●ADD item
+    ●accept HTML tag
 */
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){
