@@ -14,8 +14,8 @@ if($query -> have_posts()):
 		$cat = get_the_category();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
 			<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
-			<span class="related-date"><?php _e('date','2016bywkwkrnht');?> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
-			<span class="related-category"><?php _e('category','2016bywkwkrnht');?> : <?php echo $cat[0]->name;?></span>
+			<span class="related-date"><?php _e('date','2016-by-wkwkrnht');?> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
+			<span class="related-category"><?php _e('category','2016-by-wkwkrnht');?> : <?php echo $cat[0]->name;?></span>
 		</a>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>
@@ -26,8 +26,8 @@ if($query -> have_posts()):
 	while($query -> have_posts()):$query -> the_post();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
 			<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
-			<span class="related-date"><?php _e('date','2016bywkwkrnht');?> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
-			<span class="related-category"><?php _e('category','2016bywkwkrnht');?> : <?php echo $cat[0]->name;?></span>
+			<span class="related-date"><?php _e('date','2016-by-wkwkrnht');?> : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
+			<span class="related-category"><?php _e('category','2016-by-wkwkrnht');?> : <?php echo $cat[0]->name;?></span>
 		</a>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>

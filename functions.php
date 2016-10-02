@@ -194,12 +194,12 @@ function wkwkrnht_search_form($form){
     <div id="search">
         <form method="get" action="' . esc_url(home_url()) . '">
             <input name="s" id="s" type="text"><br>'
-            . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー選択')
+            . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー')
             . '<select name="tag" id="tag">
-                <option value="" selected="selected">タグ選択</option>'
+                <option value="" selected="selected">タグ</option>'
                  . $tag_echo
             . '</select>
-            <input id="submit" type="submit" value="検索">
+            <button id="submit" type="submit"><i class="fa fa-search" aria-hidden="true"></i><button>
         </form>
     </div>
     ';
