@@ -65,7 +65,7 @@ if(is_singular()===true):
                         "position": 1,
                         "item":{
                             "@id": "' . home_url() . '",
-                            "name": "' . __('home','2016-by-wkwkrnht') . '"
+                            "name": "ホーム"
                         }
                     },';
                     if($cat -> parent != 0){
@@ -108,7 +108,7 @@ if(is_singular()===true):
                         "position": 1,
                         "item":{
                             "@id": "' . home_url() . '",
-                            "name": "' . __('home','2016-by-wkwkrnht') . '"
+                            "name": "ホーム"
                         }
                     },';
                     if($obj -> post_parent != 0){
@@ -157,7 +157,7 @@ elseif(is_category()===true):
                     "position": 1,
                     "item":{
                         "@id": "' . home_url() . '",
-                        "name": "' . __('home','2016-by-wkwkrnht') . '"
+                        "name": "ホーム"
                     }
                 },';
                 if($cat -> parent != 0){
@@ -204,7 +204,7 @@ elseif(is_tag()===true):
                     "position": 1,
                     "item":{
                         "@id": "' . home_url() . '",
-                        "name": "' . __('home','2016-by-wkwkrnht') . '"
+                        "name": "ホーム"
                     }
                 },
                 {
@@ -233,7 +233,7 @@ elseif(is_author()===true):
                     "position": 1,
                     "item":{
                         "@id": "' . home_url() . '",
-                        "name": "' . __('home','2016-by-wkwkrnht') . '"
+                        "name": "ホーム"
                     }
                 {
                     "@type": "ListItem",
@@ -262,7 +262,7 @@ elseif(is_date()===true):
                             "@type": "ListItem",
                             "position": 1,
                             "item":{"@id": "' . home_url() . '",
-                            "name": "' . __('home','2016-by-wkwkrnht') . '"
+                            "name": "ホーム"
                         }
                     },
                     {
@@ -270,7 +270,7 @@ elseif(is_date()===true):
                         "position": 2,
                         "item":{
                             "@id": "' . esc_url($linkY) . '",
-                            "name": "' . esc_html($y) . __('year','2016-by-wkwkrnht') . '"
+                            "name": "' . esc_html($y) . '年"
                         }
                     }';
                     if(is_month() || is_day()){
@@ -280,7 +280,7 @@ elseif(is_date()===true):
                             "position": 3,
                             "item":{
                                 "@id": "' . esc_url($linkM) . '",
-                                "name": "' . esc_html($m) . __('manth','2016-by-wkwkrnht') . '"
+                                "name": "' . esc_html($m) . '月"
                             }
                         }';
                         if(is_day()){
@@ -290,7 +290,7 @@ elseif(is_date()===true):
                                 "position": 4,
                                 "item":{
                                     "@id": "' . esc_url($linkD) . '",
-                                    "name": "' . esc_html($d) . __('day','2016-by-wkwkrnht') . '"
+                                    "name": "' . esc_html($d) . '日"
                                 }
                             }';
                         }
@@ -312,7 +312,7 @@ elseif(is_search()===true):
                     "position": 1,
                     "item":{
                         "@id": "' . home_url() . '",
-                        "name": "' . __('home','2016-by-wkwkrnht') . '"
+                        "name": "ホーム"
                     }
                 },
                 {
@@ -320,7 +320,7 @@ elseif(is_search()===true):
                     "position": 2,
                     "item":{
                         "@id": "' . esc_url(get_search_link()) . '",
-                        "name": "「' . esc_html(get_search_query()) . '」' . __('are inculuded theese posts.','2016-by-wkwkrnht') . '"
+                        "name": "「' . esc_html(get_search_query()) . '」の検索結果"
                     }
                 }
             ]
@@ -339,7 +339,7 @@ elseif(is_attachment()===true):
                         "position": 1,
                         "item":{
                             "@id": "' . home_url() . '",
-                            "name": "' . __('home','2016-by-wkwkrnht') . '"
+                            "name": "ホーム"
                         }
                     },';
                     $i   = 1;

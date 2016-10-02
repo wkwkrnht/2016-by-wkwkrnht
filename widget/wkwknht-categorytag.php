@@ -9,9 +9,9 @@ endforeach;
 ?>
 <div id="search">
     <form method="get" action="<?php echo esc_url(home_url());?>">
-        <?php wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー選択');?>
+        <?php wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー');?>
         <select name="tag" id="tag">
-            <option value="" selected="selected">タグ選択</option>
+            <option value="" selected="selected">タグ</option>
             <?php echo $tag_echo;?>
         </select>
         <input id="submit" type="submit" value="検索">

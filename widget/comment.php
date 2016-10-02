@@ -11,7 +11,7 @@
 </style>
 <div class="comment">
 <?php if(have_comments()):?>
-    <h3 class="comment-title"><?php _e('comment','2016-by-wkwkrnht');?></h3>
+    <h3 class="comment-title">コメント</h3>
 	<ul class="comment-list">
 	    <?php wp_list_comments(array('avatar_size'=>96,'style'=>'ul','type'=>'comment',));?>
 	</ul>
