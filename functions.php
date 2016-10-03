@@ -191,7 +191,7 @@ function wkwkrnht_search_form($form){
         $tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';
     endforeach;
     $form = '
-    <div id="search">
+    <aside id="search" role="searc﻿h﻿">
         <form method="get" action="' . esc_url(home_url()) . '">
             <input name="s" id="s" type="text"><br>'
             . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー')
@@ -201,7 +201,7 @@ function wkwkrnht_search_form($form){
             . '</select>
             <button id="submit" type="submit"><i class="fa fa-search" aria-hidden="true"></i><button>
         </form>
-    </div>
+    </aside>
     ';
     return $form;
 }
@@ -654,8 +654,8 @@ function theme_customize($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_meta_background',array('label'=>'article_meta_background','settings'=>'article_meta_background','section'=>'colors',)));
     $wp_customize->add_setting('article_main_h_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h_border',array('label'=>'article_main_h_border','settings'=>'article_main_h_border','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h1_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h1_color',array('settings'=>'article_main_h1_color','label'=>'article_main_h1_color','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h2_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h2_color',array('settings'=>'article_main_h2_color','label'=>'article_main_h2_color','section'=>'colors',)));
     $wp_customize->add_setting('article_main_h3_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h3_color',array('settings'=>'article_main_h3_color','label'=>'article_main_h3_color','section'=>'colors',)));
     $wp_customize->add_setting('article_main_h3_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
