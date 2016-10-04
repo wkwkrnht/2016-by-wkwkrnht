@@ -86,6 +86,7 @@ function wkwkrnht_widgets_init(){
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
+    register_widget('duck_duck_go_widget');
     register_widget('google_widget');
 }
 
@@ -177,6 +178,11 @@ class disqus_widget extends WP_Widget{
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');$args['after_widget'];}
 }
 
+class duck_duck_go_widget extends WP_Widget{
+    function __construct(){parent::__construct('duck_duck_go_widget','DuckDuckGo',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/duckduckgo.php');$args['after_widget'];}
+}
+
 class google_widget extends WP_Widget{
     function __construct(){parent::__construct('google_widget','Google',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/google.php');$args['after_widget'];}
@@ -191,6 +197,12 @@ function wkwkrnht_search_form($form){
         $tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';
     endforeach;
     $form = '
+    <style>
+        #search input[type*="text"]{width:98%;}
+        #search select{width:40%;margin:1vh 0;margin-right:2%;}
+        #search input[type*="submit"]{width:13%;margin:1vh 0;border-radius:3vmin;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
+        #search input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
+    </style>
     <aside id="search" role="searc﻿h﻿">
         <form method="get" action="' . esc_url(home_url()) . '">
             <input name="s" id="s" type="text"><br>'

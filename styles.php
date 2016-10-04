@@ -127,11 +127,6 @@
 
 	.addpost::before,.wlwedit::before,.post-edit-link::before{content:'\f040';font-family:"FontAwesome";font-size:2.4rem;color:green;}
 	.addpost::after{content:'\f067';font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
-
-	#search input[type*='text']{width:98%;}
-	#search select{width:40%;margin:1vh 0;margin-right:2%;}
-	#search input[type*='submit']{width:13%;margin:1vh 0;border-radius:5px;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
-	#search input[type*='submit']:hover{color:#fff;background-color:#03a9f4;}
 	/*
 	    original
 	1.card-design
