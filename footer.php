@@ -69,52 +69,62 @@
             var wpCssL = wpCss.length;
             for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);
         }})()
-        (function(){
-            var images = document.querySelectorAll('img');
-            var image;
-            var parent;
-            for(var i = 0, l = images.length; i < l; i++){
-                image  = images[i];
-                parent = image.parentNode;
-                if(parent.tagName === 'A'){
-                    image.addEventListener('click',function(image,evt){
-                        if(evt.which !== 1){return;}
-                        evt.preventDefault();
-                        if(this.style.cssText && image.style.cssText){
-                            if(image._src){
-                                image.src = image._src;
-                                delete image._src;
-                            }
-                            this.style.cssText     = '';
-                            image.style.cssText = '';
-                            return;
-                        }
-                        if(this.href !== image.src){
-                            image._src = image.src;
-                            image.src = this.href;
-                        }
-                        this.style.backgroundColor = '#333';
-                        this.style.cursor = 'zoom-out';
-                        this.style.height = '100vh';
-                        this.style.position = 'fixed';
-                        this.style.top = '0';
-                        this.style.left = '0';
-                        this.style.width = '100vw';
-                        this.style.zIndex = '3';
-                        image.style.bottom = '0';
-                        image.style.height = 'auto';
-                        image.style.left = '0';
-                        image.style.margin = 'auto';
-                        image.style.maxHeight = '96%';
-                        image.style.maxWidth = '96%';
-                        image.style.position = 'absolute';
-                        image.style.right = '0';
-                        image.style.top = '0';
-                        image.style.width = 'auto';
-                    }.bind(parent,image),false);
+        (function () {
+        var images = document.querySelectorAll('img');
+        var image;
+        var parent;
+
+        for (var i = 0, l = images.length; i < l; i++) {
+          image = images[i];
+          parent = image.parentNode;
+
+          if (parent.tagName === 'A') {
+            parent.addEventListener('click', function (image, evt) {
+              if (evt.which !== 1) {
+                return;
+              }
+
+              evt.preventDefault();
+
+              if (this.style.cssText && image.style.cssText) {
+                if (image._src) {
+                  image.src = image._src;
+                  delete image._src;
                 }
-            }
-        })();
+
+                this.style.cssText = '';
+                image.style.cssText = '';
+
+                return;
+              }
+
+              if (this.href !== image.src) {
+                image._src = image.src;
+                image.src = this.href;
+              }
+
+              this.style.backgroundColor = '#333';
+              this.style.cursor = 'zoom-out';
+              this.style.height = '100vh';
+              this.style.left = '0';
+              this.style.position = 'fixed';
+              this.style.top = '0';
+              this.style.width = '100vw';
+              this.style.zIndex = '3';
+              image.style.bottom = '0';
+              image.style.height = 'auto';
+              image.style.left = '0';
+              image.style.margin = 'auto';
+              image.style.maxHeight = '96%';
+              image.style.maxWidth = '96%';
+              image.style.position = 'absolute';
+              image.style.right = '0';
+              image.style.top = '0';
+              image.style.width = 'auto';
+            }.bind(parent, image), false);
+          }
+        }
+      })();
         (function(){
             var key="<?php $key='';$key=get_option('cookie_key');if($key!==''){echo $key;}else{echo'2016-by-wkwkrnht';}?>";
             var n=getCookie(key);
