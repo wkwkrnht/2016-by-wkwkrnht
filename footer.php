@@ -61,6 +61,7 @@
         .night-mode .article-main h1{color:#333;}
         .night-mode .article-main h2.ogp-blogcard-title,.night-mode .article-main p.ogp-blogcard-description,.night-mode .article-main a.ogp-blogcard-site-name,.night-mode .article-main h2.ogp-blogcard-title:visited,.night-mode .article-main p.ogp-blogcard-description:visited,.night-mode .article-main a.ogp-blogcard-site-name:visited,.night-mode .article-main img.ogp-blogcard-img::after{color:#fff;}
         .night-mode div.ogp-blogcard{background-color:#333;border-color:#f1f1f1;}
+        .night-mode div.infomation,.night-mode div.question{color:#333;}
     </style>
     <script>
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
