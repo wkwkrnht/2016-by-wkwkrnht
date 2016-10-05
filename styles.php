@@ -161,7 +161,7 @@
 	.ogp-blogcard-share-toggle{position:relative;right:0;color:#03a9f4;}
 
 	.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
-	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:1em;left:1em;}
+	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";position:absolute;top:1em;left:1em;}
 	.information::before{content:'\f05a';}
 	.question::before{content:'\f059';}
 
