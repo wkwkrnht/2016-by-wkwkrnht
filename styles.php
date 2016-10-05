@@ -161,7 +161,7 @@
 	.ogp-blogcard-share-toggle{position:relative;right:0;color:#03a9f4;}
 
 	.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
-	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:2vmin;left:1.5vmin;}
+	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:1em;left:1em;}
 	.information::before{content:'\f05a';}
 	.question::before{content:'\f059';}
 
@@ -194,7 +194,7 @@
 	.article-main p{max-width:55em;padding:5vmin 8vmin 0;margin:2vh auto;}
 	.article-main a{text-decoration:none;border-bottom:0;}
 	.article-main a:hover::after{content:'URL : ' attr(href);display:block;min-height:2rem;padding:.5em 1em;border-radius:3vmin;z-index:2;position:absolute;background-color:#f1f1f1;}
-	.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"]{display:block;margin:2vh auto;}
+	.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
 	.article-main img{display:block;width:100%;min-height:50px;height:auto;position:relative;margin:3vh auto;line-height:2;text-align:center;}
 	.article-main img::before{content:"";display:block;height:calc(100% + 2em);width:100%;border-radius:3vmin;position:absolute;top:-2em;left:0;border:1vmin dashed #ddd;background-color:#f1f1f1;}
 	.article-main img::after{content:"\f127" "この画像が読み込めませんでした。" attr(alt);display:block;width:100%;position:absolute;top:1em;left:0;color:rgb(100,100,100);font-size:1.8rem;font-family:"FontAwesome";font-style:normal;text-align:center;}
