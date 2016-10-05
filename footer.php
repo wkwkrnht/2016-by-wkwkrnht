@@ -78,10 +78,10 @@
                 image  = images[i];
                 parent = image.parentNode;
                 a      = document.createElement('a');
-                    parent.addEventListener('click',function(image,evt){
+                    image.addEventListener('click',function(image,evt){
                         if(evt.which !== 1){return;}
                         evt.preventDefault();
-                        if(this.style.cssText && image.style.cssText){
+                        if(a.style.cssText && image.style.cssText){
                             if(image._src){
                                 image.src = image._src;
                                 delete image._src;
