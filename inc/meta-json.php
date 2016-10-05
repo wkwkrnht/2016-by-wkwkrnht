@@ -327,48 +327,48 @@ elseif(is_search()===true):
         }
     </script>';
 elseif(is_attachment()===true):
-        echo'
-        <script type="application/ld+json">
-            {
-                "@context":"http://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement":
-                [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "item":{
-                            "@id": "' . home_url() . '",
-                            "name": "ホーム"
-                        }
-                    },';
-                    $i   = 1;
-                    $obj = get_queried_object();
-                    if($obj -> parent != 0){
-                        $i++;
-                        echo'
-                        {
-                            "@type": "ListItem",
-                            "position": ' . $i . ',
-                            "item":{
-                                "@id": "' . esc_url(get_permalink($pageAncestor)) . '",
-                                "name": "' . esc_html(get_the_title($pageAncestor)) . '"
-                            }
-                        },';
+    $i   = 1;
+    $obj = get_queried_object();
+    echo'
+    <script type="application/ld+json">
+        {
+            "@context":"http://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement":
+            [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item":{
+                        "@id": "' . home_url() . '",
+                        "name": "ホーム"
                     }
+                },';
+                if($obj -> parent != 0){
                     $i++;
                     echo'
                     {
                         "@type": "ListItem",
                         "position": ' . $i . ',
                         "item":{
-                            "@id": "' . esc_url(get_permalink()) . '",
-                            "name": "' . esc_html(get_the_title()) . '"
+                            "@id": "' . esc_url(get_permalink($pageAncestor)) . '",
+                            "name": "' . esc_html(get_the_title($pageAncestor)) . '"
                         }
+                    },';
+                }
+                $i++;
+                echo'
+                {
+                    "@type": "ListItem",
+                    "position": ' . $i . ',
+                    "item":{
+                        "@id": "' . esc_url(get_permalink()) . '",
+                        "name": "' . esc_html(get_the_title()) . '"
                     }
-                ]
-            }
-        </script>';
+                }
+            ]
+        }
+    </script>';
 elseif(is_home()===true):
     $blog_name = get_bloginfo('name');
     $homeurl  = esc_url(home_url());
