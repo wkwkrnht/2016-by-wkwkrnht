@@ -73,46 +73,46 @@
             var images = document.querySelectorAll('img');
             var image;
             var parent;
-            var a;
             for(var i = 0, l = images.length; i < l; i++){
                 image  = images[i];
                 parent = image.parentNode;
-                a      = document.createElement('a');
+                if(parent.tagName === 'A'){
                     image.addEventListener('click',function(image,evt){
                         if(evt.which !== 1){return;}
                         evt.preventDefault();
-                        if(a.style.cssText && image.style.cssText){
+                        if(this.style.cssText && image.style.cssText){
                             if(image._src){
                                 image.src = image._src;
                                 delete image._src;
                             }
-                            a.style.cssText     = '';
+                            this.style.cssText     = '';
                             image.style.cssText = '';
                             return;
                         }
-                        if(a.href !== image.src){
+                        if(this.href !== image.src){
                             image._src = image.src;
-                            image.src  = a.href;
+                            image.src = this.href;
                         }
-                        a.style.backgroundColor    = '#333';
-                        a.style.cursor             = 'zoom-out';
-                        a.style.height             = '100vh';
-                        a.style.position           = 'fixed';
-                        a.style.top                = '0';
-                        a.style.left               = '0';
-                        a.style.width              = '100vw';
-                        a.style.zIndex             = '3';
-                        image.style.bottom         = '0';
-                        image.style.height         = 'auto';
-                        image.style.left           = '0';
-                        image.style.margin         = 'auto';
-                        image.style.maxHeight      = '96%';
-                        image.style.maxWidth       = '96%';
-                        image.style.position       = 'absolute';
-                        image.style.right          = '0';
-                        image.style.top            = '0';
-                        image.style.width          = 'auto';
+                        this.style.backgroundColor = '#333';
+                        this.style.cursor = 'zoom-out';
+                        this.style.height = '100vh';
+                        this.style.position = 'fixed';
+                        this.style.top = '0';
+                        this.style.left = '0';
+                        this.style.width = '100vw';
+                        this.style.zIndex = '3';
+                        image.style.bottom = '0';
+                        image.style.height = 'auto';
+                        image.style.left = '0';
+                        image.style.margin = 'auto';
+                        image.style.maxHeight = '96%';
+                        image.style.maxWidth = '96%';
+                        image.style.position = 'absolute';
+                        image.style.right = '0';
+                        image.style.top = '0';
+                        image.style.width = 'auto';
                     }.bind(parent,image),false);
+                }
             }
         })();
         (function(){
