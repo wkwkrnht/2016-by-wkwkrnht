@@ -84,10 +84,12 @@ function wkwkrnht_widgets_init(){
     register_widget('related_posts_img');
     register_widget('related_posts');
     register_widget('post_nav');
+    register_widget('toc');
     register_widget('post_comment');
     register_widget('disqus_widget');
     register_widget('duck_duck_go_widget');
     register_widget('google_widget');
+    register_widget('move_top');
 }
 
 class wkwkrnht_categorytag extends WP_Widget{
@@ -158,6 +160,11 @@ class post_nav extends WP_Widget{
 		<?php
 	}
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+
+class toc extends WP_Widget{
+    function __construct(){parent::__construct('toc','目次',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/toc.php');echo $args['after_widget'];}
 }
 
 class post_comment extends WP_Widget{
