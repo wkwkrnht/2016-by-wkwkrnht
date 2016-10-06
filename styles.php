@@ -27,7 +27,7 @@
 	.hide-nav-prev:hover a,.hide-nav-next:hover a{transform:translate(0);}
 	.hide-nav-next a:hover,.hide-nav-prev a:hover{color:<?php echo get_option('nav_a_color','#fff');?>;background-color:<?php echo get_option('nav_a_background','#03a9f4');?>;}
 
-	#button-toggle,#share-menu-toggle,#home-button,#menu-toggle{display:inline-block;height:15vh;width:15vh;border-radius:50%;position:fixed;z-index:100;text-align:center;background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;opacity:.7;box-shadow:0 0 15px rgba(0,0,0,.3);}
+	#button-toggle,#share-menu-toggle,#home-button,#menu-toggle{display:inline-block;height:15vh;width:15vh;border-radius:50%;position:fixed;z-index:100;text-align:center;background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;opacity:.7;box-shadow:0 0 5vmin rgba(0,0,0,.3);}
 	#button-toggle i,#share-menu-toggle i,#home-button i,#menu-toggle i{line-height:15vh;vertical-align:middle;}
 	#toggle-ok,#toggle-no{position:relative;left:calc(50% - 1em);}
 	#button-toggle:visited,#share-menu-toggle:visited,#home-button:visited,#menu-toggle:visited{color:<?php echo get_option('footer_color','#fff');?>;}
@@ -37,7 +37,7 @@
 	#share-menu-toggle{bottom:8vh;left:calc(50% + 10vh);}
 	.close-button{display:block;height:73vh;width:6vw;padding:0;margin:0;position:fixed;right:7vw;z-index:111;font-size:3rem;color:red;text-decoration:none;text-align:center;}
 
-	#share-menu,#main-menu{overflow-x:hidden;overflow-y:auto;opacity:.85;height:73vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 15px rgba(0,0,0,.3);}
+	#share-menu,#main-menu{overflow-x:hidden;overflow-y:auto;opacity:.85;height:73vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 5vmin rgba(0,0,0,.3);}
 	#share-menu ul,#main-menu ul{width:80vw;}
 	.widget-area{list-style:none;}
 	.widget-area .widget{max-width:94%;margin:2vh auto;}
