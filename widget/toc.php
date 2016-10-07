@@ -126,7 +126,7 @@
 </style>
 <aside class="mokuji"></aside>
 <script>
-    $(function(){
+    jQuery(function(){
     	/* -------------------------------------------------------
     		記事の見出しから目次作成
     	--------------------------------------------------------*/
@@ -137,7 +137,7 @@
     		var sectionTopArr = new Array();
 
     		// 見出しを回してリストに格納
-    		$('article h1,article h2,article h3,article h4,article h5,article h6').each(function(i){
+    		jQuery('article h1,article h2,article h3,article h4,article h5,article h6').each(function(i){
 
     			// IDを保存
     			this.id = 'chapter-' + idcount;
@@ -168,7 +168,7 @@
     			}
 
     			// リストを生成
-    			mokuji += '<li><a href="#' + this.id + '">' + $(this).html() + '</a></li>\n';
+    			mokuji += '<li><a href="#' + this.id + '">' + jQuery(this).html() + '</a></li>\n';
     		});
 
     		while(currentlevel > 0){
@@ -182,65 +182,62 @@
     						+ mokuji +
     					 '</div>';
 
-    		$('.mokuji').html(strMokuji);
+    		jQuery('.mokuji').html(strMokuji);
 
     		/* -------------------------------------------------------
     			リストクリックでスムーズスクロール
     		--------------------------------------------------------*/
-    		$('.mokuji li').not('.accordion, .accBtn').click(function(){
+    		jQuery('.mokuji li').not('.accordion, .accBtn').click(function(){
     			var speed = 800;
     			var href = $(this).find('a').attr('href');
     			var target = $(href == '#' || href == '' ? 'html' : href);
     			var position = target.offset().top;
-    			$('html, body').stop().animate({scrollTop:position},speed,'easeInOutCirc');
+    			jQuery('html,body').stop().animate({scrollTop:position},speed,'easeInOutCirc');
     			return false;
     		});
 
     		/* -------------------------------------------------------
     			目次のアコーディオン
     		--------------------------------------------------------*/
-    		$('.mokuji ol').prev().addClass('accordion').append('<span class="accBtn"><i class="fa fa-plus-square-o"></i></span>');
-    		$('.mokuji li.accordion').wrapInner('<div class="inner clearfix"></div>');
+    		jQuery('.mokuji ol').prev().addClass('accordion').append('<span class="accBtn"><i class="fa fa-plus-square-o"></i></span>');
+    		jQuery('.mokuji li.accordion').wrapInner('<div class="inner clearfix"></div>');
 
     		// 開閉ボタンを押した時
-    		$('.accBtn').click(function(){
+    		jQuery('.accBtn').click(function(){
 
     			// 開閉処理
-    			$(this).parents('li').next().stop().slideToggle(300, 'easeInOutCirc');
+    			jQuery(this).parents('li').next().stop().slideToggle(300,'easeInOutCirc');
 
     			// 閉じるボタンアイコン切替
-    			$('.closeBtn').removeClass('active').addClass('active');
+    			jQuery('.closeBtn').removeClass('active').addClass('active');
 
     			// アイコン切替
-    			if( $(this).find('i').hasClass('fa-plus-square-o')){
-    				$(this).find('i').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-    			} else {
-    				$(this).find('i').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+    			if(jQuery(this).find('i').hasClass('fa-plus-square-o')){
+    				jQuery(this).find('i').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+    			}else{
+    				jQuery(this).find('i').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
     			}
     			return false;
     		});
 
     		// 閉じるボタンの表示切替
     		var closeBtnFlag = '';
-    		$('.mokuji li').each(function(){if($(this).hasClass('accordion')){closeBtnFlag = false;}});
-            if( closeBtnFlag == true ){$('.closeBtn').hide();}
+    		jQuery('.mokuji li').each(function(){if($(this).hasClass('accordion')){closeBtnFlag = false;}});
+            if( closeBtnFlag == true ){jQuery('.closeBtn').hide();}
 
     		// 全て閉じるボタンを押した時
-    		$('.closeBtn').click(function(){
-
+    		jQuery('.closeBtn').click(function(){
     			// 閉じるアイコン切替
-    			$(this).toggleClass('active');
+    			jQuery(this).toggleClass('active');
 
     			// classの有無を確認
-    			if( $(this).hasClass('active') ){
-    				$('.mokuji ol ol').stop().slideDown(300, 'easeInOutCirc');
-    				$('.accBtn').find('i').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-
-    			} else {
-    				$('.mokuji ol ol').stop().slideUp(300, 'easeInOutCirc');
-    				$('.accBtn').find('i').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+    			if(jQuery(this).hasClass('active')){
+    				jQuery('.mokuji ol ol').stop().slideDown(300, 'easeInOutCirc');
+    				jQuery('.accBtn').find('i').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+    			}else{
+    				jQuery('.mokuji ol ol').stop().slideUp(300, 'easeInOutCirc');
+    				jQuery('.accBtn').find('i').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
     			}
-
     		});
 
     		/* -------------------------------------------------------
@@ -251,16 +248,14 @@
     		var current = -1;
 
     		// 現在位置の取得
-    		$('article [id^="chapter"]').each(function(i){
-    			secTopArr[i] = $(this).offset().top;
-    		});
+    		jQuery('article [id^="chapter"]').each(function(i){secTopArr[i] = jQuery(this).offset().top;});
 
     		//スクロールイベント
-    		$(window).on('load scroll',function(){
-    			for (var i = secTopArr.length-1; i>=0; i--) {
-    				if ($(window).scrollTop() > secTopArr[i] - 20) {
-    					$('.mokuji li').removeClass('current').eq(i).addClass('current');
-    					$('.mokuji ol ol li.current').parent('ol').prev().addClass('current');
+    		jQuery(window).on('load scroll',function(){
+    			for(var i = secTopArr.length-1; i>=0; i--){
+    				if(jQuery(window).scrollTop() > secTopArr[i] - 20){
+    					jQuery('.mokuji li').removeClass('current').eq(i).addClass('current');
+    					jQuery('.mokuji ol ol li.current').parent('ol').prev().addClass('current');
     					break;
     				}
     			}
