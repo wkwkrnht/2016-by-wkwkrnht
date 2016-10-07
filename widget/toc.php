@@ -1,14 +1,8 @@
 <style>
-    .mokuji {
+    .mokuji{
+        width:80vw;
     	background:#fff;
     	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-    }
-    .mokuji.fixed-side {
-    	position:fixed;
-    	top:30px;
-    	left:auto;
-    	width:300px;
-    	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
     }
 
     .mokuji h4 {
@@ -19,13 +13,6 @@
     	font-weight:bold;
     	background:#FDD835;
     	text-shadow:1px 1px 0 rgba(255,255,255,0.5);
-    }
-    .mokuji h4 .kao {
-    	display:inline-block;
-    	*display:inline;
-    	*zoom:1;
-    	margin-left:0.5em;
-    	font-weight:normal;
     }
     .mokuji h4 .closeBtn {
     	cursor:pointer;
@@ -136,27 +123,21 @@
     	text-align:center;
     	vertical-align:middle;
     }
-    /* タブレット・スマートフォン */
-    @media screen and (max-width:768px){
-    	.mokuji {
-    	display:none;
-    	}
-    }
 </style>
+<aside class="mokuji"></aside>
 <script>
-    $(function() {
+    $(function(){
     	/* -------------------------------------------------------
     		記事の見出しから目次作成
     	--------------------------------------------------------*/
-    	function makeMokuji() {
-
+    	function makeMokuji(){
     		var idcount = 1;
     		var mokuji = '';
     		var currentlevel = 0
     		var sectionTopArr = new Array();
 
     		// 見出しを回してリストに格納
-    		$('article h2, article h3, article h4').each(function(i){
+    		$('article h1,article h2,article h3,article h4,article h5,article h6').each(function(i){
 
     			// IDを保存
     			this.id = 'chapter-' + idcount;
@@ -164,18 +145,24 @@
 
     			// 見出しの入れ子
     			var level = 0;
-    			if(this.nodeName.toLowerCase() == 'h2') {
+    			if(this.nodeName.toLowerCase() == 'h1'){
     				level = 1;
-    			} else if(this.nodeName.toLowerCase() == 'h3') {
+    			}else if(this.nodeName.toLowerCase() == 'h2'){
     				level = 2;
-    			} else if(this.nodeName.toLowerCase() == 'h4') {
+    			}else if(this.nodeName.toLowerCase() == 'h3'){
+    				level = 3;
+    			}else if(this.nodeName.toLowerCase() == 'h4'){
+    				level = 3;
+    			}else if(this.nodeName.toLowerCase() == 'h5'){
+    				level = 3;
+    			}else if(this.nodeName.toLowerCase() == 'h6'){
     				level = 3;
     			}
-    			while(currentlevel < level) {
+    			while(currentlevel < level){
     				mokuji += '<ol class="chapter">';
     				currentlevel ++;
     			}
-    			while(currentlevel > level) {
+    			while(currentlevel > level){
     				mokuji += '</ol>';
     				currentlevel --;
     			}
@@ -184,16 +171,16 @@
     			mokuji += '<li><a href="#' + this.id + '">' + $(this).html() + '</a></li>\n';
     		});
 
-    		while(currentlevel > 0) {
+    		while(currentlevel > 0){
     			mokuji += '</ol>';
     			currentlevel --;
     		}
 
     		// HTML出力
-    		strMokuji = '<h4>目次で流し読みする <span class="kao">･*･:≡(　ε:)</span> <span class="closeBtn"><i class="fa fa-times-circle-o"></i></span></h4>\
+    		strMokuji = '<h4>目次で流し読みする <span class="closeBtn"><i class="fa fa-times-circle-o"></i></span></h4>\
     					 <div class="mokujiInner">'
     						+ mokuji +
-    					 '<!-- /.mokujiInner --></div>';
+    					 '</div>';
 
     		$('.mokuji').html(strMokuji);
 
@@ -205,7 +192,7 @@
     			var href = $(this).find('a').attr('href');
     			var target = $(href == '#' || href == '' ? 'html' : href);
     			var position = target.offset().top;
-    			$('html, body').stop().animate({scrollTop:position}, speed, 'easeInOutCirc');
+    			$('html, body').stop().animate({scrollTop:position},speed,'easeInOutCirc');
     			return false;
     		});
 
@@ -225,7 +212,7 @@
     			$('.closeBtn').removeClass('active').addClass('active');
 
     			// アイコン切替
-    			if( $(this).find('i').hasClass('fa-plus-square-o') ){
+    			if( $(this).find('i').hasClass('fa-plus-square-o')){
     				$(this).find('i').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
     			} else {
     				$(this).find('i').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
@@ -235,14 +222,8 @@
 
     		// 閉じるボタンの表示切替
     		var closeBtnFlag = '';
-    		$('.mokuji li').each(function() {
-    			if( $(this).hasClass('accordion') ) {
-    				closeBtnFlag = false;
-    			}
-    		});
-    		if( closeBtnFlag == true ) {
-    			$('.closeBtn').hide();
-    		}
+    		$('.mokuji li').each(function(){if($(this).hasClass('accordion')){closeBtnFlag = false;}});
+            if( closeBtnFlag == true ){$('.closeBtn').hide();}
 
     		// 全て閉じるボタンを押した時
     		$('.closeBtn').click(function(){
@@ -286,41 +267,5 @@
     		});
     	}
     	makeMokuji();
-
-    	/* -------------------------------------------------------
-    		目次固定
-    	--------------------------------------------------------*/
-    	function fixedSide() {
-
-    		// ウィンドウ幅・人気記事を取得
-    		var w = window.innerWidth;
-    		var mainH = $('#main').height();
-    		var sideH = $('#side').height();
-    		var fixedElm = '';
-
-    		if(mainH > sideH) { // サイドバーより長ければ
-
-    			fixedElm = $('.mokuji');
-
-    			// 要素の位置を取得
-    			var fixedSideTop = fixedElm.offset().top;
-    			var footerTop = $('footer').offset().top;
-    			var scrollBottom = $('body').height() - $(window).height() - $('footer').outerHeight();
-
-    			$(window).scroll(function(){
-
-    				// スクロール位置を取得
-    				y = $(window).scrollTop();
-
-    				// スクロールがサイドバーを上回ったら
-    				if(y > fixedSideTop){
-    					fixedElm.addClass('fixed-side');
-    				} else {
-    					fixedElm.removeClass('fixed-side');
-    				}
-    			});
-    		}
-    	}
-    	fixedSide();
     });
 </script>
