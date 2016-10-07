@@ -152,11 +152,11 @@
     			}else if(this.nodeName.toLowerCase() == 'h3'){
     				level = 3;
     			}else if(this.nodeName.toLowerCase() == 'h4'){
-    				level = 3;
+    				level = 4;
     			}else if(this.nodeName.toLowerCase() == 'h5'){
-    				level = 3;
+    				level = 5;
     			}else if(this.nodeName.toLowerCase() == 'h6'){
-    				level = 3;
+    				level = 6;
     			}
     			while(currentlevel < level){
     				mokuji += '<ol class="chapter">';
@@ -177,10 +177,7 @@
     		}
 
     		// HTML出力
-    		strMokuji = '<h4>目次で流し読みする <span class="closeBtn"><i class="fa fa-times-circle-o"></i></span></h4>\
-    					 <div class="mokujiInner">'
-    						+ mokuji +
-    					 '</div>';
+    		strMokuji = '<h4>目次 <span class="closeBtn"><i class="fa fa-times-circle-o"></i></span></h4><div class="mokujiInner">' + mokuji + '</div>';
 
     		jQuery('.mokuji').html(strMokuji);
 
@@ -189,8 +186,8 @@
     		--------------------------------------------------------*/
     		jQuery('.mokuji li').not('.accordion, .accBtn').click(function(){
     			var speed = 800;
-    			var href = $(this).find('a').attr('href');
-    			var target = $(href == '#' || href == '' ? 'html' : href);
+    			var href = jQuery(this).find('a').attr('href');
+    			var target = jQuery(href == '#' || href == '' ? 'html' : href);
     			var position = target.offset().top;
     			jQuery('html,body').stop().animate({scrollTop:position},speed,'easeInOutCirc');
     			return false;
@@ -222,7 +219,7 @@
 
     		// 閉じるボタンの表示切替
     		var closeBtnFlag = '';
-    		jQuery('.mokuji li').each(function(){if($(this).hasClass('accordion')){closeBtnFlag = false;}});
+    		jQuery('.mokuji li').each(function(){if(jQuery(this).hasClass('accordion')){closeBtnFlag = false;}});
             if( closeBtnFlag == true ){jQuery('.closeBtn').hide();}
 
     		// 全て閉じるボタンを押した時
