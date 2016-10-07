@@ -240,6 +240,7 @@
 	.article-main table tr:last-child{border-left:none;}
 	.article-main table:last-child{border-bottom:none;}
 
+	.article-main .toc>h2::before{content:"";}
 	.article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{display:none;}
 	.article-main .ogp-blogcard img{display:inline-block;}
 	.article-main .ogp-blogcard-title,.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name{color:#333;}
