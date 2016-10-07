@@ -571,6 +571,7 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
+        QTags.addButton('qt-toc','目次','[toc id="" class=“toc” title=“目次” toggle=“true” opentext=“開く” closetext=“閉じる” showcount=2 depth=0 toplevel=1 targetclass="article-main" offset="" duration="nomal"]');
         QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
@@ -824,3 +825,164 @@ function my_new_contactmethods($contactmethods){
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 remove_filter('pre_user_description','wp_filter_kses');
+class Toc_Shortcode {
+
+    private $addScript = false;
+    private $atts = array();
+
+    public function __construct() {
+        add_shortcode( 'toc', array( $this, 'shortcode_content' ) );
+        add_action( 'wp_footer', array( $this, 'add_script' ) );
+    }
+
+    public function shortcode_content( $atts ) {
+        $this->atts = shortcode_atts( array(
+            'id' => '',
+            'class' => 'toc',
+            'title' => '目次',
+            'toggle' => 'true',
+            'opentext' => '開く',
+            'closetext' => '閉じる',
+            'showcount' => 2,
+            'depth' => 0,
+            'toplevel' => 2,
+            'targetclass' => 'entry-content',
+            'offset' => '',
+            'duration' => 'normal'
+        ), $atts );
+
+        $content = get_the_content();
+
+        $headers = array();
+        preg_match_all( '/<([hH][1-6]).*?>(.*?)<\/[hH][1-6].*?>/u', $content, $headers );
+        $header_count = count( $headers[0] );
+        $counter = 0;
+        $counters = array( 0, 0, 0, 0, 0, 0 );
+        $top_level = intval( $this->atts['toplevel'] );
+        if ( $header_count > 0 ) {
+            $level = strtolower( $headers[1][0] );
+            if ( $top_level < $level ) $top_level = $level;
+        }
+        if ( $top_level < 1 ) $top_level = 1;
+        if ( $top_level > 6 ) $top_level = 6;
+        $this->atts['toplevel'] = $top_level;
+        $current_depth = $top_level - 1;
+        $prev_depth = $top_level - 1;
+        $max_depth = ( ( $this->atts['depth'] == 0) ? 6 : intval( $this->atts['depth'] ) ) - $top_level + 1;
+
+        $toc_list = '';
+        for ( $i = 0; $i < $header_count; $i++ ) {
+            $depth = 0;
+            switch ( strtolower( $headers[1][$i] ) ) {
+                case 'h1': $depth = 1 - $top_level + 1; break;
+                case 'h2': $depth = 2 - $top_level + 1; break;
+                case 'h3': $depth = 3 - $top_level + 1; break;
+                case 'h4': $depth = 4 - $top_level + 1; break;
+                case 'h5': $depth = 5 - $top_level + 1; break;
+                case 'h6': $depth = 6 - $top_level + 1; break;
+            }
+            if ( $depth >= 1 && $depth <= $max_depth ) {
+                if ( $current_depth == $depth ) {
+                    $toc_list .= '</li>';
+                }
+                while ( $current_depth > $depth ) {
+                    $toc_list .= '</li></ul>';
+                    $current_depth--;
+                    $counters[$current_depth] = 0;
+                }
+                if ( $current_depth != $prev_depth ) {
+                    $toc_list .= '</li>';
+                }
+                if ( $current_depth < $depth ) {
+                    $toc_list .= '<ul' . ( ( $current_depth == $top_level - 1 ) ? ' class="toc-list"' : '' ) . '>';
+                    $current_depth++;
+                }
+                $counters[$current_depth - 1] ++;
+                $number = $counters[$top_level - 1];
+                for ( $j = $top_level - 1; $j < $current_depth - 1; $j++ ) {
+                    $number .= '.' . $counters[$j];
+                }
+                $counter++;
+                $toc_list .= '<li><a href="#toc' . $counter . '"><span class="contentstable-number">' . $number . '</span> ' . $headers[2][$i] . '</a>';
+                $prev_depth = $depth;
+            }
+        }
+        while ( $current_depth >= 1 ) {
+            $toc_list .= '</li></ul>';
+            $current_depth--;
+        }
+
+        $html = '';
+        if ( $counter >= $this->atts['showcount'] ) {
+            $this->addScript = true;
+
+            $toggle = '';
+            if ( strtolower( $this->atts['toggle'] ) == 'true' ) {
+                $toggle = ' <span class="toc-toggle">[<a href="#">' . $this->atts['closetext'] . '</a>]</span>';
+            }
+
+            $html .= '<div' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">';
+            $html .= '<p class="toc-title">' . $this->atts['title'] . $toggle . '</p>';
+            $html .= $toc_list;
+            $html .= '</div>' . "\n";
+        }
+
+        return $html;
+    }
+
+    public function add_script() {
+        if ( !$this->addScript ) {return false;}
+
+        $class = $this->atts['class'];
+        $offset = is_numeric( $this->atts['offset'] ) ? (int)$this->atts['offset'] : -1;
+        $duration = is_numeric( $this->atts['duration'] ) ? (int)$this->atts['duration'] : '"' . $this->atts['duration'] . '"';
+        $targetclass = trim( $this->atts['targetclass'] );
+        if ( $targetclass == '' ) {
+            $targetclass = get_post_type();
+        }
+        if ( $this->atts['toplevel'] == 1 ) {
+            $targetclass = ".$targetclass :header";
+        } else {
+            for ( $h = $this->atts['toplevel']; $h <= 6; $h++ ) {
+                $targetclasss[] = ".$targetclass h$h";
+            }
+            $targetclass = implode( ',', $targetclasss );
+        }
+        $opentext = $this->atts['opentext'];
+        $closetext = $this->atts['closetext'];
+
+        ?>
+        <script>
+        (function($){
+          var offset = <?php echo $offset;?>;
+          var idCounter = 0;
+          $("<?php echo $targetclass;?>").each(function(){
+            idCounter++;
+            this.id = "toc" + idCounter;
+          });
+          $(".<?php echo $class;?> a[href^='#']").click(function(){
+            var href = $(this).attr("href");
+            var target = $(href === "#" || href === "" ? "html" : href);
+            var h = (offset === -1 ? $("#wpadminbar").height() + $(".navbar-fixed-top").height() : offset);
+            var position = target.offset().top - h - 4;
+            $("html, body").animate({scrollTop:position}, <?php echo $duration;?>, "swing");
+            return false;
+          });
+          $(".toc-toggle a").click(function(){
+            var tocList = $(".toc-list");
+            if (tocList.is(":hidden")){
+              tocList.show();
+              $(this).text("<?php echo $closetext; ?>");
+            } else {
+              tocList.hide();
+              $(this).text("<?php echo $opentext; ?>");
+            }
+          });
+        })(jQuery);
+        </script>
+        <?php
+    }
+
+}
+
+new Toc_Shortcode();
