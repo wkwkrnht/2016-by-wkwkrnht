@@ -145,6 +145,8 @@
 	.site-info{text-align:center;}
 	.card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
 
+	.toc{width:90vw;margin:3vh auto;border:1px solid rgba(0,0,0,.3);box-shadow:0 0 3vmin rgba(0,0,0,.3);}
+
 	.marker{background:linear-gradient(transparent 30%,#fffc00 30%);}
 
 	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 3vmin;margin:3vmin auto;position:relative;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
@@ -309,6 +311,7 @@
 	        .card-info{max-width:calc(80vmin * 3 / 5);}
 	        .card h1,.card h2{font-size:1.8rem;}
 	        .card,.page-nation{box-shadow:0 0 15px rgba(0,0,0,0);}
+			.toc{width:94vw;}
 	        .hatenablogcard{max-width:80vw;margin:5vh 0;}
 	        .ogp-blogcard{border-width:2vmin;max-width:94%;}
 	        .ogp-blogcard-title{font-size:1.3rem;}
