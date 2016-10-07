@@ -1,5 +1,6 @@
 <?php
 require_once(get_template_directory() . '/inc/Goutte/Client.php');
+use Goutte\Client;
 $client           = new Client();
 $crawler          = $client->request('GET',the_permalink());
 $h1_number_array  = array();
