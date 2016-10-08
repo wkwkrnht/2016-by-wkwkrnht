@@ -6,7 +6,6 @@
     .comment-list li{box-shadow:0 0 0 rgba(0,0,0,0);}
     .comment-respond{width:80%;margin:0 auto;}
     .comment-form{max-width:100%;}
-    .comment-form-comment label{display:none;}
     .comment-form-comment textarea,.comment-form-author input,.comment-form-email input,.comment-form-url input{max-width:100%;}
 </style>
 <div class="comment">
