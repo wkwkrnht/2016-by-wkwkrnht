@@ -931,30 +931,30 @@ class Toc_Shortcode{
         ?>
         <script>
             (function($){
-              var offset = <?php echo $offset;?>;
-              var idCounter = 0;
-              $("<?php echo $targetclass;?>").each(function(){
-                idCounter++;
-                this.id = "toc" + idCounter;
-              });
-              $(".<?php echo $class;?> a[href^='#']").click(function(){
-                var href = $(this).attr("href");
-                var target = $(href === "#" || href === "" ? "html" : href);
-                var h = (offset === -1 ? $("#wpadminbar").height() + $(".navbar-fixed-top").height() : offset);
-                var position = target.offset().top - h - 4;
-                $("html, body").animate({scrollTop:position}, <?php echo $duration;?>, "swing");
-                return false;
-              });
-              $(".toc-toggle a").click(function(){
-                var tocList = $(".toc-list");
-                if (tocList.is(":hidden")){
-                  tocList.show();
-                  $(this).text("<?php echo $closetext; ?>");
-                } else {
-                  tocList.hide();
-                  $(this).text("<?php echo $opentext; ?>");
-                }
-              });
+                var offset = <?php echo $offset;?>;
+                var idCounter = 0;
+                $("<?php echo $targetclass;?>").each(function(){
+                    idCounter++;
+                    this.id = "toc" + idCounter;
+                });
+                $(".<?php echo $class;?> a[href^='#']").click(function(){
+                    var href = $(this).attr("href");
+                    var target = $(href === "#" || href === "" ? "html" : href);
+                    var h = (offset === -1 ? $("#wpadminbar").height() + $(".navbar-fixed-top").height() : offset);
+                    var position = target.offset().top - h - 4;
+                    $("html, body").animate({scrollTop:position},<?php echo $duration;?>,"swing");
+                    return false;
+                });
+                $(".toc-toggle a").click(function(){
+                    var tocList = $(".toc-list");
+                    if (tocList.is(":hidden")){
+                        tocList.show();
+                        $(this).text("<?php echo $closetext;?>");
+                    } else {
+                        tocList.hide();
+                        $(this).text("<?php echo $opentext;?>");
+                    }
+                });
             })(jQuery);
         </script>
         <?php
