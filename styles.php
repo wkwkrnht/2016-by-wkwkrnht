@@ -9,6 +9,7 @@
 	.none{display:none;}
 	.block{display:block;}
 	.inline-block{display:inline-block;}
+	.vcard,.fn{margin:0;}
 	/*
 		menu
 	1.hover to move neighbor
@@ -139,11 +140,11 @@
 	.card img{display:block;float:left;height:39vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
 	.card span{display:inline-block;height:30%;margin:0 1em;}
-	.card .vcard,.card .fn{margin:0;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
 	.card-info{max-width:calc(80vmin / 2);float:right;}
 	.site-info{text-align:center;}
 	.card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
+	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
 
 	.toc{width:90vw;margin:3vh auto;border:1px solid rgba(0,0,0,.3);box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 

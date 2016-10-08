@@ -25,6 +25,8 @@
 function wkwkrnht_setup(){
     if(!isset($content_width)){$content_width=1080;}
 
+    $custom_header = array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,);
+    add_theme_support('custom-header',$custom_header);
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
@@ -408,7 +410,7 @@ function wkwkrnht_special_card(){
         $url = dirname(__FILE__) . '/./widget/author-bio.php';
         include_once $url;
     else:
-        echo'<header class="card info-card">';
+        echo'<header class="card info-card special-card">';
             if(is_category()===true):
                 echo'<h1 class="site-title">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
             elseif(is_tag()===true):
