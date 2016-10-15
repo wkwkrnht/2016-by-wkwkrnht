@@ -922,18 +922,9 @@ class Toc_Shortcode{
 
     public function add_toc_script(){
         $targetclass = trim( $this->atts['targetclass'] );
-        if ( $targetclass == '' ) {
-            $targetclass = get_post_type();
-        }
-        if ( $this->atts['toplevel'] == 1 ) {
-            $targetclass = ".$targetclass :header";
-        } else {
-            for ( $h = $this->atts['toplevel']; $h <= 6; $h++ ) {
-                $targetclasss[] = ".$targetclass h$h";
-            }
-            $targetclass = implode( ',', $targetclasss );
-        }
-        echo $targetclass;
+        if($targetclass===''){$targetclass = get_post_type();}
+        for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$targetclasss[] = ".$targetclass h$h";}
+        $targetclass = implode(',',$targetclasss);
         ?>
         <script>
             (function($){
