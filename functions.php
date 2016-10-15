@@ -933,7 +933,7 @@ class Toc_Shortcode{
             }
             $targetclass = implode( ',', $targetclasss );
         }
-        var_dump($targetclass);
+        echo $targetclass;
         ?>
         <script>
             (function($){
