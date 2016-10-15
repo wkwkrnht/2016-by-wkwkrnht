@@ -823,7 +823,8 @@ function my_new_contactmethods($contactmethods){
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 remove_filter('pre_user_description','wp_filter_kses');
-class Toc_Shortcode{
+
+/*class Toc_Shortcode{
 
     private $addScript = false;
     private $atts = array();
@@ -915,8 +916,8 @@ class Toc_Shortcode{
             $html .= '
             <aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">
                 <h2 class="toc-title">' . $this->atts['title'] . $toggle . '</h2>'
-                 . $toc_list
-             . '</aside>';
+                 . $toc_list .
+            '</aside>';
         }
         return $html;
     }
@@ -967,4 +968,4 @@ class Toc_Shortcode{
     }
 
 }
-new Toc_Shortcode();
+new Toc_Shortcode();*/
