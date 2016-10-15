@@ -198,6 +198,7 @@
 	.article-main p{max-width:55em;padding:5vmin 8vmin 0;margin:2vh auto;}
 	.article-main a{text-decoration:none;border-bottom:0;}
 	.article-main a:hover::after{content:'URL : ' attr(href);display:block;min-height:2rem;padding:.5em 1em;border-radius:3vmin;z-index:2;position:absolute;background-color:#f1f1f1;}
+	.article-main a[href*="javascript:void(0)"]:hover::after{display:none;}
 	.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
 	.article-main img{display:block;width:100%;min-height:50px;height:auto;position:relative;margin:3vh auto;line-height:2;text-align:center;}
 	.article-main img::before{content:"";display:block;height:calc(100% + 2em);width:100%;border-radius:3vmin;position:absolute;top:-2em;left:0;border:1vmin dashed #ddd;background-color:#f1f1f1;}
