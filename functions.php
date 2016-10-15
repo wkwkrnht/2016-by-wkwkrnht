@@ -572,7 +572,7 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
-        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 toggle=true opentext=開く closetext=閉じる showcount=2 depth=0 toplevel=1 targetclass=article-main offset= duration=nomal]');
+        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main duration=slow offset=]');
         QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
@@ -848,7 +848,7 @@ class Toc_Shortcode{
             'toplevel'    => 1,
             'targetclass' => 'article-main',
             'offset'      => '',
-            'duration'    => 'normal'
+            'duration'    => 'slow'
         ),$atts);
 
         $content   = get_the_content();
@@ -939,10 +939,11 @@ class Toc_Shortcode{
             (function($){
                 var offset = <?php echo $offset;?>;
                 var idCounter = 0;
-                $("<?php echo $targetclass;?>").each(function(){
+                var target = document.getElementsByClassName("<?php echo $targetclass;?>");
+                for(var i = 0; i < target.length; i++){
                     idCounter++;
-                    this.id = "toc" + idCounter;
-                });
+                    target.id = "toc" + idCounter;
+                }
                 $(".<?php echo $class;?> a[href^='#']").click(function(){
                     var href = $(this).attr("href");
                     var target = $(href === "#" || href === "" ? "html" : href);
