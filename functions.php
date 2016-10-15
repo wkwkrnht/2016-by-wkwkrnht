@@ -853,6 +853,7 @@ class Toc_Shortcode{
         $headers   = array();
         $html      = '';
         $toc_list  = '';
+        $id        = $this->atts['id'];
         $toggle    = '';
         $counter   = 0;
         $counters  = array(0,0,0,0,0,0);
@@ -908,8 +909,9 @@ class Toc_Shortcode{
                 $script = 'document.getElementByClassName("toc-list").classList.toggle("open");document.getElementByClassName("toc-list").classList.toggle("close");';
                 $toggle = '<a class="toc-toggle" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
             }
+            if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
             $html .= '
-            <aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">'
+            <aside' . $id . ' class="' . $this->atts['class'] . '">'
                 . $toggle .
                 '<h2 class="toc-title">' . $this->atts['title'] . '</h2>'
                 . $toc_list .
