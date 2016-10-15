@@ -229,7 +229,7 @@ function wkwkrnht_meta_widget(){ ?>
     <?php if(is_singular()===true):
         $id      = '';
         $homeurl = '';
-        if(){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}
+        if(is_ssl()){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}
         if(have_posts()):while(have_posts()):the_post();$id = the_ID();endwhile;endif;?>
         <li><?php edit_post_link();?></li>
         <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" class="wlwedit"></a></li>
