@@ -147,9 +147,9 @@
 	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
 
 	.toc{width:90vw;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-	.toc-toggle{display:inline-block;height:3em;width:3em;border-radius:50%;position:absolute;top:0;right:0;color:#fff;background-color:#03a9f4;}
+	.toc-toggle{display:inline-block;height:3em;width:3em;border-radius:50%;position:relative;top:0;right:0;color:#fff;background-color:#03a9f4;text-align:center;}
 
-	.marker{background:linear-gradient(transparent 30%,#fffc00 30%);}
+	.marker{background-color:linear-gradient(transparent 30%,#fffc00 30%);}
 
 	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 3vmin;margin:3vmin auto;position:relative;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
 	.ogp-blogcard-share{height:37vh;width:80%;position:absolute;top:0;left:0;z-index:2;background-color:rgba(0,0,0,.3);}
