@@ -224,10 +224,12 @@ add_filter('get_search_form','wkwkrnht_search_form');
 
 add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','wkwkrnht_meta_widget');
-function wkwkrnht_meta_widget(){ ?>
+function wkwkrnht_meta_widget(){
+    $homeurl = '';
+    if(){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}?>
     <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
     <li><?php edit_post_link();?></li>
-    <li><a href="<?php echo 'wlw' . if(){substr(home_url(),5);}else{substr(home_url(),4);} . '/?postid=' . the_ID();?>" class="wlwedit"></a></li>
+    <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . the_ID();?>" class="wlwedit"></a></li>
 <?php
 }
 
