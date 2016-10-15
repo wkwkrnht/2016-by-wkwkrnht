@@ -224,13 +224,16 @@ add_filter('get_search_form','wkwkrnht_search_form');
 
 add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','wkwkrnht_meta_widget');
-function wkwkrnht_meta_widget(){
-    $homeurl = '';
-    if(){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}?>
+function wkwkrnht_meta_widget(){ ?>
     <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
-    <li><?php edit_post_link();?></li>
-    <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . the_ID();?>" class="wlwedit"></a></li>
-<?php
+    <?php if(is_singular()===true):
+        $id      = '';
+        $homeurl = '';
+        if(){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}
+        if(have_posts()):while(have_posts()):the_post();$id = the_ID();endwhile;endif;?>
+        <li><?php edit_post_link();?></li>
+        <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" class="wlwedit"></a></li>
+    <?php endif;
 }
 
 function autoblank($text){
@@ -824,7 +827,7 @@ function my_new_contactmethods($contactmethods){
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 remove_filter('pre_user_description','wp_filter_kses');
 
-/*class Toc_Shortcode{
+class Toc_Shortcode{
 
     private $addScript = false;
     private $atts = array();
@@ -968,4 +971,4 @@ remove_filter('pre_user_description','wp_filter_kses');
     }
 
 }
-new Toc_Shortcode();*/
+new Toc_Shortcode();
