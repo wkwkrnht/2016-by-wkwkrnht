@@ -931,11 +931,11 @@ class Toc_Shortcode{
             (function(){
                 var idCounter = 0;
                 var hCounter = 0;
-                var targetclass = element.getElementByClassName("<?php echo $targetclass;?>");
+                var targetclass = element.getElementsByClassName("<?php echo $targetclass;?>");
                 var sub = [<?php echo $harray;?>];
                 for (var i = 0; i < sub.length; i++) {
                     idCounter++;
-                    var targetelement = targetclass.getElementByTagName(sub[i]);
+                    var targetelement = targetclass.getElementsByTagName(sub[i]);
                     for (var n = 0; n < targetelement.length; n++) {
                         hCounter++;
                         targetelement[i].id = "toc" + idCounter + hCounter;
