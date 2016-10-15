@@ -846,15 +846,14 @@ class Toc_Shortcode{
             'showcount'   => 2,
             'depth'       => 0,
             'toplevel'    => 1,
-            'targetclass' => 'article-main',
-            'offset'      => '',
-            'duration'    => 'slow'
+            'targetclass' => 'article-main'
         ),$atts);
 
         $content   = get_the_content();
         $headers   = array();
         $html      = '';
         $toc_list  = '';
+        $toggle    = '';
         $counter   = 0;
         $counters  = array(0,0,0,0,0,0);
         $top_level = intval($this->atts['toplevel']);
@@ -905,8 +904,6 @@ class Toc_Shortcode{
             $current_depth--;
         }
         if($counter >= $this->atts['showcount']){
-            $this->addScript = true;
-            $toggle          = '';
             if(strtolower($this->atts['toggle'] ) == 'true'){
                 $script = 'document.getElementByClassName("toc-list").classList.toggle("close");document.getElementByClassName("toc-list").classList.toggle("open");';
                 $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
@@ -922,11 +919,7 @@ class Toc_Shortcode{
     }
 
     public function add_toc_script(){
-        if(!$this->addScript){return false;}
-        $class       = $this->atts['class'];
         $targetclass = trim($this->atts['targetclass']);
-        $offset      = is_numeric( $this->atts['offset'] ) ? (int)$this->atts['offset'] : -1;
-        $duration    = is_numeric( $this->atts['duration'] ) ? (int)$this->atts['duration'] : '"' . $this->atts['duration'] . '"';
         if($targetclass===''){$targetclass = get_post_type();}
         if($this->atts['toplevel'] == 1){
             $targetclass = ".$targetclass :header";
@@ -937,25 +930,40 @@ class Toc_Shortcode{
         ?>
         <script>
             (function($){
-                var offset = <?php echo $offset;?>;
                 var idCounter = 0;
                 var target = document.getElementsByClassName("<?php echo $targetclass;?>");
                 for(var i = 0; i < target.length; i++){
                     idCounter++;
                     target.id = "toc" + idCounter;
                 }
-                $(".<?php echo $class;?> a[href^='#']").click(function(){
-                    var href = $(this).attr("href");
-                    var target = $(href === "#" || href === "" ? "html" : href);
-                    var h = (offset === -1 ? $("#wpadminbar").height() + $(".navbar-fixed-top").height() : offset);
-                    var position = target.offset().top - h - 4;
-                    $("html, body").animate({scrollTop:position},<?php echo $duration;?>,"swing");
-                    return false;
-                });
             })(jQuery);
         </script>
         <?php
     }
-
 }
 new Toc_Shortcode();
+
+/**
+ * Adds custom classes to the array of body classes.
+ *
+ * @param array $classes Classes for the body element.
+ *
+ * @return array
+ * @copyright KUCKLU & VisuAlive
+ */
+function themeslug_body_class($classes){
+	return preg_grep('/\Aauthor\-.+\z/i',$classes,PREG_GREP_INVERT);
+}
+add_action('body_class','themeslug_body_class');
+/**
+ * Adds custom classes to the array of comment classes.
+ *
+ * @param array $classes Classes for the comment element.
+ *
+ * @return array
+ * @copyright KUCKLU & VisuAlive
+ */
+function themeslug_comment_class($classes){
+	return preg_grep('/\Acomment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
+}
+add_action('comment_class','themeslug_comment_class');
