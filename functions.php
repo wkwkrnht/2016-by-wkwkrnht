@@ -886,8 +886,8 @@ class Toc_Shortcode{
             }
             if($depth >= 1 && $depth <= $max_depth){
                 if($current_depth == $depth){$toc_list .= '</li>';}
-                while ( $current_depth > $depth ){
-                    $toc_list .= '</li></ul>';
+                while($current_depth > $depth){
+                    $toc_list .= '</li></ol>';
                     $current_depth--;
                     $counters[$current_depth] = 0;
                 }
@@ -897,10 +897,8 @@ class Toc_Shortcode{
                     $current_depth++;
                 }
                 $counters[$current_depth - 1] ++;
-                $number = $counters[$top_level - 1];
-                for( $j = $top_level - 1; $j < $current_depth - 1; $j++ ){$number .= '.' . $counters[$j];}
                 $counter++;
-                $toc_list .= '<li><a href="#toc' . $counter . '"><span class="contentstable-number">' . $number . '</span> ' . $headers[2][$i] . '</a>';
+                $toc_list .= '<li><a href="#toc' . $counter . '">' . $headers[2][$i] . '</a>';
                 $prev_depth = $depth;
             }
         }
@@ -908,14 +906,12 @@ class Toc_Shortcode{
             $toc_list .= '</li></ol>';
             $current_depth--;
         }
-
         if($counter >= $this->atts['showcount']){
             $this->addScript = true;
             $toggle          = '';
-            $txt             = $this->atts['closetext'];
             if(strtolower($this->atts['toggle'] ) == 'true'){
-                $script = 'document.getElementByClassName("toc-list").classList.toggle("close");document.getElementByClassName("toc-list").classList.toggle("open");document.getElementByClassName("toc-list").classList.toggle("toc-toggle-open");document.getElementByClassName("toc-list").classList.toggle("toc-toggle-close");document.getElementByClassName("toc-toggle-open").textContent = "' . $txt . '";document.getElementByClassName("toc-toggle-close").textContent = "' . $this->atts['opentext'] . '";';
-                $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '">' . $txt . '</a>';
+                $script = 'document.getElementByClassName("toc-list").classList.toggle("close");document.getElementByClassName("toc-list").classList.toggle("open");';
+                $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
             }
             $html .= '
             <aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">
