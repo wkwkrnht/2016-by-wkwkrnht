@@ -923,17 +923,16 @@ class Toc_Shortcode{
     public function add_toc_script(){
         $targetclass = trim( $this->atts['targetclass'] );
         if($targetclass===''){$targetclass = get_post_type();}
-        for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$targetclasss[] = ".$targetclass h$h";}
+        for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$targetclasss[] = '"' . $targetclass . ' h' . $h . '"';}
         $targetclass = implode(',',$targetclasss);
-        $targetclass = preg_replace('/\.(.*?),/','"$1"',$targetclasss);
         ?>
         <script>
             (function($){
                 var idCounter = 0;
-                $("<?php echo $targetclass;?>").each(function(){
+                /*$("<?php //echo $targetclass;?>").each(function(){
                     idCounter++;
                     this.id = "toc" + idCounter;
-                });
+                });*/
                 var sub = [<?php echo $targetclass;?>];
                 for (var i = 0; i < sub.length; i++) {
                     idCounter++;
