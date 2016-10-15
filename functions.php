@@ -921,20 +921,28 @@ class Toc_Shortcode{
     }
 
     public function add_toc_script(){
+        $harray      = '';
         $targetclass = trim( $this->atts['targetclass'] );
         if($targetclass===''){$targetclass = get_post_type();}
-        for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$targetclasss[] = '"' . $targetclass . ' h' . $h . '"';}
+        for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$harray[] = '"h' . $h . '"';}
         $targetclass = implode(',',$targetclasss);
         ?>
         <script>
-            (function($){
+            (function(){
                 var idCounter = 0;
-                var sub = [<?php echo $targetclass;?>];
+                var hCounter = 0;
+                var targetclass = element.getElementByClassName("<?php echo $targetclass;?>");
+                var sub = [<?php echo $harray;?>];
                 for (var i = 0; i < sub.length; i++) {
                     idCounter++;
-                    sub[i].id = "toc" + idCounter;
+                    var targetelement = targetclass.getElementByTagName(sub[i]);
+                    for (var n = 0; n < targetelement.length; n++) {
+                        hCounter++;
+                        targetelement[i].id = "toc" + idCounter + hCounter;
+                    }
+                    hCounter = 0;
                 }
-            })(jQuery);
+            })();
         </script>
         <?php
     }
