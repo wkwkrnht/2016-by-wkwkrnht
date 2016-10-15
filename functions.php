@@ -890,7 +890,7 @@ class Toc_Shortcode{
                 }
                 if($current_depth != $prev_depth){$toc_list .= '</li>';}
                 if($current_depth < $depth){
-                    $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' class="toc-list open"' : '') . '>';
+                    $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' id="toc-list" class="open"' : '') . '>';
                     $current_depth++;
                 }
                 $counters[$current_depth - 1] ++;
@@ -905,7 +905,7 @@ class Toc_Shortcode{
         }
         if($counter >= $this->atts['showcount']){
             if(strtolower($this->atts['toggle'] ) == 'true'){
-                $script = 'document.getElementByClassName("toc-list").classList.toggle("open");document.getElementByClassName("toc-list").classList.toggle("close");';
+                $script = 'document.getElementById("toc-list").classList.toggle("open");document.getElementById("toc-list").classList.toggle("close");';
                 $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
             }
             $html .= '
