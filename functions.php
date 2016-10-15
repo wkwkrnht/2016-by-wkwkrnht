@@ -272,6 +272,7 @@ function title_in_nav_menu($item_output,$item){
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){
+    $classes = preg_grep('/\Aauthor\-.+\z/i',$classes,PREG_GREP_INVERT);
     if(is_singular()===true){
         global $post;
         foreach((get_the_category($post->ID)) as $category){$classes[] = 'categoryid-' . $category->cat_ID;}
@@ -834,7 +835,6 @@ class Toc_Shortcode{
 
     public function __construct(){
         add_shortcode('toc',array($this,'make_toc'));
-        add_action('wp_footer',array($this,'add_toc_script'));
     }
 
     public function make_toc($atts){
@@ -858,6 +858,11 @@ class Toc_Shortcode{
         $counter   = 0;
         $counters  = array(0,0,0,0,0,0);
         $top_level = intval($this->atts['toplevel']);
+        $harray      = array();
+        $targetclass = trim($this->atts['targetclass']);
+        if($targetclass===''){$targetclass = get_post_type();}
+        for($h = $this->atts['toplevel']; $h <= 6; $h++){$harray[] = '"h' . $h . '"';}
+        $harray = implode(',',$harray);
 
         preg_match_all('/<([hH][1-6]).*?>(.*?)<\/[hH][1-6].*?>/u',$content,$headers);
         $header_count = count($headers[0]);
@@ -915,49 +920,27 @@ class Toc_Shortcode{
                 . $toggle .
                 '<h2 class="toc-title">' . $this->atts['title'] . '</h2>'
                 . $toc_list .
-            '</aside>';
+            '
+            </aside>
+            <script>
+                (function(){
+                    var idCounter = 0;
+                    var targetclass = document.getElementsByClassName("' . $targetclass . '");
+                    var sub = [<?php echo $harray;?>];
+                    for (var i = 0; i < sub.length; i++) {
+                        var targetelement = targetclass.getElementsByTagName(sub[i]);
+                        for (var n = 0; n < targetelement.length; n++) {
+                            idCounter++;
+                            targetelement[i].id = "toc" + idCounter;
+                        }
+                    }
+                })();
+            </script>';
         }
         return $html;
     }
-
-    public function add_toc_script(){
-        $harray      = array();
-        $targetclass = trim($this->atts['targetclass']);
-        if($targetclass===''){$targetclass = get_post_type();}
-        for($h = $this->atts['toplevel']; $h <= 6; $h++){$harray[] = '"h' . $h . '"';}
-        $harray = implode(',',$harray);
-        ?>
-        <script>
-            (function(){
-                var idCounter = 0;
-                var targetclass = document.getElementsByClassName("<?php echo $targetclass;?>");
-                var sub = [<?php echo $harray;?>];
-                for (var i = 0; i < sub.length; i++) {
-                    var targetelement = targetclass.getElementsByTagName(sub[i]);
-                    for (var n = 0; n < targetelement.length; n++) {
-                        idCounter++;
-                        targetelement[i].id = "toc" + idCounter;
-                    }
-                }
-            })();
-        </script>
-        <?php
-    }
 }
 new Toc_Shortcode();
-
-/**
- * Adds custom classes to the array of body classes.
- *
- * @param array $classes Classes for the body element.
- *
- * @return array
- * @copyright KUCKLU & VisuAlive
- */
-function themeslug_body_class($classes){
-	return preg_grep('/\Aauthor\-.+\z/i',$classes,PREG_GREP_INVERT);
-}
-add_action('body_class','themeslug_body_class');
 /**
  * Adds custom classes to the array of comment classes.
  *
