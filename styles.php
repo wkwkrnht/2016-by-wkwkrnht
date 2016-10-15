@@ -147,7 +147,7 @@
 	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
 
 	.toc{width:90vw;padding-bottom:3vh;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-	.toc-toggle{display:block;height:3em;width:3em;border-radius:50%;font-size:1.8rem;position:relative;top:-1.5em;left:-1.5em;color:#fff;background-color:#03a9f4;text-align:center;}
+	.toc-toggle{display:block;height:3em;width:3em;border-radius:50%;font-size:1.8rem;position:relative;top:-1.5em;left:calc(90vw + 1.5em);color:#fff;background-color:#03a9f4;text-align:center;}
 
 	.marker{background-color:linear-gradient(transparent 30%,#fffc00 30%);}
 
