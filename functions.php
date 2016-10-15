@@ -896,7 +896,7 @@ class Toc_Shortcode{
                 $number = $counters[$top_level - 1];
                 for( $j = $top_level - 1; $j < $current_depth - 1; $j++ ){$number .= '.' . $counters[$j];}
                 $counter++;
-                $toc_list .= '<li><a href="#toc' . $counter . '">' . $headers[2][$i] . '</a>';
+                $toc_list .= '<li><a href="#toc' . $counter . '"><span class="contentstable-number">' . $number . '</span> ' . $headers[2][$i] . '</a>';
                 $prev_depth = $depth;
             }
         }
