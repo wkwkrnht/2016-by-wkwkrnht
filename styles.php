@@ -146,7 +146,7 @@
 	.card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
 	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
 
-	.toc{width:90vw;margin:3vh auto;border:1px solid rgba(0,0,0,.3);box-shadow:0 0 3vmin rgba(0,0,0,.3);}
+	.toc{width:90vw;margin:3vh auto;border-radius:3vmin;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 
 	.marker{background:linear-gradient(transparent 30%,#fffc00 30%);}
 

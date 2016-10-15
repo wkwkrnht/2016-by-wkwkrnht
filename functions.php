@@ -912,9 +912,10 @@ class Toc_Shortcode{
         if($counter >= $this->atts['showcount']){
             $this->addScript = true;
             $toggle          = '';
+            $txt             = $this->atts['closetext'];
             if(strtolower($this->atts['toggle'] ) == 'true'){
-                $script = 'document.getElementByClassName("toc-list").classList.toggle("close");document.getElementByClassName("toc-list").classList.toggle("open");document.getElementByClassName("toc-list").classList.toggle("toc-toggle-open");document.getElementByClassName("toc-list").classList.toggle("toc-toggle-close");document.getElementByClassName("toc-toggle-open").textContent = "閉じる";document.getElementByClassName("toc-toggle-close").textContent = "開く";';
-                $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '"></a>';
+                $script = 'document.getElementByClassName("toc-list").classList.toggle("close");document.getElementByClassName("toc-list").classList.toggle("open");document.getElementByClassName("toc-list").classList.toggle("toc-toggle-open");document.getElementByClassName("toc-list").classList.toggle("toc-toggle-close");document.getElementByClassName("toc-toggle-open").textContent = "' . $txt . '";document.getElementByClassName("toc-toggle-close").textContent = "' . $this->atts['opentext'] . '";';
+                $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '">' . $txt . '</a>';
             }
             $html .= '
             <aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">
@@ -957,14 +958,14 @@ class Toc_Shortcode{
                     $("html, body").animate({scrollTop:position},<?php echo $duration;?>,"swing");
                     return false;
                 });
-                $(".toc-toggle a").click(function(){
+                /*$(".toc-toggle a").click(function(){
                     var tocList = $(".toc-list");
                     if(tocList.is(":hidden")){
                         $(this).text("<?php echo $closetext;?>");
                     }else{
                         $(this).text("<?php echo $opentext;?>");
                     }
-                });
+                });*/
             })(jQuery);
         </script>
         <?php
