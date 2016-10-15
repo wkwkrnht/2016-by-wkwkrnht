@@ -929,14 +929,10 @@ class Toc_Shortcode{
         <script>
             (function($){
                 var idCounter = 0;
-                /*$("<?php //echo $targetclass;?>").each(function(){
-                    idCounter++;
-                    this.id = "toc" + idCounter;
-                });*/
                 var sub = [<?php echo $targetclass;?>];
                 for (var i = 0; i < sub.length; i++) {
                     idCounter++;
-                    this.id = "toc" + idCounter;
+                    sub[i].id = "toc" + idCounter;
                 }
             })(jQuery);
         </script>
