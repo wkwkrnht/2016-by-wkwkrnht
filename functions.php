@@ -925,7 +925,7 @@ class Toc_Shortcode{
         $targetclass = trim( $this->atts['targetclass'] );
         if($targetclass===''){$targetclass = get_post_type();}
         for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$harray[] = '"h' . $h . '"';}
-        $targetclass = implode(',',$targetclasss);
+        $harray = implode(',',$harray);
         ?>
         <script>
             (function(){
