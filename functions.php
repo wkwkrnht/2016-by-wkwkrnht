@@ -843,8 +843,6 @@ class Toc_Shortcode{
             'class'       => 'toc',
             'title'       => '目次',
             'toggle'      => 'true',
-            'opentext'    => '開く',
-            'closetext'   => '閉じる',
             'showcount'   => 2,
             'depth'       => 0,
             'toplevel'    => 1,
@@ -914,9 +912,10 @@ class Toc_Shortcode{
                 $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
             }
             $html .= '
-            <aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">
-                <h2 class="toc-title">' . $this->atts['title'] . $toggle . '</h2>'
-                 . $toc_list .
+            <aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">'
+                . $toggle .
+                '<h2 class="toc-title">' . $this->atts['title'] . '</h2>'
+                . $toc_list .
             '</aside>';
         }
         return $html;
@@ -924,8 +923,6 @@ class Toc_Shortcode{
 
     public function add_toc_script(){
         if(!$this->addScript){return false;}
-        $opentext    = $this->atts['opentext'];
-        $closetext   = $this->atts['closetext'];
         $class       = $this->atts['class'];
         $targetclass = trim($this->atts['targetclass']);
         $offset      = is_numeric( $this->atts['offset'] ) ? (int)$this->atts['offset'] : -1;
@@ -954,14 +951,6 @@ class Toc_Shortcode{
                     $("html, body").animate({scrollTop:position},<?php echo $duration;?>,"swing");
                     return false;
                 });
-                /*$(".toc-toggle a").click(function(){
-                    var tocList = $(".toc-list");
-                    if(tocList.is(":hidden")){
-                        $(this).text("<?php echo $closetext;?>");
-                    }else{
-                        $(this).text("<?php echo $opentext;?>");
-                    }
-                });*/
             })(jQuery);
         </script>
         <?php
