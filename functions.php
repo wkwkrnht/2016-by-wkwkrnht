@@ -921,17 +921,17 @@ class Toc_Shortcode{
     }
 
     public function add_toc_script(){
-        $harray      = '';
-        $targetclass = trim( $this->atts['targetclass'] );
+        $harray      = array();
+        $targetclass = trim($this->atts['targetclass']);
         if($targetclass===''){$targetclass = get_post_type();}
-        for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$harray[] = '"h' . $h . '"';}
+        for($h = $this->atts['toplevel']; $h <= 6; $h++){$harray[] = '"h' . $h . '"';}
         $harray = implode(',',$harray);
         ?>
         <script>
             (function(){
                 var idCounter = 0;
                 var hCounter = 0;
-                var targetclass = element.getElementsByClassName("<?php echo $targetclass;?>");
+                var targetclass = document.getElementsByClassName("<?php echo $targetclass;?>");
                 var sub = [<?php echo $harray;?>];
                 for (var i = 0; i < sub.length; i++) {
                     idCounter++;
