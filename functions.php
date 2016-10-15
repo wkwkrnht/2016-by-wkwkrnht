@@ -890,7 +890,7 @@ class Toc_Shortcode{
                 }
                 if($current_depth != $prev_depth){$toc_list .= '</li>';}
                 if($current_depth < $depth){
-                    $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' id="toc-list" class="open"' : '') . '>';
+                    $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' class="toc-list open"' : '') . '>';
                     $current_depth++;
                 }
                 $counters[$current_depth - 1] ++;
@@ -905,8 +905,8 @@ class Toc_Shortcode{
         }
         if($counter >= $this->atts['showcount']){
             if(strtolower($this->atts['toggle'] ) == 'true'){
-                $script = 'document.getElementById("toc-list").classList.toggle("open");document.getElementById("toc-list").classList.toggle("close");';
-                $toggle = '<a class="toc-toggle toc-toggle-open" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
+                $script = 'document.getElementByClassName("toc-list").classList.toggle("open");document.getElementByClassName("toc-list").classList.toggle("close");';
+                $toggle = '<a class="toc-toggle" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
             }
             $html .= '
             <aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">'
@@ -921,22 +921,41 @@ class Toc_Shortcode{
     public function add_toc_script(){
         $targetclass = trim($this->atts['targetclass']);
         if($targetclass===''){$targetclass = get_post_type();}
-        if($this->atts['toplevel'] == 1){
-            $targetclass = ".$targetclass :header";
-        }else{
-            for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$targetclasss[] = ".$targetclass h$h";}
-            $targetclass = implode( ',', $targetclasss );
-        }
         ?>
         <script>
-            (function($){
+            (function(){
                 var idCounter = 0;
-                var target = document.getElementsByClassName("<?php echo $targetclass;?>");
-                for(var i = 0; i < target.length; i++){
+                var h1 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h1");
+                var h2 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h2");
+                var h3 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h3");
+                var h4 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h4");
+                var h5 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h5");
+                var h6 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h6");
+                for(var i = 0; i < h1.length; i++){
                     idCounter++;
                     target.id = "toc" + idCounter;
                 }
-            })(jQuery);
+                for(var i = 0; i < h2.length; i++){
+                    idCounter++;
+                    target.id = "toc" + idCounter;
+                }
+                for(var i = 0; i < h3.length; i++){
+                    idCounter++;
+                    target.id = "toc" + idCounter;
+                }
+                for(var i = 0; i < h4.length; i++){
+                    idCounter++;
+                    target.id = "toc" + idCounter;
+                }
+                for(var i = 0; i < h5.length; i++){
+                    idCounter++;
+                    target.id = "toc" + idCounter;
+                }
+                for(var i = 0; i < h6.length; i++){
+                    idCounter++;
+                    target.id = "toc" + idCounter;
+                }
+            })();
         </script>
         <?php
     }
