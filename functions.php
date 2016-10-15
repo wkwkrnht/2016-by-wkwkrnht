@@ -906,7 +906,7 @@ class Toc_Shortcode{
         }
         if($counter >= $this->atts['showcount']){
             if(strtolower($this->atts['toggle'] ) == 'true'){
-                $script = 'document.getElementByClassName("toc-list").classList.toggle("open");document.getElementByClassName("toc-list").classList.toggle("close");';
+                $script = "document.getElementByClassName('toc-list').classList.toggle('open');document.getElementByClassName('toc-list').classList.toggle('close');";
                 $toggle = '<a class="toc-toggle" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
             }
             if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}

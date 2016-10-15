@@ -213,13 +213,6 @@
 	.article-main h5{border-left:.5em solid;counter-increment:counter-h5;counter-reset:counter-h6;}
 	.article-main h6{border-bottom:.75vmin dashed;counter-increment:counter-h6;}
 	.article-main h2,.article-main h4,.article-main h5,.article-main h6{border-color:<?php echo get_option('article_main_h_border','#03a9f4');?>;}
-	.article-main h1:hover::before{color:#333;content:counter(counter-h1);}
-	.article-main h2:hover::before{content:counter(counter-h1)"."counter(counter-h2);}
-	.article-main h3:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3);}
-	.article-main h4:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4);}
-	.article-main h5:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4)"."counter(counter-h5);}
-	.article-main h6:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4)"."counter(counter-h5)"."counter(counter-h6);}
-	.article-main h1:hover::before,.article-main h2:hover::before,.article-main h3:hover::before,.article-main h4:hover::before,.article-main h5:hover::before,.article-main h6:hover::before{display:block;min-height:2rem;padding:.5em 1em;border-radius:3vmin;z-index:2;position:absolute;background-color:#f1f1f1;}
 
 	.article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
 	.article-main pre{font-family:monospace;font-weight:bold;}
