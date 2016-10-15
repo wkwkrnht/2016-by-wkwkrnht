@@ -921,43 +921,27 @@ class Toc_Shortcode{
     }
 
     public function add_toc_script(){
-        $targetclass = trim($this->atts['targetclass']);
-        if($targetclass===''){$targetclass = get_post_type();}
+        $targetclass = trim( $this->atts['targetclass'] );
+        if ( $targetclass == '' ) {
+            $targetclass = get_post_type();
+        }
+        if ( $this->atts['toplevel'] == 1 ) {
+            $targetclass = ".$targetclass :header";
+        } else {
+            for ( $h = $this->atts['toplevel']; $h <= 6; $h++ ) {
+                $targetclasss[] = ".$targetclass h$h";
+            }
+            $targetclass = implode( ',', $targetclasss );
+        }
         ?>
         <script>
-            (function(){
+            (function($){
                 var idCounter = 0;
-                var h1 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h1");
-                var h2 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h2");
-                var h3 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h3");
-                var h4 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h4");
-                var h5 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h5");
-                var h6 = document.getElementsByClassName("<?php echo $targetclass;?>").getElementsByTagName("h6");
-                for(var i = 0; i < h1.length; i++){
+                $("<?php echo $targetclass; ?>").each(function() {
                     idCounter++;
-                    target.id = "toc" + idCounter;
-                }
-                for(var i = 0; i < h2.length; i++){
-                    idCounter++;
-                    target.id = "toc" + idCounter;
-                }
-                for(var i = 0; i < h3.length; i++){
-                    idCounter++;
-                    target.id = "toc" + idCounter;
-                }
-                for(var i = 0; i < h4.length; i++){
-                    idCounter++;
-                    target.id = "toc" + idCounter;
-                }
-                for(var i = 0; i < h5.length; i++){
-                    idCounter++;
-                    target.id = "toc" + idCounter;
-                }
-                for(var i = 0; i < h6.length; i++){
-                    idCounter++;
-                    target.id = "toc" + idCounter;
-                }
-            })();
+                    this.id = "toc" + idCounter;
+                });
+            })(jQuery);
         </script>
         <?php
     }
