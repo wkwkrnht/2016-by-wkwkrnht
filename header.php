@@ -40,7 +40,7 @@
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
-	<?php 
+	<?php/*
 	$prev1 = '';
 	$prev2 = '';
 	$next1 = '';
@@ -84,7 +84,7 @@
 				 . $home2 .
 	        '}
 	    </script>';
-	}
+	}*/
 	?>
 	<?php
 	include_once(get_template_directory() . '/styles.php');
