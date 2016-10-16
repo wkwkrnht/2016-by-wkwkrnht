@@ -91,7 +91,7 @@ function wkwkrnht_widgets_init(){
     register_widget('duck_duck_go_search_widget');
     register_widget('google_search_widget');
     register_widget('google_search_ads_widget');
-    register_widget('google_search_two_ads');
+    register_widget('google_two_ads');
     register_widget('move_top');
 }
 
@@ -192,10 +192,10 @@ class google_search_widget extends WP_Widget{
     function __construct(){parent::__construct('google_search_widget','Google 検索',array());}
     public function widget($args,$instance){
         extract($instance);
-        echo $args['before_widget'];?>
-        <script>(function(){var cx = '<?php echo $cx;?>';var gcse = document.createElement('script');gcse.type = 'text/javascript';gcse.async = true;gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(gcse, s);})();</script>
-        <gcse:search></gcse:search>
-        <?php echo $args['after_widget'];
+        echo $args['before_widget'] .
+        "<script>(function(){var cx = '" . $cx . "';var gcse = document.createElement('script');gcse.type = 'text/javascript';gcse.async = true;gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(gcse, s);})();</script>
+        <gcse:search></gcse:search>"
+        . $args['after_widget'];
     }
     public function form($instance){$id=!empty($instance['cx']) ? $instance['cx'] : '';?>
 		<p>
@@ -211,8 +211,8 @@ class google_search_ads_widget extends WP_Widget{
     function __construct(){parent::__construct('google_search_ads_widget','Google 検索 with Ads',array());}
     public function widget($args,$instance){
         extract($instance);
-        echo $args['before_widget'];?>
-        <style>
+        echo $args['before_widget'] .
+        '<style>
             #cse-search-box input{display:inline-block;}
             #cse-search-box input[type="text"]{width:70%;margin-right:5%;}
             #cse-search-box input[type="submit"]{width:15%;border-radius:3vmin;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
@@ -220,14 +220,14 @@ class google_search_ads_widget extends WP_Widget{
         </style>
         <form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank">
           <div>
-            <input type="hidden" name="cx" value="partner-pub-<?php echo $id;?>">
+            <input type="hidden" name="cx" value="partner-pub-' . $id . '">
             <input type="hidden" name="ie" value="UTF-8">
             <input type="text" name="q" size="55">
             <input type="submit" name="sa" value="検索">
           </div>
         </form>
-        <script src="http://www.google.co.jp/coop/cse/brand?form=cse-search-box&amp;lang=ja"></script>
-        <?php echo $args['after_widget'];
+        <script src="//www.google.co.jp/coop/cse/brand?form=cse-search-box&amp;lang=ja"></script>'
+        . $args['after_widget'];
     }
     public function form($instance){$id=!empty($instance['id']) ? $instance['id'] : '';?>
 		<p>
@@ -243,27 +243,27 @@ class google_two_ads_widget extends WP_Widget{
     function __construct(){parent::__construct('google_two_ads_widge','Google Adsense x2',array());}
     public function widget($args,$instance){
         extract($instance);
-        echo $args['before_widget'];?>
-        <div id="adsense" itemscope itemtype="https://schema.org/WPAdBlock">
-            <p class="ad-label" itemprop="headline name"><?php echo $label;?></p>
+        echo $args['before_widget'] .
+        '<div id="adsense" itemscope itemtype="https://schema.org/WPAdBlock">
+            <p class="ad-label" itemprop="headline name">' . $label . '</p>
             <div id="rectangle" itemprop="about">
                 <div class="ad-1">
         			<div class="textwidget">
                         <script async  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-<?php echo $client;?>" data-ad-slot="<?php echo $slot;?>" data-ad-format="rectangle"></ins>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-' . $client . '" data-ad-slot="' . $slot . '" data-ad-format="rectangle"></ins>
                         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                     </div>
         		</div>
                 <div class="ad-2">
         			<div class="textwidget">
                         <script async  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-<?php echo $client;?>" data-ad-slot="<?php echo $slot;?>" data-ad-format="rectangle"></ins>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-' . $client . '" data-ad-slot="' . $slot . '" data-ad-format="rectangle"></ins>
                         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                     </div>
         		</div>
             </div>
-        </div>
-        <?php echo $args['after_widget'];
+        </div>'
+        . $args['after_widget'];
     }
     public function form($instance){
         $label=!empty($instance['label']) ? $instance['label'] : '';?>
