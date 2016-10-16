@@ -91,6 +91,7 @@ function wkwkrnht_widgets_init(){
     register_widget('duck_duck_go_search_widget');
     register_widget('google_search_widget');
     register_widget('google_search_ads_widget');
+    register_widget('google_search_two_ads');
     register_widget('move_top');
 }
 
@@ -179,22 +180,118 @@ class post_comment extends WP_Widget{
 
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');$args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');echo $args['after_widget'];}
 }
 
 class duck_duck_go_search_widget extends WP_Widget{
     function __construct(){parent::__construct('duck_duck_go_search_widget','DuckDuckGo 検索',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/duckduckgo-search.php');$args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/duckduckgo-search.php');echo $args['after_widget'];}
 }
 
 class google_search_widget extends WP_Widget{
     function __construct(){parent::__construct('google_search_widget','Google 検索',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/google-search.php');$args['after_widget'];}
+    public function widget($args,$instance){
+        extract($instance);
+        echo $args['before_widget'];?>
+        <script>(function(){var cx = '<?php echo $cx;?>';var gcse = document.createElement('script');gcse.type = 'text/javascript';gcse.async = true;gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(gcse, s);})();</script>
+        <gcse:search></gcse:search>
+        <?php echo $args['after_widget'];
+    }
+    public function form($instance){$id=!empty($instance['cx']) ? $instance['cx'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('cx');?>">cx</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('cx');?>" name="<?php echo $this->get_field_name('cx');?>" type="text" value="<?php echo esc_attr($cx);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['cx']=(!empty($new_instance['cx'])) ? strip_tags($new_instance['cx']):'';return $instance;}
 }
 
 class google_search_ads_widget extends WP_Widget{
     function __construct(){parent::__construct('google_search_ads_widget','Google 検索 with Ads',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/google-search-with-ads.php');$args['after_widget'];}
+    public function widget($args,$instance){
+        extract($instance);
+        echo $args['before_widget'];?>
+        <style>
+            #cse-search-box input{display:inline-block;}
+            #cse-search-box input[type="text"]{width:70%;margin-right:5%;}
+            #cse-search-box input[type="submit"]{width:15%;border-radius:3vmin;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
+            #cse-search-box input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
+        </style>
+        <form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank">
+          <div>
+            <input type="hidden" name="cx" value="partner-pub-<?php echo $id;?>">
+            <input type="hidden" name="ie" value="UTF-8">
+            <input type="text" name="q" size="55">
+            <input type="submit" name="sa" value="検索">
+          </div>
+        </form>
+        <script src="http://www.google.co.jp/coop/cse/brand?form=cse-search-box&amp;lang=ja"></script>
+        <?php echo $args['after_widget'];
+    }
+    public function form($instance){$id=!empty($instance['id']) ? $instance['id'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('id');?>">id</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('id');?>" name="<?php echo $this->get_field_name('id');?>" type="text" value="<?php echo esc_attr($id);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['id']=(!empty($new_instance['id'])) ? strip_tags($new_instance['id']):'';return $instance;}
+}
+
+class google_two_ads_widget extends WP_Widget{
+    function __construct(){parent::__construct('google_two_ads_widge','Google Adsense x2',array());}
+    public function widget($args,$instance){
+        extract($instance);
+        echo $args['before_widget'];?>
+        <div id="adsense" itemscope itemtype="https://schema.org/WPAdBlock">
+            <p class="ad-label" itemprop="headline name"><?php echo $label;?></p>
+            <div id="rectangle" itemprop="about">
+                <div class="ad-1">
+        			<div class="textwidget">
+                        <script async  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-<?php echo $client;?>" data-ad-slot="<?php echo $slot;?>" data-ad-format="rectangle"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+        		</div>
+                <div class="ad-2">
+        			<div class="textwidget">
+                        <script async  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-<?php echo $client;?>" data-ad-slot="<?php echo $slot;?>" data-ad-format="rectangle"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+        		</div>
+            </div>
+        </div>
+        <?php echo $args['after_widget'];
+    }
+    public function form($instance){
+        $label=!empty($instance['label']) ? $instance['label'] : '';?>
+    		<p>
+    		<label for="<?php echo $this->get_field_id('label');?>">label</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('label');?>" name="<?php echo $this->get_field_name('label');?>" type="text" value="<?php echo esc_attr($label);?>">
+    		</p>
+		<?php
+        $client=!empty($instance['client']) ? $instance['client'] : '';?>
+    		<p>
+    		<label for="<?php echo $this->get_field_id('client');?>">client</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('client');?>" name="<?php echo $this->get_field_name('client');?>" type="text" value="<?php echo esc_attr($client);?>">
+    		</p>
+    	<?php
+        $slot=!empty($instance['slot']) ? $instance['slot'] : '';?>
+    		<p>
+    		<label for="<?php echo $this->get_field_id('slot');?>">slot</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('slot');?>" name="<?php echo $this->get_field_name('slot');?>" type="text" value="<?php echo esc_attr($slot);?>">
+    		</p>
+    	<?php
+	}
+	public function update($new_instance,$old_instance){
+        $instance=array();
+        $instance['label']  = (!empty($new_instance['label'])) ? strip_tags($new_instance['label']) : '';
+        $instance['client'] = (!empty($new_instance['client'])) ? strip_tags($new_instance['client']) : '';
+        $instance['slot']   = (!empty($new_instance['slot'])) ? strip_tags($new_instance['slot']) : '';
+        return $instance;
+    }
 }
 
 add_filter('widget_text','do_shortcode');
@@ -287,6 +384,19 @@ function add_body_class($classes){
     }
     return $classes;
 }
+
+/**
+ * Adds custom classes to the array of comment classes.
+ *
+ * @param array $classes Classes for the comment element.
+ *
+ * @return array
+ * @copyright KUCKLU & VisuAlive
+ */
+function themeslug_comment_class($classes){
+	return preg_grep('/\Acomment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
+}
+add_action('comment_class','themeslug_comment_class');
 /*
     SEO
 1.GET URL access now
@@ -851,8 +961,6 @@ function theme_customize($wp_customize){
     $wp_customize->add_section('widget_section',array('title'=>'widget','description'=>'このテーマ独自ウイジェット向けの設定',));
 	$wp_customize->add_setting('Disqus_ID',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'widget_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
-    $wp_customize->add_setting('Google_Search_cx',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('Google_Search_cx',array('section'=>'widget_section','settings'=>'Google_Search_cx','label'=>'Googleカスタム検索のcx部分を入力する','type'=>'text'));
     $wp_customize->add_section('jetpack_section',array('title'=>'jetpack','description'=>'このテーマ独自のjetpack向け設定',));
     $wp_customize->add_setting('jetpack.css',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack.css',array('settings'=>'jetpack.css','label'=>'jetpack.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));
@@ -939,16 +1047,3 @@ function my_new_contactmethods($contactmethods){
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 remove_filter('pre_user_description','wp_filter_kses');
-
-/**
- * Adds custom classes to the array of comment classes.
- *
- * @param array $classes Classes for the comment element.
- *
- * @return array
- * @copyright KUCKLU & VisuAlive
- */
-function themeslug_comment_class($classes){
-	return preg_grep('/\Acomment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
-}
-add_action('comment_class','themeslug_comment_class');
