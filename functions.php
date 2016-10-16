@@ -541,7 +541,7 @@ function wkwkrnht_special_card(){
                 global $wp_query;
                 $serachresult = $wp_query->found_posts;
                 wp_reset_query();
-                echo'<h1 class="site-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
+                echo'<h1 class="site-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
             elseif(is_404()===true):
                 echo'<a href="' . site_url() . '" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
             else:
@@ -552,7 +552,6 @@ function wkwkrnht_special_card(){
         </header>';
     endif;
 }
-
 
 function make_ogp_blog_card($url){
     $cache = get_site_transient($url);
