@@ -88,8 +88,9 @@ function wkwkrnht_widgets_init(){
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
-    register_widget('duck_duck_go_widget');
-    register_widget('google_widget');
+    register_widget('duck_duck_go_search_widget');
+    register_widget('google_search_widget');
+    register_widget('google_search_ads_widget');
     register_widget('move_top');
 }
 
