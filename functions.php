@@ -564,7 +564,7 @@ function make_toc($atts){
     $headers   = array();
     $html      = '';
     $toc_list  = '';
-    $id        = $this->atts['id'];
+    $id        = $atts['id'];
     $toggle    = '';
     $counter   = 0;
     $counters  = array(0,0,0,0,0,0);
