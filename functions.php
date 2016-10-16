@@ -91,7 +91,7 @@ function wkwkrnht_widgets_init(){
     register_widget('duck_duck_go_search_widget');
     register_widget('google_search_widget');
     register_widget('google_search_ads_widget');
-    register_widget('google_two_ads');
+    register_widget('google_two_ads_widget');
     register_widget('move_top');
 }
 
