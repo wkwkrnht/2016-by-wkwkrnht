@@ -83,8 +83,8 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'List Under','id'=>'listunder','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'404 Page','id'=>'404','before_widget'=>'<section class="card"><div id="%1$s" class="widget %2$s">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('wkwkrnht_manth_archive');
-    register_widget('related_posts_img');
     register_widget('related_posts');
+    register_widget('related_posts_img');
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
@@ -197,7 +197,7 @@ class google_search_widget extends WP_Widget{
         <gcse:search></gcse:search>"
         . $args['after_widget'];
     }
-    public function form($instance){$id=!empty($instance['cx']) ? $instance['cx'] : '';?>
+    public function form($instance){$cx=!empty($instance['cx']) ? $instance['cx'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('cx');?>">cx</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('cx');?>" name="<?php echo $this->get_field_name('cx');?>" type="text" value="<?php echo esc_attr($cx);?>">
