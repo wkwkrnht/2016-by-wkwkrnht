@@ -532,26 +532,27 @@ function wkwkrnht_special_card(){
         $url = dirname(__FILE__) . '/./widget/author-bio.php';
         include_once $url;
     else:
-        echo'<header class="card info-card special-card">';
+        echo'<header class="card info-card special-card"  itemscope="itemscope" itemtype="http://schema.org/WPHeader">';
             if(is_category()===true):
-                echo'<h1 class="site-title">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
+                echo'<h1 class="site-title" itemprop="name headline">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . category_description() . '</p>';
             elseif(is_tag()===true):
-                echo'<h1 class="site-title">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
+                echo'<h1 class="site-title" itemprop="name headline">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . tag_description() . '</p>';
             elseif(is_search()===true):
                 global $wp_query;
                 $serachresult = $wp_query->found_posts;
                 wp_reset_query();
-                echo'<h1 class="site-title">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
+                echo'<h1 class="site-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
             elseif(is_404()===true):
-                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
+                echo'<a href="' . site_url() . '" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
             else:
-                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
+                echo'<a href="' . site_url() . '" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
             endif;
         echo'<br>
-            <span class="copyright">&copy;' . $year . '&nbsp;' . $blogname . '</span>
+            <span class="copyright">&copy;<span itemprop="copyrightYear">' . $year . '</span><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">&nbsp;' . $blogname . '</span></span></span>
         </header>';
     endif;
 }
+
 
 function make_ogp_blog_card($url){
     $cache = get_site_transient($url);
