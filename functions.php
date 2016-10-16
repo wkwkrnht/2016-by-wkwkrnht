@@ -549,7 +549,7 @@ function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>''
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<div id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>';}
 function make_toc($atts){
-    $this->atts = shortcode_atts(array(
+    $atts = shortcode_atts(array(
         'id'          => '',
         'class'       => 'toc',
         'title'       => '目次',
@@ -568,11 +568,11 @@ function make_toc($atts){
     $toggle    = '';
     $counter   = 0;
     $counters  = array(0,0,0,0,0,0);
-    $top_level = intval($this->atts['toplevel']);
+    $top_level = intval($atts['toplevel']);
     $harray      = array();
-    $targetclass = trim($this->atts['targetclass']);
+    $targetclass = trim($atts['targetclass']);
     if($targetclass===''){$targetclass = get_post_type();}
-    for($h = $this->atts['toplevel']; $h <= 6; $h++){$harray[] = '"h' . $h . '"';}
+    for($h = $atts['toplevel']; $h <= 6; $h++){$harray[] = '"h' . $h . '"';}
     $harray = implode(',',$harray);
 
     preg_match_all('/<([hH][1-6]).*?>(.*?)<\/[hH][1-6].*?>/u',$content,$headers);
@@ -583,10 +583,10 @@ function make_toc($atts){
     }
     if($top_level < 1){$top_level = 1;}
     if($top_level > 6){$top_level = 6;}
-    $this->atts['toplevel'] = $top_level;
+    $atts['toplevel'] = $top_level;
     $current_depth          = $top_level - 1;
     $prev_depth             = $top_level - 1;
-    $max_depth              = (($this->atts['depth'] == 0) ? 6 : intval($this->atts['depth'])) - $top_level + 1;
+    $max_depth              = (($atts['depth'] == 0) ? 6 : intval($atts['depth'])) - $top_level + 1;
 
     for($i=0;$i < $header_count;$i++){
         $depth = 0;
@@ -620,16 +620,16 @@ function make_toc($atts){
         $toc_list .= '</li></ol>';
         $current_depth--;
     }
-    if($counter >= $this->atts['showcount']){
-        if(strtolower($this->atts['toggle'] ) == 'true'){
+    if($counter >= $atts['showcount']){
+        if(strtolower($atts['toggle'] ) == 'true'){
             $script = "document.getElementByClassName('toc-list').classList.toggle('open');document.getElementByClassName('toc-list').classList.toggle('close');";
             $toggle = '<a class="toc-toggle" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
         }
         if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
         $html .= '
-        <aside' . $id . ' class="' . $this->atts['class'] . '">'
+        <aside' . $id . ' class="' . $atts['class'] . '">'
             . $toggle .
-            '<h2 class="toc-title">' . $this->atts['title'] . '</h2>'
+            '<h2 class="toc-title">' . $atts['title'] . '</h2>'
             . $toc_list .
         '
         </aside>
@@ -658,7 +658,7 @@ add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
-add_shortcode('toc',array($this,'make_toc'));
+add_shortcode('toc','make_toc');
 /*
     editor custom
 1.script
