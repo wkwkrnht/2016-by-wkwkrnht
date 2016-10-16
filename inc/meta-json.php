@@ -335,7 +335,7 @@ elseif(is_search()===true):
                 "url": "' . get_meta_url() . '",
                 "datePublished": "' .  date('c') . '",
                 "image": "' . get_meta_image() . '",
-                "description": "' . get_meta_desciption() . '"
+                "description": "' . get_meta_description() . '"
             }
         ]
     </script>';
