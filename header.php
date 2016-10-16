@@ -40,14 +40,35 @@
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
-	<?php $prev1='';$prev2='';$next1='';$next2='';$home1='';$home2='';
-	if(is_home()===false){$home1=',"name": "ホームボタン",';$home2='"url": "' . home_url() . '"';}
+	<?php 
+	$prev1 = '';
+	$prev2 = '';
+	$next1 = '';
+	$next2 = '';
+	$home1 = '';
+	$home2 = '';
+	if(is_home()===false){
+		$home1 = ',"name": "ホームボタン",';
+		$home2 = '"url": "' . home_url() . '"';
+	}
 	if(is_singular()===true){
-		if(get_previous_post()){$prev1=',"name": "前へボタン",';$prev2='"url": "' . get_previous_post() . '"';}
-		if(get_next_post()){$next1=',"name": "次へボタン",';$next2='"url": "' . get_next_post() . '"';}
+		if(get_previous_post()){
+			$prev1 = ',"name": "前へボタン",';
+			$prev2 = '"url": "' . get_previous_post() . '"';
+		}
+		if(get_next_post()){
+			$next1 = ',"name": "次へボタン",';
+			$next2 = '"url": "' . get_next_post() . '"';
+		}
 	}else{
-		if(get_previous_posts_link()){$prev1=',"name": "前へボタン",';$prev2='"url": "' . get_previous_posts_linkhome_url() . '"';}
-		if(get_next_posts_link()){$next1=',"name": "次へボタン",';$next2='"url": "' . get_next_posts_link() . '"';}
+		if(get_previous_posts_link()){
+			$prev1 = ',"name": "前へボタン",';
+			$prev2 = '"url": "' . get_previous_posts_linkhome_url() . '"';
+		}
+		if(get_next_posts_link()){
+			$next1 = ',"name": "次へボタン",';
+			$next2 = '"url": "' . get_next_posts_link() . '"';
+		}
 	}
 	if($prev1!=='' || $prev2!=='' || $next1!=='' || $next2!=='' || $home1!=='' || $home2!==''){
 		echo'
@@ -60,7 +81,7 @@
 				 . $next1
 				 . $next2
 				 . $home1
-				 . $home2
+				 . $home2 .
 	        '}
 	    </script>';
 	}

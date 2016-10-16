@@ -396,7 +396,7 @@ elseif(is_home()===true):
             "inLanguage": "' . get_bloginfo('language') . '",
             "publisher":{
 				"@type":"Organization",
-				"name":"' . get_bloginfo('name') . '",
+				"name":"' . $blog_name . '",
 				"logo":{
 					"@type": "ImageObject",
 					"url": "' . esc_url(get_meta_image()) . '",
