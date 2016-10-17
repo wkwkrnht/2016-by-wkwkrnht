@@ -56,6 +56,10 @@
 			"publisher":{
 				"@type":"Organization",
 				"name":"<?php bloginfo('name');?>",
+				"homeLocation" : {
+                    "@type" : "Place",
+                    "name" : "<?php echo get_locale( );?>"
+                },
 				"logo":{
 					"@type": "ImageObject",
 					"url": "<?php echo esc_url(get_meta_image());?>",
