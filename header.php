@@ -46,19 +46,4 @@
 	wp_head();?>
 </head>
 <body <?php body_class();?>>
-	<?php if(is_singular()===true):?>
-		<?php  if(get_previous_post()):?>
-			<div class="hide-nav-prev"><?php previous_post_link('%link','◀');?></div>
-		<?php  endif;?>
-		<?php if(get_next_post()):?>
-			<div class="hide-nav-next"><?php next_post_link('%link','▶');?></div>
-		<?php endif;?>
-	<?php else:?>
-		<?php if(get_previous_posts_link()):?>
-			<div class="hide-nav-prev"><?php previous_posts_link('◀');?></div>
-		<?php endif;?>
-		<?php if(get_next_posts_link()):?>
-			<div class="hide-nav-next"><?php next_posts_link('▶');?></div>
-		<?php endif;?>
-	<?php endif;?>
 	<main id="site-main">
