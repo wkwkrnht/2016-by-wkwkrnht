@@ -532,7 +532,7 @@ function wkwkrnht_special_card(){
         $url = dirname(__FILE__) . '/./widget/author-bio.php';
         include_once $url;
     else:
-        echo'<header class="card info-card special-card"  itemscope="itemscope" itemtype="http://schema.org/WPHeader">';
+        echo'<header class="card info-card special-card" itemscope itemtype="http://schema.org/WPHeader">';
             if(is_category()===true):
                 echo'<h1 class="site-title" itemprop="name headline">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . category_description() . '</p>';
             elseif(is_tag()===true):
@@ -795,6 +795,7 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
         QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main duration=slow offset=]');
+        QTags.addButton('qt-embed','embed','[embed]','[/embed]');
         QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');

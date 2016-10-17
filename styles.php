@@ -151,7 +151,7 @@
 
 	.marker{background-color:linear-gradient(transparent 30%,#fffc00 30%);}
 
-	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 3vmin;margin:3vmin auto;position:relative;border:1vmin solid #333;background-color:#fff;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 3vmin;border-radius:3vmin;margin:3vmin auto;position:relative;border:1px solid #e5e5e5;background-color:#fff;box-shadow:0 1px 1px rgba(0,0,0,.01);}
 	.ogp-blogcard-share{height:37vh;width:80%;position:absolute;top:0;left:0;z-index:2;background-color:rgba(0,0,0,.3);}
 	.ogp-blogcard-share-close{position:absolute;top:1em;right:2em;font-size:3rem;}
 	.ogp-blogcard-share > ul{list-style:none;}
@@ -161,19 +161,19 @@
 	.ogp-blogcard-img{display:inline-block;max-height:calc(37vh * .75);max-width:calc(80vw * .4);}
 	.ogp-blogcard-info{display:inline-block;max-width:calc(80vw * .6);position:absolute;right:0;text-align:center;}
 	.ogp-blogcard-title{font-size:2rem;}
-	.ogp-blogcard-footer{height:calc(37vh * .2);width:80vw;position:absolute;bottom:0;border-top:.1rem solid #333;vertical-align:middle;}
+	.ogp-blogcard-footer{height:calc(37vh * .2);width:80vw;position:absolute;bottom:0;vertical-align:middle;}
 	.ogp-blogcard-share-toggle{position:relative;right:0;color:#03a9f4;}
 
 	.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
 	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:0;left:.5em;margin-right:.2em;}
-	.information::before{content:'\f05a';}
-	.question::before{content:'\f059';}
+	.information::before{content:"\f05a";}
+	.question::before{content:"\f059";}
 
 	.search-form{margin:3em auto;line-height:170%;}
 	.search-form div{display:inline-block;padding:5px;margin-left:1rem;border:1px solid #555;border-radius:2px;}
 	.search-form .sform{min-width:280px;background-color:#fff;}
 	.search-form .sbtn{position:absolute;padding-left:2rem;padding-right:3rem;color:#fff;background-color:#1155ee;}
-	.search-form div.sbtn:after{content:'\f25a';font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
+	.search-form div.sbtn:after{content:"\f25a";font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
 	/*
 	    article
 	1.header
