@@ -5,6 +5,7 @@
     .page-nation a{color:<?php echo get_option('page_nation_a_color','#03a9f4');?>;}
     .page-nation li .dots{color:<?php echo get_option('page_nation_dots_color','#333');?>;}
     .page-nation a:hover,.page-nation .current{color:<?php echo get_option('page_nation_hover_color','#fff');?>;background-color:<?php echo get_option('page_nation_hover_background','#03a9f4');?>;}
+    @media screen and (max-width:1270px),@media screen and (max-height:720px){box-shadow:0 0 3vmin rgba(0,0,0,0);}
 </style>
 <?php
 global $wp_query;

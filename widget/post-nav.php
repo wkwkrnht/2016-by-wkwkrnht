@@ -25,3 +25,12 @@
 </style>
 <a href="<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>" class="prev">←  <?php the_title_attribute(array('post'=>$prev->ID));?></a>
 <a href="<?php echo get_permalink(get_adjacent_post(false,'',false));?>" class="next"><?php the_title_attribute(array('post'=>$next->ID));?>  →</a>
+<script type="application/ld+json">
+    {
+        "@type" : "SiteNavigationElement",
+        "url" : "<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>",
+        "name" : "<?php the_title_attribute(array('post'=>$prev->ID));?>",
+        "url" : "<?php echo get_permalink(get_adjacent_post(false,'',false));?>",
+        "name" : "<?php the_title_attribute(array('post'=>$next->ID));?>"
+    }
+</script>

@@ -83,13 +83,15 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'List Under','id'=>'listunder','before_widget'=>'<li id="%1$s" class="widget %2$s">','after_widget'=>'</li>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'404 Page','id'=>'404','before_widget'=>'<section class="card"><div id="%1$s" class="widget %2$s">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('wkwkrnht_manth_archive');
-    register_widget('related_posts_img');
     register_widget('related_posts');
+    register_widget('related_posts_img');
     register_widget('post_nav');
     register_widget('post_comment');
     register_widget('disqus_widget');
-    register_widget('duck_duck_go_widget');
-    register_widget('google_widget');
+    register_widget('duck_duck_go_search_widget');
+    register_widget('google_search_widget');
+    register_widget('google_search_ads_widget');
+    register_widget('google_two_ads_widget');
     register_widget('move_top');
 }
 
@@ -178,17 +180,118 @@ class post_comment extends WP_Widget{
 
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');$args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');echo $args['after_widget'];}
 }
 
-class duck_duck_go_widget extends WP_Widget{
-    function __construct(){parent::__construct('duck_duck_go_widget','DuckDuckGo',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/duckduckgo.php');$args['after_widget'];}
+class duck_duck_go_search_widget extends WP_Widget{
+    function __construct(){parent::__construct('duck_duck_go_search_widget','DuckDuckGo 検索',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/duckduckgo-search.php');echo $args['after_widget'];}
 }
 
-class google_widget extends WP_Widget{
-    function __construct(){parent::__construct('google_widget','Google',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/google.php');$args['after_widget'];}
+class google_search_widget extends WP_Widget{
+    function __construct(){parent::__construct('google_search_widget','Google 検索',array());}
+    public function widget($args,$instance){
+        extract($instance);
+        echo $args['before_widget'] .
+        "<script>(function(){var cx = '" . $cx . "';var gcse = document.createElement('script');gcse.type = 'text/javascript';gcse.async = true;gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(gcse, s);})();</script>
+        <gcse:search></gcse:search>"
+        . $args['after_widget'];
+    }
+    public function form($instance){$cx=!empty($instance['cx']) ? $instance['cx'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('cx');?>">cx</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('cx');?>" name="<?php echo $this->get_field_name('cx');?>" type="text" value="<?php echo esc_attr($cx);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['cx']=(!empty($new_instance['cx'])) ? strip_tags($new_instance['cx']):'';return $instance;}
+}
+
+class google_search_ads_widget extends WP_Widget{
+    function __construct(){parent::__construct('google_search_ads_widget','Google 検索 with Ads',array());}
+    public function widget($args,$instance){
+        extract($instance);
+        echo $args['before_widget'] .
+        '<style>
+            #cse-search-box input{display:inline-block;}
+            #cse-search-box input[type="text"]{width:70%;margin-right:5%;}
+            #cse-search-box input[type="submit"]{width:15%;border-radius:3vmin;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
+            #cse-search-box input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
+        </style>
+        <form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank">
+          <div>
+            <input type="hidden" name="cx" value="partner-pub-' . $id . '">
+            <input type="hidden" name="ie" value="UTF-8">
+            <input type="text" name="q" size="55">
+            <input type="submit" name="sa" value="検索">
+          </div>
+        </form>
+        <script src="//www.google.co.jp/coop/cse/brand?form=cse-search-box&amp;lang=ja"></script>'
+        . $args['after_widget'];
+    }
+    public function form($instance){$id=!empty($instance['id']) ? $instance['id'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('id');?>">id</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('id');?>" name="<?php echo $this->get_field_name('id');?>" type="text" value="<?php echo esc_attr($id);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['id']=(!empty($new_instance['id'])) ? strip_tags($new_instance['id']):'';return $instance;}
+}
+
+class google_two_ads_widget extends WP_Widget{
+    function __construct(){parent::__construct('google_two_ads_widge','Google Adsense x2',array());}
+    public function widget($args,$instance){
+        extract($instance);
+        echo $args['before_widget'] .
+        '<div id="adsense" itemscope itemtype="https://schema.org/WPAdBlock">
+            <p class="ad-label" itemprop="headline name">' . $label . '</p>
+            <div id="rectangle" itemprop="about">
+                <div class="ad-1">
+        			<div class="textwidget">
+                        <script async  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-' . $client . '" data-ad-slot="' . $slot . '" data-ad-format="rectangle"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+        		</div>
+                <div class="ad-2">
+        			<div class="textwidget">
+                        <script async  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-' . $client . '" data-ad-slot="' . $slot . '" data-ad-format="rectangle"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+        		</div>
+            </div>
+        </div>'
+        . $args['after_widget'];
+    }
+    public function form($instance){
+        $label=!empty($instance['label']) ? $instance['label'] : '';?>
+    		<p>
+    		<label for="<?php echo $this->get_field_id('label');?>">label</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('label');?>" name="<?php echo $this->get_field_name('label');?>" type="text" value="<?php echo esc_attr($label);?>">
+    		</p>
+		<?php
+        $client=!empty($instance['client']) ? $instance['client'] : '';?>
+    		<p>
+    		<label for="<?php echo $this->get_field_id('client');?>">client</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('client');?>" name="<?php echo $this->get_field_name('client');?>" type="text" value="<?php echo esc_attr($client);?>">
+    		</p>
+    	<?php
+        $slot=!empty($instance['slot']) ? $instance['slot'] : '';?>
+    		<p>
+    		<label for="<?php echo $this->get_field_id('slot');?>">slot</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('slot');?>" name="<?php echo $this->get_field_name('slot');?>" type="text" value="<?php echo esc_attr($slot);?>">
+    		</p>
+    	<?php
+	}
+	public function update($new_instance,$old_instance){
+        $instance=array();
+        $instance['label']  = (!empty($new_instance['label'])) ? strip_tags($new_instance['label']) : '';
+        $instance['client'] = (!empty($new_instance['client'])) ? strip_tags($new_instance['client']) : '';
+        $instance['slot']   = (!empty($new_instance['slot'])) ? strip_tags($new_instance['slot']) : '';
+        return $instance;
+    }
 }
 
 add_filter('widget_text','do_shortcode');
@@ -226,9 +329,14 @@ add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','wkwkrnht_meta_widget');
 function wkwkrnht_meta_widget(){ ?>
     <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
-    <li><?php edit_post_link();?></li>
-    <li><a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a></li>
-<?php
+    <?php if(is_singular()===true):
+        $id      = '';
+        $homeurl = '';
+        if(is_ssl()){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}
+        if(have_posts()):while(have_posts()):the_post();$id = the_ID();endwhile;endif;?>
+        <li><?php edit_post_link();?></li>
+        <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" class="wlwedit"></a></li>
+    <?php endif;
 }
 
 function autoblank($text){
@@ -267,6 +375,7 @@ function title_in_nav_menu($item_output,$item){
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){
+    $classes = preg_grep('/\Aauthor\-.+\z/i',$classes,PREG_GREP_INVERT);
     if(is_singular()===true){
         global $post;
         foreach((get_the_category($post->ID)) as $category){$classes[] = 'categoryid-' . $category->cat_ID;}
@@ -275,6 +384,19 @@ function add_body_class($classes){
     }
     return $classes;
 }
+
+/**
+ * Adds custom classes to the array of comment classes.
+ *
+ * @param array $classes Classes for the comment element.
+ *
+ * @return array
+ * @copyright KUCKLU & VisuAlive
+ */
+function themeslug_comment_class($classes){
+	return preg_grep('/\Acomment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
+}
+add_action('comment_class','themeslug_comment_class');
 /*
     SEO
 1.GET URL access now
@@ -410,23 +532,23 @@ function wkwkrnht_special_card(){
         $url = dirname(__FILE__) . '/./widget/author-bio.php';
         include_once $url;
     else:
-        echo'<header class="card info-card special-card">';
+        echo'<header class="card info-card special-card" itemscope itemtype="http://schema.org/WPHeader">';
             if(is_category()===true):
-                echo'<h1 class="site-title">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . category_description() . '</p>';
+                echo'<h1 class="site-title" itemprop="name headline">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . category_description() . '</p>';
             elseif(is_tag()===true):
-                echo'<h1 class="site-title">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description">' . tag_description() . '</p>';
+                echo'<h1 class="site-title" itemprop="name headline">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . tag_description() . '</p>';
             elseif(is_search()===true):
                 global $wp_query;
                 $serachresult = $wp_query->found_posts;
                 wp_reset_query();
-                echo'<h1 class="site-title">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
+                echo'<h1 class="site-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
             elseif(is_404()===true):
-                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
+                echo'<a href="' . site_url() . '" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
             else:
-                echo'<a href="' . site_url() . '"><h1 class="site-title">' . $blogname . '</h1><p class="site-description">' . $sitedescription . '</p></a>';
+                echo'<a href="' . site_url() . '" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
             endif;
         echo'<br>
-            <span class="copyright">&copy;' . $year . '&nbsp;' . $blogname . '</span>
+            <span class="copyright">&copy;<span itemprop="copyrightYear">' . $year . '</span><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">&nbsp;' . $blogname . '</span></span></span>
         </header>';
     endif;
 }
@@ -535,6 +657,109 @@ function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
 function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
+function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<div id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>';}
+function make_toc($atts){
+    $atts = shortcode_atts(array(
+        'id'          => '',
+        'class'       => 'toc',
+        'title'       => '目次',
+        'toggle'      => 'true',
+        'showcount'   => 2,
+        'depth'       => 0,
+        'toplevel'    => 1,
+        'targetclass' => 'article-main'
+    ),$atts);
+
+    $content   = get_the_content();
+    $headers   = array();
+    $html      = '';
+    $toc_list  = '';
+    $id        = $atts['id'];
+    $toggle    = '';
+    $counter   = 0;
+    $counters  = array(0,0,0,0,0,0);
+    $top_level = intval($atts['toplevel']);
+    $harray      = array();
+    $targetclass = trim($atts['targetclass']);
+    if($targetclass===''){$targetclass = get_post_type();}
+    for($h = $atts['toplevel']; $h <= 6; $h++){$harray[] = '"h' . $h . '"';}
+    $harray = implode(',',$harray);
+
+    preg_match_all('/<([hH][1-6]).*?>(.*?)<\/[hH][1-6].*?>/u',$content,$headers);
+    $header_count = count($headers[0]);
+    if($header_count > 0){
+        $level = strtolower($headers[1][0]);
+        if($top_level < $level){$top_level = $level;}
+    }
+    if($top_level < 1){$top_level = 1;}
+    if($top_level > 6){$top_level = 6;}
+    $atts['toplevel'] = $top_level;
+    $current_depth          = $top_level - 1;
+    $prev_depth             = $top_level - 1;
+    $max_depth              = (($atts['depth'] == 0) ? 6 : intval($atts['depth'])) - $top_level + 1;
+
+    for($i=0;$i < $header_count;$i++){
+        $depth = 0;
+        switch(strtolower($headers[1][$i])){
+            case 'h1': $depth = 1 - $top_level + 1; break;
+            case 'h2': $depth = 2 - $top_level + 1; break;
+            case 'h3': $depth = 3 - $top_level + 1; break;
+            case 'h4': $depth = 4 - $top_level + 1; break;
+            case 'h5': $depth = 5 - $top_level + 1; break;
+            case 'h6': $depth = 6 - $top_level + 1; break;
+        }
+        if($depth >= 1 && $depth <= $max_depth){
+            if($current_depth == $depth){$toc_list .= '</li>';}
+            while($current_depth > $depth){
+                $toc_list .= '</li></ol>';
+                $current_depth--;
+                $counters[$current_depth] = 0;
+            }
+            if($current_depth != $prev_depth){$toc_list .= '</li>';}
+            if($current_depth < $depth){
+                $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' class="toc-list open"' : '') . '>';
+                $current_depth++;
+            }
+            $counters[$current_depth - 1] ++;
+            $counter++;
+            $toc_list .= '<li><a href="#toc' . $counter . '">' . $headers[2][$i] . '</a>';
+            $prev_depth = $depth;
+        }
+    }
+    while($current_depth >= 1 ){
+        $toc_list .= '</li></ol>';
+        $current_depth--;
+    }
+    if($counter >= $atts['showcount']){
+        if(strtolower($atts['toggle'] ) == 'true'){
+            $script = "document.getElementByClassName('toc-list').classList.toggle('open');document.getElementByClassName('toc-list').classList.toggle('close');";
+            $toggle = '<a class="toc-toggle" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
+        }
+        if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
+        $html .= '
+        <aside' . $id . ' class="' . $atts['class'] . '">'
+            . $toggle .
+            '<h2 class="toc-title">' . $atts['title'] . '</h2>'
+            . $toc_list .
+        '
+        </aside>
+        <script>
+            (function(){
+                var idCounter = 0;
+                var targetclass = document.getElementsByClassName("' . $targetclass . '");
+                var sub = [<?php echo $harray;?>];
+                for (var i = 0; i < sub.length; i++) {
+                    var targetelement = targetclass.getElementsByTagName(sub[i]);
+                    for (var n = 0; n < targetelement.length; n++) {
+                        idCounter++;
+                        targetelement[i].id = "toc" + idCounter;
+                    }
+                }
+            })();
+        </script>';
+    }
+    return $html;
+}
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('embedly','url_to_embedly');
@@ -542,6 +767,8 @@ add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
+add_shortcode('adsense','google_ads_in_article');
+add_shortcode('toc','make_toc');
 /*
     editor custom
 1.script
@@ -567,11 +794,13 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
-        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 toggle=true opentext=開く closetext=閉じる showcount=2 depth=0 toplevel=1 targetclass=article-main offset= duration=nomal]');
+        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main duration=slow offset=]');
+        QTags.addButton('qt-embed','embed','[embed]','[/embed]');
         QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
+        QTags.addButton('qt-adsense','Googledsense','[adsaaense client= slot=',']');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
@@ -668,22 +897,40 @@ function theme_customize($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_date_background',array('label'=>'article_date_background','settings'=>'article_date_background','section'=>'colors',)));
     $wp_customize->add_setting('article_meta_background',array('type'=>'option','default'=>'#f1f1f1','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_meta_background',array('label'=>'article_meta_background','settings'=>'article_meta_background','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h_border',array('label'=>'article_main_h_border','settings'=>'article_main_h_border','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h2_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_h1_background',array('type'=>'option','default'=>'#f4f4f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h1_background',array('label'=>'article_main_h1_background','settings'=>'article_main_h1_background','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h1_border',array('type'=>'option','default'=>'#ccc','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h1_border',array('label'=>'article_main_h1_border','settings'=>'article_main_h1_border','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h2_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h2_color',array('settings'=>'article_main_h2_color','label'=>'article_main_h2_color','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h3_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('article_main_h2_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h2_background',array('label'=>'article_main_h2_background','settings'=>'article_main_h2_background','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h3_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h3_color',array('settings'=>'article_main_h3_color','label'=>'article_main_h3_color','section'=>'colors',)));
-    $wp_customize->add_setting('article_main_h3_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h3_background',array('label'=>'article_main_h3_background','settings'=>'article_main_h_background','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h3_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h3_border',array('label'=>'article_main_h3_border','settings'=>'article_main_h3_border','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h4_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h4_border',array('label'=>'article_main_h4_border','settings'=>'article_main_h4_border','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h5_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h5_border',array('label'=>'article_main_h5_border','settings'=>'article_main_h5_border','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_h6_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_h6_border',array('label'=>'article_main_h6_border','settings'=>'article_main_h6_border','section'=>'colors',)));
     $wp_customize->add_setting('article_main_bq_border',array('type'=>'option','default'=>'#bbb','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_bq_border',array('label'=>'article_main_bq_border','settings'=>'article_main_bq_border','section'=>'colors',)));
     $wp_customize->add_setting('article_main_li_color',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_li_color',array('label'=>'article_main_li_color','settings'=>'article_main_li_color','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_li_border',array('default'=>'#aaa','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_li_border',array('label'=>'article_main_li_border','settings'=>'article_main_li_border','section'=>'colors',)));
     $wp_customize->add_setting('article_main_ol_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_ol_color',array('label'=>'article_main_ol_color','settings'=>'article_main_ol_color','section'=>'colors',)));
     $wp_customize->add_setting('article_main_ol_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_ol_background',array('label'=>'article_main_ol_background','settings'=>'article_main_ol_background','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_tr_border',array('default'=>'#cfcfcf','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_tr_border',array('label'=>'article_main_tr_border','settings'=>'article_main_tr_border','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_th_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_th_color',array('label'=>'article_main_th_color','settings'=>'article_main_th_color','section'=>'colors',)));
+    $wp_customize->add_setting('article_main_th_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_main_th_background',array('label'=>'article_main_th_background','settings'=>'article_main_th_background','section'=>'colors',)));
     $wp_customize->add_setting('comment_background_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'comment_background_color',array('label'=>'comment_background_color','settings'=>'comment_background_color','section'=>'colors',)));
     $wp_customize->add_setting('comment_title_background_color',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
@@ -733,8 +980,6 @@ function theme_customize($wp_customize){
     $wp_customize->add_section('widget_section',array('title'=>'widget','description'=>'このテーマ独自ウイジェット向けの設定',));
 	$wp_customize->add_setting('Disqus_ID',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'widget_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
-    $wp_customize->add_setting('Google_Search_cx',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('Google_Search_cx',array('section'=>'widget_section','settings'=>'Google_Search_cx','label'=>'Googleカスタム検索のcx部分を入力する','type'=>'text'));
     $wp_customize->add_section('jetpack_section',array('title'=>'jetpack','description'=>'このテーマ独自のjetpack向け設定',));
     $wp_customize->add_setting('jetpack.css',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack.css',array('settings'=>'jetpack.css','label'=>'jetpack.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));
@@ -821,147 +1066,3 @@ function my_new_contactmethods($contactmethods){
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 remove_filter('pre_user_description','wp_filter_kses');
-class Toc_Shortcode{
-
-    private $addScript = false;
-    private $atts = array();
-
-    public function __construct(){
-        add_shortcode('toc',array($this,'shortcode_content'));
-        add_action('wp_footer',array($this,'add_script'));
-    }
-
-    public function shortcode_content($atts){
-        $this->atts = shortcode_atts(array(
-            'id'          => '',
-            'class'       => 'toc',
-            'title'       => '目次',
-            'toggle'      => 'true',
-            'opentext'    => '開く',
-            'closetext'   => '閉じる',
-            'showcount'   => 2,
-            'depth'       => 0,
-            'toplevel'    => 1,
-            'targetclass' => 'article-main',
-            'offset'      => '',
-            'duration'    => 'normal'
-        ),$atts);
-
-        $content = get_the_content();
-
-        $headers = array();
-        preg_match_all( '/<([hH][1-6]).*?>(.*?)<\/[hH][1-6].*?>/u', $content, $headers );
-        $header_count = count( $headers[0] );
-        $counter = 0;
-        $counters = array( 0, 0, 0, 0, 0, 0 );
-        $top_level = intval( $this->atts['toplevel'] );
-        if ( $header_count > 0 ) {
-            $level = strtolower( $headers[1][0] );
-            if ( $top_level < $level ) $top_level = $level;
-        }
-        if ( $top_level < 1 ) $top_level = 1;
-        if ( $top_level > 6 ) $top_level = 6;
-        $this->atts['toplevel'] = $top_level;
-        $current_depth = $top_level - 1;
-        $prev_depth = $top_level - 1;
-        $max_depth = ( ( $this->atts['depth'] == 0) ? 6 : intval( $this->atts['depth'] ) ) - $top_level + 1;
-
-        $toc_list = '';
-        for ( $i = 0; $i < $header_count; $i++ ) {
-            $depth = 0;
-            switch ( strtolower( $headers[1][$i] ) ) {
-                case 'h1': $depth = 1 - $top_level + 1; break;
-                case 'h2': $depth = 2 - $top_level + 1; break;
-                case 'h3': $depth = 3 - $top_level + 1; break;
-                case 'h4': $depth = 4 - $top_level + 1; break;
-                case 'h5': $depth = 5 - $top_level + 1; break;
-                case 'h6': $depth = 6 - $top_level + 1; break;
-            }
-            if($depth >= 1 && $depth <= $max_depth){
-                if($current_depth == $depth){$toc_list .= '</li>';}
-                while ( $current_depth > $depth ) {
-                    $toc_list .= '</li></ul>';
-                    $current_depth--;
-                    $counters[$current_depth] = 0;
-                }
-                if($current_depth != $prev_depth){$toc_list .= '</li>';}
-                if($current_depth < $depth){
-                    $toc_list .= '<ul' . ( ( $current_depth == $top_level - 1 ) ? ' class="toc-list"' : '' ) . '>';
-                    $current_depth++;
-                }
-                $counters[$current_depth - 1] ++;
-                $number = $counters[$top_level - 1];
-                for( $j = $top_level - 1; $j < $current_depth - 1; $j++ ){$number .= '.' . $counters[$j];}
-                $counter++;
-                $toc_list .= '<li><a href="#toc' . $counter . '"><span class="contentstable-number">' . $number . '</span> ' . $headers[2][$i] . '</a>';
-                $prev_depth = $depth;
-            }
-        }
-        while ( $current_depth >= 1 ) {
-            $toc_list .= '</li></ul>';
-            $current_depth--;
-        }
-
-        $html = '';
-        if($counter >= $this->atts['showcount']){
-            $this->addScript = true;
-            $toggle = '';
-            if(strtolower( $this->atts['toggle'] ) == 'true' ){$toggle = ' <span class="toc-toggle">[<a href="#">' . $this->atts['closetext'] . '</a>]</span>';}
-            $html .= '<aside' . ($this->atts['id'] != '' ? ' id="' . $this->atts['id'] . '"' : '') . ' class="' . $this->atts['class'] . '">';
-            $html .= '<h2 class="toc-title">' . $this->atts['title'] . $toggle . '</h2>';
-            $html .= $toc_list;
-            $html .= '</aside>' . "\n";
-        }
-        return $html;
-    }
-
-    public function add_script(){
-        if(!$this->addScript){return false;}
-        $class = $this->atts['class'];
-        $offset = is_numeric( $this->atts['offset'] ) ? (int)$this->atts['offset'] : -1;
-        $duration = is_numeric( $this->atts['duration'] ) ? (int)$this->atts['duration'] : '"' . $this->atts['duration'] . '"';
-        $targetclass = trim($this->atts['targetclass']);
-        if($targetclass==''){$targetclass = get_post_type();}
-        if($this->atts['toplevel'] == 1){
-            $targetclass = ".$targetclass :header";
-        }else{
-            for( $h = $this->atts['toplevel']; $h <= 6; $h++ ){$targetclasss[] = ".$targetclass h$h";}
-            $targetclass = implode( ',', $targetclasss );
-        }
-        $opentext = $this->atts['opentext'];
-        $closetext = $this->atts['closetext'];
-        ?>
-        <script>
-            (function($){
-                var offset = <?php echo $offset;?>;
-                var idCounter = 0;
-                $("<?php echo $targetclass;?>").each(function(){
-                    idCounter++;
-                    this.id = "toc" + idCounter;
-                });
-                $(".<?php echo $class;?> a[href^='#']").click(function(){
-                    var href = $(this).attr("href");
-                    var target = $(href === "#" || href === "" ? "html" : href);
-                    var h = (offset === -1 ? $("#wpadminbar").height() + $(".navbar-fixed-top").height() : offset);
-                    var position = target.offset().top - h - 4;
-                    $("html, body").animate({scrollTop:position},<?php echo $duration;?>,"swing");
-                    return false;
-                });
-                $(".toc-toggle a").click(function(){
-                    var tocList = $(".toc-list");
-                    if (tocList.is(":hidden")){
-                        tocList.show();
-                        $(this).text("<?php echo $closetext;?>");
-                    } else {
-                        tocList.hide();
-                        $(this).text("<?php echo $opentext;?>");
-                    }
-                });
-            })(jQuery);
-        </script>
-        <?php
-    }
-
-}
-
-new Toc_Shortcode();

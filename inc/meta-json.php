@@ -302,29 +302,42 @@ elseif(is_date()===true):
 elseif(is_search()===true):
     echo'
     <script type="application/ld+json">
-        {
-            "@context":"http://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement":
-            [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "item":{
-                        "@id": "' . home_url() . '",
-                        "name": "ホーム"
+        [
+            {
+                "@context":"http://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement":
+                [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item":{
+                            "@id": "' . home_url() . '",
+                            "name": "ホーム"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item":{
+                            "@id": "' . esc_url(get_search_link()) . '",
+                            "name": "「' . esc_html(get_search_query()) . '」の検索結果"
+                        }
                     }
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "item":{
-                        "@id": "' . esc_url(get_search_link()) . '",
-                        "name": "「' . esc_html(get_search_query()) . '」の検索結果"
-                    }
-                }
-            ]
-        }
+                ]
+            },
+            {
+                "@context":"http://schema.org",
+                "@type": "SearchResultsPage",
+                "@id": "' . get_meta_url() . '",
+                "headline": "' . get_bloginfo('name') . '",
+                "name": "' . get_bloginfo('name') . '",
+                "url": "' . get_meta_url() . '",
+                "datePublished": "' .  date('c') . '",
+                "image": "' . get_meta_image() . '",
+                "description": "' . get_meta_description() . '"
+            }
+        ]
     </script>';
 elseif(is_attachment()===true):
     $i   = 1;
@@ -383,7 +396,7 @@ elseif(is_home()===true):
             "inLanguage": "' . get_bloginfo('language') . '",
             "publisher":{
 				"@type":"Organization",
-				"name":"' . get_bloginfo('name') . '",
+				"name":"' . $blog_name . '",
 				"logo":{
 					"@type": "ImageObject",
 					"url": "' . esc_url(get_meta_image()) . '",
