@@ -163,7 +163,7 @@
 <body>
 	<article>
 		<header class="article-header">
-			<a href="<?php echo esc_url(home_url());?>" class="article-img"><amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-eyecatch');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img></a>
+			<a href="<?php echo esc_url(home_url());?>" tabindex="0" class="article-img"><amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-eyecatch');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img></a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">
@@ -173,12 +173,12 @@
 					$cat=get_the_category();
 					if($cat && !is_wp_error($cat)){
 						$par=get_category($cat[0]->parent);$echo='';
-						echo'<div class="bread" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="' . home_url() . '" itemprop="url"><span itemprop="title">ホーム</span></a><span class="sp">/</span>';
+						echo'<div class="bread" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="' . home_url() . '" tabindex="0" itemprop="url"><span itemprop="title">ホーム</span></a><span class="sp">/</span>';
 						while($par && !is_wp_error($par) && $par->term_id!==0){
-							$echo='<a href="' . get_category_link($par->term_id) . '" itemprop="url"><span itemprop="title">' . $par->name . '</span></a><span class="sp">/</span></div>' . $echo;
+							$echo='<a href="' . get_category_link($par->term_id) . '" tabindex="0" itemprop="url"><span itemprop="title">' . $par->name . '</span></a><span class="sp">/</span></div>' . $echo;
 							$par=get_category($par->parent);
 						}
-						echo $echo . '<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">' . $cat[0]->name . '</span></a></div>';
+						echo $echo . '<a href="'.get_category_link($cat[0]->term_id).'" tabindex="0" itemprop="url"><span itemprop="title">' . $cat[0]->name . '</span></a></div>';
 					}
 					?>
 				</span>
@@ -213,7 +213,7 @@
 			if($query -> have_posts()):
 				while($query -> have_posts()):$query -> the_post();
 					$cat = get_the_category();?>
-					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
+					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
 						<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
 						<span class="related-date">投稿日時 : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
 						<span class="related-category">カテゴリー : <?php echo $cat[0]->name;?></span>
@@ -225,7 +225,7 @@
 				$array=array('numberposts'=>10,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 				$query = new WP_Query($array);
 				while($query -> have_posts()):$query -> the_post();?>
-					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
+					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
 						<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
 						<span class="related-date">投稿日時 : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
 						<span class="related-category">カテゴリー : <?php echo $cat[0]->name;?></span>

@@ -34,7 +34,7 @@
 	.widget-area{list-style:none;}
 	.widget-area .widget{max-width:94%;margin:2vh auto;}
 	.widget-area .widget li{max-width:93%;}
-	.widget-area h2{min-height:45px;max-width:94%;margin:2vh auto;line-height:45px;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+	.widget-title{min-height:5vh;max-width:94%;margin:2vh auto;line-height:5vh;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
 
 	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
 	#share-menu ul li{width:50%;height:25vh;text-align:center;}

@@ -11,7 +11,7 @@ if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;end
 $query = new WP_Query($array);
 if($query -> have_posts()):
 	while($query -> have_posts()):$query -> the_post();?>
-		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
+		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
 			<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
 			<?php the_title('<div class="related-title">','</div>');?>
 		</a>
@@ -22,7 +22,7 @@ if($query -> have_posts()):
 	$array=array('numberposts'=>6,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 	$query = new WP_Query($array);
 	while($query -> have_posts()):$query -> the_post();?>
-		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" class="related-wrapper">
+		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
 			<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
 			<?php the_title('<div class="related-title">','</div>');?>
 		</a>

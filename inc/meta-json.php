@@ -35,15 +35,15 @@ if(is_singular()===true):
             "dateModified": "' . get_mtime('Y/n/j G:i.s') . '",
             "author": {
                 "@type": "Person",
-                "name": "' . get_the_author_meta('display_name',$author_id) . '"
+                "name": "' . get_the_author_meta('display_name',$author_id) . '",
+                "homeLocation" : {
+                    "@type" : "Place",
+                    "name" : "' . get_locale( ) . '"
+                }
             },
             "publisher": {
                 "@type": "Organization",
                 "name": "' . get_bloginfo('name') . '",
-                "homeLocation" : {
-                    "@type" : "Place",
-                    "name" : "' . get_locale( ) . '"
-                },
                 "logo": {
                     "@type": "ImageObject",
                     "url": "' . wp_get_attachment_url($logo) . '",
@@ -401,10 +401,6 @@ elseif(is_home()===true):
             "publisher":{
 				"@type":"Organization",
 				"name":"' . $blog_name . '",
-                "homeLocation" : {
-                    "@type" : "Place",
-                    "name" : "' . get_locale( ) . '"
-                },
 				"logo":{
 					"@type": "ImageObject",
 					"url": "' . esc_url(get_meta_image()) . '",
