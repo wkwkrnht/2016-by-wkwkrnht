@@ -1,12 +1,12 @@
     </main>
     <footer>
-        <a href="javascript:void(0)" id="menu-toggle" class="close" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-5x"></i></a>
-        <?php if(is_home()===false){echo'<a href="' . esc_url(home_url()) . '" title="ホームへのリンク" id="home-button" class="close"><i class="fa fa-home fa-5x" aria-hidden="true"></i></a>';$script="document.getElementById('home-button').classList.toggle('close');document.getElementById('home-button').classList.toggle('open');";}?>
-        <a href="javascript:void(0)" id="button-toggle" title="メニューボタン" onclick="document.getElementById('toggle-ok').classList.toggle('none');document.getElementById('toggle-ok').classList.toggle('inline-block');document.getElementById('toggle-no').classList.toggle('none');document.getElementById('toggle-no').classList.toggle('inline-block');<?php echo $script;?>document.getElementById('menu-toggle').classList.toggle('close');document.getElementById('menu-toggle').classList.toggle('open');document.getElementById('share-menu-toggle').classList.toggle('close');document.getElementById('share-menu-toggle').classList.toggle('open');"><i id="toggle-ok" class="fa fa-th-large fa-5x open" aria-hidden="true"></i><i id="toggle-no" class="fa fa-times fa-5x close" aria-hidden="true"></i></a>
-        <a href="javascript:void(0)" id="share-menu-toggle" class="close" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-5x"></i></a>
+        <a href="javascript:void(0)" id="menu-toggle" class="close" tabindex="0" role="button" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-5x"></i></a>
+        <?php if(is_home()===false){echo'<a href="' . esc_url(home_url()) . '" tabindex="0" role="button" title="ホームへのリンク" id="home-button" class="close"><i class="fa fa-home fa-5x" aria-hidden="true"></i></a>';$script="document.getElementById('home-button').classList.toggle('close');document.getElementById('home-button').classList.toggle('open');";}?>
+        <a href="javascript:void(0)" id="button-toggle" tabindex="0" role="button" title="メニューボタン" onclick="document.getElementById('toggle-ok').classList.toggle('none');document.getElementById('toggle-ok').classList.toggle('inline-block');document.getElementById('toggle-no').classList.toggle('none');document.getElementById('toggle-no').classList.toggle('inline-block');<?php echo $script;?>document.getElementById('menu-toggle').classList.toggle('close');document.getElementById('menu-toggle').classList.toggle('open');document.getElementById('share-menu-toggle').classList.toggle('close');document.getElementById('share-menu-toggle').classList.toggle('open');"><i id="toggle-ok" class="fa fa-th-large fa-5x open" aria-hidden="true"></i><i id="toggle-no" class="fa fa-times fa-5x close" aria-hidden="true"></i></a>
+        <a href="javascript:void(0)" id="share-menu-toggle" class="close" tabindex="0" role="button" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-5x"></i></a>
     </footer>
     <nav id="share-menu" class="close">
-        <a href="javascript:void(0)" class="close-button" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');">×</a>
+        <a href="javascript:void(0)" class="close-button" tabindex="0" role="button" title="Close Button" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');">×</a>
         <ul>
 		    <li class="tweet"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');?><?php if(get_twitter_acount()!==null):echo '&amp;via=' . get_twitter_acount();endif;?>" target="_blank" title="Twitterへの共有リンク"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
             <li class="fb-like"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank" title="Facebookへの共有リンク"><i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i></a></li>
@@ -21,15 +21,15 @@
         </ul>
     </nav>
     <div id="main-menu" class="close">
-        <a href="javascript:void(0)" class="close-button" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');">×</a>
+        <a href="javascript:void(0)" class="close-button" tabindex="0" role="button" title="Close Button" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');">×</a>
 	    <?php if(has_nav_menu('social')):?>
             <nav class="social-nav">
-                <?php wp_nav_menu(array('theme_location'=>'social','depth'=>1,'link_before'=>'<span class="screen-reader-text">','link_after'=>'</span>',));?>
+                <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http:\/\/schema.org/SiteNavigationElement">%3$s</ul>','walker'=>new add_meta_Nav_Menu));?>
             </nav>
         <?php endif;?>
         <?php if(has_nav_menu('main')):?>
             <nav class="main-nav">
-                <?php wp_nav_menu(array('theme_location'=>'main',));?>
+                <?php wp_nav_menu(array('theme_location'=>'main','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http:\/\/schema.org/SiteNavigationElement">%3$s</ul>','walker'=>new add_meta_Nav_Menu));?>
             </nav>
         <?php endif;?>
         <?php if(is_active_sidebar('floatmenu')):?>
@@ -68,29 +68,31 @@
     <script>
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
         (function(){
-            var doc = document;var wpCss = doc.getElementsById('wpcss');
+            var doc = document;
+            var wpCss = doc.getElementsById('wpcss');
             var wpCssL = wpCss.length;
             for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);
         }})()
         (function(){
-            var key="<?php $key='';$key=get_option('cookie_key');if($key!==''){echo $key;}else{echo'2016-by-wkwkrnht';}?>";
-            var n=getCookie(key);
+            var key = "<?php $key='';$key=get_option('cookie_key');if($key!==''){echo $key;}else{echo'2016-by-wkwkrnht';}?>";
+            var n = getCookie(key);
             if(n==""){window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");}
             n++;
             setCookie(key,n);
             function getCookie(key){
-                var s,e;var c=document.cookie+";";
-                var b=c.indexOf(key,0);
+                var s,e;
+                var c = document.cookie+";";
+                var b = c.indexOf(key,0);
                 if(b!=-1){c=c.substring(b,c.length);
-                    s=c.indexOf("=",0)+1;
-                    e=c.indexOf(";",s);return(unescape(c.substring(s,e)));
+                    s = c.indexOf("=",0)+1;
+                    e = c.indexOf(";",s);return(unescape(c.substring(s,e)));
                 }
                 return("");
             }
             function setCookie(key,n){
-                var myDate=new Date();
+                var myDate = new Date();
                 myDate.setTime(myDate.getTime()+6*30*24*60*60*1000);
-                document.cookie=" "+key+"="+escape(n)+";expires="+myDate.toGMTString();
+                document.cookie = " " + key + "=" + escape(n) + ";expires=" + myDate.toGMTString();
             }
         })()
     </script>

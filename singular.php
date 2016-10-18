@@ -19,7 +19,7 @@ if($myAmp===true):?>
 					<h1 class="article-name entry-title"><?php the_title();?></h1>
 					<span class="author">
 						著者 :
-						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>">
+						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>" tabindex="0">
 							<span class="vcard author">
 								<span class="fn">
 									<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>

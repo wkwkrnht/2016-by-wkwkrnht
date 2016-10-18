@@ -224,7 +224,7 @@ class google_search_ads_widget extends WP_Widget{
             #cse-search-box input[type="submit"]{width:15%;border-radius:3vmin;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
             #cse-search-box input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
         </style>
-        <form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank">
+        <form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank" role="searc﻿h﻿">
           <div>
             <input type="hidden" name="cx" value="partner-pub-' . $id . '">
             <input type="hidden" name="ie" value="UTF-8">
@@ -519,6 +519,14 @@ function generate_multipage_url($rel='prev'){
 function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
 
 function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
+
+class add_meta_Nav_Menu extends Walker_Nav_Menu{
+    function start_el(&$output,$item,$depth,$args){
+        $output .= '<li itemprop="name" class="menu-item">';
+        $item_output .= '<a itemprop="url" href="' . esc_attr($item -> url) .'">' . $item -> title . '</a>';
+        $output .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
+    }
+}
 /*
     original
 1.special card
@@ -549,9 +557,9 @@ function wkwkrnht_special_card(){
                 wp_reset_query();
                 echo'<h1 class="site-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
             elseif(is_404()===true):
-                echo'<a href="' . site_url() . '" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
+                echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
             else:
-                echo'<a href="' . site_url() . '" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
+                echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
             endif;
         echo'<br>
             <span class="copyright">&copy;<span itemprop="copyrightYear">' . $year . '</span><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">&nbsp;' . $blogname . '</span></span></span>
@@ -580,26 +588,26 @@ function make_ogp_blog_card($url){
         $content     =
         '<div class="ogp-blogcard">
             <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
-                <a href="javascript:void(0)" class="ogp-blogcard-share-close" onclick="' . $script . '">×</a>
+                <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
                 <ul>
-                    <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
-                    <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
-                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank">B!</a></li>
+                    <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+                    <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0">B!</a></li>
                 </ul>
             </div>
             <div class="ogp-blogcard-main">
                 <img class="ogp-blogcard-img" src="' . $img . '">
                 <div class="ogp-blogcard-info">
-                    <a href="' . $url . '" target="_blank" rel="noopener" title="' . $title . '">
+                    <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
                         <h2 class="ogp-blogcard-title">' . $title . '</h2>
                         <p class="ogp-blogcard-description">' . $description . '</p>
                     </a>
                 </div>
             </div>
             <div class="ogp-blogcard-footer">
-                <a href="' . $url . '" target="_blank" rel="noopener" class="ogp-blogcard-site-name">引用元 : ' . $site_name . '</a>
-                <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
+                <a href="' . $url . '" target="_blank" rel="noopener" class="ogp-blogcard-site-name" tabindex="0">引用元 : ' . $site_name . '</a>
+                <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
             </div>
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
@@ -728,7 +736,7 @@ function make_toc($atts){
             }
             $counters[$current_depth - 1] ++;
             $counter++;
-            $toc_list .= '<li><a href="#toc' . $counter . '">' . $headers[2][$i] . '</a>';
+            $toc_list .= '<li><a href="#toc' . $counter . '" tabindex="0">' . $headers[2][$i] . '</a>';
             $prev_depth = $depth;
         }
     }
@@ -739,7 +747,7 @@ function make_toc($atts){
     if($counter >= $atts['showcount']){
         if(strtolower($atts['toggle'] ) == 'true'){
             $script = "document.getElementByClassName('toc-list').classList.toggle('open');document.getElementByClassName('toc-list').classList.toggle('close');";
-            $toggle = '<a class="toc-toggle" href="javascript:void(0)" onclick="' . $script . '">↺</a>';
+            $toggle = '<a class="toc-toggle" href="javascript:void(0)" tabindex="0" onclick="' . $script . '">↺</a>';
         }
         if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
         $html .= '
@@ -781,8 +789,9 @@ add_shortcode('toc','make_toc');
     ●category filter
     ●regulated excerpt
     ●NOT to upload without title
-2.ADD quicktag
-3.ADD article drived list
+2.ADD TinyMCE Buttons
+3.ADD quicktag
+4.ADD article drived list
 */
 function add_post_edit_featuer(){ ?>
 <script>
@@ -794,7 +803,24 @@ function add_post_edit_featuer(){ ?>
 add_action('admin_head-post-new.php','add_post_edit_featuer');
 add_action('admin_head-post.php','add_post_edit_featuer');
 
-function appthemes_add_quicktags(){
+add_filter('tiny_mce_before_init','wkwkrnht_add_mce_settings');
+function wkwkrnht_add_mce_settings($settings){
+    $settings['fontsize_formats'] = '10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px 38px 40px 42px 44px 46px 48px 50px 0.5rem 0.6rem 0.8rem 1rem 1.1rem 1.2rem 1.3rem 1.4rem 1.5rem 1.6rem 1.7rem 1.8rem 1.9rem 2rem 2.1rem 2.2rem 2.3rem 2.4rem 2.5rem 0.5em 0.6em 0.7em 0.8em 0.9em 1em 1.1em 1.2em 1.3em 1.4em 1.5em 1.6em 1.7em 1.8em 1.9em 2em 2.1em 2.2em 2.3em 2.4em 2.5em 50% 55% 60% 65% 70% 75% 80% 85% 90% 95% 100% 105% 110% 115% 120% 125% 130% 135% 140% 145% 150%';
+    return $settings;
+}
+add_filter('mce_buttons_3','wkwkrnht_add_mce_buttons');
+function wkwkrnht_add_mce_buttons($buttons){
+    array_push($buttons,'fontsizeselect');
+    array_push($buttons,'fontselect');
+    array_push($buttons,'styleselect');
+    array_push($buttons,'backcolor');
+    array_push($buttons,'newdocument');
+    array_push($buttons,'copy');
+    array_push($buttons,'paste');
+    return $buttons;
+}
+
+function wkwkrnht_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
     <script>
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
@@ -825,7 +851,7 @@ function appthemes_add_quicktags(){
         QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
     </script>
 <?php }}
-add_action('admin_print_footer_scripts','appthemes_add_quicktags');
+add_action('admin_print_footer_scripts','wkwkrnht_add_quicktags');
 
 function add_posts_columns($columns){
     $columns['thumbnail']='thumb';
