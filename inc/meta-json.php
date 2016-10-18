@@ -35,7 +35,11 @@ if(is_singular()===true):
             "dateModified": "' . get_mtime('Y/n/j G:i.s') . '",
             "author": {
                 "@type": "Person",
-                "name": "' . get_the_author_meta('display_name',$author_id) . '"
+                "name": "' . get_the_author_meta('display_name',$author_id) . '",
+                "homeLocation" : {
+                    "@type" : "Place",
+                    "name" : "' . get_locale( ) . '"
+                }
             },
             "publisher": {
                 "@type": "Organization",
