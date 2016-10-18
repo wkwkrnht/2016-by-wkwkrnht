@@ -44,10 +44,6 @@ if(is_singular()===true):
             "publisher": {
                 "@type": "Organization",
                 "name": "' . get_bloginfo('name') . '",
-                "homeLocation" : {
-                    "@type" : "Place",
-                    "name" : "' . get_locale( ) . '"
-                },
                 "logo": {
                     "@type": "ImageObject",
                     "url": "' . wp_get_attachment_url($logo) . '",
@@ -405,10 +401,6 @@ elseif(is_home()===true):
             "publisher":{
 				"@type":"Organization",
 				"name":"' . $blog_name . '",
-                "homeLocation" : {
-                    "@type" : "Place",
-                    "name" : "' . get_locale( ) . '"
-                },
 				"logo":{
 					"@type": "ImageObject",
 					"url": "' . esc_url(get_meta_image()) . '",
