@@ -557,7 +557,7 @@ function wkwkrnht_special_card(){
                 echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
             endif;
         echo'<br>
-            <span class="copyright">&copy;<span itemprop="copyrightYear">' . $year . '</span><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">&nbsp;' . $blogname . '</span></span></span>
+            <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">' . $blogname . '</span></span>&copy;<span itemprop="copyrightYear">' . $year . '</span></span>
         </header>';
     endif;
 }
