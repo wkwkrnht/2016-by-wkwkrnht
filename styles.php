@@ -187,6 +187,7 @@
 
 	.article-main{font-size:1.6rem;}
 	.article-main p{max-width:55em;padding:5vmin 8vmin 0;margin:2vh auto;}
+	.article-main a[href^="http"]:empty::before{content:attr(href);}
 	.article-main a{text-decoration:none;border-bottom:0;}
 	.article-main a:hover::after{content:'URL : ' attr(href);display:block;min-height:2rem;padding:.5em 1em;border-radius:3vmin;z-index:2;position:absolute;background-color:#f1f1f1;}
 	.article-main a[href*="javascript:void(0)"]:hover::after{display:none;}

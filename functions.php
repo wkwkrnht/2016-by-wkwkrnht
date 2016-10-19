@@ -372,10 +372,13 @@ add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
 add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
 
 
-add_filter('walker_nav_menu_start_el','title_in_nav_menu',10,4);
-function title_in_nav_menu($item_output,$item){
-    $title = esc_attr($item->title);
-    return preg_replace('/href="(.*?)"/','href="$1" data-title="' . $title . '"',$item_output);
+class add_meta_Nav_Menu extends Walker_Nav_Menu{
+    function start_el(&$output,$item,$depth,$args){
+        $title        = $item->title;
+        $output      .= '<li itemprop="name" class="menu-item">';
+        $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '">' . $title . '</a>';
+        $output      .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
+    }
 }
 
 
@@ -519,14 +522,6 @@ function generate_multipage_url($rel='prev'){
 function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
 
 function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
-
-class add_meta_Nav_Menu extends Walker_Nav_Menu{
-    function start_el(&$output,$item,$depth,$args){
-        $output .= '<li itemprop="name" class="menu-item">';
-        $item_output .= '<a itemprop="url" href="' . esc_attr($item -> url) .'">' . $item -> title . '</a>';
-        $output .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
-    }
-}
 /*
     original
 1.special card
@@ -666,7 +661,7 @@ add_filter('term_description',function($term){if(empty($term)){return false;}ret
 */
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'','display'=>'',),$atts));$none='';if($display==='none'){$none='class="none"';}return'<pre id="wpcss"' . $none . '><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
-function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
+function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
 function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true"></iframe>';}
