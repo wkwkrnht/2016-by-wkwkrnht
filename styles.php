@@ -40,7 +40,7 @@
 	::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}
 	.close{visibility:hidden;}
 	.open{visibility:visible;}
-	.vcard,.fn{margin:0;}
+	.vcard,.fn,.author{margin:0;}
 	/*
 		menu
 	1.hover to move neighbor

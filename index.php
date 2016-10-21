@@ -22,9 +22,9 @@
 							公開日：<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>"><?php the_time('Y/n/j');?></time><br>
 							著者 ：<?php echo'
 							<span itemscope itemtype="http://schema.org/Person" style="margin:0;">
-								<a href="' . site_url() . '?author=' . get_the_author_meta('ID') . '" tabindex="0" itemprop="url">
-									<span class="vcard author">
-										<span class="fn" itemprop="name">'
+								<a href="' . site_url() . '?author=' . get_the_author_meta('ID') . '" tabindex="0" itemprop="url" style="margin:0;">
+									<span class="vcard author" style="margin:0;">
+										<span class="fn" itemprop="name" style="margin:0;">'
 										. get_the_author() .
 										'</span>
 									</span>
