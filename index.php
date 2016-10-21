@@ -15,13 +15,13 @@
     		<?php if(have_posts()):while(have_posts()):the_post();?>
             	<?php $link=get_permalink();$title=the_title_attribute(array('echo'=>false));$txt=mb_strimwidth(get_the_title(),0,32,'…');?>
 				<section class="card article-card">
-		        	<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0" class="article-eye"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800"></a>
+		        	<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0" class="card-eyecatch"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800"></a>
 		        	<div class="card-info">
-		            	<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0" class="card-eyecatch"><h2 class="article-name"><?php echo $txt;?></h2></a><br>
+		            	<h2 class="article-name"><a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><?php echo $txt;?></a></h2><br>
 		            	<span class="card-meta">
 							公開日：<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>"><?php the_time('Y/n/j');?></time><br>
 							著者 ：<?php echo'
-							<span itemscope itemtype="http://schema.org/Person">
+							<span itemscope itemtype="http://schema.org/Person" style="margin:0;">
 								<a href="' . site_url() . '?author=' . get_the_author_meta('ID') . '" tabindex="0" itemprop="url">
 									<span class="vcard author">
 										<span class="fn" itemprop="name">'
