@@ -30,7 +30,7 @@
 									</span>
 								</a>
 							</span><br>
-							カテゴリー : ';the_category(', ');?>
+							カテゴリー : ';the_category("\n");?>
 						</span>
 		        	</div>
 		    	</section>

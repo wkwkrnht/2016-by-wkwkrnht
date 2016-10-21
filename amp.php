@@ -200,7 +200,11 @@
 			$content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
 			$content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" $1></amp-iframe></div>',$content);
 			$content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
+			$content = preg_replace('/border="(.*?)"/i','',$content);
+			$content = preg_replace('/style="(.*?)"/i','',$content);
 			$content = preg_replace('/onclick="(.*?)"/i','',$content);
+			$content = preg_replace('/onMouseOver="(.*?)"/i','',$content);
+			$content = preg_replace('/onMouseOut="(.*?)"/i','',$content);
 			$content = preg_replace('/href="javascript:void(0)"/i','',$content);
 
 			echo $content;
