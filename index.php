@@ -13,7 +13,13 @@
 		<div class="article-list">
 			<?php if(is_active_sidebar('listheader')){dynamic_sidebar('listheader');}?>
     		<?php if(have_posts()):while(have_posts()):the_post();?>
-            	<?php $link=get_permalink();$title=the_title_attribute(array('echo'=>false));$txt=mb_strimwidth(get_the_title(),0,32,'…');?>
+            	<?php
+				$link       = get_permalink();
+				$title      = the_title_attribute(array('echo'=>false));
+				$txt        = mb_strimwidth(get_the_title(),0,32,'…');
+				$categories = get_the_category();
+				$category   = $categories[0];
+				?>
 				<section class="card article-card">
 		        	<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0" class="card-eyecatch"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800"></a>
 		        	<div class="card-info">
@@ -30,7 +36,7 @@
 									</span>
 								</a>
 							</span><br>
-							<span class="card-cat">カテゴリー : ';the_category(' ');echo'</span>';?>
+							<span class="card-cat">カテゴリー : <a href="' . get_category_link($category->term_id) . '" title="' . $category->name . '">' . $category->cat_name . '</a>';?>
 						</span>
 		        	</div>
 		    	</section>
