@@ -160,12 +160,11 @@
 	*/
 	.card{height:45vmin;width:80vmin;margin:3vmin 8vmin;padding:4vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
 	.card-eyecatch{display:block;float:left;height:39vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
-	.card-eyecatch>img{height:39vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
-	.card-meta{display:inline-block;height:30%;margin:0 1em;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
 	.card-info{max-width:calc(80vmin / 2);float:right;}
 	.site-info{text-align:center;}
+	.card-meta{display:inline-block;height:30%;margin:0 1em;}
 	.card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
 	.info-card{box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
@@ -295,8 +294,8 @@
 	@media all and (orientation: landscape){
 	    @media screen and (min-width:1600px){
 	        .info-card,.card{height:36vmin;width:64vmin;}
-	        .card img{max-height:30vmin;}
-	        .card img,.article-info{max-width:calc(64vmin / 2);}
+	        .card-eyecatch{max-height:30vmin;}
+	        .card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
 	    }
 	    @media screen and (min-width:801px){
 	    	.card{margin:2.5vmin 0;}
@@ -308,7 +307,7 @@
 	    @media screen and (max-width:800px){
 	    	.info-card{height:45vmin;width:80vmin;}
 	    	.card{font-size:1.2rem;margin:2.5vmin auto;box-shadow:none;}
-	        .card img{max-width:calc(80vmin * 2 / 5);}
+	        .card-eyecatch{max-width:calc(80vmin * 2 / 5);}
 	        .card-info{max-width:calc(80vmin * 3 / 5);}
 	        .card h1,.card h2{font-size:2rem;}
 			.toc,.article-main .toc-title{width:94vw;}
@@ -330,7 +329,7 @@
 	    @media screen and (max-width:1270px){
 	        .info-card{height:50vmin;width:85vmin;}
 	        .card{font-size:1.2rem;margin:2.5vmin auto;box-shadow:none;}
-	        .card img{max-width:calc(80vmin * 2 / 5);}
+	        .card-eyecatch{max-width:calc(80vmin * 2 / 5);}
 	        .card-info{max-width:calc(80vmin * 3 / 5);}
 	        .card h1,.card h2{font-size:1.8rem;}
 			.toc,.article-main .toc-title{width:94vw;}
