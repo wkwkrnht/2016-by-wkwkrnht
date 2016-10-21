@@ -21,7 +21,7 @@
 				$category   = $categories[0];
 				?>
 				<section class="card article-card">
-		        	<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0" class="card-eyecatch"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800"></a>
+		        	<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800" class="card-eyecatch"></a>
 		        	<div class="card-info">
 		            	<h2 class="article-name"><a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><?php echo $txt;?></a></h2><br>
 		            	<span class="card-meta">
