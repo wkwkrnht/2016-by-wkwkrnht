@@ -158,8 +158,8 @@
 	4.area for notice
 	5.move to search
 	*/
-	.card{height:45vmin;width:80vmin;margin:3vmin 8vmin;padding:4vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
-	.card-eyecatch{display:block;float:left;height:39vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
+	.card{height:45vmin;width:80vmin;margin:4vmin 5vmin;padding:3.5vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
+	.card-eyecatch{display:block;float:left;height:45vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
 	.card-info{max-width:calc(80vmin / 2);float:right;}
@@ -294,7 +294,7 @@
 	@media all and (orientation: landscape){
 	    @media screen and (min-width:1600px){
 	        .info-card,.card{height:36vmin;width:64vmin;}
-	        .card-eyecatch{max-height:30vmin;}
+	        .card-eyecatch{max-height:36vmin;}
 	        .card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
 	    }
 	    @media screen and (min-width:801px){
