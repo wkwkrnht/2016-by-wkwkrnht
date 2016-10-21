@@ -164,6 +164,7 @@
 	.card span{display:inline-block;height:30%;margin:0 1em;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
 	.card-info{max-width:calc(80vmin / 2);float:right;}
+	.card-cat > a::after{content:"\A";white-space:pre;}
 	.site-info{text-align:center;}
 	.card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
 	.info-card{box-shadow:0 0 3vmin rgba(0,0,0,.2);}

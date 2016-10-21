@@ -30,7 +30,7 @@
 									</span>
 								</a>
 							</span><br>
-							カテゴリー : ';the_category("\n");?>
+							<span class="card-cat">カテゴリー : ';the_category(' ');echo'</span>';?>
 						</span>
 		        	</div>
 		    	</section>
