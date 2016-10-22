@@ -174,7 +174,7 @@
 
 	.marker{background-color:linear-gradient(transparent 30%,#fffc00 30%);}
 
-	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 3vmin;border-radius:3vmin;margin:3vmin auto;position:relative;border:1px solid #e5e5e5;background-color:#fff;box-shadow:0 1px 1px rgba(0,0,0,.01);}
+	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 5vmin;border-radius:3vmin;margin:3vmin auto;position:relative;border:1px solid #e5e5e5;background-color:#fff;box-shadow:0 1px 1px rgba(0,0,0,.01);}
 	.ogp-blogcard-share{height:37vh;width:80%;position:absolute;top:0;left:0;z-index:2;background-color:rgba(0,0,0,.3);}
 	.ogp-blogcard-share-close{position:absolute;top:1em;right:2em;font-size:3rem;}
 	.ogp-blogcard-share > ul{list-style:none;}
