@@ -10,20 +10,23 @@
 ・バニラな子テーマあり(参照 : https://github.com/wkwkrnht/2016-by-wkwkrnht-child/)
 ・すっきりとしたカードデザイン
 ・いつでもどこでも2クリック(タップ)でメニューアクセス or SNS共有
-・メニュー内と記事下にウィジェットスペース確保
-・メニュー内にメインメニューとソーシャルメニュー、管理者向けメニューの3種を用意
+・ホーム以外なら2クリック(タップ)でホームアクセス
+・8つのウィジェットスペース確保
+・メニュー内にメインメニューとソーシャルメニューの2種を用意
 ・ソーシャルメニューはリンクに応じて、自動的にアイコンフォントで装飾(約40種対応)(リンクテキストは表示されません)
 ・前後記事ナビでは、アイキャッチも表示
-・コメント欄も選択可(WP独自 or Disqus or 無し)
-・豊富なクイックタグ(h1～h6,p,テーブル,ショートコード)
+・検索欄はウイジェットで選択可(WP純正 or Google or Google with Ads or DuckDuckGo)
+・コメント欄もウィジェットで選択可(WP純正 or Disqus or 無し)
+・豊富なクイックタグ(h1～h6,p,テーブル,ショートコード(WP純正、このテーマ独自問わず))
 ・豊富なブログカード生成ショートコード(OGP or Embed.ly or はてな)
 ・追加クラス(マーカー or 検索風表示 or 注意表示)
-・アナリティクスはHTMLタグも含めてカスタマイザーで自由に設定可
+・headとbodyの閉じタグ直前にHTMLタグもそのままカスタマイザーで自由に挿入可
 ・リファラーも設定可
 ・AMP対応
 ・OGP & TwitterCard対応
+・豊富な構造化マークアップ(NewsArticle,BreadcrumbList,WebSite,SiteNavigationElement,Person)
 ・Chrome独自のアドレスバー装飾対応
-・独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
+・独自制作のウィジェット向けCSSはウィジェットテンプレート冒頭に
 
     ファイルツリー
 ・inc (素材群)
@@ -39,17 +42,21 @@
     ┗meta-json.php (ジャンル別メタ情報出力)
     ┗no-img.png (画像が404)
     ┗OpenGraph.php (OGP解読スクリプト)
-・language (国際化向けファイル群)
 ・widget (ウィジェット)
     ┗author-bio.php (投稿者プロフィール)
     ┗comment.php (コメント)
-    ┗disqus.php (Disqus)
+    ┗duckduckgo-search.php (DuckDuckGo)
     ┗manth-archive.php (短縮版月別アーカイブ)
     ┗move-top.php (そのページのトップへの移動ボタン)
+    ┗page-nav.php (ページネーション)
     ┗post-nav.php (前後記事ナビ)
+    ┗post-nav-hover.php (画像なし前後ナビ)
     ┗related-post-img.php (画像付関連記事)
     ┗related-post.php (画像なし関連記事)
+    ┗special-card.php (ヘッダーテンプレート)
     ┗wkwkrnht-categorytag.php (カテゴリーとタグのみの検索)
+・amp.php (ampテンプレート)
+・composer.json (composer向け情報)
 ・footer.php (フッターテンプレート)
 ・functions.php (関数ずらずら)
 ・header.php (ヘッダーテンプレート)

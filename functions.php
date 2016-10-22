@@ -25,8 +25,7 @@
 function wkwkrnht_setup(){
     if(!isset($content_width)){$content_width=1080;}
 
-    $custom_header = array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,);
-    add_theme_support('custom-header',$custom_header);
+    add_theme_support('custom-header',array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,));
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
@@ -186,7 +185,22 @@ class post_comment extends WP_Widget{
 
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/disqus.php');echo $args['after_widget'];}
+    public function widget($args,$instance){
+        extract($instance);
+        echo $args['before_widget'] .
+        '<div id="disqus_thread"></div>
+        <script>(function(){var d=document,s=d.createElement("script");s.src="//' . $id . '.disqus.com/embed.js";s.setAttribute("data-timestamp",+new Date());(d.head||d.body).appendChild(s);})();</script>
+        <noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">Please enable JavaScript to view the comments powered by Disqus.</a></noscript>' .
+        $args['after_widget'];
+    }
+    public function form($instance){$id=!empty($instance['id']) ? $instance['id'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('id');?>">ID</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('id');?>" name="<?php echo $this->get_field_name('id');?>" type="text" value="<?php echo esc_attr($id);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['id']=(!empty($new_instance['id'])) ? strip_tags($new_instance['id']):'';return $instance;}
 }
 
 class duck_duck_go_search_widget extends WP_Widget{
@@ -994,16 +1008,14 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('cookie_txt',array('section'=>'security_section','settings'=>'cookie_txt','label'=>'Cookieのテキストを入力する','type'=>'text'));
     $wp_customize->add_section('sns_section',array('title'=>'SNS','description'=>'このテーマ独自のSNS向け設定',));
     $wp_customize->add_setting('Twitter_URL',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントへを指定する','type'=>'text'));
+    $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントを指定する','type'=>'text'));
     $wp_customize->add_setting('facebook_appid',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('facebook_appid',array('section'=>'sns_section','settings'=>'facebook_appid','label'=>'facebookのappidを表示する','type'=>'text'));
+    $wp_customize->add_section('txt_section',array('title'=>'テキスト挿入',));
     $wp_customize->add_setting('header_txt',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('header_txt',array('section'=>'sns_section','settings'=>'header_txt','label'=>'headタグ内に追加で出力するテキスト','type'=>'textarea'));
+    $wp_customize->add_control('header_txt',array('section'=>'txt_section','settings'=>'header_txt','label'=>'headタグ内に追加で出力するテキスト','type'=>'textarea'));
     $wp_customize->add_setting('footer_txt',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('footer_txt',array('section'=>'sns_section','settings'=>'footer_txt','label'=>'bodyタグ直前に追加で出力するテキスト','type'=>'textarea'));
-    $wp_customize->add_section('widget_section',array('title'=>'widget','description'=>'このテーマ独自ウイジェット向けの設定',));
-	$wp_customize->add_setting('Disqus_ID',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('Disqus_ID',array('section'=>'widget_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
+    $wp_customize->add_control('footer_txt',array('section'=>'txt_section','settings'=>'footer_txt','label'=>'bodyタグ直前に追加で出力するテキスト','type'=>'textarea'));
     $wp_customize->add_section('jetpack_section',array('title'=>'jetpack','description'=>'このテーマ独自のjetpack向け設定',));
     $wp_customize->add_setting('jetpack.css',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack.css',array('settings'=>'jetpack.css','label'=>'jetpack.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));

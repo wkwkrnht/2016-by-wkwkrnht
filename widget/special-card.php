@@ -18,5 +18,5 @@ echo'<header class="card info-card special-card" itemscope itemtype="http://sche
         echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
     endif;
 echo'<br>
-    <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">' . $blogname . '</span></span>&copy;<span itemprop="copyrightYear">' . $year . '</span></span>
+    <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">' . $blogname . '</span></span> &copy;<span itemprop="copyrightYear">' . $year . '</span></span>
 </header>';?>
