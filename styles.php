@@ -158,7 +158,7 @@
 	4.area for notice
 	5.move to search
 	*/
-	.card{height:45vmin;width:80vmin;margin:4vmin 5vmin;padding:3.5vmin 5vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
+	.card{height:45vmin;width:80vmin;margin:4vmin 5vmin;padding:3.5vmin 4vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:45vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
@@ -166,7 +166,6 @@
 	.site-info{text-align:center;}
 	.card-meta{display:inline-block;height:30%;margin:0 1em;}
 	.card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
-	.info-card{box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
 
 	.toc{width:90vw;padding-bottom:3vh;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
