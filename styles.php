@@ -291,14 +291,11 @@
 	/*
 	    Media Query
 	1.PC style
-	2.mobile style
-	3.print
+	2.Large-PC style
+	3.Large-mobile style
+	4.mobile style
+	5.print
 	*/
-	@media screen and (min-width:1200px){
-		.info-card,.card{height:36vmin;width:64vmin;}
-		.card-eyecatch{max-height:36vmin;}
-		.card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
-	}
 	@media screen and (min-width:992px){
 		.card{margin:2.5vmin 0;}
 		.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
@@ -308,6 +305,12 @@
 		.information,.question{width:80%;}
 		.article-date{font-size:2.2rem;}
 		.article-main{font-size:2rem;}
+	}
+	@media screen and (min-width:1200px){
+		.info-card,.card{height:36vmin;width:64vmin;}
+		.card-eyecatch{max-height:36vmin;}
+		.card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
+		.card h1,.card h2{font-size:initial;}
 	}
 	@media screen and (max-width:992px){
 		.info-card{height:50vmin;width:85vmin;}
