@@ -42,7 +42,7 @@ if($myAmp===true):?>
 				<ul class="widget-area">
 					<?php dynamic_sidebar('singularfooter');?>
 				</ul>
-				<span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><?php echo get_bloginfo('name');?></span></span> &copy;<span itemprop="copyrightYear"><?php echo get_first_post_year();?></span></span>
+				<span class="copyright" style="text-aligh:center;"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><?php echo get_bloginfo('name');?></span></span> &copy;<span itemprop="copyrightYear"><?php echo get_first_post_year();?></span></span>
 			</footer>
 		<?php endif;?>
 	</article>
