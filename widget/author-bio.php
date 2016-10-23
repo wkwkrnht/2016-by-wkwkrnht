@@ -6,7 +6,7 @@
     .follow-button li{display:inline-block;height:2em;width:2em;padding:.5em;border-radius:3vmin;text-align:center;vertical-align:middle;box-shadow:0 0 2vmin rgba(0,0,0,.3);}
 </style>
 <header class="bio-wrapper card info-card" <?php if(is_author()===true){echo'itemscope itemtype="http://schema.org/WPHeader"';}?>>
-    <?php echo get_avatar(get_the_author_meta('ID'),256);?>
+    <?php echo get_avatar(get_the_author_meta('ID'),256,'','bio-img',array('class'=>'bio-img'));?>
     <div class="bio-main">
         <a href="<?php echo home_url() . '?author=' . get_the_author_meta('ID');?>" tabindex="0" title="<?php the_author_meta('display_name');?>'s summary"<?php if(is_author()===true){echo'itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"';}?>>
             <h2 class="bio-name" <?php if(is_author()===true){echo'itemprop="name"';}?>><?php the_author_meta('display_name');?></h2><br>
