@@ -2,7 +2,7 @@
 	<main id="site-main">
 		<?php wkwkrnht_special_card();?>
 		<?php if(is_404()===true):?>
-			<div class="article-list">
+			<div class="card-list">
 				<?php if(is_active_sidebar('404')){dynamic_sidebar('404');}?>
 			</div>
 		<?php else:?>
@@ -11,7 +11,7 @@
 					<?php dynamic_sidebar('listabove');?>
 				</ul>
 			<?php endif;?>
-			<div class="article-list">
+			<div class="card-list">
 				<?php if(is_active_sidebar('listheader')){dynamic_sidebar('listheader');}?>
 				<?php if(have_posts()):while(have_posts()):the_post();?>
 					<?php
@@ -21,7 +21,7 @@
 						$categories = get_the_category();
 						$category   = $categories[0];
 					?>
-					<section class="card article-card">
+					<section class="card">
 						<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800" class="card-eyecatch"></a>
 						<div class="card-info">
 							<h2 class="article-name"><a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><?php echo $txt;?></a></h2><br>

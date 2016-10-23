@@ -166,7 +166,7 @@
 	.card-info{max-width:calc(80vmin / 2);float:right;}
 	.site-info{text-align:center;}
 	.card-meta{display:inline-block;height:30%;margin:0 1em;}
-	.card-list{background-color:<?php echo get_option('card_list_background','#fff');?>;}
+	.card-list{background-color:<?php echo get_option('card_list_background','#fff');?>;display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
 	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
 
 	.toc{width:90vw;padding-bottom:3vh;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
@@ -297,8 +297,7 @@
 	5.print
 	*/
 	@media screen and (min-width:992px){
-		.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
-		.info-card{height:30vmin;width:160vmin;margin:2vmin auto;}
+		.info-card{height:30vmin;width:160vmin;margin:3vmin auto;}
 		.card h1,.card h2{font-size:2.7rem;}
 		.hatenablogcard{max-width:60vw;margin:5vh 10vw;}
 		.information,.question{width:80%;}
@@ -306,11 +305,8 @@
 		.article-main{font-size:2rem;}
 	}
 	@media screen and (max-width:992px){
-		.info-card{height:50vmin;width:85vmin;}
+		.info-card{height:45vmin;width:80vmin;}
 		.card{font-size:1.6rem;margin:3vmin auto;box-shadow:none;}
-		.info-card,.card{height:36vmin;width:64vmin;}
-		.card-eyecatch{max-height:36vmin;}
-		.card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
 		.card h1,.card h2{font-size:2rem;}
 		.toc,.article-main .toc-title{width:94vw;}
 		.hatenablogcard{max-width:70vw;margin:5vh 5vw;}
