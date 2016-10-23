@@ -1,5 +1,5 @@
 <style>
-    .bio-wrapper{display:block;}
+    .bio-wrapper{display:block;position:absolute;}
     .bio-img{position:absolute;top:0;left:0;}
     .bio-info{position:absolute;top:0;right:0;}
     .bio-name{font-size:2.3rem;text-align:center;vertical-align:middle;}
