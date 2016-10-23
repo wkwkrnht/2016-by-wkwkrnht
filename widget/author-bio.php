@@ -5,7 +5,7 @@
     .bio-name{font-size:2.3rem;text-align:center;vertical-align:middle;}
     .bio-description{font-size:1.6rem;}
     .follow-button{position:absolute;bottom:0;list-style:none;overflow-x:auto;overflow-y:hidden;}
-    .follow-button li{display:inline-block;height:2em;width:2em;padding:.5em;border-radius:3vmin;text-align:center;vertical-align:middle;box-shadow:0 0 2vmin rgba(0,0,0,.3);}
+    .follow-button li{display:inline-block;height:3em;width:3em;padding:.5em;text-align:center;vertical-align:middle;box-shadow:0 0 2vmin rgba(0,0,0,.15);}
 </style>
 <header class="bio-wrapper card info-card" <?php if(is_author()===true){echo'itemscope itemtype="http://schema.org/WPHeader"';}?>>
     <?php echo get_avatar(get_the_author_meta('ID'),256,'','bio-img',array('class'=>'bio-img'));?>
