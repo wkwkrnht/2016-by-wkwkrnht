@@ -135,7 +135,6 @@
 	2.recent entries
 	3.archive
 	4.meta box
-	5.search
 	*/
 	.widget_tag_cloud{margin:3vmin;padding:0;}
 	.widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid #aaa;border-radius:3vmin;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#333;font-size:1.6rem;text-decoration:none;}
@@ -154,12 +153,13 @@
 	/*
 	    original
 	1.card-design
-	2.marker
-	3.blogcard by OGP
-	4.area for notice
-	5.move to search
+	2.ToC
+	3.marker
+	4.blogcard by OGP
+	5.area for notice
+	6.move to search
 	*/
-	.card{height:45vmin;width:80vmin;margin:4vmin 8vmin;padding:2vmin 3.5vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.card{height:45vmin;width:80vmin;margin:4vmin 6vmin;padding:2vmin 3.5vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:45vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
@@ -172,7 +172,7 @@
 	.toc{width:90vw;padding-bottom:3vh;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.toc-toggle{display:block;height:3em;width:3em;border-radius:50%;font-size:1.8rem;position:relative;top:-1.5em;left:85vw;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 
-	.marker{background-color:linear-gradient(transparent 30%,#fffc00 30%);}
+	.marker{background-color:#fffc00;}
 
 	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 5vmin;border-radius:3vmin;margin:3vmin auto;position:relative;border:1px solid #e5e5e5;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.15);}
 	.ogp-blogcard-share{height:37vh;width:80%;position:absolute;top:0;left:0;z-index:2;background-color:rgba(0,0,0,.3);}
