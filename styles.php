@@ -322,11 +322,8 @@
 	    .article-main table tr td + td {padding-top:0;}
 	}
 	@media screen and (max-width:640px){
-		.info-card{height:45vmin;width:80vmin;}
 		.card{font-size:1.3rem;}
 		.card h1,.card h2{font-size:1.8rem;}
-		.card-eyecatch{max-width:calc(80vmin * 2 / 5);}
-		.card-info{max-width:calc(80vmin * 3 / 5);}
 		.hatenablogcard{max-width:80vw;margin:5vh 0;}
 		.search-form div{padding:3px 5px;font-size:75%;}
 		.search-form .sform{min-width:180px;}
