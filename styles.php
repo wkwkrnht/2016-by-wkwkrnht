@@ -307,16 +307,14 @@
 		.article-main{font-size:2rem;}
 	}
 	@media screen and (min-width:1200px){
-		.info-card,.card{height:36vmin;width:64vmin;}
-		.card-eyecatch{max-height:36vmin;}
-		.card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
-		.card h1,.card h2{font-size:initial;}
+		.card h1,.card h2{font-size:2.2rem;}
 	}
 	@media screen and (max-width:992px){
 		.info-card{height:50vmin;width:85vmin;}
 		.card{font-size:1.6rem;margin:2.5vmin auto;box-shadow:none;}
-	    .card-eyecatch{max-width:calc(80vmin * 2 / 5);}
-	    .card-info{max-width:calc(80vmin * 3 / 5);}
+		.info-card,.card{height:36vmin;width:64vmin;}
+		.card-eyecatch{max-height:36vmin;}
+		.card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
 		.card h1,.card h2{font-size:1.8rem;}
 		.toc,.article-main .toc-title{width:94vw;}
 		.hatenablogcard{max-width:70vw;margin:5vh 5vw;}
