@@ -402,8 +402,6 @@ function add_body_class($classes){
     if(is_singular()===true){
         global $post;
         foreach((get_the_category($post->ID)) as $category){$classes[] = 'categoryid-' . $category->cat_ID;}
-    }else{
-        $classes[] = 'card-list';
     }
     return $classes;
 }

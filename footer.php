@@ -49,20 +49,16 @@
         }
     endif;?>
     <style>
-        .night-mode .hide-nav-prev a,.night-mode .hide-nav-next a{color:#fff;background-color:#333;}
-        body.night-mode,.night-mode #main-menu,.night-mode .card,.night-mode body.card-list{color:#fff;background-color:#333;}
-	    .night-mode a#menu-toggle,.night-mode a#home-button,.night-mode a#button-toggle,.night-mode a#share-menu-toggle{color:#fff;background-color:#333;}
+        .night-mode .hide-nav-prev a,.night-mode .hide-nav-next a,body.night-mode,.night-mode #main-menu,.night-mode .card,.night-mode div.card-list,.night-mode a#menu-toggle,.night-mode a#home-button,.night-mode a#button-toggle,.night-mode a#share-menu-toggle{color:#fff;background-color:#333;}
 	    .night-mode #share-menu a.close-button{background-color:#333;}
 	    .night-mode ul.page-nation,.night-mode ul.page-nation a,.night-mode ul.page-nation li span.dots,.night-mode ul.page-nation li.current{color:#fff;background-color:#333;border-color:#fff;}
         .night-mode ul.page-nation li span.dots{color:#f1f1f1;}
         .night-mode ul.page-nation a:hover{color:#333;background-color:#fff;}
         .night-mode .card,.night-mode ul.page-nation{box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-        .night-mode div.article-meta{color:#333;}
-        .night-mode .article-main h1{color:#333;}
+        .night-mode div.article-meta,.night-mode .article-main h1,.night-mode div.information,.night-mode div.question{color:#333;}
         .night-mode .article-main h2.ogp-blogcard-title,.night-mode .article-main p.ogp-blogcard-description,.night-mode .article-main a.ogp-blogcard-site-name,.night-mode .article-main h2.ogp-blogcard-title:visited,.night-mode .article-main p.ogp-blogcard-description:visited,.night-mode .article-main a.ogp-blogcard-site-name:visited,.night-mode .article-main img.ogp-blogcard-img::after{color:#fff;}
         .night-mode div.ogp-blogcard{background-color:#333;border-color:#f1f1f1;}
         .night-mode aside.toc{border:none;box-shadow:none;}
-        .night-mode div.information,.night-mode div.question{color:#333;}
     </style>
     <script>
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
