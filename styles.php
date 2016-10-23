@@ -159,7 +159,7 @@
 	5.area for notice
 	6.move to search
 	*/
-	.card{height:45vmin;width:80vmin;margin:3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.card{height:40.5vmin;width:72vmin;margin:3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:45vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
