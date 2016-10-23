@@ -159,7 +159,7 @@
 	4.area for notice
 	5.move to search
 	*/
-	.card{height:45vmin;width:80vmin;margin:4vmin 5vmin;padding:3.5vmin 4vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.card{height:45vmin;width:80vmin;margin:4vmin 8vmin;padding:3.5vmin 4vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:45vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
 	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
@@ -297,21 +297,18 @@
 	5.print
 	*/
 	@media screen and (min-width:992px){
-		.card{margin:2.5vmin 0;}
 		.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
 		.info-card{height:30vmin;width:160vmin;margin:2vmin auto;}
-		.card h1,.card h2{font-size:2rem;}
+		.card h1{font-size:2.3rem;}
+		.card h2{font-size:2rem;}
 		.hatenablogcard{max-width:60vw;margin:5vh 10vw;}
 		.information,.question{width:80%;}
 		.article-date{font-size:2.2rem;}
 		.article-main{font-size:2rem;}
 	}
-	@media screen and (min-width:1200px){
-		.card h1,.card h2{font-size:2.2rem;}
-	}
 	@media screen and (max-width:992px){
 		.info-card{height:50vmin;width:85vmin;}
-		.card{font-size:1.6rem;margin:2.5vmin auto;box-shadow:none;}
+		.card{font-size:1.6rem;margin:3vmin auto;box-shadow:none;}
 		.info-card,.card{height:36vmin;width:64vmin;}
 		.card-eyecatch{max-height:36vmin;}
 		.card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
