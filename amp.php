@@ -111,13 +111,6 @@
 		.article-main h4{border-left:.5em solid #03a9f4;border-bottom:1px solid #03a9f4;}
 		.article-main h5{border-left:.5em solid #03a9f4;}
 		.article-main h6{border-bottom:.75vmin dashed #03a9f4;}
-		.article-main h1:hover::before{content:counter(counter-h1);}
-		.article-main h2:hover::before{content:counter(counter-h1)"."counter(counter-h2);}
-		.article-main h3:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3);}
-		.article-main h4:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4);}
-		.article-main h5:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4)"."counter(counter-h5);}
-		.article-main h6:hover::before{content:counter(counter-h1)"."counter(counter-h2)"."counter(counter-h3)"."counter(counter-h4)"."counter(counter-h5)"."counter(counter-h6);}
-		.article-main h1:hover::before,.article-main h2:hover::before,.article-main h3:hover::before,.article-main h4:hover::before,.article-main h5:hover::before,.article-main h6:hover::before{display:block;min-height:2rem;padding:.5em 1em;border-radius:3vmin;z-index:2;position:absolute;background-color:#f1f1f1;}
 		.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
 		.information,.question{background-color:#f4f3eb;padding:2rem;padding:1em 3em;border-radius:8px;position:relative;margin:1em auto;}
 		.search-form{margin:3em 0;line-height:170%;}
@@ -184,7 +177,7 @@
 				</span>
 			</div>
 		</header>
-		<section class="article-main">
+		<main class="article-main">
 			<?php
 			$content = '';
 			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
@@ -209,7 +202,7 @@
 
 			echo $content;
 			?>
-		</section>
+		</main>
 		<footer>
 			<?php $categories=get_the_category();$category_ID=array();foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
 			if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
