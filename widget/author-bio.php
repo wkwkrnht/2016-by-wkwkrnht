@@ -1,10 +1,10 @@
 <style>
     .bio-wrapper{display:block;}
-    .bio-img{float:left;clear:both;}
-    .bio-info{float:right;clear:both;}
+    .bio-img{position:absolute;top:0;left:0;}
+    .bio-info{position:absolute;top:0;right:0;}
     .bio-name{font-size:2.3rem;text-align:center;vertical-align:middle;}
     .bio-description{font-size:1.6rem;}
-    .follow-button{list-style:none;overflow-x:auto;overflow-y:hidden;}
+    .follow-button{position:absolute;bottom:0;list-style:none;overflow-x:auto;overflow-y:hidden;}
     .follow-button li{display:inline-block;height:2em;width:2em;padding:.5em;border-radius:3vmin;text-align:center;vertical-align:middle;box-shadow:0 0 2vmin rgba(0,0,0,.3);}
 </style>
 <header class="bio-wrapper card info-card" <?php if(is_author()===true){echo'itemscope itemtype="http://schema.org/WPHeader"';}?>>
