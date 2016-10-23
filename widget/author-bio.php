@@ -1,18 +1,17 @@
 <style>
     .bio-wrapper{display:block;position:relative;}
-    .bio-img{position:absolute;top:0;left:0;}
     .bio-info{position:absolute;top:0;right:0;}
     .bio-name{font-size:2.3rem;text-align:center;vertical-align:middle;}
     .bio-description{font-size:1.6rem;}
     .follow-button{position:absolute;bottom:0;right:0;list-style:none;overflow-x:auto;overflow-y:hidden;}
     .follow-button li{display:inline-block;height:3em;width:3em;padding:.5em;text-align:center;vertical-align:middle;}
     @media screen and (min-width:992px){
-        .bio-img{height:30vmin;width:calc(160vmin / 10 * 3 - 1vmin);}
+        .bio-img{height:30vmin;width:calc(160vmin / 10 * 3 - 1vmin);position:absolute;top:18vmin;left:calc(160vmin / 10 * 3 / 2 - 1vmin + 3vmin);}
         .bio-info{width:calc(160vmin /10 * 8);}
         .follow-button{width:calc(160vmin / 10 * 8);}
 	}
     @media screen and (max-width:992px){
-        .bio-img{height:45vmin;width:calc(80vmin / 10 * 3 - 1vmin);}
+        .bio-img{height:45vmin;width:calc(80vmin / 10 * 3 - 1vmin);position:absolute;top:25.5vmin;left:calc(160vmin / 10 * 3 / 2 - 1vmin + 3vmin);}
         .bio-info{width:calc(80vmin /10 * 8);}
         .follow-button{width:calc(80vmin / 10 * 8);}
     }
