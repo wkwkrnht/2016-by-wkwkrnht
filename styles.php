@@ -159,9 +159,9 @@
 	4.area for notice
 	5.move to search
 	*/
-	.card{height:45vmin;width:80vmin;margin:4vmin 8vmin;padding:3.5vmin 4vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.card{height:45vmin;width:80vmin;margin:4vmin 8vmin;padding:2vmin 3.5vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:45vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
-	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;font-size:2.7rem;}
+	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;}
 	.card p{display:inline-block;height:20%;margin:0 1em;}
 	.card-info{max-width:calc(80vmin / 2);float:right;}
 	.site-info{text-align:center;}
@@ -299,8 +299,7 @@
 	@media screen and (min-width:992px){
 		.article-list{display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
 		.info-card{height:30vmin;width:160vmin;margin:2vmin auto;}
-		.card h1{font-size:2.3rem;}
-		.card h2{font-size:2rem;}
+		.card h1,.card h2{font-size:2.7rem;}
 		.hatenablogcard{max-width:60vw;margin:5vh 10vw;}
 		.information,.question{width:80%;}
 		.article-date{font-size:2.2rem;}
@@ -312,7 +311,7 @@
 		.info-card,.card{height:36vmin;width:64vmin;}
 		.card-eyecatch{max-height:36vmin;}
 		.card-eyecatch,.card-info{max-width:calc(64vmin / 2);}
-		.card h1,.card h2{font-size:1.8rem;}
+		.card h1,.card h2{font-size:2rem;}
 		.toc,.article-main .toc-title{width:94vw;}
 		.hatenablogcard{max-width:70vw;margin:5vh 5vw;}
 		.ogp-blogcard{border-width:2vmin;max-width:94%;}
@@ -329,7 +328,7 @@
 	@media screen and (max-width:640px){
 		.info-card{height:45vmin;width:80vmin;}
 		.card{font-size:1.3rem;}
-		.card h1,.card h2{font-size:1.6rem;}
+		.card h1,.card h2{font-size:1.8rem;}
 		.card-eyecatch{max-width:calc(80vmin * 2 / 5);}
 		.card-info{max-width:calc(80vmin * 3 / 5);}
 		.hatenablogcard{max-width:80vw;margin:5vh 0;}
