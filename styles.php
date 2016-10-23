@@ -163,7 +163,7 @@
 	.card-eyecatch{display:block;float:left;height:40.5vmin;width:calc(72vmin / 2 - 1vmin);vertical-align:middle;}
 	.card-title{display:inline-block;height:calc(40.5vmin / 10 * 3);margin:0 1em;}
 	.card-meta{display:inline-block;height:calc(40.5vmin / 10 * 7);margin:0 1em;}
-	.card-date,.card-author,.card-cat{display:inline-block;height:calc(40.5vmin / 10 * 7 / 3);}
+	.card-date,.card-author,.card-cat{display:inline-block;margin:calc(40.5vmin / 10 * 7 / 3 / 2) auto;}
 	.card-info{max-width:calc(72vmin / 2);float:right;}
 	.site-info{text-align:center;}
 	.card-meta{display:inline-block;height:30%;margin:0 1em;}
