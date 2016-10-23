@@ -166,7 +166,7 @@
 	.card-info{max-width:calc(80vmin / 2);float:right;}
 	.site-info{text-align:center;}
 	.card-meta{display:inline-block;height:30%;margin:0 1em;}
-	.card-list{background-color:<?php echo get_option('card_list_background','#f1f1f1');?>;}
+	.card-list{background-color:<?php echo get_option('card_list_background','#fff');?>;}
 	<?php if(get_header_image()):?>.special-card{background-image:<?php echo'url(' . get_header_image() . ')';?>;}<?php endif;?>
 
 	.toc{width:90vw;padding-bottom:3vh;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
