@@ -1,6 +1,6 @@
 <style>
     .bio-wrapper{display:block;position:relative;}
-    .bio-img{position:absolute;top:3vmin;left:3vmin;}
+    .bio-img{position:absolute;top:2vmin;left:4vmin;}
     .bio-info{position:absolute;top:0;right:0;}
     .bio-name{font-size:2.3rem;text-align:center;vertical-align:middle;}
     .bio-description{font-size:1.6rem;}
