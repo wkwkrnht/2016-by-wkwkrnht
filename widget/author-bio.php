@@ -4,8 +4,18 @@
     .bio-info{position:absolute;top:0;right:0;}
     .bio-name{font-size:2.3rem;text-align:center;vertical-align:middle;}
     .bio-description{font-size:1.6rem;}
-    .follow-button{position:absolute;bottom:0;list-style:none;overflow-x:auto;overflow-y:hidden;}
+    .follow-button{position:absolute;bottom:0;right:0;list-style:none;overflow-x:auto;overflow-y:hidden;}
     .follow-button li{display:inline-block;height:3em;width:3em;padding:.5em;text-align:center;vertical-align:middle;box-shadow:0 0 2vmin rgba(0,0,0,.15);}
+    @media screen and (min-width:992px){
+        .bio-img{width:calc(160vmin / 10 * 3 - 1vmin);}
+        .bio-info{width:calc(160vmin /10 * 8);}
+        .follow-button{width:calc(160vmin / 10 * 8);}
+	}
+    @media screen and (max-width:992px){
+        .bio-img{width:calc(80vmin / 10 * 3 - 1vmin);}
+        .bio-info{width:calc(80vmin /10 * 8);}
+        .follow-button{width:calc(80vmin / 10 * 8);}
+    }
 </style>
 <header class="bio-wrapper card info-card" <?php if(is_author()===true){echo'itemscope itemtype="http://schema.org/WPHeader"';}?>>
     <?php echo get_avatar(get_the_author_meta('ID'),256,'','bio-img',array('class'=>'bio-img'));?>
