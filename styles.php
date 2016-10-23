@@ -160,10 +160,10 @@
 	6.move to search
 	*/
 	.card{height:40.5vmin;width:72vmin;margin:3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
-	.card-eyecatch{display:block;float:left;height:45vmin;width:calc(80vmin / 2 - 1vmin);vertical-align:middle;}
-	.card h1,.card h2{display:inline-block;height:50%;margin:0 1em;}
-	.card p{display:inline-block;height:20%;margin:0 1em;}
-	.card-info{max-width:calc(80vmin / 2);float:right;}
+	.card-eyecatch{display:block;float:left;height:40.5vmin;width:calc(72vmin / 2 - 1vmin);vertical-align:middle;}
+	.card-title{display:inline-block;height:calc(40.5vmin / 10 * 4);margin:0 1em;}
+	.card-meta{display:inline-block;height:calc(40.5vmin / 10 * 6);margin:0 1em;}
+	.card-info{max-width:calc(72vmin / 2);float:right;}
 	.site-info{text-align:center;}
 	.card-meta{display:inline-block;height:30%;margin:0 1em;}
 	.card-list{background-color:<?php echo get_option('card_list_background','#fff');?>;display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
@@ -298,7 +298,7 @@
 	*/
 	@media screen and (min-width:992px){
 		.info-card{height:30vmin;width:160vmin;margin:3vmin auto;}
-		.card h1,.card h2{font-size:2.7rem;}
+		.card-title{font-size:2.7rem;}
 		.hatenablogcard{max-width:60vw;margin:5vh 10vw;}
 		.information,.question{width:80%;}
 		.article-date{font-size:2.2rem;}
@@ -307,7 +307,7 @@
 	@media screen and (max-width:992px){
 		.info-card{height:45vmin;width:80vmin;}
 		.card{font-size:1.6rem;margin:3vmin auto;box-shadow:none;}
-		.card h1,.card h2{font-size:2rem;}
+		.card-title{font-size:2rem;}
 		.toc,.article-main .toc-title{width:94vw;}
 		.hatenablogcard{max-width:70vw;margin:5vh 5vw;}
 		.ogp-blogcard{border-width:2vmin;max-width:94%;}
@@ -322,8 +322,8 @@
 	    .article-main table tr td + td {padding-top:0;}
 	}
 	@media screen and (max-width:640px){
-		.card{font-size:1.3rem;}
-		.card h1,.card h2{font-size:1.8rem;}
+		.card{font-size:1.6rem;}
+		.card-title{font-size:1.8rem;}
 		.hatenablogcard{max-width:80vw;margin:5vh 0;}
 		.search-form div{padding:3px 5px;font-size:75%;}
 		.search-form .sform{min-width:180px;}

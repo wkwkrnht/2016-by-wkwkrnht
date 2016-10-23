@@ -24,7 +24,7 @@
 					<section class="card">
 						<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="800" width="800" class="card-eyecatch"></a>
 						<div class="card-info">
-							<h2 class="article-name"><a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><?php echo $txt;?></a></h2><br>
+							<h2 class="card-title"><a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><?php echo $txt;?></a></h2><br>
 							<span class="card-meta">
 								公開日：<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>"><?php the_time('Y/n/j');?></time><br>
 								著者 ：<?php echo'
