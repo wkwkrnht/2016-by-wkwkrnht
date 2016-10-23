@@ -1,4 +1,3 @@
-    </main>
     <footer>
         <a href="javascript:void(0)" id="menu-toggle" class="close" tabindex="0" role="button" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-5x"></i></a>
         <?php if(is_home()===false){echo'<a href="' . esc_url(home_url()) . '" tabindex="0" role="button" title="ホームへのリンク" id="home-button" class="close"><i class="fa fa-home fa-5x" aria-hidden="true"></i></a>';$script="document.getElementById('home-button').classList.toggle('close');document.getElementById('home-button').classList.toggle('open');";}?>
@@ -42,7 +41,7 @@
     wp_footer();
     if(is_singular()===true):
         $format = get_post_format();
-        if($format==='gallery' || get_post_meta(get_the_ID(),'light',true)===1){include_once(dirname(__FILE__) . '/./inc/baguetteBox.php');}
+        if($format==='gallery' || get_post_meta(get_the_ID(),'lightbox',true)===1){include_once(dirname(__FILE__) . '/./inc/lightbox.php');}
         if($format==='link'){
             echo'
             <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
