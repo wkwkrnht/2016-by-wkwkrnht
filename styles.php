@@ -161,8 +161,9 @@
 	*/
 	.card{height:40.5vmin;width:72vmin;margin:3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;overflow-y:auto;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:40.5vmin;width:calc(72vmin / 2 - 1vmin);vertical-align:middle;}
-	.card-title{display:inline-block;height:calc(40.5vmin / 10 * 4);margin:0 1em;}
-	.card-meta{display:inline-block;height:calc(40.5vmin / 10 * 6);margin:0 1em;}
+	.card-title{display:inline-block;height:calc(40.5vmin / 10 * 3);margin:0 1em;}
+	.card-meta{display:inline-block;height:calc(40.5vmin / 10 * 7);margin:0 1em;}
+	.card-date,.card-author,.card-cat{display:inline-block;height:calc(40.5vmin / 10 * 7 / 3);}
 	.card-info{max-width:calc(72vmin / 2);float:right;}
 	.site-info{text-align:center;}
 	.card-meta{display:inline-block;height:30%;margin:0 1em;}

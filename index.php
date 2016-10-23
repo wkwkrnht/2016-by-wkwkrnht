@@ -26,17 +26,19 @@
 						<div class="card-info">
 							<h2 class="card-title"><a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><?php echo $txt;?></a></h2><br>
 							<span class="card-meta">
-								公開日：<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>"><?php the_time('Y/n/j');?></time><br>
-								著者 ：<?php echo'
+								<span class="card-date">公開日：<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>"><?php the_time('Y/n/j');?></time></span><br>
+								<span class="card-author">著者 ：
 								<span itemscope itemtype="http://schema.org/Person" style="margin:0;">
+									<?php echo'
 									<a href="' . site_url() . '?author=' . get_the_author_meta('ID') . '" tabindex="0" itemprop="url" style="margin:0;">
 										<span class="vcard author" style="margin:0;">
 											<span class="fn" itemprop="name" style="margin:0;">'
 											. get_the_author() .
 											'</span>
 										</span>
-									</a>
+									</a>';?>
 								</span><br>
+								<?php echo'
 								<span class="card-cat">カテゴリー : <a href="' . get_category_link($category->term_id) . '" title="' . $category->name . '">' . $category->cat_name . '</a>';?>
 							</span>
 						</div>
