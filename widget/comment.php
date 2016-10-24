@@ -7,6 +7,7 @@
     .comment-respond{width:80%;margin:0 auto;}
     .comment-form{max-width:100%;}
     .comment-form-comment textarea,.comment-form-author input,.comment-form-email input,.comment-form-url input{max-width:100%;}
+    .night-mode .comment{background-color:#333;}
 </style>
 <div class="comment">
 <?php if(have_comments()):?>
