@@ -96,25 +96,23 @@ if($myAmp===true):?>
 	            <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span> &copy;<span itemprop="copyrightYear">' . $year . '</span></span>
 	        </header>';
 	    }?>
-		<?php if(is_404()===true):?>
-			<div class="card-list">
-				<?php if(is_active_sidebar('404')){dynamic_sidebar('404');}?>
-			</div>
-		<?php else:?>
-			<?php if(is_active_sidebar('listabove')):?>
-				<ul class="widget-area">
-					<?php dynamic_sidebar('listabove');?>
-				</ul>
-			<?php endif;?>
-			<div class="card-list">
+		<?php if(is_active_sidebar('listabove')):?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar('listabove');?>
+			</ul>
+		<?php endif;?>
+		<div class="card-list">
+			<?php if(is_404()===true):?>
+					<?php if(is_active_sidebar('404')){dynamic_sidebar('404');}?>
+			<?php else:?>
 				<?php if(is_active_sidebar('listheader')){dynamic_sidebar('listheader');}?>
 				<?php if(have_posts()):while(have_posts()):the_post();?>
 					<?php
-						$link       = get_permalink();
-						$title      = the_title_attribute(array('echo'=>false));
-						$txt        = mb_strimwidth(get_the_title(),0,32,'…');
-						$categories = get_the_category();
-						$category   = $categories[0];
+					$link       = get_permalink();
+					$title      = the_title_attribute(array('echo'=>false));
+					$txt        = mb_strimwidth(get_the_title(),0,32,'…');
+					$categories = get_the_category();
+					$category   = $categories[0];
 					?>
 					<section class="card">
 						<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0">
@@ -141,14 +139,14 @@ if($myAmp===true):?>
 					</section>
 				<?php endwhile;endif;?>
 				<?php if(is_active_sidebar('listfooter')){dynamic_sidebar('listfooter');}?>
-			</div>
-			<?php include_once(get_template_directory() . '/widget/page-nav.php');?>
-			<?php if(is_active_sidebar('listunder')):?>
-				<ul class="widget-area">
-					<?php dynamic_sidebar('listunder');?>
-				</ul>
 			<?php endif;?>
-	<?php endif;?>
+		</div>
+		<?php include_once(get_template_directory() . '/widget/page-nav.php');?>
+		<?php if(is_active_sidebar('listunder')):?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar('listunder');?>
+			</ul>
+		<?php endif;?>
 	</main>
 	<?php get_footer();?>
 <?php endif;?>
