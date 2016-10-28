@@ -52,7 +52,7 @@ if($myAmp===true):?>
 					<?php dynamic_sidebar('singularfooter');?>
 				</ul>
 			<?php endif;?>
-			<span class="copyright" style="text-aligh:center;">
+			<span class="copyright">
 				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 					<span itemprop="name">
 						<b><?php echo get_bloginfo('name');?></b>
