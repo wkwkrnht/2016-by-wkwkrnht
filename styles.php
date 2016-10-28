@@ -53,6 +53,7 @@
 	*/
 	#button-toggle,#share-menu-toggle,#home-button,#menu-toggle{display:inline-block;height:15vh;width:15vh;border-radius:50%;position:fixed;z-index:100;text-align:center;background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;opacity:.7;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	#button-toggle,#share-menu-toggle i,#home-button i,#menu-toggle i{line-height:15vh;vertical-align:middle;}
+	#button-toggle{font-size:3rem;font-weight:900;}
 	.open#menu-toggle ~ #button-toggle{transform:rotate(45deg);}
 	#button-toggle:visited,#share-menu-toggle:visited,#home-button:visited,#menu-toggle:visited{color:<?php echo get_option('footer_color','#fff');?>;}
 	#menu-toggle{bottom:8vh;left:calc(50% - 25vh);}
