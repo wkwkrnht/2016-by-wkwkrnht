@@ -483,7 +483,7 @@ function get_no_image(){return get_template_directory_uri() . '/inc/no-img.png';
 function no_image(){echo get_no_image();}
 function get_meta_image(){
     if(is_singular()===true && has_post_thumbnail()===true){
-        $size = 'thumbnail';
+        $size = 'wkwkrnht-thumb-512';
         return get_yes_image($size);
     }elseif(has_custom_logo()===true){
         $logo = get_theme_mod('custom_logo');
@@ -494,7 +494,6 @@ function get_meta_image(){
 }
 function meta_image(){echo get_meta_image();}
 function get_wkwkrnht_eyecatch($size){
-    if(is_singular()===false){return;}
     if(has_post_thumbnail()===true){
         return get_yes_image($size);
     }else{
