@@ -19,7 +19,7 @@ if($myAmp===true):?>
 			</ul>
 		<?php endif;?>
 		<header class="article-header">
-			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="eyecatch" class="article-eyecatch">
+			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="92vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
 				<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
 					<?php the_time('Y/n/j');?>

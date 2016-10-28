@@ -35,7 +35,7 @@ function wkwkrnht_setup(){
     add_theme_support('custom-logo',array('height'=>512,'width'=>512,'flex-height'=>true,));
 
     add_image_size('wkwkrnht-thumb',1344,576);
-    add_image_size('wkwkrnht-thumb-1024',1024,1024,true);
+    add_image_size('wkwkrnht-thumb-1024',1024,1024);
     add_image_size('wkwkrnht-thumb-512',512,512,true);
     add_image_size('wkwkrnht-thumb-256',256,256,true);
     add_image_size('wkwkrnht-thumb-128',128,128,true);
