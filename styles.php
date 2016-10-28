@@ -42,7 +42,7 @@
 	.close{visibility:hidden;}
 	.open{visibility:visible;}
 	.vcard,.fn,.author{margin:0;}
-	footer > .copyright{display:inline-block;width:100%;padding:0;margin:0;font-size:4rem;text-align:center;}
+	footer > .copyright{display:inline-block;width:100%;padding:0;margin:0;font-size:2rem;text-align:center;}
 	/*
 		menu
 	1.hover to move neighbor
