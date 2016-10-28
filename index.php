@@ -1,55 +1,73 @@
-<?if(is_singular()===true):?>
-	<?php $myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_singular()){$myAmp=true;};
-	if($myAmp===true):?>
-		<?php require_once('amp.php');?>
-	<?php else:?>
-		<?php get_header();?>
-		<article id="post-<?php the_ID();?>" <?php post_class();?>>
-			<?php if(is_active_sidebar('singularheader')):?>
+<?php
+$size_full = array(1344,576);
+$size_128  = array(128,128);
+$size_256  = array(256,256);
+$size_512  = array(512,512);
+$size_1024 = array(1024,1024);
+$myAmp     = false;
+$string    = $post->post_content;
+$nowurl    = $_SERVER["REQUEST_URI"];
+if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_singular()===true){$myAmp=true;}
+if($myAmp===true):?>
+	<?php require_once('amp.php');?>
+<?php elseif(is_singular()===true):?>
+	<?php get_header();?>
+	<article id="post-<?php the_ID();?>" <?php post_class();?>>
+		<?php if(is_active_sidebar('singularheader')):?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar('singularheader');?>
+			</ul>
+		<?php endif;?>
+		<header class="article-header">
+			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="eyecatch" class="article-eyecatch">
+			<div class="article-meta">
+				<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
+					<?php the_time('Y/n/j');?>
+				</time>
+				<span class="article-info">
+					<h1 class="article-name entry-title"><?php the_title();?></h1>
+					<span class="author">
+						著者 :
+						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>" title="<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>" tabindex="0">
+							<span class="vcard author">
+								<span class="fn">
+									<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
+								</span>
+							</span>
+						</a>
+					</span><br>
+					<span class="article-tag">
+						<?php the_tags('','','');?>
+					</span>
+				</span>
+			</div>
+		</header>
+		<main class="article-main">
+			<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
+			<?php wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
+		</main>
+		<footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
+			<?php if(is_active_sidebar('singularfooter')):?>
 				<ul class="widget-area">
-					<?php dynamic_sidebar('singularheader');?>
+					<?php dynamic_sidebar('singularfooter');?>
 				</ul>
 			<?php endif;?>
-			<header class="article-header">
-				<img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch('wkwkrnht-thumb-128');?> 320w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-256');?> 1270w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-512');?> 1920w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-1024');?> 2560w" alt="eyecatch" class="article-eyecatch">
-				<div class="article-meta">
-					<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
-						<?php the_time('Y/n/j');?>
-					</time>
-					<span class="article-info">
-						<h1 class="article-name entry-title"><?php the_title();?></h1>
-						<span class="author">
-							著者 :
-							<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>" title="<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>" tabindex="0">
-								<span class="vcard author">
-									<span class="fn">
-										<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
-									</span>
-								</span>
-							</a>
-						</span><br>
-						<span class="article-tag">
-							<?php the_tags('','','');?>
-						</span>
+			<span class="copyright" style="text-aligh:center;">
+				&copy;
+				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
+					<span itemprop="name">
+						<?php echo get_bloginfo('name');?>
 					</span>
-				</div>
-			</header>
-			<main class="article-main">
-				<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
-				<?php wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
-			</main>
-			<?php if(is_active_sidebar('singularfooter')):?>
-				<footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
-					<ul class="widget-area">
-						<?php dynamic_sidebar('singularfooter');?>
-					</ul>
-					<span class="copyright" style="text-aligh:center;"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><?php echo get_bloginfo('name');?></span></span> &copy;<span itemprop="copyrightYear"><?php echo get_first_post_year();?></span></span>
-				</footer>
-			<?php endif;?>
-		</article>
-		<?php get_footer();?>
-	<?php endif;?>
-<?else:?>
+				</span>
+				&nbsp;&nbsp;
+				<span itemprop="copyrightYear">
+					<?php echo get_first_post_year();?>
+				</span>
+			</span>
+		</footer>
+	</article>
+	<?php get_footer();?>
+<?php else:?>
 	<?php get_header();?>
 	<main id="site-main">
 		<?php wkwkrnht_special_card();?>
@@ -75,7 +93,7 @@
 					?>
 					<section class="card">
 						<a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0">
-							<img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch('wkwkrnht-thumb-128');?> 320w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-256');?> 1270w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-512');?> 1920w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-1024');?> 2560w" alt="eyecatch" class="card-eyecatch">
+							<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="eyecatch" class="card-eyecatch">
 						</a>
 						<div class="card-info">
 							<h2 class="card-title"><a href="<?php echo $link;?>" title="<?php echo $title;?>" tabindex="0"><?php echo $txt;?></a></h2><br>
@@ -108,4 +126,4 @@
 	<?php endif;?>
 	</main>
 	<?php get_footer();?>
-<? endif;?>
+<?php endif;?>
