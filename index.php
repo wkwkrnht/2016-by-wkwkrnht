@@ -53,13 +53,12 @@ if($myAmp===true):?>
 				</ul>
 			<?php endif;?>
 			<span class="copyright" style="text-aligh:center;">
-				&copy;
 				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 					<span itemprop="name">
 						<b><?php echo get_bloginfo('name');?></b>
 					</span>
 				</span>
-				&nbsp;&nbsp;
+				&nbsp;&nbsp;&copy;
 				<span itemprop="copyrightYear">
 					<?php echo get_first_post_year();?>
 				</span>
@@ -93,7 +92,7 @@ if($myAmp===true):?>
 	                echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title card-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
 	            endif;
 	        echo'<br>
-	            <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span> &copy;<span itemprop="copyrightYear">' . $year . '</span></span>
+	            <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span>&nbsp;&nbsp;&copy;<span itemprop="copyrightYear">' . $year . '</span></span>
 	        </header>';
 	    }?>
 		<?php if(is_active_sidebar('listabove')):?>
