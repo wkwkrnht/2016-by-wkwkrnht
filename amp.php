@@ -156,7 +156,9 @@
 <body>
 	<article>
 		<header class="article-header">
-			<a href="<?php echo esc_url(home_url());?>" tabindex="0" class="article-img"><amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-eyecatch');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img></a>
+			<a href="<?php echo esc_url(home_url());?>" tabindex="0" class="article-img">
+				<amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img>
+			</a>
 			<div class="article-meta">
 				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
 				<span class="article-info">

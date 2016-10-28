@@ -15,7 +15,7 @@
         .bio-info,.follow-button{width:calc(80vmin / 10 * 8);}
     }
 </style>
-<header class="bio-wrapper card info-card" <?php if(is_author()===true){echo'itemscope itemtype="http://schema.org/WPHeader"';}?>>
+<<?php if(is_author()===true){echo'header itemscope itemtype="http://schema.org/WPHeader"';}else{echo'div';}?> class="bio-wrapper card info-card">
     <?php echo get_avatar(get_the_author_meta('ID'),256,'','bio-img',array('class'=>'bio-img'));?>
     <a class="bio-info" href="<?php echo home_url() . '?author=' . get_the_author_meta('ID');?>" tabindex="0" title="<?php the_author_meta('display_name');?>'s summary"<?php if(is_author()===true){echo'itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"';}?>>
         <h2 class="bio-name" <?php if(is_author()===true){echo'itemprop="name"';}?>><?php the_author_meta('display_name');?></h2><br>
@@ -51,4 +51,4 @@
         <?php $Rakuma = '';$Rakuma = get_the_author_meta('Rakuma');if($Rakuma!==''){echo'<li itemprop="name"><a href="' . $Rakuma . '" class="rakuma" tabindex="0" itemprop="url">rakuma</a></li>';}?>
         <?php $Merukari = '';$Merukari = get_the_author_meta('Merukari');if($Merukari!==''){echo'<li itemprop="name"><a href="' . $Merukari . '" class="merukari" tabindex="0" itemprop="url">merukari</a></li>';}?>
     </ul>
-</header>
+</<?php if(is_author()===true){echo'header';}else{echo'div';}?>>

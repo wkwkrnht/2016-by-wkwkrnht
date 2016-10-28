@@ -12,7 +12,7 @@ $query = new WP_Query($array);
 if($query -> have_posts()):
 	while($query -> have_posts()):$query -> the_post();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
-			<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
+			<img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch('wkwkrnht-thumb-128');?> 320w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-256');?> 1270w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-512');?> 1920w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-1024');?> 2560w" alt="thumbnail" class="related-thumb">
 			<?php the_title('<div class="related-title">','</div>');?>
 		</a>
 	<?php endwhile;?>
@@ -23,7 +23,7 @@ if($query -> have_posts()):
 	$query = new WP_Query($array);
 	while($query -> have_posts()):$query -> the_post();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
-			<img src="<?php $size=array(512,512);wkwkrnht_eyecatch($size);?>" alt="thumbnail" class="related-thumb">
+			<img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch('wkwkrnht-thumb-128');?> 320w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-256');?> 1270w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-512');?> 1920w,<?php wkwkrnht_eyecatch('wkwkrnht-thumb-1024');?> 2560w" alt="thumbnail" class="related-thumb">
 			<?php the_title('<div class="related-title">','</div>');?>
 		</a>
 	<?php endwhile;?>
