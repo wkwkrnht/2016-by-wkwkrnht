@@ -1,5 +1,5 @@
 <style>
-    .widget_post_nav a{display:inline-block;height:10vh;width:80vw;font-size:2.5rem;line-height:10vh;text-align:center;color:#fff;box-shadow:inset 0 0 50px rgba(0,0,0,.3);}
+    .widget_post_nav a{display:inline-block;height:10vh;width:80vw;font-size:2.5rem;line-height:10vh;text-align:center;color:#fff;box-shadow:inset 0 0 5vmin rgba(0,0,0,.3);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
     <?php
         if(is_singular()===false){return;}
         $prev    = (is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true);
