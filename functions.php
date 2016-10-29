@@ -36,6 +36,7 @@ function wkwkrnht_setup(){
 
     add_image_size('wkwkrnht-thumb',1344,576);
     add_image_size('wkwkrnht-thumb-1024',1024,1024);
+    add_image_size('wkwkrnht-thumb-800',800,800,true);
     add_image_size('wkwkrnht-thumb-512',512,512,true);
     add_image_size('wkwkrnht-thumb-256',256,256,true);
     add_image_size('wkwkrnht-thumb-128',128,128,true);
@@ -195,7 +196,21 @@ class disqus_widget extends WP_Widget{
 
 class duck_duck_go_search_widget extends WP_Widget{
     function __construct(){parent::__construct('duck_duck_go_search_widget','DuckDuckGo 検索',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/duckduckgo-search.php');echo $args['after_widget'];}
+    public function widget($args,$instance){
+        echo $args['before_widget'] .
+        '<style>
+            .widget_duck_duck_go_widget input{display:inline-block;}
+            .widget_duck_duck_go_widget input[type*="search"]{width:70%;margin-right:5%;}
+            .widget_duck_duck_go_widget input[type*="submit"]{width:15%;border-radius:3vmin;color:#03a9f4;background-color:#fff;border:1px solid #03a9f4;}
+            .widget_duck_duck_go_widget input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
+        </style>
+        <form action="https://duckduckgo.com/" role="search">
+            <input name="sites" type="hidden" value="<?php echo esc_url(substr(home_url('','http'),6));?>">
+            <input name="q" type="search" required>
+            <input type="submit" value="Search">
+        </form>'
+        . $args['after_widget'];
+    }
 }
 
 class google_search_widget extends WP_Widget{
