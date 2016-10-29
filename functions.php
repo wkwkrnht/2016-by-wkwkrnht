@@ -806,9 +806,15 @@ function wkwkrnht_add_mce_settings($settings){
     $settings['fontsize_formats'] = '10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px 38px 40px 42px 44px 46px 48px 50px 0.5rem 0.6rem 0.8rem 1rem 1.1rem 1.2rem 1.3rem 1.4rem 1.5rem 1.6rem 1.7rem 1.8rem 1.9rem 2rem 2.1rem 2.2rem 2.3rem 2.4rem 2.5rem 0.5em 0.6em 0.7em 0.8em 0.9em 1em 1.1em 1.2em 1.3em 1.4em 1.5em 1.6em 1.7em 1.8em 1.9em 2em 2.1em 2.2em 2.3em 2.4em 2.5em 50% 55% 60% 65% 70% 75% 80% 85% 90% 95% 100% 105% 110% 115% 120% 125% 130% 135% 140% 145% 150%';
     return $settings;
 }
-add_filter('mce_buttons_3','wkwkrnht_add_mce_buttons');
+add_filter('mce_buttons_2','wkwkrnht_add_mce_buttons');
 function wkwkrnht_add_mce_buttons($buttons){
-    array_unshift($buttons,'fontsizeselect','fontselect','styleselect','backcolor','newdocument','copy','paste')
+    $buttons[] = 'fontsizeselect';
+    $buttons[] = 'fontselect';
+    $buttons[] = 'styleselect';
+    $buttons[] = 'backcolor';
+    $buttons[] = 'newdocument';
+    $buttons[] = 'copy';
+    $buttons[] = 'paste';
     return $buttons;
 }
 
