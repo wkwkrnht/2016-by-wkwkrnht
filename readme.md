@@ -17,6 +17,7 @@
 
 このWordpressテーマは、ブログ向けに作られています。
 
+* バニラな子テーマあり[(参照)](https://github.com/wkwkrnht/2016-by-wkwkrnht-child/)
 * すっきりとしたカードデザイン
 * いつでもどこでも3クリック(タップ)でメニューアクセス or SNS共有
 * メニュー内と記事下にウィジェットスペース確保
@@ -25,11 +26,47 @@
 * 前後記事ナビでは、アイキャッチも表示
 * 関連記事ウィジェットは画像有りと無しが選べる
 * 検索ウィジェットはタグとカテゴリーで絞込可能
-* コメント欄も選択可(WP独自 or Disqus or 無し)
-* バニラな子テーマあり[(参照)](https://github.com/wkwkrnht/2016-by-wkwkrnht-child/)
-* 豊富なクイックタグ(h1～h6,p,テーブル,ショートコード)
-* 豊富なブログカード生成ショートコード(OGP or Embed.ly or はてな)
-* 追加クラス(マーカー or 検索風表示 or 注意表示)
+* コメント欄はウィジェットで選択
+
+    * WP独自
+    * Disqus
+
+* 豊富なブログカード生成ショートコード
+
+    * OGP
+    * Embed.ly
+    * はてな
+
+* 追加クラス
+
+    * マーカー
+    * 検索風表示
+    * 注意表示
+
+* 豊富なクイックタグ
+
+    * hx
+
+        * h1
+        * h2
+        * h3
+        * h4
+        * h5
+        * h6
+
+    * p
+    * テーブル
+
+        * table
+        * thead
+        * tbody
+        * tfoot
+        * tr
+        * th
+        * td
+
+    * ショートコード
+
 * カスタマイザーをいじるだけで、headタグ内にテキスト埋め込み可能
 * リファラーも設定可
 * AMP対応
@@ -55,17 +92,14 @@
     * OpenGraph.php (OGP解読スクリプト)
     * no-img.png (404な画像)
 
-* language (国際化向けファイル群)
-
-    * end more...
-
 * widget (ウィジェット)
 
     * author-bio.php (投稿者プロフィール)
     * comment.php (コメント)
-    * disqus.php (Disqus)
+    * DuckDuckGo.php (DuckDuckGo)
     * manth-archive.php (短縮版月別アーカイブ)
     * move-top.php (そのページの最上部への移動ボタン)
+    * post-nav-hover.php (前後記事ナビ)
     * post-nav.php (前後記事ナビ)
     * related-posts-img.php (画像付関連記事)
     * related-posts.php (関連記事)
@@ -79,6 +113,5 @@
 * readme.md (このファイル)
 * readme.txt (WP向けのreadme)
 * screenshot.png (スクリーンショット)
-* singular.php (単独ページ向けテンプレート)
 * style.css (情報記述用スタイルシート)
 * styles.css (メインスタイルシート)

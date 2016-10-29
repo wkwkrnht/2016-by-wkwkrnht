@@ -1,9 +1,9 @@
-    <footer>
+    <nav>
         <a href="javascript:void(0)" id="menu-toggle" class="close" tabindex="0" role="button" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-5x"></i></a>
         <?php if(is_home()===false){echo'<a href="' . esc_url(home_url()) . '" tabindex="0" role="button" title="ホームへのリンク" id="home-button" class="close"><i class="fa fa-home fa-5x" aria-hidden="true"></i></a>';$script="document.getElementById('home-button').classList.toggle('close');document.getElementById('home-button').classList.toggle('open');";}?>
         <a href="javascript:void(0)" id="button-toggle" tabindex="0" role="button" title="メニューボタン" onclick="<?php echo $script;?>document.getElementById('menu-toggle').classList.toggle('close');document.getElementById('menu-toggle').classList.toggle('open');document.getElementById('share-menu-toggle').classList.toggle('close');document.getElementById('share-menu-toggle').classList.toggle('open');">+</a>
         <a href="javascript:void(0)" id="share-menu-toggle" class="close" tabindex="0" role="button" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');"><i class="fa fa-share-alt fa-5x"></i></a>
-    </footer>
+    </nav>
     <nav id="share-menu" class="close">
         <a href="javascript:void(0)" class="close-button" tabindex="0" role="button" title="Close Button" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');">×</a>
         <ul>
@@ -48,18 +48,7 @@
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
         }
     endif;?>
-    <style>
-        .night-mode .hide-nav-prev a,.night-mode .hide-nav-next a,body.night-mode,.night-mode #main-menu,.night-mode .card,.night-mode div.card-list,.night-mode a#menu-toggle,.night-mode a#home-button,.night-mode a#button-toggle,.night-mode a#share-menu-toggle{color:#fff;background-color:#333;}
-	    .night-mode #share-menu a.close-button{background-color:#333;}
-	    .night-mode ul.page-nation,.night-mode ul.page-nation a,.night-mode ul.page-nation li span.dots,.night-mode ul.page-nation li.current{color:#fff;background-color:#333;border-color:#fff;}
-        .night-mode ul.page-nation li span.dots{color:#f1f1f1;}
-        .night-mode ul.page-nation a:hover{color:#333;background-color:#fff;}
-        .night-mode .card,.night-mode ul.page-nation{box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-        .night-mode div.article-meta,.night-mode .article-main h1,.night-mode div.information,.night-mode div.question{color:#333;}
-        .night-mode .article-main h2.ogp-blogcard-title,.night-mode .article-main p.ogp-blogcard-description,.night-mode .article-main a.ogp-blogcard-site-name,.night-mode .article-main h2.ogp-blogcard-title:visited,.night-mode .article-main p.ogp-blogcard-description:visited,.night-mode .article-main a.ogp-blogcard-site-name:visited,.night-mode .article-main img.ogp-blogcard-img::after{color:#fff;}
-        .night-mode div.ogp-blogcard{background-color:#333;border-color:#f1f1f1;}
-        .night-mode aside.toc{border:none;box-shadow:none;}
-    </style>
+    <?php $key='';$key=get_option('cookie_key');if($key===''){$key = '2016-by-wkwkrnht';}?>
     <script>
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
         (function(){
@@ -69,26 +58,26 @@
             for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);
         }})()
         (function(){
-            var key = "<?php $key='';$key=get_option('cookie_key');if($key!==''){echo $key;}else{echo'2016-by-wkwkrnht';}?>";
-            var n = getCookie(key);
-            if(n==""){window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");}
-            n++;
-            setCookie(key,n);
+            var key = "<?php echo $key;?>";
             function getCookie(key){
                 var s,e;
-                var c = document.cookie+";";
+                var c = document.cookie + ";";
                 var b = c.indexOf(key,0);
                 if(b!=-1){c=c.substring(b,c.length);
-                    s = c.indexOf("=",0)+1;
+                    s = c.indexOf("=",0) + 1;
                     e = c.indexOf(";",s);return(unescape(c.substring(s,e)));
                 }
                 return("");
             }
             function setCookie(key,n){
                 var myDate = new Date();
-                myDate.setTime(myDate.getTime()+6*30*24*60*60*1000);
+                myDate.setTime(myDate.getTime() + 6 * 30 * 24 * 60 * 60 * 1000);
                 document.cookie = " " + key + "=" + escape(n) + ";expires=" + myDate.toGMTString();
             }
+            var n = getCookie(key);
+            if(n==""){window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");}
+            n++;
+            setCookie(key,n);
         })()
     </script>
     <?php $txt='';$txt=get_option('footer_txt');if($txt!==''){echo $txt;}?>
