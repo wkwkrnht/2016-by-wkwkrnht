@@ -205,7 +205,7 @@ class duck_duck_go_search_widget extends WP_Widget{
             .widget_duck_duck_go_widget input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
         </style>
         <form action="https://duckduckgo.com/" role="search">
-            <input name="sites" type="hidden" value="<?php echo esc_url(substr(home_url('','http'),6));?>">
+            <input name="sites" type="hidden" value="' . esc_url(substr(home_url('','http'),6)) . '">
             <input name="q" type="search" required>
             <input type="submit" value="Search">
         </form>'
@@ -808,13 +808,13 @@ function wkwkrnht_add_mce_settings($settings){
 }
 add_filter('mce_buttons_3','wkwkrnht_add_mce_buttons');
 function wkwkrnht_add_mce_buttons($buttons){
-    array_push($buttons,'fontsizeselect');
-    array_push($buttons,'fontselect');
-    array_push($buttons,'styleselect');
-    array_push($buttons,'backcolor');
-    array_push($buttons,'newdocument');
-    array_push($buttons,'copy');
-    array_push($buttons,'paste');
+    $buttons[] = 'fontsizeselect';
+    $buttons[] = 'fontselect';
+    $buttons[] = 'styleselect';
+    $buttons[] = 'backcolor';
+    $buttons[] = 'newdocument';
+    $buttons[] = 'copy';
+    $buttons[] = 'paste';
     return $buttons;
 }
 
