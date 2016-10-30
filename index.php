@@ -11,6 +11,9 @@ if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_singula
 if($myAmp===true):?>
 	<?php require_once('amp.php');?>
 <?php elseif(is_singular()===true):?>
+	<?php
+	$author_name = '';
+	if(have_posts()):while(have_posts()):the_post();$author_name = get_the_author_meta('display_name');endwhile;endif;?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
 		<?php if(is_active_sidebar('singularheader')):?>
@@ -28,15 +31,15 @@ if($myAmp===true):?>
 					<h1 class="article-name entry-title"><?php the_title();?></h1>
 					<span class="author">
 						著者 :
-						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>" title="<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>" tabindex="0">
+						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>" title="<?php echo $author_name;?>" tabindex="0">
 							<span class="vcard author">
 								<span class="fn">
-									<?php if(have_posts()):while(have_posts()):the_post();the_author_meta('display_name');endwhile;endif;?>
+									<?php echo $author_name;?>
 								</span>
 							</span>
 						</a>
 					</span><br>
-					<span class="article-tag">
+					<span class="widget_tag_cloud">
 						<?php the_tags('','','');?>
 					</span>
 				</span>
@@ -140,7 +143,26 @@ if($myAmp===true):?>
 				<?php if(is_active_sidebar('listfooter')){dynamic_sidebar('listfooter');}?>
 			<?php endif;?>
 		</div>
-		<?php include_once(get_template_directory() . '/widget/page-nav.php');?>
+		<?php
+		global $wp_query;
+		$big = 999999999;
+		$page_format = paginate_links(array(
+		    'base'      => str_replace($big,'%#%',esc_url(get_pagenum_link($big))),
+		    'format'    => '/page/%#%',
+		    'current'   => max(1,get_query_var('paged')),
+		    'total'     => $wp_query->max_num_pages,
+		    'prev_next' => True,
+		    'prev_text' => '<',
+		    'next_text' => '>',
+		    'type'      => 'array'
+		));
+		if(is_array($page_format)){
+		    $echo = '';
+		    $paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
+		    foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
+		    echo'<ul class="page-nation">' . $echo . '</ul>';
+		}
+		wp_reset_query();?>
 		<?php if(is_active_sidebar('listunder')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listunder');?>
