@@ -1,4 +1,10 @@
 <style>
+	/*
+		00
+	1.intilize
+	2.fontawesome
+	3.original
+	*/
 	@font-face{font-family:"FontAwesome";font-weight:normal;font-style:normal;src:<?php echo 'url(' . get_template_directory_uri() . '/inc/font-awesome/fontawesome-webfont.eot)';?>;src:<?php echo 'url(' . get_template_directory_uri() . '/inc/font-awesome/fontawesome-webfont.eot?#iefix)';?> format('embedded-opentype'),<?php echo 'url(' . get_template_directory_uri() . '/inc/font-awesome/fontawesome-webfont.woff2)';?> format('woff2'),<?php echo 'url(' . get_template_directory_uri() . '/inc/font-awesome/fontawesome-webfont.woff)';?> format('woff'),<?php echo 'url(' . get_template_directory_uri() . '/inc/font-awesome/fontawesome-webfont.ttf)';?> format('truetype'),<?php echo 'url(' . get_template_directory_uri() . '/inc/font-awesome/fontawesome-webfont.svg#fontawesomeregular)';?> format('svg');}
 	@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg);}}
 	@keyframes fa-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(359deg);transform:rotate(359deg);}}
