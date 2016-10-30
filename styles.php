@@ -69,7 +69,7 @@
 	.widget-area{list-style:none;}
 	.widget-area .widget{max-width:94%;margin:2vh auto;}
 	.widget-area .widget li{max-width:93%;}
-	.widget-title{min-height:5vh;max-width:94%;margin:2vh auto;line-height:5vh;text-align:center;color:<?php echo get_option('widget_title_color','#fff');?>;background-color:<?php echo get_option('widget_title_background','#03a9f4');?>;}
+	.widget-title{min-height:5vh;max-width:94%;margin:2vh auto;line-height:5vh;text-align:center;color:<?php echo get_option('wkwkrnht_widget_title_color','#fff');?>;background-color:<?php echo get_option('wkwkrnht_widget_title_background','#03a9f4');?>;}
 
 	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
 	#share-menu ul li{width:50%;height:25vh;text-align:center;}
