@@ -4,16 +4,19 @@ $size_128  = array(128,128);
 $size_256  = array(256,256);
 $size_512  = array(512,512);
 $size_1024 = array(1024,1024);
+$year      = get_first_post_year();
+$blogname  = get_bloginfo('name');
 $myAmp     = false;
 $string    = $post->post_content;
 $nowurl    = $_SERVER["REQUEST_URI"];
-if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_singular()===true){$myAmp=true;}
-if($myAmp===true):?>
-	<?php require_once('amp.php');?>
-<?php elseif(is_singular()===true):?>
-	<?php
-	$author_name = '';
-	if(have_posts()):while(have_posts()):the_post();$author_name = get_the_author_meta('display_name');endwhile;endif;?>
+if(strpos($nowurl,'amp')!==false && strpos($string,'<script>')===false && is_singular()===true){$myAmp = true;}
+if($myAmp===true):
+	require_once('amp.php');
+elseif(is_singular()===true):
+	if(have_posts()):while(have_posts()):the_post();
+		$author_name = get_the_author_meta('display_name');
+		$author_id   = get_the_author_meta('ID');
+	endwhile;endif;?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
 		<?php if(is_active_sidebar('singularheader')):?>
@@ -31,7 +34,7 @@ if($myAmp===true):?>
 					<h1 class="article-name entry-title"><?php the_title();?></h1>
 					<span class="author">
 						著者 :
-						<a href="<?php if(have_posts()):while(have_posts()):the_post();echo site_url() . '?author=' . get_the_author_meta('ID');endwhile;endif;?>" title="<?php echo $author_name;?>" tabindex="0">
+						<a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
 							<span class="vcard author">
 								<span class="fn">
 									<?php echo $author_name;?>
@@ -46,8 +49,9 @@ if($myAmp===true):?>
 			</div>
 		</header>
 		<main class="article-main">
-			<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
-			<?php wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
+			<?php
+			if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;
+			wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
 		</main>
 		<footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
 			<?php if(is_active_sidebar('singularfooter')):?>
@@ -58,12 +62,12 @@ if($myAmp===true):?>
 			<span class="copyright">
 				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 					<span itemprop="name">
-						<b><?php echo get_bloginfo('name');?></b>
+						<b><?php echo $blogname;?></b>
 					</span>
 				</span>
 				&nbsp;&nbsp;&copy;
 				<span itemprop="copyrightYear">
-					<?php echo get_first_post_year();?>
+					<?php echo $year;?>
 				</span>
 			</span>
 		</footer>
@@ -76,40 +80,39 @@ if($myAmp===true):?>
 		if(is_author()===true){
 	        include_once(get_template_directory() . '/widget/author-bio.php');
 	    }else{
-	        $year            = get_first_post_year();
-	        $blogname        = get_bloginfo('name');
 	        $sitedescription = get_bloginfo('description');
 	        echo'<header class="card info-card special-card" itemscope itemtype="http://schema.org/WPHeader">';
-	            if(is_category()===true):
+	            if(is_category()===true){
 	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . category_description() . '</p>';
-	            elseif(is_tag()===true):
+	            }elseif(is_tag()===true){
 	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . tag_description() . '</p>';
-	            elseif(is_search()===true):
+	            }elseif(is_search()===true){
 	                global $wp_query;
 	                $serachresult = $wp_query->found_posts;
+					$maxpage      = $wp_query->max_num_pages;
 	                wp_reset_query();
-	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . $serachresult . ' 件 / ' . $wp_query->max_num_pages . ' ページ</p>';
-	            elseif(is_404()===true):
+	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . $serachresult . ' 件 / ' . $maxpage . ' ページ</p>';
+	            }elseif(is_404()===true){
 	                echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title card-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
-	            else:
+	            }else{
 	                echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title card-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
-	            endif;
+				}
 	        echo'<br>
 	            <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span>&nbsp;&nbsp;&copy;<span itemprop="copyrightYear">' . $year . '</span></span>
 	        </header>';
-	    }?>
-		<?php if(is_active_sidebar('listabove')):?>
+	    }
+		if(is_active_sidebar('listabove')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listabove');?>
 			</ul>
 		<?php endif;?>
 		<div class="card-list">
-			<?php if(is_404()===true):?>
-					<?php if(is_active_sidebar('404')){dynamic_sidebar('404');}?>
-			<?php else:?>
-				<?php if(is_active_sidebar('listheader')){dynamic_sidebar('listheader');}?>
-				<?php if(have_posts()):while(have_posts()):the_post();?>
-					<?php
+			<?php
+			if(is_404()===true){
+					if(is_active_sidebar('404')){dynamic_sidebar('404');}
+			}else{
+				if(is_active_sidebar('listheader')){dynamic_sidebar('listheader');}
+				if(have_posts()):while(have_posts()):the_post();
 					$link       = get_permalink();
 					$title      = the_title_attribute(array('echo'=>false));
 					$txt        = mb_strimwidth(get_the_title(),0,32,'…');
@@ -139,9 +142,9 @@ if($myAmp===true):?>
 							</span>
 						</div>
 					</section>
-				<?php endwhile;endif;?>
-				<?php if(is_active_sidebar('listfooter')){dynamic_sidebar('listfooter');}?>
-			<?php endif;?>
+				<?php endwhile;endif;
+				if(is_active_sidebar('listfooter')){dynamic_sidebar('listfooter');}
+			}?>
 		</div>
 		<?php
 		global $wp_query;
@@ -157,13 +160,13 @@ if($myAmp===true):?>
 		    'type'      => 'array'
 		));
 		if(is_array($page_format)){
-		    $echo = '';
+		    $echo  = '';
 		    $paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
 		    foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
 		    echo'<ul class="page-nation">' . $echo . '</ul>';
 		}
-		wp_reset_query();?>
-		<?php if(is_active_sidebar('listunder')):?>
+		wp_reset_query();
+		if(is_active_sidebar('listunder')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listunder');?>
 			</ul>

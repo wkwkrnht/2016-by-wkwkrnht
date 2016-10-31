@@ -114,7 +114,13 @@ class wkwkrnht_manth_archive extends WP_Widget{
 
 class move_top extends WP_Widget{
     function __construct(){parent::__construct('move_top','先頭へのナビゲーション',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/move-top.php');echo $args['after_widget'];}
+    public function widget($args,$instance){
+        echo $args['before_widget'] .
+        '<style>.widget_move_top{height:15vh;width:15vh;border-radius:50%;margin:5vh auto;background-color:' . get_option('move_top_background','#03a9f4') . ';}.widget_move_top a{font-size:5rem;font-weight:900;line-height:15vh;text-decoration:none;text-align:center;vertical-align:middle;color:' . get_option('move_top_color','#fff') . ';}</style>
+        <a href="#top" title="Go to Top"  role="navigation">Λ</a>
+        <script type="application/ld+json">{"@type" : "SiteNavigationElement","url" : "' . get_meta_url() . '#top","name" : "Page Top Button"}</script>'
+        . $args['after_widget'];
+    }
 }
 
 class related_posts extends WP_Widget{
@@ -927,10 +933,10 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'mark_color',array('label'=>'mark color','settings'=>'mark_color','section'=>'colors',)));
     $wp_customize->add_setting('mark_background',array('type'=>'option','default'=>'#ff0','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'mark_background',array('label'=>'mark background-color','settings'=>'mark_background','section'=>'colors',)));
-    //$wp_customize->add_setting('widget_title_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    //$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'widget_title_background',array('label'=>'.widget-title background-color','settings'=>'widget_title_background','section'=>'colors',)));
-    //$wp_customize->add_setting('widget_title_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    //$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'widget_title_color',array('label'=>'.widget-title color','settings'=>'widget_title_color','section'=>'colors',)));
+    $wp_customize->add_setting('wkwkrnht_widget_title_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnt_widget_title_background',array('label'=>'.widget-title background-color','settings'=>'wkwkrnht_widget_title_background','section'=>'colors',)));
+    $wp_customize->add_setting('wkwkrnht_widget_title_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_widget_title_color',array('label'=>'.widget-title color','settings'=>'wkwkrnht_widget_title_color','section'=>'colors',)));
     $wp_customize->add_setting('card_list_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'card_list_background',array('label'=>'.card-list background-color','settings'=>'card_list_background','section'=>'colors',)));
     $wp_customize->add_setting('footer_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
@@ -965,12 +971,12 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_hover_color',array('label'=>'.page-nation:hover color','settings'=>'page_nation_hover_color','section'=>'colors',)));
     $wp_customize->add_setting('page_nation_hover_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_hover_background',array('label'=>'.page-nation:hover background-color','settings'=>'page_nation_hover_background','section'=>'colors',)));
-    //$wp_customize->add_setting('comment_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    //$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'comment_background',array('label'=>'.wiget_comment background-color','settings'=>'comment_background','section'=>'colors',)));
-    //$wp_customize->add_setting('comment_title_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    //$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'comment_title_color',array('label'=>'.comment-title color','settings'=>'comment_title_color','section'=>'colors',)));
-    //$wp_customize->add_setting('comment_title_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    //$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'comment_title_background',array('label'=>'.comment-title background-color','settings'=>'comment_title_background','section'=>'colors',)));
+    $wp_customize->add_setting('wkwkrnht_comment_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_comment_background',array('label'=>'.wiget_comment background-color','settings'=>'wkwkrnht_comment_background','section'=>'colors',)));
+    $wp_customize->add_setting('wkwkrnht_comment_title_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_comment_title_color',array('label'=>'.comment-title color','settings'=>'wkwkrnht_comment_title_color','section'=>'colors',)));
+    $wp_customize->add_setting('wkwkrnht_comment_title_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_comment_title_background',array('label'=>'.comment-title background-color','settings'=>'wkwkrnht_comment_title_background','section'=>'colors',)));
     $wp_customize->add_setting('manth_archive_year_main',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_year_main',array('label'=>'.widget_manth_archive_year main-color','settings'=>'manth_archive_year_main','section'=>'colors',)));
     $wp_customize->add_setting('manth_archive_year_h3_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
