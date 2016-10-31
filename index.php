@@ -12,8 +12,7 @@ $nowurl    = $_SERVER["REQUEST_URI"];
 if(strpos($nowurl,'amp')!==false && strpos($string,'<script>')===false && is_singular()===true){$myAmp = true;}
 if($myAmp===true):
 	require_once('amp.php');
-elseif(is_singular()===true):?>
-	<?php
+elseif(is_singular()===true):
 	if(have_posts()):while(have_posts()):the_post();
 		$author_name = get_the_author_meta('display_name');
 		$author_id   = get_the_author_meta('ID');
@@ -101,8 +100,8 @@ elseif(is_singular()===true):?>
 	        echo'<br>
 	            <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span>&nbsp;&nbsp;&copy;<span itemprop="copyrightYear">' . $year . '</span></span>
 	        </header>';
-	    }?>
-		<?php if(is_active_sidebar('listabove')):?>
+	    }
+		if(is_active_sidebar('listabove')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listabove');?>
 			</ul>
@@ -166,8 +165,8 @@ elseif(is_singular()===true):?>
 		    foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
 		    echo'<ul class="page-nation">' . $echo . '</ul>';
 		}
-		wp_reset_query();?>
-		<?php if(is_active_sidebar('listunder')):?>
+		wp_reset_query();
+		if(is_active_sidebar('listunder')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listunder');?>
 			</ul>
