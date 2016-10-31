@@ -115,11 +115,12 @@ class wkwkrnht_manth_archive extends WP_Widget{
 class move_top extends WP_Widget{
     function __construct(){parent::__construct('move_top','先頭へのナビゲーション',array());}
     public function widget($args,$instance){
-        echo $args['before_widget'] . '
-        <style>.widget_move_top{height:15vh;width:15vh;border-radius:50%;margin:5vh auto;background-color:' . get_option('move_top_background','#03a9f4') . ';}.widget_move_top a{font-size:5rem;font-weight:900;line-height:15vh;text-decoration:none;text-align:center;vertical-align:middle;color:' . get_option('move_top_color','#fff') . ';}</style>
+        echo $args['before_widget'] .
+        '<style>.widget_move_top{height:15vh;width:15vh;border-radius:50%;margin:5vh auto;background-color:' . get_option('move_top_background','#03a9f4') . ';}.widget_move_top a{font-size:5rem;font-weight:900;line-height:15vh;text-decoration:none;text-align:center;vertical-align:middle;color:' . get_option('move_top_color','#fff') . ';}</style>
         <a href="#top" title="Go to Top"  role="navigation">Λ</a>
-        <script type="application/ld+json">{"@type" : "SiteNavigationElement","url" : "' . get_meta_url() . '#top","name" : "Page Top"}</script>
-        ' . $args['after_widget'];}
+        <script type="application/ld+json">{"@type" : "SiteNavigationElement","url" : "' . get_meta_url() . '#top","name" : "Page Top Button"}</script>'
+        . $args['after_widget'];
+    }
 }
 
 class related_posts extends WP_Widget{
