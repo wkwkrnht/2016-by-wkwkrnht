@@ -12,12 +12,13 @@ $nowurl    = $_SERVER["REQUEST_URI"];
 if(strpos($nowurl,'amp')!==false && strpos($string,'<script>')===false && is_singular()===true){$myAmp = true;}
 if($myAmp===true):
 	require_once('amp.php');
-elseif(is_singular()===true):
+elseif(is_singular()===true):?>
+	<?php
 	if(have_posts()):while(have_posts()):the_post();
 		$author_name = get_the_author_meta('display_name');
 		$author_id   = get_the_author_meta('ID');
-	endwhile;endif;
-	get_header();?>
+	endwhile;endif;?>
+	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
 		<?php if(is_active_sidebar('singularheader')):?>
 			<ul class="widget-area">
@@ -49,7 +50,8 @@ elseif(is_singular()===true):
 			</div>
 		</header>
 		<main class="article-main">
-			<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;
+			<?php
+			if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;
 			wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
 		</main>
 		<footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -71,9 +73,9 @@ elseif(is_singular()===true):
 			</span>
 		</footer>
 	</article>
-	<?php get_footer();
-else:
-	get_header();?>
+	<?php get_footer();?>
+<?php else:?>
+	<?php get_header();?>
 	<main id="site-main">
 		<?php
 		if(is_author()===true){
@@ -81,34 +83,35 @@ else:
 	    }else{
 	        $sitedescription = get_bloginfo('description');
 	        echo'<header class="card info-card special-card" itemscope itemtype="http://schema.org/WPHeader">';
-	            if(is_category()===true):
+	            if(is_category()===true){
 	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . category_description() . '</p>';
-	            elseif(is_tag()===true):
+	            }elseif(is_tag()===true){
 	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . tag_description() . '</p>';
-	            elseif(is_search()===true):
+	            }elseif(is_search()===true){
 	                global $wp_query;
 	                $serachresult = $wp_query->found_posts;
 					$maxpage      = $wp_query->max_num_pages;
 	                wp_reset_query();
 	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . $serachresult . ' 件 / ' . $maxpage . ' ページ</p>';
-	            elseif(is_404()===true):
+	            }elseif(is_404()===true){
 	                echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title card-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、以下から再度お探しください。</p></a>';
-	            else:
+	            }else{
 	                echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title card-title" itemprop="name headline">' . $blogname . '</h1><p class="site-description" itemprop="about">' . $sitedescription . '</p></a>';
-	            endif;
+				}
 	        echo'<br>
 	            <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span>&nbsp;&nbsp;&copy;<span itemprop="copyrightYear">' . $year . '</span></span>
 	        </header>';
-	    }
-		if(is_active_sidebar('listabove')):?>
+	    }?>
+		<?php if(is_active_sidebar('listabove')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listabove');?>
 			</ul>
 		<?php endif;?>
 		<div class="card-list">
-			<?php if(is_404()===true):
+			<?php
+			if(is_404()===true){
 					if(is_active_sidebar('404')){dynamic_sidebar('404');}
-			else:
+			}else{
 				if(is_active_sidebar('listheader')){dynamic_sidebar('listheader');}
 				if(have_posts()):while(have_posts()):the_post();
 					$link       = get_permalink();
@@ -142,7 +145,7 @@ else:
 					</section>
 				<?php endwhile;endif;
 				if(is_active_sidebar('listfooter')){dynamic_sidebar('listfooter');}
-			endif;?>
+			}?>
 		</div>
 		<?php
 		global $wp_query;
@@ -163,12 +166,12 @@ else:
 		    foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
 		    echo'<ul class="page-nation">' . $echo . '</ul>';
 		}
-		wp_reset_query();
-		if(is_active_sidebar('listunder')):?>
+		wp_reset_query();?>
+		<?php if(is_active_sidebar('listunder')):?>
 			<ul class="widget-area">
 				<?php dynamic_sidebar('listunder');?>
 			</ul>
 		<?php endif;?>
 	</main>
-	<?php get_footer();
-endif;?>
+	<?php get_footer();?>
+<?php endif;?>
