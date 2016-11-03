@@ -969,8 +969,6 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_a_background',array('label'=>'.page-nation a background-color','settings'=>'page_nation_a_background','section'=>'colors',)));
     $wp_customize->add_setting('page_nation_a_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_a_color',array('label'=>'.page-nation a color','settings'=>'page_nation_a_color','section'=>'colors',)));
-    $wp_customize->add_setting('page_nation_dots_color',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_dots_color',array('label'=>'.page-nation .dots color','settings'=>'page_nation_dots_color','section'=>'colors',)));
     $wp_customize->add_setting('page_nation_hover_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_hover_color',array('label'=>'.page-nation:hover color','settings'=>'page_nation_hover_color','section'=>'colors',)));
     $wp_customize->add_setting('page_nation_hover_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
