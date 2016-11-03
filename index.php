@@ -81,7 +81,7 @@ elseif(is_singular()===true):
 	        include_once(get_template_directory() . '/widget/author-bio.php');
 	    }else{
 	        $sitedescription = get_bloginfo('description');
-	        echo'<header class="site-header special-card" itemscope itemtype="http://schema.org/WPHeader">';
+	        echo'<header class="site-header" itemscope itemtype="http://schema.org/WPHeader">';
 	            if(is_category()===true){
 	                echo'<h1 class="site-title card-title" itemprop="name headline">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . category_description() . '</p>';
 	            }elseif(is_tag()===true){
