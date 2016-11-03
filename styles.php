@@ -181,8 +181,10 @@
 	.card-meta{display:inline-block;height:30%;margin:0 1em;}
 	.card-list{background-color:<?php echo get_option('card_list_background','#fff');?>;display:-webkit-flex;display:flex;justify-content:space-around;align-items:baseline;-webkit-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:space-around;align-content:space-around;}
 
-	.site-header{height:18%;width:100%;padding:5vh 0;margin:0 0 5vh 0;text-align:center;box-shadow:0 0 3vmin rgba(0,0,0,.2);<?php if(get_header_image()){echo'background-image:url(' . get_header_image() . ');';}else{echo'background-color:' . get_option('site_header_background','#03a9f4') . ';';}?>}
+	.site-header{height:15%;width:100%;padding:5vh 0;margin:0 0 5vh 0;text-align:center;<?php if(get_header_image()){echo'background-image:url(' . get_header_image() . ');';}else{echo'background-color:' . get_option('site_header_background','#03a9f4') . ';';}?>}
 	.site-header,.site-header a{color:<?php echo get_option('site_header_color','#fff');?>;}
+	.site-title{font-size:2.2rem;}
+	.site-description,.site-header .copylight{font-size:1.8rem;}
 
 	.toc{width:90vw;padding-bottom:3vh;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.toc-toggle{display:block;height:3em;width:3em;border-radius:50%;font-size:1.8rem;position:relative;top:-1.5em;left:85vw;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
