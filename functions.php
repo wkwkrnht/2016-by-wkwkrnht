@@ -406,6 +406,15 @@ class add_meta_Nav_Menu extends Walker_Nav_Menu{
     }
 }
 
+class add_meta_Social_Menu extends Walker_Nav_Menu{
+    function start_el(&$output,$item,$depth,$args){
+        $title        = $item->title;
+        $output      .= '<li itemprop="name" class="menu-item">';
+        $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '"></a>';
+        $output      .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
+    }
+}
+
 
 add_filter('body_class','add_body_class');
 function add_body_class($classes){
