@@ -134,13 +134,11 @@
 	.social-nav a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:'\f19a';color:#21759b;}
 	.social-nav a[data-title*="問い合わせ"]::before,.social-nav a[data-title*="質問"]::before,.social-nav a[data-title*="Q&A"]::before{content:'\f128';}
 
-	.page-nation,.page-nav{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:<?php echo get_option('page_nation_background','#fff');?>;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.page-nation{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:<?php echo get_option('page_nation_background','#fff');?>;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.page-nation{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
     .page-nation a,.page-nation .current,.page-nation li .dots{padding:2vmin;margin:0 .5vmin;border:solid .5vmin <?php echo get_option('page_nation_border','#03a9f4');?>;font-weight:bold;}
     .page-nation a,.page-nation li .dots{background-color:<?php echo get_option('page_nation_a_background','#fff');?>;color:<?php echo get_option('page_nation_a_color','#03a9f4');?>;font-size:1.3rem;text-decoration:none;}
     .page-nation a:hover,.page-nation .current{color:<?php echo get_option('page_nation_hover_color','#fff');?>;background-color:<?php echo get_option('page_nation_hover_background','#03a9f4');?>;}
-	.page-nav a{color:<?php echo get_option('page_nav_color','#03a9f4');?>;margin:0 1em;}
-	.page-nav a:hover{border-bottom:solid 1px <?php echo get_option('page_nav_hover_border','#03a9f4');?>;}
 	/*
 		widget custom
 	1.tag cloud
@@ -224,9 +222,10 @@
 	5.list
 	6.table
 	7.img
-	8.for chat format
-	9.original
-	10.codex
+	8.page-navigation
+	9.for chat format
+	10.original
+	11.codex
 	*/
 	.article-header{width:92vw;margin:5vh auto;}
 	.article-eyecatch{max-width:92vw;text-align:center;vertical-align:middle;}
@@ -297,6 +296,10 @@
 	.aligncenter,div.aligncenter{display:block;margin:1vh auto;}
 	.alignleft,a img.alignleft{float:left;margin:2vh 3vw 5vh 0;}
 	a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
+
+	.page-nav{text-align:center;}
+	.page-nav a{color:<?php echo get_option('page_nav_color','#03a9f4');?>;margin:0 1em;}
+	.page-nav a:hover{border-bottom:solid 1px <?php echo get_option('page_nav_hover_border','#03a9f4');?>;}
 
 	.format-chat .article-main p{display:block;height:3em;width:60%;padding:1em;border:1px solid #777;border-radius:5vmin;margin-bottom:2em;font-size:1.8rem;vertical-align:middle;}
 	.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
