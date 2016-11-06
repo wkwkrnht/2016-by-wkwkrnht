@@ -387,6 +387,7 @@ function custom_comment_tags($data){
 }
 
 
+remove_action( 'wp_head', 'wp_oembed_add_host_js');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 function vc_remove_wp_ver_css_js($src){
@@ -853,7 +854,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
-        QTags.addButton('qt-a','a','[link url= txt=',']');
+        QTags.addButton('qt-a','a','[link txt=',' url=]');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
