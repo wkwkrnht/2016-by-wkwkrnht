@@ -1,3 +1,4 @@
+    </main>
     <nav>
         <a href="javascript:void(0)" id="menu-toggle" class="close" tabindex="0" role="button" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');"><i class="fa fa-bars fa-5x"></i></a>
         <?php if(is_home()===false){echo'<a href="' . esc_url(home_url()) . '" tabindex="0" role="button" title="ホームへのリンク" id="home-button" class="close"><i class="fa fa-home fa-5x" aria-hidden="true"></i></a>';$script="document.getElementById('home-button').classList.toggle('close');document.getElementById('home-button').classList.toggle('open');";}?>
