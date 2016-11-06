@@ -680,11 +680,12 @@ add_filter('term_description',function($term){if(empty($term)){return false;}ret
 function style_into_article($atts){extract(shortcode_atts(array('style'=>'','display'=>'',),$atts));$none='';if($display==='none'){$none='class="none"';}return'<pre id="wpcss"' . $none . '><code>' . $style . '</code></pre>';}
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
-function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe class="hatenablogcard" src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';}
+function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no" class="hatenablogcard"></iframe>';}
 function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_ogp_blog_card($url);}
-function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true"></iframe>';}
+function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
-function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<div id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>';}
+function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
+function make_a($atts){extract(shortcode_atts(array('url'=>'','txt'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" target="_blank" rel="noopener">' . $txt . '</a>';}
 function make_toc($atts){
     $atts = shortcode_atts(array(
         'id'          => '',
@@ -796,6 +797,7 @@ add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
 add_shortcode('toc','make_toc');
+add_shortcode('link','make_a');
 /*
     editor custom
 1.script
@@ -850,7 +852,8 @@ function wkwkrnht_add_quicktags(){
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
-        QTags.addButton('qt-adsense','Googledsense','[adsaaense client= slot=',']');
+        QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
+        QTags.addButton('qt-a','a','[link client= slot=',']');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');

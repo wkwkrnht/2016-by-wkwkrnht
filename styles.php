@@ -245,6 +245,7 @@
 	.article-main{font-size:1.6rem;}
 	.article-main p{max-width:45em;padding:5vmin 8vmin 0;margin:2vh auto;}
 	.article-main a[href^="http"]:empty::before{content:attr(href);}
+	.article-main a[href^="http"][title]:empty::before{content:attr(title);}
 	.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
 
 	.article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:5vh;max-width:90%;margin:2vh auto;line-height:5vh;text-align:center;}
