@@ -97,11 +97,7 @@ elseif(is_singular()===true):
 	        <span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span>&nbsp;&nbsp;&copy;<span itemprop="copyrightYear">' . $year . '</span></span>
 	    </header>';
 		if(is_author()===true){include_once(get_template_directory() . '/widget/author-bio.php');}
-		if(is_active_sidebar('listabove')):?>
-			<ul class="widget-area">
-				<?php dynamic_sidebar('listabove');?>
-			</ul>
-		<?php endif;?>
+		if(is_active_sidebar('listabove')){dynamic_sidebar('listabove');}?>
 		<div class="card-list">
 			<?php
 			if(is_404()===true){
@@ -162,11 +158,7 @@ elseif(is_singular()===true):
 		    echo'<ul class="page-nation">' . $echo . '</ul>';
 		}
 		wp_reset_query();
-		if(is_active_sidebar('listunder')):?>
-			<ul class="widget-area">
-				<?php dynamic_sidebar('listunder');?>
-			</ul>
-		<?php endif;?>
+		if(is_active_sidebar('listunder')){dynamic_sidebar('listunder');}?>
 	</main>
 	<?php get_footer();?>
 <?php endif;?>
