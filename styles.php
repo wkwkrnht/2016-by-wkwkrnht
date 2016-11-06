@@ -10,9 +10,8 @@
 	template,[hidden],.none{display:none;}
 	a{color:<?php echo get_option('a_color','#03a9f4');?>;background-color:transparent;-webkit-text-decoration-skip:objects;text-decoration:none;border-bottom:0;}
 	a:visited{color:<?php echo get_option('a_visited_color','#03a9f4');?>;}
-	a:active,a:hover,a:focus{outline-width:0;}
+	a:active,a:hover{outline-width:0;}
 	a:active{color:<?php echo get_option('a_active_color','#03a9f4');?>;}
-	a:hover,a:focus{border-bottom:solid 1px <?php echo get_option('article_main_a_hover_border','#03a9f4');?>;}
 	abbr[title]{border-bottom:0;text-decoration:underline;text-decoration:underline dotted}
 	b,strong{font-weight:inherit;font-weight:bolder;}
 	dfn{font-style:italic}h1{font-size:2em;margin:.67em 0;}
@@ -247,6 +246,7 @@
 	.article-main a[href^="http"]:empty::before{content:attr(href);}
 	.article-main a[href^="http"][title]:empty::before{content:attr(title);}
 	.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
+	.article-main a:hover,.article-main a:focus{border-bottom:solid 1px <?php echo get_option('article_main_a_hover_border','#03a9f4');?>;}
 
 	.article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:5vh;max-width:90%;margin:2vh auto;line-height:5vh;text-align:center;}
 	.article-main h3,.article-main h4,.article-main h5,.article-main h6{font-size:2rem;}
