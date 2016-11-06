@@ -387,6 +387,7 @@ function custom_comment_tags($data){
 }
 
 
+remove_action( 'wp_head', 'wp_oembed_add_host_js');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 function vc_remove_wp_ver_css_js($src){
