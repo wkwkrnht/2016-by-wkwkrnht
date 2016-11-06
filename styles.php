@@ -73,7 +73,7 @@
 	.widget-title{min-height:5vh;max-width:94%;margin:2vh auto;line-height:5vh;text-align:center;color:<?php echo get_option('wkwkrnht_widget_title_color','#fff');?>;background-color:<?php echo get_option('wkwkrnht_widget_title_background','#03a9f4');?>;}
 
 	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
-	#share-menu ul li{width:50%;height:15vh;text-align:center;}
+	#share-menu ul li{width:50%;height:20vh;text-align:center;}
 	#share-menu ul li a{position:relative;top:35%;color:#fff;}
 	#share-menu .close-button{background-color:#fff;}
 	#share-menu .tweet{background-color:#55acee;}
@@ -83,10 +83,10 @@
 	#share-menu .g-plus{background-color:#dc4e41;}
 	#share-menu .linkedin{background-color:#36465d;}
 	#share-menu .reddit{background-color:#ff5700;}
-	#share-menu .vk{background-color:#4dada1;}
+	#share-menu .vk{background-color:#83bad6;}
 	#share-menu .stumbleupon{background-color:#ffcc00;}
 	#share-menu .hatebu{background-color:#00a5de;font-size:3rem;font-weight:900;}
-	#share-menu .instapaper{color:#333;font-size:3rem;font-weight:900;}
+	#share-menu a.instapaper{color:#333;background-color:#fff;font-size:3rem;font-weight:900;}
 	#share-menu .pinterest{background-color:#bd081c;}
 	#share-menu .pocket{background-color:#ef3f56;}
 	#share-menu .tumblr{background-color:#36465d;}
