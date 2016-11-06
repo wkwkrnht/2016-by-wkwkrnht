@@ -61,7 +61,7 @@
 			wp_reset_query();
 			echo'<h1 class="site-title" itemprop="name headline">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">' . $serachresult . ' 件 / ' . $maxpage . ' ページ</p>';
 		}elseif(is_404()===true){
-			echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1><br><h2>404 Not Found</h2><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、再度お試しください。</p></a>';
+			echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">404 Not Found｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、再度お探しください。</p></a>';
 		}else{
 			echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1></a>';
 		}
