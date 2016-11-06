@@ -47,6 +47,8 @@
 </head>
 <body <?php body_class();?>>
 	<?php
+	$year      = get_first_post_year();
+	$blogname  = get_bloginfo('name');
 	echo'<header class="site-header" itemscope itemtype="http://schema.org/WPHeader">';
 		if(is_category()===true){
 			echo'<h1 class="site-title" itemprop="name headline about">「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname . '</h1>';
