@@ -10,8 +10,9 @@
 	template,[hidden],.none{display:none;}
 	a{color:<?php echo get_option('a_color','#03a9f4');?>;background-color:transparent;-webkit-text-decoration-skip:objects;text-decoration:none;border-bottom:0;}
 	a:visited{color:<?php echo get_option('a_visited_color','#03a9f4');?>;}
-	a:active,a:hover{color:<?php echo get_option('a_active_color','#03a9f4');?>;outline-width:0;}
-	a:hover{border-bottom:solid 1px <?php echo get_option('article_main_a_hover_border','#03a9f4');?>;}
+	a:active,a:hover,a:focus{outline-width:0;}
+	a:active{color:<?php echo get_option('a_active_color','#03a9f4');?>;}
+	a:hover,a:focus{border-bottom:solid 1px <?php echo get_option('article_main_a_hover_border','#03a9f4');?>;}
 	abbr[title]{border-bottom:0;text-decoration:underline;text-decoration:underline dotted}
 	b,strong{font-weight:inherit;font-weight:bolder;}
 	dfn{font-style:italic}h1{font-size:2em;margin:.67em 0;}
