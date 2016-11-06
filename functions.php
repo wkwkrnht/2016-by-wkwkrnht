@@ -23,7 +23,7 @@
 7.ADD class into body_class
 */
 function wkwkrnht_setup(){
-    if(!isset($content_width)){$content_width=1080;}
+    $GLOBALS['content_width'] = apply_filters('mytheme_content_width',1080);
 
     add_theme_support('custom-header',array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,));
     add_theme_support('title-tag');
@@ -44,7 +44,7 @@ function wkwkrnht_setup(){
     register_nav_menu('main','main');
     register_nav_menu('social','social');
 }
-add_action('after_setup_theme','wkwkrnht_setup');
+add_action('after_setup_theme','wkwkrnht_setup',0);
 
 
 add_action('admin_init',function(){add_editor_style('inc/editor-style.css');});
@@ -277,7 +277,7 @@ class google_two_ads_widget extends WP_Widget{
         echo $args['before_widget'] .
         '<div id="adsense" itemscope itemtype="https://schema.org/WPAdBlock">
             <p class="ad-label" itemprop="headline name">' . $label . '</p>
-            <div id="rectangle" itemprop="about">
+            <aside id="rectangle" itemprop="about">
                 <div class="ad-1">
         			<div class="textwidget">
                         <script async  src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -292,7 +292,7 @@ class google_two_ads_widget extends WP_Widget{
                         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                     </div>
         		</div>
-            </div>
+            </aside>
         </div>'
         . $args['after_widget'];
     }
@@ -892,6 +892,29 @@ function add_posts_columns_row($column_name,$post_id){
 }
 add_filter('manage_posts_columns','add_posts_columns');
 add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
+function custmuize_restrict_manage_posts_exsample(){
+    global $post_type,$tag;
+    if(is_object_in_taxonomy($post_type,'post_tag')){
+        $dropdown_options = array(
+            'show_option_all' => get_taxonomy( 'post_tag' )->labels->all_items,
+            'hide_empty'      => 0,
+            'hierarchical'    => 1,
+            'show_count'      => 0,
+            'orderby'         => 'name',
+            'selected'        => $tag,
+            'name'            => 'tag',
+            'taxonomy'        => 'post_tag',
+            'value_field'     => 'slug'
+        );
+        wp_dropdown_categories($dropdown_options);
+    }
+    wp_dropdown_users(array('show_option_all' => 'すべてのユーザー','name' => 'author'));
+}
+add_action('restrict_manage_posts','custmuize_restrict_manage_posts_exsample');
+function custmuize_load_edit_php_exsample(){
+    if(isset($_GET['tag']) && '0'===$_GET['tag']){unset($_GET['tag']);}
+}
+add_action('load-edit.php','custmuize_load_edit_php_exsample');
 /*
     ADD item to customize
 1.customizer
