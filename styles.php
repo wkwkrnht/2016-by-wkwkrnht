@@ -23,6 +23,7 @@
 	img[src$=".gif"],img[src$=".png"]{image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;}
 	svg:not(:root){overflow:hidden;}
 	code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em;}
+	pre{tab-size:4;}
 	figure{margin:1em 2.5rem;}
 	hr{box-sizing:content-box;height:0;overflow:visible;}
 	button,input,select,textarea{font:inherit;margin:0;}
@@ -72,17 +73,21 @@
 	.widget-title{min-height:5vh;max-width:94%;margin:2vh auto;line-height:5vh;text-align:center;color:<?php echo get_option('wkwkrnht_widget_title_color','#fff');?>;background-color:<?php echo get_option('wkwkrnht_widget_title_background','#03a9f4');?>;}
 
 	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
-	#share-menu ul li{width:50%;height:25vh;text-align:center;}
+	#share-menu ul li{width:50%;height:15vh;text-align:center;}
 	#share-menu ul li a{position:relative;top:35%;color:#fff;}
 	#share-menu .close-button{background-color:#fff;}
 	#share-menu .tweet{background-color:#55acee;}
 	#share-menu .fb-like{background-color:#3b5998;}
+	#share-menu .buffer{background-color:#333;font-size:3rem;font-weight:900;}
 	#share-menu .line{background-color:#6cc655;}
-	#share-menu .reddit{background-color:#ff5700;}
 	#share-menu .g-plus{background-color:#dc4e41;}
 	#share-menu .linkedin{background-color:#36465d;}
-	#share-menu .pinterest{background-color:#bd081c;}
+	#share-menu .reddit{background-color:#ff5700;}
+	#share-menu .vk{background-color:#4dada1;}
+	#share-menu .stumbleupon{background-color:#ffcc00;}
 	#share-menu .hatebu{background-color:#00a5de;font-size:3rem;font-weight:900;}
+	#share-menu .instapaper{color:#333;font-size:3rem;font-weight:900;}
+	#share-menu .pinterest{background-color:#bd081c;}
 	#share-menu .pocket{background-color:#ef3f56;}
 	#share-menu .tumblr{background-color:#36465d;}
 
@@ -102,7 +107,7 @@
 	.social-nav a[href*="dribbble.com"]::before{content:'\f17d';color:#ea4c89;}
 	.social-nav a[href*="dropbox.com"]::before{content:"\f16b";color:#00b8ff;}
 	.social-nav a[href*="facebook.com"]::before{content:"\f230";color:#0033ff;}
-	.social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:'\f09e';color:#2aff00;}
+	.social-nav a[href*="reader.livedwango.com/subscribe/"]::before,.social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:'\f09e';color:#2aff00;}
 	.social-nav a[href*="feedly.com"]::before{content:'\f143';color:#2aff00;transform: rotate(-15deg);}
 	.social-nav a[href*="flickr.com"]::before{content:'\f16e';color:#ff0084;}
 	.social-nav a[href*="foursquare.com"]::before{content:'\f180';color:#f94877;}
@@ -111,7 +116,7 @@
 	.social-nav a[href*="instagram.com"]::before{content:'\f16d';color:#3f729b;}
 	.social-nav a[href*="linkedin.com"]::before{content:"\f0e1";color:#0077b5;}
 	.social-nav a[href*="mailto:"]::before{content:"\f0e0";}
-	.social-nav a[href*="nicovideo"]::before{content:"\f26c";}
+	.social-nav a[href*="nicovideo"]::before,.social-nav a[href*="reader.livedwango.com/subscribe/"]::after{content:"\f26c";}
 	.social-nav a[href*="pinterest.com"]::before{content:"\f231";color:#ff0033;}
 	.social-nav a[href*="getpocket.com"]::before{content:"\f265";color:#ee4056;}
 	.social-nav a[href*="polldaddy.com"]:before{content:'\f200';}
@@ -132,7 +137,7 @@
 	.social-nav a[href*="vimeo.com"]::before{content:'\f27d';color:#1ab7ea;}
 	.social-nav a[href*="youtube.com"]::before{content:'\f167';color:#ff0033;}
 	.social-nav a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:'\f19a';color:#21759b;}
-	.social-nav a[data-title*="問い合わせ"]::before,.social-nav a[data-title*="質問"]::before,.social-nav a[data-title*="Q&A"]::before{content:'\f128';}
+	.social-nav a[data-title*="問い合わせ"]::before,.social-nav a[data-title*="質問"]::before,.social-nav a[data-title*="Q&A"]::before{content:"\f298";}
 
 	.page-nation{list-style:none;height:10vw;width:80vw;margin:5vmin auto;background-color:<?php echo get_option('page_nation_background','#fff');?>;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.page-nation{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}

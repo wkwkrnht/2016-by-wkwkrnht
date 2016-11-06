@@ -27,6 +27,7 @@
 <a href="<?php echo get_permalink(get_adjacent_post(false,'',false));?>" tabindex="0" title="next" class="next"><?php the_title_attribute(array('post'=>$next->ID));?>  →</a>
 <script type="application/ld+json">
     {
+        "@context" : "http://schema.org",
         "@type" : "SiteNavigationElement",
         "url" : "<?php echo get_permalink((is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true));?>",
         "name" : "<?php the_title_attribute(array('post'=>$prev->ID));?>",
