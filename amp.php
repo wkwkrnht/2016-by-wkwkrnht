@@ -116,8 +116,8 @@
 		.article-main h5{border-left:.5em solid <?php echo get_option('article_main_h5_border','#03a9f4');?>;counter-increment:counter-h5;counter-reset:counter-h6;}
 		.article-main h6{border-bottom:.75vmin dashed <?php echo get_option('article_main_h6_border','#03a9f4');?>;counter-increment:counter-h6;}
 		.marker{background-color:linear-gradient(transparent 30%,yellow 30%);}
-		.information,.question{background-color:#f4f3eb;padding:1em 2em 1em 7rem;border-radius:3vmin;position:relative;margin:1em auto;}
-		.information::before,.question::before{display:inline-block;height:7rem;width:7rem;border-radius:50%;position:absolute;top:0;left:2vmin;margin-right:7rem;color:#f4f3eb;background-color:#eae3b4;text-align:center;font-size:5rem;font-weight:700;line-height:7rem;}
+		.information,.question{background-color:#f4f3eb;padding:2em;padding-left:calc(7rem + 1vmin);border-radius:3vmin;position:relative;margin:1em auto;}
+		.information::before,.question::before{display:inline-block;height:7rem;width:7rem;border-radius:50%;position:absolute;top:0;left:1vmin;margin-right:7rem;color:#f4f3eb;background-color:#eae3b4;text-align:center;font-size:5rem;font-weight:700;line-height:7rem;}
 		.information::before{content:"！";}
 		.question::before{content:"？";}
 		.search-form{margin:3em 0;line-height:170%;}
