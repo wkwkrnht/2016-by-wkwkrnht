@@ -210,7 +210,7 @@
 	.ogp-blogcard-footer{height:calc(37vh * .2);width:80vw;position:absolute;bottom:0;vertical-align:middle;}
 	.ogp-blogcard-share-toggle{position:relative;right:0;color:#03a9f4;}
 
-	.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:8px;position:relative;margin:1em auto;}
+	.information,.question{background-color:#f4f3eb;padding:2rem;padding-left:7rem;border-radius:3vmin;position:relative;margin:1em auto;}
 	.information::before,.question::before{color:#eae3b4;font-family:"FontAwesome";font-size:5rem;position:absolute;top:0;left:.5em;margin-right:.2em;}
 	.information::before{content:"\f05a";}
 	.question::before{content:"\f059";}
