@@ -89,7 +89,7 @@
 	#share-menu .stumbleupon{background-color:#ffcc00;}
 	#share-menu .hatebu{background-color:#00a5de;font-size:3rem;font-weight:900;}
 	#share-menu li.instapaper{background-color:#fff;}
-	#share-menu li.instapaper > a{color:#333;font-size:3rem;font-weight:900;}
+	#share-menu li.instapaper > a{color:#333;font:900 3rem/1.9 serif;}
 	#share-menu .pinterest{background-color:#bd081c;}
 	#share-menu .pocket{background-color:#ef3f56;}
 	#share-menu .tumblr{background-color:#36465d;}
