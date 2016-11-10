@@ -186,6 +186,7 @@
 		</header>
 		<main class="article-main">
 			<?php
+			$img     = ' src="' . get_no_image() . '"';
 			$content = '';
 			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
 
@@ -205,10 +206,14 @@
 			$content = preg_replace('/ +border=[\'][^\']*?[\']/i','',$content);
 			$content = preg_replace('/ +style=["][^"]*?["]/i','',$content);
 			$content = preg_replace('/ +style=[\'][^\']*?[\']/i','',$content);
-			$content = preg_replace('/onclick="(.*?)"/i','',$content);
-			$content = preg_replace('/onMouseOver="(.*?)"/i','',$content);
-			$content = preg_replace('/onMouseOut="(.*?)"/i','',$content);
-			$content = preg_replace('/href="javascript:void(0)"/i','',$content);
+			$content = preg_replace('/ +onclick=["][^"]*?["]/i','',$content);
+			$content = preg_replace('/ +onclick=[\'][^\']*?[\']/i','',$content);
+			$content = preg_replace('/ +onMouseOver=["][^"]*?["]/i','',$content);
+			$content = preg_replace('/ +onMouseOver=[\'][^\']*?[\']/i','',$content);
+			$content = preg_replace('/ +onMouseOut=["][^"]*?["]/i','',$content);
+			$content = preg_replace('/ +onMouseOut=[\'][^\']*?[\']/i','',$content);
+			$content = preg_replace('/ +href="javascript:void(0)"/i','',$content);
+			$content = preg_replace('/ +src=""/i',$img,$content);
 
 			echo $content;
 			?>
