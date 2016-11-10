@@ -80,16 +80,16 @@
 	#share-menu .close-button{background-color:#fff;}
 	#share-menu .tweet{background-color:#55acee;}
 	#share-menu .fb-like{background-color:#3b5998;}
-	#share-menu .buffer{background-color:#333;font-size:3rem;font-weight:900;}
+	#share-menu .buffer{background-color:#333;font-size:4rem;font-weight:900;}
 	#share-menu .line{background-color:#6cc655;}
 	#share-menu .g-plus{background-color:#dc4e41;}
 	#share-menu .linkedin{background-color:#36465d;}
 	#share-menu .reddit{background-color:#ff5700;}
 	#share-menu .vk{background-color:#83bad6;}
 	#share-menu .stumbleupon{background-color:#ffcc00;}
-	#share-menu .hatebu{background-color:#00a5de;font-size:3rem;font-weight:900;}
+	#share-menu .hatebu{background-color:#00a5de;font-size:5rem;font-weight:900;}
 	#share-menu li.instapaper{background-color:#fff;}
-	#share-menu li.instapaper > a{color:#333;font:900 3rem/1.9 serif;}
+	#share-menu li.instapaper > a{color:#333;font:900 5rem/1.9 serif;}
 	#share-menu .pinterest{background-color:#bd081c;}
 	#share-menu .pocket{background-color:#ef3f56;}
 	#share-menu .tumblr{background-color:#36465d;}
