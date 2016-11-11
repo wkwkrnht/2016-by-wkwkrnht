@@ -61,7 +61,7 @@
 	#menu-toggle,#main-menu-toggle,#share-menu-toggle{background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;}
 	#menu-toggle:visited,#main-menu-toggle,#main-menu-toggle a:visited,#share-menu-toggle,#share-menu-toggle a:visited{color:<?php echo get_option('footer_color','#fff');?>;}
 	.menu-tab{height:8vh;width:86vw;}
-	#main-menu-toggle,#share-menu-toggle{display:inline-block;height:8vh;width:49%;box-sizing:border-box;padding:1vh 0;margin:0;text-align:center;}
+	#main-menu-toggle,#share-menu-toggle{display:inline-block;height:8vh;width:calc((86vw / 2) - 1vmin);box-sizing:border-box;padding:1vh 0;margin:0;text-align:center;}
 	#main-menu-toggle{font-size:4rem;font-weight:900;font-family:monospace;line-height:8vh;}
 	#share-menu-toggle{min-width:6em;}
 
@@ -355,7 +355,7 @@
 	    .article-main table tr td + td {padding-top:0;}
 	}
 	@media screen and (max-width:640px){
-		#main-menu-toggle{max-width:calc(49% - 6em);}
+		#main-menu-toggle{max-width:calc(((86vw / 2) - 1vmin) - 6em);}
 		.card{font-size:1.6rem;}
 		.card-title{font-size:1.8rem;}
 		.hatenablogcard{max-width:80vw;margin:5vh 0;}
