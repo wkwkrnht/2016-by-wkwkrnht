@@ -65,7 +65,6 @@
 	#main-menu-toggle{min-width:calc(4rem * 6);font-size:4rem;font-weight:900;font-family:monospace;}
 	#share-menu-toggle{min-width:6em;}
 
-
 	#menu-wrap{opacity:.85;height:73vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 	#share-menu,#main-menu{height:65vh;width:86vw;overflow-x:hidden;overflow-y:auto;}
 	#share-menu ul,#main-menu ul{width:80vw;}
