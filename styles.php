@@ -48,12 +48,12 @@
 	footer > .copyright{display:inline-block;width:100%;padding:0;margin:0;font-size:2rem;text-align:center;}
 	/*
 		navigation
-	1.hover to move neighbor
-	2.footer toggle
-	3.commmon style
-	4.share menu
-	5.main menu
-	6.main-nav,social-nav
+	1.toggle
+	2.commmon style
+	3.share menu
+	4.main menu
+	5.main-nav
+	6.social-nav
 	7.page-nation
 	*/
 	#menu-toggle{display:inline-block;height:15vh;width:15vh;border-radius:50%;position:fixed;bottom:3vh;left:calc(50% - 7.5vh);z-index:100;text-align:center;opacity:.7;box-shadow:0 0 3vmin rgba(0,0,0,.2);line-height:15vh;vertical-align:middle;font-size:5rem;font-weight:900;}
@@ -66,13 +66,8 @@
 	#share-menu-toggle{min-width:6em;}
 
 	#menu-wrap{opacity:.85;height:73vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-	#share-menu,#main-menu{height:65vh;width:86vw;overflow-x:hidden;overflow-y:auto;}
+	#share-menu,#main-menu{height:65vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
 	#share-menu ul,#main-menu ul{width:80vw;}
-	ul.widget-area{list-style:none;}
-	.widget{max-width:94%;margin:2vh auto;}
-	.widget.info-card{overflow:hidden;}
-	.widget li{max-width:93%;}
-	.widget-title{min-height:5vh;max-width:94%;margin:2vh auto;line-height:5vh;text-align:center;color:<?php echo get_option('wkwkrnht_widget_title_color','#fff');?>;background-color:<?php echo get_option('wkwkrnht_widget_title_background','#03a9f4');?>;}
 
 	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
 	#share-menu ul li{width:50%;height:20vh;text-align:center;}
@@ -80,14 +75,16 @@
 	#share-menu .close-button{background-color:#fff;}
 	#share-menu .tweet{background-color:#55acee;}
 	#share-menu .fb-like{background-color:#3b5998;}
-	#share-menu .buffer{background-color:#333;font-size:4rem;font-weight:900;top:20%;}
+	#share-menu .buffer{background-color:#333;font-size:4rem;font-weight:900;}
+	#share-menu .buffer > a{top:20%;}
 	#share-menu .line{background-color:#6cc655;}
 	#share-menu .g-plus{background-color:#dc4e41;}
 	#share-menu .linkedin{background-color:#36465d;}
 	#share-menu .reddit{background-color:#ff5700;}
 	#share-menu .vk{background-color:#83bad6;}
 	#share-menu .stumbleupon{background-color:#ffcc00;}
-	#share-menu .hatebu{background-color:#00a5de;font-size:5rem;font-weight:900;top:20%;}
+	#share-menu .hatebu{background-color:#00a5de;font-size:5rem;font-weight:900;}
+	#share-menu .hatebu > a{top:20%;}
 	#share-menu li.instapaper{background-color:#fff;}
 	#share-menu li.instapaper > a{color:#333;font:900 5rem/1.9 serif;top:25%;}
 	#share-menu .pinterest{background-color:#bd081c;}
@@ -149,11 +146,18 @@
     .page-nation a:hover,.page-nation .current{color:<?php echo get_option('page_nation_hover_color','#fff');?>;background-color:<?php echo get_option('page_nation_hover_background','#03a9f4');?>;}
 	/*
 		widget custom
-	1.tag cloud
-	2.recent entries
-	3.archive
-	4.meta box
+	1.generall
+	2.tag cloud
+	3.recent entries
+	4.archive
+	5.meta box
 	*/
+	ul.widget-area{list-style:none;}
+	.widget{max-width:94%;margin:2vh auto;}
+	.widget.info-card{overflow:hidden;}
+	.widget li{max-width:93%;}
+	.widget-title{min-height:5vh;max-width:94%;margin:2vh auto;line-height:5vh;text-align:center;color:<?php echo get_option('wkwkrnht_widget_title_color','#fff');?>;background-color:<?php echo get_option('wkwkrnht_widget_title_background','#03a9f4');?>;}
+
 	.widget_tag_cloud{margin:3vmin;padding:0;}
 	.widget_tag_cloud a{display:inline-block;max-width:100px;height:28px;padding:0 1em;margin:0 .3em .3em 0;background-color:#fff;border:1px solid <?php echo get_option('tag_cloud_border','#03a9f4');?>;border-radius:3vmin;color:<?php echo get_option('tag_cloud_hover_color','#333');?>;font-size:1.6rem;text-decoration:none;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
 	.widget_tag_cloud a:hover{background-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;border:1px solid <?php echo get_option('tag_cloud_hover_border','#fff');?>;color:<?php echo get_option('tag_cloud_hover_color','#fff');?>;}
