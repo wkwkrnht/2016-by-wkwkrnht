@@ -69,7 +69,7 @@
 	#share-menu,#main-menu{height:67vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
 	#share-menu ul,#main-menu ul{width:80vw;}
 
-	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
+	#share-menu ul{width:86vw;list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
 	#share-menu ul li{width:calc((86vw / 2) - 1vmin);height:20vh;text-align:center;}
 	#share-menu ul li a{position:relative;top:35%;color:#fff;}
 	#share-menu .close-button{background-color:#fff;}
