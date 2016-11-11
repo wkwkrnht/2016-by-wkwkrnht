@@ -356,6 +356,7 @@
 	}
 	@media screen and (max-width:640px){
 		#main-menu-toggle{max-width:calc(((86vw / 2) - 1vmin) - 6em);}
+		#share-menu-toggle{max-width:calc(((86vw / 2) - 1vmin) - 6em);}
 		.card{font-size:1.6rem;}
 		.card-title{font-size:1.8rem;}
 		.hatenablogcard{max-width:80vw;margin:5vh 0;}
