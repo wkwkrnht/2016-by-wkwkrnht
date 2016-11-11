@@ -57,7 +57,7 @@
 	7.page-nation
 	*/
 	#menu-toggle{display:inline-block;height:15vh;width:15vh;border-radius:50%;position:fixed;bottom:3vh;left:calc(50% - 7.5vh);z-index:100;text-align:center;opacity:.7;box-shadow:0 0 3vmin rgba(0,0,0,.2);line-height:15vh;vertical-align:middle;font-size:5rem;font-weight:900;}
-	#menu-wrap.open ~ #menu-toggle{transform:rotate(45deg);}
+	.open#menu-wrap ~ #menu-toggle{transform:rotate(45deg);}
 	#menu-toggle,#main-menu-toggle,#share-menu-toggle{background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;}
 	#menu-toggle:visited,#main-menu-toggle,#main-menu-toggle a:visited,#share-menu-toggle,#share-menu-toggle a:visited{color:<?php echo get_option('footer_color','#fff');?>;}
 	.menu-tab{height:8vh;width:86vw;}
@@ -70,7 +70,7 @@
 	#share-menu ul,#main-menu ul{width:80vw;}
 
 	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
-	#share-menu ul li{width:calc(86vw / 2);height:20vh;text-align:center;}
+	#share-menu ul li{width:calc((86vw / 2) - 1vmin);height:20vh;text-align:center;}
 	#share-menu ul li a{position:relative;top:35%;color:#fff;}
 	#share-menu .close-button{background-color:#fff;}
 	#share-menu .tweet{background-color:#55acee;}

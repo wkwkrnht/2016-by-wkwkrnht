@@ -1,5 +1,4 @@
     </main>
-    <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン" onclick="document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');">+</a>
     <div id="menu-wrap" class="close">
         <nav class="menu-tab">
             <a href="javascript:void(0)" id="main-menu-toggle" tabindex="0" role="button" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('none');document.getElementById('main-menu').classList.toggle('block');document.getElementById('share-menu').classList.add('none');document.getElementById('share-menu').classList.remove('block');">menu</a>
@@ -41,6 +40,7 @@
             <?php endif;?>
         </div>
     </div>
+    <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン" onclick="document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');">+</a>
     <?php
     wp_footer();
     if(is_singular()===true):
