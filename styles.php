@@ -65,12 +65,12 @@
 	#main-menu-toggle{min-width:calc(4rem * 6);font-size:4rem;font-weight:900;font-family:monospace;line-height:8vh;}
 	#share-menu-toggle{min-width:6em;}
 
-	#menu-wrap{opacity:.85;height:73vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-	#share-menu,#main-menu{height:65vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
+	#menu-wrap{opacity:.85;height:75vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
+	#share-menu,#main-menu{height:67vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
 	#share-menu ul,#main-menu ul{width:80vw;}
 
 	#share-menu ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
-	#share-menu ul li{width:50%;height:20vh;text-align:center;}
+	#share-menu ul li{width:calc(86vw / 2);height:20vh;text-align:center;}
 	#share-menu ul li a{position:relative;top:35%;color:#fff;}
 	#share-menu .close-button{background-color:#fff;}
 	#share-menu .tweet{background-color:#55acee;}
@@ -367,7 +367,7 @@
 		:root{font-size:10pt;}
 		#menu-toggle,#menu-wrap{display:none;}
 	}
-	.night-mode .hide-nav-prev a,.night-mode .hide-nav-next a,body.night-mode,.night-mode #main-menu,.night-mode .card,.night-mode div.card-list,.night-mode a#menu-toggle,.night-mode a#main-menu-toggle,.night-mode a#share-menu-toggle{color:#fff;background-color:#333;}
+	.night-mode .hide-nav-prev a,.night-mode .hide-nav-next a,body.night-mode,.night-mode #main-menu,.night-mode .card,.night-mode div.card-list,.night-mode div#menu-wrap,.night-mode a#menu-toggle,.night-mode a#main-menu-toggle,.night-mode a#share-menu-toggle{color:#fff;background-color:#333;}
 	.night-mode ul.page-nation,.night-mode ul.page-nation a,.night-mode ul.page-nation li span.dots,.night-mode ul.page-nation li.current,.night-mode .page-nav,.night-mode .page-nav a:hover{color:#fff;background-color:#333;border-color:#fff;}
 	.night-mode ul.page-nation li span.dots{color:#f1f1f1;}
 	.night-mode ul.page-nation a:hover{color:#333;background-color:#fff;}
