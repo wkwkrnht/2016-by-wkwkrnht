@@ -61,7 +61,7 @@
 	#menu-toggle,#main-menu-toggle,#share-menu-toggle{background-color:<?php echo get_option('footer_background','#03a9f4');?>;color:<?php echo get_option('footer_color','#fff');?>;}
 	#menu-toggle:visited,#main-menu-toggle,#main-menu-toggle a:visited,#share-menu-toggle,#share-menu-toggle a:visited{color:<?php echo get_option('footer_color','#fff');?>;}
 	.menu-tab{height:8vh;width:86vw;}
-	#main-menu-toggle,#share-menu-toggle{display:inline-block;height:8vh;box-sizing:border-box;padding:1vh 0;margin:0;text-align:center;}
+	#main-menu-toggle,#share-menu-toggle{display:inline-block;height:8vh;width:80%;box-sizing:border-box;padding:1vh 0;margin:0;text-align:center;}
 	#main-menu-toggle{min-width:calc(4rem * 6);font-size:4rem;font-weight:900;font-family:monospace;line-height:8vh;}
 	#share-menu-toggle{min-width:6em;}
 
