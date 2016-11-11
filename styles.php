@@ -76,7 +76,7 @@
 	#share-menu .tweet{background-color:#55acee;}
 	#share-menu .fb-like{background-color:#3b5998;}
 	#share-menu .buffer{background-color:#333;font-size:4rem;font-weight:900;}
-	#share-menu .buffer > a{top:30%;}
+	#share-menu .buffer > a{top:25%;}
 	#share-menu .line{background-color:#6cc655;}
 	#share-menu .g-plus{background-color:#dc4e41;}
 	#share-menu .linkedin{background-color:#36465d;}
