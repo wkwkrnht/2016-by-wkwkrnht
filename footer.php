@@ -6,7 +6,6 @@
             <a href="javascript:void(0)" id="share-menu-toggle" class="close" tabindex="0" role="button" title="共有機能へのリンク" onclick="document.getElementById('share-menu').classList.toggle('none');document.getElementById('share-menu').classList.toggle('block');"><i class="fa fa-share-alt fa-5x"></i></a>
         </nav>
         <nav id="share-menu" class="none">
-            <a href="javascript:void(0)" class="close-button" tabindex="0" role="button" title="Close Button" onclick="document.getElementById('share-menu').classList.toggle('close');document.getElementById('share-menu').classList.toggle('open');">×</a>
             <ul>
     		    <li class="tweet"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');?><?php if(get_twitter_acount()!==null):echo '&amp;via=' . get_twitter_acount();endif;?>" target="_blank" title="Twitterへの共有リンク"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
                 <li class="fb-like"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank" title="Facebookへの共有リンク"><i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i></a></li>
@@ -25,8 +24,7 @@
             </ul>
         </nav>
         <div id="main-menu" class="block">
-            <a href="javascript:void(0)" class="close-button" tabindex="0" role="button" title="Close Button" onclick="document.getElementById('main-menu').classList.toggle('close');document.getElementById('main-menu').classList.toggle('open');">×</a>
-    	    <?php if(has_nav_menu('social')):?>
+            <?php if(has_nav_menu('social')):?>
                 <nav class="social-nav">
                     <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>','walker'=>new add_meta_Social_Menu));?>
                 </nav>
