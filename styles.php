@@ -170,7 +170,8 @@
 	.widget_archive ul li{font-size:calc(1.8rem * 0.8);}
 	.widget_archive ul li a{font-size:1.8rem;}
 
-	.addpost::before,.wlwedit::before,.post-edit-link::before{content:"\f040";font-family:"FontAwesome";font-size:2.4rem;}
+	.wlwedit::before,.post-edit-link::before{content:"\f040";font-family:"FontAwesome";}
+	.addpost,.wlwedit::before,.post-edit-link::before{font-size:2.4rem;}
 	.addpost::after{content:"\f067";font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 	/*
 	    original
