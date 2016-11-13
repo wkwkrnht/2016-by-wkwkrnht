@@ -25,7 +25,7 @@
 function wkwkrnht_setup(){
     $GLOBALS['content_width'] = apply_filters('mytheme_content_width',1080);
 
-    add_theme_support('custom-header',array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,));
+    add_theme_support('custom-header',array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,'video'=>true,));
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
@@ -330,9 +330,7 @@ add_filter('widget_text','do_shortcode');
 function wkwkrnht_search_form($form){
     $tags = get_tags();
     $tag_echo = '';
-    foreach($tags as $tag):
-        $tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';
-    endforeach;
+    foreach($tags as $tag){$tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';}
     $form = '
     <style>
         #search input[type*="text"]{width:98%;}
@@ -359,14 +357,14 @@ add_filter('get_search_form','wkwkrnht_search_form');
 add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','wkwkrnht_meta_widget');
 function wkwkrnht_meta_widget(){ ?>
-    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="addnew"></a></li>
+    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" rel="noopener" title="addpost"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a></li>
     <?php if(is_singular()===true):
         $id      = '';
         $homeurl = '';
         if(is_ssl()){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}
-        if(have_posts()):while(have_posts()):the_post();$id = the_ID();endwhile;endif;?>
+        if(have_posts()):while(have_posts()):the_post();$id = get_the_ID();endwhile;endif;?>
         <li><?php edit_post_link();?></li>
-        <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" class="wlwedit"></a></li>
+        <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" title="wlwedit"><i class="fa fa-windows fa-2x" aria-hidden="true"><i class="fa fa-pencil" aria-hidden="true"></i></i></a></li>
     <?php endif;
 }
 
@@ -435,7 +433,7 @@ function add_body_class($classes){
  * @copyright KUCKLU & VisuAlive
  */
 function themeslug_comment_class($classes){
-	return preg_grep('/\Acomment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
+	return preg_grep('/\comment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
 }
 add_action('comment_class','themeslug_comment_class');
 /*
@@ -645,17 +643,6 @@ function custom_oembed_element($code){
 }
 add_filter('embed_handler_html','custom_oembed_element');
 add_filter('embed_oembed_html','custom_oembed_element');
-
-function wkwkrnht_search_results_highlight($text){
-    if(is_search()===true){
-        $sr   = get_query_var('s');
-        $keys = explode(" ",$sr);
-        $text = preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);
-    }
-    return $text;
-}
-add_filter('the_title','wkwkrnht_search_results_highlight');
-add_filter('the_content','wkwkrnht_search_results_highlight');
 
 function wkwkrnht_replace($content){
     $img_replace = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
@@ -898,18 +885,7 @@ add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
 function custmuize_restrict_manage_posts_exsample(){
     global $post_type,$tag;
     if(is_object_in_taxonomy($post_type,'post_tag')){
-        $dropdown_options = array(
-            'show_option_all' => get_taxonomy( 'post_tag' )->labels->all_items,
-            'hide_empty'      => 0,
-            'hierarchical'    => 1,
-            'show_count'      => 0,
-            'orderby'         => 'name',
-            'selected'        => $tag,
-            'name'            => 'tag',
-            'taxonomy'        => 'post_tag',
-            'value_field'     => 'slug'
-        );
-        wp_dropdown_categories($dropdown_options);
+        wp_dropdown_categories(array('show_option_all' => get_taxonomy('post_tag')->labels->all_items,'hide_empty' => 0,'hierarchical' => 1,'show_count' => 0,'orderby' => 'name','selected' => $tag,'name' => 'tag','taxonomy' => 'post_tag','value_field' => 'slug'));
     }
     wp_dropdown_users(array('show_option_all' => 'すべてのユーザー','name' => 'author'));
 }
@@ -918,6 +894,18 @@ function custmuize_load_edit_php_exsample(){
     if(isset($_GET['tag']) && '0'===$_GET['tag']){unset($_GET['tag']);}
 }
 add_action('load-edit.php','custmuize_load_edit_php_exsample');
+/**
+ * 投稿をゴミ箱へ送らずにいきなり削除する。
+ *
+ * Use bulk_actions-{screen_id}
+ * License: GPLv2 or later
+ */
+function nendebcom_register_bulk_actions_delete( $bulk_actions ) {
+
+    $bulk_actions['delete'] = 'いきなり削除する';
+    return $bulk_actions;
+}
+add_filter( 'bulk_actions-edit-post', 'nendebcom_register_bulk_actions_delete' );
 /*
     ADD item to customize
 1.customizer

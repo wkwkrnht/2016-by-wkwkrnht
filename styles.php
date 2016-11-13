@@ -149,7 +149,6 @@
 	2.tag cloud
 	3.recent entries
 	4.archive
-	5.meta box
 	*/
 	ul.widget-area{list-style:none;}
 	.widget{max-width:94%;margin:2vh auto;}
@@ -169,9 +168,6 @@
 	.widget_archive ul{list-style-type:none;text-align:center;}
 	.widget_archive ul li{font-size:calc(1.8rem * 0.8);}
 	.widget_archive ul li a{font-size:1.8rem;}
-
-	.addpost::before,.wlwedit::before,.post-edit-link::before{content:"\f040";font-family:"FontAwesome";font-size:2.4rem;}
-	.addpost::after{content:"\f067";font-family:"FontAwesome";font-size:calc(2.4rem * 0.8);}
 	/*
 	    original
 	1.card-design
@@ -366,7 +362,7 @@
 		:root{font-size:10pt;}
 		#menu-toggle,#menu-wrap{display:none;}
 	}
-	.night-mode .hide-nav-prev a,.night-mode .hide-nav-next a,body.night-mode,.night-mode #main-menu,.night-mode .card,.night-mode div.card-list,.night-mode div#menu-wrap,.night-mode a#menu-toggle,.night-mode a#main-menu-toggle,.night-mode a#share-menu-toggle{color:#fff;background-color:#333;}
+	.night-mode .hide-nav-prev a,.night-mode .hide-nav-next a,body.night-mode,.night-mode #main-menu,.night-mode .card,.night-mode div.card-list,.night-mode div#menu-wrap,.night-mode a#menu-toggle,.night-mode nav.menu-tab,.night-mode a#main-menu-toggle,.night-mode a#share-menu-toggle{color:#fff;background-color:#333;}
 	.night-mode ul.page-nation,.night-mode ul.page-nation a,.night-mode ul.page-nation li span.dots,.night-mode ul.page-nation li.current,.night-mode .page-nav,.night-mode .page-nav a:hover{color:#fff;background-color:#333;border-color:#fff;}
 	.night-mode ul.page-nation li span.dots{color:#f1f1f1;}
 	.night-mode ul.page-nation a:hover{color:#333;background-color:#fff;}
