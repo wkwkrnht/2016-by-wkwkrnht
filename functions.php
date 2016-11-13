@@ -25,7 +25,7 @@
 function wkwkrnht_setup(){
     $GLOBALS['content_width'] = apply_filters('mytheme_content_width',1080);
 
-    add_theme_support('custom-header',array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,));
+    add_theme_support('custom-header',array('default-image'=>'','random-default'=>false,'width'=>1280,'height'=>720,'flex-height'=>true,'flex-width'=>true,'default-text-color'=>'#fff','header-text'=>true,'uploads'=>true,'video'=>true,));
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
