@@ -21,7 +21,7 @@
 	sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
 	sub{bottom:-.25em;}
 	sup{top:-0.5em;}
-	img{border-style:none;-ms-interpolation-mode:bicubic;}
+	img{border-style:none;object-fit:contain;image-rendering:pixelated;-ms-interpolation-mode:bicubic;}
 	img[src$=".gif"],img[src$=".png"]{image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;}
 	svg:not(:root){overflow:hidden;}
 	code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em;}
