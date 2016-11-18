@@ -96,6 +96,7 @@ function wkwkrnht_widgets_init(){
     register_widget('google_search_widget');
     register_widget('google_search_ads_widget');
     register_widget('google_two_ads_widget');
+    register_widget('google_translate_widget');
     register_widget('move_top');
 }
 
@@ -297,22 +298,16 @@ class google_two_ads_widget extends WP_Widget{
         . $args['after_widget'];
     }
     public function form($instance){
-        $label=!empty($instance['label']) ? $instance['label'] : '';?>
-    		<p>
-    		<label for="<?php echo $this->get_field_id('label');?>">label</label>
-    		<input class="widefat" id="<?php echo $this->get_field_id('label');?>" name="<?php echo $this->get_field_name('label');?>" type="text" value="<?php echo esc_attr($label);?>">
-    		</p>
-		<?php
-        $client=!empty($instance['client']) ? $instance['client'] : '';?>
-    		<p>
-    		<label for="<?php echo $this->get_field_id('client');?>">client</label>
-    		<input class="widefat" id="<?php echo $this->get_field_id('client');?>" name="<?php echo $this->get_field_name('client');?>" type="text" value="<?php echo esc_attr($client);?>">
-    		</p>
-    	<?php
+        $label=!empty($instance['label']) ? $instance['label'] : '';
+        $client=!empty($instance['client']) ? $instance['client'] : '';
         $slot=!empty($instance['slot']) ? $instance['slot'] : '';?>
     		<p>
-    		<label for="<?php echo $this->get_field_id('slot');?>">slot</label>
-    		<input class="widefat" id="<?php echo $this->get_field_id('slot');?>" name="<?php echo $this->get_field_name('slot');?>" type="text" value="<?php echo esc_attr($slot);?>">
+        		<label for="<?php echo $this->get_field_id('label');?>">label</label>
+        		<input class="widefat" id="<?php echo $this->get_field_id('label');?>" name="<?php echo $this->get_field_name('label');?>" type="text" value="<?php echo esc_attr($label);?>">
+        		<label for="<?php echo $this->get_field_id('client');?>">client</label>
+        		<input class="widefat" id="<?php echo $this->get_field_id('client');?>" name="<?php echo $this->get_field_name('client');?>" type="text" value="<?php echo esc_attr($client);?>">
+        		<label for="<?php echo $this->get_field_id('slot');?>">slot</label>
+        		<input class="widefat" id="<?php echo $this->get_field_id('slot');?>" name="<?php echo $this->get_field_name('slot');?>" type="text" value="<?php echo esc_attr($slot);?>">
     		</p>
     	<?php
 	}
@@ -323,6 +318,40 @@ class google_two_ads_widget extends WP_Widget{
         $instance['slot']   = (!empty($new_instance['slot'])) ? strip_tags($new_instance['slot']) : '';
         return $instance;
     }
+}
+
+class google_translate_widget extends WP_Widget{
+    function __construct(){parent::__construct('google_translate_widget','Google 翻訳',array());}
+    public function widget($args,$instance){
+        extract($instance);
+        if($analytics_id===''){$analytics = 'gaTrack: false';}else{$analytics = ' gaTrack: true, gaId: "' . $analytics_id . '"';}
+        echo $args['before_widget'] .
+        '<div id="google_translate_element"></div>
+        <script>
+            function googleTranslateElementInit(){
+                new google.translate.TranslateElement(
+                    {
+                        pageLanguage: "' . $lang . '",
+                        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                        ' . $analytics . '
+                    },
+                    "google_translate_element"
+                );
+            }
+        </script>
+        <script async="" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>'
+        . $args['after_widget'];
+    }
+    public function form($instance){$lang=!empty($instance['lang']) ? $instance['lang'] : '';$analytics_id=!empty($instance['analytics_id']) ? $instance['analytics_id'] : '';?>
+		<p>
+    		<label for="<?php echo $this->get_field_id('lang');?>">言語</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('lang');?>" name="<?php echo $this->get_field_name('lang');?>" type="text" value="<?php echo esc_attr($lang);?>">
+            <label for="<?php echo $this->get_field_id('analytics_id');?>">Google アナリティクス ID</label>
+    		<input class="widefat" id="<?php echo $this->get_field_id('analytics_id');?>" name="<?php echo $this->get_field_name('analytics_id');?>" type="text" value="<?php echo esc_attr($analytics_id);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['lang']=(!empty($new_instance['lang'])) ? strip_tags($new_instance['lang']):'';$instance['analytics_id']=(!empty($new_instance['analytics_id'])) ? strip_tags($new_instance['analytics_id']):'';return $instance;}
 }
 
 add_filter('widget_text','do_shortcode');
