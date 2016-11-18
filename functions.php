@@ -552,7 +552,7 @@ function generate_multipage_url($rel='prev'){
     if($multipage[0] > 1):
         $numpages = $multipage[0];
         $page = $multipage[1] == 0 ? 1 : $multipage[1];
-        $i = 'prev' == $rel? $page - 1: $page + 1;
+        $i = 'prev' == $rel ? $page - 1 : $page + 1;
         if($i && $i > 0 && $i <= $numpages):
             if(1 == $i){
                 $url = get_permalink();
@@ -580,9 +580,9 @@ function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID
 */
 function make_ogp_blog_card($url){
     $cache = get_site_transient($url);
-    if($cache):
+    if($cache){
         $content = $cache;
-    else:
+    }else{
         require_once('inc/OpenGraph.php');
     	$ogp           = OpenGraph::fetch($url);
         $url           = $ogp->url;
@@ -623,7 +623,7 @@ function make_ogp_blog_card($url){
         </div>';
         if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
-    endif;
+    }
     return $content;
 }
 
@@ -645,10 +645,11 @@ add_filter('embed_handler_html','custom_oembed_element');
 add_filter('embed_oembed_html','custom_oembed_element');
 
 function wkwkrnht_replace($content){
-    $img_replace = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
-    $a_replace   = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$img_replace);
-    $twtreplace  = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$a_replace);
-    return $twtreplace;
+    $content = preg_replace_callback('#(<code.*?>)(.*?)(</code>)#imsu',function($match){return $match[1] . esc_html($match[2]) . $match[3];},$content);
+    $content = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
+    $content = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
+    $content = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$content);
+    return $content;
 }
 add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
@@ -672,6 +673,7 @@ function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$att
 function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
+function columun_in_article($atts){extract(shortcode_atts(array('title'=>'','txt'=>'',),$atts));return'<aside class="columun"><h3>' . $title . '</h3><p>' . $txt . '</p></aside>';}
 function make_a($atts){extract(shortcode_atts(array('url'=>'','txt'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" target="_blank" rel="noopener">' . $txt . '</a>';}
 function make_toc($atts){
     $atts = shortcode_atts(array(
@@ -783,6 +785,7 @@ add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
+add_shortcode('columun','columun_in_article');
 add_shortcode('toc','make_toc');
 add_shortcode('link','make_a');
 /*
@@ -840,6 +843,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
+        QTags.addButton('qt-columun','コラム','[columun title= txt=',']');
         QTags.addButton('qt-a','a','[link txt=',' url=]');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
@@ -1008,12 +1012,8 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_comment_title_color',array('label'=>'.comment-title color','settings'=>'wkwkrnht_comment_title_color','section'=>'colors',)));
     $wp_customize->add_setting('wkwkrnht_comment_title_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_comment_title_background',array('label'=>'.comment-title background-color','settings'=>'wkwkrnht_comment_title_background','section'=>'colors',)));
-    $wp_customize->add_setting('manth_archive_year_main',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_year_main',array('label'=>'.widget_manth_archive_year main-color','settings'=>'manth_archive_year_main','section'=>'colors',)));
-    $wp_customize->add_setting('manth_archive_year_h3_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_year_h3_color',array('label'=>'.widget_manth_archive_year h3 color','settings'=>'manth_archive_year_h3_color','section'=>'colors',)));
-    $wp_customize->add_setting('manth_archive_article_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_article_background',array('label'=>'.widget_manth_archive_article background-color','settings'=>'manth_archive_article_background','section'=>'colors',)));
+    $wp_customize->add_setting('manth_archive_year_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_year_background',array('label'=>'.widget_manth_archive_year h3 background-color','settings'=>'manth_archive_year_background','section'=>'colors',)));
     $wp_customize->add_setting('move_top_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'move_top_color',array('label'=>'.widge_move_top color','settings'=>'move_top_color','section'=>'colors',)));
     $wp_customize->add_setting('move_top_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
