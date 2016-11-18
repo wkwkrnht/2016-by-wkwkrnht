@@ -1012,12 +1012,8 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_comment_title_color',array('label'=>'.comment-title color','settings'=>'wkwkrnht_comment_title_color','section'=>'colors',)));
     $wp_customize->add_setting('wkwkrnht_comment_title_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'wkwkrnht_comment_title_background',array('label'=>'.comment-title background-color','settings'=>'wkwkrnht_comment_title_background','section'=>'colors',)));
-    $wp_customize->add_setting('manth_archive_year_main',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_year_main',array('label'=>'.widget_manth_archive_year main-color','settings'=>'manth_archive_year_main','section'=>'colors',)));
-    $wp_customize->add_setting('manth_archive_year_h3_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_year_h3_color',array('label'=>'.widget_manth_archive_year h3 color','settings'=>'manth_archive_year_h3_color','section'=>'colors',)));
-    $wp_customize->add_setting('manth_archive_article_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_article_background',array('label'=>'.widget_manth_archive_article background-color','settings'=>'manth_archive_article_background','section'=>'colors',)));
+    $wp_customize->add_setting('manth_archive_year_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'manth_archive_year_background',array('label'=>'.widget_manth_archive_year h3 background-color','settings'=>'manth_archive_year_background','section'=>'colors',)));
     $wp_customize->add_setting('move_top_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'move_top_color',array('label'=>'.widge_move_top color','settings'=>'move_top_color','section'=>'colors',)));
     $wp_customize->add_setting('move_top_background',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
