@@ -66,7 +66,7 @@
 
 	#menu-wrap{opacity:.85;height:75vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 	#share-menu,#main-menu{height:67vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
-	#share-menu ul,#main-menu ul{width:80vw;}
+	#share-menu ul,#main-menu > ul{width:80vw;}
 
 	#share-menu ul{width:86vw;list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
 	#share-menu ul li{width:calc((86vw / 2) - 1vmin);height:20vh;text-align:center;}
