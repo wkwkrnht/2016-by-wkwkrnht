@@ -1,9 +1,9 @@
 <style>
     .widget_wkwkrnht_manth_archive ul{list-style:none;}
-    .widget_wkwkrnht_manth_archive .list-year{margin:1em 0;background-color:<?php echo get_option('manth_archive_year_main','#03a9f4');?>;border:1px solid <?php echo get_option('manth_archive_year_main','#03a9f4');?>;}
-    .widget_wkwkrnht_manth_archive .list-year h3{text-align:center;}
+    .widget_wkwkrnht_manth_archive .list-year{margin:1em 0;}
+    .widget_wkwkrnht_manth_archive .list-year h3{display:inline-block;width:40%;text-align:center;background-color:<?php echo get_option('manth_archive_year_background','#03a9f4');?>;}
     .widget_wkwkrnht_manth_archive .list-year h3 a{font-size:1.8rem;color:<?php echo get_option('manth_archive_year_h3_color','#fff');?>;text-decoration:none;}
-    .widget_wkwkrnht_manth_archive .article-list{list-style:none;padding:.75em 2em;margin-top:1em;background-color:<?php echo get_option('manth_archive_article_background','#fff');?>;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;}
+    .widget_wkwkrnht_manth_archive .article-list{display:inline-block;width:60%;list-style:none;padding:.75em 2em;margin-top:1em;}
     .widget_wkwkrnht_manth_archive .article-list li{display:inline-block;font-size:1.6rem;height:2em;width:4.5em;text-align:center;}
     .widget_wkwkrnht_manth_archive .article-list li a{text-decoration:none;}
 </style>
