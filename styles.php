@@ -46,6 +46,8 @@
 	.open{visibility:visible;}
 	.vcard,.fn,.author{margin:0;}
 	footer > .copyright{display:inline-block;width:100%;padding:0;margin:0;font-size:2rem;text-align:center;}
+	.screen-reader-text{clip:rect(1px,1px,1px,1px);position:absolute;height:1px;width:1px;overflow:hidden;}
+	.screen-reader-text:focus{display:block;height:auto;width:auto;clip:auto;padding:15px 23px 14px;border-radius:3px;top:5px;left:5px;z-index:100000;font-size:1.6rem;font-weight:bold;text-decoration:none;color:#21759b;background-color:#f1f1f1;box-shadow:0 0 2px 2px rgba(0,0,0,.6);}
 	/*
 		navigation
 	1.toggle
@@ -181,7 +183,7 @@
 	8.move to search
 	*/
 	.card{min-height:40.5vmin;width:72vmin;margin:3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
-	.card-eyecatch{display:block;float:left;height:100%;min-width:calc(72vmin / 2 - 1vmin);max-width:calc(72vmin / 2 - 1vmin);vertical-align:middle;}
+	.card-eyecatch{display:block;float:left;height:100%;max-width:calc(72vmin / 2 - 1vmin);vertical-align:middle;}
 	.card-info{max-width:calc(72vmin / 2);float:right;}
 	.card-title{display:inline-block;height:calc(40.5vmin / 10 * 3);margin:0 1em;}
 	.card-meta{display:inline-block;height:calc(40.5vmin / 10 * 7);margin:0 1em;}
@@ -318,8 +320,6 @@
 
 		div.wpappbox{margin:3vh auto;}
 		.sticky,.gallery-caption,.bypostauthor{}
-		.screen-reader-text{clip:rect(1px,1px,1px,1px);position:absolute;height:1px;width:1px;overflow:hidden;}
-		.screen-reader-text:focus{display:block;height:auto;width:auto;clip:auto;padding:15px 23px 14px;border-radius:3px;top:5px;left:5px;z-index:100000;font-size:14px;font-size:.875rem;font-weight:bold;text-decoration:none;color:#21759b;background-color:#f1f1f1;box-shadow:0 0 2px 2px rgba(0,0,0,.6);}
 	<?php endif;?>
 	/*
 	    Media Query
