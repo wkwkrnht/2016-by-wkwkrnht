@@ -791,12 +791,16 @@ function make_toc($atts){
         </aside>
         <script>
             function addid(){
+                var i = 0;
+                var n = 0;
                 var idCounter = 0;
                 var targetclass = document.getElementsByClassName("' . $targetclass . '");
                 var sub = [' . $harray . '];
-                for (var i = 0, l = sub.length; i < l; i++){
+                var l = sub.length;
+                for (; i < l; i++) {
                     var targeTelement = targetclass.getElementsByTagName(sub[i]);
-                    for (var n = 0, m = targeTelement.length; n < m; n++){
+                    var m = targeTelement.length;
+                    for (; n < m; n++) {
                         idCounter++;
                         targetelement[i].id = "toc" + idCounter;
                     }
