@@ -798,7 +798,7 @@ function make_toc($atts){
                     var targeTelement = targetclass.getElementsByTagName(sub[i]);
                     for (var n = 0; n < targeTelement.length; n++) {
                         idCounter++;
-                        targeTelement[i].id = "toc" + idCounter;
+                        targeTelement[n].id = "toc" + idCounter;
                     }
                 }
             }
