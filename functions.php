@@ -855,7 +855,7 @@ function wkwkrnht_add_mce_buttons($buttons){
 }
 
 function wkwkrnht_add_quicktags(){
-    if(wp_script_is('quicktags')){ ?>
+    if(wp_script_is('quicktags')===true){ ?>
     <script>
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
@@ -909,7 +909,7 @@ function add_posts_columns_row($column_name,$post_id){
     }elseif('postid'===$column_name){
         echo $post_id;
     }elseif('count'===$column_name){
-        $count = iconv_strlen(strip_tags(get_post_field('post_content',$post_id)),'UTF-8');
+        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)),'UTF-8');
         echo $count;
     }
 }
@@ -918,7 +918,7 @@ add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
 function custmuize_restrict_manage_posts_exsample(){
     global $post_type,$tag;
     if(is_object_in_taxonomy($post_type,'post_tag')){
-        wp_dropdown_categories(array('show_option_all' => get_taxonomy('post_tag')->labels->all_items,'hide_empty' => 0,'hierarchical' => 1,'show_count' => 0,'orderby' => 'name','selected' => $tag,'name' => 'tag','taxonomy' => 'post_tag','value_field' => 'slug'));
+        wp_dropdown_categories(array('show_option_all'=>get_taxonomy('post_tag')->labels->all_items,'hide_empty'=>0,'hierarchical'=>1,'show_count'=>0,'orderby'=>'name','selected'=>$tag,'name'=>'tag','taxonomy'=>'post_tag','value_field'=>'slug'));
     }
     wp_dropdown_users(array('show_option_all' => 'すべてのユーザー','name' => 'author'));
 }
