@@ -909,7 +909,7 @@ function add_posts_columns_row($column_name,$post_id){
     }elseif('postid'===$column_name){
         echo $post_id;
     }elseif('count'===$column_name){
-        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)),'UTF-8');
+        $count = iconv_strlen(strip_tags(get_post_field('post_content',$post_id)),'UTF-8');
         echo $count;
     }
 }
