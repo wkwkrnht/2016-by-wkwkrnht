@@ -793,7 +793,7 @@ function make_toc($atts){
             (function(){
                 var idCounter = 0;
                 var targetclass = document.getElementsByClassName("' . $targetclass . '");
-                var sub = [<?php echo $harray;?>];
+                var sub = [' . $harray . '];
                 for (var i = 0; i < sub.length; i++){
                     var targetelement = targetclass.getElementsByTagName(sub[i]);
                     for (var n = 0; n < targetelement.length; n++){
