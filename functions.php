@@ -716,15 +716,15 @@ function make_toc($atts){
         'targetclass' => 'article-main'
     ),$atts);
 
-    $content   = get_the_content();
-    $headers   = array();
-    $html      = '';
-    $toc_list  = '';
-    $id        = $atts['id'];
-    $toggle    = '';
-    $counter   = 0;
-    $counters  = array(0,0,0,0,0,0);
-    $top_level = intval($atts['toplevel']);
+    $content     = get_the_content();
+    $headers     = array();
+    $html        = '';
+    $toc_list    = '';
+    $id          = $atts['id'];
+    $toggle      = '';
+    $counter     = 0;
+    $counters    = array(0,0,0,0,0,0);
+    $top_level   = intval($atts['toplevel']);
     $harray      = array();
     $targetclass = trim($atts['targetclass']);
     if($targetclass===''){$targetclass = get_post_type();}
@@ -790,13 +790,13 @@ function make_toc($atts){
         '
         </aside>
         <script>
-            window.onload = function() {
+            window.onload = function(){
                 var idCounter = 0;
                 var targetclass = document.getElementsByClassName("' . $targetclass . '");
                 var sub = [' . $harray . '];
                 for (var i = 0; i < sub.length; i++){
-                    var targetelement = targetclass.getElementsByTagName(sub[i]);
-                    for (var n = 0; n < targetelement.length; n++){
+                    var targeTelement = targetclass.getElementsByTagName(sub[i]);
+                    for (var n = 0, l = targeTelement.length; n < l; n++){
                         idCounter++;
                         targetelement[i].id = "toc" + idCounter;
                     }
