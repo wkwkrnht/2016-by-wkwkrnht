@@ -212,8 +212,8 @@
 			$content = preg_replace('/ +onMouseOver=[\'][^\']*?[\']/i','',$content);
 			$content = preg_replace('/ +onMouseOut=["][^"]*?["]/i','',$content);
 			$content = preg_replace('/ +onMouseOut=[\'][^\']*?[\']/i','',$content);
-			$content = preg_replace('/ +href="javascript:void(0)"/i','',$content);
-			$content = preg_replace('/ +src=""/i',$img,$content);
+			$content = str_replace('href="javascript:void(0)"','',$content);
+			$content = str_replace('src=""',$img,$content);
 
 			echo $content;
 			?>

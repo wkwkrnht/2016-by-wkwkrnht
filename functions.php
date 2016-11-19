@@ -897,21 +897,21 @@ function wkwkrnht_add_quicktags(){
 add_action('admin_print_footer_scripts','wkwkrnht_add_quicktags');
 
 function add_posts_columns($columns){
-    $columns['thumbnail']='thumb';
-    $columns['postid']='ID';
-    $columns['count']='word count';
+    $columns['thumbnail'] = 'thumb';
+    $columns['postid']    = 'ID';
+    $columns['count']     = 'word count';
     return $columns;
 }
 function add_posts_columns_row($column_name,$post_id){
-    if('thumbnail'===$column_name):
+    if('thumbnail'===$column_name){
         $thumb = get_the_post_thumbnail($post_id);
         echo ($thumb) ? '○' : '×';
-    elseif('postid'===$column_name):
+    }elseif('postid'===$column_name){
         echo $post_id;
-    elseif('count'===$column_name):
-        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)));
+    }elseif('count'===$column_name){
+        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)),'UTF-8');
         echo $count;
-    endif;
+    }
 }
 add_filter('manage_posts_columns','add_posts_columns');
 add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
@@ -929,16 +929,13 @@ function custmuize_load_edit_php_exsample(){
 add_action('load-edit.php','custmuize_load_edit_php_exsample');
 /**
  * 投稿をゴミ箱へ送らずにいきなり削除する。
- *
  * Use bulk_actions-{screen_id}
- * License: GPLv2 or later
  */
-function nendebcom_register_bulk_actions_delete( $bulk_actions ) {
-
+function nendebcom_register_bulk_actions_delete($bulk_actions){
     $bulk_actions['delete'] = 'いきなり削除する';
     return $bulk_actions;
 }
-add_filter( 'bulk_actions-edit-post', 'nendebcom_register_bulk_actions_delete' );
+add_filter('bulk_actions-edit-post','nendebcom_register_bulk_actions_delete');
 /*
     ADD item to customize
 1.customizer
