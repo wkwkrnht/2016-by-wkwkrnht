@@ -801,8 +801,8 @@ function make_toc($atts){
                         targetelement[i].id = "toc" + idCounter;
                     }
                 }
-            };
-            window.onload = addid;
+            }
+            (function(){window.onload = addid;})()
         </script>';
     }
     return $html;
