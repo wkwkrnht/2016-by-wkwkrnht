@@ -716,15 +716,15 @@ function make_toc($atts){
         'targetclass' => 'article-main'
     ),$atts);
 
-    $content   = get_the_content();
-    $headers   = array();
-    $html      = '';
-    $toc_list  = '';
-    $id        = $atts['id'];
-    $toggle    = '';
-    $counter   = 0;
-    $counters  = array(0,0,0,0,0,0);
-    $top_level = intval($atts['toplevel']);
+    $content     = get_the_content();
+    $headers     = array();
+    $html        = '';
+    $toc_list    = '';
+    $id          = $atts['id'];
+    $toggle      = '';
+    $counter     = 0;
+    $counters    = array(0,0,0,0,0,0);
+    $top_level   = intval($atts['toplevel']);
     $harray      = array();
     $targetclass = trim($atts['targetclass']);
     if($targetclass===''){$targetclass = get_post_type();}
@@ -790,18 +790,23 @@ function make_toc($atts){
         '
         </aside>
         <script>
-            (function(){
+            function addid(){
+                var i = 0;
+                var n = 0;
                 var idCounter = 0;
                 var targetclass = document.getElementsByClassName("' . $targetclass . '");
-                var sub = [<?php echo $harray;?>];
-                for (var i = 0; i < sub.length; i++){
-                    var targetelement = targetclass.getElementsByTagName(sub[i]);
-                    for (var n = 0; n < targetelement.length; n++){
+                var sub = [' . $harray . '];
+                var l = sub.length;
+                for (; i < l; i++) {
+                    var targeTelement = targetclass.getElementsByTagName(sub[i]);
+                    var m = targeTelement.length;
+                    for (; n < m; n++) {
                         idCounter++;
                         targetelement[i].id = "toc" + idCounter;
                     }
                 }
-            })();
+            }
+            (function(){window.onload = addid;})()
         </script>';
     }
     return $html;
@@ -855,7 +860,7 @@ function wkwkrnht_add_mce_buttons($buttons){
 }
 
 function wkwkrnht_add_quicktags(){
-    if(wp_script_is('quicktags')){ ?>
+    if(wp_script_is('quicktags')===true){ ?>
     <script>
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
@@ -897,28 +902,28 @@ function wkwkrnht_add_quicktags(){
 add_action('admin_print_footer_scripts','wkwkrnht_add_quicktags');
 
 function add_posts_columns($columns){
-    $columns['thumbnail']='thumb';
-    $columns['postid']='ID';
-    $columns['count']='word count';
+    $columns['thumbnail'] = 'thumb';
+    $columns['postid']    = 'ID';
+    $columns['count']     = 'word count';
     return $columns;
 }
 function add_posts_columns_row($column_name,$post_id){
-    if('thumbnail'===$column_name):
+    if('thumbnail'===$column_name){
         $thumb = get_the_post_thumbnail($post_id);
         echo ($thumb) ? '○' : '×';
-    elseif('postid'===$column_name):
+    }elseif('postid'===$column_name){
         echo $post_id;
-    elseif('count'===$column_name):
-        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)));
+    }elseif('count'===$column_name){
+        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)),'UTF-8');
         echo $count;
-    endif;
+    }
 }
 add_filter('manage_posts_columns','add_posts_columns');
 add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
 function custmuize_restrict_manage_posts_exsample(){
     global $post_type,$tag;
     if(is_object_in_taxonomy($post_type,'post_tag')){
-        wp_dropdown_categories(array('show_option_all' => get_taxonomy('post_tag')->labels->all_items,'hide_empty' => 0,'hierarchical' => 1,'show_count' => 0,'orderby' => 'name','selected' => $tag,'name' => 'tag','taxonomy' => 'post_tag','value_field' => 'slug'));
+        wp_dropdown_categories(array('show_option_all'=>get_taxonomy('post_tag')->labels->all_items,'hide_empty'=>0,'hierarchical'=>1,'show_count'=>0,'orderby'=>'name','selected'=>$tag,'name'=>'tag','taxonomy'=>'post_tag','value_field'=>'slug'));
     }
     wp_dropdown_users(array('show_option_all' => 'すべてのユーザー','name' => 'author'));
 }
@@ -929,16 +934,13 @@ function custmuize_load_edit_php_exsample(){
 add_action('load-edit.php','custmuize_load_edit_php_exsample');
 /**
  * 投稿をゴミ箱へ送らずにいきなり削除する。
- *
  * Use bulk_actions-{screen_id}
- * License: GPLv2 or later
  */
-function nendebcom_register_bulk_actions_delete( $bulk_actions ) {
-
+function nendebcom_register_bulk_actions_delete($bulk_actions){
     $bulk_actions['delete'] = 'いきなり削除する';
     return $bulk_actions;
 }
-add_filter( 'bulk_actions-edit-post', 'nendebcom_register_bulk_actions_delete' );
+add_filter('bulk_actions-edit-post','nendebcom_register_bulk_actions_delete');
 /*
     ADD item to customize
 1.customizer
