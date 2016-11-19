@@ -790,7 +790,7 @@ function make_toc($atts){
         '
         </aside>
         <script>
-            (function(){
+            window.onload = function(){
                 var idCounter = 0;
                 var targetclass = document.getElementsByClassName("' . $targetclass . '");
                 var sub = [' . $harray . '];
@@ -801,7 +801,7 @@ function make_toc($atts){
                         targetelement[i].id = "toc" + idCounter;
                     }
                 }
-            })();
+            };
         </script>';
     }
     return $html;
