@@ -665,7 +665,7 @@ function custom_oembed_element($code){
         $html = preg_replace("@src=(['\"])?([^'\">\s]*)@","src=$1$2&rel=0",$code);
         $html = preg_replace('/ width="\d+"/','',$html);
         $html = preg_replace('/ height="\d+"/','',$html);
-        $html = '<div class="wrap"><div>' . $html . '</div></div>';
+        $html = '<div class="wrap">' . $html . '</div>';
         return $html;
     }
     return $code;
