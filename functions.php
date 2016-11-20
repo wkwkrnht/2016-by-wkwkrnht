@@ -656,16 +656,9 @@ function make_ogp_blog_card($url){
     return $content;
 }
 
-function custom_oembed_element($code){
-    if(strpos($code,'twitter.com')!==false || strpos($code,'mobile.twitter.com')!==false){
+function custom_oembed_element($html){
+    if(strpos($html,'twitter.com')!==false || strpos($html,'mobile.twitter.com')!==false){
         $html = preg_replace('/ class="(.*?)\d+"/','class="$1" align="center"',$html);
-        return $html;
-    }
-    if(strpos($code,'youtu.be')!==false || strpos($code,'youtube.com')!==false || strpos($code,'www.youtube.com')!==false){
-        $html = preg_replace("@src=(['\"])?([^'\">\s]*)@","src=$1$2&rel=0",$code);
-        $html = preg_replace('/ width="\d+"/','',$html);
-        $html = preg_replace('/ height="\d+"/','',$html);
-        $html = '<div class="wrap"><div>' . $html . '</div></div>';
         return $html;
     }
     return $code;
@@ -791,18 +784,14 @@ function make_toc($atts){
         </aside>
         <script>
             function addid(){
-                var i = 0;
-                var n = 0;
                 var idCounter = 0;
                 var targetclass = document.getElementsByClassName("' . $targetclass . '");
                 var sub = [' . $harray . '];
-                var l = sub.length;
-                for (; i < l; i++) {
+                for (var i = 0; i < sub.length; i++) {
                     var targeTelement = targetclass.getElementsByTagName(sub[i]);
-                    var m = targeTelement.length;
-                    for (; n < m; n++) {
+                    for (var n = 0; n < targeTelement.length; n++) {
                         idCounter++;
-                        targetelement[i].id = "toc" + idCounter;
+                        targeTelement[n].id = "toc" + idCounter;
                     }
                 }
             }
