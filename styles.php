@@ -247,7 +247,7 @@
 		.article-title{font-size:2rem;}
 
 		.article-main{font-size:1.6rem;}
-		.article-main p{max-width:50em;padding:5vmin 8vmin 0;margin:2vh auto;}
+		.article-main p{max-width:640px;padding:5vmin 8vmin 0;margin:2vh auto;}
 		.article-main a[href^="http"]:empty::before{content:attr(href);}
 		.article-main a[href^="http"][title]:empty::before{content:attr(title);}
 		.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
