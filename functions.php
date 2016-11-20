@@ -663,8 +663,8 @@ function custom_oembed_element($html){
     }
     if(strpos($html,'youtu.be')!==false || strpos($html,'youtube.com')!==false || strpos($html,'www.youtube.com')!==false){
         $html = preg_replace("@src=(['\"])?([^'\">\s]*)@","src=$1$2&rel=0",$html);
-        $html = preg_replace('/ width="\d+"/','',$html);
-        $html = preg_replace('/ height="\d+"/','',$html);
+        $html = preg_replace('/ +width="\d+"/','',$html);
+        $html = preg_replace('/ +height="\d+"/','',$html);
         $html = '<div class="wrap">' . $html . '</div>';
         return $html;
     }
