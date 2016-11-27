@@ -42,8 +42,8 @@
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
 	<?php
 	include_once(get_template_directory() . '/styles.php');
-	$txt='';$txt=get_option('header_txt');if($txt!==''){echo $txt;}
-	wp_head();?>
+	wp_head();
+	$txt='';$txt=get_option('header_txt');if($txt!==''){echo $txt;}?>
 </head>
 <body <?php body_class();?>>
 	<?php

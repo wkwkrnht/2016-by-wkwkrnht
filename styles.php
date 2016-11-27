@@ -197,7 +197,7 @@
 	.toc{width:90vw;padding-bottom:3vh;margin:3vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.toc-toggle{display:block;height:3em;width:3em;border-radius:50%;font-size:1.8rem;position:relative;top:-1.5em;left:85vw;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 
-	.marker{box-shadow:0 -0.3em 0 -0.1em rgba(255,255,0,.4) inset;}
+	.marker{box-shadow:0 -0.3em 0 -0.1em rgb(255,255,0) inset;}
 
 	.columun{margin:2vh auto;border:solid 1px #333;}
 	.columun > h3{font-weight:700;color:<?php echo get_option('article_main_h3_color','#03a9f4');?>;border:1vmin solid <?php echo get_option('article_main_h3_border','#03a9f4');?>;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
@@ -316,7 +316,6 @@
 		.format-chat .article-main p:nth-of-type(odd){float:left;clear:both;margin-left:3vmin;background-color:rgba(139,195,74,.6);}
 		.format-chat .article-main p:nth-of-type(even){float:right;clear:both;margin-right:3vmin;background-color:rgba(230,230,230,.6);}
 
-		div.wpappbox{margin:3vh auto;}
 		.sticky,.gallery-caption,.bypostauthor{}
 	<?php endif;?>
 	/*
