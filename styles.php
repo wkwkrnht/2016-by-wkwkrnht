@@ -225,8 +225,7 @@
 	.search-form .sform{min-width:280px;background-color:#fff;}
 	.search-form .sbtn{position:absolute;padding-left:2rem;padding-right:3rem;color:#fff;background-color:#1155ee;}
 	.search-form div.sbtn:after{content:"\f25a";font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
-	<?php require_once('wp-admin/includes/plugin.php');
-	if(is_plugin_active('wp-appbox/wp-appbox.php')===true):?>
+	<?php if(is_actived_plugin('wp-appbox/wp-appbox.php')===true):?>
 		.wpappbox *,.wpappbox::after,.wpappbox::before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 		.wpappbox a,.wpappbox a:after,.wpappbox::before{text-decoration:none ;color:#323232;-webkit-transition-property:background color;-webkit-transition-duration:.2s;-webkit-transition-timing-function:ease;-moz-transition-property:background color;-moz-transition-duration:.2s;-moz-transition-timing-function:ease;-o-transition-property:background color;-o-transition-duration:.2s;-o-transition-timing-function:ease;transition-property:background color;transition-duration:.2s;transition-timing-function:ease;}
 		.wpappbox a img{-webkit-transition:all .5s ease;-moz-transition:all .5s ease;-o-transition:all .5s ease;-ms-transition:all .5s ease;transition:all .5s ease;}
@@ -237,7 +236,7 @@
 		.wpappbox.compact{height:70px;}
 		.wpappbox.screenshots-only{cursor:pointer}
 		.wpappbox .appicon{position:relative;height:112px;width:112px;float:left;padding:10px;background:#FFF;text-align:center;border-right:1px solid #E5E5E5}
-		.wpappbox.compact  .appicon{height:68px;width:68px;float:left;padding:6px;}
+		.wpappbox.compact .appicon{height:68px;width:68px;float:left;padding:6px;}
 		.wpappbox .appicon img{height:92px;max-height:92px;width:92px;max-width:92px;margin:auto;border:0;border-radius:6px;}
 		.wpappbox.compact .appicon img{height:54px;width:54px;max-width:54px;margin:auto;border:0;border-radius:6px;}
 		.wpappbox .watch-icon{height:40px;width:40px;max-width:40px;position:absolute;bottom:3px;right:3px;border:3px solid #FFF;border-radius:20px;-moz-border-radius:20px;-webkit-border-radius:20px;}

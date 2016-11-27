@@ -597,6 +597,7 @@ function generate_multipage_url($rel='prev'){
 function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
 
 function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
+function is_actived_plugin($plugin = ''){if(is_admin()===false){require_once('wp-admin/includes/plugin.php');}return is_plugin_active($plugin);}
 /*
     original
 1.blogcard by OGP
