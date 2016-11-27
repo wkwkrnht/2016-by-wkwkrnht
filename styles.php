@@ -225,18 +225,18 @@
 	.search-form .sform{min-width:280px;background-color:#fff;}
 	.search-form .sbtn{position:absolute;padding-left:2rem;padding-right:3rem;color:#fff;background-color:#1155ee;}
 	.search-form div.sbtn:after{content:"\f25a";font-family:"FontAwesome";font-size:2.5rem;color:#000;position:absolute;bottom:-28px;}
-	<?php if(('wp-appbox/wp-appbox.php')===true):?>
-		.wpappbox *,.wpappbox::after,.wpappbox::before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
-		.wpappbox a,.wpappbox a:after,.wpappbox:before{text-decoration:none ;color:#323232;-webkit-transition-property:background color;-webkit-transition-duration:.2s;-webkit-transition-timing-function:ease;-moz-transition-property:background color;-moz-transition-duration:.2s;-moz-transition-timing-function:ease;-o-transition-property:background color;-o-transition-duration:.2s;-o-transition-timing-function:ease;transition-property:background color;transition-duration:.2s;transition-timing-function:ease}
-		.wpappbox a img{-webkit-transition:all .5s ease;-moz-transition:all .5s ease;-o-transition:all .5s ease;-ms-transition:all .5s ease;transition:all .5s ease}
-		.wpappbox a:hover img{opacity:.9;-ms-filter:"progid: DXImageTransform.Microsoft.Alpha(Opacity=90)";filter:alpha(opacity=90);-webkit-filter:grayscale(100%)}
-		.wpappbox-tinymce-button{background-image:url(../buttons/appbox.btn.png)}
+	<?php if(is_plugin_active('wp-appbox/wp-appbox.php')===true):?>
+		.wpappbox *,.wpappbox::after,.wpappbox::before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+		.wpappbox a,.wpappbox a:after,.wpappbox::before{text-decoration:none ;color:#323232;-webkit-transition-property:background color;-webkit-transition-duration:.2s;-webkit-transition-timing-function:ease;-moz-transition-property:background color;-moz-transition-duration:.2s;-moz-transition-timing-function:ease;-o-transition-property:background color;-o-transition-duration:.2s;-o-transition-timing-function:ease;transition-property:background color;transition-duration:.2s;transition-timing-function:ease;}
+		.wpappbox a img{-webkit-transition:all .5s ease;-moz-transition:all .5s ease;-o-transition:all .5s ease;-ms-transition:all .5s ease;transition:all .5s ease;}
+		.wpappbox a:hover img{opacity:.9;-ms-filter:"progid: DXImageTransform.Microsoft.Alpha(Opacity=90)";filter:alpha(opacity=90);-webkit-filter:grayscale(100%);}
+		.wpappbox-tinymce-button{background-image:url(../buttons/appbox.btn.png);}
 		.wpappbox{clear:both;font-family:'Open Sans',Arial;background-color:#F9F9F9;width:auto;line-height:1;color:#545450;margin:3vh auto;font-size:16px;border:1px solid #E5E5E5;box-shadow:0 0 8px 1px rgba(0,0,0,.11);}
-		.wpappbox.simple{height:114px}
-		.wpappbox.compact{height:70px}
+		.wpappbox.simple{height:114px;}
+		.wpappbox.compact{height:70px;}
 		.wpappbox.screenshots-only{cursor:pointer}
 		.wpappbox .appicon{position:relative;height:112px;width:112px;float:left;padding:10px;background:#FFF;text-align:center;border-right:1px solid #E5E5E5}
-		.wpappbox.compact  .appicon{height:68px;width:68px;float:left;padding:6px}
+		.wpappbox.compact  .appicon{height:68px;width:68px;float:left;padding:6px;}
 		.wpappbox .appicon img{height:92px;max-height:92px;width:92px;max-width:92px;margin:auto;border:0;border-radius:6px;}
 		.wpappbox.compact .appicon img{height:54px;width:54px;max-width:54px;margin:auto;border:0;border-radius:6px;}
 		.wpappbox .watch-icon{height:40px;width:40px;max-width:40px;position:absolute;bottom:3px;right:3px;border:3px solid #FFF;border-radius:20px;-moz-border-radius:20px;-webkit-border-radius:20px;}
@@ -247,71 +247,71 @@
 		.wpappbox.compact .appdetails{font-size:15px;line-height:15px;padding-top:6px;}
 		.wpappbox .appdetails > div{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:6px 8px}
 		.wpappbox.compact .appdetails > div{padding:5px 8px;}
-		.wpappbox .apptitle{font-size:19px;line-height:19px;font-weight:600;margin:2px 0 0}
-		.wpappbox.compact .apptitle{font-size:17px;line-height:17px}
-		.wpappbox .appdetails > .price-old{text-decoration:line-through}
-		.wpappbox .applinks{height:112px;width:92px;display:block}
-		.wpappbox.compact .applinks{height:68px;width:68px;display:block}
-		.wpappbox .appbuttons{position:absolute;bottom:1px;width:92px}
-		.wpappbox .appbuttons a,.wpappbox .appbuttons span{font-size:13px;box-shadow:0 1px 3px 0 rgba(0,0,0,.15);background:#F1F1F1;border-bottom:0;color:#323232;padding:3px 5px;display:block;margin:8px 10px;border-radius:2px;cursor:pointer;font-weight:400}
-		.wpappbox .appbuttons a:hover,.wpappbox .appbuttons span:hover{background:#373941;border-bottom:0;color:#FFF;transition:background-color .5s ease-in-out;-moz-transition:background-color .5s ease-in-out;-webkit-transition:background-color .5s ease-in-out}
-		.wpappbox .rating-stars{width:65px;height:13px;margin-left:5px;margin-top:4px;display:inline-block}
-		.wpappbox .stars-monochrome{background:url(../img/stars-sprites-monochrome.png) no-repeat}
-		.wpappbox .stars-colorful{background:url(../img/stars-sprites-colorful.png) no-repeat}
-		.wpappbox .stars00{background-position:0 0}
-		.wpappbox .stars05{background-position:0 -13px}
-		.wpappbox .stars10{background-position:0 -26px}
-		.wpappbox .stars15{background-position:0 -39px}
-		.wpappbox .stars20{background-position:0 -52px}
-		.wpappbox .stars25{background-position:0 -65px}
-		.wpappbox .stars30{background-position:0 -78px}
-		.wpappbox .stars35{background-position:0 -91px}
-		.wpappbox .stars40{background-position:0 -104px}
-		.wpappbox .stars45{background-position:0 -117px}
-		.wpappbox .stars50{background-position:0 -130px}
-		.wpappbox a:link,.wpappbox a:visited{color:#545450}
-		.wpappbox a:active, .wpappbox a:hover{text-decoration:none;color:#5588b5}
-		.wpappbox.screenshots > .screenshots{width:auto;margin:0 auto;padding:10px;clear:both;border-top:1px solid #E5E5E5}
-		.wpappbox.screenshots > .screenshots > .slider{overflow-x:scroll;overflow-y:hidden;height:320px;margin-top:0}
-		.wpappbox.screenshots > .screenshots > .slider > ul{padding:0 ;margin:0 ;list-style-image:none;white-space:nowrap}
-		.wpappbox.screenshots > .screenshots > .slider > ul > li{padding:0;margin:0 6px 0 0;list-style-type:none;display:inline}
-		.wpappbox.screenshots > .screenshots > .slider > ul > li:last-child{margin-right:0}
-		.wpappbox.screenshots > .screenshots > .slider > ul > li img{height:320px ;display:inline}
-		.wpappbox.error > span{display:block;width:100%;height:100%;padding:10px;font-size:16px;border-left:3px solid #df4a4a}
-		.wpappbox.error a{display:inline-block;font-size:15px;margin-left:3px}
-		.wpappbox .appdetails .fallback{font-size:.9em;line-height:1.7em;white-space:normal}
-		.wpappbox .appdetails .oldprice{text-decoration:line-through}
-		.wpappbox.appstore .applinks{background:url(../img/appstore-colorful.png)}
-		.wpappbox.macappstore .applinks{background:url(../img/macappstore-colorful.png)}
-		.wpappbox.googleplay .applinks{background:url(../img/googleplay-colorful.png)}
-		.wpappbox.goodoldgames .applinks{background:url(../img/goodoldgames-colorful.png)}
-		.wpappbox.windowsstore .applinks{background:url(../img/windowsstore-colorful.png)}
-		.wpappbox.firefoxmarketplace .applinks{background:url(../img/firefoxmarketplace-colorful.png)}
-		.wpappbox.chromewebstore .applinks{background:url(../img/chromewebstore-colorful.png)}
-		.wpappbox.firefoxaddon .applinks{background:url(../img/firefoxaddon-colorful.png)}
-		.wpappbox.amazonapps .applinks{background:url(../img/amazonapps-colorful.png)}
-		.wpappbox.wordpress .applinks{background:url(../img/wordpress-colorful.png)}
-		.wpappbox.steam .applinks{background:url(../img/steam-colorful.png)}
-		.wpappbox.operaaddons .applinks{background:url(../img/operaaddons-colorful.png)}
+		.wpappbox .apptitle{font-size:19px;line-height:19px;font-weight:600;margin:2px 0 0;}
+		.wpappbox.compact .apptitle{font-size:17px;line-height:17px;}
+		.wpappbox .appdetails > .price-old{text-decoration:line-through;}
+		.wpappbox .applinks{height:112px;width:92px;display:block;}
+		.wpappbox.compact .applinks{height:68px;width:68px;display:block;}
+		.wpappbox .appbuttons{position:absolute;bottom:1px;width:92px;}
+		.wpappbox .appbuttons a,.wpappbox .appbuttons span{font-size:13px;box-shadow:0 1px 3px 0 rgba(0,0,0,.15);background:#F1F1F1;border-bottom:0;color:#323232;padding:3px 5px;display:block;margin:8px 10px;border-radius:2px;cursor:pointer;font-weight:400;}
+		.wpappbox .appbuttons a:hover,.wpappbox .appbuttons span:hover{background:#373941;border-bottom:0;color:#FFF;transition:background-color .5s ease-in-out;-moz-transition:background-color .5s ease-in-out;-webkit-transition:background-color .5s ease-in-out;}
+		.wpappbox .rating-stars{width:65px;height:13px;margin-left:5px;margin-top:4px;display:inline-block;}
+		.wpappbox .stars-monochrome{background:url(../img/stars-sprites-monochrome.png) no-repeat;}
+		.wpappbox .stars-colorful{background:url(../img/stars-sprites-colorful.png) no-repeat;}
+		.wpappbox .stars00{background-position:0 0;}
+		.wpappbox .stars05{background-position:0 -13px;}
+		.wpappbox .stars10{background-position:0 -26px;}
+		.wpappbox .stars15{background-position:0 -39px;}
+		.wpappbox .stars20{background-position:0 -52px;}
+		.wpappbox .stars25{background-position:0 -65px;}
+		.wpappbox .stars30{background-position:0 -78px;}
+		.wpappbox .stars35{background-position:0 -91px;}
+		.wpappbox .stars40{background-position:0 -104px;}
+		.wpappbox .stars45{background-position:0 -117px;}
+		.wpappbox .stars50{background-position:0 -130px;}
+		.wpappbox a:link,.wpappbox a:visited{color:#545450;}
+		.wpappbox a:active, .wpappbox a:hover{text-decoration:none;color:#5588b5;}
+		.wpappbox.screenshots > .screenshots{width:auto;margin:0 auto;padding:10px;clear:both;border-top:1px solid #E5E5E5;}
+		.wpappbox.screenshots > .screenshots > .slider{overflow-x:scroll;overflow-y:hidden;height:320px;margin-top:0;}
+		.wpappbox.screenshots > .screenshots > .slider > ul{padding:0 ;margin:0 ;list-style-image:none;white-space:nowrap;}
+		.wpappbox.screenshots > .screenshots > .slider > ul > li{padding:0;margin:0 6px 0 0;list-style-type:none;display:inline;}
+		.wpappbox.screenshots > .screenshots > .slider > ul > li:last-child{margin-right:0;}
+		.wpappbox.screenshots > .screenshots > .slider > ul > li img{height:320px ;display:inline;}
+		.wpappbox.error > span{display:block;width:100%;height:100%;padding:10px;font-size:16px;border-left:3px solid #df4a4a;}
+		.wpappbox.error a{display:inline-block;font-size:15px;margin-left:3px;}
+		.wpappbox .appdetails .fallback{font-size:.9em;line-height:1.7em;white-space:normal;}
+		.wpappbox .appdetails .oldprice{text-decoration:line-through;}
+		.wpappbox.appstore .applinks{background:url(../img/appstore-colorful.png);}
+		.wpappbox.macappstore .applinks{background:url(../img/macappstore-colorful.png);}
+		.wpappbox.googleplay .applinks{background:url(../img/googleplay-colorful.png);}
+		.wpappbox.goodoldgames .applinks{background:url(../img/goodoldgames-colorful.png);}
+		.wpappbox.windowsstore .applinks{background:url(../img/windowsstore-colorful.png);}
+		.wpappbox.firefoxmarketplace .applinks{background:url(../img/firefoxmarketplace-colorful.png);}
+		.wpappbox.chromewebstore .applinks{background:url(../img/chromewebstore-colorful.png);}
+		.wpappbox.firefoxaddon .applinks{background:url(../img/firefoxaddon-colorful.png);}
+		.wpappbox.amazonapps .applinks{background:url(../img/amazonapps-colorful.png);}
+		.wpappbox.wordpress .applinks{background:url(../img/wordpress-colorful.png);}
+		.wpappbox.steam .applinks{background:url(../img/steam-colorful.png);}
+		.wpappbox.operaaddons .applinks{background:url(../img/operaaddons-colorful.png);}
 		.wpappbox:not(.colorful) .applinks{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%)}
 		.wpappbox .applinks{background-repeat:no-repeat;background-size:auto 42px;background-position:center 7px;background-color:#FFF;}
 		.wpappbox.compact a.applinks{background-position:center center;background-size:auto 48px;}
 		@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-resolution:240dpi){
 			.wpappbox .rating-stars{background-size:65px 143px}
-			.wpappbox .stars-monochrome{background-image:url(../img/stars-sprites-monochrome@2x.png)}
-			.wpappbox .stars-colorful{background-image:url(../img/stars-sprites-colorful@2x.png)}
-			.wpappbox.appstore .applinks{background:url(../img/appstore-colorful@2x.png)}
-			.wpappbox.macappstore .applinks{background:url(../img/macappstore-colorful@2x.png)}
-			.wpappbox.googleplay .applinks{background:url(../img/googleplay-colorful@2x.png)}
-			.wpappbox.goodoldgames .applinks{background:url(../img/goodoldgames-colorful@2x.png)}
-			.wpappbox.windowsstore .applinks{background:url(../img/windowsstore-colorful@2x.png)}
-			.wpappbox.firefoxmarketplace .applinks{background:url(../img/firefoxmarketplace-colorful@2x.png)}
-			.wpappbox.chromewebstore .applinks{background:url(../img/chromewebstore-colorful@2x.png)}
-			.wpappbox.firefoxaddon .applinks{background:url(../img/firefoxaddon-colorful@2x.png)}
-			.wpappbox.amazonapps .applinks{background:url(../img/amazonapps-colorful@2x.png)}
-			.wpappbox.wordpress .applinks{background:url(../img/wordpress-colorful@2x.png)}
-			.wpappbox.steam .applinks{background:url(../img/steam-colorful@2x.png)}
-			.wpappbox.operaaddons .applinks{background:url(../img/operaaddons-colorful@2x.png)}
+			.wpappbox .stars-monochrome{background-image:url(../img/stars-sprites-monochrome@2x.png);}
+			.wpappbox .stars-colorful{background-image:url(../img/stars-sprites-colorful@2x.png);}
+			.wpappbox.appstore .applinks{background:url(../img/appstore-colorful@2x.png);}
+			.wpappbox.macappstore .applinks{background:url(../img/macappstore-colorful@2x.png);}
+			.wpappbox.googleplay .applinks{background:url(../img/googleplay-colorful@2x.png);}
+			.wpappbox.goodoldgames .applinks{background:url(../img/goodoldgames-colorful@2x.png);}
+			.wpappbox.windowsstore .applinks{background:url(../img/windowsstore-colorful@2x.png);}
+			.wpappbox.firefoxmarketplace .applinks{background:url(../img/firefoxmarketplace-colorful@2x.png);}
+			.wpappbox.chromewebstore .applinks{background:url(../img/chromewebstore-colorful@2x.png);}
+			.wpappbox.firefoxaddon .applinks{background:url(../img/firefoxaddon-colorful@2x.png);}
+			.wpappbox.amazonapps .applinks{background:url(../img/amazonapps-colorful@2x.png);}
+			.wpappbox.wordpress .applinks{background:url(../img/wordpress-colorful@2x.png);}
+			.wpappbox.steam .applinks{background:url(../img/steam-colorful@2x.png);}
+			.wpappbox.operaaddons .applinks{background:url(../img/operaaddons-colorful@2x.png);}
 		}
 		@media screen and (max-width:500px){
 			.wpappbox .rating-stars,.wpappbox.screenshots > .screenshots > .slider{margin-top:0}
