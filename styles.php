@@ -257,8 +257,8 @@
 		.wpappbox .appbuttons a,.wpappbox .appbuttons span{font-size:13px;box-shadow:0 1px 3px 0 rgba(0,0,0,.15);background:#F1F1F1;border-bottom:0;color:#323232;padding:3px 5px;display:block;margin:8px 10px;border-radius:2px;cursor:pointer;font-weight:400;}
 		.wpappbox .appbuttons a:hover,.wpappbox .appbuttons span:hover{background:#373941;border-bottom:0;color:#FFF;transition:background-color .5s ease-in-out;-moz-transition:background-color .5s ease-in-out;-webkit-transition:background-color .5s ease-in-out;}
 		.wpappbox .rating-stars{width:65px;height:13px;margin-left:5px;margin-top:4px;display:inline-block;}
-		.wpappbox .stars-monochrome{background:url(../img/stars-sprites-monochrome.png) no-repeat;}
-		.wpappbox .stars-colorful{background:url(../img/stars-sprites-colorful.png) no-repeat;}
+		.wpappbox .stars-monochrome{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/stars-sprites-monochrome.png');?>) no-repeat;}
+		.wpappbox .stars-colorful{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/stars-sprites-colorful.png');?>) no-repeat;}
 		.wpappbox .stars00{background-position:0 0;}
 		.wpappbox .stars05{background-position:0 -13px;}
 		.wpappbox .stars10{background-position:0 -26px;}
@@ -282,68 +282,68 @@
 		.wpappbox.error a{display:inline-block;font-size:15px;margin-left:3px;}
 		.wpappbox .appdetails .fallback{font-size:.9em;line-height:1.7em;white-space:normal;}
 		.wpappbox .appdetails .oldprice{text-decoration:line-through;}
-		.wpappbox.appstore .applinks{background:url(../img/appstore-colorful.png);}
-		.wpappbox.macappstore .applinks{background:url(../img/macappstore-colorful.png);}
-		.wpappbox.googleplay .applinks{background:url(../img/googleplay-colorful.png);}
-		.wpappbox.goodoldgames .applinks{background:url(../img/goodoldgames-colorful.png);}
-		.wpappbox.windowsstore .applinks{background:url(../img/windowsstore-colorful.png);}
-		.wpappbox.firefoxmarketplace .applinks{background:url(../img/firefoxmarketplace-colorful.png);}
-		.wpappbox.chromewebstore .applinks{background:url(../img/chromewebstore-colorful.png);}
-		.wpappbox.firefoxaddon .applinks{background:url(../img/firefoxaddon-colorful.png);}
-		.wpappbox.amazonapps .applinks{background:url(../img/amazonapps-colorful.png);}
-		.wpappbox.wordpress .applinks{background:url(../img/wordpress-colorful.png);}
-		.wpappbox.steam .applinks{background:url(../img/steam-colorful.png);}
-		.wpappbox.operaaddons .applinks{background:url(../img/operaaddons-colorful.png);}
+		.wpappbox.appstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/appstore-colorful.png');?>);}
+		.wpappbox.macappstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/macappstore-colorful.png');?>);}
+		.wpappbox.googleplay .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/googleplay-colorful.png');?>);}
+		.wpappbox.goodoldgames .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/goodoldgames-colorful.png');?>);}
+		.wpappbox.windowsstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/windowsstore-colorful.png');?>);}
+		.wpappbox.firefoxmarketplace .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxmarketplace-colorful.png');?>);}
+		.wpappbox.chromewebstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/chromewebstore-colorful.png');?>);}
+		.wpappbox.firefoxaddon .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxaddon-colorful.png');?>);}
+		.wpappbox.amazonapps .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/amazonapps-colorful.png');?>);}
+		.wpappbox.wordpress .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/wordpress-colorful.png');?>);}
+		.wpappbox.steam .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/steam-colorful.png');?>);}
+		.wpappbox.operaaddons .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/operaaddons-colorful.png');?>);}
 		.wpappbox:not(.colorful) .applinks{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%)}
 		.wpappbox .applinks{background-repeat:no-repeat;background-size:auto 42px;background-position:center 7px;background-color:#FFF;}
 		.wpappbox.compact a.applinks{background-position:center center;background-size:auto 48px;}
 		@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-resolution:240dpi){
 			.wpappbox .rating-stars{background-size:65px 143px}
-			.wpappbox .stars-monochrome{background-image:url(../img/stars-sprites-monochrome@2x.png);}
-			.wpappbox .stars-colorful{background-image:url(../img/stars-sprites-colorful@2x.png);}
-			.wpappbox.appstore .applinks{background:url(../img/appstore-colorful@2x.png);}
-			.wpappbox.macappstore .applinks{background:url(../img/macappstore-colorful@2x.png);}
-			.wpappbox.googleplay .applinks{background:url(../img/googleplay-colorful@2x.png);}
-			.wpappbox.goodoldgames .applinks{background:url(../img/goodoldgames-colorful@2x.png);}
-			.wpappbox.windowsstore .applinks{background:url(../img/windowsstore-colorful@2x.png);}
-			.wpappbox.firefoxmarketplace .applinks{background:url(../img/firefoxmarketplace-colorful@2x.png);}
-			.wpappbox.chromewebstore .applinks{background:url(../img/chromewebstore-colorful@2x.png);}
-			.wpappbox.firefoxaddon .applinks{background:url(../img/firefoxaddon-colorful@2x.png);}
-			.wpappbox.amazonapps .applinks{background:url(../img/amazonapps-colorful@2x.png);}
-			.wpappbox.wordpress .applinks{background:url(../img/wordpress-colorful@2x.png);}
-			.wpappbox.steam .applinks{background:url(../img/steam-colorful@2x.png);}
-			.wpappbox.operaaddons .applinks{background:url(../img/operaaddons-colorful@2x.png);}
+			.wpappbox .stars-monochrome{background-image:<?php echo 'url(' . plugins_url('/wp-appbox/img/stars-sprites-monochrome@2x.png');?>);}
+			.wpappbox .stars-colorful{background-image:<?php echo 'url(' . plugins_url('/wp-appbox/img/stars-sprites-colorful@2x.png');?>);}
+			.wpappbox.appstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/appstore-colorful@2x.png');?>);}
+			.wpappbox.macappstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/macappstore-colorful@2x.png');?>);}
+			.wpappbox.googleplay .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/googleplay-colorful@2x.png');?>);}
+			.wpappbox.goodoldgames .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/goodoldgames-colorful@2x.png');?>);}
+			.wpappbox.windowsstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/windowsstore-colorful@2x.png');?>);}
+			.wpappbox.firefoxmarketplace .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxmarketplace-colorful@2x.png');?>);}
+			.wpappbox.chromewebstore .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/chromewebstore-colorful@2x.png');?>);}
+			.wpappbox.firefoxaddon .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxaddon-colorful@2x.png');?>);}
+			.wpappbox.amazonapps .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/amazonapps-colorful@2x.png');?>);}
+			.wpappbox.wordpress .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/wordpress-colorful@2x.png');?>);}
+			.wpappbox.steam .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/steam-colorful@2x.png');?>);}
+			.wpappbox.operaaddons .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/operaaddons-colorful@2x.png');?>);}
 		}
 		@media screen and (max-width:500px){
 			.wpappbox .rating-stars,.wpappbox.screenshots > .screenshots > .slider{margin-top:0}
 			.wpappbox .appdetails > .developer,.wpappbox .watch-icon,.wpappbox.compact .applinks,.wpappbox.screenshots .applinks,.wpappbox.simple .applinks{display:none;}
 			.wpappbox.screenshots > .screenshots{padding:8px;}
 			.wpappbox .appdetails .fallback{white-space:nowrap;}
-			.amazonapps .apptitle{background:url(../img/amazonapps-small.png);padding-left:18px;}
-			.appstore .apptitle{background:url(../img/appstore-small.png);padding-left:18px;}
-			.chromewebstore .apptitle{background:url(../img/chromewebstore-small.png);padding-left:16px;}
-			.firefoxaddon .apptitle{background:url(../img/firefoxaddon-small.png);padding-left:17px;}
-			.firefoxmarketplace .apptitle{background:url(../img/firefoxmarketplace-small.png);padding-left:16px;}
-			.goodoldgames .apptitle{background:url(../img/goodoldgames-small.png);padding-left:33px;}
-			.googleplay .apptitle{background:url(../img/googleplay-small.png);padding-left:18px;}
-			.macappstore .apptitle{background:url(../img/macappstore-small.png);padding-left:18px;}
-			.operaaddons .apptitle{background:url(../img/operaaddons-small.png);padding-left:16px;}
-			.steam .apptitle{background:url(../img/steam-small.png);padding-left:23px;}
-			.windowsstore .apptitle{background:url(../img/windowsstore-small.png);padding-left:16px;}
-			.wordpress .apptitle{background:url(../img/wordpress-small.png);padding-left:17px;}
+			.amazonapps .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/amazonapps-small.png');?>);padding-left:18px;}
+			.appstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/appstore-small.png');?>);padding-left:18px;}
+			.chromewebstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/hromewebstore-small.png');?>c);padding-left:16px;}
+			.firefoxaddon .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxaddon-small.png');?>);padding-left:17px;}
+			.firefoxmarketplace .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxmarketplace-small.png');?>);padding-left:16px;}
+			.goodoldgames .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/goodoldgames-small.png');?>);padding-left:33px;}
+			.googleplay .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/googleplay-small.png');?>);padding-left:18px;}
+			.macappstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/macappstore-small.png');?>);padding-left:18px;}
+			.operaaddons .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/operaaddons-small.png');?>);padding-left:16px;}
+			.steam .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/steam-small.png');?>);padding-left:23px;}
+			.windowsstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/windowsstore-small.png');?>);padding-left:16px;}
+			.wordpress .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/wordpress-small.png');?>);padding-left:17px;}
 			@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-resolution:240dpi){
-				.amazonapps .apptitle{background:url(../img/amazonapps-small@2x.png);}
-				.appstore .apptitle{background:url(../img/appstore-small@2x.png);}
-				.chromewebstore .apptitle{background:url(../img/chromewebstore-small@2x.png);}
-				.firefoxaddon .apptitle{background:url(../img/firefoxaddon-small@2x.png);}
-				.firefoxmarketplace .apptitle{background:url(../img/firefoxmarketplace-small@2x.png);}
-				.goodoldgames .apptitle{background:url(../img/goodoldgames-small@2x.png);}
-				.googleplay .apptitle{background:url(../img/googleplay-small@2x.png);}
-				.macappstore .apptitle{background:url(../img/macappstore-small@2x.png);}
-				.operaaddons .apptitle{background:url(../img/operaaddons-small@2x.png);}
-				.steam .apptitle{background:url(../img/steam-small@2x.png);}
-				.windowsstore .apptitle{background:url(../img/windowsstore-small@2x.png);}
-				.wordpress .apptitle{background:url(../img/wordpress-small@2x.png);}
+				.amazonapps .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/amazonapps-small@2x.png');?>);}
+				.appstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/appstore-small@2x.png');?>);}
+				.chromewebstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/chromewebstore-small@2x.png');?>);}
+				.firefoxaddon .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxaddon-small@2x.png');?>);}
+				.firefoxmarketplace .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/firefoxmarketplace-small@2x.png');?>);}
+				.goodoldgames .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/goodoldgames-small@2x.png');?>);}
+				.googleplay .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/googleplay-small@2x.png');?>);}
+				.macappstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/macappstore-small@2x.png');?>);}
+				.operaaddons .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/operaaddons-small@2x.png');?>);}
+				.steam .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/steam-small@2x.png');?>);}
+				.windowsstore .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/windowsstore-small@2x.png');?>);}
+				.wordpress .apptitle{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/wordpress-small@2x.png');?>);}
 			}
 			.appdetails .apptitle{background-repeat:no-repeat;background-position:center left;background-size:auto 13px;}
 			.wpappbox.simple{height:62px;}
