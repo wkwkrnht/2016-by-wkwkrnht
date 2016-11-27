@@ -271,7 +271,7 @@
 		.wpappbox .stars45{background-position:0 -117px;}
 		.wpappbox .stars50{background-position:0 -130px;}
 		.wpappbox a:link,.wpappbox a:visited{color:#545450;}
-		.wpappbox a:active, .wpappbox a:hover{text-decoration:none;color:#5588b5;}
+		.wpappbox a:active,.wpappbox a:hover{text-decoration:none;color:#5588b5;}
 		.wpappbox.screenshots > .screenshots{width:auto;margin:0 auto;padding:10px;clear:both;border-top:1px solid #E5E5E5;}
 		.wpappbox.screenshots > .screenshots > .slider{overflow-x:scroll;overflow-y:hidden;height:320px;margin-top:0;}
 		.wpappbox.screenshots > .screenshots > .slider > ul{padding:0 ;margin:0 ;list-style-image:none;white-space:nowrap;}
@@ -294,9 +294,9 @@
 		.wpappbox.wordpress .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/wordpress-colorful.png');?>);}
 		.wpappbox.steam .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/steam-colorful.png');?>);}
 		.wpappbox.operaaddons .applinks{background:<?php echo 'url(' . plugins_url('/wp-appbox/img/operaaddons-colorful.png');?>);}
-		.wpappbox:not(.colorful) .applinks{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%)}
-		.wpappbox .applinks{background-repeat:no-repeat;background-size:auto 42px;background-position:center 7px;background-color:#FFF;}
-		.wpappbox.compact a.applinks{background-position:center center;background-size:auto 48px;}
+		.wpappbox:not(.colorful).appstore .applinks,.wpappbox:not(.colorful).macappstore .applinks,.wpappbox:not(.colorful).googleplay .applinks,.wpappbox:not(.colorful).goodoldgames .applinks,.wpappbox:not(.colorful).windowsstore .applinks,.wpappbox:not(.colorful).firefoxmarketplace .applinks,.wpappbox:not(.colorful).chromewebstore .applinks,.wpappbox:not(.colorful).firefoxaddon .applinks,.wpappbox:not(.colorful).amazonapps .applinks,.wpappbox:not(.colorful).wordpress .applinks,.wpappbox:not(.colorful).steam .applinks,.wpappbox:not(.colorful).operaaddons .applinks{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%)}
+		.wpappbox.appstore .applinks,.wpappbox.macappstore .applinks,.wpappbox.googleplay .applinks,.wpappbox.goodoldgames .applinks,.wpappbox.windowsstore .applinks,.wpappbox.firefoxmarketplace .applinks,.wpappbox.chromewebstore .applinks,.wpappbox.firefoxaddon .applinks,.wpappbox.amazonapps .applinks,.wpappbox.wordpress .applinks,.wpappbox.steam .applinks,.wpappbox.operaaddons .applinks{background-repeat:no-repeat;background-size:auto 42px;background-position:center 7px;background-color:#FFF;}
+		.wpappbox.compact.appstore .applinks,.wpappbox.compact.macappstore .applinks,.wpappbox.compact.googleplay .applinks,.wpappbox.compact.goodoldgames .applinks,.wpappbox.compact.windowsstore .applinks,.wpappbox.compact.firefoxmarketplace .applinks,.wpappbox.compact.chromewebstore .applinks,.wpappbox.compact.firefoxaddon .applinks,.wpappbox.compact.amazonapps .applinks,.wpappbox.compact.wordpress .applinks,.wpappbox.compact.steam .applinks,.wpappbox.compact.operaaddons .applinks{background-position:center center;background-size:auto 48px;}
 		@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-resolution:240dpi){
 			.wpappbox .rating-stars{background-size:65px 143px}
 			.wpappbox .stars-monochrome{background-image:<?php echo 'url(' . plugins_url('/wp-appbox/img/stars-sprites-monochrome@2x.png');?>);}
