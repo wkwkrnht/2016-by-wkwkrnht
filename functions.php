@@ -482,8 +482,8 @@ add_action('comment_class','themeslug_comment_class');
     ●meta_image
     ●wkwkrnht_eyecatch
 7.check account Twitter
-8.optimized multipage for search
-9.is_subpage()
+8.is_subpage()
+9.is_actived_plugin($plugin)
 */
 function get_meta_url(){return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];}
 
@@ -555,46 +555,6 @@ function get_twitter_acount(){
         return null;
     }
 }
-
-remove_action('wp_head','adjacent_posts_rel_link_wp_head');
-function rel_next_prev_link_tags(){
-    if(is_single()||is_page()){
-        global $wp_query;
-        $multipage = check_multi_page();
-        if($multipage[0] > 1){
-            $prev = generate_multipage_url('prev');
-            $next = generate_multipage_url('next');
-            if($prev){echo'<link rel="prev" href="'.$prev.'">'.PHP_EOL;}
-            if($next){echo'<link rel="next" href="'.$next.'">'.PHP_EOL;}
-        }
-    }else{
-        global $paged;
-        if(get_previous_posts_link()){echo'<link rel="prev" href="'.get_pagenum_link( $paged - 1 ).'">'.PHP_EOL;}
-        if(get_next_posts_link()){echo'<link rel="next" href="'.get_pagenum_link( $paged + 1 ).'">'.PHP_EOL;}
-    }
-}
-add_action('wp_head','rel_next_prev_link_tags');
-function generate_multipage_url($rel='prev'){
-    global $post;
-    $url = '';
-    $multipage = check_multi_page();
-    if($multipage[0] > 1):
-        $numpages = $multipage[0];
-        $page = $multipage[1] == 0 ? 1 : $multipage[1];
-        $i = 'prev' == $rel ? $page - 1 : $page + 1;
-        if($i && $i > 0 && $i <= $numpages):
-            if(1 == $i){
-                $url = get_permalink();
-            }elseif('' == get_option('permalink_structure') || in_array($post->post_status,array('draft','pending'))){
-                $url = add_query_arg('page',$i,get_permalink());
-            }else{
-                $url = trailingslashit(get_permalink()) . user_trailingslashit($i,'single_paged');
-            }
-        endif;
-    endif;
-    return $url;
-}
-function check_multi_page(){$num_pages=substr_count($GLOBALS['post']->post_content,'<!--nextpage-->') + 1;$current_page=get_query_var('page');return array($num_pages,$current_page);}
 
 function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
 function is_actived_plugin($plugin = ''){if(is_admin()===false){require_once('wp-admin/includes/plugin.php');}return is_plugin_active($plugin);}
@@ -959,7 +919,7 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('footer_txt',array('section'=>'title_tagline','settings'=>'footer_txt','label'=>'bodyタグ直前に追加で出力するテキスト','type'=>'textarea'));
     $wp_customize->add_section('security_section',array('title'=>'セキュリティ','description'=>'このテーマ独自のセキュリティ設定',));
     $wp_customize->add_setting('delete_OGPblogcard_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
-    $wp_customize->add_control('delete_OGPblogcard_cache',array('settings'=>'delete_OGPblogcard_cache','label'=>'delete_OGPblogcard_cacheの読み込みを停止する','section'=>'security_section','type'=>'checkbox',));
+    $wp_customize->add_control('delete_OGPblogcard_cache',array('settings'=>'delete_OGPblogcard_cache','label'=>'OGPblogcardのキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
     $wp_customize->add_setting('referrer_setting',array('default'=>'default','type'=>'theme_mod','sanitize_callback'=>'sanitize_radio',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'security_section','type'=>'radio','choices'=>array('default'=>'default','unsafe-url'=>'unsafe-url','origin-when-crossorigin'=>'origin-when-crossorigin','none-when-downgrade'=>'none-when-downgrade','none'=>'none',),));
     $wp_customize->add_setting('cookie_key',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
