@@ -220,15 +220,19 @@
 	.information::before{content:"ｉ";}
 	.question::before{content:"？";}
 
-	.button{display:block;box-sizing:border-box;min-height:4rem;width:80%;padding:2vmin 5vmin;border-radius:1.5vmin;font-size:2rem;font-weight:600;line-height:2;text-align:center;margin:2vh auto;position:relative;}
-	.red.button{color:#fff;background-color:#ff0033;}
-	.blue.button{color:#fff;background-color:#03a9f4;box-shadow:0 1vmin 0 #0288d1;}
+	.button{display:block;box-sizing:border-box;min-height:4rem;width:80%;padding:2vmin 5vmin;border-radius:1.5vmin;font-size:2rem;font-weight:600;line-height:2;text-align:center;margin:2vh auto;position:relative;color:#fff;}
+	.red.button{background-color:#f44336;box-shadow:0 1vmin 0 #d32f2f;}
+	.red.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #d32f2f;}
+	.blue.button{background-color:#03a9f4;box-shadow:0 1vmin 0 #0288d1;}
 	.blue.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #0288d1;}
-	.yellow.button{color:#333;background-color:#fffc00;}
-	.orange.button{color:#fff;background-color:#ff5700;}
-	.green.button{color:#fff;background-color:#2aff00;}
-	.white.button{color:#333;background-color:#fff;border:1px solid #333;}
-	.black.button{color:#fff;background-color:#333;}
+	.yellow.button{background-color:#ffeb3b;box-shadow:0 1vmin 0 #fbc02d;}
+	.yellow.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #fbc02d;}
+	.orange.button{background-color:#ff9800;box-shadow:0 1vmin 0 #f57c00;}
+	.orange.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #f57c00;}
+	.green.button{background-color:#8bc34a;box-shadow:0 1vmin 0 #689f38;}
+	.green.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #689f38;}
+	.black.button{background-color:#333;box-shadow:0 1vmin 0 #9e9e9e;}
+	.black.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #9e9e9e;}
 
 	.search-form{margin:3em auto;line-height:170%;}
 	.search-form div{display:inline-block;padding:5px;margin-left:1em;border:1px solid #555;border-radius:3vmin;}
