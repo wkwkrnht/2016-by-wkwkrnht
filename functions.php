@@ -607,10 +607,7 @@ function make_OGPblogcard($url){
                     </a>
                 </div>
             </div>
-            <div class="ogp-blogcard-footer">
-                <a href="' . $url . '" target="_blank" rel="noopener" class="ogp-blogcard-site-name" tabindex="0">引用元 : ' . $site_name . '</a>
-                <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
-            </div>
+            <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
         </div>';
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
     }

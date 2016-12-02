@@ -212,8 +212,7 @@
 	.ogp-blogcard-img{display:inline-block;max-height:calc(37vh * .75);max-width:calc(80vw * .4);}
 	.ogp-blogcard-info{display:inline-block;max-width:calc(80vw * .6);position:absolute;right:0;text-align:center;}
 	.ogp-blogcard-title{font-size:2rem;}
-	.ogp-blogcard-footer{height:calc(37vh * .2);width:80vw;position:absolute;bottom:0;vertical-align:middle;}
-	.ogp-blogcard-share-toggle{position:relative;right:0;color:#03a9f4;}
+	.ogp-blogcard-share-toggle{display:block;height:3em;width:3em;border-radius:50%;position:relative;bottom:0;right:0;color:#fff;background-color:#03a9f4;text-align:center;line-height:3em;}
 
 	.information,.question{background-color:#f4f3eb;padding:2em;padding-left:calc(7rem + 2vmin);border-radius:3vmin;position:relative;margin:1em auto;}
 	.information::before,.question::before{display:inline-block;height:7rem;width:7rem;border-radius:50%;position:absolute;top:1vmin;left:1vmin;margin-right:7rem;color:#f4f3eb;background-color:#eae3b4;text-align:center;font-size:5rem;font-weight:700;line-height:7rem;}
