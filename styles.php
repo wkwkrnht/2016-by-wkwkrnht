@@ -220,10 +220,11 @@
 	.information::before{content:"ｉ";}
 	.question::before{content:"？";}
 
-	.button{display:block;box-sizing:border-box;min-height:4rem;width:80%;padding:2vmin 5vmin;font-size:2rem;line-height:2;text-align:center;margin:2vh auto;}
+	.button{display:block;box-sizing:border-box;min-height:4rem;width:80%;padding:2vmin 5vmin;font-size:2rem;font-weight:600;line-height:2;text-align:center;margin:2vh auto;}
 	.red.button{color:#fff;background-color:#ff0033;}
-	.blue.button{color:#fff;background-color:#03a9f4;}
-	.yellow.button{color:#fff;background-color:#fffc00;}
+	.blue.button{color:#fff;background-color:#03a9f4;box-shadow:0 1vmin 0 #0288d1;}
+	.blue.button:hover{box-shadow:0 .5vmin 0 #0288d1;}
+	.yellow.button{color:#333;background-color:#fffc00;}
 	.orange.button{color:#fff;background-color:#ff5700;}
 	.green.button{color:#fff;background-color:#2aff00;}
 	.white.button{color:#333;background-color:#fff;border:1px solid #333;}

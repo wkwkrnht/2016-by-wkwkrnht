@@ -837,8 +837,8 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
         QTags.addButton('qt-columun','コラム','[columun title= txt=',']');
-        QTags.addButton('qt-a','a','[link txt=',' url=]');
         QTags.addButton('qt-button','button','[button txt=',' url= class=blue]');
+        QTags.addButton('qt-a','a','[link txt=',' url=]');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
