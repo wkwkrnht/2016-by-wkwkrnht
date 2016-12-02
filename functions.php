@@ -571,7 +571,45 @@ function is_actived_plugin($plugin = ''){if(is_admin()===false){require_once('wp
 function make_OGPblogcard($url){
     if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
     $cache = get_site_transient($transitname);
-    if($cache){
+    if(get_option('delete_OGPblogcard_cache')===true){
+        delete_site_transient($transitname);
+        require_once('inc/OpenGraph.php');
+    	$ogp           = OpenGraph::fetch($url);
+        $url           = $ogp->url;
+        $share_url     = urlencode($url);
+        $id_url        = mb_strtolower(str_replace(':/.','',$url));
+        $img           = $ogp->image;
+        $title         = $ogp->title;
+        $site_name     = $ogp->site_name;
+        $description   = str_replace(']]<>',']]＜＞',$ogp->description);
+        $tw_acount     = '';
+        $get_tw_acount = get_twitter_acount();
+        if($get_tw_acount!==null){$tw_acount = '&amp;via=' . $get_tw_acount;}
+        $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
+        $content     =
+        '<div class="ogp-blogcard">
+            <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
+                <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
+                <ul>
+                    <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+                    <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0">B!</a></li>
+                </ul>
+            </div>
+            <div class="ogp-blogcard-main">
+                <img class="ogp-blogcard-img" src="' . $img . '">
+                <div class="ogp-blogcard-info">
+                    <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
+                        <h2 class="ogp-blogcard-title">' . $title . '</h2>
+                        <p class="ogp-blogcard-description">' . $description . '</p>
+                    </a>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
+        </div>';
+        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
+    }elseif($cache){
         $content = $cache;
     }else{
         require_once('inc/OpenGraph.php');
@@ -612,13 +650,6 @@ function make_OGPblogcard($url){
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
     }
     return $content;
-}
-if(get_option('delete_OGPblogcard_cache')===true){
-    function delete_OGPblogcard_cache(){
-        global $wpdb;
-        $wpdb->query("DELETE FROM $wpdb->options WHERE (`option_name` LIKE '%site_transient_http%') OR (`option_name` LIKE '%site_transient_timeout_http%')");
-    }
-    add_action('customize_save_after','delete_OGPblogcard_cache');
 }
 
 function custom_oembed_element($html){
