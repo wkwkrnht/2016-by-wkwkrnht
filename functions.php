@@ -616,7 +616,7 @@ function make_OGPblogcard($url){
 if(get_option('delete_OGPblogcard_cache')===true){
     function delete_OGPblogcard_cache(){
         global $wpdb;
-        $wpdb->query("DELETE FROM $wpdb->options WHERE (`option_name` LIKE '%_site_transient_http%') OR (`option_name` LIKE '%_site_transient_timeout_http%')");
+        $wpdb->query("DELETE FROM $wpdb->options WHERE (`option_name` LIKE '%site_transient_http%') OR (`option_name` LIKE '%site_transient_timeout_http%')");
     }
     add_action('customize_save_after','delete_OGPblogcard_cache');
 }
