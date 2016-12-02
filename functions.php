@@ -569,84 +569,54 @@ function is_actived_plugin($plugin = ''){if(is_admin()===false){require_once('wp
     ●ADD rel="noopener"(if it have target="_blank")
 */
 function make_OGPblogcard($url){
+    require_once('inc/OpenGraph.php');
+    $ogp           = OpenGraph::fetch($url);
+    $url           = $ogp->url;
+    $share_url     = urlencode($url);
+    $id_url        = mb_strtolower(str_replace(':/.','',$url));
+    $img           = $ogp->image;
+    $title         = $ogp->title;
+    $site_name     = $ogp->site_name;
+    $description   = str_replace(']]<>',']]＜＞',$ogp->description);
+    $tw_acount     = '';
+    $get_tw_acount = get_twitter_acount();
+    if($get_tw_acount!==null){$tw_acount = '&amp;via=' . $get_tw_acount;}
+    $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
+    $content     =
+    '<div class="ogp-blogcard">
+        <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
+            <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
+            <ul>
+                <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+                <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+                <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0">B!</a></li>
+            </ul>
+        </div>
+        <div class="ogp-blogcard-main">
+            <img class="ogp-blogcard-img" src="' . $img . '">
+            <div class="ogp-blogcard-info">
+                <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
+                    <h2 class="ogp-blogcard-title">' . $title . '</h2>
+                    <p class="ogp-blogcard-description">' . $description . '</p>
+                </a>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
+    </div>';
+    return $content;
+}
+function OGPblogcard($url){
     if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
     $cache = get_site_transient($transitname);
     if(get_option('delete_OGPblogcard_cache')===true){
         delete_site_transient($transitname);
-        require_once('inc/OpenGraph.php');
-    	$ogp           = OpenGraph::fetch($url);
-        $url           = $ogp->url;
-        $share_url     = urlencode($url);
-        $id_url        = mb_strtolower(str_replace(':/.','',$url));
-        $img           = $ogp->image;
-        $title         = $ogp->title;
-        $site_name     = $ogp->site_name;
-        $description   = str_replace(']]<>',']]＜＞',$ogp->description);
-        $tw_acount     = '';
-        $get_tw_acount = get_twitter_acount();
-        if($get_tw_acount!==null){$tw_acount = '&amp;via=' . $get_tw_acount;}
-        $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
-        $content     =
-        '<div class="ogp-blogcard">
-            <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
-                <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
-                <ul>
-                    <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
-                    <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
-                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0">B!</a></li>
-                </ul>
-            </div>
-            <div class="ogp-blogcard-main">
-                <img class="ogp-blogcard-img" src="' . $img . '">
-                <div class="ogp-blogcard-info">
-                    <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
-                        <h2 class="ogp-blogcard-title">' . $title . '</h2>
-                        <p class="ogp-blogcard-description">' . $description . '</p>
-                    </a>
-                </div>
-            </div>
-            <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
-        </div>';
+        $content = make_OGPblogcard($url);
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
     }elseif($cache){
         $content = $cache;
     }else{
-        require_once('inc/OpenGraph.php');
-    	$ogp           = OpenGraph::fetch($url);
-        $url           = $ogp->url;
-        $share_url     = urlencode($url);
-        $id_url        = mb_strtolower(str_replace(':/.','',$url));
-        $img           = $ogp->image;
-        $title         = $ogp->title;
-        $site_name     = $ogp->site_name;
-        $description   = str_replace(']]<>',']]＜＞',$ogp->description);
-        $tw_acount     = '';
-        $get_tw_acount = get_twitter_acount();
-        if($get_tw_acount!==null){$tw_acount = '&amp;via=' . $get_tw_acount;}
-        $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
-        $content     =
-        '<div class="ogp-blogcard">
-            <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
-                <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
-                <ul>
-                    <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
-                    <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
-                    <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0">B!</a></li>
-                </ul>
-            </div>
-            <div class="ogp-blogcard-main">
-                <img class="ogp-blogcard-img" src="' . $img . '">
-                <div class="ogp-blogcard-info">
-                    <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
-                        <h2 class="ogp-blogcard-title">' . $title . '</h2>
-                        <p class="ogp-blogcard-description">' . $description . '</p>
-                    </a>
-                </div>
-            </div>
-            <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
-        </div>';
+        $content = make_OGPblogcard($url);
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
     }
     return $content;
@@ -687,7 +657,7 @@ function style_into_article($atts){extract(shortcode_atts(array('style'=>'','dis
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no" class="hatenablogcard"></iframe>';}
-function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return make_OGPblogcard($url);}
+function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return OGPblogcard($url);}
 function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
