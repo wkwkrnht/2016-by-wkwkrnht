@@ -108,7 +108,7 @@
 	.social-nav a[href*="dropbox.com"]::before{content:"\f16b";color:#00b8ff;}
 	.social-nav a[href*="facebook.com"]::before{content:"\f230";color:#0033ff;}
 	.social-nav a[href*="reader.livedwango.com/subscribe/"]::before,.social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:'\f09e';color:#2aff00;}
-	.social-nav a[href*="feedly.com"]::before{content:'\f143';color:#2aff00;transform: rotate(-15deg);}
+	.social-nav a[href*="feedly.com"]::before{content:'\f143';color:#2aff00;transform:rotate(-15deg);}
 	.social-nav a[href*="flickr.com"]::before{content:'\f16e';color:#ff0084;}
 	.social-nav a[href*="foursquare.com"]::before{content:'\f180';color:#f94877;}
 	.social-nav a[href*="plus.google.com"]::before{content:"\f0d5";color:#ff0033;}
@@ -217,8 +217,17 @@
 
 	.information,.question{background-color:#f4f3eb;padding:2em;padding-left:calc(7rem + 2vmin);border-radius:3vmin;position:relative;margin:1em auto;}
 	.information::before,.question::before{display:inline-block;height:7rem;width:7rem;border-radius:50%;position:absolute;top:1vmin;left:1vmin;margin-right:7rem;color:#f4f3eb;background-color:#eae3b4;text-align:center;font-size:5rem;font-weight:700;line-height:7rem;}
-	.information::before{content:"！";}
+	.information::before{content:"ｉ";}
 	.question::before{content:"？";}
+
+	.button{display:block;box-sizing:border-box;min-height:4rem;width:80%;padding:2vmin 5vmin;font-size:2rem;line-height:2;text-align:center;margin:2vh auto;}
+	.red.button{color:#fff;background-color:#ff0033;}
+	.blue.button{color:#fff;background-color:#03a9f4;}
+	.yellow.button{color:#fff;background-color:#fffc00;}
+	.orange.button{color:#fff;background-color:#ff5700;}
+	.green.button{color:#fff;background-color:#2aff00;}
+	.white.button{color:#333;background-color:#fff;border:1px solid #333;}
+	.black.button{color:#fff;background-color:#333;}
 
 	.search-form{margin:3em auto;line-height:170%;}
 	.search-form div{display:inline-block;padding:5px;margin-left:1em;border:1px solid #555;border-radius:3vmin;}

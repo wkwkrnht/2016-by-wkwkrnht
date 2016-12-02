@@ -665,6 +665,7 @@ function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$a
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
 function columun_in_article($atts){extract(shortcode_atts(array('title'=>'','txt'=>'',),$atts));return'<aside class="columun"><h3>' . $title . '</h3><p>' . $txt . '</p></aside>';}
 function make_a($atts){extract(shortcode_atts(array('url'=>'','txt'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" target="_blank" rel="noopener">' . $txt . '</a>';}
+function make_button($atts){extract(shortcode_atts(array('url'=>'','txt'=>'','class'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" class="button ' . $class . '" target="_blank" rel="noopener">' . $txt . '</a>';}
 function make_toc($atts){
     $atts = shortcode_atts(array(
         'id'          => '',
@@ -779,6 +780,7 @@ add_shortcode('adsense','google_ads_in_article');
 add_shortcode('columun','columun_in_article');
 add_shortcode('toc','make_toc');
 add_shortcode('link','make_a');
+add_shortcode('button','make_button');
 /*
     editor custom
 1.script
@@ -836,6 +838,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
         QTags.addButton('qt-columun','コラム','[columun title= txt=',']');
         QTags.addButton('qt-a','a','[link txt=',' url=]');
+        QTags.addButton('qt-button','button','[button txt=',' url= class=blue]');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
