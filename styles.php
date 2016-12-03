@@ -212,7 +212,7 @@
 	.ogp-blogcard-img{display:inline-block;max-height:calc(37vh * .75);max-width:calc(80vw * .4);}
 	.ogp-blogcard-info{display:inline-block;max-width:calc(80vw * .6);position:absolute;right:0;text-align:center;}
 	.ogp-blogcard-title{font-size:2rem;}
-	.ogp-blogcard-share-toggle{display:inline-block;height:5em;width:5em;border-radius:50%;position:absolute;top:0;left:0;color:#fff;background-color:#03a9f4;text-align:center;line-height:5em;}
+	.ogp-blogcard-share-toggle{display:inline-block;height:6em;width:6em;border-radius:50%;position:absolute;top:-3em;left:-3em;color:#fff;background-color:#03a9f4;text-align:center;line-height:6em;}
 	.ogp-blogcard-site-name{display:none;}
 
 	.information,.question{background-color:#f4f3eb;padding:2em;padding-left:calc(7rem + 2vmin);border-radius:3vmin;position:relative;margin:1em auto;}

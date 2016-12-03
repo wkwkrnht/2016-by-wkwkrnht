@@ -601,23 +601,8 @@ function make_OGPblogcard($url){
                 </a>
             </div>
         </blockquote>
-        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
+        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-3x fa-share-alt"></i></a>
     </div>';
-    return $content;
-}
-function OGPblogcard($url){
-    if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
-    $cache = get_site_transient($transitname);
-    if(get_option('delete_OGPblogcard_cache')===true){
-        delete_site_transient($transitname);
-        $content = make_OGPblogcard($url);
-        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
-    }elseif($cache){
-        $content = $cache;
-    }else{
-        $content = make_OGPblogcard($url);
-        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
-    }
     return $content;
 }
 
@@ -656,7 +641,22 @@ function style_into_article($atts){extract(shortcode_atts(array('style'=>'','dis
 function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="http://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no" class="hatenablogcard"></iframe>';}
-function url_to_OGPBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return OGPblogcard($url);}
+function url_to_OGPBlogcard($atts){
+    extract(shortcode_atts(array('url'=>'',),$atts));
+    if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
+    $cache = get_site_transient($transitname);
+    if(get_option('delete_OGPblogcard_cache')){
+        delete_site_transient($transitname);
+        $content = make_OGPblogcard($url);
+        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
+    }elseif($cache){
+        $content = $cache;
+    }else{
+        $content = make_OGPblogcard($url);
+        set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
+    }
+    return $content;
+}
 function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
