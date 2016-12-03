@@ -203,7 +203,7 @@
 	.columun > h3{font-weight:700;color:<?php echo get_option('article_main_h3_color','#03a9f4');?>;border:1vmin solid <?php echo get_option('article_main_h3_border','#03a9f4');?>;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
 
 	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 5vmin;border-radius:3vmin;margin:3vmin auto;position:relative;border:1px solid #e5e5e5;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.15);}
-	.ogp-blogcard-share{height:37vh;width:78vw;border-radius:3vmin;position:absolute;top:0;left:0;z-index:2;background-color:rgba(0,0,0,.3);}
+	.ogp-blogcard-share{height:calc(37vh + 2vmin * 2);width:calc(80vw + 5vmin * 2);border-radius:3vmin;position:absolute;top:2vmin;left:5vmin;z-index:2;background-color:rgba(0,0,0,.3);}
 	.ogp-blogcard-share-close{position:absolute;top:1em;right:2em;font-size:3rem;}
 	.ogp-blogcard-share > ul{list-style:none;}
 	.ogp-blogcard-share > ul > li{display:inline-block;padding:1em;margin:2vmin auto;border:1px solid #fff;font-size:2.2rem;}
