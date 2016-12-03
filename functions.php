@@ -601,7 +601,7 @@ function make_OGPblogcard($url){
                 </a>
             </div>
         </blockquote>
-        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
+        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-2x fa-share-alt"></i></a>
     </div>';
     return $content;
 }
