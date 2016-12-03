@@ -208,7 +208,7 @@
 	.ogp-blogcard-share > ul{list-style:none;}
 	.ogp-blogcard-share > ul > li{display:inline-block;padding:1em;margin:2vmin auto;border:1px solid #fff;font-size:2.2rem;}
 	.ogp-blogcard-share-close,.ogp-blogcard-share-close:visited,.ogp-blogcard-share > ul > li > a,.ogp-blogcard-share > ul > li > a:visited{color:#fff;}
-	.ogp-blogcard-share-toggle{display:inline-block;height:6em;width:6em;border-radius:50%;position:absolute;top:-3em;left:-3em;color:#fff;background-color:#03a9f4;text-align:center;line-height:6em;font-size:2.2rem;}
+	.ogp-blogcard-share-toggle{display:block;height:6em;width:6em;border-radius:50%;position:absolute;top:-3em;left:-3em;color:#fff;background-color:#03a9f4;text-align:center;line-height:6em;font-size:2.2rem;}
 	.ogp-blogcard-main{height:calc(37vh * .8);width:80vw;position:absolute;top:0;margin-bottom:1vh;}
 	.ogp-blogcard-img{display:inline-block;max-height:calc(37vh * .75);max-width:calc(80vw * .4);}
 	.ogp-blogcard-info{display:inline-block;max-width:calc(80vw * .6);position:absolute;right:0;text-align:center;}
