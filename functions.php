@@ -576,7 +576,6 @@ function make_OGPblogcard($url){
     $id_url        = mb_strtolower(str_replace(':/.','',$url));
     $img           = $ogp->image;
     $title         = $ogp->title;
-    $site_name     = $ogp->site_name;
     $description   = str_replace(']]<>',']]＜＞',$ogp->description);
     $tw_acount     = '';
     $get_tw_acount = get_twitter_acount();
@@ -587,13 +586,13 @@ function make_OGPblogcard($url){
         <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
             <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
             <ul>
-                <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
-                <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
-                <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" tabindex="0">B!</a></li>
+                <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
+                <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+                <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">B!</a></li>
             </ul>
         </div>
-        <div class="ogp-blogcard-main">
+        <blockquote class="ogp-blogcard-main">
             <img class="ogp-blogcard-img" src="' . $img . '">
             <div class="ogp-blogcard-info">
                 <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
@@ -601,7 +600,7 @@ function make_OGPblogcard($url){
                     <p class="ogp-blogcard-description">' . $description . '</p>
                 </a>
             </div>
-        </div>
+        </blockquote>
         <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-share-alt"></i></a>
     </div>';
     return $content;
