@@ -17,11 +17,6 @@ elseif(is_singular()===true):
 	endwhile;endif;?>
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
-		<?php if(is_active_sidebar('singularheader')):?>
-			<ul class="widget-area">
-				<?php dynamic_sidebar('singularheader');?>
-			</ul>
-		<?php endif;?>
 		<header class="article-header">
 			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="92vw" srcset="<?php wkwkrnht_eyecatch($size_256);?> 320w,<?php wkwkrnht_eyecatch($size_512);?> 640w,<?php wkwkrnht_eyecatch($size_1024);?> 1270w" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
@@ -46,6 +41,11 @@ elseif(is_singular()===true):
 				</span>
 			</div>
 		</header>
+		<?php if(is_active_sidebar('singularheader')):?>
+			<ul class="widget-area">
+				<?php dynamic_sidebar('singularheader');?>
+			</ul>
+		<?php endif;?>
 		<div class="article-main" role="main">
 			<?php
 			if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;
@@ -62,11 +62,10 @@ elseif(is_singular()===true):
 	<?php get_footer();?>
 <?php else:?>
 	<?php get_header();?>
-	<?php
-	if(is_author()===true){include_once(get_template_directory() . '/widget/author-bio.php');}
-	if(is_active_sidebar('listabove')){dynamic_sidebar('listabove');}?>
 	<div class="card-list">
 		<?php
+		if(is_author()===true){include_once(get_template_directory() . '/widget/author-bio.php');}
+		if(is_active_sidebar('listabove')){dynamic_sidebar('listabove');}
 		if(is_404()===true){
 				if(is_active_sidebar('404')){dynamic_sidebar('404');}
 		}else{
