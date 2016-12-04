@@ -65,8 +65,8 @@
 	#main-menu-toggle,#share-menu-toggle{display:inline-block;height:8vh;box-sizing:border-box;padding:1vh 0;margin:0 auto;text-align:center;}
 	#main-menu-toggle{font-size:4rem;font-weight:900;font-family:monospace;line-height:8vh;}
 
-	#menu-wrap{opacity:.85;height:75vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-	#share-menu,#main-menu{height:67vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
+	#menu-wrap{opacity:.85;height:74vh;width:86vw;margin:0 7vw;position:fixed;top:6vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
+	#share-menu,#main-menu{height:66vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
 	#share-menu ul,#main-menu > ul{width:80vw;}
 
 	#share-menu ul{width:86vw;list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
@@ -91,7 +91,7 @@
 	#share-menu .pocket{background-color:#ef3f56;}
 	#share-menu .tumblr{background-color:#36465d;}
 
-	#main-menu{padding-top:2vh;background-color:<?php echo get_option('menu_background','#fff');?>;}
+	#main-menu{box-sizing:border-box;padding-top:2vh;background-color:<?php echo get_option('menu_background','#fff');?>;}
 
 	.main-nav ul{list-style-type:none;}
 	.main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;}
