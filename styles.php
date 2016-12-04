@@ -194,7 +194,7 @@
 	.site-title{font-size:2.5rem;}
 	.site-description,.site-header .copyright{font-size:1.8rem;}
 
-	.toc{width:90vw;padding:4vh initial;margin:4vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.toc{width:90vw;padding:4vh 0;margin:4vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.toc-toggle{display:block;height:3em;width:3em;border-radius:50%;font-size:1.8rem;position:relative;top:-1.5em;left:85vw;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 
 	.marker{box-shadow:0 -0.3em 0 -0.1em rgb(255,255,0) inset;}
