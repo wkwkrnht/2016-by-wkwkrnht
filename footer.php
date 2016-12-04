@@ -55,7 +55,13 @@
     <?php $key='';$key=get_option('cookie_key');if($key===''){$key = '2016-by-wkwkrnht';}?>
     <script>
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
-        (function(){document.getElementsByClassName("twitter-tweet").classList.add("tw-align-center");})()
+        (function(){
+            var elements = document.getElementsByClassName("twitter-tweet");
+            for( var i=0,l=elements.length; l>i; i++ ) {
+	            var element = elements[i] ;
+	            element.classList.add("tw-align-center");
+            }
+        })()
         (function(){
             var doc = document;
             var wpCss = doc.getElementsById('wpcss');
