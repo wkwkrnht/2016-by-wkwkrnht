@@ -668,7 +668,6 @@ function make_toc($atts){
         'id'          => '',
         'class'       => 'toc',
         'title'       => '目次',
-        'toggle'      => 'true',
         'showcount'   => 2,
         'depth'       => 0,
         'toplevel'    => 1,
@@ -736,17 +735,11 @@ function make_toc($atts){
         $current_depth--;
     }
     if($counter >= $atts['showcount']){
-        if(strtolower($atts['toggle'] ) == 'true'){
-            $script = "document.getElementByClassName('toc-list').classList.toggle('open');document.getElementByClassName('toc-list').classList.toggle('close');";
-            $toggle = '<a class="toc-toggle" href="javascript:void(0)" tabindex="0" onclick="' . $script . '">↺</a>';
-        }
         if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
         $html .= '
-        <aside' . $id . ' class="' . $atts['class'] . '">'
-            . $toggle .
-            '<h2 class="toc-title">' . $atts['title'] . '</h2>'
-            . $toc_list .
-        '
+        <aside' . $id . ' class="' . $atts['class'] . '">
+            <h2 class="toc-title">' . $atts['title'] . '</h2>
+            ' . $toc_list .'
         </aside>
         <script>
             function addid(){
@@ -821,7 +814,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
-        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main duration=slow offset=]');
+        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main offset=]');
         QTags.addButton('qt-caption','caption','[caption id= class= align= width=]','[/caption]');
         QTags.addButton('qt-gallery','gallery','[gallery include=',' exclude= orderby=menu_order order=ASC columns=3 size=thumbnail itemtag=figure icontag"" captiontag=figcaption link=file]');
         QTags.addButton('qt-audio','audio','[audio src=',' loop=off autoplay=off preload=metadata]');

@@ -414,6 +414,7 @@
 		.article-main > div{max-width:80vw;margin:4vh auto;}
 		.article-main iframe[src*="youtu.be"],.article-main iframe[src*="youtube.com"],.article-main iframe[src*="www.youtube.com"]{height:calc(80vw / 100 * 56.25);width:80vw;margin:4vh auto;}
 		.article-main p iframe[src*="youtu.be"],.article-main p iframe[src*="youtube.com"],.article-main p iframe[src*="www.youtube.com"]{height:calc(80vw / 100 * 56.25);max-height:calc(720px / 100 * 56.25);width:80vw;max-width:720px;margin:4vh 0;}
+		.article-main iframe[data-tweet-id].article-main p iframe[data-tweet-id]{margin-left:auto;margin-right:auto;}
 
 		.article-main li::after{content:'';display:block;height:0;width:100%;position:relative;top:0;left:0;border-bottom:1px dashed <?php echo get_option('article_main_li_border','#aaa');?>;}
 		.article-main ul{max-width:80%;margin:2em auto;list-style:none;}
