@@ -34,19 +34,20 @@
 	<meta name="twitter:description" content="<?php meta_description();?>">
 	<meta name="twitter:image" content="<?php meta_image();?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
-	<?php if(is_home()===true || is_singular()===true || is_category()===true || is_tag()===true || is_author()===true || is_date()===true || is_search()===true || is_attachment()===true){include_once(get_template_directory() . '/inc/meta-json.php');}?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
 	<?php
+	include_once(get_template_directory() . '/inc/meta-json.php');
 	include_once(get_template_directory() . '/styles.php');
 	wp_head();
 	$txt='';$txt=get_option('header_txt');if($txt!==''){echo $txt;}?>
 </head>
 <body <?php body_class();?>>
 	<?php
+	$site_url  = site_url();
 	$year      = get_first_post_year();
 	$blogname  = get_bloginfo('name');
 	echo'<header class="site-header" itemscope itemtype="http://schema.org/WPHeader">';
@@ -61,9 +62,9 @@
 			wp_reset_query();
 			echo'<h1 class="site-title" itemprop="name headline about">「' . get_search_query() . '」の検索結果｜' . $blogname . '</h1><br><p class="site-description">' . $serachresult . ' 件 / ' . $maxpage . ' ページ</p>';
 		}elseif(is_404()===true){
-			echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">404 Not Found｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、再度お探しください。</p></a>';
+			echo'<a href="' . $site_url . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">404 Not Found｜' . $blogname . '</h1><br><p class="site-description" itemprop="about">このサイトにはお探しのものはございません。お手数を掛けますが、再度お探しください。</p></a>';
 		}else{
-			echo'<a href="' . site_url() . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1></a>';
+			echo'<a href="' . $site_url . '" tabindex="0" itemprop="url"><h1 class="site-title" itemprop="name headline">' . $blogname . '</h1></a>';
 		}
 		echo'<br>
 		<span class="copyright"><span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"><span itemprop="name"><b>' . $blogname . '</b></span></span>&nbsp;&nbsp;&copy;<span itemprop="copyrightYear">' . $year . '</span></span>

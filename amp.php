@@ -94,6 +94,10 @@
 		.article-main a:hover{border-bottom:solid 1px <?php echo get_option('a_hover_border','#03a9f4');?>;}
 		.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
 		.article-main div{max-width:80vw;}
+		.article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
+		.article-main pre{font-weight:bold;}
+		.article-main code{white-space:pre;overflow-x:auto;}
+		.article-main address,.article-main code{background-color:#eee;}
 		.article-main amp-img{max-width:50%;max-height:50%;text-align:center;}
 		.article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
 		.article-main table caption{padding:1.2em;text-align:center;background-color:#ffc045;}
@@ -120,6 +124,19 @@
 		.information::before,.question::before{display:inline-block;height:7rem;width:7rem;border-radius:50%;position:absolute;top:1vmin;left:1vmin;margin-right:7rem;color:#f4f3eb;background-color:#eae3b4;text-align:center;font-size:5rem;font-weight:700;line-height:7rem;}
 		.information::before{content:"！";}
 		.question::before{content:"？";}
+		.button{display:block;box-sizing:border-box;min-height:4rem;width:80%;padding:2vmin 5vmin;border-radius:1.5vmin;font-size:2rem;font-weight:600;line-height:2;text-align:center;margin:2vh auto;position:relative;}
+		.red.button{color:#fff;background-color:#f44336;box-shadow:0 1vmin 0 #d32f2f;}
+		.red.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #d32f2f;}
+		.blue.button{color:#fff;background-color:#03a9f4;box-shadow:0 1vmin 0 #0288d1;}
+		.blue.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #0288d1;}
+		.yellow.button{color:#fff;background-color:#ffeb3b;box-shadow:0 1vmin 0 #fbc02d;}
+		.yellow.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #fbc02d;}
+		.orange.button{color:#fff;background-color:#ff9800;box-shadow:0 1vmin 0 #f57c00;}
+		.orange.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #f57c00;}
+		.green.button{color:#fff;background-color:#8bc34a;box-shadow:0 1vmin 0 #689f38;}
+		.green.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #689f38;}
+		.black.button{color:#fff;background-color:#333;box-shadow:0 1vmin 0 #9e9e9e;}
+		.black.button:hover{top:.2vmin;box-shadow:0 .75vmin 0 #9e9e9e;}
 		.search-form{margin:3em 0;line-height:170%;}
 		.search-form div{display:inline-block;padding:5px;margin-left:1rem;border:1px solid #555;border-radius:2px;}
 		.search-form .sform{min-width:280px;background-color:#fff;}

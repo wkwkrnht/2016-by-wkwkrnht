@@ -181,6 +181,8 @@ body#tinymce.wp-editor h6{border-bottom:.75vmin dashed #03a9f4;}
 body#tinymce.wp-editor blockquote,body#tinymce.wp-editor q,body#tinymce.wp-editor pre,body#tinymce.wp-editor address{padding:1em 2em;border:1px solid #bbb;border-radius:5px;}
 body#tinymce.wp-editor pre,body#tinymce.wp-editor address{max-width:94vw;margin:1em auto;}
 body#tinymce.wp-editor pre{font-family:monospace;font-weight:bold;}
+body#tinymce.wp-editor code{white-space:pre;overflow-x:auto;}
+body#tinymce.wp-editor code,body#tinymce.wp-editor address{background-color:#eee;}
 body#tinymce.wp-editor blockquote,body#tinymce.wp-editor q{quotes:none;}
 body#tinymce.wp-editor blockquote::after{content:attr(title)'\a'attr(cite);display:block;padding-top:1em;border-top:1px solid #bbb;text-align:right;white-space:-moz-pre-wrap;white-space:pre-wrap;word-wrap:break-word;}
 body#tinymce.wp-editor > div{max-width:80vw;margin:4vh auto;}
