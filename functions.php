@@ -29,6 +29,7 @@ function wkwkrnht_setup(){
     add_theme_support('title-tag');
     add_theme_support('automatic-feed-links');
     add_theme_support('html5',array('comment-list','comment-form','search-form','gallery','caption'));
+    add_theme_support('starter-content');
     add_theme_support('post-formats',array('aside','gallery','quote','image','link','status','video','audio','chat'));
     add_theme_support('post-thumbnails');
     add_theme_support('custom-background');
@@ -627,6 +628,15 @@ add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
 
 add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
+
+function color_to_rgb($colorcode = ''){
+    $array_colorcode          = array();
+    $colorcode                = preg_replace("/#/","",$colorcode);
+    $array_colorcode["red"]   = hexdec(substr($colorcode,0,2));
+    $array_colorcode["green"] = hexdec(substr($colorcode,2,2));
+    $array_colorcode["blue"]  = hexdec(substr($colorcode,4,2));
+    return $array_colorcode;
+}
 /*
     shortcode
 1.customCSS
@@ -668,7 +678,6 @@ function make_toc($atts){
         'id'          => '',
         'class'       => 'toc',
         'title'       => '目次',
-        'toggle'      => 'true',
         'showcount'   => 2,
         'depth'       => 0,
         'toplevel'    => 1,
@@ -736,17 +745,11 @@ function make_toc($atts){
         $current_depth--;
     }
     if($counter >= $atts['showcount']){
-        if(strtolower($atts['toggle'] ) == 'true'){
-            $script = "document.getElementByClassName('toc-list').classList.toggle('open');document.getElementByClassName('toc-list').classList.toggle('close');";
-            $toggle = '<a class="toc-toggle" href="javascript:void(0)" tabindex="0" onclick="' . $script . '">↺</a>';
-        }
         if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
         $html .= '
-        <aside' . $id . ' class="' . $atts['class'] . '">'
-            . $toggle .
-            '<h2 class="toc-title">' . $atts['title'] . '</h2>'
-            . $toc_list .
-        '
+        <aside' . $id . ' class="' . $atts['class'] . '">
+            <h2 class="toc-title">' . $atts['title'] . '</h2>
+            ' . $toc_list .'
         </aside>
         <script>
             function addid(){
@@ -821,7 +824,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
-        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main duration=slow offset=]');
+        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main offset=]');
         QTags.addButton('qt-caption','caption','[caption id= class= align= width=]','[/caption]');
         QTags.addButton('qt-gallery','gallery','[gallery include=',' exclude= orderby=menu_order order=ASC columns=3 size=thumbnail itemtag=figure icontag"" captiontag=figcaption link=file]');
         QTags.addButton('qt-audio','audio','[audio src=',' loop=off autoplay=off preload=metadata]');
@@ -1022,10 +1025,8 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'related_title_background_color',array('label'=>'.related-title background-color','settings'=>'article_main_li_color','section'=>'colors',)));
     $wp_customize->add_setting('related_title_color',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'related_title_color',array('label'=>'.related-title color','settings'=>'related_title_color','section'=>'colors',)));
-    $wp_customize->add_setting('article_date_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_date_color',array('label'=>'article_date color','settings'=>'article_date_color','section'=>'colors',)));
-    $wp_customize->add_setting('article_date_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_date_background',array('label'=>'article_date background-color','settings'=>'article_date_background','section'=>'colors',)));
+    $wp_customize->add_setting('article_meta_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_meta_color',array('label'=>'article_meta color','settings'=>'article_meta_color','section'=>'colors',)));
     $wp_customize->add_setting('article_meta_background',array('type'=>'option','default'=>'#f1f1f1','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'article_meta_background',array('label'=>'article_meta background-color','settings'=>'article_meta_background','section'=>'colors',)));
     $wp_customize->add_setting('article_main_h1_background',array('type'=>'option','default'=>'#f4f4f4','sanitize_callback'=>'sanitize_hex_color',));

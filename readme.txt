@@ -19,7 +19,7 @@
 ・コメント欄もウィジェットで選択可(WP純正 or Disqus or 無し)
 ・豊富なクイックタグ(h1～h6,p,テーブル,ショートコード(WP純正、このテーマ独自問わず))
 ・豊富なブログカード生成ショートコード(OGP or Embed.ly or はてな)
-・追加クラス(マーカー or 検索風表示 or 注意表示)
+・追加クラス(マーカー or ボタン or 検索風表示 or 注意表示)
 ・headとbodyの閉じタグ直前にHTMLタグもそのままカスタマイザーで自由に挿入可
 ・リファラーも設定可
 ・AMP対応
@@ -27,6 +27,7 @@
 ・豊富な構造化マークアップ(NewsArticle,BreadcrumbList,WebSite,SiteNavigationElement,Person)
 ・Chrome独自のアドレスバー装飾対応
 ・独自制作のウィジェット向けCSSはウィジェットテンプレート冒頭に
+・wp-appboxのスタイルシート内蔵
 
     ファイルツリー
 ・inc (素材群)

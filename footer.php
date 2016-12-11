@@ -56,6 +56,13 @@
     <script>
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
         (function(){
+            var elements = document.getElementsByClassName("twitter-tweet");
+            for( var i=0,l=elements.length; l>i; i++ ) {
+	            var element = elements[i] ;
+	            element.classList.add("tw-align-center");
+            }
+        })()
+        (function(){
             var doc = document;
             var wpCss = doc.getElementsById('wpcss');
             var wpCssL = wpCss.length;

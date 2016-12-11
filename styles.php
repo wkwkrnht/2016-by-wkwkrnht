@@ -65,8 +65,8 @@
 	#main-menu-toggle,#share-menu-toggle{display:inline-block;height:8vh;box-sizing:border-box;padding:1vh 0;margin:0 auto;text-align:center;}
 	#main-menu-toggle{font-size:4rem;font-weight:900;font-family:monospace;line-height:8vh;}
 
-	#menu-wrap{opacity:.85;height:75vh;width:86vw;border-radius:5vmin;margin:0 7vw;position:fixed;top:4vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
-	#share-menu,#main-menu{height:67vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
+	#menu-wrap{opacity:.85;height:74vh;width:86vw;margin:0 7vw;position:fixed;top:6vh;left:0;z-index:111;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
+	#share-menu,#main-menu{height:66vh;width:86vw;overflow-x:hidden;overflow-y:auto;top:8vh;}
 	#share-menu ul,#main-menu > ul{width:80vw;}
 
 	#share-menu ul{width:86vw;list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
@@ -91,7 +91,7 @@
 	#share-menu .pocket{background-color:#ef3f56;}
 	#share-menu .tumblr{background-color:#36465d;}
 
-	#main-menu{padding-top:2vh;background-color:<?php echo get_option('menu_background','#fff');?>;}
+	#main-menu{box-sizing:border-box;padding-top:2vh;background-color:<?php echo get_option('menu_background','#fff');?>;}
 
 	.main-nav ul{list-style-type:none;}
 	.main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;}
@@ -194,7 +194,7 @@
 	.site-title{font-size:2.5rem;}
 	.site-description,.site-header .copyright{font-size:1.8rem;}
 
-	.toc{width:90vw;padding-bottom:4vh;margin:4vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.toc{width:90vw;padding:4vh 0;margin:4vh auto;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.toc-toggle{display:block;height:3em;width:3em;border-radius:50%;font-size:1.8rem;position:relative;top:-1.5em;left:85vw;text-align:center;color:#fff;background-color:#03a9f4;box-shadow:0 0 3vmin rgba(0,0,0,.3);}
 
 	.marker{box-shadow:0 -0.3em 0 -0.1em rgb(255,255,0) inset;}
@@ -383,14 +383,14 @@
 		10.original
 		11.codex
 		*/
-		.article-header{width:92vw;margin:5vh auto;}
-		.article-eyecatch{max-width:92vw;text-align:center;vertical-align:middle;}
-		.article-meta{min-height:23vh;width:92vw;background-color:<?php echo get_option('article_meta_background','#f1f1f1');?>;font-size:1.6rem;text-align:center;vertical-align:middle;}
-		.article-date{display:block;height:inherit;width:30%;float:left;background-color:<?php echo get_option('article_date_background','#03a9f4');?>;color:<?php echo get_option('article_date_color','#fff');?>;font-size:2.3rem;line-height:23vh;}
-		.article-title{font-size:2rem;}
+		article{padding-top:15%;}
+		.article-header{height:0;width:100%;padding-top:56.25%;position:relative;margin-bottom:4vh;}
+		.article-eyecatch{max-width:100%;position:absolute;bottom:0;text-align:center;vertical-align:middle;}
+		.article-meta{min-height:15vh;width:100%;position:absolute;bottom:0;font-size:2rem;color:<?php echo get_option('article_meta_color','#fff');?>;background-image:linear-gradient(to top,<?php $color = color_to_rgb($colorcode = get_option('article_meta_background','#f1f1f1'));echo'rgba(' . $color["red"] . ',' . $color["green"] . ',' . $color["blue"] . ',.8)';?>,rgba(0,0,0,0));text-align:center;vertical-align:middle;}
+		.article-title{font-size:2.5rem;}
 
 		.article-main{font-size:1.6rem;}
-		.article-main p{max-width:720px;padding:5vmin 8vmin 0;margin:2vh auto;}
+		.article-main p{max-width:calc(1.6rem * 40);padding:5vmin 8vmin 0;margin:2vh auto;}
 		.article-main a[href^="http"]:empty::before{content:attr(href);}
 		.article-main a[href^="http"][title]:empty::before{content:attr(title);}
 		.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
@@ -472,7 +472,7 @@
 	5.print
 	*/
 	@media screen and (min-width:992px){
-		.info-card{height:30vmin;width:160vmin;margin:3vmin auto;}
+		.info-card{min-height:30vmin;width:160vmin;margin:3vmin auto;}
 		.widget.info-card{min-height:30vmin;}
 		.card-title{font-size:2.7rem;}
 		.hatenablogcard{max-width:60vw;margin:5vh 10vw;}
@@ -483,7 +483,7 @@
 		<?php endif;?>
 	}
 	@media screen and (max-width:992px){
-		.info-card{height:45vmin;width:80vmin;}
+		.info-card{min-height:45vmin;width:80vmin;}
 		.widget.info-card{min-height:45vmin;}
 		.card{font-size:1.6rem;margin:3vmin auto;}
 		.card-title{font-size:2rem;}
