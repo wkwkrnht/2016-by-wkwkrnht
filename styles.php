@@ -383,10 +383,10 @@
 		10.original
 		11.codex
 		*/
-		.article-header{margin-bottom:4vh;}
-		.article-eyecatch{max-width:100%;position:relative;text-align:center;vertical-align:middle;}
-		.article-meta{min-height:23vh;width:100%;position:absolute;bottom:0;background-image:linear-gradient(to top,<?php $color = color_to_rgb($colorcode = get_option('article_meta_background','#f1f1f1'));echo'rgba(' . $color["red"] . ',' . $color["green"] . ',' . $color["blue"] . ',.8)';?>,rgba(0,0,0,0));font-size:1.6rem;text-align:center;vertical-align:middle;}
-		.article-title{font-size:2rem;}
+		.article-header{position:relative;margin-bottom:4vh;}
+		.article-eyecatch{max-width:100%;position:absolute;bottom:0;text-align:center;vertical-align:middle;}
+		.article-meta{width:100%;position:absolute;bottom:0;font-size:2rem;text-align:center;vertical-align:middle;background-image:linear-gradient(to top,<?php $color = color_to_rgb($colorcode = get_option('article_meta_background','#f1f1f1'));echo'rgba(' . $color["red"] . ',' . $color["green"] . ',' . $color["blue"] . ',.8)';?>,rgba(0,0,0,0));}
+		.article-title{font-size:2.5rem;}
 
 		.article-main{font-size:1.6rem;}
 		.article-main p{max-width:calc(1.6rem * 40);padding:5vmin 8vmin 0;margin:2vh auto;}
