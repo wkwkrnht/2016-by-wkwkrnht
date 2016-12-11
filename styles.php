@@ -383,7 +383,7 @@
 		10.original
 		11.codex
 		*/
-		.article-header{width:100%;position:relative;margin:20% 0 6vh;}
+		.article-header{height:20%;width:100%;position:relative;margin:20% 0 6vh;}
 		.article-eyecatch{height:auto;width:100%;position:absolute;bottom:0;text-align:center;vertical-align:middle;}
 		.article-meta{min-height:15vh;width:100%;position:absolute;bottom:0;font-size:2rem;color:<?php echo get_option('article_meta_color','#fff');?>;background-image:linear-gradient(to top,<?php $color = color_to_rgb($colorcode = get_option('article_meta_background','#f1f1f1'));echo'rgba(' . $color["red"] . ',' . $color["green"] . ',' . $color["blue"] . ',.8)';?>,rgba(0,0,0,0));text-align:center;vertical-align:middle;}
 		.article-title{font-size:2.5rem;}
