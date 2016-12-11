@@ -49,7 +49,7 @@ elseif(is_singular()===true):
 		<div class="article-main" role="main">
 			<?php
 			if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;
-			wp_link_pages(array('before'=>'<div class="page-nav">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
+			wp_link_pages(array('before'=>'<div class="page-nav"><span>ページ：</span>','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
 		</div>
 		<footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
 			<?php if(is_active_sidebar('singularfooter')):?>
