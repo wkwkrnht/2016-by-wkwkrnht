@@ -628,6 +628,15 @@ add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
 
 add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
+
+function color_to_rgb($colorcode = ''){
+    $array_colorcode          = array();
+    $colorcode                = preg_replace("/#/","",$colorcode);
+    $array_colorcode["red"]   = hexdec(substr($colorcode,0,2));
+    $array_colorcode["green"] = hexdec(substr($colorcode,2,2));
+    $array_colorcode["blue"]  = hexdec(substr($colorcode,4,2));
+    return $array_colorcode;
+}
 /*
     shortcode
 1.customCSS

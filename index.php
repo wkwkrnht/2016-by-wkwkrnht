@@ -33,7 +33,7 @@ elseif(is_singular()===true):
 							</span>
 						</span>
 					</a>
-				</span><br>
+				</span>
 				<span class="widget_tag_cloud">
 					<?php the_tags('','','');?>
 				</span>
