@@ -45,7 +45,7 @@
     wp_footer();
     if(is_singular()===true):
         $format = get_post_format();
-        if($format==='gallery' || get_post_meta(get_the_ID(),'lightbox',true)===1){include_once(dirname(__FILE__) . '/./inc/lightbox.php');}
+        if($format==='gallery' || get_post_meta(get_the_ID(),'lightbox',true)===1){include_once(dirname(__FILE__) . '/./inc/baguetteBox.php');}
         if($format==='link'){
             echo'
             <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
