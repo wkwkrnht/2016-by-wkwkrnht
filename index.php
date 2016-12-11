@@ -1,9 +1,13 @@
 <?php
-$size_full = array(1344,576);
+$size_full = array(2560,1440);
 $size_128  = array(128,128);
 $size_256  = array(256,256);
 $size_512  = array(512,512);
+$size_800  = array(800,800);
 $size_1024 = array(1024,1024);
+$size_1270 = array(1270,720);
+$size_1344 = array(1344,576);
+$size_1920 = array(1920,1080);
 $myAmp     = false;
 $string    = $post->post_content;
 $nowurl    = $_SERVER["REQUEST_URI"];
@@ -18,7 +22,7 @@ elseif(is_singular()===true):
 	<?php get_header();?>
 	<article id="post-<?php the_ID();?>" <?php post_class();?>>
 		<header class="article-header">
-			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="100vw" srcset="<?php wkwkrnht_eyecatch($size_256);?> 320w,<?php wkwkrnht_eyecatch($size_512);?> 640w,<?php wkwkrnht_eyecatch($size_1024);?> 1270w" alt="eyecatch" class="article-eyecatch">
+			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="100vw" srcset="<?php wkwkrnht_eyecatch($size_256);?> 256w,<?php wkwkrnht_eyecatch($size_512);?> 512w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1270);?> 1270w,<?php wkwkrnht_eyecatch($size_1344);?> 1344w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
 				<h1 class="article-name entry-title"><?php the_title();?></h1>
 				<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">

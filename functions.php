@@ -35,7 +35,10 @@ function wkwkrnht_setup(){
     add_theme_support('custom-background');
     add_theme_support('custom-logo',array('height'=>512,'width'=>512,'flex-height'=>true,));
 
-    add_image_size('wkwkrnht-thumb',1344,576);
+    add_image_size('wkwkrnht-thumb',2560,1440);
+    add_image_size('wkwkrnht-thumb-1920',1920,1080);
+    add_image_size('wkwkrnht-thumb-1344',1344,576);
+    add_image_size('wkwkrnht-thumb-1270',1270,720);
     add_image_size('wkwkrnht-thumb-1024',1024,1024);
     add_image_size('wkwkrnht-thumb-800',800,800,true);
     add_image_size('wkwkrnht-thumb-512',512,512,true);

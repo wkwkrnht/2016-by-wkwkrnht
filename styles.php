@@ -199,7 +199,7 @@
 
 	.marker{box-shadow:0 -0.3em 0 -0.1em rgb(255,255,0) inset;}
 
-	.columun{margin:2vh auto;border:solid 1px #333;}
+	.columun{width:80vw;margin:2vh auto;border:solid 1px #333;}
 	.columun > h3{font-weight:700;color:<?php echo get_option('article_main_h3_color','#03a9f4');?>;border:1vmin solid <?php echo get_option('article_main_h3_border','#03a9f4');?>;box-shadow:0 0 3vmin rgba(0,0,0,.1);}
 
 	.ogp-blogcard{display:block;height:37vh;width:80vw;padding:2vmin 5vmin;border-radius:3vmin;margin:3vmin auto;position:relative;border:1px solid #e5e5e5;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.15);}
@@ -385,7 +385,7 @@
 		*/
 		article{padding-top:15%;}
 		.article-header{height:0;width:100%;padding-top:56.25%;position:relative;margin-bottom:4vh;}
-		.article-eyecatch{max-width:100%;position:absolute;bottom:0;text-align:center;vertical-align:middle;}
+		.article-eyecatch{height:auto;width:100%;position:absolute;bottom:0;text-align:center;vertical-align:middle;}
 		.article-meta{min-height:15vh;width:100%;position:absolute;bottom:0;font-size:2rem;color:<?php echo get_option('article_meta_color','#fff');?>;background-image:linear-gradient(to top,<?php $color = color_to_rgb($colorcode = get_option('article_meta_background','#f1f1f1'));echo'rgba(' . $color["red"] . ',' . $color["green"] . ',' . $color["blue"] . ',.8)';?>,rgba(0,0,0,0));text-align:center;vertical-align:middle;}
 		.article-title{font-size:2.5rem;}
 
