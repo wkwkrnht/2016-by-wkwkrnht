@@ -43,16 +43,15 @@
     <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン" onclick="document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');">+</a>
     <?php
     wp_footer();
-    if(is_singular()===true):
-        $format = get_post_format();
-        if($format==='gallery' || get_post_meta(get_the_ID(),'lightbox',true)===1){include_once(dirname(__FILE__) . '/./inc/lightbox.php');}
-        if($format==='link'){
-            echo'
-            <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
-            <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
-        }
-    endif;?>
-    <?php $key='';$key=get_option('cookie_key');if($key===''){$key = '2016-by-wkwkrnht';}?>
+    if(is_singular()===true && get_post_format()==='link'){
+        echo'
+        <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
+        <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
+    }
+    $key = '';
+    $key = get_option('cookie_key');
+    if($key===''){$key = '2016-by-wkwkrnht';}
+    ?>
     <script>
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
         (function(){

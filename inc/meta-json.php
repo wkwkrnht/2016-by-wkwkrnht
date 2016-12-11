@@ -1,4 +1,8 @@
 <?php
+$blog_name   = get_bloginfo('name');
+$home_url    = esc_url(home_url());
+$meta_img    = get_meta_image();
+$description = get_meta_description();
 if(is_singular()===true):
     echo'<link rel="amphtml" href="' . get_permalink() . '?amp=1">';
     $fb         = '';
@@ -27,7 +31,7 @@ if(is_singular()===true):
             "headline": "Article headline",
                 "image": {
                     "@type": "ImageObject",
-                    "url": "' . get_meta_image() . '",
+                    "url": "' . $meta_img . '",
                     "height": 256,
                     "width": 696
                 },
@@ -38,12 +42,12 @@ if(is_singular()===true):
                 "name": "' . get_the_author_meta('display_name',$author_id) . '",
                 "homeLocation" : {
                     "@type" : "Place",
-                    "name" : "' . get_locale( ) . '"
+                    "name" : "' . get_locale() . '"
                 }
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "' . get_bloginfo('name') . '",
+                "name": "' . $blog_name . '",
                 "logo": {
                     "@type": "ImageObject",
                     "url": "' . wp_get_attachment_url($logo) . '",
@@ -51,7 +55,7 @@ if(is_singular()===true):
                     "height": 60
                 }
             },
-            "description": "' . get_meta_description() . '"
+            "description": "' . $description . '"
         }
     </script>';
     if(is_single() || is_page() && is_subpage()===false){
@@ -68,12 +72,12 @@ if(is_singular()===true):
                         "@type": "ListItem",
                         "position": 1,
                         "item":{
-                            "@id": "' . home_url() . '",
+                            "@id": "' . $home_url . '",
                             "name": "ホーム"
                         }
                     },';
                     if($cat -> parent != 0){
-                        $ancestors = array_reverse(get_ancestors( $cat -> cat_ID, 'category' ));
+                        $ancestors = array_reverse(get_ancestors($cat->cat_ID,'category'));
                         foreach($ancestors as $ancestor){
                             $i++;
                             echo'
@@ -111,7 +115,7 @@ if(is_singular()===true):
                         "@type": "ListItem",
                         "position": 1,
                         "item":{
-                            "@id": "' . home_url() . '",
+                            "@id": "' . $home_url . '",
                             "name": "ホーム"
                         }
                     },';
@@ -160,7 +164,7 @@ elseif(is_category()===true):
                     "@type": "ListItem",
                     "position": 1,
                     "item":{
-                        "@id": "' . home_url() . '",
+                        "@id": "' . $home_url . '",
                         "name": "ホーム"
                     }
                 },';
@@ -207,7 +211,7 @@ elseif(is_tag()===true):
                     "@type": "ListItem",
                     "position": 1,
                     "item":{
-                        "@id": "' . home_url() . '",
+                        "@id": "' . $home_url . '",
                         "name": "ホーム"
                     }
                 },
@@ -236,7 +240,7 @@ elseif(is_author()===true):
                     "@type": "ListItem",
                     "position": 1,
                     "item":{
-                        "@id": "' . home_url() . '",
+                        "@id": "' . $home_url . '",
                         "name": "ホーム"
                     }
                 {
@@ -265,7 +269,7 @@ elseif(is_date()===true):
                         {
                             "@type": "ListItem",
                             "position": 1,
-                            "item":{"@id": "' . home_url() . '",
+                            "item":{"@id": "' . $home_url . '",
                             "name": "ホーム"
                         }
                     },
@@ -304,6 +308,7 @@ elseif(is_date()===true):
                 }
             </script>';
 elseif(is_search()===true):
+    $meta_url = get_meta_url();
     echo'
     <script type="application/ld+json">
         [
@@ -316,7 +321,7 @@ elseif(is_search()===true):
                         "@type": "ListItem",
                         "position": 1,
                         "item":{
-                            "@id": "' . home_url() . '",
+                            "@id": "' . $home_url . '",
                             "name": "ホーム"
                         }
                     },
@@ -333,13 +338,13 @@ elseif(is_search()===true):
             {
                 "@context":"http://schema.org",
                 "@type": "SearchResultsPage",
-                "@id": "' . get_meta_url() . '",
-                "headline": "' . get_bloginfo('name') . '",
-                "name": "' . get_bloginfo('name') . '",
-                "url": "' . get_meta_url() . '",
+                "@id": "' . $meta_url . '",
+                "headline": "' . $blog_name . '",
+                "name": "' . $blog_name . '",
+                "url": "' . $meta_url . '",
                 "datePublished": "' .  date('c') . '",
-                "image": "' . get_meta_image() . '",
-                "description": "' . get_meta_description() . '"
+                "image": "' . $meta_img . '",
+                "description": "' . $description . '"
             }
         ]
     </script>';
@@ -357,7 +362,7 @@ elseif(is_attachment()===true):
                     "@type": "ListItem",
                     "position": 1,
                     "item":{
-                        "@id": "' . home_url() . '",
+                        "@id": "' . $home_url . '",
                         "name": "ホーム"
                     }
                 },';
@@ -387,8 +392,6 @@ elseif(is_attachment()===true):
         }
     </script>';
 elseif(is_home()===true):
-    $blog_name = get_bloginfo('name');
-    $homeurl  = esc_url(home_url());
     echo'
     <script type="application/ld+json">
         {
@@ -403,7 +406,7 @@ elseif(is_home()===true):
 				"name":"' . $blog_name . '",
 				"logo":{
 					"@type": "ImageObject",
-					"url": "' . esc_url(get_meta_image()) . '",
+					"url": "' . esc_url($meta_img) . '",
 					"width":60,
 					"height":60
 				}
@@ -415,7 +418,7 @@ elseif(is_home()===true):
             },
             "potentialAction": {
                 "@type": "SearchAction",
-                "target": "' . $homeurl . '?s={search_term}",
+                "target": "' . $home_url . '?s={search_term}",
                 "query-input": "required name=search_term"
             }
         }
