@@ -20,24 +20,22 @@ elseif(is_singular()===true):
 		<header class="article-header">
 			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="100vw" srcset="<?php wkwkrnht_eyecatch($size_256);?> 320w,<?php wkwkrnht_eyecatch($size_512);?> 640w,<?php wkwkrnht_eyecatch($size_1024);?> 1270w" alt="eyecatch" class="article-eyecatch">
 			<div class="article-meta">
+				<h1 class="article-name entry-title"><?php the_title();?></h1>
 				<time class="article-date updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
 					<?php the_time('Y/n/j');?>
 				</time>
-				<span class="article-info">
-					<h1 class="article-name entry-title"><?php the_title();?></h1>
-					<span class="author">
-						著者 :
-						<a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
-							<span class="vcard author">
-								<span class="fn">
-									<?php echo $author_name;?>
-								</span>
+				<span class="author">
+					著者 :
+					<a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
+						<span class="vcard author">
+							<span class="fn">
+								<?php echo $author_name;?>
 							</span>
-						</a>
-					</span><br>
-					<span class="widget_tag_cloud">
-						<?php the_tags('','','');?>
-					</span>
+						</span>
+					</a>
+				</span><br>
+				<span class="widget_tag_cloud">
+					<?php the_tags('','','');?>
 				</span>
 			</div>
 		</header>
