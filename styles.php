@@ -383,8 +383,8 @@
 		10.original
 		11.codex
 		*/
-		.article-eyecatch{max-width:100%;text-align:center;vertical-align:middle;margin:0 auto;}
-		.article-meta{min-height:23vh;width:92vw;margin:0 auto 4vh;background-color:<?php echo get_option('article_meta_background','#f1f1f1');?>;font-size:1.6rem;text-align:center;vertical-align:middle;}
+		.article-eyecatch{max-width:100%;text-align:center;vertical-align:middle;margin:0 auto 4vh;}
+		.article-meta{min-height:23vh;width:92vw;position:absolute;top:-23vh;background-color:<?php echo get_option('article_meta_background','#f1f1f1');?>;font-size:1.6rem;text-align:center;vertical-align:middle;}
 		.article-date{display:block;height:inherit;width:30%;float:left;background-color:<?php echo get_option('article_date_background','#03a9f4');?>;color:<?php echo get_option('article_date_color','#fff');?>;font-size:2.3rem;line-height:23vh;}
 		.article-title{font-size:2rem;}
 
