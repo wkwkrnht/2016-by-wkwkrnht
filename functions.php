@@ -765,13 +765,14 @@ function make_toc($atts){
         <script>
             function addid(){
                 var idCounter = 0;
-                var targetclass = document.getElementsByClassName("' . $targetclass . '");
+                var targetClass = document.getElementsByClassName("' . $targetclass . '");
                 var sub = [' . $harray . '];
                 for (var i = 0; i < sub.length; i++) {
-                    var targeTelement = targetclass.getElementsByTagName(sub[i]);
-                    for (var n = 0; n < targeTelement.length; n++) {
+                    var targetHx = String(sub[i]);
+                    var targetElement = document.targetClass.getElementsByTagName(targetHx);
+                    for (var n = 0; n < targetElement.length; n++) {
                         idCounter++;
-                        targeTelement[n].id = "toc" + idCounter;
+                        targetElement[n].id = "toc" + idCounter;
                     }
                 }
             }
