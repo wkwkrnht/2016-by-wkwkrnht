@@ -426,6 +426,14 @@ function vc_remove_wp_ver_css_js($src){
 }
 add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
 add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
+function replace_link_stylesheet_tag($tag){
+    return preg_replace(array("/'/",'/(id|type|media)=".+?" */','/ \/>/'),array('"','','>'),$tag);
+}
+add_filter('style_loader_tag','replace_link_stylesheet_tag');
+function replace_script_tag($tag){
+	return preg_replace(array("/'/",'/ type=\"text\/javascript\"/'),array('"',''),$tag);
+}
+add_filter('script_loader_tag','replace_script_tag');
 
 
 class add_meta_Nav_Menu extends Walker_Nav_Menu{
@@ -755,19 +763,25 @@ function make_toc($atts){
             ' . $toc_list .'
         </aside>
         <script>
-            function addid(){
+            window.onload = function () {
                 var idCounter = 0;
-                var targetclass = document.getElementsByClassName("' . $targetclass . '");
                 var sub = [' . $harray . '];
-                for (var i = 0; i < sub.length; i++) {
-                    var targeTelement = targetclass.getElementsByTagName(sub[i]);
-                    for (var n = 0; n < targeTelement.length; n++) {
-                        idCounter++;
-                        targeTelement[n].id = "toc" + idCounter;
+                var targetClasses = document.getElementsByClassName("' . $targetclass . '");
+                for (var i = 0; i < targetClasses.length; i++) {
+                    var targetClass = targetClasses[i];
+                    for (var m = 0; m < sub.length; m++) {
+                        var targetHx = String(sub[m]);
+                        var targetElements = targetClass.getElementsByTagName(targetHx);
+                        for (var n = 0; n < targetElements.length; n++) {
+                            var targetElement = targetElements[n];
+                            if (targetElement.hasAttribute("class") === false) {
+                                idCounter++;
+                                targetElement.id = "toc" + idCounter;
+                            }
+                        }
                     }
                 }
-            }
-            (function(){window.onload = addid;})()
+            };
         </script>';
     }
     return $html;

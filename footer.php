@@ -53,29 +53,41 @@
     if($key===''){$key = '2016-by-wkwkrnht';}
     ?>
     <script>
-        (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
         (function(){
-            var elements = document.getElementsByClassName("twitter-tweet");
-            for( var i=0,l=elements.length; l>i; i++ ) {
-	            var element = elements[i] ;
-	            element.classList.add("tw-align-center");
+            if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
+                document.body.className += " night-mode";
             }
-        })()
+        })();
         (function(){
-            var doc = document;
-            var wpCss = doc.getElementsById('wpcss');
+            var targetElements = document.getElementsByClassName("twitter-tweet");
+            for( var i = 0,l = targetElements.length; l > i; i++ ) {
+	            var targetElement = targetElements[i] ;
+	            targetElement.classList.add("tw-align-center");
+            }
+        })();
+        (function(){
+            var wpCss = document.getElementById("wpcss");
+            if (wpCss === null) {
+                return;
+            }
             var wpCssL = wpCss.length;
-            for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);
-        }})()
+            for(i=0; i < wpCssL; i++){
+                var wpStyle = document.createElement("style");
+                wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
+                document.head.appendChild(wpStyle);
+            }
+        })();
         (function(){
             var key = "<?php echo $key;?>";
             function getCookie(key){
                 var s,e;
                 var c = document.cookie + ";";
                 var b = c.indexOf(key,0);
-                if(b!=-1){c=c.substring(b,c.length);
+                if(b!=-1){
+                    c = c.substring(b,c.length);
                     s = c.indexOf("=",0) + 1;
-                    e = c.indexOf(";",s);return(unescape(c.substring(s,e)));
+                    e = c.indexOf(";",s);
+                    return(unescape(c.substring(s,e)));
                 }
                 return("");
             }
@@ -85,10 +97,12 @@
                 document.cookie = " " + key + "=" + escape(n) + ";expires=" + myDate.toGMTString();
             }
             var n = getCookie(key);
-            if(n==""){window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");}
+            if(n === ""){
+                window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");
+            }
             n++;
             setCookie(key,n);
-        })()
+        })();
     </script>
     <?php $txt='';$txt=get_option('footer_txt');if($txt!==''){echo $txt;}?>
 </body>
