@@ -775,7 +775,7 @@ function make_toc($atts){
                         for (var n = 0; n < targetElements.length; n++) {
                             idCounter++;
                             var targetElement = targetElements[n];
-                            if (targetElement.getAttribute("class") === "") {
+                            if (targetElement.hasAttribute("class") === false) {
                                 targetElement.id = "toc" + idCounter;
                             }
                         }
