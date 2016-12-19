@@ -782,7 +782,7 @@ function make_toc($atts){
                     }
                 }
             }
-            (function(){window.onload = addid;})()
+            (function(){window.onload = addid();})()
         </script>';
     }
     return $html;
