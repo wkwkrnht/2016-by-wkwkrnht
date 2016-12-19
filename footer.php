@@ -53,20 +53,24 @@
     if($key===''){$key = '2016-by-wkwkrnht';}
     ?>
     <script>
-        (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
+        (function(){
+            if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
+                document.body.className += " night-mode";
+            }
+        })();
         (function(){
             var targetElements = document.getElementsByClassName("twitter-tweet");
             for( var i = 0,l = elements.length; l > i; i++ ) {
 	            var targetElement = targetElements[i] ;
 	            targetElement.classList.add("tw-align-center");
             }
-        })()
+        })();
         (function(){
             var doc = document;
             var wpCss = doc.getElementsById('wpcss');
             var wpCssL = wpCss.length;
             for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);
-        }})()
+        }})();
         (function(){
             var key = "<?php echo $key;?>";
             function getCookie(key){
@@ -90,7 +94,7 @@
             }
             n++;
             setCookie(key,n);
-        })()
+        })();
     </script>
     <?php $txt='';$txt=get_option('footer_txt');if($txt!==''){echo $txt;}?>
 </body>
