@@ -66,13 +66,12 @@
             }
         })();
         (function(){
-            var doc = document;
-            var wpCss = doc.getElementsById('wpcss');
+            var wpCss = document.getElementsById('wpcss');
             var wpCssL = wpCss.length;
             for(i=0; i < wpCssL; i++){
-                var wpStyle = doc.createElement('style');
+                var wpStyle = document.createElement('style');
                 wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
-                doc.head.appendChild(wpStyle);
+                document.head.appendChild(wpStyle);
         }})();
         (function(){
             var key = "<?php echo $key;?>";
