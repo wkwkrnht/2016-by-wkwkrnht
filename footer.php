@@ -66,7 +66,7 @@
             }
         })();
         (function(){
-            var wpCss = document.getElementsById('wpcss');
+            var wpCss = document.getElementById('wpcss');
             var wpCssL = wpCss.length;
             for(i=0; i < wpCssL; i++){
                 var wpStyle = document.createElement('style');
