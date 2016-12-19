@@ -67,12 +67,16 @@
         })();
         (function(){
             var wpCss = document.getElementById('wpcss');
+            if (wpCss === null) {
+                return;
+            }
             var wpCssL = wpCss.length;
             for(i=0; i < wpCssL; i++){
                 var wpStyle = document.createElement('style');
                 wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
                 document.head.appendChild(wpStyle);
-        }})();
+            }
+        )();
         (function(){
             var key = "<?php echo $key;?>";
             function getCookie(key){
