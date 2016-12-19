@@ -60,7 +60,7 @@
         })();
         (function(){
             var targetElements = document.getElementsByClassName("twitter-tweet");
-            for( var i = 0,l = elements.length; l > i; i++ ) {
+            for( var i = 0,l = targetElements.length; l > i; i++ ) {
 	            var targetElement = targetElements[i] ;
 	            targetElement.classList.add("tw-align-center");
             }
@@ -69,7 +69,10 @@
             var doc = document;
             var wpCss = doc.getElementsById('wpcss');
             var wpCssL = wpCss.length;
-            for(i=0; i < wpCssL; i++){var wpStyle = doc.createElement('style');wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");doc.head.appendChild(wpStyle);
+            for(i=0; i < wpCssL; i++){
+                var wpStyle = doc.createElement('style');
+                wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
+                doc.head.appendChild(wpStyle);
         }})();
         (function(){
             var key = "<?php echo $key;?>";
@@ -79,7 +82,8 @@
                 var b = c.indexOf(key,0);
                 if(b!=-1){c=c.substring(b,c.length);
                     s = c.indexOf("=",0) + 1;
-                    e = c.indexOf(";",s);return(unescape(c.substring(s,e)));
+                    e = c.indexOf(";",s);
+                    return(unescape(c.substring(s,e)));
                 }
                 return("");
             }
