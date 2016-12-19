@@ -66,24 +66,25 @@
             }
         })();
         (function(){
-            var wpCss = document.getElementById('wpcss');
+            var wpCss = document.getElementById("wpcss");
             if (wpCss === null) {
                 return;
             }
             var wpCssL = wpCss.length;
             for(i=0; i < wpCssL; i++){
-                var wpStyle = document.createElement('style');
+                var wpStyle = document.createElement("style");
                 wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
                 document.head.appendChild(wpStyle);
             }
-        )();
+        })();
         (function(){
             var key = "<?php echo $key;?>";
             function getCookie(key){
                 var s,e;
                 var c = document.cookie + ";";
                 var b = c.indexOf(key,0);
-                if(b!=-1){c=c.substring(b,c.length);
+                if(b!=-1){
+                    c = c.substring(b,c.length);
                     s = c.indexOf("=",0) + 1;
                     e = c.indexOf(";",s);
                     return(unescape(c.substring(s,e)));
