@@ -773,9 +773,9 @@ function make_toc($atts){
                         var targetHx = String(sub[m]);
                         var targetElements = targetClass.getElementsByTagName(targetHx);
                         for (var n = 0; n < targetElements.length; n++) {
-                            idCounter++;
                             var targetElement = targetElements[n];
                             if (targetElement.hasAttribute("class") === false) {
+                                idCounter++;
                                 targetElement.id = "toc" + idCounter;
                             }
                         }
