@@ -56,7 +56,7 @@
         (function(){if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){document.body.className += " night-mode";}})()
         (function(){
             var elements = document.getElementsByClassName("twitter-tweet");
-            for( var i=0,l=elements.length; l>i; i++ ) {
+            for( var i = 0,l = elements.length; l > i; i++ ) {
 	            var element = elements[i] ;
 	            element.classList.add("tw-align-center");
             }
@@ -85,7 +85,9 @@
                 document.cookie = " " + key + "=" + escape(n) + ";expires=" + myDate.toGMTString();
             }
             var n = getCookie(key);
-            if(n==""){window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");}
+            if(n == ""){
+                window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");
+            }
             n++;
             setCookie(key,n);
         })()

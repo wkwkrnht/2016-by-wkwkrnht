@@ -771,10 +771,13 @@ function make_toc($atts){
                     var targetClass = targetClasses[i];
                     for (var m = 0; m < sub.length; m++) {
                         var targetHx = String(sub[m]);
-                        var targetElement = targetClass.getElementsByTagName(targetHx);
+                        var targetElements = targetClass.getElementsByTagName(targetHx);
                         for (var n = 0; n < targetElement.length; n++) {
                             idCounter++;
-                            targetElement[n].id = "toc" + idCounter;
+                            var targetElement = targetElements[n];
+                            if (targetElement.classList.contains("any") == false) {
+                                targetElement.id = "toc" + idCounter;
+                            }
                         }
                     }
                 }
