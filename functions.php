@@ -763,10 +763,10 @@ function make_toc($atts){
             ' . $toc_list .'
         </aside>
         <script>
-            function addid(){
+            window.onload = function () {
                 var idCounter = 0;
-                var targetClasses = document.getElementsByClassName("' . $targetclass . '");
                 var sub = [' . $harray . '];
+                var targetClasses = document.getElementsByClassName("' . $targetclass . '");
                 for (var i = 0; i < targetClasses.length; i++) {
                     var targetClass = targetClasses[i];
                     for (var m = 0; m < sub.length; m++) {
@@ -781,8 +781,7 @@ function make_toc($atts){
                         }
                     }
                 }
-            }
-            (function(){window.onload = addid();})()
+            };
         </script>';
     }
     return $html;
