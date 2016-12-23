@@ -181,7 +181,7 @@
 	7.area for notice
 	8.move to search
 	*/
-	.card{min-height:40.5vmin;width:72vmin;margin:2vh 3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.card{min-height:40.5vmin;width:72vmin;margin:4vh 3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:100%;width:calc(72vmin / 2 - 1vmin);vertical-align:middle;}
 	.card-info{max-width:calc(72vmin / 2);float:right;}
 	.card-title{display:inline-block;height:calc(40.5vmin / 10 * 3);margin:0 1em;}
