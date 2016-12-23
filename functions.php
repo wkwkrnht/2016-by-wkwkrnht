@@ -604,14 +604,12 @@ function make_OGPblogcard($url){
                 <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">B!</a></li>
             </ul>
         </div>
-        <blockquote class="ogp-blogcard-main">
+        <blockquote class="ogp-blogcard-main"cite="' . $url . '">
             <img class="ogp-blogcard-img" src="' . $img . '">
-            <div class="ogp-blogcard-info">
-                <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
-                    <h2 class="ogp-blogcard-title">' . $title . '</h2>
-                    <p class="ogp-blogcard-description">' . $description . '</p>
-                </a>
-            </div>
+            <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '" class="ogp-blogcard-info">
+                <h2 class="ogp-blogcard-title">' . $title . '</h2>
+                <p class="ogp-blogcard-description">' . $description . '</p>
+            </a>
         </blockquote>
         <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-2x fa-share-alt"></i></a>
     </div>';
@@ -759,8 +757,11 @@ function make_toc($atts){
         if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
         $html .= '
         <aside' . $id . ' class="' . $atts['class'] . '">
-            <h2 class="toc-title">' . $atts['title'] . '</h2>
-            ' . $toc_list .'
+            <a href="javascript:void(0);" tabindex="0" class="toc-toggle" onclick=document.getElementById("toc-inner").classList.toggle("none");document.getElementById("toc-inner").classList.toggle("block");>∨</a>
+            <div id="toc-inner">
+                <h2 class="toc-title">' . $atts['title'] . '</h2>
+                ' . $toc_list .'
+            </div>
         </aside>
         <script>
             window.onload = function () {
@@ -874,8 +875,8 @@ function wkwkrnht_add_quicktags(){
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
         QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
-    </script>
-<?php }}
+    </script><?php }
+}
 add_action('admin_print_footer_scripts','wkwkrnht_add_quicktags');
 
 function add_posts_columns($columns){

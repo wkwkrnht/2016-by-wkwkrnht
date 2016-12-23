@@ -181,7 +181,7 @@
 	7.area for notice
 	8.move to search
 	*/
-	.card{min-height:40.5vmin;width:72vmin;margin:3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
+	.card{min-height:40.5vmin;width:72vmin;margin:2vh 3vmin;padding:2vmin 3vmin;border-radius:3vmin;font-size:1.8rem;text-align:center;background-color:#fff;box-shadow:0 0 3vmin rgba(0,0,0,.2);}
 	.card-eyecatch{display:block;float:left;height:100%;width:calc(72vmin / 2 - 1vmin);vertical-align:middle;}
 	.card-info{max-width:calc(72vmin / 2);float:right;}
 	.card-title{display:inline-block;height:calc(40.5vmin / 10 * 3);margin:0 1em;}
@@ -391,13 +391,13 @@
 		.article-date{margin-right:3em;}
 
 		.article-main{font-size:1.6rem;}
-		.article-main p{max-width:calc(1.6rem * 40);padding:5vmin 8vmin 0;margin:2vh auto;}
+		.article-main p{max-width:calc(1.6rem * 40);padding:1vh 8vmin;margin:2vh auto;}
 		.article-main a[href^="http"]:empty::before{content:attr(href);}
 		.article-main a[href^="http"][title]:empty::before{content:attr(title);}
 		.article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{display:block;margin:2vh auto;}
 		.article-main a:hover,.article-main a:focus{border-bottom:solid 1px <?php echo get_option('article_main_a_hover_border','#03a9f4');?>;}
 
-		.article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:5vh;max-width:90%;margin:2vh auto;line-height:5vh;text-align:center;}
+		.article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{min-height:6vh;max-width:90%;margin:2vh auto;line-height:6vh;text-align:center;}
 		.article-main h3,.article-main h4,.article-main h5,.article-main h6{font-size:2rem;}
 		.article-main h1{padding:.75em;background-color:<?php echo get_option('article_main_h1_background','#f4f4f4');?>;border-top:1px dashed <?php echo get_option('article_main_h1_border','#ccc');?>;border-bottom:1px dashed <?php echo get_option('article_main_h1_border','#ccc');?>;box-shadow:0 7px 10px -5px rgba(0,0,0,.1) inset;counter-increment:counter-h1;counter-reset:counter-h2;}
 		.article-main h2{color:<?php echo get_option('article_main_h2_color','#fff');?>;background-color:<?php echo get_option('article_main_h2_background','#03a9f4');?>;box-shadow:0 0 3vmin rgba(0,0,0,.2);counter-increment:counter-h2;counter-reset:counter-h3;}
@@ -408,7 +408,7 @@
 		.article-main h5{border-left:.5em solid <?php echo get_option('article_main_h5_border','#03a9f4');?>;counter-increment:counter-h5;counter-reset:counter-h6;}
 		.article-main h6{border-bottom:.75vmin dashed <?php echo get_option('article_main_h6_border','#03a9f4');?>;counter-increment:counter-h6;}
 
-		.article-main pre,.article-main address{max-width:94vw;margin:1em auto;}
+		.article-main pre,.article-main address{max-width:94vw;margin:1vh auto;}
 		.article-main pre{font-weight:bold;}
 		.article-main code{white-space:pre;overflow-x:auto;}
 		.article-main address,.article-main code{background-color:#eee;}
@@ -425,7 +425,7 @@
 		.article-main ol li:before{counter-increment:counter-name;content:counter(counter-name);display:inline-block;height:1.5em;width:1.5em;border-radius:50%;position:absolute;left:0;background-color:<?php echo get_option('article_main_ol_background','#03a9f4');?>;color:<?php echo get_option('article_main_ol_color','#fff');?>;line-height:1.5em;text-align:center;}
 		.article-main ol li{margin:0;list-style:none;position:relative;padding-top:.1em;padding-left:2em;}
 
-		.article-main table{width:calc(100% - 16vmin);margin:0 8vmin;table-layout:fixed;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse;}
+		.article-main table{-webkit-box-sizing:border-box;box-sizing:border-box;width:calc(100% - 16vmin);margin:2vh 4vh;table-layout:fixed;border-collapse:collapse;}
 		.article-main table caption{padding:1.2em;text-align:center;background-color:<?php echo get_option('article_main_table_caption_background','#ffc045');?>;}
 		.article-main table tr th{color:<?php echo get_option('article_main_th_color','#fff');?>;background-color:<?php echo get_option('article_main_th_background','#03a9f4');?>;}
 		.article-main table tr th,.article-main table tr td{padding:1.2em;text-align:center;border:1px solid <?php echo get_option('article_main_li_border','#cfcfcf');?>;}
