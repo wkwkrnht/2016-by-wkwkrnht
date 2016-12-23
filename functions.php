@@ -680,7 +680,7 @@ function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>''
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
 function columun_in_article($atts){extract(shortcode_atts(array('title'=>'','txt'=>'',),$atts));return'<aside class="columun"><h3>' . $title . '</h3><p>' . $txt . '</p></aside>';}
-function cutin_box($args=array(),$content='',$atts){extract(shortcode_atts(array('color'=>'','title'=>'',),$atts));return'<div class="cutin-box ' . $color . '">' . $title . '<div class="cutin-box-inner">' . $content . '</div></div>';}
+function cutin_box($content='',$atts){extract(shortcode_atts(array('color'=>'','title'=>'',),$atts));return'<div class="cutin-box ' . $color . '">' . $title . '<div class="cutin-box-inner">' . $content . '</div></div>';}
 function make_a($atts){extract(shortcode_atts(array('url'=>'','txt'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" target="_blank" rel="noopener">' . $txt . '</a>';}
 function make_button($atts){extract(shortcode_atts(array('url'=>'','txt'=>'','class'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" class="button ' . $class . '" target="_blank" rel="noopener">' . $txt . '</a>';}
 function make_toc($atts){
