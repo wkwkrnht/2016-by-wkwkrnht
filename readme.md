@@ -68,6 +68,15 @@
         * 緑
         * 黒
 
+    * ボックス
+
+        * 赤
+        * 青
+        * 黄
+        * 燈
+        * 緑
+        * 黒
+
 
 * 豊富なクイックタグ
 
@@ -98,6 +107,8 @@
         * HTML特殊文字エスケープ
         * css挿入(そのスタイルはそのページのみ適用)
         * 目次
+        * ボタン
+        * ボックス
         * a(target="＿blank"とrel="noappear"付)
 
 
@@ -108,6 +119,7 @@
 * Chrome独自のアドレスバー装飾対応
 * 独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
 * wp-appboxのスタイルシート内蔵
+* jetpackの設定内容も弄れます
 
 ##ファイルツリー
 
@@ -124,7 +136,7 @@
     * baguetteBox.php(LightBox風スクリプト)
     * editor-styl.css (TinyMCE向けスタイルシート)
     * meta-json.php (ジャンル別メタ情報出力スクリプト)
-    * OpenGraph.php (OGP解読スクリプト)
+    * OpenGraph.php (OGP解読ライブラリ)
     * no-img.png (404な画像)
 
 * widget (ウィジェット)

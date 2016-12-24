@@ -604,14 +604,12 @@ function make_OGPblogcard($url){
                 <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">B!</a></li>
             </ul>
         </div>
-        <blockquote class="ogp-blogcard-main">
+        <blockquote class="ogp-blogcard-main"cite="' . $url . '">
             <img class="ogp-blogcard-img" src="' . $img . '">
-            <div class="ogp-blogcard-info">
-                <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '">
-                    <h2 class="ogp-blogcard-title">' . $title . '</h2>
-                    <p class="ogp-blogcard-description">' . $description . '</p>
-                </a>
-            </div>
+            <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '" class="ogp-blogcard-info">
+                <h2 class="ogp-blogcard-title">' . $title . '</h2>
+                <p class="ogp-blogcard-description">' . $description . '</p>
+            </a>
         </blockquote>
         <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-2x fa-share-alt"></i></a>
     </div>';
@@ -678,12 +676,14 @@ function url_to_OGPBlogcard($atts){
     }
     return $content;
 }
-function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';}
+function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
-function columun_in_article($atts){extract(shortcode_atts(array('title'=>'','txt'=>'',),$atts));return'<aside class="columun"><h3>' . $title . '</h3><p>' . $txt . '</p></aside>';}
-function make_a($atts){extract(shortcode_atts(array('url'=>'','txt'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" target="_blank" rel="noopener">' . $txt . '</a>';}
-function make_button($atts){extract(shortcode_atts(array('url'=>'','txt'=>'','class'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" class="button ' . $class . '" target="_blank" rel="noopener">' . $txt . '</a>';}
+function columun_in_article($args=array(),$content=''){extract(shortcode_atts(array('color'=>'','title'=>'',),$args));return'<aside class="cutin-box ' . $color . '"><h3>' . $title . '</h3><p class="cutin-box-inner">' . $content . '</p></aside>';}
+function cutin_box($args=array(),$content=''){extract(shortcode_atts(array('color'=>'','title'=>'',),$args));return'<div class="cutin-box ' . $color . '">' . $title . '<div class="cutin-box-inner">' . $content . '</div></div>';}
+function make_a($args=array(),$content=''){extract(shortcode_atts(array('url'=>'',),$args));return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . $content . '</a>';}
+function make_link_button($args=array(),$content=''){extract(shortcode_atts(array('url'=>'','color'=>'',),$args));return'<a href="' . $url . '" title="' . $content . '" class="button ' . $color . '" tabindex="0" target="_blank" rel="noopener">' . $content . '</a>';}
+function make_button($args=array(),$content=''){extract(shortcode_atts(array('color'=>'',),$args));return'<span class="button ' . $color . '">' . $content . '</span>';}
 function make_toc($atts){
     $atts = shortcode_atts(array(
         'id'          => '',
@@ -759,8 +759,11 @@ function make_toc($atts){
         if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
         $html .= '
         <aside' . $id . ' class="' . $atts['class'] . '">
+            <a href="javascript:void(0);" tabindex="0" class="toc-toggle" onclick=document.getElementById("toc-inner").classList.toggle("none");document.getElementById("toc-inner").classList.toggle("block");>∨</a>
             <h2 class="toc-title">' . $atts['title'] . '</h2>
-            ' . $toc_list .'
+            <div id="toc-inner">
+                ' . $toc_list .'
+            </div>
         </aside>
         <script>
             window.onload = function () {
@@ -795,9 +798,11 @@ add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
 add_shortcode('columun','columun_in_article');
-add_shortcode('toc','make_toc');
+add_shortcode('box','cutin_box');
 add_shortcode('link','make_a');
 add_shortcode('button','make_button');
+add_shortcode('link_button','make_link_button');
+add_shortcode('toc','make_toc');
 /*
     editor custom
 1.script
@@ -820,7 +825,8 @@ add_action('admin_head-post.php','add_post_edit_featuer');
 
 add_filter('tiny_mce_before_init','wkwkrnht_add_mce_settings');
 function wkwkrnht_add_mce_settings($settings){
-    $settings['fontsize_formats'] = '10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px 38px 40px 42px 44px 46px 48px 50px 0.5rem 0.6rem 0.8rem 1rem 1.1rem 1.2rem 1.3rem 1.4rem 1.5rem 1.6rem 1.7rem 1.8rem 1.9rem 2rem 2.1rem 2.2rem 2.3rem 2.4rem 2.5rem 0.5em 0.6em 0.7em 0.8em 0.9em 1em 1.1em 1.2em 1.3em 1.4em 1.5em 1.6em 1.7em 1.8em 1.9em 2em 2.1em 2.2em 2.3em 2.4em 2.5em 50% 55% 60% 65% 70% 75% 80% 85% 90% 95% 100% 105% 110% 115% 120% 125% 130% 135% 140% 145% 150%';
+    $settings['extended_valid_elements'] .= "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width],script[src|defer|async|id]";
+    $settings['fontsize_formats'] = '10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px 38px 40px 42px 44px 46px 48px 50px 0.5rem 0.6rem 0.8rem 1rem 1.1rem 1.2rem 1.3rem 1.4rem 1.5rem 1.6rem 1.7rem 1.8rem 1.9rem 2rem 2.1rem 2.2rem 2.3rem 2.4rem 2.5rem 0.5em 0.6em 0.7em 0.8em 0.9em 1em 1.1em 1.2em 1.3em 1.4em 1.5em 1.6em 1.7em 1.8em 1.9em 2em 2.1em 2.2em 2.3em 2.4em 2.5em 50% 55% 60% 65% 70% 75% 80% 85% 90% 95% 100% 105% 110% 115% 120% 125% 130% 135% 140% 145% 150% 175% 200% 250% 300%';
     return $settings;
 }
 add_filter('mce_buttons_2','wkwkrnht_add_mce_buttons');
@@ -853,9 +859,11 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
-        QTags.addButton('qt-columun','コラム','[columun title= txt=',']');
-        QTags.addButton('qt-button','button','[button txt=',' url= class=blue]');
-        QTags.addButton('qt-a','a','[link txt=',' url=]');
+        QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
+        QTags.addButton('qt-box','box','[box color= title=]','[/box]');
+        QTags.addButton('qt-button','button','[button class=blue]','[/button]');
+        QTags.addButton('qt-link-button','link_button','[link_button class=blue url=]','[/link_button]');
+        QTags.addButton('qt-a','a','[link url=]','[/link]');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
@@ -874,8 +882,8 @@ function wkwkrnht_add_quicktags(){
 		QTags.addButton('qt-information','情報','<div class="information">','</div>');
 		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
         QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
-    </script>
-<?php }}
+    </script><?php }
+}
 add_action('admin_print_footer_scripts','wkwkrnht_add_quicktags');
 
 function add_posts_columns($columns){
