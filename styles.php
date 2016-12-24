@@ -447,6 +447,7 @@
 
 		.article-main .toc-title{max-width:72vw;}
 		.article-main .toc-title:hover::before{content:"";}
+		.article-main .cutin-box > h3{color:#fff;box-shadow:none;}
 		.article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{display:none;}
 		.article-main .ogp-blogcard-main{border:0;padding:0;}
 		.article-main .ogp-blogcard-main::after{display:none;}
