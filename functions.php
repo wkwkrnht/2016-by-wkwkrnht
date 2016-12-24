@@ -679,10 +679,11 @@ function url_to_OGPBlogcard($atts){
 function spotify_play_into_article($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://embed.spotify.com/?uri=' . $url . '&theme=white" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';}
 function navigation_in_article($atts){extract(shortcode_atts(array('id'=>'',),$atts));$content = wp_nav_menu(array('menu'=>$id,'echo'=>false));return $content;}
 function google_ads_in_article($atts){extract(shortcode_atts(array('client'=>'','slot'=>'',),$atts));return'<aside id="adsense"><script>google_ad_client = "pub-' . $client . '";google_ad_slot = "' . $slot . '";google_ad_width = 640;google_ad_height = 480;</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script></aside>';}
-function columun_in_article($atts){extract(shortcode_atts(array('title'=>'','txt'=>'',),$atts));return'<aside class="columun"><h3>' . $title . '</h3><p>' . $txt . '</p></aside>';}
+function columun_in_article($args=array(),$content=''){extract(shortcode_atts(array('color'=>'','title'=>'',),$args));return'<aside class="cutin-box ' . $color . '"><h3>' . $title . '</h3><p>' . $content . '</p></aside>';}
 function cutin_box($args=array(),$content=''){extract(shortcode_atts(array('color'=>'','title'=>'',),$args));return'<div class="cutin-box ' . $color . '">' . $title . '<div class="cutin-box-inner">' . $content . '</div></div>';}
-function make_a($atts){extract(shortcode_atts(array('url'=>'','txt'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" target="_blank" rel="noopener">' . $txt . '</a>';}
-function make_button($atts){extract(shortcode_atts(array('url'=>'','txt'=>'','class'=>'',),$atts));return'<a href="' . $url . '" title="' . $txt . '" class="button ' . $class . '" target="_blank" rel="noopener">' . $txt . '</a>';}
+function make_a($args=array(),$content=''){extract(shortcode_atts(array('url'=>'',),$args));return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . $content . '</a>';}
+function make_link_button($args=array(),$content=''){extract(shortcode_atts(array('url'=>'','color'=>'',),$args));return'<a href="' . $url . '" title="' . $content . '" class="button ' . $color . '" tabindex="0" target="_blank" rel="noopener">' . $content . '</a>';}
+function make_button($args=array(),$content=''){extract(shortcode_atts(array('color'=>'',),$args));return'<span class="button ' . $color . '">' . $content . '</span>';}
 function make_toc($atts){
     $atts = shortcode_atts(array(
         'id'          => '',
@@ -800,6 +801,7 @@ add_shortcode('columun','columun_in_article');
 add_shortcode('box','cutin_box');
 add_shortcode('link','make_a');
 add_shortcode('button','make_button');
+add_shortcode('link_button','make_link_button');
 add_shortcode('toc','make_toc');
 /*
     editor custom
@@ -856,10 +858,11 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
-        QTags.addButton('qt-columun','コラム','[columun title= txt=',']');
+        QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
         QTags.addButton('qt-box','box','[box color= title=]','[/box]');
-        QTags.addButton('qt-button','button','[button txt=',' url= class=blue]');
-        QTags.addButton('qt-a','a','[link txt=',' url=]');
+        QTags.addButton('qt-button','button','[button class=blue]','[/button]');
+        QTags.addButton('qt-link-button','link_button','[link_button class=blue url=]','[/link_button]');
+        QTags.addButton('qt-a','a','[link url=]','[/link]');
 		QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
