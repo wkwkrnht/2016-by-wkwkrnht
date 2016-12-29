@@ -94,7 +94,7 @@
 	#main-menu{box-sizing:border-box;padding-top:2vh;background-color:<?php echo get_option('menu_background','#fff');?>;}
 
 	.main-nav ul{list-style-type:none;}
-	.main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;}
+	.main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;font-size:1.8rem;}
 	.social-nav{display:block;min-height:4em;width:100%;margin:2vmin auto;}
 	.social-nav ul{list-style:none;margin:0 0 -1.6em 0;}
 	.social-nav li{float:left;}
