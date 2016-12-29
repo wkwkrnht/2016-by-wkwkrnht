@@ -40,7 +40,7 @@
             <?php endif;?>
         </div>
     </div>
-    <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン" onclick="document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');">+</a>
+    <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
     <?php
     wp_footer();
     if(is_singular()===true && get_post_format()==='link'){
@@ -54,6 +54,7 @@
     ?>
     <script>
         (function(){
+            document.getElementById("menu-toggle").onclick = document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');
             if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
                 document.body.className += " night-mode";
             }
