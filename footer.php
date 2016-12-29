@@ -43,14 +43,14 @@
     <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
     <?php
     wp_footer();
-    if(is_singular()===true && get_post_format()==='link'){
-        echo'
-        <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
-        <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
-    }
     $key = '';
     $key = get_option('cookie_key');
     if($key===''){$key = '2016-by-wkwkrnht';}
+    if(get_post_format()==='link'){
+        echo'
+        <script>var targets = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < targets.length; i++){var target = targets[i];target.classList.add("embedly-card");}</script>
+        <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
+    }
     ?>
     <script>
         (function(){
@@ -59,16 +59,16 @@
                 document.getElementById('menu-wrap').classList.toggle('open');
             };
             document.getElementById("main-menu-toggle").onclick = function(){
-                document.getElementById('share-menu').classList.add('none');
-                document.getElementById('share-menu').classList.remove('block');
-                document.getElementById('main-menu').classList.toggle('none');
-                document.getElementById('main-menu').classList.toggle('block');
+                document.getElementById('share-menu').classList.add("none");
+                document.getElementById('share-menu').classList.remove("block");
+                document.getElementById('main-menu').classList.toggle("none");
+                document.getElementById('main-menu').classList.toggle("block");
             };
             document.getElementById("share-menu-toggle").onclick = function(){
-                document.getElementById('main-menu').classList.add('none');
-                document.getElementById('main-menu').classList.remove('block');
-                document.getElementById('share-menu').classList.toggle('none');
-                document.getElementById('share-menu').classList.toggle('block');
+                document.getElementById('main-menu').classList.add("none");
+                document.getElementById('main-menu').classList.remove("block");
+                document.getElementById('share-menu').classList.toggle("none");
+                document.getElementById('share-menu').classList.toggle("block");
             };
         })();
         (function(){
