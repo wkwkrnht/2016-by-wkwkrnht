@@ -10,15 +10,17 @@
 	<meta http-equiv="cleartype" content="on">
 	<meta name="renderer" content="webkit">
 	<?php
-	$bing   = '';
-	$google = '';
-	$pi     = '';
+	$bing   = false;
+	$google = false;
+	$pi     = false;
+	$txt    = false;
 	$bing   = get_option('Bing_Webmaster');
 	$google = get_option('Google_Webmaster');
 	$pin    = get_option('Pinterest');
-	if($bing!==''){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
-	if($google!==''){echo'<meta name="google-site-verification" content="' . $google . '">';}
-	if($pin!==''){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
+	$txt    = get_option('header_txt');
+	if($bing!==false){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
+	if($google!==false){echo'<meta name="google-site-verification" content="' . $google . '">';}
+	if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta name="msapplication-TileColor" content="<?php echo get_option('GoogleChrome_URLbar');?>">
 	<meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
@@ -43,7 +45,7 @@
 	include_once(get_template_directory() . '/inc/meta-json.php');
 	include_once(get_template_directory() . '/styles.php');
 	wp_head();
-	$txt='';$txt=get_option('header_txt');if($txt!==''){echo $txt;}?>
+	if($txt!==false){echo $txt;}?>
 </head>
 <body <?php body_class();?>>
 	<?php

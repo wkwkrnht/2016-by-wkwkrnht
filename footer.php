@@ -43,9 +43,9 @@
     <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
     <?php
     wp_footer();
-    $key = '';
+    $key = false;
     $key = get_option('cookie_key');
-    if($key===''){$key = '2016-by-wkwkrnht';}
+    if($key===false){$key = '2016-by-wkwkrnht';}
     if(get_post_format()==='link'){
         echo'
         <script>var targets = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < targets.length; i++){var target = targets[i];target.classList.add("embedly-card");}</script>
@@ -122,6 +122,6 @@
             setCookie(key,n);
         })();
     </script>
-    <?php $txt='';$txt=get_option('footer_txt');if($txt!==''){echo $txt;}?>
+    <?php $txt=false;$txt=get_option('footer_txt');if($txt!==false){echo $txt;}?>
 </body>
 </html>
