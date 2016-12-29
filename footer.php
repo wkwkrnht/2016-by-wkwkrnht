@@ -1,8 +1,8 @@
     </main>
     <div id="menu-wrap" class="close">
         <nav class="menu-tab">
-            <a href="javascript:void(0)" id="main-menu-toggle" tabindex="0" role="button" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('none');document.getElementById('main-menu').classList.toggle('block');document.getElementById('share-menu').classList.add('none');document.getElementById('share-menu').classList.remove('block');">menu</a>
-            <a href="javascript:void(0)" id="share-menu-toggle" tabindex="0" role="button" title="共有機能へのリンク" onclick="document.getElementById('main-menu').classList.add('none');document.getElementById('main-menu').classList.remove('block');document.getElementById('share-menu').classList.toggle('none');document.getElementById('share-menu').classList.toggle('block');"><i class="fa fa-share-alt fa-5x"></i></a>
+            <a href="javascript:void(0)" id="main-menu-toggle" tabindex="0" role="button" title="メニューへのリンク">menu</a>
+            <a href="javascript:void(0)" id="share-menu-toggle" tabindex="0" role="button" title="共有機能へのリンク"><i class="fa fa-share-alt fa-5x"></i></a>
         </nav>
         <nav id="share-menu" class="block">
             <ul>
@@ -54,7 +54,24 @@
     ?>
     <script>
         (function(){
-            document.getElementById("menu-toggle").onclick = function(){document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');};
+            document.getElementById("menu-toggle").onclick = function(){
+                document.getElementById('menu-wrap').classList.toggle('close');
+                document.getElementById('menu-wrap').classList.toggle('open');
+            };
+            document.getElementById("main-menu-toggle").onclick = function(){
+                document.getElementById('share-menu').classList.add('none');
+                document.getElementById('share-menu').classList.remove('block');
+                document.getElementById('main-menu').classList.toggle('none');
+                document.getElementById('main-menu').classList.toggle('block');
+            };
+            document.getElementById("share-menu-toggle").onclick = function(){
+                document.getElementById('main-menu').classList.add('none');
+                document.getElementById('main-menu').classList.remove('block');
+                document.getElementById('share-menu').classList.toggle('none');
+                document.getElementById('share-menu').classList.toggle('block');
+            };
+        })();
+        (function(){
             if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
                 document.body.className += " night-mode";
             }
