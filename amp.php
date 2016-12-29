@@ -217,18 +217,18 @@
 			$content = preg_replace('/<iframe class="hatenablogcard" src="http:\/\/hatenablog-parts.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i','<a href="$1">$1</a>',$content);
 			$content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
 			$content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" src="https:\/\/www.google.com\/maps\/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div>',$content);
+			$content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe>',$content);
 			$content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" $1></amp-iframe></div>',$content);
 			$content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
-			$content = preg_replace('/ +border=["][^"]*?["]/i','',$content);
-			$content = preg_replace('/ +border=[\'][^\']*?[\']/i','',$content);
-			$content = preg_replace('/ +style=["][^"]*?["]/i','',$content);
-			$content = preg_replace('/ +style=[\'][^\']*?[\']/i','',$content);
-			$content = preg_replace('/ +onclick=["][^"]*?["]/i','',$content);
-			$content = preg_replace('/ +onclick=[\'][^\']*?[\']/i','',$content);
-			$content = preg_replace('/ +onMouseOver=["][^"]*?["]/i','',$content);
-			$content = preg_replace('/ +onMouseOver=[\'][^\']*?[\']/i','',$content);
-			$content = preg_replace('/ +onMouseOut=["][^"]*?["]/i','',$content);
-			$content = preg_replace('/ +onMouseOut=[\'][^\']*?[\']/i','',$content);
+			$content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)style=".*?"(.*?)>/','<$1$2>',$content);
+  			$content = preg_replace('/<(.*?)onclick=".*?"(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)onmouseover=".*?"(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)onmouseout=".*?"(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)oncontextmenu=".*?"(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<a(.*?)target=".*?"(.*?)>/','<a$1$2>',$content);
+			$content = preg_replace('/<(.*?)marginwidth=".*?"(.*?)>/i','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)marginheight=".*?"(.*?)>/i','<$1$2>',$content);
 			$content = str_replace('href="javascript:void(0)"','',$content);
 			$content = str_replace('src=""',$img,$content);
 

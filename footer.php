@@ -1,14 +1,14 @@
     </main>
     <div id="menu-wrap" class="close">
         <nav class="menu-tab">
-            <a href="javascript:void(0)" id="main-menu-toggle" tabindex="0" role="button" title="メニューへのリンク" onclick="document.getElementById('main-menu').classList.toggle('none');document.getElementById('main-menu').classList.toggle('block');document.getElementById('share-menu').classList.add('none');document.getElementById('share-menu').classList.remove('block');">menu</a>
-            <a href="javascript:void(0)" id="share-menu-toggle" tabindex="0" role="button" title="共有機能へのリンク" onclick="document.getElementById('main-menu').classList.add('none');document.getElementById('main-menu').classList.remove('block');document.getElementById('share-menu').classList.toggle('none');document.getElementById('share-menu').classList.toggle('block');"><i class="fa fa-share-alt fa-5x"></i></a>
+            <a href="javascript:void(0)" id="main-menu-toggle" tabindex="0" role="button" title="メニューへのリンク">menu</a>
+            <a href="javascript:void(0)" id="share-menu-toggle" tabindex="0" role="button" title="共有機能へのリンク"><i class="fa fa-share-alt fa-5x"></i></a>
         </nav>
-        <nav id="share-menu" class="none">
+        <nav id="share-menu" class="block">
             <ul>
     		    <li class="tweet"><a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');?><?php if(get_twitter_acount()!==null):echo '&amp;via=' . get_twitter_acount();endif;?>" target="_blank" title="Twitterへの共有リンク"><i class="fa fa-twitter fa-5x" aria-hidden="true"></i></a></li>
                 <li class="fb-like"><a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank" title="Facebookへの共有リンク"><i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i></a></li>
-                <li class="line"><a href="http://line.me/R/msg/text/?<?php wp_title('');?>%0D%0A<?php echo get_meta_url();?>" target="_blank" title="LINEへの共有リンク"><i class="fa fa-comments fa-5x" aria-hidden="true"></i></a></li>
+                <li class="line"><a href="http://lineit.line.me/share/ui?url=<?php echo get_meta_url();?>" target="_blank" title="LINEへの共有リンク"><i class="fa fa-comments fa-5x" aria-hidden="true"></i></a></li>
                 <li class="g-plus"><a href="https://plus.google.com/share?url=<?php echo get_meta_url();?>" target="_blank" title="Google+への共有リンク"><i class="fa fa-google-plus-official fa-5x" aria-hidden="true"></i></a></li>
                 <li class="linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="Linkedinへの共有リンク"><i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i></a></li>
                 <li class="buffer"><a href="https://bufferapp.com/add?url<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="Bufferへの共有リンク">Buffer</a></li>
@@ -22,7 +22,7 @@
                 <li class="tumblr"><a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo get_meta_url();?>" target="_blank" title="thumblrへの共有リンク"><i class="fa fa-tumblr fa-5x" aria-hidden="true"></i></a></li>
             </ul>
         </nav>
-        <div id="main-menu" class="block">
+        <div id="main-menu" class="none">
             <?php if(has_nav_menu('social')):?>
                 <nav class="social-nav">
                     <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>','walker'=>new add_meta_Social_Menu));?>
@@ -40,19 +40,37 @@
             <?php endif;?>
         </div>
     </div>
-    <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン" onclick="document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');">+</a>
+    <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
     <?php
     wp_footer();
-    if(is_singular()===true && get_post_format()==='link'){
+    $key = false;
+    $key = get_option('cookie_key');
+    if($key===false){$key = '2016-by-wkwkrnht';}
+    if(get_post_format()==='link'){
         echo'
-        <script>var target = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < target.length; i++){var href = target[i].classList.add("embedly-card");}</script>
+        <script>var targets = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < targets.length; i++){var target = targets[i];target.classList.add("embedly-card");}</script>
         <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
     }
-    $key = '';
-    $key = get_option('cookie_key');
-    if($key===''){$key = '2016-by-wkwkrnht';}
     ?>
     <script>
+        (function(){
+            document.getElementById("menu-toggle").onclick = function(){
+                document.getElementById('menu-wrap').classList.toggle('close');
+                document.getElementById('menu-wrap').classList.toggle('open');
+            };
+            document.getElementById("main-menu-toggle").onclick = function(){
+                document.getElementById('share-menu').classList.add("none");
+                document.getElementById('share-menu').classList.remove("block");
+                document.getElementById('main-menu').classList.toggle("none");
+                document.getElementById('main-menu').classList.toggle("block");
+            };
+            document.getElementById("share-menu-toggle").onclick = function(){
+                document.getElementById('main-menu').classList.add("none");
+                document.getElementById('main-menu').classList.remove("block");
+                document.getElementById('share-menu').classList.toggle("none");
+                document.getElementById('share-menu').classList.toggle("block");
+            };
+        })();
         (function(){
             if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
                 document.body.className += " night-mode";
@@ -104,6 +122,6 @@
             setCookie(key,n);
         })();
     </script>
-    <?php $txt='';$txt=get_option('footer_txt');if($txt!==''){echo $txt;}?>
+    <?php $txt=false;$txt=get_option('footer_txt');if($txt!==false){echo $txt;}?>
 </body>
 </html>
