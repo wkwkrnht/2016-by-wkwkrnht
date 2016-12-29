@@ -54,7 +54,7 @@
     ?>
     <script>
         (function(){
-            document.getElementById("menu-toggle").onclick = document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');
+            document.getElementById("menu-toggle").onclick = function(){document.getElementById('menu-wrap').classList.toggle('close');document.getElementById('menu-wrap').classList.toggle('open');};
             if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
                 document.body.className += " night-mode";
             }
