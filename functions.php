@@ -864,7 +864,9 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-button','button','[button class=blue]','[/button]');
         QTags.addButton('qt-link-button','link_button','[link_button class=blue url=]','[/link_button]');
         QTags.addButton('qt-a','a','[link url=]','[/link]');
-		QTags.addButton('qt-p','p','<p>','</p>');
+        QTags.addButton('qt-abbr','abbr','<abbr title="">','</abbr>');
+		QTags.addButton('qt-q','q','<q>','</q>');
+        QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
 		QTags.addButton('qt-h3','h3','<h3>','</h3>');
