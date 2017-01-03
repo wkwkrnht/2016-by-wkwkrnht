@@ -437,7 +437,7 @@ add_filter('script_loader_tag','replace_script_tag');
 
 
 class add_meta_Nav_Menu extends Walker_Nav_Menu{
-    function start_el(&$output,$item,$depth,$args){
+    function start_el(&$output,$item,$depth = 0,$args = array(),$id = 0){
         $title        = $item->title;
         $output      .= '<li itemprop="name" class="menu-item">';
         $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '">' . $title . '</a>';
@@ -446,7 +446,7 @@ class add_meta_Nav_Menu extends Walker_Nav_Menu{
 }
 
 class add_meta_Social_Menu extends Walker_Nav_Menu{
-    function start_el(&$output,$item,$depth,$args){
+    function start_el(&$output,$item,$depth = 0,$args = array(),$id = 0){
         $title        = $item->title;
         $output      .= '<li itemprop="name" class="menu-item">';
         $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '"></a>';
@@ -883,7 +883,9 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-button','button','[button class=blue]','[/button]');
         QTags.addButton('qt-link-button','link_button','[link_button class=blue url=]','[/link_button]');
         QTags.addButton('qt-a','a','[link url=]','[/link]');
-		QTags.addButton('qt-p','p','<p>','</p>');
+        QTags.addButton('qt-abbr','abbr','<abbr title="">','</abbr>');
+		QTags.addButton('qt-q','q','<q>','</q>');
+        QTags.addButton('qt-p','p','<p>','</p>');
         QTags.addButton('qt-h1','h1','<h1>','</h1>');
         QTags.addButton('qt-h2','h2','<h2>','</h2>');
 		QTags.addButton('qt-h3','h3','<h3>','</h3>');
