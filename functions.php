@@ -568,8 +568,27 @@ function get_twitter_acount(){
     }
 }
 
-function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
+function is_subpage(){
+    global $post;
+    if(is_page() && $post->post_parent){
+        $parentID = $post->post_parent;
+        return $parentID;
+    }else{
+        return false;
+    }
+}
 function is_actived_plugin($plugin = ''){if(is_admin()===false){require_once('wp-admin/includes/plugin.php');}return is_plugin_active($plugin);}
+function ys_is_pagespeedinsights(){
+    $bot_list = array('Google Page Speed Insights',);
+    $is_bot   = false;
+    foreach($bot_list as $bot){
+        if(stripos($_SERVER['HTTP_USER_AGENT'], $bot) !== false){
+            $is_bot = true;
+            break;
+        }
+    }
+    return $is_bot;
+}
 /*
     original
 1.blogcard by OGP
