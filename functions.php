@@ -437,7 +437,7 @@ add_filter('script_loader_tag','replace_script_tag');
 
 
 class add_meta_Nav_Menu extends Walker_Nav_Menu{
-    function start_el(&$output,$item,$depth,$args){
+    function start_el(&$output,$item,$depth = 0,$args = array(),$id = 0){
         $title        = $item->title;
         $output      .= '<li itemprop="name" class="menu-item">';
         $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '">' . $title . '</a>';
@@ -446,7 +446,7 @@ class add_meta_Nav_Menu extends Walker_Nav_Menu{
 }
 
 class add_meta_Social_Menu extends Walker_Nav_Menu{
-    function start_el(&$output,$item,$depth,$args){
+    function start_el(&$output,$item,$depth = 0,$args = array(),$id = 0){
         $title        = $item->title;
         $output      .= '<li itemprop="name" class="menu-item">';
         $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '"></a>';
@@ -568,8 +568,27 @@ function get_twitter_acount(){
     }
 }
 
-function is_subpage(){global $post;if(is_page() && $post->post_parent){$parentID = $post->post_parent;return $parentID;}else{return false;}}
+function is_subpage(){
+    global $post;
+    if(is_page() && $post->post_parent){
+        $parentID = $post->post_parent;
+        return $parentID;
+    }else{
+        return false;
+    }
+}
 function is_actived_plugin($plugin = ''){if(is_admin()===false){require_once('wp-admin/includes/plugin.php');}return is_plugin_active($plugin);}
+function ys_is_pagespeedinsights(){
+    $bot_list = array('Google Page Speed Insights',);
+    $is_bot   = false;
+    foreach($bot_list as $bot){
+        if(stripos($_SERVER['HTTP_USER_AGENT'], $bot) !== false){
+            $is_bot = true;
+            break;
+        }
+    }
+    return $is_bot;
+}
 /*
     original
 1.blogcard by OGP
