@@ -1,5 +1,16 @@
 <style>
-	.widget_related_posts{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;height:25vw;width:100%;margin:5vh 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
+	.widget_related_posts{
+		align-items:center;
+		display:flex;
+		flex-wrap:nowrap;
+		height:25vw;
+		justify-content:space-between;
+		margin:5vh 0;
+		overflow-x:auto;
+		overflow-y:hidden;
+		width:100%;
+		-webkit-overflow-scrolling:touch;
+	}
 	.widget_related_posts > *{-webkit-transform:translateZ(0px);}
 	.widget_related_posts .related-wrapper{display:block;height:15vw;min-width:28vw;border-radius:3vmin;padding:.5em 1em;margin:2vw;box-shadow:0 0 2vmin rgba(0,0,0,.3);background-color:<?php echo get_option('related_background','#fff');?>;color:<?php echo get_option('related_color','#333');?>;text-decoration:none;}
 	.widget_related_posts .related-wrapper:visited{color:<?php echo get_option('related_color','#333');?>;}

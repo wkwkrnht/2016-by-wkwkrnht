@@ -938,10 +938,6 @@ function custmuize_load_edit_php_exsample(){
     if(isset($_GET['tag']) && '0'===$_GET['tag']){unset($_GET['tag']);}
 }
 add_action('load-edit.php','custmuize_load_edit_php_exsample');
-/**
- * 投稿をゴミ箱へ送らずにいきなり削除する。
- * Use bulk_actions-{screen_id}
- */
 function nendebcom_register_bulk_actions_delete($bulk_actions){
     $bulk_actions['delete'] = 'いきなり削除する';
     return $bulk_actions;
