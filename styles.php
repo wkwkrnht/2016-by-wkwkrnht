@@ -409,9 +409,8 @@
 	}
 	.menu-tab,#menu-toggle,#main-menu-toggle,#share-menu-toggle{
 		background-color:<?php echo get_option('footer_background','#03a9f4');?>;
-		color:<?php echo get_option('footer_color','#fff');?>;
 	}
-	#menu-toggle:visited,#main-menu-toggle,#main-menu-toggle a:visited,#share-menu-toggle,#share-menu-toggle a:visited{
+	.menu-tab,#menu-toggle,#main-menu-toggle,#share-menu-toggle,#menu-toggle:visited,#main-menu-toggle a:visited,#share-menu-toggle a:visited{
 		color:<?php echo get_option('footer_color','#fff');?>;
 	}
 	.menu-tab{
@@ -457,7 +456,16 @@
 		width:80vw;
 	}
 
-	#share-menu ul{width:86vw;list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
+	#share-menu ul{
+		align-items:center;
+		display:flex;
+		flex-wrap:wrap;
+		justify-content:flex-start;
+		list-style:none;
+		margin:0;
+		padding:0;
+		width:86vw;
+	}
 	#share-menu ul li{
 		height:20vh;
 		text-align:center;

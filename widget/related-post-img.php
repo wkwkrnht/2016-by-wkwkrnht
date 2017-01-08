@@ -16,7 +16,7 @@
 	}
 	.widget_related_posts_img .related-wrapper{
 		background-color:<?php echo get_option('img_related_background','#fff');?>;
-		border-radius:2vmin;
+		border-radius:3vmin;
 		box-shadow:0 0 2vmin rgba(0,0,0,.3);
 		color:<?php echo get_option('img_related_color','#fff');?>;
 		display:block;
