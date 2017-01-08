@@ -180,6 +180,7 @@
 		-webkit-text-size-adjust:100%;
 	}
 	body{
+		margin:0;
 		overflow-y:scroll;
 		padding-bottom:20vh;
 		scroll-behavior:smooth;

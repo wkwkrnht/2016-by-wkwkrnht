@@ -53,7 +53,9 @@ $size_512    = array(512,512);
 $size_1024   = array(1024,1024);
 $categories  = get_the_category();
 $category_ID = array();
-foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
+foreach($categories as $category){
+	array_push($category_ID,$category->cat_ID);
+}
 if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;
 $array = array('numberposts'=>6,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 $query = new WP_Query($array);?>
